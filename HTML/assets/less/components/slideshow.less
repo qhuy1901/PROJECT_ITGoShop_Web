@@ -1,0 +1,224 @@
+.slideshow {
+    
+    .live-anim {
+        opacity: 0;
+    }
+    
+    .header {
+        font-weight: 800;
+        font-size: 4.5em;
+        letter-spacing: .035em;
+        margin-bottom: 28px;
+        line-height: .8;
+        margin-top: 150px;
+        
+        @media (max-width: @screen-sm-max) {
+            font-size: 3em;
+            margin-top: 50px;
+        }
+    }
+    
+    p {
+        font-size: 1em;
+        font-weight: 500;
+        line-height: 1.5;
+        color: @color-grey-darkness;
+    }
+    
+    .btn-panel {
+        margin-top: 74px;
+        display: inline-block;
+        
+        @media (max-width: @screen-sm-max) {
+            margin-top: 24px;
+        }
+    }
+    
+    .sale-badge {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        display: inline-block;
+        width: 152px;
+        height: 152px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 1.875em;
+        color: #fff;
+        font-weight: 800;
+        padding-top: 56px;
+        
+        @media (max-width: @screen-sm-max) {
+            width: 72px;
+            height: 72px;
+            top: 0;
+            left: 0;
+            margin-top: 24px;
+            padding-top: 28px;
+            font-size: .875em;
+        }
+    }
+    
+    .price {
+        display: inline-block;
+        position: relative;
+        bottom: 70px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        
+        @media (max-width: @screen-sm-max) {
+            bottom: 30px;
+        }
+        
+        &::before {
+            content: '';
+            position: absolute;
+            box-shadow: 10px 17px 40px 0px rgba(0, 0, 0, 0.3);
+            top: 0;
+            left: 5px;
+            right: 5px;
+            bottom: 0;
+            z-index: 1;
+            
+        }
+        
+        .wrap {
+            background: #fff;
+            border-radius: 3px;
+            position: relative;
+            z-index: 2;
+            font-size: 4.477em;
+            font-weight: 800;
+            padding: 24px 50px;
+            
+            small {
+                font-size: 50%;
+            }
+        
+            @media (max-width: @screen-sm-max) {
+                font-size: 2.477em;
+            }
+        }
+    }
+    
+    .item {
+        padding-bottom: 60px;
+        
+        @media(max-width: @screen-lg-min) {
+            padding-bottom: 100px;
+        }
+        
+        @media(max-width: @screen-sm-max) {
+            padding-bottom: 15px;
+        }
+    }
+    
+    
+    /**
+    *
+    */
+    .owl-nav {
+        width: 1164px;
+        margin: auto;
+        font-size: 5.625em;
+        bottom: 44px;
+        display: block;
+        width: 1164px;
+        
+        @media(min-width: @screen-sm-min) {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+        
+        @media (max-width: @screen-lg-min) {
+            width: 970px;
+            bottom: -30px;
+        }
+
+        .owl-prev {
+            display: inline-block;
+        }
+
+        .owl-next,
+        .owl-prev {
+            float: left;
+            color: @color-blue;
+            opacity: .6;
+
+            &:hover {
+                opacity: 1;
+            } 
+        }
+
+        @media (max-width: @screen-md-min) {
+            width: 100%;
+
+            .owl-next {
+                float: right;
+            }
+        }
+        
+        
+        @media(max-width: @screen-sm-max) {
+            height: 0;
+            float: left;
+            
+            .owl-next,
+            .owl-prev {
+                position: absolute;
+                bottom: 50%;
+                transform: translate(0, 50%);
+                color: @color-blue;
+            }
+            .owl-next {
+                right: 0;
+            }
+            .owl-prev {
+                left: 0;
+            }
+        }
+    }
+
+
+
+    .owl-dots {
+        position: absolute;
+        bottom: 97px;
+        width: 760px;
+        left: 50%;
+        transform: translate(-50%, 0);
+
+        @media (max-width: @screen-md-min) {
+            width: auto;
+            bottom: 25px;
+        }
+
+        @media (max-width: @screen-lg-min) {
+            width: 580px;
+//            bottom: 54px;
+            bottom: 25px;
+        }
+        
+//        
+//        @media (max-width: @screen-lg-min) {
+//            width: 970px;
+//            bottom: -30px;
+//        }
+
+        .owl-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ccc;
+            float: left;
+            margin-right: 28px;
+
+            background-color: @color-grey-light;
+
+            &.active {
+                 background-color: @color-blue;
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+.parallax-wrap {
+    position: relative;
+    
+    .parallax {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: -20;
+        
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: inherit;
+        }
+        
+        &.opc {
+            &-3 {
+                &::after {
+                    opacity: .3;
+                }
+            }
+            
+            &-5 {
+                &::after {
+                    opacity: .5;
+                }
+            }
+            
+            &-7 {
+                &::after {
+                    opacity: .7;
+                }
+            }
+        }
+    }
+}

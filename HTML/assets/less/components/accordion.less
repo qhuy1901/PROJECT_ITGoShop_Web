@@ -1,0 +1,87 @@
+.panel-group {
+    
+    .panel-heading {
+        background-color: @color-blue;
+        min-height: 56px;
+        border-radius: 3px;
+        font-size: 0.875em;
+        font-weight: @font-b;
+        color: @color-white;
+        padding: 0;
+        
+    }
+    
+    .panel+.panel {
+        margin-top: 15px;
+    }
+    
+    .panel-title {
+        font-size: inherit;
+        font-weight: inherit;
+        
+        a {
+            display: block;
+            text-decoration: none;
+            padding-top: 23px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-bottom: 18px;
+            
+            
+            &,
+            &:active,
+            &:focus {
+                color: @color-white;
+            }
+            &:hover {
+                color: fade(@color-white, 85%);
+            }
+            
+                
+            
+            .panel-indicator {
+                display: block;
+                float: left;
+                border-radius: 50%;
+                width: 12px;
+                height: 12px;
+                background-color: @color-white;
+                margin-right: 24px;
+                position: relative;
+                
+                
+                &::after {
+                    content: '';
+                    background-color: @color-blue;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                }
+            }
+            
+            &.collapsed {
+                .panel-indicator {
+                    &::after {
+                        display: none;                            
+                    }
+                }
+            }
+        }
+    }
+    
+    .panel {
+        border: 0 none;
+        box-shadow: none;
+    }
+    
+    .panel-body {
+        padding: 40px 0 25px 0;
+    }
+    
+    .panel-heading+.panel-collapse>.panel-body {
+        border-top: 0 none;
+    }
+}

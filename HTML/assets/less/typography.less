@@ -1,0 +1,156 @@
+/**
+* Headers
+* =====================================================
+*/ 
+
+// Head on conponents
+.comp-header {
+    
+    // Main
+    display       : inline-block;
+    font-weight   : @font-b;
+    line-height   : 1.286;
+    letter-spacing: .02em;
+    
+    >span {
+        display    : block;
+        font-weight: @font;
+    }
+    
+    // Styles
+    &.st-1 {
+        font-size: 0.75em;
+        line-height: 1.167;
+    }
+    
+    &.st-4 {
+        font-size: 0.875em;
+    }
+    
+    &.st-8 {
+        font-size  : 1.125em;
+        line-height: 1.167;
+    }
+    
+    &.st-12 {
+        font-size  : 1.5em;
+        line-height: 1;
+    }
+    
+    &.st-16 {
+        font-size  : 2.25em;
+        line-height: 1;
+    }
+    
+    &.st-18 {
+        font-size: 3em;
+        line-height: 1.125;
+        letter-spacing: 0;
+        
+        @media(max-width: @screen-md-max) {
+            font-size: 2.25em;
+        }
+    }
+    
+    &.st-20 {
+        font-size: 4.5em;
+        line-height: 0.667;
+        margin-bottom: 83px;
+        
+        @media(max-width: @screen-md-max) {
+            font-size  : 3em;
+        }
+        
+        small {
+            font-weight: 500;
+            font-size: 66%;
+        }
+    }
+    
+}
+
+// Text header
+.text-header {
+    
+    // Main
+    font-weight   : @font-b;
+    letter-spacing: .036em;
+    
+    &.w-4 {
+        font-size: 1.5em;
+    }
+    
+    &.w-8 {
+        font-size: 1.125em;
+    }
+    
+}
+
+// Block header
+.block-header {
+    
+    .header {
+        line-height   : 1.286;
+        letter-spacing: .036em;
+        font-weight   : @font-b;
+        font-size     : 3em;
+    }
+}
+
+
+/**
+* Paragraph
+* =====================================================
+*/ 
+p {
+    font-size  : 0.875em;
+    line-height: 1.286;
+}
+
+
+
+/**
+* Links 
+* =====================================================
+*/
+a {
+    &,
+    &:focus {
+        color          : @bg-blue;
+        text-decoration: underline;
+    }
+    &:hover,
+    &:active {
+        color: @color-dark;
+    }
+}
+
+
+/**
+* Badges 
+* =====================================================
+*/
+.item-badge {
+    color        : @color-white;
+    font-size    : 0.875em;
+    font-weight  : 700;
+    width        : 70px;
+    height       : 70px;
+    display      : block;
+    border-radius: 50%;
+    text-align   : center;
+    padding-top  : 27px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

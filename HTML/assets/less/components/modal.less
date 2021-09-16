@@ -1,0 +1,55 @@
+.modal-backdrop {
+    background-color: #fff;
+    
+    
+    &.in {
+        opacity: 1;
+    }
+}
+
+.modal {
+    .modal-header {
+        border-bottom: 0 none;
+        padding-left: 0;
+        padding-right: 0;
+        
+        .close {
+            color: @color-darkness;
+            opacity: 1;
+            font-size: 3em;
+        }
+    }
+    
+    .modal-title {
+        color:  #2c2c2c;
+        font-size: 1.875em;
+        text-decoration: none;
+        text-transform: uppercase;
+        
+        span {
+            font-weight: @font-b;
+            display: block;
+        }
+        
+    }
+    
+    .modal-content {
+        box-shadow: none !important;
+        border: 0 none;
+    }
+        
+    .modal-body {
+        padding: 0;
+    }
+    
+    .auth-form {
+        .form-fields {
+            margin-top: -40px;
+        }
+        
+        .nav-vrt {
+            margin-bottom: 40px;
+            margin-top: 40px;
+        }
+    }
+}

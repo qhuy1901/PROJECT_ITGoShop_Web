@@ -1,0 +1,78 @@
+.list-group {
+    
+    
+    .list-group-item {
+        
+        // First & last child fixes
+        &:nth-child(1),
+        &:nth-last-child(1) {
+            border-radius: 0;
+        }
+        
+        // Main
+        font-size: 0.875em;
+        letter-spacing: .02em;
+        padding: 15px 24px;
+        border-color: @border-grey-light;
+        border-left: 0 none;
+        border-right: 0 none;
+        background-color: transparent;
+        
+        .badge {
+            padding: 4px 7px;
+            font-size: .875em;
+            font-weight: @font;
+        }
+        
+        .icon {
+            margin-left: -7px;
+            margin-right: -33px;
+            display: inline-block;
+            position: absolute;
+            top: 19px;
+        }
+        
+        .icon + .body {
+            display: block;
+            padding-left: 20px;
+        }
+        
+        &.active {
+            border-color: @border-grey-light;
+            background-color: transparent;
+            color: inherit;
+            padding-right: 40px;
+            
+            &::after {
+                content: '\eb33';
+                font-family: 'icofont';
+                position: absolute;
+                right: 13px;
+                top: 15px;
+                font-size: 1.125em;
+            }
+        }
+    }
+    
+    .list-group-item-heading {
+        font-weight: @font-b;
+        font-size: inherit;
+    }
+    
+    // Addons
+    &.dotted {
+        .list-group-item {
+            border-top: 1px dotted;
+            border-bottom: 1px dotted;
+            border-color: @border-grey-light;
+        }
+    }
+    &.dashed {
+        .list-group-item {
+            border-top: 1px dashed;
+            border-bottom: 1px dashed;
+            border-color: @border-grey-light;
+        }
+    }
+    
+}

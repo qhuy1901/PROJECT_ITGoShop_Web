@@ -1,0 +1,35 @@
+.sdw-wrap {
+    display: inline-block;
+    position: relative;
+    
+    >.sdw {
+        position: absolute;
+        box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.2);
+        top: 5px;
+        bottom: 0;
+        left: 5px;
+        right: 5px;
+        z-index: 1;
+        .animated(.15s);
+    }
+    
+    >* {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .sdw-hover:hover + .sdw {
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+    }
+    
+    &.hover {
+    
+        >.sdw {
+            box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2);
+        }
+    
+        .sdw-hover:hover + .sdw {
+            box-shadow: 2px 4px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+    }
+}

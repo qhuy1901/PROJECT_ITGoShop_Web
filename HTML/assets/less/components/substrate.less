@@ -1,0 +1,55 @@
+.substrate-wrap {
+    position: relative;
+    z-index: -30;
+    
+    .substrate {
+        position: absolute;
+        width: 100%;
+    }
+    
+    .text {
+        overflow: hidden;
+        font-weight: 800;
+        font-size: 21em;
+        white-space: nowrap;
+        line-height: .8;
+        margin-left: 10%;
+        opacity: .2;
+        
+        @media(max-width: 1600px) {
+            margin-left: 5%;
+        }
+        
+        @media(max-width: 1400px) {
+            margin-left: 30px;
+        }
+        
+        @media(max-width: 1200px) {
+            margin-left: 0;
+        }
+        
+        @media(max-width: @screen-lg-max) {
+            font-size: 18em;
+        }
+        
+        @media(max-width: @screen-md-max) {
+            font-size: 12em;
+        }
+        
+        @media(max-width: @screen-sm-max) {
+            font-size: 6em;
+        }
+    }
+    
+    .opc-3 {
+        opacity: .3;
+    }
+    
+    .opc-4 {
+        opacity: .4;
+    }
+    
+    .opc-5 {
+        opacity: .5;
+    }
+}

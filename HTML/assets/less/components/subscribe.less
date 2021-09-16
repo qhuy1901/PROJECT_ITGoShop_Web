@@ -1,0 +1,168 @@
+.subscribe {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 17px;
+    
+    @media(max-width: @screen-md-max) {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    &.sdw {
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            top: 20px;
+            left: 65px;
+            right: 65px;
+            bottom: 0;
+            box-shadow: 0 9px 20px 0px rgba(0, 0, 0, 0.4);
+            border-radius: 35px;
+        }
+    }
+    
+    .wrap {
+        background-color: @color-white;
+        padding: 7px;
+        float: left;
+        width: 100%;
+        border-radius: 35px;
+        position: relative;
+        z-index: 2;
+        padding-right: 70px;
+    }
+    
+    input {
+        border: 0 none;
+        background-color: transparent;
+        font-size: 1.125em;
+        height: 56px;
+        width: 100%;
+        padding-left: 22px;
+        padding-right: 22px;
+        outline: none;
+    
+        @media(max-width: @screen-md-max) {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    
+    .fields {
+        float: left;
+        width: 100%;
+        position: relative;
+    }
+    
+    .name,
+    .email {
+        width: 50%;
+        float: left;
+        padding: 0 10px;
+    }
+    
+    .divider {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 2px;
+            width: 2px;
+            background-color: @color-grey;
+        }
+        
+        &::after {
+            top: auto;
+            bottom: 0;
+        }
+        
+        span {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 8px;
+            
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 2px;
+                width: 2px;
+                background-color: @color-grey;
+            }
+        
+            &::after {
+                top: auto;
+                bottom: 0;
+            }
+        }
+    }
+        
+    .name {
+        
+    }
+    
+    .email {
+        
+    }
+    
+    .send-btn {
+        width: 56px;
+        height: 56px;
+        position: absolute;
+        right: 7px;
+        top: 7px;
+        
+        button {
+            border: 0 none;
+            background: #000;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: @color-blue;
+            font-size: 1.875em;
+            color: @color-white;
+            outline: none;
+            
+            &:hover {
+                background-color: fade(@color-blue, 80%);
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
