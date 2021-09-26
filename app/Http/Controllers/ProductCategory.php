@@ -18,7 +18,11 @@ class ProductCategory extends Controller
 
     public function all_product_category()
     {
-        return view('admin.all_product_category');
+        // // Lấy hết dữ liệu trong bảng product_category
+        $all_product_category = DB::table('ProductCategory')->get();
+        $manager_product_category = view('admin.all_product_category')->with('all_product_category', $all_product_category);
+        // // biến chứa dữ liệu  $all_product_category đc gán cho all_product_category'
+        return view('admin_layout')->with('admin.all_product_category', $manager_product_category);
     }
 
     public function save_product_category(Request $request)
