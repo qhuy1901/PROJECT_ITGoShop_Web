@@ -16,8 +16,9 @@ body {
 }
 
 h1 {
+	font-size: 25px;
 	font-weight: bold;
-	margin: 0;
+	margin: 5px 0 15px 0px;
 }
 
 h2 {
@@ -87,8 +88,10 @@ input {
 	margin: 8px 0;
 	width: 100%;
 }
-.logo a{
-    font-size: xx-large;
+img  {
+    width: 110px;
+	height: 32px;
+	
 }
 .container {
 	background-color: #fff;
