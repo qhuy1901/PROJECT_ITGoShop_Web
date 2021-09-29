@@ -45,12 +45,12 @@
 										<table id="multi-filter-select" class="display table table-striped table-hover" >
 											<thead>
 												<tr>
-													<th>Mã sản phẩm</th>
-													<th>Tên sản phẩm</th>
-													<th>Ảnh sản phẩm</th>
+													<th>Mã danh mục sản phẩm</th>
+													<th>Tên danh mục sản phẩm</th>
+													<th>Mô tả danh mục sản phẩm</th>
 													<th>Hiển thị</th>
 													<th>Ngày thêm</th>
-													<th></th>
+													<th>Hành động</th>
 
 												</tr>
 											</thead>
@@ -92,7 +92,7 @@
 														<a href="{{URL::to('/update-product-category/'.$pro_category->id)}}" class="active" ui-toggle-class="">
 															<i class="fa fa-edit text-active"></i>
 														</a>
-														<a href="{{URL::to('/delete-product-category/'.$pro_category->id)}}" class="active" ui-toggle-class="">
+														<a onclick="return confirm('Bạn cho chắc muốn xóa danh mục này không?')" href="{{URL::to('/delete-product-category/'.$pro_category->id)}}" class="active" ui-toggle-class="">
 															<i class="fa fa-times text-danger text"></i></a>
 													</td>
 													
