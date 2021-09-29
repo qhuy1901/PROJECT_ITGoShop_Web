@@ -407,14 +407,20 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#forms">
 								<i class="fas fa-pen-square"></i>
-								<p>Forms</p>
+								<p>Sản phẩm</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="forms">
 								<ul class="nav nav-collapse">
 									<li>
+										<a href="{{URL::to('/add-product')}}">
+											<span class="sub-item">Thêm sản phẩm</span>
+										</a>
+									</li>
+
+									<li>
 										<a href="forms/forms.html">
-											<span class="sub-item">Basic Form</span>
+											<span class="sub-item">Xem sản phẩm</span>
 										</a>
 									</li>
 								</ul>

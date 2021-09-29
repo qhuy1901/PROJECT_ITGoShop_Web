@@ -38,7 +38,7 @@ Route::post('/update-product-category/{id}','App\Http\Controllers\ProductCategor
 
 // Thương hiệu sản phẩm (Brand)
 Route::get('/add-brand','App\Http\Controllers\BrandController@add_brand');
-Route::get('/all-brand','App\Http\Controllers\BrandController@view_brand');
+Route::get('/view-brand','App\Http\Controllers\BrandController@view_brand');
 Route::get('/update-brand/{brand_id}','App\Http\Controllers\BrandController@get_brand_info');
 Route::get('/delete-brand/{brand_id}','App\Http\Controllers\BrandController@delete_brand');
 
@@ -47,3 +47,7 @@ Route::get('/active-brand/{brand_id}','App\Http\Controllers\BrandController@acti
 
 Route::post('/save-brand','App\Http\Controllers\BrandController@save_brand');
 Route::post('/update-brand/{id}','App\Http\Controllers\BrandController@update_brand');
+
+// Sản phẩm (Product)
+Route::get('/add-product','App\Http\Controllers\ProductController@add_product');
+Route::get('/view-product','App\Http\Controllers\ProductController@view_product');
