@@ -18,7 +18,7 @@ Circles.create({
 //Notify
 $.notify({
 	icon: 'flaticon-alarm-1',
-	title: 'Atlantis Lite',
+	title: 'Thông báo',
 	message: 'Free Bootstrap 4 Admin Dashboard',
 },{
 	type: 'info',

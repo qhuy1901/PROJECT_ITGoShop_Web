@@ -34,6 +34,14 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
+										<?php
+											$message = Session::get('message');
+											if($message)
+											{
+												echo '<label>'.$message.'</label>';
+												Session::put('message', null);
+											}
+										?>
 										<table id="multi-filter-select" class="display table table-striped table-hover" >
 											<thead>
 												<tr>
@@ -42,7 +50,7 @@
 													<th>Ảnh sản phẩm</th>
 													<th>Hiển thị</th>
 													<th>Ngày thêm</th>
-													<th>Giá bán</th>
+													<th></th>
 
 												</tr>
 											</thead>
@@ -76,8 +84,17 @@
 															}
 														?>
 													</td>
-													<td>2011/04/25</td>
-													<td>$320,800</td>
+													<td>
+														2011/04/25
+													</td>
+
+													<td>
+														<a href="{{URL::to('/update-product-category/'.$pro_category->id)}}" class="active" ui-toggle-class="">
+															<i class="fa fa-edit text-active"></i>
+														</a>
+														<a href="{{URL::to('/delete-product-category/'.$pro_category->id)}}" class="active" ui-toggle-class="">
+															<i class="fa fa-times text-danger text"></i></a>
+													</td>
 													
 												</tr>
 												@endforeach

@@ -39,4 +39,40 @@ class ProductCategory extends Controller
         // print_r($data);
         // echo '</pre>';
     }
+
+    public function active_product_category($product_category_id)
+    {
+        // Câu truy vấn SQL  WHERE 
+        DB::table('ProductCategory')->where('id', $product_category_id)->update(['status'=>1]); // [ ] là cái cột, cái mảng
+        Session::put('message','Hiển thị danh mục sản phẩm thành công');
+        return Redirect::to('all-product-category');
+
+    }
+
+    public function unactive_product_category($product_category_id)
+    {
+        DB::table('ProductCategory')->where('id', $product_category_id)->update(['status'=>0]); 
+        Session::put('message','Ẩn danh mục sản phẩm thành công');
+        return Redirect::to('all-product-category');
+    }
+
+    public function get_product_category_info($product_category_id)
+    {
+        // // Lấy hết dữ liệu trong bảng product_category
+        $update_product_category = DB::table('ProductCategory')->where('id',$product_category_id)->get();  // first: lấy dòng đầu tiên
+        $manager_product_category = view('admin.update_product_category')->with('update_product_category', $update_product_category);
+        // // biến chứa dữ liệu  $all_product_category đc gán cho all_product_category'
+        return view('admin_layout')->with('admin.update_product_category', $manager_product_category);
+    }
+
+    public function update_product_category(Request $request, $product_category_id)
+    {
+        $data = array();
+        $data['product_category_name'] = $request->product_category_name;
+        $data['description'] = $request->description;
+
+        DB::table('ProductCategory')->where('id', $product_category_id)->update($data);
+        Session::put('message', 'Cập nhật danh mục sản phẩm thành công');
+        return Redirect::to('all-product-category');
+    }
 }
