@@ -18,13 +18,16 @@ class ProductController extends Controller
         return view('admin.add_product')->with('product_category_list', $product_category_list)->with('brand_list', $brand_list);
     }
 
-    public function all_product()
+    public function view_product()
     {
-        // // Lấy hết dữ liệu trong bảng product
-        $all_product = DB::table('product')->get();
-        $manager_product = view('admin.all_product')->with('all_product', $all_product);
+        $all_product = DB::table('product')
+        ->join('productcategory','productcategory.id','=','product.category_id')
+        ->join('brand','brand.brand_id','=','product.brand_id')
+        ->select('product.*', 'productcategory.product_category_name', 'brand.brand_name')
+        ->orderby('product.product_id', 'desc')->get();
+        $manager_product = view('admin.view_product')->with('all_product', $all_product);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        return view('admin_layout')->with('admin.all_product', $manager_product);
+        return view('admin_layout')->with('admin.view_product', $manager_product);
     }
 
     public function save_product(Request $request)
@@ -61,24 +64,24 @@ class ProductController extends Controller
     public function active_product($product_id)
     {
         // Câu truy vấn SQL  WHERE 
-        DB::table('product')->where('id', $product_id)->update(['status'=>1]); // [ ] là cái cột, cái mảng
+        DB::table('product')->where('product_id', $product_id)->update(['status'=>1]); // [ ] là cái cột, cái mảng
         Session::put('message','Hiển thị sản phâm thành công');
-        return Redirect::to('all-product');
+        return Redirect::to('view-product');
 
     }
 
     public function unactive_product($product_id)
     {
-        DB::table('product')->where('id', $product_id)->update(['status'=>0]); 
+        DB::table('product')->where('product_id', $product_id)->update(['status'=>0]); 
         Session::put('message','Ẩn sản phâm thành công');
-        return Redirect::to('all-product');
+        return Redirect::to('view-product');
     }
 
     public function get_product_info($product_id)
     {
         // // Lấy hết dữ liệu trong bảng product
-        $update_product = DB::table('product')->where('id',$product_id)->get();  // first: lấy dòng đầu tiên
-        $manager_product = view('admin.update_product')->with('update_product', $update_product);
+        $product_info = DB::table('product')->where('id',$product_id)->get();  // first: lấy dòng đầu tiên
+        $manager_product = view('admin.update_product')->with('product_info', $product_info);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
         return view('admin_layout')->with('admin.update_product', $manager_product);
     }

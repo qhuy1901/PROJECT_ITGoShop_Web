@@ -52,4 +52,8 @@ Route::post('/update-brand/{id}','App\Http\Controllers\BrandController@update_br
 Route::get('/add-product','App\Http\Controllers\ProductController@add_product');
 Route::get('/view-product','App\Http\Controllers\ProductController@view_product');
 
+Route::get('/unactive-product/{product_id}','App\Http\Controllers\ProductController@unactive_product');
+Route::get('/active-product/{product_id}','App\Http\Controllers\ProductController@active_product');
+
 Route::post('/save-product','App\Http\Controllers\ProductController@save_product');
+Route::post('/update-product/{product_id}','App\Http\Controllers\ProductController@update_product');

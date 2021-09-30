@@ -419,7 +419,7 @@
 									</li>
 
 									<li>
-										<a href="forms/forms.html">
+										<a href="{{URL::to('/view-product')}}">
 											<span class="sub-item">Xem sản phẩm</span>
 										</a>
 									</li>
