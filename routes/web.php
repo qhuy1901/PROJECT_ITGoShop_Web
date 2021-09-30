@@ -51,3 +51,5 @@ Route::post('/update-brand/{id}','App\Http\Controllers\BrandController@update_br
 // Sản phẩm (Product)
 Route::get('/add-product','App\Http\Controllers\ProductController@add_product');
 Route::get('/view-product','App\Http\Controllers\ProductController@view_product');
+
+Route::post('/save-product','App\Http\Controllers\ProductController@save_product');

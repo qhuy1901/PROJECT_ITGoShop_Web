@@ -13,7 +13,9 @@ class ProductController extends Controller
 {
     public function add_product()
     {
-        return view('admin.add_product');
+        $product_category_list = DB::table('productcategory')->orderby('id', 'desc')->get();
+        $brand_list = DB::table('brand')->orderby('brand_id', 'desc')->get();
+        return view('admin.add_product')->with('product_category_list', $product_category_list)->with('brand_list', $brand_list);
     }
 
     public function all_product()
@@ -29,15 +31,31 @@ class ProductController extends Controller
     {
         $data = array();
         $data['product_name'] = $request->product_name;
-        $data['description'] = $request->description;
+        $data['category_id'] = $request->product_category;
+        $data['brand_id'] = $request->brand;
+        $data['content'] = $request->content;
+        $data['quatity'] = $request->quatity;
+        $data['price'] = $request->price;
+        $data['discount'] = $request->discount;
         $data['status'] = $request->status;
 
+        $get_image = $request->file('product_image');
+        if($get_image == true)
+        {
+            //rand(0, 99)
+            // $new_image_name là tên ảnh, getClientOriginalExtension() là lấy phần mở rộng của ảnh, .png,..
+            $image_name = date("Y_m_d_His").'_'.$get_image->getClientOriginalName(); //$get_image_name.rand(0, 99).'.'.$get_image->getClientOriginalExtension(); 
+            $get_image->move('public/images_upload/product', $image_name);
+            $data['product_image'] = $image_name;
+            DB::table('product')->insert($data);
+            Session::put('message', 'Thêm sản phẩm thành công');
+            return Redirect::to('add-product');
+        }
+        
+        $data['product_image'] = '';
         DB::table('product')->insert($data);
-        Session::put('message', 'Thêm sản phâm thành công');
+        Session::put('message', 'Thêm sản phẩm thành công');
         return Redirect::to('add-product');
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
     }
 
     public function active_product($product_id)
