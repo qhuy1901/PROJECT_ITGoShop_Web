@@ -166,7 +166,7 @@
         margin-bottom: 20px;
         a {
             display: inline-block;
-            @include circle(25px, #50cf96);
+            @include circle(25px, #77ACF1);
         }
         &:nth-child(2) {
             a {
@@ -220,12 +220,12 @@
         }
         &:nth-child(12) {
             a {
-                background-color: #50cf96;
+                background-color: #77ACF1;
             }
         }
         &:nth-child(13) {
             a {
-                background-color: #50cf96;
+                background-color: #77ACF1;
             }
         }
     }
