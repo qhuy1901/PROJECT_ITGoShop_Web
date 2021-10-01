@@ -11,6 +11,20 @@ session_start();
 
 class AdminController extends Controller
 {
+    public function auth_login() //Kiểm tra việc đăng nhập, không để user truy cập vô hệ thống bằng đường dẫn mà chưa đăng nhập
+    {
+        // Hàm kiểm tra có admin_id hay không
+        $user_id = Session::get('user_id');
+        if($user_id)
+        {
+            return Redirect::to('dashboard');
+        }
+        else
+        {
+            return Redirect::to('admin')->send(); // Nếu chưa đăng nhập thì quay lại trang login
+        }
+    }
+
     public function index()
     {
         return view('admin_login');
@@ -18,6 +32,7 @@ class AdminController extends Controller
 
     public function show_dashboard()
     {
+        $this->auth_login(); // Hàm kiểm tra có admin_id hay không
         return view('admin.dashboard');
     }
 
@@ -26,12 +41,12 @@ class AdminController extends Controller
         $email = $request->email;
         $password = md5($request->password);
 
-        $result = DB::table('tbl_admin')->where('email', $email)->where('password', $password)->first();
+        $result = DB::table('user')->where('email', $email)->where('password', $password)->first();
         if($result == true)
         {
-            Session::put('firstName', $result->firstName);
-            Session::put('lastName', $result->lastName);
-            Session::put('id', $result->id);
+            Session::put('first_name', $result->first_name);
+            Session::put('last_name', $result->last_name);
+            Session::put('user_id', $result->user_id);
             return Redirect::to('/dashboard');
         } 
         else{
@@ -47,9 +62,9 @@ class AdminController extends Controller
 
     public function logout()
     {
-        Session::put('firstName', null);
-        Session::put('lastName', null);
-        Session::put('id', null);
+        Session::put('first_name', null);
+        Session::put('last_name', null);
+        Session::put('user_id', null);
         return Redirect::to('admin');
     }
 }

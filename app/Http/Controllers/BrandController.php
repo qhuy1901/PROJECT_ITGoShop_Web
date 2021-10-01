@@ -11,8 +11,23 @@ session_start();
 
 class BrandController extends Controller
 {
+    public function auth_login() //Kiểm tra việc đăng nhập, không để user truy cập vô hệ thống bằng đường dẫn mà chưa đăng nhập
+    {
+        // Hàm kiểm tra có admin_id hay không
+        $admin_id = Session::get('id');
+        if($admin_id)
+        {
+            return Redirect::to('dashboard');
+        }
+        else
+        {
+            return Redirect::to('admin')->send(); // Nếu chưa đăng nhập thì quay lại trang login
+        }
+    }
+
     public function add_brand()
     {
+        $this->auth_login();
         return view('admin.add_brand');
     }
 

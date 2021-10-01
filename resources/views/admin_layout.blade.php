@@ -299,11 +299,11 @@
 							<a data-toggle="collapse" href="#" aria-expanded="true">
 								<span>
 									<?php
-										$firstName = Session::get('firstName');
-										$lastName = Session::get('lastName');
+										$firstName = Session::get('first_name');
+										$lastName = Session::get('last_name');
 										if($firstName && $lastName)
 										{
-											echo $firstName .' '.$lastName;
+											echo $lastName .' '.$firstName;
 										}
 									?>
 									<!-- Hizrian -->
