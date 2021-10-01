@@ -107,7 +107,7 @@
 							<div class="right-content">
 								<ul class="list-main">
 									<li> <a href="#" class="ti-bell" title ="Thông báo"></a> </li>
-									<li><a href="#" class="fa fa-user-circle-o" title ="Profile"></a> </li>
+									<li><a href="profile.html" class="fa fa-user-circle-o" title ="Profile"></a> </li>
 									<li><a href="login.html" class="ti-power-off" title ="Login/Logout"></a></li>
 								</ul>
 							</div>
@@ -401,7 +401,7 @@
 					<div class="bread-inner">
 						<ul class="bread-list">
 							<li><a href="index.html">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">Contact</a></li>
+							<li class="active"><a href="blog-single.html">Profile</a></li>
 						</ul>
 					</div>
 				</div>
@@ -415,78 +415,116 @@
 		<div class="container">
 				<div class="contact-head">
 					<div class="row">
-						<div class="col-lg-8 col-12">
+						<div class="col-lg-12 col-12">
 							<div class="form-main">
 								<div class="title">
-									<h4>Get in touch</h4>
-									<h3>Write us a message</h3>
+                                    <h3>Thông tin tài khoản</h3>
 								</div>
-								<form class="form" method="post" action="mail/mail.php">
+								<form class="form" method="post" >
 									<div class="row">
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
-												<label>Your Name<span>*</span></label>
+												<label>Họ và tên</label>
 												<input name="name" type="text" placeholder="">
 											</div>
 										</div>
+										
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
-												<label>Your Subjects<span>*</span></label>
-												<input name="subject" type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Your Email<span>*</span></label>
+												<label>Email</label>
 												<input name="email" type="email" placeholder="">
 											</div>	
 										</div>
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
-												<label>Your Phone<span>*</span></label>
+												<label>Số điện thoại</label>
 												<input name="company_name" type="text" placeholder="">
 											</div>	
 										</div>
-										<div class="col-12">
-											<div class="form-group message">
-												<label>your message<span>*</span></label>
-												<textarea name="message" placeholder=""></textarea>
-											</div>
-										</div>
+										
 										<div class="col-12">
 											<div class="form-group button">
-												<button type="submit" class="btn ">Send Message</button>
+												<button type="submit" class="btn ">Cập nhật</button>
 											</div>
 										</div>
 									</div>
 								</form>
 							</div>
 						</div>
-						<div class="col-lg-4 col-12">
-							<div class="single-head">
-								<div class="single-info">
-									<i class="fa fa-phone"></i>
-									<h4 class="title">Call us Now:</h4>
-									<ul>
-										<li>+123 456-789-1120</li>
-										<li>+522 672-452-1120</li>
-									</ul>
+                        <div class="col-lg-12 col-12">
+							<div class="form-main">
+								<div class="title">
+									<h3>Địa chỉ giao hàng</h3>
 								</div>
-								<div class="single-info">
-									<i class="fa fa-envelope-open"></i>
-									<h4 class="title">Email:</h4>
-									<ul>
-										<li><a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></li>
-										<li><a href="mailto:info@yourwebsite.com">support@yourwebsite.com</a></li>
-									</ul>
+								<form class="form" method="post" action="mail/mail.php">
+									<div class="row">
+										<div class="col-lg-6 col-12">
+											<div class="form-group">
+												<label>Tỉnh/Thành Phố</label>
+												<input name="name" type="text" placeholder="">
+											</div>
+										</div>
+										<div class="col-lg-6 col-12">
+											<div class="form-group">
+												<label>Quận/Huyện</label>
+												<input name="subject" type="text" placeholder="">
+											</div>
+										</div>
+										<div class="col-lg-6 col-12">
+											<div class="form-group">
+												<label>Phường/Xã</label>
+												<input name="subject" type="text" placeholder="">
+											</div>
+										</div>
+										<div class="col-lg-6 col-12">
+											<div class="form-group">
+												<label>Số nhà - Tên đường</label>
+												<input type="text" name="address"  placeholder="">
+											</div>	
+										</div>
+										<div class="col-12">
+											<div class="form-group button">
+												<button type="submit" class="btn ">Cập nhật</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-lg-12 col-12">
+							<div class="form-main">
+								<div class="title">
+									<h3>Thay đổi mật khẩu</h3>
 								</div>
-								<div class="single-info">
-									<i class="fa fa-location-arrow"></i>
-									<h4 class="title">Our Address:</h4>
-									<ul>
-										<li>KA-62/1, Travel Agency, 45 Grand Central Terminal, New York.</li>
-									</ul>
-								</div>
+								<form class="form" method="post" action="mail/mail.php">
+									<div class="row">
+										<div class="col-lg-6 col-12">
+												<div class="form-group">
+                                                  <label >Mật khẩu hiện tại</label>
+                                                  <input type="password"  name="" id="" placeholder="">
+                                              
+											</div>
+										</div>
+										<div class="col-lg-6 col-12">
+												<div class="form-group">
+                                                  <label >Mật khẩu mới</label>
+                                                  <input type="password"  name="" id="" placeholder="">
+                                                </div>
+										</div>
+										<div class="col-lg-6 col-12">
+												<div class="form-group">
+                                                  <label >Nhập lại mật khẩu</label>
+                                                  <input type="password"  name="" id="" placeholder="">
+                                                </div>
+										</div>
+										
+										<div class="col-12">
+											<div class="form-group button">
+												<button type="submit" class="btn ">Cập nhật</button>
+											</div>
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -496,62 +534,8 @@
 	<!--/ End Contact -->
 	
 	<!-- Map Section -->
-	<div class="map-section">
-		<div id="myMap"></div>
-	</div>
-	<!--/ End Map Section -->
 	
-	<!-- Start Shop Blog  -->
-	<section class="shop-blog section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="section-title">
-						<h2>From Our Blog</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
-						<div class="content">
-							<p class="date">22 July , 2020. Monday</p>
-							<a href="#" class="title">Sed adipiscing ornare.</a>
-							<a href="#" class="more-btn">Continue Reading</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
-						<div class="content">
-							<p class="date">22 July, 2020. Monday</p>
-							<a href="#" class="title">Man’s Fashion Winter Sale</a>
-							<a href="#" class="more-btn">Continue Reading</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
-						<div class="content">
-							<p class="date">22 July, 2020. Monday</p>
-							<a href="#" class="title">Women Fashion Festive</a>
-							<a href="#" class="more-btn">Continue Reading</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Shop Blog  -->
+	
 	
 	<!-- Start Footer Area -->
 	<footer class="footer">

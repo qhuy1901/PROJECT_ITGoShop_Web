@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7"><![endif]-->
-<!--[if IE 8]><html class="ie ie8"><![endif]-->
-<!--[if IE 9]><html class="ie ie9"><![endif]-->
+
 <html lang="vi">
   <head>
     <meta charset="utf-8">
@@ -9,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
     <meta name="author" content="Nghia Minh Luong">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
-    <title>Sky - Product Listing</title>
+    <title>ITGo Shop</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favi.png">
+	
     <!-- Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<!-- StyleSheet -->
     <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
@@ -32,6 +31,9 @@
     <link rel="stylesheet" href="plugins/revolution/css/navigation.css">
     <!-- Custom-->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
     <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--WARNING: Respond.js doesn't work if you view the page via file://-->
     <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
@@ -151,8 +153,8 @@
                       </div>
                     </div>
                   </li>
-                  <li class="menu-item"><a href="#">Phụ Kiện</a></li>
-                  <li class="menu-item"><a href="#">Blogs</a></li>
+                  <li class="menu-item"><a href="product-listing.html">Phụ Kiện</a></li>
+                  <li class="menu-item"><a href="bloggrid.html">Blogs</a></li>
                   
                 </ul>
           </div>
@@ -160,7 +162,7 @@
             <form class="ps-search--header" action="do_action" method="post">
               <input class="form-control" type="text" placeholder="Search Product…">
               <button><i class="ps-icon-search"></i></button>
-            </form>
+            </form>            
             <div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>2</i></span><i class="ps-icon-shopping-cart"></i></a>
               <div class="ps-cart__listing">
                 <div class="ps-cart__content">
@@ -184,8 +186,13 @@
                 
                 <div class="ps-cart__footer"><a href="checkout.html" class="ps-btn">Checkout</a></div>
               </div>
+
             </div>
             <div class="menu-toggle"><span></span></div>
+            <a class="ps-cart__toggle" href="wishlist.html" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+            <a class="ps-cart__toggle" href="profile.html"><i class="fa fa-user-circle-o" title="Profile"></i></a>
+            <a class="ps-cart__toggle" href="login.html" ><i class="ti-power-off" title ="Login/Logout"></i></a>
+
           </div>
         </div>
       </nav>
@@ -884,7 +891,7 @@
         <div class="ps-sidebar" data-mh="product-listing">
           <aside class="ps-widget--sidebar ps-widget--category">
             <div class="ps-widget__header">
-              <h3>Category</h3>
+              <h3>Thương hiệu nhánh</h3>
             </div>
             <div class="ps-widget__content">
               <ul class="ps-list--checked">
@@ -900,7 +907,7 @@
           </aside>
           <aside class="ps-widget--sidebar ps-widget--filter">
             <div class="ps-widget__header">
-              <h3>Category</h3>
+              <h3>Khoảng giá</h3>
             </div>
             <div class="ps-widget__content">
               <div class="ac-slider" data-default-min="300" data-default-max="2000" data-max="3450" data-step="50" data-unit="$"></div>
@@ -909,7 +916,7 @@
           </aside>
           <aside class="ps-widget--sidebar ps-widget--category">
             <div class="ps-widget__header">
-              <h3>Sky Brand</h3>
+              <h3>CPU</h3>
             </div>
             <div class="ps-widget__content">
               <ul class="ps-list--checked">
@@ -925,7 +932,7 @@
           </aside>
           <aside class="ps-widget--sidebar ps-widget--category">
             <div class="ps-widget__header">
-              <h3>Width</h3>
+              <h3>RAM</h3>
             </div>
             <div class="ps-widget__content">
               <ul class="ps-list--checked">
@@ -936,211 +943,107 @@
               </ul>
             </div>
           </aside>
-          <div class="ps-sticky desktop">
-            <aside class="ps-widget--sidebar">
-              <div class="ps-widget__header">
-                <h3>Size</h3>
-              </div>
-              <div class="ps-widget__content">
-                <table class="table ps-table--size">
-                  <tbody>
-                    <tr>
-                      <td class="active">3</td>
-                      <td>5.5</td>
-                      <td>8</td>
-                      <td>10.5</td>
-                      <td>13</td>
-                    </tr>
-                    <tr>
-                      <td>3.5</td>
-                      <td>6</td>
-                      <td>8.5</td>
-                      <td>11</td>
-                      <td>13.5</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>6.5</td>
-                      <td>9</td>
-                      <td>11.5</td>
-                      <td>14</td>
-                    </tr>
-                    <tr>
-                      <td>4.5</td>
-                      <td>7</td>
-                      <td>9.5</td>
-                      <td>12</td>
-                      <td>14.5</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>7.5</td>
-                      <td>10</td>
-                      <td>12.5</td>
-                      <td>15</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </aside>
-            <aside class="ps-widget--sidebar">
-              <div class="ps-widget__header">
-                <h3>Color</h3>
-              </div>
-              <div class="ps-widget__content">
-                <ul class="ps-list--color">
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                  <li><a href="#"></a></li>
-                </ul>
-              </div>
-            </aside>
-          </div>
-          <!--aside.ps-widget--sidebar-->
-          <!--    .ps-widget__header: h3 Ads Banner-->
-          <!--    .ps-widget__content-->
-          <!--        a(href='product-listing'): img(src="images/offer/sidebar.jpg" alt="")-->
-          <!---->
-          <!--aside.ps-widget--sidebar-->
-          <!--    .ps-widget__header: h3 Best Seller-->
-          <!--    .ps-widget__content-->
-          <!--        - for (var i = 0; i < 3; i ++)-->
-          <!--            .ps-shoe--sidebar-->
-          <!--                .ps-shoe__thumbnail-->
-          <!--                    a(href='#')-->
-          <!--                    img(src="images/shoe/sidebar/"+(i+1)+".jpg" alt="")-->
-          <!--                .ps-shoe__content-->
-          <!--                    if i == 1-->
-          <!--                        a(href='#').ps-shoe__title Nike Flight Bonafide-->
-          <!--                    else if i == 2-->
-          <!--                        a(href='#').ps-shoe__title Nike Sock Dart QS-->
-          <!--                    else-->
-          <!--                        a(href='#').ps-shoe__title Men's Sky-->
-          <!--                    p <del> £253.00</del> £152.00-->
-          <!--                    a(href='#').ps-btn PURCHASE-->
+          <aside class="ps-widget--sidebar ps-widget--category">
+            <div class="ps-widget__header">
+              <h3>Ổ cứng</h3>
+            </div>
+            <div class="ps-widget__content">
+              <ul class="ps-list--checked">
+                <li class="current"><a href="product-listing.html">Narrow</a></li>
+                <li><a href="product-listing.html">Regular</a></li>
+                <li><a href="product-listing.html">Wide</a></li>
+                <li><a href="product-listing.html">Extra Wide</a></li>
+              </ul>
+            </div>
+          </aside>
+
+        </div>
+         
         </div>
       </div>
-      <div class="ps-subscribe">
-        <div class="ps-container">
-          <div class="row">
-                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
-                  <h3><i class="fa fa-envelope"></i>Sign up to Newsletter</h3>
-                </div>
-                <div class="col-lg-5 col-md-7 col-sm-12 col-xs-12 ">
-                  <form class="ps-subscribe__form" action="do_action" method="post">
-                    <input class="form-control" type="text" placeholder="">
-                    <button>Sign up now</button>
-                  </form>
-                </div>
-                <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 ">
-                  <p>...and receive  <span>$20</span>  coupon for first shopping.</p>
-                </div>
-          </div>
-        </div>
-      </div>
+      
       <div class="ps-footer bg--cover" data-background="images/background/parallax.jpg">
         <div class="ps-footer__content">
           <div class="ps-container">
             <div class="row">
                   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                    <aside class="ps-widget--footer ps-widget--info">
-                      <header><a class="ps-logo" href="index.html"><img src="images/logo-white.png" alt=""></a>
-                        <h3 class="ps-widget__title">Address Office 1</h3>
-                      </header>
-                      <footer>
-                        <p><strong>460 West 34th Street, 15th floor, New York</strong></p>
-                        <p>Email: <a href='mailto:support@store.com'>support@store.com</a></p>
-                        <p>Phone: +323 32434 5334</p>
-                        <p>Fax: ++323 32434 5333</p>
-                      </footer>
-                    </aside>
+                    <div class="single-footer about">
+                      <div class="logo">
+                        <a href="index.html"><img src="images/logo2.png" alt="#"></a>
+                      </div>
+                      <p class="text">Công Ty TNHH Thương Mại ITGo</p>
+                      <p class="text">Email: cskh@itgo.com </p>
+                      <p class="text">Hệ thống tổng đài miễn phí (Làm việc từ 8h00 - 22h00):</p>
+                      <p class="call">Gọi mua hàng <span><a href="tel:1800 6975">1800 6975</a></span></p>
+                      <p class="call">Hỗ trợ khách hàng <span><a href="tel:1800 6173">1800 6173</a></span></p>
+                    </div>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
-                    <aside class="ps-widget--footer ps-widget--info second">
-                      <header>
-                        <h3 class="ps-widget__title">Address Office 2</h3>
-                      </header>
-                      <footer>
-                        <p><strong>PO Box 16122 Collins  Victoria 3000 Australia</strong></p>
-                        <p>Email: <a href='mailto:support@store.com'>support@store.com</a></p>
-                        <p>Phone: +323 32434 5334</p>
-                        <p>Fax: ++323 32434 5333</p>
-                      </footer>
-                    </aside>
+                  
+                  <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                      <h4>Về ITGo Shop</h4>
+                      <ul>
+                        <li><a href="#">Giới thiệu</a></li>
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <li><a href="#">Điều khoản sử dụng</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                      </ul>
+                    </div>
+                    <!-- End Single Widget -->
                   </div>
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
-                    <aside class="ps-widget--footer ps-widget--link">
-                      <header>
-                        <h3 class="ps-widget__title">Find Our store</h3>
-                      </header>
-                      <footer>
-                        <ul class="ps-list--link">
-                          <li><a href="#">Coupon Code</a></li>
-                          <li><a href="#">SignUp For Email</a></li>
-                          <li><a href="#">Site Feedback</a></li>
-                          <li><a href="#">Careers</a></li>
+                  <div class="col-lg-2 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer links">
+                      <h4>Chính sách</h4>
+                      <ul>
+                        <li><a href="#">Bảo hành</a></li>
+                        <li><a href="#">Vận chuyển</a></li>
+                        <li><a href="#">Thanh toán</a></li>
+                        <li><a href="#">Bảo mật</a></li>
+                      </ul>
+                    </div>
+                    <!-- End Single Widget -->
+                  </div>
+                  <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Single Widget -->
+                    <div class="single-footer social">
+                      <h4>Hệ thống cửa hàng</h4>
+                      <!-- Single Widget -->
+                      <div class="contact">
+                        <ul>
+                          <li>Số 95 Trần Thiện Chánh, Phuờng 12, Quận 10</li>
+                          <li class="map" ><a href="https://www.google.com/maps/place/ThinkPro+-+95+Tr%E1%BA%A7n+Thi%E1%BB%87n+Ch%C3%A1nh,+P12,+Q10,+TP+HCM/@10.7720769,106.6680882,17z/data=!3m1!4b1!4m5!3m4!1s0x31752fea4b76a251:0x3b34f5af9212aadc!8m2!3d10.7720769!4d106.6702769"> <bold>Chỉ đường</bold></a></li>
+                          
                         </ul>
-                      </footer>
-                    </aside>
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
-                    <aside class="ps-widget--footer ps-widget--link">
-                      <header>
-                        <h3 class="ps-widget__title">Get Help</h3>
-                      </header>
-                      <footer>
-                        <ul class="ps-list--line">
-                          <li><a href="#">Order Status</a></li>
-                          <li><a href="#">Shipping and Delivery</a></li>
-                          <li><a href="#">Returns</a></li>
-                          <li><a href="#">Payment Options</a></li>
-                          <li><a href="#">Contact Us</a></li>
-                        </ul>
-                      </footer>
-                    </aside>
-                  </div>
-                  <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
-                    <aside class="ps-widget--footer ps-widget--link">
-                      <header>
-                        <h3 class="ps-widget__title">Products</h3>
-                      </header>
-                      <footer>
-                        <ul class="ps-list--line">
-                          <li><a href="#">Shoes</a></li>
-                          <li><a href="#">Clothing</a></li>
-                          <li><a href="#">Accessries</a></li>
-                          <li><a href="#">Football Boots</a></li>
-                        </ul>
-                      </footer>
-                    </aside>
+                      </div>
+                      <!-- End Single Widget -->
+                      <ul>
+                        <li><a href="https://www.facebook.com/"><i class="ti-facebook"></i></a></li>
+                        <li><a href="https://twitter.com/home?lang=vi"><i class="ti-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/"><i class="ti-instagram"></i></a></li>
+                      </ul>
+                    </div>
+                    <!-- End Single Widget -->
                   </div>
             </div>
           </div>
         </div>
-        <div class="ps-footer__copyright">
-          <div class="ps-container">
-            <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                    <p>&copy; <a href="#">SKYTHEMES</a>, Inc. All rights Resevered. Design by <a href="#"> Alena Studio</a></p>
+        <div class="copyright">
+          <div class="container">
+            <div class="inner">
+              <div class="row">
+                <div class="col-lg-6 col-12">
+                  <div class="left">
+                    <p>Copyright © 2020  -  All Rights Reserved.</p>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                    <ul class="ps-social">
-                      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                      <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                    </ul>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="right">
+                    <img src="images/payments.png" alt="#">
                   </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
