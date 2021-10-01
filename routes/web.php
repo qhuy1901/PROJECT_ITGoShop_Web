@@ -51,6 +51,8 @@ Route::post('/update-brand/{id}','App\Http\Controllers\BrandController@update_br
 // Sản phẩm (Product)
 Route::get('/add-product','App\Http\Controllers\ProductController@add_product');
 Route::get('/view-product','App\Http\Controllers\ProductController@view_product');
+Route::get('/update-product/{product_id}','App\Http\Controllers\ProductController@get_product_info');
+Route::get('/delete-product/{product_id}','App\Http\Controllers\ProductController@delete_product');
 
 Route::get('/unactive-product/{product_id}','App\Http\Controllers\ProductController@unactive_product');
 Route::get('/active-product/{product_id}','App\Http\Controllers\ProductController@active_product');

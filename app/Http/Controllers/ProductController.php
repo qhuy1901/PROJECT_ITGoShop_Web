@@ -79,9 +79,15 @@ class ProductController extends Controller
 
     public function get_product_info($product_id)
     {
-        // // Lấy hết dữ liệu trong bảng product
-        $product_info = DB::table('product')->where('id',$product_id)->get();  // first: lấy dòng đầu tiên
-        $manager_product = view('admin.update_product')->with('product_info', $product_info);
+        // Lấy hết thông tin trong bảng product_category và barnd để load lên cbb
+        $product_category_list = DB::table('productcategory')->orderby('id', 'desc')->get();
+        $brand_list = DB::table('brand')->orderby('brand_id', 'desc')->get();
+        // Lấy hết dữ liệu trong bảng product
+        $product_info = DB::table('product')->where('product_id',$product_id)->get();  // first: lấy dòng đầu tiên
+        $manager_product = view('admin.update_product')
+        ->with('product_info', $product_info)
+        ->with('product_category_list',$product_category_list)
+        ->with('brand_list',$brand_list);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
         return view('admin_layout')->with('admin.update_product', $manager_product);
     }
@@ -90,17 +96,31 @@ class ProductController extends Controller
     {
         $data = array();
         $data['product_name'] = $request->product_name;
-        $data['description'] = $request->description;
+        $data['category_id'] = $request->product_category;
+        $data['brand_id'] = $request->brand;
+        $data['content'] = $request->content;
+        $data['quatity'] = $request->quatity;
+        $data['price'] = $request->price;
+        $data['discount'] = $request->discount;
+        $data['status'] = $request->status;
 
-        DB::table('product')->where('id', $product_id)->update($data);
-        Session::put('message', 'Cập nhật sản phâm thành công');
-        return Redirect::to('all-product');
+        $get_image = $request->file('product_image');
+        if($get_image == true)
+        {
+            $image_name = date("Y_m_d_His").'_'.$get_image->getClientOriginalName(); 
+            $get_image->move('public/images_upload/product', $image_name);
+            $data['product_image'] = $image_name;
+        }
+
+        DB::table('product')->where('product_id', $product_id)->update($data);
+        Session::put('message', 'Cập nhật sản phẩm thành công');
+        return Redirect::to('view-product');
     }
 
     public function delete_product($product_id)
     {
-        DB::table('product')->where('id', $product_id)->delete();
-        Session::put('message', 'Xóa sản phâm thành công');
-        return Redirect::to('all-product');
+        DB::table('product')->where('product_id', $product_id)->delete();
+        Session::put('message', 'Xóa sản phẩm thành công');
+        return Redirect::to('view-product');
     }
 }
