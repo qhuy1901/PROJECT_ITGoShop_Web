@@ -25,16 +25,16 @@ Route::get('/logout','App\Http\Controllers\AdminController@logout');
 Route::post('/admin-dashboard', 'App\Http\Controllers\AdminController@dashboard');
 
 // Product Category
-Route::get('/add-product-category','App\Http\Controllers\ProductCategory@add_product_category');
-Route::get('/all-product-category','App\Http\Controllers\ProductCategory@all_product_category');
-Route::get('/update-product-category/{product_category_id}','App\Http\Controllers\ProductCategory@get_product_category_info');
-Route::get('/delete-product-category/{product_category_id}','App\Http\Controllers\ProductCategory@delete_product_category');
+Route::get('/add-product-category','App\Http\Controllers\ProductCategoryController@add_product_category');
+Route::get('/all-product-category','App\Http\Controllers\ProductCategoryController@all_product_category');
+Route::get('/update-product-category/{product_category_id}','App\Http\Controllers\ProductCategoryController@get_product_category_info');
+Route::get('/delete-product-category/{product_category_id}','App\Http\Controllers\ProductCategoryController@delete_product_category');
 
-Route::get('/unactive-product-category/{product_category_id}','App\Http\Controllers\ProductCategory@unactive_product_category');
-Route::get('/active-product-category/{product_category_id}','App\Http\Controllers\ProductCategory@active_product_category');
+Route::get('/unactive-product-category/{product_category_id}','App\Http\Controllers\ProductCategoryController@unactive_product_category');
+Route::get('/active-product-category/{product_category_id}','App\Http\Controllers\ProductCategoryController@active_product_category');
 
-Route::post('/save-product-category','App\Http\Controllers\ProductCategory@save_product_category');
-Route::post('/update-product-category/{id}','App\Http\Controllers\ProductCategory@update_product_category');
+Route::post('/save-product-category','App\Http\Controllers\ProductCategoryController@save_product_category');
+Route::post('/update-product-category/{product_category_id}','App\Http\Controllers\ProductCategoryController@update_product_category');
 
 // Thương hiệu sản phẩm (Brand)
 Route::get('/add-brand','App\Http\Controllers\BrandController@add_brand');

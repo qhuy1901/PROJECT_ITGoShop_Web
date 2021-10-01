@@ -11,19 +11,35 @@ session_start();
 
 class ProductController extends Controller
 {
+    public function auth_login() //Kiểm tra việc đăng nhập, không để user truy cập vô hệ thống bằng đường dẫn mà chưa đăng nhập
+    {
+        // Hàm kiểm tra có admin_id hay không
+        $user_id = Session::get('user_id');
+        if($user_id)
+        {
+            return Redirect::to('dashboard');
+        }
+        else
+        {
+            return Redirect::to('admin')->send(); // Nếu chưa đăng nhập thì quay lại trang login
+        }
+    }
+
     public function add_product()
     {
-        $product_category_list = DB::table('productcategory')->orderby('id', 'desc')->get();
+        $this->auth_login();
+        $product_category_list = DB::table('product_category')->orderby('product_category_id', 'desc')->get();
         $brand_list = DB::table('brand')->orderby('brand_id', 'desc')->get();
         return view('admin.add_product')->with('product_category_list', $product_category_list)->with('brand_list', $brand_list);
     }
 
     public function view_product()
     {
+        $this->auth_login();
         $all_product = DB::table('product')
-        ->join('productcategory','productcategory.id','=','product.category_id')
+        ->join('product_category','product_category.product_category_id','=','product.category_id')
         ->join('brand','brand.brand_id','=','product.brand_id')
-        ->select('product.*', 'productcategory.product_category_name', 'brand.brand_name')
+        ->select('product.*', 'product_category.product_category_name', 'brand.brand_name')
         ->orderby('product.product_id', 'desc')->get();
         $manager_product = view('admin.view_product')->with('all_product', $all_product);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
@@ -79,8 +95,9 @@ class ProductController extends Controller
 
     public function get_product_info($product_id)
     {
+        $this->auth_login();
         // Lấy hết thông tin trong bảng product_category và barnd để load lên cbb
-        $product_category_list = DB::table('productcategory')->orderby('id', 'desc')->get();
+        $product_category_list = DB::table('product_category')->orderby('product_category_id', 'desc')->get();
         $brand_list = DB::table('brand')->orderby('brand_id', 'desc')->get();
         // Lấy hết dữ liệu trong bảng product
         $product_info = DB::table('product')->where('product_id',$product_id)->get();  // first: lấy dòng đầu tiên
@@ -94,6 +111,7 @@ class ProductController extends Controller
 
     public function update_product(Request $request, $product_id)
     {
+        $this->auth_login();
         $data = array();
         $data['product_name'] = $request->product_name;
         $data['category_id'] = $request->product_category;

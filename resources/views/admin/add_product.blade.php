@@ -54,7 +54,7 @@
 													<label for="exampleFormControlSelect1">Danh mục sản phẩm</label>
 													<select class="form-control" name="product_category" id="exampleFormControlSelect1">
 														@foreach($product_category_list as $key => $product_category)
-															<option value="{{$product_category->id}}">{{$product_category->product_category_name}}</option>
+															<option value="{{$product_category->product_category_id}}">{{$product_category->product_category_name}}</option>
 														@endforeach
 													</select>
 												</div>

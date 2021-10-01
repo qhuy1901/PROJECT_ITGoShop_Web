@@ -40,7 +40,7 @@
 									}
 								?>
 								@foreach($update_product_category as $key => $update_value)
-								<form role="form" action="{{URL::to('/update-product-category/'.$update_value->id)}}" method="post">
+								<form role="form" action="{{URL::to('/update-product-category/'.$update_value->product_category_id)}}" method="post">
 									{{ csrf_field() }}
 									<div class="card-body">
 										<div class="row">

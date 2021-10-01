@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblAdminTable extends Migration
+class CreateTblProductCategory extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTblAdminTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_admin', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('firstName');
-            $table->string('lastName');
-            $table->string('phone');
-            $table->string('email', 100);
-            $table->string('password');
+        Schema::create('product_category', function (Blueprint $table) {
+            $table->Increments('product_category_id');
+            $table->string('product_category_name');
+            $table->text('description');
+            $table->integer('status');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateTblAdminTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_admin');
+        Schema::dropIfExists('product_category');
     }
 }

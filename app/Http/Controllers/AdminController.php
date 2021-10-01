@@ -46,6 +46,7 @@ class AdminController extends Controller
         {
             Session::put('first_name', $result->first_name);
             Session::put('last_name', $result->last_name);
+            Session::put('user_image', $result->user_image);
             Session::put('user_id', $result->user_id);
             return Redirect::to('/dashboard');
         } 

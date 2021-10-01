@@ -14,8 +14,8 @@ class BrandController extends Controller
     public function auth_login() //Kiểm tra việc đăng nhập, không để user truy cập vô hệ thống bằng đường dẫn mà chưa đăng nhập
     {
         // Hàm kiểm tra có admin_id hay không
-        $admin_id = Session::get('id');
-        if($admin_id)
+        $user_id = Session::get('user_id');
+        if($user_id)
         {
             return Redirect::to('dashboard');
         }
