@@ -159,7 +159,7 @@
 				  <input class="form-control" type="text" placeholder="Search Product…">
 				  <button><i class="ps-icon-search"></i></button>
 				</form>            
-				<div class="ps-cart"><a class="ps-cart__toggle" href="#"><span><i>2</i></span><i class="ps-icon-shopping-cart"></i></a>
+				<div class="ps-cart"><a class="ps-cart__toggle" href="cart.html"><span><i>2</i></span><i class="ps-icon-shopping-cart"></i></a>
 				  <div class="ps-cart__listing">
 					<div class="ps-cart__content">
 					  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
@@ -220,51 +220,41 @@
 				  <div class="row">
 						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
 						  <div class="ps-checkout__billing">
-							<h3>Billing Detail</h3>
+							<h3>thông tin đơn hàng</h3>
 								  <div class="form-group form-group--inline">
-									<label>First Name<span>*</span>
+									<label>Họ và tên người nhận<span>*</span>
 									</label>
 									<input class="form-control" type="text">
 								  </div>
 								  <div class="form-group form-group--inline">
-									<label>Last Name<span>*</span>
-									</label>
-									<input class="form-control" type="text">
-								  </div>
-								  <div class="form-group form-group--inline">
-									<label>Company Name<span>*</span>
-									</label>
-									<input class="form-control" type="text">
-								  </div>
-								  <div class="form-group form-group--inline">
-									<label>Email Address<span>*</span>
+									<label>Email<span>*</span>
 									</label>
 									<input class="form-control" type="email">
 								  </div>
 								  <div class="form-group form-group--inline">
-									<label>Company Name<span>*</span>
+									<label>Số điện thoại<span>*</span>
 									</label>
 									<input class="form-control" type="text">
 								  </div>
 								  <div class="form-group form-group--inline">
-									<label>Phone<span>*</span>
+									<label>Tỉnh/Thành phố<span>*</span>
 									</label>
 									<input class="form-control" type="text">
 								  </div>
 								  <div class="form-group form-group--inline">
-									<label>Address<span>*</span>
+									<label>Quận/Huyện<span>*</span>
 									</label>
 									<input class="form-control" type="text">
 								  </div>
-							<div class="form-group">
-							  <div class="ps-checkbox">
-								<input class="form-control" type="checkbox" id="cb01">
-								<label for="cb01">Create an account?</label>
-							  </div>
-							</div>
-							<h3 class="mt-40"> Addition information</h3>
+								  <div class="form-group form-group--inline">
+									<label>Số nhà - Tên đường<span>*</span>
+									</label>
+									<input class="form-control" type="text">
+								  </div>
+							
+							<h3 class="mt-40"> thông tin thêm</h3>
 							<div class="form-group form-group--inline textarea">
-							  <label>Order Notes</label>
+							  <label>Lưu ý của khách hàng</label>
 							  <textarea class="form-control" rows="5" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
 							</div>
 						  </div>
@@ -284,17 +274,24 @@
 								</thead>
 								<tbody>
 								  <tr>
-									<td>HABITANT x1</td>
+									<td>Tổng đơn hàng</td>
 									<td>$300.00</td>
 								  </tr>
 								  <tr>
-									<td>Card Subtitle</td>
-									<td>$300.00</td>
+									<td>(+) Phí vận chuyển</td>
+									<td>$00.00</td>
 								  </tr>
 								  <tr>
-									<td>Order Total</td>
-									<td>$300.00</td>
+									<td>(-) Giảm giá</td>
+									<td>$30.00</td>
 								  </tr>
+								  <thead>
+										<tr>
+											<th class="text-uppercase">Số tiền phải trả</th>
+											<th class="text-uppercase">$270.00</th>
+										</tr>
+									
+								  </thead>
 								</tbody>
 							  </table>
 							</div>
@@ -303,27 +300,22 @@
 							  <div class="form-group cheque">
 								<div class="ps-radio">
 								  <input class="form-control" type="radio" id="rdo01" name="payment" checked>
-								  <label for="rdo01">Cheque Payment</label>
-								  <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+								  <label for="rdo01">Thanh toán khi giao hàng</label>
 								</div>
 							  </div>
 							  <div class="form-group paypal">
 								<div class="ps-radio ps-radio--inline">
 								  <input class="form-control" type="radio" name="payment" id="rdo02">
-								  <label for="rdo02">Paypal</label>
+								  <label for="rdo02">Thanh toán bằng thẻ</label>
 								</div>
 								<ul class="ps-payment-method">
 								  <li><a href="#"><img src="images/payment/1.png" alt=""></a></li>
 								  <li><a href="#"><img src="images/payment/2.png" alt=""></a></li>
 								  <li><a href="#"><img src="images/payment/3.png" alt=""></a></li>
 								</ul>
-								<button class="ps-btn ps-btn--fullwidth">Place Order<i class="ps-icon-next"></i></button>
+								<button class="ps-btn ps-btn--fullwidth">Đặt hàng<i class="ps-icon-next"></i></button>
 							  </div>
 							</footer>
-						  </div>
-						  <div class="ps-shipping">
-							<h3>FREE SHIPPING</h3>
-							<p>YOUR ORDER QUALIFIES FOR FREE SHIPPING.<br> <a href="#"> Singup </a> for free shipping on every order, every time.</p>
 						  </div>
 						</div>
 				  </div>
