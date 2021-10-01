@@ -684,7 +684,7 @@ textarea {
   /* 2 */ }
 
 * {
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-weight: 400; }
 
 h1, h2, h3, h4, h5, h6 {
@@ -895,7 +895,7 @@ iframe {
 	border-color:transparent;
 }
 .ps-product-link {
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 14px;
   text-align: center;
   color: #77ACF1;
@@ -1017,7 +1017,7 @@ body {
   position: relative;
   display: block;
   padding-left: 15px;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 14px;
   letter-spacing: 0.5px;
   color: #626262; }
@@ -1059,7 +1059,7 @@ body {
 .ps-list--line a {
   position: relative;
   display: block;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 14px;
   line-height: 30px;
   color: #7d8997; }
@@ -1246,7 +1246,7 @@ textarea.form-control {
   .ps-checkbox label {
     position: relative;
     padding-left: 30px;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     color: #737373;
     font-weight: 400;
     cursor: pointer; }
@@ -1309,7 +1309,7 @@ textarea.form-control {
   .ps-radio label {
     position: relative;
     padding-left: 30px;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     color: #737373;
     font-weight: 400;
     cursor: pointer; }
@@ -1367,7 +1367,7 @@ textarea.form-control {
 .ps-select button.btn {
   padding: 0 20px;
   height: 50px;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 16px;
   line-height: 1.4em;
   color: #5b5b5b;
@@ -1423,7 +1423,7 @@ textarea.form-control {
   .ps-radio label {
     position: relative;
     padding-left: 30px;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     color: #737373;
     font-weight: 400;
     cursor: pointer; }
@@ -1558,7 +1558,7 @@ textarea.form-control {
     width: 40px;
     border: none;
     background-color: #000;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     color: #fff;
     font-size: 20px;
     -webkit-transition: all 0.4s ease;
@@ -1705,7 +1705,7 @@ textarea.form-control {
   text-transform: uppercase;
   letter-spacing: .1em;
   color: #fff;
-  background-color: #77ACF1;
+  background-color: #333;
   line-height: 25px;
   border: none;
   -webkit-border-radius: 60px;
@@ -1923,7 +1923,7 @@ textarea.form-control {
   .ps-post .ps-post__meta {
     margin-bottom: 10px; }
     .ps-post .ps-post__meta > span {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-weight: 500;
       color: #8d8d8d; }
       .ps-post .ps-post__meta > span a {
@@ -1996,7 +1996,7 @@ textarea.form-control {
       color: #77ACF1; }
   .ps-post--sidebar span {
     display: block;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 12px;
     color: #5b5b5b; }
 
@@ -2174,20 +2174,20 @@ textarea.form-control {
     margin-bottom: 15px; }
   .ps-post--detail .ps-post__content p {
     margin-bottom: 25px;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 14px;
     line-height: 1.8em;
     color: #8d8d8d; }
   .ps-post--detail .ps-post__content blockquote {
     border-color: #77ACF1; }
     .ps-post--detail .ps-post__content blockquote p {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 18px;
       font-style: italic;
       line-height: 1.6em;
       color: #999; }
       .ps-post--detail .ps-post__content blockquote p.author {
-        font-family: "Public Sans", sans-serif;
+        font-family: "Kanit", sans-serif;
         font-size: 14px;
         font-weight: 500;
         font-style: italic;
@@ -2243,7 +2243,7 @@ textarea.form-control {
     text-transform: uppercase; }
 
 .ps-banner .ps-banner__title p {
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 72px;
   font-weight: 700;
   letter-spacing: 5px;
@@ -2251,7 +2251,7 @@ textarea.form-control {
 
 .ps-banner .ps-banner__description p {
   display: block;
-  font-family: Public Sans;
+  font-family: Kanit;
   font-size: 16px;
   line-height: 1.4em;
   text-align: left;
@@ -2330,7 +2330,7 @@ textarea.form-control {
       margin-bottom: 15px; }
     .ps-testimonial > header p {
       margin-bottom: 0;
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 18px;
       text-align: center;
       color: #fff; }
@@ -2366,7 +2366,7 @@ textarea.form-control {
   display: inline-block; }
 
 .ps-widget--info p {
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-weight: 400;
   color: #999; }
   .ps-widget--info p strong {
@@ -2440,19 +2440,19 @@ textarea.form-control {
     font-size: 13px;
     color: #767779; }
     .ps-search--widget > input::-webkit-input-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
     .ps-search--widget > input::-moz-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
     .ps-search--widget > input:-moz-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
     .ps-search--widget > input:-ms-input-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
   .ps-search--widget > button {
@@ -2590,7 +2590,7 @@ textarea.form-control {
   .ps-shoe .ps-shoe__categories {
     margin-bottom: 0; }
     .ps-shoe .ps-shoe__categories > a {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 12px;
       color: #8d8d8d; }
       .ps-shoe .ps-shoe__categories > a:hover {
@@ -2743,7 +2743,7 @@ textarea.form-control {
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 16px;
     font-weight: 500;
     color: #efefef; }
@@ -2966,7 +2966,7 @@ textarea.form-control {
         position: relative;
         display: inline-block;
         z-index: 30;
-        font-family: "Public Sans", sans-serif;
+        font-family: "Kanit", sans-serif;
         font-size: 16px;
         color: #313131;
         line-height: 50px;
@@ -3186,13 +3186,13 @@ textarea.form-control {
       color: #313131; }
     .ps-author .ps-author__content > header p {
       margin-bottom: 0;
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 12px;
       font-style: italic;
       line-height: 2em;
       color: #8d8d8d; }
     .ps-author .ps-author__content p {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 14px;
       line-height: 1.7em;
       color: #8d8d8d; }
@@ -3231,7 +3231,7 @@ textarea.form-control {
     border-radius: 4px;
     background-color: #f1f1f1; }
     .ps-review .ps-review__content p {
-      font-family: Public Sans;
+      font-family: Kanit;
       font-size: 14px;
       line-height: 1.5em;
       text-align: left;
@@ -3300,7 +3300,7 @@ textarea.form-control {
         color: #29203c; }
         .ps-comment .ps-comment__content > header h4 span {
           margin-left: 20px;
-          font-family: Public Sans;
+          font-family: Kanit;
           font-size: 14px;
           line-height: 1.8em;
           color: #989898; }
@@ -3365,7 +3365,7 @@ textarea.form-control {
     line-height: 1.7em;
     color: #000; }
   .ps-iconbox__content p {
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 16px;
     line-height: 1.6em;
     color: #4a4a4a; }
@@ -3580,7 +3580,7 @@ textarea.form-control {
     transform: translateY(-50%);
     left: -4px;
     z-index: -1;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-weight: 700;
     font-size: 100px;
     line-height: 1em;
@@ -3698,12 +3698,12 @@ textarea.form-control {
         font-weight: 700;
         text-transform: uppercase; }
       .ps-home-contact .ps-home-contact__form > header p {
-        font-family: "Public Sans", sans-serif;
+        font-family: "Kanit", sans-serif;
         font-size: 14px;
         line-height: 1.57em;
         color: #000; }
     .ps-home-contact .ps-home-contact__form form label {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 14px;
       color: #000;
       font-weight: 400;
@@ -3766,7 +3766,7 @@ textarea.form-control {
       margin-right: 30px;
       text-align: center; }
       .ps-section--sale-off .ps-hot-deal .ps-countdown li p {
-        font-family: "Public Sans", sans-serif;
+        font-family: "Kanit", sans-serif;
         font-size: 18px;
         text-align: center;
         color: #8d8d8d;
@@ -3854,7 +3854,7 @@ textarea.form-control {
       color: #8d8d8d;
       text-transform: uppercase; }
       .ps-section--features-product .ps-masonry__filter li > a sup {
-        font-family: "Public Sans", sans-serif;
+        font-family: "Kanit", sans-serif;
         font-size: 10px;
         font-weight: 500;
         color: #5b5b5b;
@@ -4091,7 +4091,7 @@ textarea.form-control {
     display: block;
     padding: 5px 0;
     position: relative;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 14px;
     color: #1d1d1d;
     font-weight: 400; }
@@ -4543,7 +4543,7 @@ textarea.form-control {
     display: inline-block;
     width: 40px;
     height: 40px;
-    background-color: #000;
+    background-color: #333;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -4585,7 +4585,7 @@ textarea.form-control {
     top: 100%;
     right: 0;
     width: 300px;
-    background-color: #313645;
+    background-color: #fff;
     z-index: 1000;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -4608,9 +4608,9 @@ textarea.form-control {
     padding: 15px; }
     .ps-cart__total p {
       text-align: left;
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 16px;
-      color: #fff; }
+      color: #333; }
       .ps-cart__total p span {
         float: right;
         font-weight: 600;
@@ -4624,7 +4624,9 @@ textarea.form-control {
       -webkit-border-radius: 0;
       -moz-border-radius: 0;
       -ms-border-radius: 0;
-      border-radius: 0; }
+      border-radius: 0; 
+      color: #fff;
+    }
       .ps-cart .ps-cart__footer a.ps-btn i {
         position: relative;
         top: 2px;
@@ -4713,15 +4715,15 @@ textarea.form-control {
     width: calc(100% - 60px);
     padding-left: 15px; }
     .ps-cart-item__content p {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 14px;
       line-height: 1.43;
-      color: #fff; }
+      color: #333; }
       .ps-cart-item__content p span {
         margin-right: 25px; }
       .ps-cart-item__content p i {
         font-style: normal;
-        color: #fff;
+        color: #333;
         margin-left: 8px; }
   .ps-cart-item .ps-cart-item__close {
     display: block;
@@ -4784,7 +4786,7 @@ textarea.form-control {
 
 .ps-checkout table.ps-checkout__products > tbody > tr > td {
   border-bottom: none;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 14px;
   color: #fff;
   border-top: none; }
@@ -4966,19 +4968,19 @@ textarea.form-control {
     font-size: 13px;
     color: #767779; }
     .ps-search--header > input::-webkit-input-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
     .ps-search--header > input::-moz-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
     .ps-search--header > input:-moz-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
     .ps-search--header > input:-ms-input-placeholder {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       color: #adadad; }
   .ps-search--header > button {
@@ -5029,7 +5031,7 @@ textarea.form-control {
     padding-bottom: 5px;
     border-bottom: 1px solid #c4c4c4; }
     .ps-contact__block > header > h3 {
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 24px;
       font-weight: 600;
       color: #000;
@@ -5044,7 +5046,7 @@ textarea.form-control {
     margin-bottom: 15px;
     position: relative;
     padding-left: 35px;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 12px;
     line-height: 25px;
     color: #1d1d1d; }
@@ -5158,7 +5160,7 @@ textarea.form-control {
     border-bottom: 1px solid #e5e5e5; }
     .header .header__top p {
       margin-bottom: 0;
-      font-family: "Public Sans", sans-serif;
+      font-family: "Kanit", sans-serif;
       font-size: 13px;
       text-align: left;
       color: #5b5b5b;
@@ -5614,7 +5616,7 @@ textarea.form-control {
 
 .ps-product--detail .ps-product__rating > a {
   float: right;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 14px;
   font-style: italic;
   color: #8d8d8d; }
@@ -5622,7 +5624,7 @@ textarea.form-control {
     color: #77ACF1; }
 
 .ps-product--detail .ps-product__catefory a {
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 14px;
   text-align: left;
   color: #8d8d8d; }
@@ -5650,7 +5652,7 @@ textarea.form-control {
     color: #313131;
     border-bottom: 1px solid #e5e5e5; }
   .ps-product--detail .ps-product__block p {
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 14px;
     line-height: 1.8em;
     color: #5b5b5b; }
@@ -5668,7 +5670,7 @@ textarea.form-control {
 .ps-product--detail .ps-product__size > h4 a {
   float: right;
   display: inline-block;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 14px;
   font-style: italic;
   color: #000000;
@@ -5721,7 +5723,7 @@ textarea.form-control {
 
 .ps-product--detail .ps-product__review h4 {
   margin-bottom: 15px;
-  font-family: "Public Sans", sans-serif;
+  font-family: "Kanit", sans-serif;
   font-size: 16px;
   line-height: 1.3em;
   font-weight: 400;
@@ -5894,7 +5896,7 @@ textarea.form-control {
       line-height: 1em; }
       .ps-product--hotdeal .ps-countdown li p {
         text-align: center;
-        font-family: "Public Sans", sans-serif;
+        font-family: "Kanit", sans-serif;
         font-size: 14px;
         color: #8d8d8d;
         text-transform: uppercase; }
@@ -6082,7 +6084,7 @@ html, body {
     color: #fff; }
   .ps-404 h3 {
     margin-bottom: 25px;
-    font-family: "Public Sans", sans-serif;
+    font-family: "Kanit", sans-serif;
     font-size: 36px;
     font-weight: 600;
     letter-spacing: 2px;
@@ -6155,7 +6157,7 @@ html .bg--parallax {
  .about .logo img{}
  .about .text{
 	color:#fff;
-	font-weight: 500;
+	font-weight: 300;
   font-size: medium;
 }
 .about .call {
@@ -10174,6 +10176,7 @@ html .bg--parallax {
 	color: #333;
 	border-radius: 0px;
 	font-weight: 400;
+  font-size: 16px;
 }
 .contact-us .form .form-group textarea {
 	height: 180px;
@@ -10188,6 +10191,7 @@ html .bg--parallax {
 .contact-us .form .form-group label {
 	color: #333;
 	position: relative;
+  font-size: 16px;
 }
 .contact-us .form .form-group label span {
 	color: #ff2c18;
