@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+// Fontend
+Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/trang-chu', 'App\Http\Controllers\HomeController@index');
 
 // Backend
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');

@@ -27,7 +27,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin_login');
+        return view('login');
     }
 
     public function show_dashboard()
@@ -51,7 +51,7 @@ class AdminController extends Controller
             return Redirect::to('/dashboard');
         } 
         else{
-            Session::put('message', 'Mật khẩu hoặc tài khoản bị sai. Xin nhập lại!');
+            Session::put('message', 'Mật khẩu hoặc tài khoản sai. Xin nhập lại!');
             return Redirect::to('/admin');
         }
         //return view('admin.dashboard');
