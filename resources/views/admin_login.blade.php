@@ -9,10 +9,10 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="{{asset('public/backend/css/style.css')}}">
+	<link rel="stylesheet" href="{{asset('public/admin/css/style.css')}}">
 
 	</head>
-	<body class="img js-fullheight" style="background-image: url({{asset('public/backend/images/bg.jpg')}});">
+	<body class="img js-fullheight" style="background-image: url({{asset('public/admin/images/bg.jpg')}});">
 	<section class="ftco-section">
 		<div class="container">
 
@@ -77,9 +77,9 @@
 	</section>
 
 	<script src="{{asset('js/jquery.min.js')}}"></script>
-  	<script src="{{asset('public/backend/js/popper.js')}}"></script>
-  	<script src="{{asset('public/backend/js/bootstrap.min.j')}}"></script>
-  	<script src="{{asset('public/backend/js/main.js')}}"></script>
+  	<script src="{{asset('public/admin/js/popper.js')}}"></script>
+  	<script src="{{asset('public/admin/js/bootstrap.min.j')}}"></script>
+  	<script src="{{asset('public/admin/js/main.js')}}"></script>
 
 	</body>
 </html>

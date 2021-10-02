@@ -102,10 +102,12 @@
 													<th>Tên sản phẩm</th>
 													<th>Danh mục</th>
 													<th>Thương hiệu</th>
-													<th>Hình ảnh sản phẩm</th>
+													<th>Số lượng</th>
+													<th>Ảnh sản phẩm</th>
 													<th>Hiển thị</th>
+													<th>Giảm giá</th>
+													<th>Giá</th>
 													<th>Hành động</th>
-
 												</tr>
 											</thead>
 											<tfoot>
@@ -113,8 +115,11 @@
 													<th>Name</th>
 													<th>Position</th>
 													<th>Office</th>
+													<th>Office</th>
 													<th>Age</th>
 													<th>Start date</th>
+													<th>Salary</th>
+													<th>Salary</th>
 													<th>Salary</th>
 												</tr>
 											</tfoot>
@@ -124,6 +129,7 @@
                                                     <td>{{$product->product_name}}</td>
 													<td>{{$product->product_category_name}}</td>
 													<td>{{$product->brand_name}}</td>
+													<td>{{$product->quatity}}</td>
                                                     <td><img src="public/images_upload/product/{{$product->product_image}}" height="80" width="80"></td>
 													<td>
 														<?php
@@ -139,6 +145,8 @@
 															}
 														?>
 													</td>
+													<td>{{$product->discount}}%</td>
+													<td>{{$product->price}}</td>
 
 													<td>
 														<div class="form-button-action">
@@ -155,7 +163,6 @@
 														</div>
 														
 													</td>
-													
 												</tr>
 												@endforeach
 											</tbody>

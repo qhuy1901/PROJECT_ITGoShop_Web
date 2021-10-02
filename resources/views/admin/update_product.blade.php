@@ -61,10 +61,10 @@
 													<select class="form-control" name="product_category" id="exampleFormControlSelect1">
 
 														@foreach($product_category_list as $key => $product_category)
-															@if($product_category->id == $update_value->category_id)
-																<option selected value="{{$product_category->id}}">{{$product_category->product_category_name}}</option>
+															@if($product_category->product_category_id == $update_value->category_id)
+																<option selected value="{{$product_category->product_category_id}}">{{$product_category->product_category_name}}</option>
 															@else
-																<option value="{{$product_category->id}}">{{$product_category->product_category_name}}</option>
+																<option value="{{$product_category->product_category_id}}">{{$product_category->product_category_name}}</option>
 															@endif
 														@endforeach
 													</select>
