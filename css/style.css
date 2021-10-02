@@ -4436,7 +4436,7 @@ textarea.form-control {
     .navigation .navigation__column {
       width: 100%; }
       .navigation .navigation__column.left {
-        width: 50%; }
+        width: 30%; }
       .navigation .navigation__column.center {
         width: 0; }
       .navigation .navigation__column.right {
@@ -4445,7 +4445,7 @@ textarea.form-control {
     .navigation .navigation__column {
       width: 100%; }
       .navigation .navigation__column.left {
-        width: 35%; }
+        width: 25%; }
       .navigation .navigation__column.center {
         width: 0; }
       .navigation .navigation__column.right {
