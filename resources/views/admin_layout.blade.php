@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Trang Admin </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="{{asset('public/admin/img/icon.ico')}}" type="image/x-icon"/>
+	<link rel="icon" href="{{asset('./public/admin/img/icon.ico')}}" type="image/x-icon"/>
 
 	<!-- Fonts and icons -->
-	<script src="{{asset('public/admin/js/plugin/webfont/webfont.min.js')}}"></script>
+	<script src="{{asset('./public/admin/js/plugin/webfont/webfont.min.js')}}"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Lato:300,400,700,900"]},
@@ -19,11 +20,11 @@
 	</script>
 
 	<!-- CSS Files -->
-	<link rel="stylesheet" href="{{asset('public/admin/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{asset('public/admin/css/atlantis.min.css')}}">
+	<link rel="stylesheet" href="{{asset('./public/admin/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{asset('./public/admin/css/atlantis.min.css')}}">
 
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="{{asset('public/admin/css/demo.css')}}">
+	<link rel="stylesheet" href="{{asset('./public/admin/css/demo.css')}}">
 </head>
 <body>
 	<div class="wrapper">
@@ -32,7 +33,7 @@
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="{{URL::to('/dashboard')}}" class="logo">
-					<img src="{{asset('public/admin/images/logo.svg')}}" alt="navbar brand" class="navbar-brand">
+					<img src="{{asset('./public/admin/images/logo.svg')}}" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -435,12 +436,12 @@
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="tables/tables.html">
+										<a href="./tables/tables.html">
 											<span class="sub-item">Basic Table</span>
 										</a>
 									</li>
 									<li>
-										<a href="tables/datatables.html">
+										<a href="./tables/datatables.html">
 											<span class="sub-item">Datatables</span>
 										</a>
 									</li>
