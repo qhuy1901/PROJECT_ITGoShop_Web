@@ -64,3 +64,17 @@
 2021/10/02 19:29:20 [notice] 1#1: start worker process 36
 2021/10/02 19:29:20 [notice] 1#1: start worker process 37
 2021/10/02 19:29:20 [notice] 1#1: start worker process 38
+2021/10/03 08:56:04 [notice] 1#1: using the "epoll" event method
+2021/10/03 08:56:04 [notice] 1#1: nginx/1.21.3
+2021/10/03 08:56:04 [notice] 1#1: built by gcc 8.3.0 (Debian 8.3.0-6) 
+2021/10/03 08:56:04 [notice] 1#1: OS: Linux 5.10.16.3-microsoft-standard-WSL2
+2021/10/03 08:56:04 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2021/10/03 08:56:04 [notice] 1#1: start worker processes
+2021/10/03 08:56:04 [notice] 1#1: start worker process 31
+2021/10/03 08:56:04 [notice] 1#1: start worker process 32
+2021/10/03 08:56:04 [notice] 1#1: start worker process 33
+2021/10/03 08:56:04 [notice] 1#1: start worker process 34
+2021/10/03 08:56:04 [notice] 1#1: start worker process 35
+2021/10/03 08:56:04 [notice] 1#1: start worker process 36
+2021/10/03 08:56:04 [notice] 1#1: start worker process 37
+2021/10/03 08:56:04 [notice] 1#1: start worker process 38
