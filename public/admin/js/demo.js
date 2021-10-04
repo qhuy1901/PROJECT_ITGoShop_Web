@@ -19,7 +19,7 @@ Circles.create({
 $.notify({
 	icon: 'flaticon-alarm-1',
 	title: 'Thông báo',
-	message: 'Free Bootstrap 4 Admin Dashboard',
+	message: 'Bạn có thông báo mới! Xem ngay!',
 },{
 	type: 'info',
 	placement: {

@@ -132,7 +132,7 @@
 								<div class="card-body pb-0">
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
 											<h6 class="fw-bold mb-1">CSS</h6>
@@ -145,7 +145,7 @@
 									<div class="separator-dashed"></div>
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="../assets/img/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
 											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
@@ -158,7 +158,7 @@
 									<div class="separator-dashed"></div>
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="../assets/img/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
+											<img src="./public/admin/images/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
 											<h6 class="fw-bold mb-1">Ready Pro</h6>
@@ -182,7 +182,7 @@
 									<div class="card-list">
 										<div class="item-list">
 											<div class="avatar">
-												<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
+												<img src="./public/admin/images/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Jimmy Denis</div>
@@ -194,7 +194,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="../assets/img/chadengle.jpg" alt="..." class="avatar-img rounded-circle">
+												<img src="./public/admin/images/chadengle.jpg" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Chad</div>
@@ -206,7 +206,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle">
+												<img src="./public/admin/images/talha.jpg" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Talha</div>
@@ -218,7 +218,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="../assets/img/mlane.jpg" alt="..." class="avatar-img rounded-circle">
+												<img src="./public/admin/images/mlane.jpg" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">John Doe</div>
@@ -230,7 +230,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="../assets/img/talha.jpg" alt="..." class="avatar-img rounded-circle">
+												<img src="./public/admin/images/talha.jpg" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Talha</div>
@@ -242,7 +242,7 @@
 										</div>
 										<div class="item-list">
 											<div class="avatar">
-												<img src="../assets/img/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
+												<img src="./public/admin/images/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
 											</div>
 											<div class="info-user ml-3">
 												<div class="username">Jimmy Denis</div>
