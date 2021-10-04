@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Trang Admin </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" type="image/png" href="{{('public/admin/images/favi.png')}}"/>
+	<link rel="icon" type="image/png" href="{{('public/admin/images/favicon.svg')}}"/>
 
 	<!-- Fonts and icons -->
 	<script src="{{asset('./public/admin/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -32,7 +32,7 @@
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="{{URL::to('/dashboard')}}" class="logo">
-					<img src="{{('public/admin/images/itgo.svg')}}" alt="navbar brand" class="navbar-brand">
+					<img src="{{('public/admin/images/it.svg')}}" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">

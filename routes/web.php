@@ -62,3 +62,4 @@ Route::get('/active-product/{product_id}','App\Http\Controllers\ProductControlle
 
 Route::post('/save-product','App\Http\Controllers\ProductController@save_product');
 Route::post('/update-product/{product_id}','App\Http\Controllers\ProductController@update_product');
+
