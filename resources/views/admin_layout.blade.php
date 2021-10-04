@@ -86,7 +86,7 @@
 										<div class="notif-center">
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/jm_denis.jpg" alt="Img Profile">
+													<img src="./public/admin/images/jm_denis.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jimmy Denis</span>
@@ -98,7 +98,7 @@
 											</a>
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/chadengle.jpg" alt="Img Profile">
+													<img src="./public/admin/images/chadengle.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Chad</span>
@@ -110,7 +110,7 @@
 											</a>
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/mlane.jpg" alt="Img Profile">
+													<img src="./public/admin/images/mlane.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="subject">Jhon Doe</span>
@@ -172,7 +172,7 @@
 											</a>
 											<a href="#">
 												<div class="notif-img"> 
-													<img src="../assets/img/profile2.jpg" alt="Img Profile">
+													<img src="./public/admin/images/profile2.jpg" alt="Img Profile">
 												</div>
 												<div class="notif-content">
 													<span class="block">
