@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
   	<title>Đăng nhập</title>
     <meta charset="utf-8">

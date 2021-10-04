@@ -229,10 +229,10 @@ body[data-background-color="dark"] .demo-icon .icon-class {
 	background-color: #1a2035;
 }
 .btnSwitch button[data-color="blue"] {
-	background-color: #1572E8;
+	background-color: #77ACF1;
 }
 .btnSwitch button[data-color="purple"] {
-	background-color: #6861CE;
+	background-color: #424874;
 }
 .btnSwitch button[data-color="light-blue"] {
 	background-color: #48ABF7;
@@ -250,7 +250,7 @@ body[data-background-color="dark"] .demo-icon .icon-class {
 	background-color: #1f283e;
 }
 .btnSwitch button[data-color="blue2"] {
-	background-color: #1269DB;
+	background-color: #77ACF1;
 }
 .btnSwitch button[data-color="purple2"] {
 	background-color: #5C55BF;

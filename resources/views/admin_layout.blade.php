@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Trang Admin </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" href="{{asset('./public/admin/img/icon.ico')}}" type="image/x-icon"/>
+	<link rel="icon" type="image/png" href="{{('public/admin/images/favi.png')}}"/>
 
 	<!-- Fonts and icons -->
 	<script src="{{asset('./public/admin/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -22,9 +22,8 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{asset('./public/admin/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('./public/admin/css/atlantis.min.css')}}">
+	
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="{{asset('./public/admin/css/demo.css')}}">
 </head>
 <body>
 	<div class="wrapper">
@@ -33,7 +32,7 @@
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="{{URL::to('/dashboard')}}" class="logo">
-					<img src="{{asset('./public/admin/images/logo.svg')}}" alt="navbar brand" class="navbar-brand">
+					<img src="{{('public/admin/images/itgo.svg')}}" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -61,7 +60,7 @@
 										<i class="fa fa-search search-icon"></i>
 									</button>
 								</div>
-								<input type="text" placeholder="Search ..." class="form-control">
+								<input type="text" placeholder="Search  " class="form-control">
 							</div>
 						</form>
 					</div>
@@ -255,17 +254,17 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="./public/admin/images/profile.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="../assets/img/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="./public/admin/images/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
-												<h4>Hizrian</h4>
-												<p class="text-muted">hello@example.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<h4>Tạ Quang Huy</h4>
+												<p class="text-muted">admin1@gmail.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>

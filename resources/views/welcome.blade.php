@@ -53,26 +53,13 @@
 	
 </head>
 <body class="ps-loading">
-	
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	</div>
-	<!-- End Preloader -->
-	
-	
 	<!-- Header -->
 	<div class="header--sidebar"></div>
 	<header class="header">
 	  <nav class="navigation">
 		<div class="container-fluid">
 		  <div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="index.html"><img src="images/logo.png" alt=""></a></div>
+			<div class="header__logo"><a class="ps-logo" href="index.php"><img src="images/logo.png" alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
@@ -82,58 +69,58 @@
 						<div class="mega-column">
 						  <h4 class="mega-heading">HP</h4>
 						  <ul class="mega-item">
-									<li><a href="product-listing.html">Elitebook</a></li>
-																		<li><a href="product-listing.html">ZBook</a></li>
-																		<li><a href="product-listing.html">Envy</a></li>
-																		<li><a href="product-listing.html">Omen</a></li>
-																		<li><a href="product-listing.html">Pavilion</a></li>
+									<li><a href="product-listing.php">Elitebook</a></li>
+																		<li><a href="product-listing.php">ZBook</a></li>
+																		<li><a href="product-listing.php">Envy</a></li>
+																		<li><a href="product-listing.php">Omen</a></li>
+																		<li><a href="product-listing.php">Pavilion</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">DELL</h4>
 						  <ul class="mega-item">
-							<li><a href="product-listing.html">Inspiron</a></li>
-																		<li><a href="product-listing.html">Vostro</a></li>
-																		<li><a href="product-listing.html">XPS</a></li>
-																		<li><a href="product-listing.html">G-Gaming Series</a></li>
-																		<li><a href="product-listing.html">Alienware</a></li>
-																		<li><a href="product-listing.html">Latitude</a></li>
-																		<li><a href="product-listing.html">Precision</a></li>
+							<li><a href="product-listing.php">Inspiron</a></li>
+																		<li><a href="product-listing.php">Vostro</a></li>
+																		<li><a href="product-listing.php">XPS</a></li>
+																		<li><a href="product-listing.php">G-Gaming Series</a></li>
+																		<li><a href="product-listing.php">Alienware</a></li>
+																		<li><a href="product-listing.php">Latitude</a></li>
+																		<li><a href="product-listing.php">Precision</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">Lenovo</h4>
 						  <ul class="mega-item">
-							<li><a href="product-listing.html">ThinkPad</a></li>
-																		<li><a href="product-listing.html">IdeaPad</a></li>
-																		<li><a href="product-listing.html">Legion</a></li>
-																		<li><a href="product-listing.html">ThinkBook</a></li>
+							<li><a href="product-listing.php">ThinkPad</a></li>
+																		<li><a href="product-listing.php">IdeaPad</a></li>
+																		<li><a href="product-listing.php">Legion</a></li>
+																		<li><a href="product-listing.php">ThinkBook</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">Apple</h4>
 						  <ul class="mega-item">
-									<li><a href="product.html">Macbook Pro 13</a></li>
-																		<li><a href="product-listing.html">Macbook Pro 15</a></li>
-																		<li><a href="product-listing.html">Macbook Pro 16</a></li>
-																		<li><a href="product-listing.html">Macbook Air</a></li>
+									<li><a href="product.php">Macbook Pro 13</a></li>
+																		<li><a href="product-listing.php">Macbook Pro 15</a></li>
+																		<li><a href="product-listing.php">Macbook Pro 16</a></li>
+																		<li><a href="product-listing.php">Macbook Air</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">MSI</h4>
 						  <ul class="mega-item">
-							<li><a href="product-listing.html">GF Series</a></li>
-							<li><a href="product-listing.html">Prestige</a></li>
-							<li><a href="product-listing.html">Modern Series</a></li>
-							<li><a href="product-listing.html">Alpha Series</a></li>
+							<li><a href="product-listing.php">GF Series</a></li>
+							<li><a href="product-listing.php">Prestige</a></li>
+							<li><a href="product-listing.php">Modern Series</a></li>
+							<li><a href="product-listing.php">Alpha Series</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">Microsoft</h4>
 						  <ul class="mega-item">
-									<li><a href="product-listing.html">Surface Laptop</a></li>
-																		<li><a href="product-listing.html">Surface Book</a></li>
-																		<li><a href="product-listing.html">Surface Pro</a></li>
+									<li><a href="product-listing.php">Surface Laptop</a></li>
+																		<li><a href="product-listing.php">Surface Book</a></li>
+																		<li><a href="product-listing.php">Surface Pro</a></li>
 						  </ul>
 						</div>
 					  </div>
@@ -145,41 +132,41 @@
 						<div class="mega-column">
 						  <h4 class="mega-heading">HP</h4>
 						  <ul class="mega-item">
-							<li><a href="product-listing.html">Elitedesk</a></li>
-							<li><a href="product-listing.html">Z Workstation</a></li>
-							<li><a href="product-listing.html">Pavilion</a></li>
+							<li><a href="product-listing.php">Elitedesk</a></li>
+							<li><a href="product-listing.php">Z Workstation</a></li>
+							<li><a href="product-listing.php">Pavilion</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">DELL</h4>
 						  <ul class="mega-item">
-							<li><a href="product-listing.html">Optiplex</a></li> 
-							<li><a href="product-listing.html">Precision</a></li>
-							<li><a href="product-listing.html">Alienware</a></li>
+							<li><a href="product-listing.php">Optiplex</a></li> 
+							<li><a href="product-listing.php">Precision</a></li>
+							<li><a href="product-listing.php">Alienware</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">Lenovo</h4>
 						  <ul class="mega-item">
-							<li><a href="product-listing.html">ThinkCentre</a></li> 
-							<li><a href="product-listing.html">Legion</a></li>
-							<li><a href="product-listing.html">ThinkStation</a></li>
+							<li><a href="product-listing.php">ThinkCentre</a></li> 
+							<li><a href="product-listing.php">Legion</a></li>
+							<li><a href="product-listing.php">ThinkStation</a></li>
 						  </ul>
 						</div>
 						<div class="mega-column">
 						  <h4 class="mega-heading">Apple</h4>
 						  <ul class="mega-item">
-							<li><a href="product.html">iMac</a></li>  
-							<li><a href="product-listing.html">Mac</a></li>
-							<li><a href="product-listing.html">Mac Pro</a></li>
+							<li><a href="product.php">iMac</a></li>  
+							<li><a href="product-listing.php">Mac</a></li>
+							<li><a href="product-listing.php">Mac Pro</a></li>
 						  </ul>
 						</div>
 						
 					  </div>
 					</div>
 				  </li>
-				  <li class="menu-item"><a href="product-listing.html">Phụ Kiện</a></li>
-				  <li class="menu-item"><a href="bloggrid.html">Blogs</a></li>
+				  <li class="menu-item"><a href="product-listing.php">Phụ Kiện</a></li>
+				  <li class="menu-item"><a href="bloggrid.php">Blogs</a></li>
 				  
 				</ul>
 		  </div>
@@ -188,18 +175,18 @@
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="ps-icon-search"></i></button>
 			</form>            
-			<div class="ps-cart"><a class="ps-cart__toggle" href="cart.html"><span><i>2</i></span><i class="ps-icon-shopping-cart"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="cart.php"><span><i>2</i></span><i class="ps-icon-shopping-cart"></i></a>
 			  <div class="ps-cart__listing">
 				<div class="ps-cart__content">
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-					<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/2.jpg" alt=""></div>
-					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Crusty Croissant</a>
+					<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="images/cart-preview/2.jpg" alt=""></div>
+					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">The Crusty Croissant</a>
 					  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 					</div>
 				  </div>
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-					<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/3.jpg" alt=""></div>
-					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Rolling Pin</a>
+					<div class="ps-cart-item__thumbnail"><a href="product-detail.php"></a><img src="images/cart-preview/3.jpg" alt=""></div>
+					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.php">The Rolling Pin</a>
 					  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 					</div>
 				  </div>
@@ -209,14 +196,14 @@
 				  <p>Item Total:<span>£528.00</span></p>
 				</div>
 				
-				<div class="ps-cart__footer"><a href="checkout.html" class="ps-btn">Checkout</a></div>
+				<div class="ps-cart__footer"><a href="checkout.php" class="ps-btn">Checkout</a></div>
 			  </div>
 
 			</div>
 			<div class="menu-toggle"><span></span></div>
-			<a class="ps-cart__toggle" href="wishlist.html" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-			<a class="ps-cart__toggle" href="profile.html"><i class="fa fa-user-circle-o" title="Profile"></i></a>
-			<a class="ps-cart__toggle" href="login.html" ><i class="ti-power-off" title ="Login/Logout"></i></a>
+			<a class="ps-cart__toggle" href="wishlist.php" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+			<a class="ps-cart__toggle" href="profile.php"><i class="fa fa-user-circle-o" title="Profile"></i></a>
+			<a class="ps-cart__toggle" href="login.php" ><i class="ti-power-off" title ="Login/Logout"></i></a>
 
 		  </div>
 		</div>
@@ -238,7 +225,7 @@
 										<h1><span>DEAL HOT </span>Macbook Air </h1>
 										<p>Giá chỉ từ : 26.490.000 ₫</p>
 										<div class="button">
-											<a href="ProductDetail.html" class="btn">Shop Now!</a>
+											<a href="ProductDetail.php" class="btn">Shop Now!</a>
 										</div>
 									</div>
 								</div>
@@ -328,7 +315,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -344,7 +331,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Women Hot Collection</a></h3>
+														<h3><a href="product-details.php">Women Hot Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -354,7 +341,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -370,7 +357,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Pink Show</a></h3>
+														<h3><a href="product-details.php">Awesome Pink Show</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -380,7 +367,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -396,7 +383,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+														<h3><a href="product-details.php">Awesome Bags Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -406,7 +393,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="new">New</span>
@@ -423,7 +410,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Women Pant Collectons</a></h3>
+														<h3><a href="product-details.php">Women Pant Collectons</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -433,7 +420,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -449,7 +436,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+														<h3><a href="product-details.php">Awesome Bags Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -459,7 +446,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="price-dec">30% Off</span>
@@ -476,7 +463,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Cap For Women</a></h3>
+														<h3><a href="product-details.php">Awesome Cap For Women</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -486,7 +473,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -502,7 +489,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Polo Dress For Women</a></h3>
+														<h3><a href="product-details.php">Polo Dress For Women</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -512,7 +499,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="out-of-stock">Hot</span>
@@ -529,7 +516,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+														<h3><a href="product-details.php">Black Sunglass For Women</a></h3>
 														<div class="product-price">
 															<span class="old">$60.00</span>
 															<span>$50.00</span>
@@ -548,7 +535,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -564,7 +551,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Women Hot Collection</a></h3>
+														<h3><a href="product-details.php">Women Hot Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -574,7 +561,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -590,7 +577,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Pink Show</a></h3>
+														<h3><a href="product-details.php">Awesome Pink Show</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -600,7 +587,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -616,7 +603,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+														<h3><a href="product-details.php">Awesome Bags Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -626,7 +613,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="new">New</span>
@@ -643,7 +630,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Women Pant Collectons</a></h3>
+														<h3><a href="product-details.php">Women Pant Collectons</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -653,7 +640,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -669,7 +656,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+														<h3><a href="product-details.php">Awesome Bags Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -679,7 +666,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="price-dec">30% Off</span>
@@ -696,7 +683,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Cap For Women</a></h3>
+														<h3><a href="product-details.php">Awesome Cap For Women</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -706,7 +693,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -722,7 +709,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Polo Dress For Women</a></h3>
+														<h3><a href="product-details.php">Polo Dress For Women</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -732,7 +719,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="out-of-stock">Hot</span>
@@ -749,7 +736,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+														<h3><a href="product-details.php">Black Sunglass For Women</a></h3>
 														<div class="product-price">
 															<span class="old">$60.00</span>
 															<span>$50.00</span>
@@ -768,7 +755,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -784,7 +771,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Women Hot Collection</a></h3>
+														<h3><a href="product-details.php">Women Hot Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -794,7 +781,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -810,7 +797,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Pink Show</a></h3>
+														<h3><a href="product-details.php">Awesome Pink Show</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -820,7 +807,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -836,7 +823,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+														<h3><a href="product-details.php">Awesome Bags Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -846,7 +833,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="new">New</span>
@@ -863,7 +850,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Women Pant Collectons</a></h3>
+														<h3><a href="product-details.php">Women Pant Collectons</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -873,7 +860,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -889,7 +876,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+														<h3><a href="product-details.php">Awesome Bags Collection</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -899,7 +886,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="price-dec">30% Off</span>
@@ -916,7 +903,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Awesome Cap For Women</a></h3>
+														<h3><a href="product-details.php">Awesome Cap For Women</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -926,7 +913,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
@@ -942,7 +929,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Polo Dress For Women</a></h3>
+														<h3><a href="product-details.php">Polo Dress For Women</a></h3>
 														<div class="product-price">
 															<span>$29.00</span>
 														</div>
@@ -952,7 +939,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-details.html">
+														<a href="product-details.php">
 															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="out-of-stock">Hot</span>
@@ -969,7 +956,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+														<h3><a href="product-details.php">Black Sunglass For Women</a></h3>
 														<div class="product-price">
 															<span class="old">$60.00</span>
 															<span>$50.00</span>
@@ -1007,7 +994,7 @@
 						<!-- Start Single Product -->
 						<div class="single-product">
 							<div class="product-img">
-								<a href="product-details.html">
+								<a href="product-details.php">
 									<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
 									<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 									<span class="out-of-stock">Hot</span>
@@ -1024,7 +1011,7 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="product-details.html">Black Sunglass For Women</a></h3>
+								<h3><a href="product-details.php">Black Sunglass For Women</a></h3>
 								<div class="product-price">
 									<span class="old">$60.00</span>
 									<span>$50.00</span>
@@ -1035,7 +1022,7 @@
 						<!-- Start Single Product -->
 						<div class="single-product">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="product-details.php">
                                     <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
                                     <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
                                 </a>
@@ -1051,7 +1038,7 @@
 								</div>
                             </div>
                             <div class="product-content">
-                                <h3><a href="product-details.html">Women Hot Collection</a></h3>
+                                <h3><a href="product-details.php">Women Hot Collection</a></h3>
                                 <div class="product-price">
                                     <span>$50.00</span>
                                 </div>
@@ -1061,7 +1048,7 @@
 						<!-- Start Single Product -->
 						<div class="single-product">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="product-details.php">
                                     <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
                                     <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 									<span class="new">New</span>
@@ -1078,7 +1065,7 @@
 								</div>
                             </div>
                             <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Pink Show</a></h3>
+                                <h3><a href="product-details.php">Awesome Pink Show</a></h3>
                                 <div class="product-price">
                                     <span>$50.00</span>
                                 </div>
@@ -1088,7 +1075,7 @@
 						<!-- Start Single Product -->
 						<div class="single-product">
                             <div class="product-img">
-                                <a href="product-details.html">
+                                <a href="product-details.php">
                                     <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
                                     <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
                                 </a>
@@ -1104,7 +1091,7 @@
 								</div>
                             </div>
                             <div class="product-content">
-                                <h3><a href="product-details.html">Awesome Bags Collection</a></h3>
+                                <h3><a href="product-details.php">Awesome Bags Collection</a></h3>
                                 <div class="product-price">
                                     <span>$50.00</span>
                                 </div>
@@ -1391,7 +1378,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="index.html"><img src="images/logo2.png" alt="#"></a>
+								<a href="index.php"><img src="images/logo2.png" alt="#"></a>
 							</div>
 							<p class="text">Công Ty TNHH Thương Mại ITGo</p>
 							<p class="text">Email: cskh@itgo.com </p>

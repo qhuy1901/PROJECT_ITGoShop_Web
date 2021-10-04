@@ -271,7 +271,7 @@ body {
         > a {
           color: $body-text-color !important;
           &:before {
-            background: #1d7af3;
+            background: #77ACF1;
             @extend %nav-item-hover-before;
           }
           p {
@@ -280,11 +280,11 @@ body {
           }
         }
         &:hover > a:before {
-          background: #1d7af3;
+          background: #77ACF1;
           @extend %nav-item-hover-before;
         }
         a i {
-          color: #4d7cfe;
+          color: #77ACF1;
         }
       }
       &.submenu{
@@ -317,7 +317,7 @@ body {
             font-weight: $font-weight-bold;
           }
           i {
-            color: #4d7cfe !important;
+            color: #77ACF1 !important;
           }
         }
       }
@@ -365,7 +365,7 @@ body {
           color: #575962;
         }
         i {
-          color: #4d7cfe;
+          color: #77ACF1;
         }
         .caret {
           filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
@@ -373,7 +373,7 @@ body {
           transform: rotate(-180deg);
         }
         &:before {
-          background: #1d7af3;
+          background: #77ACF1;
           @extend %nav-item-hover-before;
         }
       }
