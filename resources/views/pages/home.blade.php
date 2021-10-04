@@ -9,22 +9,22 @@
 	<!-- Title Tag  -->
 	<title>ITGo Shop</title>
 	<!-- Favicon -->
-	<link rel="icon" href="{{asset('public/frontend/images/favi.png')}}">
+	<link rel="icon" href="{{asset('public/client/images/favi.png')}}">
 	 <!-- Fonts-->
 	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<!-- StyleSheet -->
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/font-awesome/css/font-awesome.min.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/ps-icon/style.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/font-awesome/css/font-awesome.min.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/ps-icon/style.css')}}">
 	 <!-- CSS Library-->
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/bootstrap/dist/css/bootstrap.min.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/owl-carousel/assets/owl.carousel.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/slick/slick/slick.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/Magnific-Popup/dist/magnific-popup.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/jquery-ui/jquery-ui.min.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/revolution/css/settings.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/revolution/css/layers.css')}}">
-	 <link rel="stylesheet" href="{{('public/frontend/plugins/revolution/css/navigation.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/bootstrap/dist/css/bootstrap.min.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/owl-carousel/assets/owl.carousel.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/slick/slick/slick.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/Magnific-Popup/dist/magnific-popup.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/jquery-ui/jquery-ui.min.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/revolution/css/settings.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/revolution/css/layers.css')}}">
+	 <link rel="stylesheet" href="{{('public/client/plugins/revolution/css/navigation.css')}}">
 	 <!-- Custom-->
 	 <link rel="stylesheet" href="css/style.css">
 	 <link rel="stylesheet" href="css/themify-icons.css">
@@ -32,23 +32,23 @@
    	<link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/responsive.css">
 
-	<link rel="stylesheet" href="{{('public/frontend/css/bootstrap.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/bootstrap.css')}}">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="{{('public/frontend/css/magnific-popup.min.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/magnific-popup.min.css')}}">
 	<!-- Fancybox -->
-	<link rel="stylesheet" href="{{('public/frontend/css/jquery.fancybox.min.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/jquery.fancybox.min.css')}}">
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="{{('public/frontend/css/themify-icons.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/themify-icons.css')}}">
 	<!-- Nice Select CSS -->
-	<link rel="stylesheet" href="{{('public/frontend/css/niceselect.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/niceselect.css')}}">
 	<!-- Animate CSS -->
-	<link rel="stylesheet" href="{{('public/frontend/css/animate.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/animate.css')}}">
 	<!-- Flex Slider CSS -->
-	<link rel="stylesheet" href="{{('public/frontend/css/flex-slider.min.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/flex-slider.min.css')}}">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="{{('public/frontend/css/owl-carousel.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/owl-carousel.css')}}">
 	<!-- Slicknav -->
-	<link rel="stylesheet" href="{{('public/frontend/css/slicknav.min.css')}}">
+	<link rel="stylesheet" href="{{('public/client/css/slicknav.min.css')}}">
 		
 	
 </head>
@@ -1474,50 +1474,50 @@
 	<!-- /End Footer Area -->
  
 	<!-- Jquery -->
-    <script src="{{('public/frontend/js/jquery.min.js')}}"></script>
-    <script src="{{('public/frontend/js/jquery-migrate-3.0.0.js')}}"></script>
-	<script src="{{('public/frontend/js/jquery-ui.min.js')}}"></script>
+    <script src="{{('public/client/js/jquery.min.js')}}"></script>
+    <script src="{{('public/client/js/jquery-migrate-3.0.0.js')}}"></script>
+	<script src="{{('public/client/js/jquery-ui.min.js')}}"></script>
 	<!-- Popper JS -->
-	<script src="{{('public/frontend/js/popper.min.js')}}"></script>
+	<script src="{{('public/client/js/popper.min.js')}}"></script>
 	<!-- Bootstrap JS -->
-	<script src="{{('public/frontend/js/bootstrap.min.js')}}"></script>
+	<script src="{{('public/client/js/bootstrap.min.js')}}"></script>
 	<!-- Color JS -->
-	<script src="{{('public/frontend/js/colors.js')}}"></script>
+	<script src="{{('public/client/js/colors.js')}}"></script>
 	<!-- Slicknav JS -->
-	<script src="{{('public/frontend/js/slicknav.min.js')}}"></script>
+	<script src="{{('public/client/js/slicknav.min.js')}}"></script>
 	<!-- Owl Carousel JS -->
-	<script src="{{('public/frontend/js/owl-carousel.js')}}"></script>
+	<script src="{{('public/client/js/owl-carousel.js')}}"></script>
 	<!-- Magnific Popup JS -->
-	<script src="{{('public/frontend/js/magnific-popup.js')}}"></script>
+	<script src="{{('public/client/js/magnific-popup.js')}}"></script>
 	<!-- Waypoints JS -->
-	<script src="{{('public/frontend/js/waypoints.min.js')}}"></script>
+	<script src="{{('public/client/js/waypoints.min.js')}}"></script>
 	<!-- Countdown JS -->
-	<script src="{{('public/frontend/js/finalcountdown.min.js')}}"></script>
+	<script src="{{('public/client/js/finalcountdown.min.js')}}"></script>
 	<!-- Nice Select JS -->
-	<script src="{{('public/frontend/js/nicesellect.js')}}"></script>
+	<script src="{{('public/client/js/nicesellect.js')}}"></script>
 	<!-- Flex Slider JS -->
-	<script src="{{('public/frontend/js/flex-slider.js')}}"></script>
+	<script src="{{('public/client/js/flex-slider.js')}}"></script>
 	<!-- ScrollUp JS -->
-	<script src="{{('public/frontend/js/scrollup.js')}}"></script>
+	<script src="{{('public/client/js/scrollup.js')}}"></script>
 	<!-- Onepage Nav JS --> 
-	<script src="{{('public/frontend/js/onepage-nav.min.js')}}"></script>
+	<script src="{{('public/client/js/onepage-nav.min.js')}}"></script>
 	<!-- Easing JS -->
-	<script src="{{('public/frontend/js/easing.js')}}"></script>
+	<script src="{{('public/client/js/easing.js')}}"></script>
 	<!-- Active JS -->
-	<script src="{{('public/frontend/js/active.js')}}"></script>
-	<script type="text/javascript" src="plugins/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-    <script type="text/javascript" src="plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="plugins/gmap3.min.js"></script>
-    <script type="text/javascript" src="plugins/imagesloaded.pkgd.js"></script>
-    <script type="text/javascript" src="plugins/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script type="text/javascript" src="plugins/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="plugins/slick/slick/slick.min.js"></script>
-    <script type="text/javascript" src="plugins/elevatezoom/jquery.elevatezoom.js"></script>
-    <script type="text/javascript" src="plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script src="{{('public/client/js/active.js')}}"></script>
+	<script type="text/javascript" src="{{('public/client/plugins/jquery/dist/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/jquery-bar-rating/dist/jquery.barrating.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/gmap3.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/imagesloaded.pkgd.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/isotope.pkgd.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/jquery.matchHeight-min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/slick/slick/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/elevatezoom/jquery.elevatezoom.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js')}}"></script>
+    <script type="text/javascript" src="{{('public/client/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
 <script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
 <script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
