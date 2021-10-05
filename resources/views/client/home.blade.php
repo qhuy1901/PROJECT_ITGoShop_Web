@@ -59,7 +59,7 @@
 	  <nav class="navigation">
 		<div class="container-fluid">
 		  <div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="./public/client/Images/logo.png" alt=""></a></div>
+			<div class="header__logo"><a class="ps-logo" href=""><img src="./public/client/Images/logo.png" alt=""></a></div> <!--{{URL::to('/home')}}-->
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
