@@ -162,14 +162,14 @@
 					  <div class="ps-cart__listing">
 						<div class="ps-cart__content">
 						  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-							<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="images/cart-preview/2.jpg" alt=""></div>
-							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="{{URL::to('/product-detail')}}">The Crusty Croissant</a>
+							<div class="ps-cart-item__thumbnail"><a href="/product-detail"></a><img src="images/cart-preview/2.jpg" alt=""></div>
+							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="/product-detail">The Crusty Croissant</a>
 							  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 							</div>
 						  </div>
 						  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-							<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="images/cart-preview/3.jpg" alt=""></div>
-							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="{{URL::to('/product-detail')}}">The Rolling Pin</a>
+							<div class="ps-cart-item__thumbnail"><a href="/product-detail"></a><img src="images/cart-preview/3.jpg" alt=""></div>
+							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="/product-detail">The Rolling Pin</a>
 							  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 							</div>
 						  </div>
@@ -202,8 +202,8 @@
                   <tbody>
                     <tr>
                       <td>Sản phẩm</td>
-                      <td><a class="ps-product__preview text-uppercase" href="{{URL::to('/product-detail')}}"><img class="mr-15" src="./Images/00_Product/Laptop/Apple MacBook Pro 13 2020 - Sự cải thiện bàn phím từ Apple_ Phân phối tại cửa hàng ThinkPro.png" alt=""> Macbook Pro 13</a></td>
-                      <td><a class="ps-product__preview text-uppercase" href="{{URL::to('/product-detail')}}"><img class="mr-15" src="./Images/00_Product/Laptop/MSI Modern 15 AMD A5M 2021 _ Ultrabook phổ thông giá với thiết kế đẹp đi kèm với cấu hình rất tốt.png" alt=""> MSI 15 AMD</a></td>
+                      <td><a class="ps-product__preview text-uppercase" href="/product-detail"><img class="mr-15" src="./Images/00_Product/Laptop/Apple MacBook Pro 13 2020 - Sự cải thiện bàn phím từ Apple_ Phân phối tại cửa hàng ThinkPro.png" alt=""> Macbook Pro 13</a></td>
+                      <td><a class="ps-product__preview text-uppercase" href="/product-detail"><img class="mr-15" src="./Images/00_Product/Laptop/MSI Modern 15 AMD A5M 2021 _ Ultrabook phổ thông giá với thiết kế đẹp đi kèm với cấu hình rất tốt.png" alt=""> MSI 15 AMD</a></td>
                     </tr>
                     <tr>
                       <td>Giá</td>

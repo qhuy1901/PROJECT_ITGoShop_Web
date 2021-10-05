@@ -162,14 +162,14 @@
 					  <div class="ps-cart__listing">
 						<div class="ps-cart__content">
 						  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-							<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="images/cart-preview/2.jpg" alt=""></div>
-							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="{{URL::to('/product-detail')}}">The Crusty Croissant</a>
+							<div class="ps-cart-item__thumbnail"><a href="/product-detail"></a><img src="images/cart-preview/2.jpg" alt=""></div>
+							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="/product-detail">The Crusty Croissant</a>
 							  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 							</div>
 						  </div>
 						  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-							<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="images/cart-preview/3.jpg" alt=""></div>
-							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="{{URL::to('/product-detail')}}">The Rolling Pin</a>
+							<div class="ps-cart-item__thumbnail"><a href="/product-detail"></a><img src="images/cart-preview/3.jpg" alt=""></div>
+							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="/product-detail">The Rolling Pin</a>
 							  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 							</div>
 						  </div>
@@ -226,25 +226,25 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a class="ps-product__preview" href="{{URL::to('/product-detail')}}"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> air jordan One mid</a></td>
+                  <td><a class="ps-product__preview" href="/product-detail"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> air jordan One mid</a></td>
                   <td>$150</td>
-                  <td><a class="ps-product-link" href="{{URL::to('/product-detail')}}">View Product</a></td>
+                  <td><a class="ps-product-link" href="/product-detail">View Product</a></td>
                   <td>
                     <div class="ps-remove"></div>
                   </td>
                 </tr>
                 <tr>
-                  <td><a class="ps-product__preview" href="{{URL::to('/product-detail')}}"><img class="mr-15" src="images/product/cart-preview/2.jpg" alt=""> The Crusty Croissant</a></td>
+                  <td><a class="ps-product__preview" href="/product-detail"><img class="mr-15" src="images/product/cart-preview/2.jpg" alt=""> The Crusty Croissant</a></td>
                   <td>$150</td>
-                  <td><a class="ps-product-link" href="{{URL::to('/product-detail')}}">View Product</a></td>
+                  <td><a class="ps-product-link" href="/product-detail">View Product</a></td>
                   <td>
                     <div class="ps-remove"></div>
                   </td>
                 </tr>
                 <tr>
-                  <td><a class="ps-product__preview" href="{{URL::to('/product-detail')}}"><img class="mr-15" src="images/product/cart-preview/3.jpg" alt="">The Rolling Pin</a></td>
+                  <td><a class="ps-product__preview" href="/product-detail"><img class="mr-15" src="images/product/cart-preview/3.jpg" alt="">The Rolling Pin</a></td>
                   <td>$150</td>
-                  <td><a class="ps-product-link" href="{{URL::to('/product-detail')}}">View Product</a></td>
+                  <td><a class="ps-product-link" href="/product-detail">View Product</a></td>
                   <td>
                     <div class="ps-remove"></div>
                   </td>
