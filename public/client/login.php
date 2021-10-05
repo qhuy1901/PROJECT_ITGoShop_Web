@@ -15,7 +15,7 @@
 	<div class="form-container sign-up-container">
 		<form action="#">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo.png" alt="logo" ></a>
+				<a href="{{URL::to('/home')}}"><img src="images/logo.png" alt="logo" ></a>
 			</div>
 			<h1>Tạo tài khoản</h1>
 			<input type="number" placeholder="Số điện thoại" />
@@ -27,7 +27,7 @@
 	<div class="form-container sign-in-container">
 		<form action="#">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo.png" alt="logo"></a>
+				<a href="{{URL::to('/home')}}"><img src="images/logo.png" alt="logo"></a>
 			</div>
 			<h1>Đăng nhập</h1>
 			<input type="email" placeholder="Email" />

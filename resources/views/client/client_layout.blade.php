@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="vi">
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,70 +9,57 @@
 	<!-- Title Tag  -->
 	<title>ITGo Shop</title>
 	<!-- Favicon -->
-	<link rel="icon" href="images/favi.png">
+	<link rel="icon" href="{{('./public/client/images/favi.png')}}"/>
 	 <!-- Fonts-->
 	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<!-- StyleSheet -->
-	 <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-	 <link rel="stylesheet" href="plugins/ps-icon/style.css">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/font-awesome/css/font-awesome.min.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/plugins/ps-icon/style.css')}}">
 	 <!-- CSS Library-->
-	 <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.min.css">
-	 <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.carousel.css">
-	 <link rel="stylesheet" href="plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
-	 <link rel="stylesheet" href="plugins/slick/slick/slick.css">
-	 <link rel="stylesheet" href="plugins/bootstrap-select/dist/css/bootstrap-select.min.css">
-	 <link rel="stylesheet" href="plugins/Magnific-Popup/dist/magnific-popup.css">
-	 <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.min.css">
-	 <link rel="stylesheet" href="plugins/revolution/css/settings.css">
-	 <link rel="stylesheet" href="plugins/revolution/css/layers.css">
-	 <link rel="stylesheet" href="plugins/revolution/css/navigation.css">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/bootstrap/dist/css/bootstrap.min.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/owl-carousel/assets/owl.carousel.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/slick/slick/slick.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/Magnific-Popup/dist/magnific-popup.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/jquery-ui/jquery-ui.min.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/revolution/css/settings.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/revolution/css/layers.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/plugins/revolution/css/navigation.css')}}">
 	 <!-- Custom-->
-	 <link rel="stylesheet" href="css/style.css">
-	 <link rel="stylesheet" href="css/themify-icons.css">
-	 <link rel="stylesheet" href="css/font-awesome.css">
-   	<link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/responsive.css">
+	 <link rel="stylesheet" href="{{asset('./public/client/css/style.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/css/themify-icons.css')}}">
+	 <link rel="stylesheet" href="{{asset('./public/client/css/font-awesome.css')}}">
+   	<link rel="stylesheet" href="{{asset('./public/client/css/reset.css')}}">
+    <link rel="stylesheet" href="{{asset('./public/client/css/responsive.css')}}">
 
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/bootstrap.css')}}">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.min.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/magnific-popup.min.css')}}">
 	<!-- Fancybox -->
-	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/jquery.fancybox.min.css')}}">
 	<!-- Themify Icons -->
-	<link rel="stylesheet" href="css/themify-icons.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/themify-icons.css')}}">
 	<!-- Nice Select CSS -->
-	<link rel="stylesheet" href="css/niceselect.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/niceselect.css')}}">
 	<!-- Animate CSS -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/animate.css')}}">
 	<!-- Flex Slider CSS -->
-	<link rel="stylesheet" href="css/flex-slider.min.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/flex-slider.min.css')}}">
 	<!-- Owl Carousel -->
-	<link rel="stylesheet" href="css/owl-carousel.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/owl-carousel.css')}}">
 	<!-- Slicknav -->
-	<link rel="stylesheet" href="css/slicknav.min.css">
+	<link rel="stylesheet" href="{{asset('./public/client/css/slicknav.min.css')}}">
 		
 	
 </head>
 <body class="ps-loading">
-	
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	</div>
-	<!-- End Preloader -->
-	
-	
 	<!-- Header -->
 	<div class="header--sidebar"></div>
 	<header class="header">
 	  <nav class="navigation">
 		<div class="container-fluid">
 		  <div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="images/logo.png" alt=""></a></div>
+			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="./public/client/Images/logo.png" alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
@@ -188,17 +175,17 @@
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="ps-icon-search"></i></button>
 			</form>            
-			<div class="ps-cart"><a class="ps-cart__toggle" href="cart.php"><span><i>2</i></span><i class="ps-icon-shopping-cart"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/cart')}}"><span><i>2</i></span><i class="ps-icon-shopping-cart"></i></a>
 			  <div class="ps-cart__listing">
 				<div class="ps-cart__content">
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-					<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="images/cart-preview/2.jpg" alt=""></div>
+					<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="./publib/client/Images/cart-preview/2.jpg" alt=""></div>
 					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="{{URL::to('/product-detail')}}">The Crusty Croissant</a>
 					  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 					</div>
 				  </div>
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-					<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="images/cart-preview/3.jpg" alt=""></div>
+					<div class="ps-cart-item__thumbnail"><a href="{{URL::to('/product-detail')}}"></a><img src="./publib/client/Images/cart-preview/3.jpg" alt=""></div>
 					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="{{URL::to('/product-detail')}}">The Rolling Pin</a>
 					  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 					</div>
@@ -214,7 +201,7 @@
 
 			</div>
 			<div class="menu-toggle"><span></span></div>
-			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 			<a class="ps-cart__toggle" href="{{URL::to('/profile')}}"><i class="fa fa-user-circle-o" title="Profile"></i></a>
 			<a class="ps-cart__toggle" href="{{URL::to('/login.php')}}" ><i class="ti-power-off" title ="Login/Logout"></i></a>
 
@@ -223,149 +210,8 @@
 	  </nav>
 	</header>
 <!--/ End Header -->
-	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="bread-inner">
-						<ul class="bread-list">
-							<li><a href="{{URL::to('/home')}}">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.php">Profile</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Breadcrumbs -->
-  
-	<!-- Start Contact -->
-	<section id="contact-us" class="contact-us section">
-		<div class="container">
-				<div class="contact-head">
-					<div class="row">
-						<div class="col-lg-12 col-12">
-							<div class="form-main">
-								<div class="title">
-                                    <h3>Thông tin tài khoản</h3>
-								</div>
-								<form class="form" method="post" >
-									<div class="row">
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Họ và tên</label>
-												<input name="name" type="text" placeholder="">
-											</div>
-										</div>
-										
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Email</label>
-												<input name="email" type="email" placeholder="">
-											</div>	
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Số điện thoại</label>
-												<input name="company_name" type="text" placeholder="">
-											</div>	
-										</div>
-										
-										<div class="col-12">
-											<div class="form-group button">
-												<button type="submit" class="btn ">Cập nhật</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-                        <div class="col-lg-12 col-12">
-							<div class="form-main">
-								<div class="title">
-									<h3>Địa chỉ giao hàng</h3>
-								</div>
-								<form class="form" method="post" action="mail/mail.php">
-									<div class="row">
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Tỉnh/Thành Phố</label>
-												<input name="name" type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Quận/Huyện</label>
-												<input name="subject" type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Phường/Xã</label>
-												<input name="subject" type="text" placeholder="">
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-											<div class="form-group">
-												<label>Số nhà - Tên đường</label>
-												<input type="text" name="address"  placeholder="">
-											</div>	
-										</div>
-										<div class="col-12">
-											<div class="form-group button">
-												<button type="submit" class="btn ">Cập nhật</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-						<div class="col-lg-12 col-12">
-							<div class="form-main">
-								<div class="title">
-									<h3>Thay đổi mật khẩu</h3>
-								</div>
-								<form class="form" method="post" action="mail/mail.php">
-									<div class="row">
-										<div class="col-lg-6 col-12">
-												<div class="form-group">
-                                                  <label >Mật khẩu hiện tại</label>
-                                                  <input type="password"  name="" id="" placeholder="">
-                                              
-											</div>
-										</div>
-										<div class="col-lg-6 col-12">
-												<div class="form-group">
-                                                  <label >Mật khẩu mới</label>
-                                                  <input type="password"  name="" id="" placeholder="">
-                                                </div>
-										</div>
-										<div class="col-lg-6 col-12">
-												<div class="form-group">
-                                                  <label >Nhập lại mật khẩu</label>
-                                                  <input type="password"  name="" id="" placeholder="">
-                                                </div>
-										</div>
-										
-										<div class="col-12">
-											<div class="form-group button">
-												<button type="submit" class="btn ">Cập nhật</button>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
-	<!--/ End Contact -->
-	
-	<!-- Map Section -->
-	
-	
+
+@yield('client_content')
 	
 	<!-- Start Footer Area -->
 	<footer class="footer">
@@ -377,7 +223,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="{{URL::to('/home')}}"><img src="images/logo2.png" alt="#"></a>
+								<a href="{{URL::to('/home')}}"><img src="./public/client/Images/logo2.png" alt="#"></a>
 							</div>
 							<p class="text">Công Ty TNHH Thương Mại ITGo</p>
 							<p class="text">Email: cskh@itgo.com </p>
@@ -449,7 +295,7 @@
 						</div>
 						<div class="col-lg-6 col-12">
 							<div class="right">
-								<img src="images/payments.png" alt="#">
+								<img src="./public/client/Images/payments.png" alt="#">
 							</div>
 						</div>
 					</div>
@@ -458,72 +304,61 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
-	
  
 	<!-- Jquery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-	<script src="js/jquery-ui.min.js"></script>
+    <script src="{{asset('./public/client/js/jquery.min.js')}}"></script>
+    <script src="{{asset('./public/client/js/jquery-migrate-3.0.0.js')}}"></script>
+	<script src="{{asset('./public/client/js/jquery-ui.min.js')}}"></script>
 	<!-- Popper JS -->
-	<script src="js/popper.min.js"></script>
+	<script src="{{asset('./public/client/js/popper.min.js')}}"></script>
 	<!-- Bootstrap JS -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="{{asset('./public/client/js/bootstrap.min.js')}}"></script>
 	<!-- Color JS -->
-	<script src="js/colors.js"></script>
+	<script src="{{asset('./public/client/js/colors.js')}}"></script>
 	<!-- Slicknav JS -->
-	<script src="js/slicknav.min.js"></script>
+	<script src="{{asset('./public/client/js/slicknav.min.js')}}"></script>
 	<!-- Owl Carousel JS -->
-	<script src="js/owl-carousel.js"></script>
+	<script src="{{asset('./public/client/js/owl-carousel.js')}}"></script>
 	<!-- Magnific Popup JS -->
-	<script src="js/magnific-popup.js"></script>
-	<!-- Fancybox JS -->
-	<script src="js/facnybox.min.js"></script>
+	<script src="{{asset('./public/client/js/magnific-popup.js')}}"></script>
 	<!-- Waypoints JS -->
-	<script src="js/waypoints.min.js"></script>
-	<!-- Jquery Counterup JS -->
-	<script src="js/jquery-counterup.min.js"></script>
+	<script src="{{asset('./public/client/js/waypoints.min.js')}}"></script>
 	<!-- Countdown JS -->
-	<script src="js/finalcountdown.min.js"></script>
+	<script src="{{asset('./public/client/js/finalcountdown.min.js')}}"></script>
 	<!-- Nice Select JS -->
-	<script src="js/nicesellect.js"></script>
-	<!-- Ytplayer JS -->
-	<script src="js/ytplayer.min.js"></script>
+	<script src="{{asset('./public/client/js/nicesellect.js')}}"></script>
 	<!-- Flex Slider JS -->
-	<script src="js/flex-slider.js"></script>
+	<script src="{{asset('./public/client/js/flex-slider.js')}}"></script>
 	<!-- ScrollUp JS -->
-	<script src="js/scrollup.js"></script>
+	<script src="{{asset('./public/client/js/scrollup.js')}}"></script>
 	<!-- Onepage Nav JS -->
-	<script src="js/onepage-nav.min.js"></script>
+	<script src="{{asset('./public/client/js/onepage-nav.min.js')}}"></script>
 	<!-- Easing JS -->
-	<script src="js/easing.js"></script>
-	<!-- Google Map JS -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnhgNBg6jrSuqhTeKKEFDWI0_5fZLx0vM"></script>	
-	<script src="js/gmap.min.js"></script>
-	<script src="js/map-script.js"></script>
+	<script src="{{asset('./public/client/js/easing.js')}}"></script>
 	<!-- Active JS -->
-	<script src="js/active.js"></script>
-	<script type="text/javascript" src="plugins/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-    <script type="text/javascript" src="plugins/owl-carousel/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="plugins/gmap3.min.js"></script>
-    <script type="text/javascript" src="plugins/imagesloaded.pkgd.js"></script>
-    <script type="text/javascript" src="plugins/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="plugins/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script type="text/javascript" src="plugins/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="plugins/slick/slick/slick.min.js"></script>
-    <script type="text/javascript" src="plugins/elevatezoom/jquery.elevatezoom.js"></script>
-    <script type="text/javascript" src="plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script src="{{asset('./public/client/js/active.js')}}"></script>
+	<script type="text/javascript" src="{{asset('./public/client/plugins/jquery/dist/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/jquery-bar-rating/dist/jquery.barrating.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/gmap3.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/imagesloaded.pkgd.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/isotope.pkgd.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/jquery.matchHeight-min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/slick/slick/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/elevatezoom/jquery.elevatezoom.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('./public/client/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
-<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
-<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<script type="text/javascript" src="{{asset('./public/client/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('./public/client/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('./public/client/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('./public/client/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('./public/client/plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('./public/client/plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('./public/client/plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
     <!-- Custom scripts-->
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="{{asset('./public/client/js/main.js')}}"></script>
 </body>
 </html>
