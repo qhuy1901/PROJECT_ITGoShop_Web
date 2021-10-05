@@ -61,7 +61,7 @@
 			  <nav class="navigation">
 				<div class="container-fluid">
 				  <div class="navigation__column left">
-					<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="images/logo.png" alt=""></a></div>
+					<div class="header__logo"><a class="ps-logo" href="product-detail.html"><img src="images/logo.png" alt=""></a></div>
 				  </div>
 				  <div class="navigation__column center">
 						<ul class="main-menu menu">
@@ -71,58 +71,58 @@
 								<div class="mega-column">
 								  <h4 class="mega-heading">HP</h4>
 								  <ul class="mega-item">
-											<li><a href="{{URL::to('/product-listing')}}">Elitebook</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">ZBook</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Envy</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Omen</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Pavilion</a></li>
+											<li><a href="product-listing.html">Elitebook</a></li>
+																				<li><a href="product-listing.html">ZBook</a></li>
+																				<li><a href="product-listing.html">Envy</a></li>
+																				<li><a href="product-listing.html">Omen</a></li>
+																				<li><a href="product-listing.html">Pavilion</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">DELL</h4>
 								  <ul class="mega-item">
-									<li><a href="{{URL::to('/product-listing')}}">Inspiron</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Vostro</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">XPS</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">G-Gaming Series</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Alienware</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Latitude</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Precision</a></li>
+									<li><a href="product-listing.html">Inspiron</a></li>
+																				<li><a href="product-listing.html">Vostro</a></li>
+																				<li><a href="product-listing.html">XPS</a></li>
+																				<li><a href="product-listing.html">G-Gaming Series</a></li>
+																				<li><a href="product-listing.html">Alienware</a></li>
+																				<li><a href="product-listing.html">Latitude</a></li>
+																				<li><a href="product-listing.html">Precision</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">Lenovo</h4>
 								  <ul class="mega-item">
-									<li><a href="{{URL::to('/product-listing')}}">ThinkPad</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">IdeaPad</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Legion</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">ThinkBook</a></li>
+									<li><a href="product-listing.html">ThinkPad</a></li>
+																				<li><a href="product-listing.html">IdeaPad</a></li>
+																				<li><a href="product-listing.html">Legion</a></li>
+																				<li><a href="product-listing.html">ThinkBook</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">Apple</h4>
 								  <ul class="mega-item">
 											<li><a href="product.php">Macbook Pro 13</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Macbook Pro 15</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Macbook Pro 16</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Macbook Air</a></li>
+																				<li><a href="product-listing.html">Macbook Pro 15</a></li>
+																				<li><a href="product-listing.html">Macbook Pro 16</a></li>
+																				<li><a href="product-listing.html">Macbook Air</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">MSI</h4>
 								  <ul class="mega-item">
-									<li><a href="{{URL::to('/product-listing')}}">GF Series</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">Prestige</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">Modern Series</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">Alpha Series</a></li>
+									<li><a href="product-listing.html">GF Series</a></li>
+									<li><a href="product-listing.html">Prestige</a></li>
+									<li><a href="product-listing.html">Modern Series</a></li>
+									<li><a href="product-listing.html">Alpha Series</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">Microsoft</h4>
 								  <ul class="mega-item">
-											<li><a href="{{URL::to('/product-listing')}}">Surface Laptop</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Surface Book</a></li>
-																				<li><a href="{{URL::to('/product-listing')}}">Surface Pro</a></li>
+											<li><a href="product-listing.html">Surface Laptop</a></li>
+																				<li><a href="product-listing.html">Surface Book</a></li>
+																				<li><a href="product-listing.html">Surface Pro</a></li>
 								  </ul>
 								</div>
 							  </div>
@@ -134,40 +134,40 @@
 								<div class="mega-column">
 								  <h4 class="mega-heading">HP</h4>
 								  <ul class="mega-item">
-									<li><a href="{{URL::to('/product-listing')}}">Elitedesk</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">Z Workstation</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">Pavilion</a></li>
+									<li><a href="product-listing.html">Elitedesk</a></li>
+									<li><a href="product-listing.html">Z Workstation</a></li>
+									<li><a href="product-listing.html">Pavilion</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">DELL</h4>
 								  <ul class="mega-item">
-									<li><a href="{{URL::to('/product-listing')}}">Optiplex</a></li> 
-									<li><a href="{{URL::to('/product-listing')}}">Precision</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">Alienware</a></li>
+									<li><a href="product-listing.html">Optiplex</a></li> 
+									<li><a href="product-listing.html">Precision</a></li>
+									<li><a href="product-listing.html">Alienware</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">Lenovo</h4>
 								  <ul class="mega-item">
-									<li><a href="{{URL::to('/product-listing')}}">ThinkCentre</a></li> 
-									<li><a href="{{URL::to('/product-listing')}}">Legion</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">ThinkStation</a></li>
+									<li><a href="product-listing.html">ThinkCentre</a></li> 
+									<li><a href="product-listing.html">Legion</a></li>
+									<li><a href="product-listing.html">ThinkStation</a></li>
 								  </ul>
 								</div>
 								<div class="mega-column">
 								  <h4 class="mega-heading">Apple</h4>
 								  <ul class="mega-item">
 									<li><a href="product.php">iMac</a></li>  
-									<li><a href="{{URL::to('/product-listing')}}">Mac</a></li>
-									<li><a href="{{URL::to('/product-listing')}}">Mac Pro</a></li>
+									<li><a href="product-listing.html">Mac</a></li>
+									<li><a href="product-listing.html">Mac Pro</a></li>
 								  </ul>
 								</div>
 								
 							  </div>
 							</div>
 						  </li>
-						  <li class="menu-item"><a href="{{URL::to('/product-listing')}}">Phụ Kiện</a></li>
+						  <li class="menu-item"><a href="product-listing.html">Phụ Kiện</a></li>
 						  <li class="menu-item"><a href="bloggrid.php">Blogs</a></li>
 						  
 						</ul>
@@ -181,14 +181,14 @@
 					  <div class="ps-cart__listing">
 						<div class="ps-cart__content">
 						  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-							<div class="ps-cart-item__thumbnail"><a href="/product-detail"></a><img src="images/cart-preview/2.jpg" alt=""></div>
-							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="/product-detail">The Crusty Croissant</a>
+							<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/2.jpg" alt=""></div>
+							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Crusty Croissant</a>
 							  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 							</div>
 						  </div>
 						  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-							<div class="ps-cart-item__thumbnail"><a href="/product-detail"></a><img src="images/cart-preview/3.jpg" alt=""></div>
-							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="/product-detail">The Rolling Pin</a>
+							<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="images/cart-preview/3.jpg" alt=""></div>
+							<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Rolling Pin</a>
 							  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
 							</div>
 						  </div>
@@ -198,14 +198,14 @@
 						  <p>Item Total:<span>£528.00</span></p>
 						</div>
 						
-						<div class="ps-cart__footer"><a href="{{URL::to('/checkout')}}" class="ps-btn">Checkout</a></div>
+						<div class="ps-cart__footer"><a href="checkout.html" class="ps-btn">Checkout</a></div>
 					  </div>
 		
 					</div>
 					<div class="menu-toggle"><span></span></div>
-					<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-					<a class="ps-cart__toggle" href="{{URL::to('/profile')}}"><i class="fa fa-user-circle-o" title="Profile"></i></a>
-					<a class="ps-cart__toggle" href="{{URL::to('/login.php')}}" ><i class="ti-power-off" title ="Login/Logout"></i></a>
+					<a class="ps-cart__toggle" href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+					<a class="ps-cart__toggle" href="profile.html"><i class="fa fa-user-circle-o" title="Profile"></i></a>
+					<a class="ps-cart__toggle" href="login.html"><i class="ti-power-off" title ="Login/Logout"></i></a>
 		
 				  </div>
 				</div>
@@ -220,7 +220,7 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="{{URL::to('/home')}}">Home<i class="ti-arrow-right"></i></a></li>
+								<li><a href="product-detail.html">Home<i class="ti-arrow-right"></i></a></li>
 								<li class="active"><a href="#">Laptop</a></li>
 							</ul>
 						</div>
@@ -445,7 +445,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="{{URL::to('/home')}}"><img src="images/logo2.png" alt="#"></a>
+								<a href="product-detail.html"><img src="images/logo2.png" alt="#"></a>
 							</div>
 							<p class="text">Công Ty TNHH Thương Mại ITGo</p>
 							<p class="text">Email: cskh@itgo.com </p>

@@ -4413,9 +4413,9 @@ textarea.form-control {
   .navigation .navigation__column {
     float: left; }
     .navigation .navigation__column.left {
-      width: 15%; }
+      width: 20%; }
     .navigation .navigation__column.center {
-      width: 45%; }
+      width: 40%; }
     .navigation .navigation__column.right {
       width: 40%; }
   .navigation .center {
@@ -4425,6 +4425,7 @@ textarea.form-control {
     .navigation .navigation__column.right .ps-cart__toggle {
       top: 15px; 
       margin: 8px;
+      color: #fff;
     }
     .navigation .navigation__column.right .ps-search--header {
       top: 25px; }
@@ -4577,7 +4578,9 @@ textarea.form-control {
       background-color: #77ACF1; }
       .ps-cart__toggle span i {
         font-size: 10px;
-        font-style: normal; }
+        font-style: normal; 
+        color: #fff;
+      }
     .ps-cart__toggle:hover {
       background-color: #77ACF1; }
   .ps-cart__listing {
@@ -4707,13 +4710,15 @@ textarea.form-control {
     font-size: 16px;
     line-height: 1.5em;
     text-align: left;
-    color: #fff; }
+    color: #333; }
     .ps-cart-item__title:hover {
       color: #77ACF1; }
   .ps-cart-item__content {
     float: left;
     width: calc(100% - 60px);
-    padding-left: 15px; }
+    padding-left: 15px;
+    color: #333;
+   }
     .ps-cart-item__content p {
       font-family: "Kanit", sans-serif;
       font-size: 14px;
