@@ -59,7 +59,7 @@
 	  <nav class="navigation">
 		<div class="container-fluid">
 		<div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="index.php"><img src="./public/client/Images/logo.png" alt=""></a></div>
+			<div class="header__logo"><a class="ps-logo" href="index.php"><img src="./public/client/Iages/logo.png" alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
