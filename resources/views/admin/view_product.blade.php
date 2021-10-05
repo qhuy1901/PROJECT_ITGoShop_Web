@@ -54,6 +54,7 @@
 															<span aria-hidden="true">&times;</span>
 														</button>
 													</div>
+													
 													<div class="modal-body">
 														<p class="small">Create a new row using this form, make sure you fill them all</p>
 														<form>
@@ -88,86 +89,136 @@
 										</div>
 
 									<div class="table-responsive">
-										<?php
-											$message = Session::get('message');
-											if($message)
-											{
-												echo '<label>'.$message.'</label>';
-												Session::put('message', null);
-											}
-										?>
-										<table id="multi-filter-select" class="display table table-striped table-hover" >
-											<thead>
-												<tr>
-													<th>Tên sản phẩm</th>
-													<th>Danh mục</th>
-													<th>Thương hiệu</th>
-													<th>Số lượng</th>
-													<th>Ảnh sản phẩm</th>
-													<th>Hiển thị</th>
-													<th>Giảm giá</th>
-													<th>Giá</th>
-													<th>Hành động</th>
-												</tr>
-											</thead>
-											<tfoot>
-												<tr>
-													<th>Name</th>
-													<th>Position</th>
-													<th>Office</th>
-													<th>Office</th>
-													<th>Age</th>
-													<th>Start date</th>
-													<th>Salary</th>
-													<th>Salary</th>
-													<th>Salary</th>
-												</tr>
-											</tfoot>
-											<tbody>
-												@foreach($all_product as $key => $product)
-												<tr>
-                                                    <td>{{$product->product_name}}</td>
-													<td>{{$product->product_category_name}}</td>
-													<td>{{$product->brand_name}}</td>
-													<td>{{$product->quatity}}</td>
-                                                    <td><img src="public/images_upload/product/{{$product->product_image}}" height="80" width="80"></td>
-													<td>
-														<?php
-															if($product->status == 1){
-														?>	
-																<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
-																<a href="{{URL::to('/unactive-product/'.$product->product_id)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
-														<?php
-															}else{
-														?>	
-																<a href="{{URL::to('/active-product/'.$product->product_id)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
-														<?php
-															}
-														?>
-													</td>
-													<td>{{$product->discount}}%</td>
-													<td>{{$product->price}}</td>
+										<div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 
-													<td>
-														<div class="form-button-action">
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<a href="{{URL::to('/update-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
-																	<i class="fa fa-edit text-active"></i>
-																</a>
-															</button>
-															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<a onclick="return confirm('Bạn cho chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
-																	<i class="fa fa-times text-danger text"></i>
-																</a>
-															</button>
-														</div>
-														
-													</td>
-												</tr>
-												@endforeach
-											</tbody>
-										</table>
+											<?php
+												$message = Session::get('message');
+												if($message)
+												{
+													echo '<label>'.$message.'</label>';
+													Session::put('message', null);
+												}
+											?>
+											<div class="row">
+												<div class="col-sm-12 col-md-6">
+													<div class="dataTables_length" id="add-row_length">
+														<label> 
+															Show 
+															<select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
+																<option value="10">10</option>
+																<option value="25">25</option>
+																<option value="50">50</option>
+																<option value="100">100</option>
+															</select> 
+															entries
+														</label>
+													</div>
+												</div>
+												<div class="col-sm-12 col-md-6">
+													<div id="add-row_filter" class="dataTables_filter">
+														<label>
+															Search:
+															<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="add-row">
+														</label>
+													</div>
+												</div>
+											</div>
+											<table id="multi-filter-select" class="display table table-striped table-hover" >
+												<thead>
+													<tr>
+														<th>Tên sản phẩm</th>
+														<th>Danh mục</th>
+														<th>Thương hiệu</th>
+														<th>Số lượng</th>
+														<th>Ảnh sản phẩm</th>
+														<th>Hiển thị</th>
+														<th>Giảm giá</th>
+														<th>Giá</th>
+														<th>Hành động</th>
+													</tr>
+												</thead>
+												<tfoot>
+													<tr>
+														<th>Name</th>
+														<th>Position</th>
+														<th>Office</th>
+														<th>Office</th>
+														<th>Age</th>
+														<th>Start date</th>
+														<th>Salary</th>
+														<th>Salary</th>
+														<th>Salary</th>
+													</tr>
+												</tfoot>
+												<tbody>
+													@foreach($all_product as $key => $product)
+													<tr>
+														<td>{{$product->product_name}}</td>
+														<td>{{$product->product_category_name}}</td>
+														<td>{{$product->brand_name}}</td>
+														<td>{{$product->quatity}}</td>
+														<td><img src="public/images_upload/product/{{$product->product_image}}" height="80" width="80"></td>
+														<td>
+															<?php
+																if($product->status == 1){
+															?>	
+																	<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
+																	<a href="{{URL::to('/unactive-product/'.$product->product_id)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
+															<?php
+																}else{
+															?>	
+																	<a href="{{URL::to('/active-product/'.$product->product_id)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
+															<?php
+																}
+															?>
+														</td>
+														<td>{{$product->discount}}%</td>
+														<td>{{$product->price}}</td>
+
+														<td>
+															<div class="form-button-action">
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+																	<a href="{{URL::to('/update-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
+																		<i class="fa fa-edit text-active"></i>
+																	</a>
+																</button>
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+																	<a onclick="return confirm('Bạn cho chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
+																		<i class="fa fa-times text-danger text"></i>
+																	</a>
+																</button>
+															</div>
+															
+														</td>
+													</tr>
+													@endforeach
+												</tbody>
+											</table>
+											<div class="row">
+											<div class="col-sm-12 col-md-5">
+												<div class="dataTables_info" id="add-row_info" role="status" aria-live="polite">Showing 1 to 5 of 10 entries</div></div>
+												<div class="col-sm-12 col-md-7">
+													<div class="dataTables_paginate paging_simple_numbers" id="add-row_paginate">
+														<ul class="pagination">
+															<li class="paginate_button page-item previous disabled" id="add-row_previous">
+																<a href="#" aria-controls="add-row" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+															</li>
+															<li class="paginate_button page-item active">
+																<a href="#" aria-controls="add-row" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+															</li>
+															<li class="paginate_button page-item ">
+																<a href="#" aria-controls="add-row" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+															</li>
+															<li class="paginate_button page-item next" id="add-row_next">
+																<a href="#" aria-controls="add-row" data-dt-idx="3" tabindex="0" class="page-link">Next</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
+									
 								</div>
 							</div>
 						</div>
