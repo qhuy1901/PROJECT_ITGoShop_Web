@@ -58,12 +58,8 @@
 	<header class="header">
 	  <nav class="navigation">
 		<div class="container-fluid">
-		  <div class="navigation__column left">
-<<<<<<< Updated upstream
-			<div class="header__logo"><a class="ps-logo" href=""><img src="./public/client/Images/logo.png" alt=""></a></div> <!--{{URL::to('/home')}}-->
-=======
-			<div class="header__logo"><a class="ps-logo" href="home.html"><img src="./public/client/Images/logo.png" alt=""></a></div>
->>>>>>> Stashed changes
+		<div class="navigation__column left">
+			<div class="header__logo"><a class="ps-logo" href="index.php"><img src="./public/client/Images/logo.png" alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
