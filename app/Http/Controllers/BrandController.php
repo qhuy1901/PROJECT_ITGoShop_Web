@@ -31,11 +31,11 @@ class BrandController extends Controller
         return view('admin.add_brand');
     }
 
-    public function all_brand()
+    public function view_brand()
     {
         // // Lấy hết dữ liệu trong bảng brand
         $all_brand = DB::table('brand')->get();
-        $manager_brand = view('admin.view_brand')->with('view_brand', $all_brand);
+        $manager_brand = view('admin.view_brand')->with('all_brand', $all_brand);
         // // biến chứa dữ liệu  $all_brand đc gán cho all_brand'
         return view('admin_layout')->with('admin.view_brand', $manager_brand);
     }

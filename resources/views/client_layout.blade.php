@@ -63,69 +63,87 @@
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
-				  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Laptop</a>
-					<div class="mega-menu">
-					  <div class="mega-wrap">
-						<div class="mega-column">
-						  <h4 class="mega-heading">HP</h4>
-						  <ul class="mega-item">
-									<li><a href="product-listing.html">Elitebook</a></li>
-																		<li><a href="product-listing.html">ZBook</a></li>
-																		<li><a href="product-listing.html">Envy</a></li>
-																		<li><a href="product-listing.html">Omen</a></li>
-																		<li><a href="product-listing.html">Pavilion</a></li>
-						  </ul>
+				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Laptop</a>
+						<div class="mega-menu">
+					  		<div class="mega-wrap">
+								@foreach($main_brand_list as $key => $main_brand)
+									<div class="mega-column">
+										<h4 class="mega-heading">{{$main_brand->brand_name}}</h4>
+										<ul class="mega-item">
+												@foreach($sub_brand_list as $key => $sub_brand)
+													@if($sub_brand->sub_brand == $main_brand->brand_id)
+														<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$sub_brand->brand_id)}}">{{$sub_brand->brand_name}}</a></li>
+													@endif
+												@endforeach
+												<!-- <li><a href="product-listing.html">ZBook</a></li>
+												<li><a href="product-listing.html">Envy</a></li>
+												<li><a href="product-listing.html">Omen</a></li>
+												<li><a href="product-listing.html">Pavilion</a></li> -->
+										</ul>
+									</div>
+								@endforeach
+								<!-- <div class="mega-column">
+								<h4 class="mega-heading">HP</h4>
+								<ul class="mega-item">
+											<li><a href="product-listing.html">Elitebook</a></li>
+																				<li><a href="product-listing.html">ZBook</a></li>
+																				<li><a href="product-listing.html">Envy</a></li>
+																				<li><a href="product-listing.html">Omen</a></li>
+																				<li><a href="product-listing.html">Pavilion</a></li>
+								</ul>
+								</div>
+
+								<div class="mega-column">
+								<h4 class="mega-heading">DELL</h4>
+								<ul class="mega-item">
+									<li><a href="product-listing.html">Inspiron</a></li>
+																				<li><a href="product-listing.html">Vostro</a></li>
+																				<li><a href="product-listing.html">XPS</a></li>
+																				<li><a href="product-listing.html">G-Gaming Series</a></li>
+																				<li><a href="product-listing.html">Alienware</a></li>
+																				<li><a href="product-listing.html">Latitude</a></li>
+																				<li><a href="product-listing.html">Precision</a></li>
+								</ul>
+								</div>
+
+								<div class="mega-column">
+								<h4 class="mega-heading">Lenovo</h4>
+								<ul class="mega-item">
+									<li><a href="product-listing.html">ThinkPad</a></li>
+																				<li><a href="product-listing.html">IdeaPad</a></li>
+																				<li><a href="product-listing.html">Legion</a></li>
+																				<li><a href="product-listing.html">ThinkBook</a></li>
+								</ul>
+								</div>
+								<div class="mega-column">
+								<h4 class="mega-heading">Apple</h4>
+								<ul class="mega-item">
+											<li><a href="product.php">Macbook Pro 13</a></li>
+																				<li><a href="product-listing.html">Macbook Pro 15</a></li>
+																				<li><a href="product-listing.html">Macbook Pro 16</a></li>
+																				<li><a href="product-listing.html">Macbook Air</a></li>
+								</ul>
+								</div>
+								<div class="mega-column">
+								<h4 class="mega-heading">MSI</h4>
+								<ul class="mega-item">
+									<li><a href="product-listing.html">GF Series</a></li>
+									<li><a href="product-listing.html">Prestige</a></li>
+									<li><a href="product-listing.html">Modern Series</a></li>
+									<li><a href="product-listing.html">Alpha Series</a></li>
+								</ul>
+								</div>
+								<div class="mega-column">
+								<h4 class="mega-heading">Microsoft</h4>
+								<ul class="mega-item">
+											<li><a href="product-listing.html">Surface Laptop</a></li>
+																				<li><a href="product-listing.html">Surface Book</a></li>
+																				<li><a href="product-listing.html">Surface Pro</a></li>
+								</ul>
+								</div> -->
+					  		</div>
 						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">DELL</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">Inspiron</a></li>
-																		<li><a href="product-listing.html">Vostro</a></li>
-																		<li><a href="product-listing.html">XPS</a></li>
-																		<li><a href="product-listing.html">G-Gaming Series</a></li>
-																		<li><a href="product-listing.html">Alienware</a></li>
-																		<li><a href="product-listing.html">Latitude</a></li>
-																		<li><a href="product-listing.html">Precision</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">Lenovo</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">ThinkPad</a></li>
-																		<li><a href="product-listing.html">IdeaPad</a></li>
-																		<li><a href="product-listing.html">Legion</a></li>
-																		<li><a href="product-listing.html">ThinkBook</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">Apple</h4>
-						  <ul class="mega-item">
-									<li><a href="product.php">Macbook Pro 13</a></li>
-																		<li><a href="product-listing.html">Macbook Pro 15</a></li>
-																		<li><a href="product-listing.html">Macbook Pro 16</a></li>
-																		<li><a href="product-listing.html">Macbook Air</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">MSI</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">GF Series</a></li>
-							<li><a href="product-listing.html">Prestige</a></li>
-							<li><a href="product-listing.html">Modern Series</a></li>
-							<li><a href="product-listing.html">Alpha Series</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">Microsoft</h4>
-						  <ul class="mega-item">
-									<li><a href="product-listing.html">Surface Laptop</a></li>
-																		<li><a href="product-listing.html">Surface Book</a></li>
-																		<li><a href="product-listing.html">Surface Pro</a></li>
-						  </ul>
-						</div>
-					  </div>
-					</div>
-				  </li>
+				  	</li>
 				  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">PC</a>
 					<div class="mega-menu">
 					  <div class="mega-wrap">
