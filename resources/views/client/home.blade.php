@@ -97,7 +97,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="product-detail.html">
+														<a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">
 															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="new">New</span>

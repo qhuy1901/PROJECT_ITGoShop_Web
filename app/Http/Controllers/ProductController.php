@@ -141,4 +141,25 @@ class ProductController extends Controller
         Session::put('message', 'Xóa sản phẩm thành công');
         return Redirect::to('view-product');
     }
+    // Kết thúc trang admin 
+
+    // Trang client
+    public function product_detail($product_id)
+    {
+        $product_category_list = DB::table('product_category')->orderby('product_category_id', 'desc')->get();
+        $sub_brand_list = DB::table('brand')->where('sub_brand', '!=' , 0)->orderby('brand_id', 'desc')->get();
+        $main_brand_list = DB::table('brand')->where('sub_brand', 0)->orderby('brand_id', 'desc')->get();
+
+        $product_det = DB::table('product')
+        ->join('product_category','product_category.product_category_id','=','product.category_id')
+        ->join('brand','brand.brand_id','=','product.brand_id')
+        ->select('product.*', 'product_category.product_category_name', 'brand.brand_name')
+        ->where('product.product_id', $product_id)->get();
+
+        return view('client.product-detail')
+        ->with('sub_brand_list',  $sub_brand_list )
+        ->with('main_brand_list', $main_brand_list)
+        ->with('product_category_list', $product_category_list)
+        ->with('product_det', $product_det);
+    }
 }
