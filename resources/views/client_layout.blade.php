@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
 	<title>ITGo Shop</title>
+	<!--File css của Huy  -->
+	<link rel="stylesheet" href="{{asset('./public/client/css/huy.css')}}">
 	<!-- Favicon -->
 	<link rel="icon" href="{{('./public/client/images/favi.png')}}"/>
 	 <!-- Fonts-->

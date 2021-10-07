@@ -1,4 +1,3 @@
-
 @extends('client_layout')
 @section('client_content')
 	<!-- Slider Area -->

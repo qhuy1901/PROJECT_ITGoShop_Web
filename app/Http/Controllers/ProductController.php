@@ -150,7 +150,7 @@ class ProductController extends Controller
         $sub_brand_list = DB::table('brand')->where('sub_brand', '!=' , 0)->orderby('brand_id', 'desc')->get();
         $main_brand_list = DB::table('brand')->where('sub_brand', 0)->orderby('brand_id', 'desc')->get();
 
-        $product_det = DB::table('product')
+        $product_detail = DB::table('product')
         ->join('product_category','product_category.product_category_id','=','product.category_id')
         ->join('brand','brand.brand_id','=','product.brand_id')
         ->select('product.*', 'product_category.product_category_name', 'brand.brand_name')
@@ -160,6 +160,6 @@ class ProductController extends Controller
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list)
-        ->with('product_det', $product_det);
+        ->with('product_detail', $product_detail);
     }
 }
