@@ -16,7 +16,7 @@
 			</div>
 		</div>
 		<!-- End Breadcrumbs -->
-			
+		@foreach($product_det as $key => $product)
 		<!-- Start Blog Single -->
 		<section class="blog-single section">
 			<div class="container">
@@ -26,30 +26,23 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="image">
-										<img src="./Images/00_Product/Laptop/MSI Modern 15 AMD A5M 2021 _ Ultrabook phổ thông giá với thiết kế đẹp đi kèm với cấu hình rất tốt.png" alt="#">
+										<img src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
 									</div>
 									<div class="blog-detail">
-										<h2 class="blog-title">MSI Modern 15 AMD A5M 2021</h2>
+										<h2 class="blog-title">{{$product->product_name}}</h2>
 										<div class="blog-meta">
 											<span class="author"><a> <i class="fa fa-calendar"></i>5 tháng</a><a href="#"><i class="fa fa-comments"></i>Bình luận (15)</a> <a href="#"><i class="fa fa-shopping-cart"></i>Đã bán 15</a></span>
 										</div>
 										<div class="content">
-											<p>Vi xử lý: AMD Ryzen 5 5500U
-                                                <br>Màn hình: 15.6" FHD IPS (1920 x 1080) chống chói
-                                                <br>Độ phủ màu: 64% sRGB, 45% NTSC
-                                                <br>RAM: 8GB DDR4 bus 3200 MHz (Nâng cấp tối đa 64GB)
-                                                <br>Card đồ họa: AMD Radeon Graphics
-                                                <br>Lưu trữ: 512GB m.2 NVMe (Nâng cấp tối đa 2TB)
-                                                <br>Pin: 52Wh
-                                                <br>Kết nối chính: 1 x USB-C USB 3.2 Gen2, 3 x USB-A, 1 x HDMI, 1 x microSD
-                                                <br>Cân nặng: 1.6kg
-                                                <br>Hệ điều hành: Windows 10 Home SL bản quyền</p>
+											<div class="blog-meta">
+												<p>{{$product->content}}</p>
+											</div>
 										</div>
 									</div>
 									<div class="single-widget get-button">
 										<div class="content">
 											<div class="button">
-												<a href="#" class="btn">thêm vào giỏ hàng</a>
+												<a href="#" class="btn">Thêm vào giỏ hàng</a>
 											</div>
 										</div>
 									</div>
@@ -220,5 +213,6 @@
 				</div>
 			</div>
 		</section>
+		@endforeach
 		<!--/ End Blog Single -->
 @endsection
