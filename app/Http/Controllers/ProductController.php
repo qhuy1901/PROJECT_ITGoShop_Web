@@ -156,10 +156,23 @@ class ProductController extends Controller
         ->select('product.*', 'product_category.product_category_name', 'brand.brand_name')
         ->where('product.product_id', $product_id)->get();
 
+        foreach($product_detail as $key => $value)
+        {
+            $product_category_id = $value->category_id;
+        }
+
+        $related_product = DB::table('product')
+        ->join('product_category','product_category.product_category_id','=','product.category_id')
+        ->join('brand','brand.brand_id','=','product.brand_id')
+        ->select('product.*', 'product_category.product_category_name', 'brand.brand_name')
+        ->where('product.category_id',$product_category_id)
+        ->whereNotIn('product.product_id', [$product_id])->get();
+
         return view('client.product-detail')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list)
-        ->with('product_detail', $product_detail);
+        ->with('product_detail', $product_detail)
+        ->with('related_product',$related_product);
     }
 }

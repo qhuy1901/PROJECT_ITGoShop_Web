@@ -37,18 +37,25 @@
 						<div class="main-sidebar">
 							<!-- Single Widget -->
 							<div class="blog-detail">
-										<h2 class="blog-title">{{$product->product_name}}</h2>
-										<h4>Thương hiệu: {{$product->brand_name}}</h3>
-										<div class="blog-meta" style="padding-top:30px">
-											<span class="author"><a> <i class="fa fa-calendar"></i>5 tháng</a><a><i class="fa fa-comments"></i>Bình luận (15)</a> <a><i class="fa fa-shopping-cart"></i>Đã bán 15</a><a><i class="fa fa-archive"></i>Kho 10</a></span>
+								<form action="" method="POST">
+									{{csrf_field()}}
+									<h2 class="blog-title">{{$product->product_name}}</h2>
+									<i><h4>Thương hiệu: {{$product->brand_name}}</h3>
+									<h4>Danh mục: {{$product->product_category_name}}</h3></i>
+									<div class="blog-meta" style="padding-top:30px">
+										<span class="author">
+											<a> <i class="fa fa-calendar"></i>5 tháng</a>
+											<a><i class="fa fa-comments"></i>Bình luận (15)</a> 
+											<a><i class="fa fa-shopping-cart"></i>Đã bán 15</a>
+											<a><i class="fa fa-archive"></i>Còn lại {{$product->quatity}} sản phẩm</a>
+										</span>
+									</div>
+									<div class="content">
+										<!-- Nội dung sản phẩm -->
+										<div class="blog-meta">
+											<p>{!!$product->content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
 										</div>
-										<div class="content">
-											<!-- Nội dung sản phẩm -->
-											<div class="blog-meta">
-												<p>{{$product->content}}</p>
-											</div>
 											<!-- End Nội dung sản phẩm -->
-
 											<div class="blog-meta">
 												<h1 style="color:red; background-color:#FAFAFA; padding: 20px">
 													<!-- Gía sản phẩm -->
@@ -65,8 +72,11 @@
 
 									<div class="single-widget get-button">
 										<div class="content">
+												<p>Số lượng: <input name="quatity" type="number" min="1" value="1" size="4" style="width:50px"></p> 
 											<div class="button">
-												<a href="#" class="btn">Thêm vào giỏ hàng</a>
+												<button type="submit">
+													<a href="#" class="btn">Thêm vào giỏ hàng</a>
+												</button>
 											</div>
 										</div>
 									</div>
@@ -85,16 +95,69 @@
 											</div>
 										</div>
 									</div>
-							
-							<!--/ End Single Widget -->
-							<!-- Single Widget -->
-							<!--/ End Single Widget -->
-							<!-- Single Widget -->
-							
-							<!--/ End Single Widget -->
-							
+								</form>
+							</div>
 						</div>
 					</div>
+
+					
+					<div class="product-area section">
+            <div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>các sản phẩm liên quan</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="product-info">
+							<div class="tab-content" id="myTabContent">
+								<!-- Start Single Tab -->
+								
+								<div class="tab-pane fade show active" id="man" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+											@foreach($related_product as $key => $product)
+											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+												<div class="single-product">
+													<div class="product-img">
+														<a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">
+															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
+															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+															<span class="new">New</span>
+														</a>
+														<div class="button-head">
+															<div class="product-action">
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Thêm yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Thêm so sánh</span></a>
+															</div>
+															<div class="product-action-2">
+																<a title="Add to cart" href="#">Thêm giỏ hàng</a>
+															</div>
+														</div>
+													</div>
+													<div class="product-content">
+														<h3><a href="product-detail.html">{{$product->product_name}}</a></h3>
+														<div class="product-price">
+															<span>{{number_format($product->price).' '.'₫'}}</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											@endforeach
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+    </div>
+
 					<div class="col-12">
 									<div class="comments">
 										<h3 class="comment-title">Bình luận (3)</h3>
