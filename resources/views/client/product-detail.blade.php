@@ -37,7 +37,7 @@
 						<div class="main-sidebar">
 							<!-- Single Widget -->
 							<div class="blog-detail">
-								<form action="" method="POST">
+								<form action="{{URL::to('/save-cart')}}" method="POST">
 									{{csrf_field()}}
 									<h2 class="blog-title">{{$product->product_name}}</h2>
 									<i><h4>Thương hiệu: {{$product->brand_name}}</h3>
@@ -74,8 +74,8 @@
 										<div class="content">
 												<p>Số lượng: <input name="quatity" type="number" min="1" value="1" size="4" style="width:50px"></p> 
 											<div class="button">
-												<button type="submit">
-													<a href="#" class="btn">Thêm vào giỏ hàng</a>
+												<button type="submit" class="btn">
+													Thêm vào giỏ hàng
 												</button>
 											</div>
 										</div>
