@@ -278,21 +278,21 @@
 		</div>
 		<!-- End Custom template -->
 	</div>
-    <script src="{{asset('public/backend/js/core/jquery.3.2.1.min.js')}}"></script>
-	<script src="{{asset('public/backend/js/core/popper.min.js')}}"></script>
-	<script src="{{asset('public/backend//js/core/bootstrap.min.js')}}"></script>
+    <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
+	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script>
 	<!-- jQuery UI -->
-	<script src="{{asset('public/backend/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
-	<script src="{{asset('public/backend/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
 	
 	<!-- jQuery Scrollbar -->
-	<script src="{{asset('public/backend/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
 	<!-- Datatables -->
-	<script src="{{asset('public/backend/js/plugin/datatables/datatables.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/plugin/datatables/datatables.min.js')}}"></script>
 	<!-- Atlantis JS -->
-	<script src="{{asset('public/backend/js/atlantis.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/atlantis.min.js')}}"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="{{asset('public/backend/js/setting-demo2.js')}}"></script>
+	<script src="{{asset('public/admin/js/setting-demo2.js')}}"></script>
 
     <script >
 		$(document).ready(function() {
