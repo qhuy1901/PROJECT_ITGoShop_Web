@@ -429,6 +429,53 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>
+								<p>Quản lý đơn hàng</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="tables">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="./tables/tables.html">
+											<span class="sub-item">Tất cả</span>
+										</a>
+									</li>
+									<li>
+										<a href="./tables/datatables.html">
+											<span class="sub-item">Chờ xác nhận</span>
+										</a>
+									</li>
+									<li>
+										<a href="./tables/datatables.html">
+											<span class="sub-item">Tình trạng giao hàng</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#charts">
+								<i class="fas fa-file-alt"></i>
+								<p>Quản lý Blog</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="charts">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="#">
+											<span class="sub-item">Thêm bài đăng</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="sub-item">Tất cả bài đăng</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#tables">
+								<i class="fas fa-table"></i>
 								<p>Tables</p>
 								<span class="caret"></span>
 							</a>
