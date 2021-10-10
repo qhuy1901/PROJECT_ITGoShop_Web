@@ -11,7 +11,7 @@
 	<!--File css của Huy  -->
 	<link rel="stylesheet" href="{{asset('./public/client/css/huy.css')}}">
 	<!-- Favicon -->
-	<link rel="icon" href="{{('./public/client/images/favi.png')}}"/>
+	<link rel="icon" href={{url('./public/client/images/favi.png')}}/>
 	 <!-- Fonts-->
 	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<!-- StyleSheet -->
 	 <link rel="stylesheet" href="{{asset('./public/client/plugins/font-awesome/css/font-awesome.min.css')}}">
@@ -61,7 +61,7 @@
 	  <nav class="navigation">
 		<div class="container-fluid">
 		  <div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="home.html"><img src="./public/client/Images/logo.png" alt=""></a></div>
+			<div class="header__logo"><a class="ps-logo" href="home.html"><img src={{url('./public/client/Images/logo.png')}} alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
@@ -243,7 +243,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="product-detail.html"><img src="./public/client/Images/logo2.png" alt="#"></a>
+								<a href="product-detail.html"><img src={{url('./public/client/Images/logo2.png')}} alt="#"></a>
 							</div>
 							<p class="text">Công Ty TNHH Thương Mại ITGo</p>
 							<p class="text">Email: cskh@itgo.com </p>
@@ -315,7 +315,7 @@
 						</div>
 						<div class="col-lg-6 col-12">
 							<div class="right">
-								<img src="./public/client/Images/payments.png" alt="#">
+								<img src={{url('./public/client/Images/payments.png')}} alt="#">
 							</div>
 						</div>
 					</div>

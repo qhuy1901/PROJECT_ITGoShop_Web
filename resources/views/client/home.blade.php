@@ -98,7 +98,7 @@
 													<div class="product-img">
 														<a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">
 															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
-															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
 															<span class="new">New</span>
 														</a>
 														<div class="button-head">
