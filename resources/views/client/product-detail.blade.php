@@ -1,5 +1,6 @@
 @extends('client_layout')
 @section('client_content')
+		@foreach($product_detail  as $key => $product)
 		<!-- Breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">
@@ -7,8 +8,11 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
+								{{csrf_field()}}
 								<li><a href="index.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="#">Laptop</a></li>
+								<li class="active"><a href="#">{{$product->product_category_name}}  </a></li>
+								<li  class="active"><i class="ti-arrow-right"></i></li>
+								<li class="active"><a href="#">{{$product->brand_name}} </a></li>
 							</ul>
 						</div>
 					</div>
@@ -16,7 +20,7 @@
 			</div>
 		</div>
 		<!-- End Breadcrumbs -->
-		@foreach($product_detail  as $key => $product)
+		
 		<!-- Start Blog Single -->
 		<section class="blog-single section">
 			<div class="container">
@@ -38,10 +42,7 @@
 							<!-- Single Widget -->
 							<div class="blog-detail">
 								<form action="{{URL::to('/save-cart')}}" method="POST">
-									{{csrf_field()}}
 									<h2 class="blog-title">{{$product->product_name}}</h2>
-									<i><h4>Thương hiệu: {{$product->brand_name}}</h3>
-									<h4>Danh mục: {{$product->product_category_name}}</h3></i>
 									<div class="blog-meta" style="padding-top:30px">
 										<span class="author">
 											<a> <i class="fa fa-calendar"></i>5 tháng</a>

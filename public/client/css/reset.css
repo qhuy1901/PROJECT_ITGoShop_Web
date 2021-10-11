@@ -231,7 +231,7 @@ big {
 }
 
 .section {
-	padding: 80px 0;
+	padding: 35px 0;
 	position: relative;
 }
 .section-title {
@@ -286,7 +286,7 @@ big {
 .breadcrumbs {
 	background-color: #F6F7FB;
 	position: relative;
-	padding: 30px 0px;
+	padding: 15px 0px;
 }
 .breadcrumbs .bread-inner {
 	z-index: 22;
@@ -307,7 +307,7 @@ big {
 }
 .breadcrumbs ul li a {
 	color: #333;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 400;
 	text-transform: capitalize;
 }
