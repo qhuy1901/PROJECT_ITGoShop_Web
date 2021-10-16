@@ -59,4 +59,10 @@ class CartController extends Controller
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list);
     }
+
+    public function remove_from_cart($rowId)
+    {
+        Cart::update($rowId, 0);
+        return Redirect::to('/show-cart');
+    }
 }

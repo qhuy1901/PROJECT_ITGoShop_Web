@@ -70,5 +70,6 @@ Route::post('/update-product/{product_id}','App\Http\Controllers\ProductControll
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
 Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');
+Route::get('/remove-from-cart/{rowId}','App\Http\Controllers\CartController@remove_from_cart');
 //Route::get('', [CartController::class,'save_cart'])
 
