@@ -113,7 +113,6 @@
 													<th>Tên danh mục sản phẩm</th>
 													<th>Mô tả danh mục sản phẩm</th>
 													<th>Hiển thị</th>
-													<th>Ngày thêm</th>
 													<th>Hành động</th>
 
 												</tr>
@@ -124,7 +123,6 @@
 													<th>Position</th>
 													<th>Office</th>
 													<th>Age</th>
-													<th>Start date</th>
 													<th>Salary</th>
 												</tr>
 											</tfoot>
@@ -147,9 +145,6 @@
 														<?php
 															}
 														?>
-													</td>
-													<td>
-														2011/04/25
 													</td>
 
 													<td>

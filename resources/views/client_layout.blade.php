@@ -61,7 +61,7 @@
 	  <nav class="navigation">
 		<div class="container-fluid">
 		  <div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="home.html"><img src={{url('./public/client/Images/logo.png')}} alt=""></a></div>
+			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src={{url('./public/client/Images/logo.png')}} alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">

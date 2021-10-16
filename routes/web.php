@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 // Fontend
 Route::get('/', 'App\Http\Controllers\HomeController@index');
-Route::get('/trang-chu', 'App\Http\Controllers\HomeController@index');
+Route::get('/home', 'App\Http\Controllers\HomeController@index');
 
 //Chi tiết sản phẩm
-Route::get('/chi-tiet-san-pham/{product_id}', 'App\Http\Controllers\ProductController@product_detail');
+Route::get('/product-detail/{product_id}', 'App\Http\Controllers\ProductController@product_detail');
 
 // Backend
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');
@@ -68,4 +69,6 @@ Route::post('/update-product/{product_id}','App\Http\Controllers\ProductControll
 
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
+Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');
+//Route::get('', [CartController::class,'save_cart'])
 

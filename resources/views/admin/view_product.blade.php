@@ -150,7 +150,7 @@
 															?>
 														</td>
 														<td>{{$product->discount}}%</td>
-														<td>{{$product->price}}</td>
+														<td>{{number_format($product->price)}}</td>
 
 														<td>
 															<div class="form-button-action">

@@ -42,6 +42,7 @@
 							<!-- Single Widget -->
 							<div class="blog-detail">
 								<form action="{{URL::to('/save-cart')}}" method="POST">
+									{{ csrf_field() }}
 									<h2 class="blog-title">{{$product->product_name}}</h2>
 									<div class="blog-meta" style="padding-top:30px">
 										<span class="author">
@@ -73,12 +74,13 @@
 
 									<div class="single-widget get-button">
 										<div class="content">
-												<p>Số lượng: <input name="quatity" type="number" min="1" value="1" size="4" style="width:50px"></p> 
+												<p>Số lượng: <input name="quantity" type="number" min="1" value="1" size="4" style="width:50px"></p> 
 											<div class="button">
 												<button type="submit" class="btn">
 													Thêm vào giỏ hàng
 												</button>
 											</div>
+											<input name="product_id" type="hidden" value="{{$product->product_id}}">
 										</div>
 									</div>
 									<div class="share-social">
@@ -124,7 +126,7 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="{{URL::to('/chi-tiet-san-pham/'.$product->product_id)}}">
+														<a href="{{URL::to('/product-detail/'.$product->product_id)}}">
 															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="new">New</span>

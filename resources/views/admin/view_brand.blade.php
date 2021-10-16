@@ -115,7 +115,6 @@
 														<th>Tên thương hiệu</th>
 														<th>Mô tả thương hiệu</th>
 														<th>Hiển thị</th>
-														<th>Ngày thêm</th>
 														<th>Hành động</th>
 													</tr>
 												</thead>
@@ -125,7 +124,6 @@
 														<th>Position</th>
 														<th>Office</th>
 														<th>Age</th>
-														<th>Start date</th>
 														<th>Salary</th>
 													</tr>
 												</tfoot>
@@ -148,9 +146,6 @@
 															<?php
 																}
 															?>
-														</td>
-														<td>
-															2011/04/25
 														</td>
 
 														<td>
