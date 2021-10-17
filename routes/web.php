@@ -73,3 +73,5 @@ Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');
 Route::get('/remove-from-cart/{rowId}','App\Http\Controllers\CartController@remove_from_cart');
 //Route::get('', [CartController::class,'save_cart'])
 
+// Checkout
+Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');

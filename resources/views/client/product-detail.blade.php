@@ -65,7 +65,7 @@
 													<sub style="color:black; font-size:15px "> 
 														<!--  Phần giảm giá -->
 														<del>{{number_format($product->price + $product->price * $product->discount / 100 ).' '.' ₫'}}</del> 
-														<span class="o-giam-gia">-{{$product->discount}}% </span>
+														<span class="o-giam-gia">-{{$product->discount}}% </span> 
 													</sub>
 												</h1>
 											</div>

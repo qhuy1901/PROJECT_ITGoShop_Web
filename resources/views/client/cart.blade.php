@@ -68,9 +68,9 @@
 								
 
 								<td class="total-amount" data-title="Total">
-									<span>{{(Cart::subtotal()).' đ'}}
+									<span>
 										<?php
-											$subtotal = $item->price * $item->quantity;
+											$subtotal = $item->price * $item->qty;
 											echo number_format($subtotal).' đ';
 										?>
 									</span>
@@ -107,13 +107,13 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Tổng<span>{{(Cart::total()).' đ'}}</span></li> <!-- Không cần number format ở đây vì Cart đã hỗ trợ-->
-										<li>Thuế VAT<span>{{(Cart::tax()).' đ'}}</span></li>
+										<li>Tổng<span>{{(Cart::subtotal(0, ',', '.')).' đ'}}</span></li> <!-- Không cần number format ở đây vì Cart đã hỗ trợ-->
+										<li>Thuế VAT<span>{{(Cart::tax(0, ',', '.')).' đ'}}</span></li>
 										<li>Phí vận chuyển<span>Miễn phí</span></li>
-										<li class="last">Thành tiền<span>{{(Cart::total()).' đ'}}</span></li>
+										<li class="last">Thành tiền<span>{{(Cart::total(0, ',', '.')).' đ'}}</span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a>
+										<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>
 										<a href="#" class="btn">Continue shopping</a>
 									</div>
 								</div>
