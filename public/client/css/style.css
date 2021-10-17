@@ -1181,7 +1181,8 @@ body {
 
 .form-control {
   outline: none;
-  height: 50px;
+  height: 35px;
+  font-size: 14px;
   background-color: #e4e4e4;
   border-color: #e4e4e4;
   -webkit-box-shadow: none;
@@ -1203,6 +1204,7 @@ body {
 
 textarea.form-control {
   height: auto;
+  font-size: 14px;
   padding: 20px; }
 
 .ps-input--has-icon {
@@ -1516,6 +1518,7 @@ textarea.form-control {
     -ms-transform: translateY(50%);
     -o-transform: translateY(50%);
     transform: translateY(50%);
+    font-size: 16px;
     top: 0; }
   @media (max-width: 1199px) {
     .form-group--inline {
@@ -4772,7 +4775,7 @@ textarea.form-control {
   .ps-checkout .ps-checkout__billing > h3 {
     margin-bottom: 30px;
     font-family: "Archivo Narrow", sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     line-height: 0.7em;
     color: #000;
@@ -4822,6 +4825,7 @@ textarea.form-control {
     color: #ffffff;
     text-transform: uppercase; }
   .ps-checkout__order .ps-radio label {
+    font-size: 14px;
     color: #fff; }
   .ps-checkout__order > header {
     margin-bottom: 10px;
@@ -8632,6 +8636,7 @@ html .bg--parallax {
 	font-weight: 600;
 	color: #fff;
 	text-align: center;
+  font-size: 16px;
 }
 .shopping-summery tbody tr {
 	border-bottom: 1px solid #77ACF1;
@@ -8680,12 +8685,14 @@ html .bg--parallax {
 .shopping-cart .table td {
 	vertical-align: middle;
 	border-top: 1px solid #eee;
-	padding: 30px;
+	padding: 15px;
 }
 .shopping-summery tbody .price {
 	text-align: center;
 }
-.shopping-summery tbody .price span{}
+.shopping-summery tbody .price span{
+  font-size: 14px;
+}
 .shopping-cart tbody .qty .input-group {
 	width: 175px;
 	display: inline-block;
@@ -8731,7 +8738,9 @@ html .bg--parallax {
 .shopping-summery tbody .total-amount {
 	text-align: center;
 }
-.shopping-summery tbody .total-amount span{}
+.shopping-summery tbody .total-amount span{
+  font-size: 14px;
+}
 .shopping-summery tbody .action {
 	text-align: center;
 }
@@ -8752,6 +8761,7 @@ html .bg--parallax {
 	padding: 0px 20px;
 	border: none;
 	box-shadow: 0px 0px 5px #0000000a;
+  font-size: 12px;
 }
 .shopping-cart .total-amount .left .coupon form .btn {
 	display: inline-block;
@@ -9675,7 +9685,7 @@ html .bg--parallax {
 .main-sidebar .categor-list li a i {
 	display: inline-block;
 	margin-right:0px;
-	font-size: 9px;
+	font-size: 12px;
 	transform: translateY(-1px);
 	opacity:0;
 	visibility:hidden;
