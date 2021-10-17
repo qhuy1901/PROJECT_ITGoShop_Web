@@ -21,7 +21,7 @@
 		<main class="ps-main">
 			<div class="ps-checkout pt-80 pb-80">
 			  <div class="ps-container">
-				<form class="ps-checkout__form" action="do_action" method="post">
+				<form class="ps-checkout__form" action="#" method="post">
 				  <div class="row">
 						<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
 						  <div class="ps-checkout__billing">

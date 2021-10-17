@@ -195,7 +195,7 @@
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="fa fa-search"></i></button>
 			</form>            
-			<div class="ps-cart"><a class="ps-cart__toggle" href="cart.html"><span><i>2</i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}"><span><i>2</i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  <div class="ps-cart__listing">
 				<div class="ps-cart__content"> 
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
@@ -216,7 +216,7 @@
 				  <p>Item Total:<span>£528.00</span></p>
 				</div>
 				
-				<div class="ps-cart__footer"><a href="checkout.html" class="ps-btn">Checkout</a></div>
+				<div class="ps-cart__footer"><a href="{{URL::to('/checkout')}}" class="ps-btn">THANH TOÁN</a></div>
 			  </div>
 
 			</div>
