@@ -130,37 +130,37 @@
 												<tbody>
 													@foreach($all_product as $key => $product)
 													<tr>
-														<td>{{$product->product_name}}</td>
-														<td>{{$product->product_category_name}}</td>
-														<td>{{$product->brand_name}}</td>
-														<td>{{$product->quatity}}</td>
-														<td><img src="public/images_upload/product/{{$product->product_image}}" height="80" width="80"></td>
+														<td>{{$product->ProductName}}</td>
+														<td>{{$product->CategoryName}}</td>
+														<td>{{$product->BrandName}}</td>
+														<td>{{$product->Quantity}}</td>
+														<td><img src="public/images_upload/product/{{$product->ProductImage}}" height="80" width="80"></td>
 														<td>
 															<?php
-																if($product->status == 1){
+																if($product->Status == 1){
 															?>	
 																	<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
-																	<a href="{{URL::to('/unactive-product/'.$product->product_id)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
+																	<a href="{{URL::to('/unactive-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
 															<?php
 																}else{
 															?>	
-																	<a href="{{URL::to('/active-product/'.$product->product_id)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
+																	<a href="{{URL::to('/active-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
 															<?php
 																}
 															?>
 														</td>
-														<td>{{$product->discount}}%</td>
-														<td>{{number_format($product->price)}}</td>
+														<td>{{$product->Discount}}%</td>
+														<td>{{number_format($product->Price)}}</td>
 
 														<td>
 															<div class="form-button-action">
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																	<a href="{{URL::to('/update-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
+																	<a href="{{URL::to('/update-product/'.$product->ProductId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
 																</button>
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<a onclick="return confirm('Bạn cho chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/delete-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
+																	<a onclick="return confirm('Bạn cho chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/delete-product/'.$product->ProductId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-times text-danger text"></i>
 																	</a>
 																</button>

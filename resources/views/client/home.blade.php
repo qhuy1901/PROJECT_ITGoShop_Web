@@ -96,9 +96,9 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="{{URL::to('/product-detail/'.$product->product_id)}}">
-															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
-															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
+														<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
+															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<span class="new">New</span>
 														</a>
 														<div class="button-head">
@@ -113,9 +113,9 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-detail.html">{{$product->product_name}}</a></h3>
+														<h3><a href="product-detail.html">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->price).' '.'₫'}}</span>
+															<span>{{number_format($product->Price).' '.'₫'}}</span>
 														</div>
 													</div>
 												</div>

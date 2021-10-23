@@ -40,31 +40,31 @@
 									}
 								?>
 								@foreach($product_info as $key => $update_value)
-								<form role="form" action="{{URL::to('/update-product/'.$update_value->product_id)}}" method="post" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" có cái này mới thêm ảnh đc-->
+								<form role="form" action="{{URL::to('/update-product/'.$update_value->ProductId)}}" method="post" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" có cái này mới thêm ảnh đc-->
 									{{ csrf_field() }}
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-6 col-lg-4">
 												<div class="form-group">
 													<label for="disableinput">Mã sản phẩm</label>
-													<input type="text" class="form-control" id="disableinput" value="{{$update_value->product_id}}" disabled>
+													<input type="text" class="form-control" id="disableinput" value="{{$update_value->ProductId}}" disabled>
 												</div>
 
 												<div class="form-group">
 													<label for="email2">Tên sản phẩm</label>
-													<input type="text" name="product_name" class="form-control" id="email2" placeholder="Nhập tên sản phẩm" value="{{$update_value->product_name}}">
+													<input type="text" name="ProductName" class="form-control" id="email2" placeholder="Nhập tên sản phẩm" value="{{$update_value->ProductName}}">
 													<small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small>
 												</div>
 
                                                 <div class="form-group">
 													<label for="exampleFormControlSelect1">Danh mục sản phẩm</label>
-													<select class="form-control" name="product_category" id="exampleFormControlSelect1">
+													<select class="form-control" name="Category" id="exampleFormControlSelect1">
 
-														@foreach($product_category_list as $key => $product_category)
-															@if($product_category->product_category_id == $update_value->category_id)
-																<option selected value="{{$product_category->product_category_id}}">{{$product_category->product_category_name}}</option>
+														@foreach($product_category_list as $key => $Category)
+															@if($Category->CategoryId == $update_value->CategoryId)
+																<option selected value="{{$Category->CategoryId}}">{{$Category->CategoryName}}</option>
 															@else
-																<option value="{{$product_category->product_category_id}}">{{$product_category->product_category_name}}</option>
+																<option value="{{$Category->CategoryId}}">{{$Category->CategoryName}}</option>
 															@endif
 														@endforeach
 													</select>
@@ -74,10 +74,10 @@
 													<label for="exampleFormControlSelect1">Thương hiệu sản phẩm</label>
 													<select class="form-control" name="brand" id="exampleFormControlSelect1">
 														@foreach($brand_list as $key => $brand)
-															@if($brand->brand_id == $update_value->brand_id)
-																<option selected value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+															@if($brand->BrandId == $update_value->BrandId)
+																<option selected value="{{$brand->BrandId}}">{{$brand->BrandName}}</option>
 															@else
-																<option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+																<option value="{{$brand->BrandId}}">{{$brand->BrandName}}</option>
 															@endif
 														@endforeach
 													</select>
@@ -110,7 +110,7 @@
 
 												<div class="form-group">
 													<label for="email2">Số lượng</label>
-													<input type="text" name="quatity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm"  value="{{$update_value->quatity}}">
+													<input type="text" name="Quantity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm"  value="{{$update_value->Quantity}}">
 												</div>
 
 												<div class="form-group">

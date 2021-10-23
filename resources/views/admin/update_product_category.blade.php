@@ -40,14 +40,14 @@
 									}
 								?>
 								@foreach($update_product_category as $key => $update_value)
-								<form role="form" action="{{URL::to('/update-product-category/'.$update_value->product_category_id)}}" method="post">
+								<form role="form" action="{{URL::to('/update-product-category/'.$update_value->CategoryId)}}" method="post">
 									{{ csrf_field() }}
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-6 col-lg-4">
 												<div class="form-group">
 													<label for="email2">Tên danh mục sản phẩm</label>
-													<input type="text" value="{{$update_value->product_category_name}}" name="product_category_name" class="form-control" id="email2">
+													<input type="text" value="{{$update_value->CategoryName}}" name="CategoryName" class="form-control" id="email2">
 													<small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small>
 												</div>
 

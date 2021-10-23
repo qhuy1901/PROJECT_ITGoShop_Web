@@ -299,8 +299,8 @@
 							<a data-toggle="collapse" href="#" aria-expanded="true">
 								<span>
 									<?php
-										$firstName = Session::get('first_name');
-										$lastName = Session::get('last_name');
+										$firstName = Session::get('FirstName');
+										$lastName = Session::get('LastName');
 										if($firstName && $lastName)
 										{
 											echo $lastName .' '.$firstName;

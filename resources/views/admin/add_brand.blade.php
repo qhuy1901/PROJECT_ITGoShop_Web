@@ -46,7 +46,7 @@
 											<div class="col-md-6 col-lg-4">
 												<div class="form-group">
 													<label for="email2">Thêm thương hiệu sản phẩm</label>
-													<input type="text" name="brand_name" class="form-control" id="email2" placeholder="Nhập tên danh mục">
+													<input type="text" name="BrandName" class="form-control" id="email2" placeholder="Nhập tên danh mục">
 													<small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small>
 												</div>
 

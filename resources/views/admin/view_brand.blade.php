@@ -63,7 +63,7 @@
 														<div class="row">
 															<div class="form-group">
 																<label for="email2">Tên thương hiệu</label>
-																<input type="text" name="brand_name" class="form-control" id="email2" placeholder="Nhập tên danh mục">
+																<input type="text" name="BrandName" class="form-control" id="email2" placeholder="Nhập tên danh mục">
 															</div>
 
 															<div class="form-group">
@@ -130,19 +130,19 @@
 												<tbody>
 													@foreach($all_brand as $key => $brand)
 													<tr>
-														<td>{{$brand->brand_id}}</td>
-														<td>{{$brand->brand_name}}</td>
-														<td>{{$brand->description}}</td>
+														<td>{{$brand->BrandId}}</td>
+														<td>{{$brand->BrandName}}</td>
+														<td>{{$brand->Description}}</td>
 														<td>
 															<?php
-																if($brand->status == 1){
+																if($brand->Status == 1){
 															?>	
 																	<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
-																	<a href="{{URL::to('/unactive-brand/'.$brand->brand_id)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
+																	<a href="{{URL::to('/unactive-brand/'.$brand->BrandId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
 															<?php
 																}else{
 															?>	
-																	<a href="{{URL::to('/active-brand/'.$brand->brand_id)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
+																	<a href="{{URL::to('/active-brand/'.$brand->BrandId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
 															<?php
 																}
 															?>
@@ -151,12 +151,12 @@
 														<td>
 															<div class="form-button-action">
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																	<a href="{{URL::to('/update-brand/'.$brand->brand_id)}}" class="active" ui-toggle-class="">
+																	<a href="{{URL::to('/update-brand/'.$brand->BrandId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
 																</button>
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																	<a onclick="return confirm('Bạn cho chắc muốn xóa danh mục này không?')" href="{{URL::to('/delete-brand/'.$brand->brand_id)}}" class="active" ui-toggle-class="">
+																	<a onclick="return confirm('Bạn cho chắc muốn xóa danh mục này không?')" href="{{URL::to('/delete-brand/'.$brand->BrandId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-times text-danger text"></i>
 																	</a>
 																</button>

@@ -15,9 +15,9 @@ class CheckoutController extends Controller
     public function checkout()
     {
         // Cái này để load layout thôi
-        $product_category_list = DB::table('product_category')->orderby('product_category_id', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('sub_brand', '!=' , 0)->orderby('brand_id', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('sub_brand', 0)->orderby('brand_id', 'desc')->get();
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
 
         return view('client.checkout')
         ->with('sub_brand_list',  $sub_brand_list )

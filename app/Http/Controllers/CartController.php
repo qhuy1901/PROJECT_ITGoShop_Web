@@ -14,32 +14,32 @@ class CartController extends Controller
     public function save_cart(Request $request)
     {
         // Cái này để load layout thôi
-        $product_category_list = DB::table('product_category')->orderby('product_category_id', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('sub_brand', '!=' , 0)->orderby('brand_id', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('sub_brand', 0)->orderby('brand_id', 'desc')->get();
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
 
         //Cái này là của function
-        $product_id = $request->product_id;
+        $ProductId = $request->ProductId;
         $quantity = $request->quantity;
-        $product_info = DB::table('product')->where('product_id', $product_id)->first();
+        $product_info = DB::table('product')->where('ProductId', $ProductId)->first();
 
         // $all_product = DB::table('product')
-        // ->join('product_category','product_category.product_category_id','=','product.category_id')
-        // ->join('brand','brand.brand_id','=','product.brand_id')
-        // ->select('product.*', 'product_category.product_category_name', 'brand.brand_name')
-        // ->orderby('product.product_id', 'desc')->get();
+        // ->join('Category','Category.CategoryId','=','product.CategoryId')
+        // ->join('brand','brand.BrandId','=','product.BrandId')
+        // ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
+        // ->orderby('product.ProductId', 'desc')->get();
         // $manager_product = view('admin.view_product')->with('all_product', $all_product);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
 
         //Cart::add('293ad', 'Product 1', 1, 9.99, 550);
         //Cart::destroy(); // Hủy session
 
-        $data['id'] = $product_info->product_id;
+        $data['id'] = $product_info->ProductId;
         $data['qty'] = $quantity;
-        $data['name'] = $product_info->product_name;
-        $data['price'] = $product_info->price;
-        $data['weight'] = $product_info->price;
-        $data['options']['image'] = $product_info->product_image;
+        $data['name'] = $product_info->ProductName;
+        $data['price'] = $product_info->Price;
+        $data['weight'] = $product_info->Price;
+        $data['options']['image'] = $product_info->ProductImage;
         Cart::add($data);
         //Cart::setTax(rowId, 12) // Set thuế cho từng sản phẩm, số 12 có thể là 1 biến
         Cart::setGlobalTax(10); // Set cho tất cả sản phẩm
@@ -50,9 +50,9 @@ class CartController extends Controller
     public function show_cart()
     {
         // Cái này để load layout thôi
-        $product_category_list = DB::table('product_category')->orderby('product_category_id', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('sub_brand', '!=' , 0)->orderby('brand_id', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('sub_brand', 0)->orderby('brand_id', 'desc')->get();
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
         //
 
 

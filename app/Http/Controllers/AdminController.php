@@ -14,8 +14,8 @@ class AdminController extends Controller
     public function auth_login() //Kiểm tra việc đăng nhập, không để user truy cập vô hệ thống bằng đường dẫn mà chưa đăng nhập
     {
         // Hàm kiểm tra có admin_id hay không
-        $user_id = Session::get('user_id');
-        if($user_id)
+        $UserId = Session::get('UserId');
+        if($UserId)
         {
             return Redirect::to('dashboard');
         }
@@ -44,10 +44,10 @@ class AdminController extends Controller
         $result = DB::table('user')->where('email', $email)->where('password', $password)->first();
         if($result == true)
         {
-            Session::put('first_name', $result->first_name);
-            Session::put('last_name', $result->last_name);
-            Session::put('user_image', $result->user_image);
-            Session::put('user_id', $result->user_id);
+            Session::put('FirstName', $result->FirstName);
+            Session::put('LastName', $result->LastName);
+            Session::put('UserImage', $result->UserImage);
+            Session::put('UserId', $result->UserId);
             return Redirect::to('/dashboard');
         } 
         else{
@@ -63,9 +63,9 @@ class AdminController extends Controller
 
     public function logout()
     {
-        Session::put('first_name', null);
-        Session::put('last_name', null);
-        Session::put('user_id', null);
+        Session::put('FirstName', null);
+        Session::put('LastName', null);
+        Session::put('UserId', null);
         return Redirect::to('admin');
     }
 }

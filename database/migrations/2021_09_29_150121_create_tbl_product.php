@@ -14,12 +14,12 @@ class CreateTblProduct extends Migration
     public function up()
     {
         Schema::create('product', function (Blueprint $table) {
-            $table->Increments('product_id');
-            $table->text('product_name');
-            $table->integer('category_id');
-            $table->integer('brand_id');
+            $table->Increments('ProductId');
+            $table->text('ProductName');
+            $table->integer('CategoryId');
+            $table->integer('BrandId');
             $table->text('content');
-            $table->integer('quatity');
+            $table->integer('Quantity');
             $table->string('price');
             $table->float('discount');
             $table->string('product_image');

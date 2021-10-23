@@ -46,15 +46,15 @@
 											<div class="col-md-6 col-lg-4">
 												<div class="form-group">
 													<label for="email2">Tên sản phẩm</label>
-													<input type="text" name="product_name" class="form-control" id="email2" placeholder="Nhập tên sản phẩm">
+													<input type="text" name="ProductName" class="form-control" id="email2" placeholder="Nhập tên sản phẩm">
 													<small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small>
 												</div>
 
                                                 <div class="form-group">
 													<label for="exampleFormControlSelect1">Danh mục sản phẩm</label>
-													<select class="form-control" name="product_category" id="exampleFormControlSelect1">
-														@foreach($product_category_list as $key => $product_category)
-															<option value="{{$product_category->product_category_id}}">{{$product_category->product_category_name}}</option>
+													<select class="form-control" name="Category" id="exampleFormControlSelect1">
+														@foreach($product_category_list as $key => $Category)
+															<option value="{{$Category->CategoryId}}">{{$Category->CategoryName}}</option>
 														@endforeach
 													</select>
 												</div>
@@ -63,7 +63,7 @@
 													<label for="exampleFormControlSelect1">Thương hiệu sản phẩm</label>
 													<select class="form-control" name="brand" id="exampleFormControlSelect1">
 														@foreach($brand_list as $key => $brand)
-														<option value="{{$brand->brand_id}}">{{$brand->brand_name}}</option>
+														<option value="{{$brand->BrandId}}">{{$brand->BrandName}}</option>
 														@endforeach
 													</select>
 												</div>
@@ -95,7 +95,7 @@
 
 												<div class="form-group">
 													<label for="email2">Số lượng</label>
-													<input type="text" name="quatity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm">
+													<input type="text" name="Quantity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm">
 												</div>
                                             </div>
 

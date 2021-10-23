@@ -13,9 +13,9 @@ class CreateTblProductCategory extends Migration
      */
     public function up()
     {
-        Schema::create('product_category', function (Blueprint $table) {
-            $table->Increments('product_category_id');
-            $table->string('product_category_name');
+        Schema::create('Category', function (Blueprint $table) {
+            $table->Increments('CategoryId');
+            $table->string('CategoryName');
             $table->text('description');
             $table->integer('status');
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateTblProductCategory extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_category');
+        Schema::dropIfExists('Category');
     }
 }

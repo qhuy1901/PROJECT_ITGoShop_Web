@@ -12,18 +12,18 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $product_category_list = DB::table('product_category')->orderby('product_category_id', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('sub_brand', '!=' , 0)->orderby('brand_id', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('sub_brand', 0)->orderby('brand_id', 'desc')->get();
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
 
         // $all_product = DB::table('product')
-        // ->join('product_category','product_category.product_category_id','=','product.category_id')
-        // ->join('brand','brand.brand_id','=','product.brand_id')
-        // ->select('product.*', 'product_category.product_category_name', 'brand.brand_name')
-        // ->orderby('product.product_id', 'desc')->get();
+        // ->join('Category','Category.CategoryId','=','product.CategoryId')
+        // ->join('brand','brand.BrandId','=','product.BrandId')
+        // ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
+        // ->orderby('product.ProductId', 'desc')->get();
         // $manager_product = view('admin.view_product')->with('all_product', $all_product);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        $all_product = DB::table('product')->where('status', 1)->orderby('product_id', 'desc')->limit(4)->get();
+        $all_product = DB::table('product')->where('status', 1)->orderby('ProductId', 'desc')->limit(4)->get();
 
         return view('client.home')
         ->with('sub_brand_list',  $sub_brand_list )

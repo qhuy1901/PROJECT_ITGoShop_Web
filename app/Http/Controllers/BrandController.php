@@ -14,8 +14,8 @@ class BrandController extends Controller
     public function auth_login() //Kiểm tra việc đăng nhập, không để user truy cập vô hệ thống bằng đường dẫn mà chưa đăng nhập
     {
         // Hàm kiểm tra có admin_id hay không
-        $user_id = Session::get('user_id');
-        if($user_id)
+        $UserId = Session::get('UserId');
+        if($UserId)
         {
             return Redirect::to('dashboard');
         }
@@ -43,7 +43,7 @@ class BrandController extends Controller
     public function save_brand(Request $request)
     {
         $data = array();
-        $data['brand_name'] = $request->brand_name;
+        $data['BrandName'] = $request->BrandName;
         $data['description'] = $request->description;
         $data['status'] = $request->status;
 
@@ -55,45 +55,45 @@ class BrandController extends Controller
         // echo '</pre>';
     }
 
-    public function active_brand($brand_id)
+    public function active_brand($BrandId)
     {
         // Câu truy vấn SQL  WHERE 
-        DB::table('brand')->where('id', $brand_id)->update(['status'=>1]); // [ ] là cái cột, cái mảng
+        DB::table('brand')->where('id', $BrandId)->update(['status'=>1]); // [ ] là cái cột, cái mảng
         Session::put('message','Hiển thị thương hiệu sản phẩm thành công');
         return Redirect::to('view-brand');
 
     }
 
-    public function unactive_brand($brand_id)
+    public function unactive_brand($BrandId)
     {
-        DB::table('ProductCategory')->where('brand_id', $brand_id)->update(['status'=>0]); 
+        DB::table('ProductCategory')->where('BrandId', $BrandId)->update(['status'=>0]); 
         Session::put('message','Ẩn danh mục sản phẩm thành công');
         return Redirect::to('view-brand');
     }
 
-    public function get_brand_info($brand_id)
+    public function get_brand_info($BrandId)
     {
         // // Lấy hết dữ liệu trong bảng brand
-        $update_brand = DB::table('brand')->where('id',$brand_id)->get();  // first: lấy dòng đầu tiên
+        $update_brand = DB::table('brand')->where('id',$BrandId)->get();  // first: lấy dòng đầu tiên
         $manager_brand = view('admin.update_brand')->with('update_brand', $update_brand);
         // // biến chứa dữ liệu  $all_brand đc gán cho all_brand'
         return view('admin_layout')->with('admin.update_brand', $manager_brand);
     }
 
-    public function update_brand(Request $request, $brand_id)
+    public function update_brand(Request $request, $BrandId)
     {
         $data = array();
-        $data['brand_name'] = $request->brand_name;
+        $data['BrandName'] = $request->BrandName;
         $data['description'] = $request->description;
 
-        DB::table('brand')->where('id', $brand_id)->update($data);
+        DB::table('brand')->where('id', $BrandId)->update($data);
         Session::put('message', 'Cập nhật danh mục sản phẩm thành công');
         return Redirect::to('view-brand');
     }
 
-    public function delete_brand($brand_id)
+    public function delete_brand($BrandId)
     {
-        DB::table('brand')->where('id', $brand_id)->delete();
+        DB::table('brand')->where('id', $BrandId)->delete();
         Session::put('message', 'Xóa danh mục sản phẩm thành công');
         return Redirect::to('all-brand');
     }

@@ -70,11 +70,11 @@
 					  		<div class="mega-wrap">
 								@foreach($main_brand_list as $key => $main_brand)
 									<div class="mega-column">
-										<h4 class="mega-heading">{{$main_brand->brand_name}}</h4>
+										<h4 class="mega-heading">{{$main_brand->BrandName}}</h4>
 										<ul class="mega-item">
-												@foreach($sub_brand_list as $key => $sub_brand)
-													@if($sub_brand->sub_brand == $main_brand->brand_id)
-														<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$sub_brand->brand_id)}}">{{$sub_brand->brand_name}}</a></li>
+												@foreach($sub_brand_list as $key => $SubBrand)
+													@if($SubBrand->SubBrand == $main_brand->BrandId)
+														<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->BrandName}}</a></li>
 													@endif
 												@endforeach
 												<!-- <li><a href="product-listing.html">ZBook</a></li>

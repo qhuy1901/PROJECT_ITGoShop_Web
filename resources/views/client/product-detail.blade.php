@@ -10,9 +10,9 @@
 							<ul class="bread-list">
 								{{csrf_field()}}
 								<li><a href="index.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="#">{{$product->product_category_name}}  </a></li>
+								<li class="active"><a href="#">{{$product->CategoryName}}  </a></li>
 								<li  class="active"><i class="ti-arrow-right"></i></li>
-								<li class="active"><a href="#">{{$product->brand_name}} </a></li>
+								<li class="active"><a href="#">{{$product->BrandName}} </a></li>
 							</ul>
 						</div>
 					</div>
@@ -30,7 +30,7 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="image">
-										<img src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
+										<img src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 									</div>
 								</div>
 											
@@ -43,29 +43,29 @@
 							<div class="blog-detail">
 								<form action="{{URL::to('/save-cart')}}" method="POST">
 									{{ csrf_field() }}
-									<h2 class="blog-title">{{$product->product_name}}</h2>
+									<h2 class="blog-title">{{$product->ProductName}}</h2>
 									<div class="blog-meta" style="padding-top:30px">
 										<span class="author">
 											<a> <i class="fa fa-calendar"></i>5 tháng</a>
 											<a><i class="fa fa-comments"></i>Bình luận (15)</a> 
 											<a><i class="fa fa-shopping-cart"></i>Đã bán 15</a>
-											<a><i class="fa fa-archive"></i>Còn lại {{$product->quatity}} sản phẩm</a>
+											<a><i class="fa fa-archive"></i>Còn lại {{$product->Quantity}} sản phẩm</a>
 										</span>
 									</div>
 									<div class="content">
 										<!-- Nội dung sản phẩm -->
 										<div class="blog-meta">
-											<p>{!!$product->content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
+											<p>{!!$product->Content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
 										</div>
 											<!-- End Nội dung sản phẩm -->
 											<div class="blog-meta">
 												<h1 style="color:red; background-color:#FAFAFA; padding: 20px">
 													<!-- Gía sản phẩm -->
-													<b>{{number_format($product->price).' '.' ₫'}}</b>
+													<b>{{number_format($product->Price).' '.' ₫'}}</b>
 													<sub style="color:black; font-size:15px "> 
 														<!--  Phần giảm giá -->
-														<del>{{number_format($product->price + $product->price * $product->discount / 100 ).' '.' ₫'}}</del> 
-														<span class="o-giam-gia">-{{$product->discount}}% </span> 
+														<del>{{number_format($product->Price + $product->Price * $product->Discount / 100 ).' '.' ₫'}}</del> 
+														<span class="o-giam-gia">-{{$product->Discount}}% </span> 
 													</sub>
 												</h1>
 											</div>
@@ -80,7 +80,7 @@
 													Thêm vào giỏ hàng
 												</button>
 											</div>
-											<input name="product_id" type="hidden" value="{{$product->product_id}}">
+											<input name="ProductId" type="hidden" value="{{$product->ProductId}}">
 										</div>
 									</div>
 									<div class="share-social">
@@ -126,8 +126,8 @@
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
-														<a href="{{URL::to('/product-detail/'.$product->product_id)}}">
-															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->product_image)}}" alt="#">
+														<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
+															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 															<span class="new">New</span>
 														</a>
@@ -143,9 +143,9 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-detail.html">{{$product->product_name}}</a></h3>
+														<h3><a href="product-detail.html">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->price).' '.'₫'}}</span>
+															<span>{{number_format($product->Price).' '.'₫'}}</span>
 														</div>
 													</div>
 												</div>

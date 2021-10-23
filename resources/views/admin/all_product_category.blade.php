@@ -63,7 +63,7 @@
 														<div class="row">
 															<div class="form-group">
 																<label for="email2">Tên danh mục sản phẩm</label>
-																<input type="text" name="product_category_name" class="form-control" id="email2" placeholder="Nhập tên danh mục">
+																<input type="text" name="CategoryName" class="form-control" id="email2" placeholder="Nhập tên danh mục">
 															</div>
 
 															<div class="form-group">
@@ -129,19 +129,19 @@
 											<tbody>
 												@foreach($all_product_category as $key => $pro_category)
 												<tr>
-													<td>{{$pro_category->product_category_id}}</td>
-													<td>{{$pro_category->product_category_name}}</td>
-													<td>{{$pro_category->description}}</td>
+													<td>{{$pro_category->CategoryId}}</td>
+													<td>{{$pro_category->CategoryName}}</td>
+													<td>{{$pro_category->Description}}</td>
 													<td>
 														<?php
-															if($pro_category->status == 1){
+															if($pro_category->Status == 1){
 														?>	
 																<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
-																<a href="{{URL::to('/unactive-product-category/'.$pro_category->product_category_id)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
+																<a href="{{URL::to('/unactive-product-category/'.$pro_category->CategoryId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
 														<?php
 															}else{
 														?>	
-																<a href="{{URL::to('/active-product-category/'.$pro_category->product_category_id)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
+																<a href="{{URL::to('/active-product-category/'.$pro_category->CategoryId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
 														<?php
 															}
 														?>
@@ -150,12 +150,12 @@
 													<td>
 														<div class="form-button-action">
 															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-																<a href="{{URL::to('/update-product-category/'.$pro_category->product_category_id)}}" class="active" ui-toggle-class="">
+																<a href="{{URL::to('/update-product-category/'.$pro_category->CategoryId)}}" class="active" ui-toggle-class="">
 																	<i class="fa fa-edit text-active"></i>
 																</a>
 															</button>
 															<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																<a onclick="return confirm('Bạn cho chắc muốn xóa danh mục này không?')" href="{{URL::to('/delete-product-category/'.$pro_category->product_category_id)}}" class="active" ui-toggle-class="">
+																<a onclick="return confirm('Bạn cho chắc muốn xóa danh mục này không?')" href="{{URL::to('/delete-product-category/'.$pro_category->CategoryId)}}" class="active" ui-toggle-class="">
 																	<i class="fa fa-times text-danger text"></i>
 																</a>
 															</button>
