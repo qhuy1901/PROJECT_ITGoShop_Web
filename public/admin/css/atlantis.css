@@ -2559,7 +2559,7 @@ label {
         color: #fff;
         position: absolute;
         left: -50px;
-        font-size: 9px; }
+        font-size: 12px; }
       .card-pricing2 .pricing-content li.disable:before {
         content: "\f00d";
         background: #fe6c6c; }
