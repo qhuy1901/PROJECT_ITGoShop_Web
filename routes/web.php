@@ -75,4 +75,9 @@ Route::get('/remove-from-cart/{rowId}','App\Http\Controllers\CartController@remo
 
 // Checkout
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
- 
+
+//Profile
+Route::get('/profile','App\Http\Controllers\ProfileController@profile');
+
+//WishList
+Route::get('/wishlist','App\Http\Controllers\WishListController@wishlist');

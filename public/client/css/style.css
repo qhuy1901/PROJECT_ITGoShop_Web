@@ -3480,10 +3480,11 @@ textarea.form-control {
 
 .ps-cart__table > tbody > tr > td {
   position: relative;
-  vertical-align: middle !important; }
+  vertical-align: middle !important;
+  font-size: 16px; }
   .ps-cart__table > tbody > tr > td .ps-product__preview {
     font-family: "Archivo Narrow", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.5;
     color: #000000;
     text-transform: uppercase; }
@@ -3520,7 +3521,9 @@ textarea.form-control {
 
 .ps-table--whishlist .ps-cart__table > tbody > tr > td {
   font-weight: 500;
-  color: #8d8d8d; }
+  color: #8d8d8d;
+  font-size: 14px;
+ }
   .ps-table--whishlist .ps-cart__table > tbody > tr > td:first-child {
     width: 30%; }
 

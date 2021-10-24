@@ -221,8 +221,8 @@
 
 			</div>
 			<div class="menu-toggle"><span></span></div>
-			<a class="ps-cart__toggle" href="wishlist.html" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-			<a class="ps-cart__toggle" href="profile.html"><i class="fa fa-user-circle-o" title="Profile"></i></a>
+			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+			<a class="ps-cart__toggle" href="{{URL::to('/profile')}}" ><i class="fa fa-user-circle-o" title="Profile"></i></a>
 			<a class="ps-cart__toggle" href="login.html" ><i class="ti-power-off" title ="Login/Logout"></i></a>
 
 		  </div>
