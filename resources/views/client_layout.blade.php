@@ -222,8 +222,14 @@
 			</div>
 			<div class="menu-toggle"><span></span></div>
 			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-			<a class="ps-cart__toggle" href="{{URL::to('/profile')}}" ><i class="fa fa-user-circle-o" title="Profile"></i></a>
-			<a class="ps-cart__toggle" href="login.html" ><i class="ti-power-off" title ="Login/Logout"></i></a>
+			<a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}"><span><i>2</i></span><i  class="fa fa-file-text-o" aria-hidden="true"></i></a>
+			<div class="dropdown">
+				<div class="nut_dropdown"><a class="ps-cart__toggle"><i class="fa fa-user-circle-o" ></i></a></div>
+					<div class="noidung_dropdown">
+						<a href="{{URL::to('/wishlist')}}">Profile</a>
+						<a href="#">Login/Logout</a>
+					</div>
+			</div>
 
 		  </div>
 		</div>
