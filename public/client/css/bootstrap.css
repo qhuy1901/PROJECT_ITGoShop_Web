@@ -13,7 +13,7 @@
     --red: #dc3545;
     --orange: #FFA45B;
     --yellow: #ffc107;
-    --green: #28a745;
+    --green: #1768AC;
     --teal: #20c997;
     --cyan: #17a2b8;
     --white: #fff;
@@ -21,7 +21,7 @@
     --gray-dark: #343a40;
     --primary: #77ACF1;
     --secondary: #868e96;
-    --success: #28a745;
+    --success: #1768AC;
     --info: #17a2b8;
     --warning: #ffc107;
     --danger: #dc3545;
@@ -2152,7 +2152,7 @@ select.form-control-lg:not([size]):not([multiple]) {
     display: none;
     margin-top: .25rem;
     font-size: .875rem;
-    color: #28a745
+    color: #1768AC
 }
 
 .valid-tooltip {
@@ -2174,7 +2174,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 .form-control.is-valid,
 .was-validated .custom-select:valid,
 .was-validated .form-control:valid {
-    border-color: #28a745
+    border-color: #1768AC
 }
 
 .custom-select.is-valid:focus,
@@ -2197,7 +2197,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 
 .form-check-input.is-valid+.form-check-label,
 .was-validated .form-check-input:valid+.form-check-label {
-    color: #28a745
+    color: #1768AC
 }
 
 .custom-control-input.is-valid~.custom-control-indicator,
@@ -2207,12 +2207,12 @@ select.form-control-lg:not([size]):not([multiple]) {
 
 .custom-control-input.is-valid~.custom-control-description,
 .was-validated .custom-control-input:valid~.custom-control-description {
-    color: #28a745
+    color: #1768AC
 }
 
 .custom-file-input.is-valid~.custom-file-control,
 .was-validated .custom-file-input:valid~.custom-file-control {
-    border-color: #28a745
+    border-color: #1768AC
 }
 
 .custom-file-input.is-valid~.custom-file-control::before,
@@ -2479,14 +2479,14 @@ fieldset[disabled] a.btn {
 
 .btn-success {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #1768AC;
+    border-color: #1768AC
 }
 
 .btn-success:hover {
     color: #fff;
-    background-color: #218838;
-    border-color: #1e7e34
+    background-color: #2541B2;
+    border-color: #03256C
 }
 
 .btn-success.focus,
@@ -2496,15 +2496,15 @@ fieldset[disabled] a.btn {
 
 .btn-success.disabled,
 .btn-success:disabled {
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #1768AC;
+    border-color: #1768AC
 }
 
 .btn-success:not([disabled]):not(.disabled).active,
 .btn-success:not([disabled]):not(.disabled):active,
 .show>.btn-success.dropdown-toggle {
     color: #fff;
-    background-color: #1e7e34;
+    background-color: #03256C;
     border-color: #1c7430;
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .5)
 }
@@ -2736,16 +2736,16 @@ fieldset[disabled] a.btn {
 }
 
 .btn-outline-success {
-    color: #28a745;
+    color: #1768AC;
     background-color: transparent;
     background-image: none;
-    border-color: #28a745
+    border-color: #1768AC
 }
 
 .btn-outline-success:hover {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745
+    background-color: #1768AC;
+    border-color: #1768AC
 }
 
 .btn-outline-success.focus,
@@ -2755,7 +2755,7 @@ fieldset[disabled] a.btn {
 
 .btn-outline-success.disabled,
 .btn-outline-success:disabled {
-    color: #28a745;
+    color: #1768AC;
     background-color: transparent
 }
 
@@ -2763,8 +2763,8 @@ fieldset[disabled] a.btn {
 .btn-outline-success:not([disabled]):not(.disabled):active,
 .show>.btn-outline-success.dropdown-toggle {
     color: #fff;
-    background-color: #28a745;
-    border-color: #28a745;
+    background-color: #1768AC;
+    border-color: #1768AC;
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .5)
 }
 
@@ -4621,14 +4621,14 @@ tbody.collapse.show {
 
 .badge-success {
     color: #fff;
-    background-color: #28a745
+    background-color: #1768AC
 }
 
 .badge-success[href]:focus,
 .badge-success[href]:hover {
     color: #fff;
     text-decoration: none;
-    background-color: #1e7e34
+    background-color: #03256C
 }
 
 .badge-info {
@@ -5924,12 +5924,12 @@ a.bg-secondary:hover {
 }
 
 .bg-success {
-    background-color: #28a745!important
+    background-color: #1768AC!important
 }
 
 a.bg-success:focus,
 a.bg-success:hover {
-    background-color: #1e7e34!important
+    background-color: #03256C!important
 }
 
 .bg-info {
@@ -6018,7 +6018,7 @@ a.bg-dark:hover {
 }
 
 .border-success {
-    border-color: #28a745!important
+    border-color: #1768AC!important
 }
 
 .border-info {
@@ -8557,12 +8557,12 @@ a.text-secondary:hover {
 }
 
 .text-success {
-    color: #28a745!important
+    color: #1768AC!important
 }
 
 a.text-success:focus,
 a.text-success:hover {
-    color: #1e7e34!important
+    color: #03256C!important
 }
 
 .text-info {

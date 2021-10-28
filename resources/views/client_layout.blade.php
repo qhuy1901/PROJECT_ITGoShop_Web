@@ -226,7 +226,7 @@
 			<div class="dropdown">
 				<div class="nut_dropdown"><a class="ps-cart__toggle"><i class="fa fa-user-circle-o" ></i></a></div>
 					<div class="noidung_dropdown">
-						<a href="{{URL::to('/wishlist')}}">Profile</a>
+						<a href="{{URL::to('/profile')}}">Profile</a>
 						<a href="#">Login/Logout</a>
 					</div>
 			</div>
