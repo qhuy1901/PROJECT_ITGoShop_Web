@@ -39,7 +39,7 @@ class AdminController extends Controller
     public function dashboard(Request $request)
     {
         $email = $request->email;
-        $password = md5($request->password);
+        $password = $request->password;
 
         $result = DB::table('user')->where('email', $email)->where('password', $password)->first();
         if($result == true)

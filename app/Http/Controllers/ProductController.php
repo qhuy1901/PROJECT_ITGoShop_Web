@@ -58,20 +58,20 @@ class ProductController extends Controller
         $data['discount'] = $request->discount;
         $data['status'] = $request->status;
 
-        $get_image = $request->file('product_image');
+        $get_image = $request->file('ProductImage');
         if($get_image == true)
         {
             //rand(0, 99)
             // $new_image_name là tên ảnh, getClientOriginalExtension() là lấy phần mở rộng của ảnh, .png,..
             $image_name = date("Y_m_d_His").'_'.$get_image->getClientOriginalName(); //$get_image_name.rand(0, 99).'.'.$get_image->getClientOriginalExtension(); 
             $get_image->move('public/images_upload/product', $image_name);
-            $data['product_image'] = $image_name;
+            $data['ProductImage'] = $image_name;
             DB::table('product')->insert($data);
             Session::put('message', 'Thêm sản phẩm thành công');
             return Redirect::to('add-product');
         }
         
-        $data['product_image'] = '';
+        $data['ProductImage'] = '';
         DB::table('product')->insert($data);
         Session::put('message', 'Thêm sản phẩm thành công');
         return Redirect::to('add-product');
@@ -115,19 +115,19 @@ class ProductController extends Controller
         $data = array();
         $data['ProductName'] = $request->ProductName;
         $data['CategoryId'] = $request->Category;
-        $data['BrandId'] = $request->brand;
-        $data['content'] = $request->content;
+        $data['BrandId'] = $request->Brand;
+        $data['content'] = $request->Content;
         $data['Quantity'] = $request->Quantity;
-        $data['price'] = $request->price;
-        $data['discount'] = $request->discount;
-        $data['status'] = $request->status;
+        $data['price'] = $request->Price;
+        $data['discount'] = $request->Discount;
+        $data['status'] = $request->Status;
 
-        $get_image = $request->file('product_image');
+        $get_image = $request->file('ProductImage');
         if($get_image == true)
         {
             $image_name = date("Y_m_d_His").'_'.$get_image->getClientOriginalName(); 
             $get_image->move('public/images_upload/product', $image_name);
-            $data['product_image'] = $image_name;
+            $data['ProductImage'] = $image_name;
         }
 
         DB::table('product')->where('ProductId', $ProductId)->update($data);
