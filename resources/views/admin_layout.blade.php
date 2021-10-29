@@ -602,6 +602,12 @@
 		
 		
 	</div>
+	<script src="{{asset('public/ckeditor/ckeditor/ckeditor.js')}}"></script>
+	<script>
+		CKEDITOR.replace('ckeditor');
+		CKEDITOR.replace('ckeditor1');
+	</script>
+
 	<!--   Core JS Files   -->
 	<script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
 	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>

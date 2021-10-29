@@ -91,7 +91,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">VND</span>
                                                         </div>
-                                                        <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)"  value="{{$update_value->price}}">
+                                                        <input type="text" name="Price" class="form-control" aria-label="Amount (to the nearest dollar)"  value="{{$update_value->Price}}">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">.00</span>
                                                         </div>
@@ -101,7 +101,7 @@
                                                 <div class="form-group">
                                                     <label class="mb-3"><b>Giảm giá</b></label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" name="discount" class="form-control" aria-label="Amount (to the nearest dollar)" value="{{$update_value->discount}}">
+                                                        <input type="text" name="discount" class="form-control" aria-label="Amount (to the nearest dollar)" value="{{$update_value->Discount}}">
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">%</span>
                                                         </div>
@@ -117,7 +117,7 @@
                                                     <label class="form-label d-block">Hiển thị</label>
                                                     <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                                         <label class="selectgroup-item">
-															@if($update_value->status == 1)
+															@if($update_value->Status == 1)
                                                             	<input type="radio" name="status" value="1" class="selectgroup-input" checked="">
 															@else
 																<input type="radio" name="status" value="1" class="selectgroup-input">
@@ -125,7 +125,7 @@
                                                             <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-eye"></i></span>
                                                         </label>
                                                         <label class="selectgroup-item">
-															@if($update_value->status == 0)
+															@if($update_value->Status == 0)
                                                             	<input type="radio" name="status" value="0" class="selectgroup-input" checked="">
 															@else
 																<input type="radio" name="status" value="0" class="selectgroup-input">
@@ -142,14 +142,14 @@
                                                 <div class="form-group">
                                                         <label for="comment">Nội dung sản phẩm</label>
                                                         <textarea class="form-control" name="content" id="comment" rows="5" placeholder="Mô tả sản phẩm">
-														{{$update_value->content}}
+														{{$update_value->Content}}
                                                         </textarea>
                                                 </div>
 
                                                 <div class="form-group">
                                                         <label for="exampleFormControlFile1">Hình ảnh sản phẩm</label>
                                                         <input type="file" name="product_image" class="form-control-file" id="exampleFormControlFile1">
-														<img src="{{URL::to('public/images_upload/product/'.$update_value->product_image)}}" height=100 width=100>
+														<img src="{{URL::to('public/images_upload/product/'.$update_value->ProductImage)}}" height=100 width=100>
                                                 </div>
 												
 												
