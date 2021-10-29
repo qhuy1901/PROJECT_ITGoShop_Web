@@ -31,12 +31,12 @@ class BlogController extends Controller
         return view('admin.add_content');
     }
 
-    public function view_content()
+    public function all_content()
     {
         $this->auth_login();
 
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        return view('admin_layout')->with('admin.all_content');
+        return view('admin.all_content');
     }
 
     public function save_post(Request $request)

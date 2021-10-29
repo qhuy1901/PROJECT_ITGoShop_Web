@@ -435,17 +435,17 @@
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="./tables/tables.html">
+										<a href="{{URL::to('/all_order')}}">
 											<span class="sub-item">Tất cả</span>
 										</a>
 									</li>
 									<li>
-										<a href="./tables/datatables.html">
+										<a href="{{URL::to('/confirm_order')}}">
 											<span class="sub-item">Chờ xác nhận</span>
 										</a>
 									</li>
 									<li>
-										<a href="./tables/datatables.html">
+										<a href="{{URL::to('/order_status')}}">
 											<span class="sub-item">Tình trạng giao hàng</span>
 										</a>
 									</li>
@@ -681,7 +681,7 @@
 			maxValue:100,
 			width:7,
 			text: 12,
-			colors:['#f1f1f1', '#F25961'],
+			colors:['#f1f1f1', '#FF4848'],
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',

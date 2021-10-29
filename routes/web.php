@@ -85,9 +85,8 @@ Route::get('/wishlist','App\Http\Controllers\WishListController@wishlist');
 //Blog (Admin)
 Route::get('/add-content','App\Http\Controllers\BlogController@add_content');
 Route::get('/all-content','App\Http\Controllers\BlogController@all_content');
-Route::get('/update-content/{ProductId}','App\Http\Controllers\BlogController@get_content_info');
-Route::get('/delete-content/{ProductId}','App\Http\Controllers\BlogController@delete_content');
 
-Route::post('/save-content','App\Http\Controllers\BlogController@save_content');
-Route::post('/update-content/{ProductId}','App\Http\Controllers\BlogController@update_content');
-
+//Order (Admin)
+Route::get('/confirm_order','App\Http\Controllers\OrderController@confirm_order');
+Route::get('/all_order','App\Http\Controllers\OrderController@all_order');
+Route::get('/order_status','App\Http\Controllers\OrderController@order_status');
