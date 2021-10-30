@@ -46,8 +46,8 @@
 											<div class="col-12 col-lg-6">
 												<div class="form-group">
 													<label for="email2">Tên sản phẩm</label>
-													<input type="text" name="ProductName" class="form-control" id="email2" placeholder="Nhập tên sản phẩm">
-													<small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small>
+													<input type="text" name="ProductName" class="form-control" id="email2" required>
+													<!-- <small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small> -->
 												</div>
 											</div>
 
@@ -82,7 +82,7 @@
                                                         <!-- <div class="input-group-prepend">
                                                             <span class="input-group-text">VND</span>
                                                         </div> -->
-                                                        <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                        <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)" required> 
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">VND</span>
                                                         </div>
@@ -94,7 +94,7 @@
 												<div class="form-group">
                                                     <label class="mb-3"><b>Giảm giá</b></label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" name="discount" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                                        <input type="text" name="discount" class="form-control" aria-label="Amount (to the nearest dollar)" required>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">%</span>
                                                         </div>
@@ -105,7 +105,7 @@
 											<div class="col-lg-3">
 												<div class="form-group">
 													<label for="email2">Số lượng tồn kho</label>
-													<input type="text" name="Quantity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm">
+													<input type="number" min="0" name="Quantity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm" required>
 												</div>
 											</div>
 
@@ -113,7 +113,7 @@
                                             <div class="col-lg-3">	
                                                 <div class="form-group">
                                                         <label for="exampleFormControlFile1">Thêm ảnh sản phẩm</label>
-                                                        <input type="file" name="product_image" class="form-control-file" id="exampleFormControlFile1">
+                                                        <input type="file" name="ProductImage" class="form-control-file" id="exampleFormControlFile1" required>
                                                 </div>
 
 												<div class="form-group">
@@ -136,7 +136,7 @@
 											<div class="col-lg-12">	
 												<div class="form-group">
                                                         <label for="comment">Nội dung sản phẩm</label>
-                                                        <textarea class="form-control" name="content" id="ckeditor1" rows="5" placeholder="Mô tả sản phẩm"></textarea>
+                                                        <textarea class="form-control" name="content" id="ckeditor1" rows="5" placeholder="Mô tả sản phẩm" required></textarea>
                                                 </div>
 											</div>
 										</div>

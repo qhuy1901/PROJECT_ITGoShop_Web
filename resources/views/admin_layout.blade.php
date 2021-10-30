@@ -435,17 +435,17 @@
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="{{URL::to('/all_order')}}">
+										<a href="./tables/tables.html">
 											<span class="sub-item">Tất cả</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{URL::to('/confirm_order')}}">
+										<a href="./tables/datatables.html">
 											<span class="sub-item">Chờ xác nhận</span>
 										</a>
 									</li>
 									<li>
-										<a href="{{URL::to('/order_status')}}">
+										<a href="./tables/datatables.html">
 											<span class="sub-item">Tình trạng giao hàng</span>
 										</a>
 									</li>
@@ -598,13 +598,17 @@
 		</div>
 		<!-- End Sidebar -->
 		@yield('admin_content')
-		
-		
-		
 	</div>
+
+	<!-- <script src="{{asset('public/admin/js/jquery.form-validator.min.js')}}"></script>
+	<script>
+		$.validate{
+
+		}
+	</script> -->
 	<script src="{{asset('public/ckeditor/ckeditor/ckeditor.js')}}"></script>
 	<script>
-		CKEDITOR.replace('ckeditor');
+		//CKEDITOR.replace('ckeditor');
 		CKEDITOR.replace('ckeditor1');
 	</script>
 
@@ -687,7 +691,7 @@
 			maxValue:100,
 			width:7,
 			text: 12,
-			colors:['#f1f1f1', '#FF4848'],
+			colors:['#f1f1f1', '#F25961'],
 			duration:400,
 			wrpClass:'circles-wrp',
 			textClass:'circles-text',
