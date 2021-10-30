@@ -23,7 +23,7 @@ class HomeController extends Controller
         // ->orderby('product.ProductId', 'desc')->get();
         // $manager_product = view('admin.view_product')->with('all_product', $all_product);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        $all_product = DB::table('product')->where('status', 1)->orderby('ProductId', 'desc')->limit(4)->get();
+        $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(5)->get();
 
         return view('client.home')
         ->with('sub_brand_list',  $sub_brand_list )

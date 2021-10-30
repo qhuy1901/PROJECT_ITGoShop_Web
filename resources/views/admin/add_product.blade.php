@@ -1,7 +1,7 @@
 @extends('admin_layout')
 @section('admin_content')
 <div class="main-panel">
-			<div class="content">
+<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
 						<h4 class="page-title">Forms</h4>
@@ -151,6 +151,5 @@
 						</div>
 					</div>
 				</div>
-			</div>
-       
+			</div>	
 @endsection

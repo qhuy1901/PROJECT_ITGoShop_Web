@@ -67,4 +67,24 @@ class CartController extends Controller
         Cart::update($rowId, 0);
         return Redirect::to('/show-cart');
     }
+
+    public function remove_item(Request $request)
+    {
+        $data = $request->all();
+        Cart::update($data['id'], 0);
+    //     $cart = Session::get('cart');
+
+    //     if($cart == true)
+    //     {
+    //         foreach($cart as $key => $val)
+    //         {
+    //             if($val['id'] == $data['id'])
+    //             {
+    //                 unset($cart[$key]);
+    //             }
+    //         }
+
+    //     }
+    //     Session::put('cart', $cart);
+    }
 }

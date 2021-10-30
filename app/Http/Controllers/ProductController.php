@@ -57,6 +57,8 @@ class ProductController extends Controller
         $data['price'] = $request->price;
         $data['discount'] = $request->discount;
         $data['status'] = $request->status;
+        $data['StartsAt'] = date("Y-m-d H:i:s");
+        $data['CreatedAt'] = date("Y-m-d H:i:s");
 
         $get_image = $request->file('ProductImage');
         if($get_image == true)
@@ -121,6 +123,7 @@ class ProductController extends Controller
         $data['price'] = $request->Price;
         $data['discount'] = $request->Discount;
         $data['status'] = $request->Status;
+        $data['UpdatedAt'] = date("Y-m-d H:i:s");
 
         $get_image = $request->file('ProductImage');
         if($get_image == true)
