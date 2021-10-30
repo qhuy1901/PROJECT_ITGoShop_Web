@@ -186,7 +186,7 @@
 					</div>
 				  </li>
 				  <li class="menu-item"><a href="product-listing.html">Phụ Kiện</a></li>
-				  <li class="menu-item"><a href="bloggrid.php">Blogs</a></li>
+				  <li class="menu-item"><a href="{{URL::to('/bloggrid')}}">Blogs</a></li>
 				  
 				</ul>
 		  </div>

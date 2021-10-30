@@ -87,6 +87,10 @@ Route::get('/wishlist','App\Http\Controllers\WishListController@wishlist');
 Route::get('/add-content','App\Http\Controllers\BlogController@add_content');
 Route::get('/all-content','App\Http\Controllers\BlogController@all_content');
 
+//Blog (Client)
+Route::get('/bloggrid', 'App\Http\Controllers\BlogController@bloggrid');
+Route::get('/blog-single-sidebar', 'App\Http\Controllers\BlogController@blog-single-sidebar');
+
 //Order (Admin)
 Route::get('/confirm_order','App\Http\Controllers\OrderController@confirm_order');
 Route::get('/all_order','App\Http\Controllers\OrderController@all_order');

@@ -122,35 +122,29 @@ class BlogController extends Controller
     // Kết thúc trang admin 
 
     // Trang client
-    public function post_detail($ProductId)
+    public function blog_single_sidebar()
     {
+        
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
 
-        $product_detail = DB::table('product')
-        ->join('Category','Category.CategoryId','=','product.CategoryId')
-        ->join('brand','brand.BrandId','=','product.BrandId')
-        ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
-        ->where('product.ProductId', $ProductId)->get();
-
-        foreach($product_detail as $key => $value)
-        {
-            $CategoryId = $value->CategoryId;
-        }
-
-        $related_product = DB::table('product')
-        ->join('Category','Category.CategoryId','=','product.CategoryId')
-        ->join('brand','brand.BrandId','=','product.BrandId')
-        ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
-        ->where('product.CategoryId',$CategoryId)
-        ->whereNotIn('product.ProductId', [$ProductId])->get();
-
-        return view('client.product-detail')
+        return view('client.blog-single-sidebar')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
-        ->with('product_category_list', $product_category_list)
-        ->with('product_detail', $product_detail)
-        ->with('related_product',$related_product);
+        ->with('product_category_list', $product_category_list);
+    }
+
+    public function bloggrid()
+    {
+        
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+
+        return view('client.bloggrid')
+        ->with('sub_brand_list',  $sub_brand_list )
+        ->with('main_brand_list', $main_brand_list)
+        ->with('product_category_list', $product_category_list);
     }
 }
