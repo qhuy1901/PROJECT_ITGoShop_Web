@@ -337,14 +337,14 @@
 					<ul class="nav nav-primary">
 						<li class="nav-item active">
 							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
+							<i class="fas fa-home"></i>
 								<p>Dashboard</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="dashboard">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../demo1/index.html">
+										<a href="{{URL::to('/dashboard')}}">
 											<span class="sub-item">Dashboard 1</span>
 										</a>
 									</li>
@@ -435,17 +435,17 @@
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="./tables/tables.html">
+										<a href="{{URL::to('/all_order')}}">
 											<span class="sub-item">Tất cả</span>
 										</a>
 									</li>
 									<li>
-										<a href="./tables/datatables.html">
+										<a href="{{URL::to('/confirm_order')}}">
 											<span class="sub-item">Chờ xác nhận</span>
 										</a>
 									</li>
 									<li>
-										<a href="./tables/datatables.html">
+										<a href="{{URL::to('/order_status')}}">
 											<span class="sub-item">Tình trạng giao hàng</span>
 										</a>
 									</li>
