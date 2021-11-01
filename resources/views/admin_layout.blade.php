@@ -466,7 +466,7 @@
 										</a>
 									</li>
 									<li>
-										<a href="{{URL::to('/all-content')}}">
+										<a href="{{URL::to('/view-content')}}">
 											<span class="sub-item">Tất cả bài đăng</span>
 										</a>
 									</li>
