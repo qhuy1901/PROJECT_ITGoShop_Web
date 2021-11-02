@@ -34,17 +34,32 @@ class OrderController extends Controller
     public function all_order()
     {
         $this->auth_login();
-
-        // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        return view('admin.all_order');
+        $all_order = DB::table('order')
+        ->join('customer','customer.CustomerId','=','order.CustomerId')
+        ->select('order.*', 'customer.FullName')
+        ->orderby('order.OrderId', 'desc')->get();
+        $manager_order = view('admin.all_order')->with('all_order', $all_order);
+        return view('admin_layout')->with('admin.all_order', $manager_order);
     }
+    public function update_order(Request $request, $OrderId)
+    {
+        $this->auth_login();
+        $data = array();
+        $data['OrderId'] = $request->OrderId;
+        $data['Status'] = $request->Status;
+        $data['OrderDateCompleted'] = $request->OrderDateCompleted;
+        
 
-    public function order_status()
+        DB::table('order')->where('OrderId', $OrderId)->update($data);
+        Session::put('message', 'Cập nhật đơn hàng thành công');
+        return Redirect::to('all_order');
+    }
+    public function order_detail()
     {
         $this->auth_login();
 
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        return view('admin.order_status');
+        return view('admin.order_detail');
     }
 
     

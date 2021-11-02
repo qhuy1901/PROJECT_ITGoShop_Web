@@ -86,7 +86,7 @@
 													</div>
 												</div>
 											</div>
-										</div>
+									</div>
 
 									<div class="table-responsive">
 										<div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">

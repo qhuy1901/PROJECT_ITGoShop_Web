@@ -428,7 +428,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
+								<i class="fa fa-shopping-cart"></i>
 								<p>Quản lý đơn hàng</p>
 								<span class="caret"></span>
 							</a>
@@ -437,16 +437,6 @@
 									<li>
 										<a href="{{URL::to('/all_order')}}">
 											<span class="sub-item">Tất cả</span>
-										</a>
-									</li>
-									<li>
-										<a href="{{URL::to('/confirm_order')}}">
-											<span class="sub-item">Chờ xác nhận</span>
-										</a>
-									</li>
-									<li>
-										<a href="{{URL::to('/order_status')}}">
-											<span class="sub-item">Tình trạng giao hàng</span>
 										</a>
 									</li>
 								</ul>

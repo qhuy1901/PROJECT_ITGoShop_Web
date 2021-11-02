@@ -26,335 +26,94 @@
 								<div class="card-header">
 									<h4 class="card-title">Tất cả đơn hàng</h4>
 								</div>
+								
 								<div class="card-body">
 									<div class="table-responsive">
 										<table id="basic-datatables" class="display table table-striped table-hover" >
 											<thead>
 												<tr>
-													<th>Mã đơn hàng</th>
-													<th>Tên khách hàng</th>
+													<th>ID</th>
+													<th>Khách hàng</th>
 													<th>Tổng đơn hàng</th>
 													<th>Trạng thái</th>
 													<th>Ngày đặt hàng</th>
+													<th>Ngày hoàn thành</th>
+													<th> Thao tác </th>
 												</tr>
 											</thead>
 											
 											<tbody>
+												@foreach($all_order as $key => $order)
 												<tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
-													<td>61</td>
-													<td>2011/04/25</td>
+													<td>
+														<a href="{{URL::to('/order-detail')}}">
+															<span> {{$order->OrderId}}</span>
+														</a>
+													</td>
+													<td>{{$order->FullName}}</td>
+													<td>{{$order->Total}}</td>
+													<td style="color: #77ACF1; font-size: 14px; font-weight: 900;">{{$order->Status}} </td>
+													<td>{{$order->OrderDate}}</td>
+													<td>{{$order->OrderDateCompleted}}</td>
+													<td>
+															<div class="form-button-action" data-toggle="modal" data-target="#addRowModal">
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật trạng thái đơn hàng" >
+																	<a class="active" ui-toggle-class="" > 
+																		<i class="fa fa-edit text-active"></i>
+																	</a>
+																</button>
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="In đơn hàng" >
+																	<a class="active" ui-toggle-class="" > 
+																		<i class="fa fa-print text-active"></i>
+																	</a>
+																</button>
+															</div>
+															<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+																		<div class="modal-dialog" role="document">
+																			<div class="modal-content">
+																				<div class="modal-header no-bd">
+																					<h5 class="modal-title">
+																						<span class="fw-mediumbold">Cập nhật trạng thái đơn hàng</span> 
+																					</h5>
+																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+																						<span aria-hidden="true">&times;</span>
+																					</button>
+																				</div>
+																				
+																				<div class="modal-body">
+																					<p class="small">Mã đơn hàng: {{$order->OrderId}} </p>
+																					<form>
+																						<div class="row">
+																						
+																							<div class="col-md-6 pr-0 ">
+																									<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+																										<option selected>{{$order->Status}}</option>
+																										<option value="2">Confirmed</option>
+																										<option value="3">Shipped</option>
+																										<option value="3">Delivering</option>
+																										<option value="3">Completed</option>
+																									</select>
+																							</div>
+																							<div class="col-md-6 ">
+																									<div class="custom-control custom-checkbox">
+																											<input type="checkbox" class="custom-control-input" id="defaultChecked2" checked>
+																											<label class="custom-control-label" for="defaultChecked2">Gửi email cho khách hàng</label>
+																									</div>
+																							</div>
+																							
+																						</div>
+																					</form>
+																				</div>
+																				<div class="modal-footer no-bd">
+																					<button type="button" id="addRowButton" class="btn btn-primary">Lưu</button>
+																					<button type="button" class="btn btn-danger" data-dismiss="modal">Huỷ</button>
+																				</div>
+																			</div>
+																		</div>
+																</div>
+														</td>
 												</tr>
-												<tr>
-													<td>Garrett Winters</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>63</td>
-													<td>2011/07/25</td>
-												</tr>
-												<tr>
-													<td>Ashton Cox</td>
-													<td>Junior Technical Author</td>
-													<td>San Francisco</td>
-													<td>66</td>
-													<td>2009/01/12</td>
-												</tr>
-												<tr>
-													<td>Cedric Kelly</td>
-													<td>Senior Javascript Developer</td>
-													<td>Edinburgh</td>
-													<td>22</td>
-													<td>2012/03/29</td>
-												</tr>
-												<tr>
-													<td>Airi Satou</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>33</td>
-													<td>2008/11/28</td>
-												</tr>
-												<tr>
-													<td>Brielle Williamson</td>
-													<td>Integration Specialist</td>
-													<td>New York</td>
-													<td>61</td>
-													<td>2012/12/02</td>
-												</tr>
-												<tr>
-													<td>Herrod Chandler</td>
-													<td>Sales Assistant</td>
-													<td>San Francisco</td>
-													<td>59</td>
-													<td>2012/08/06</td>
-												</tr>
-												<tr>
-													<td>Rhona Davidson</td>
-													<td>Integration Specialist</td>
-													<td>Tokyo</td>
-													<td>55</td>
-													<td>2010/10/14</td>
-												</tr>
-												<tr>
-													<td>Colleen Hurst</td>
-													<td>Javascript Developer</td>
-													<td>San Francisco</td>
-													<td>39</td>
-													<td>2009/09/15</td>
-												</tr>
-												<tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
-													<td>61</td>
-													<td>2011/04/25</td>
-												</tr>
-												<tr>
-													<td>Garrett Winters</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>63</td>
-													<td>2011/07/25</td>
-												</tr>
-												<tr>
-													<td>Ashton Cox</td>
-													<td>Junior Technical Author</td>
-													<td>San Francisco</td>
-													<td>66</td>
-													<td>2009/01/12</td>
-												</tr>
-												<tr>
-													<td>Cedric Kelly</td>
-													<td>Senior Javascript Developer</td>
-													<td>Edinburgh</td>
-													<td>22</td>
-													<td>2012/03/29</td>
-												</tr>
-												<tr>
-													<td>Airi Satou</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>33</td>
-													<td>2008/11/28</td>
-												</tr>
-												<tr>
-													<td>Brielle Williamson</td>
-													<td>Integration Specialist</td>
-													<td>New York</td>
-													<td>61</td>
-													<td>2012/12/02</td>
-												</tr>
-												<tr>
-													<td>Herrod Chandler</td>
-													<td>Sales Assistant</td>
-													<td>San Francisco</td>
-													<td>59</td>
-													<td>2012/08/06</td>
-												</tr>
-												<tr>
-													<td>Rhona Davidson</td>
-													<td>Integration Specialist</td>
-													<td>Tokyo</td>
-													<td>55</td>
-													<td>2010/10/14</td>
-												</tr>
-												<tr>
-													<td>Colleen Hurst</td>
-													<td>Javascript Developer</td>
-													<td>San Francisco</td>
-													<td>39</td>
-													<td>2009/09/15</td>
-												</tr>
-												<tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
-													<td>61</td>
-													<td>2011/04/25</td>
-												</tr>
-												<tr>
-													<td>Garrett Winters</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>63</td>
-													<td>2011/07/25</td>
-												</tr>
-												<tr>
-													<td>Ashton Cox</td>
-													<td>Junior Technical Author</td>
-													<td>San Francisco</td>
-													<td>66</td>
-													<td>2009/01/12</td>
-												</tr>
-												<tr>
-													<td>Cedric Kelly</td>
-													<td>Senior Javascript Developer</td>
-													<td>Edinburgh</td>
-													<td>22</td>
-													<td>2012/03/29</td>
-												</tr>
-												<tr>
-													<td>Airi Satou</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>33</td>
-													<td>2008/11/28</td>
-												</tr>
-												<tr>
-													<td>Brielle Williamson</td>
-													<td>Integration Specialist</td>
-													<td>New York</td>
-													<td>61</td>
-													<td>2012/12/02</td>
-												</tr>
-												<tr>
-													<td>Herrod Chandler</td>
-													<td>Sales Assistant</td>
-													<td>San Francisco</td>
-													<td>59</td>
-													<td>2012/08/06</td>
-												</tr>
-												<tr>
-													<td>Rhona Davidson</td>
-													<td>Integration Specialist</td>
-													<td>Tokyo</td>
-													<td>55</td>
-													<td>2010/10/14</td>
-												</tr>
-												<tr>
-													<td>Colleen Hurst</td>
-													<td>Javascript Developer</td>
-													<td>San Francisco</td>
-													<td>39</td>
-													<td>2009/09/15</td>
-												</tr>
-												<tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
-													<td>61</td>
-													<td>2011/04/25</td>
-												</tr>
-												<tr>
-													<td>Garrett Winters</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>63</td>
-													<td>2011/07/25</td>
-												</tr>
-												<tr>
-													<td>Ashton Cox</td>
-													<td>Junior Technical Author</td>
-													<td>San Francisco</td>
-													<td>66</td>
-													<td>2009/01/12</td>
-												</tr>
-												<tr>
-													<td>Cedric Kelly</td>
-													<td>Senior Javascript Developer</td>
-													<td>Edinburgh</td>
-													<td>22</td>
-													<td>2012/03/29</td>
-												</tr>
-												<tr>
-													<td>Airi Satou</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>33</td>
-													<td>2008/11/28</td>
-												</tr>
-												<tr>
-													<td>Brielle Williamson</td>
-													<td>Integration Specialist</td>
-													<td>New York</td>
-													<td>61</td>
-													<td>2012/12/02</td>
-												</tr>
-												<tr>
-													<td>Herrod Chandler</td>
-													<td>Sales Assistant</td>
-													<td>San Francisco</td>
-													<td>59</td>
-													<td>2012/08/06</td>
-												</tr>
-												<tr>
-													<td>Rhona Davidson</td>
-													<td>Integration Specialist</td>
-													<td>Tokyo</td>
-													<td>55</td>
-													<td>2010/10/14</td>
-												</tr>
-												<tr>
-													<td>Colleen Hurst</td>
-													<td>Javascript Developer</td>
-													<td>San Francisco</td>
-													<td>39</td>
-													<td>2009/09/15</td>
-												</tr>
-                                                <tr>
-													<td>Tiger Nixon</td>
-													<td>System Architect</td>
-													<td>Edinburgh</td>
-													<td>61</td>
-													<td>2011/04/25</td>
-												</tr>
-												<tr>
-													<td>Garrett Winters</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>63</td>
-													<td>2011/07/25</td>
-												</tr>
-												<tr>
-													<td>Ashton Cox</td>
-													<td>Junior Technical Author</td>
-													<td>San Francisco</td>
-													<td>66</td>
-													<td>2009/01/12</td>
-												</tr>
-												<tr>
-													<td>Cedric Kelly</td>
-													<td>Senior Javascript Developer</td>
-													<td>Edinburgh</td>
-													<td>22</td>
-													<td>2012/03/29</td>
-												</tr>
-												<tr>
-													<td>Airi Satou</td>
-													<td>Accountant</td>
-													<td>Tokyo</td>
-													<td>33</td>
-													<td>2008/11/28</td>
-												</tr>
-												<tr>
-													<td>Brielle Williamson</td>
-													<td>Integration Specialist</td>
-													<td>New York</td>
-													<td>61</td>
-													<td>2012/12/02</td>
-												</tr>
-												<tr>
-													<td>Herrod Chandler</td>
-													<td>Sales Assistant</td>
-													<td>San Francisco</td>
-													<td>59</td>
-													<td>2012/08/06</td>
-												</tr>
-												<tr>
-													<td>Rhona Davidson</td>
-													<td>Integration Specialist</td>
-													<td>Tokyo</td>
-													<td>55</td>
-													<td>2010/10/14</td>
-												</tr>
-												<tr>
-													<td>Colleen Hurst</td>
-													<td>Javascript Developer</td>
-													<td>San Francisco</td>
-													<td>39</td>
-													<td>2009/09/15</td>
-												</tr>
+												@endforeach
 											</tbody>
 										</table>
 									</div>
@@ -420,8 +179,7 @@
 				$('#add-row').dataTable().fnAddData([
 					$("#addName").val(),
 					$("#addPosition").val(),
-					$("#addOffice").val(),
-					action
+					$("#addOffice").val(),action
 					]);
 				$('#addRowModal').modal('hide');
 

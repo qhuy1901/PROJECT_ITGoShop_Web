@@ -143,7 +143,75 @@ small, .small {
 
 b, .b, strong, .strong {
   font-weight: 600; }
+.dlist {
+    display: flex;
+}
 
+  .content-main {
+    padding: 30px 3%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .icontext {
+    display: inline-flex;
+    align-items: center;
+}
+.align-items-start {
+  align-items: flex-start !important;
+}
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+  .content-header .content-title {
+    margin-bottom: 1rem;
+  }
+
+  .card-header input.form-control {
+    margin-bottom: 1rem;
+  }
+
+  .order-info-wrap .icontext {
+    margin-bottom: 1rem;
+  }
+
+  .table-responsive table {
+    min-width: 700px;
+  }
+  .ms-auto {
+    margin-left: auto !important;
+}
+.icontext .icon {
+  position: relative;
+  flex-shrink: 0;
+  margin-right: 10 px;
+}
+.icon-sm {
+  width: 48px;
+  height: 48px;
+  line-height: 48px !important;
+  font-size: 20px;
+}
+.md-person:after {
+  content: '\e49e';
+}
+.rounded-circle {
+  border-radius: 50% !important;
+}
+.bg-primary-light {
+  background-color: rgba(49,103,235,.2) !important;
+}
+.md-local_shipping:after {
+  content: '\e3bb';
+}
+.material-icons:after {
+  opacity: 1;
+  line-height: normal;
+}
+.md-place:after {
+  content: '\e4e7';
+}
 .page-pretitle {
   letter-spacing: .08em;
   text-transform: uppercase;
