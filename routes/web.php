@@ -18,9 +18,14 @@ use App\Http\Controllers\Cart;
 //     return view('welcome');
 // });
 
-// Fontend
+// Home
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
+
+// Customer Login
+Route::get('/login', 'App\Http\Controllers\HomeController@login');
+Route::post('/check-password', 'App\Http\Controllers\HomeController@check_password');
+Route::get('/customer-logout','App\Http\Controllers\HomeController@logout');
 
 //Chi tiết sản phẩm
 Route::get('/product-detail/{ProductId}', 'App\Http\Controllers\ProductController@product_detail');
@@ -94,6 +99,7 @@ Route::get('/active-post/{BlogId}','App\Http\Controllers\BlogController@active_p
 
 Route::post('/save-post','App\Http\Controllers\BlogController@save_post');
 Route::post('/update-post/{BlogId}','App\Http\Controllers\BlogController@update_post');
+
 //Blog (Client)
 Route::get('/bloggrid', 'App\Http\Controllers\BlogController@bloggrid');
 Route::get('/blog-detail', 'App\Http\Controllers\BlogController@blog_detail');

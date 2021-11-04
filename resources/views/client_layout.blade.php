@@ -76,73 +76,11 @@
 													@if($SubBrand->SubBrand == $main_brand->BrandId)
 														<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->BrandName}}</a></li>
 													@endif
-												@endforeach
-												<!-- <li><a href="product-listing.html">ZBook</a></li>
-												<li><a href="product-listing.html">Envy</a></li>
-												<li><a href="product-listing.html">Omen</a></li>
-												<li><a href="product-listing.html">Pavilion</a></li> -->
+												@endforeach	
 										</ul>
 									</div>
 								@endforeach
-								<!-- <div class="mega-column">
-								<h4 class="mega-heading">HP</h4>
-								<ul class="mega-item">
-											<li><a href="product-listing.html">Elitebook</a></li>
-																				<li><a href="product-listing.html">ZBook</a></li>
-																				<li><a href="product-listing.html">Envy</a></li>
-																				<li><a href="product-listing.html">Omen</a></li>
-																				<li><a href="product-listing.html">Pavilion</a></li>
-								</ul>
-								</div>
-
-								<div class="mega-column">
-								<h4 class="mega-heading">DELL</h4>
-								<ul class="mega-item">
-									<li><a href="product-listing.html">Inspiron</a></li>
-																				<li><a href="product-listing.html">Vostro</a></li>
-																				<li><a href="product-listing.html">XPS</a></li>
-																				<li><a href="product-listing.html">G-Gaming Series</a></li>
-																				<li><a href="product-listing.html">Alienware</a></li>
-																				<li><a href="product-listing.html">Latitude</a></li>
-																				<li><a href="product-listing.html">Precision</a></li>
-								</ul>
-								</div>
-
-								<div class="mega-column">
-								<h4 class="mega-heading">Lenovo</h4>
-								<ul class="mega-item">
-									<li><a href="product-listing.html">ThinkPad</a></li>
-																				<li><a href="product-listing.html">IdeaPad</a></li>
-																				<li><a href="product-listing.html">Legion</a></li>
-																				<li><a href="product-listing.html">ThinkBook</a></li>
-								</ul>
-								</div>
-								<div class="mega-column">
-								<h4 class="mega-heading">Apple</h4>
-								<ul class="mega-item">
-											<li><a href="product.php">Macbook Pro 13</a></li>
-																				<li><a href="product-listing.html">Macbook Pro 15</a></li>
-																				<li><a href="product-listing.html">Macbook Pro 16</a></li>
-																				<li><a href="product-listing.html">Macbook Air</a></li>
-								</ul>
-								</div>
-								<div class="mega-column">
-								<h4 class="mega-heading">MSI</h4>
-								<ul class="mega-item">
-									<li><a href="product-listing.html">GF Series</a></li>
-									<li><a href="product-listing.html">Prestige</a></li>
-									<li><a href="product-listing.html">Modern Series</a></li>
-									<li><a href="product-listing.html">Alpha Series</a></li>
-								</ul>
-								</div>
-								<div class="mega-column">
-								<h4 class="mega-heading">Microsoft</h4>
-								<ul class="mega-item">
-											<li><a href="product-listing.html">Surface Laptop</a></li>
-																				<li><a href="product-listing.html">Surface Book</a></li>
-																				<li><a href="product-listing.html">Surface Pro</a></li>
-								</ul>
-								</div> -->
+								
 					  		</div>
 						</div>
 				  	</li>
@@ -227,7 +165,17 @@
 				<div class="nut_dropdown"><a class="ps-cart__toggle"><i class="fa fa-user-circle-o" ></i></a></div>
 					<div class="noidung_dropdown">
 						<a href="{{URL::to('/profile')}}">Profile</a>
-						<a href="#">Login/Logout</a>
+						<?php
+							$CustomerId= Session::get('CustomerId');
+							if($CustomerId)
+							{?>
+								<a href="{{URL::to('/customer-logout')}}">Tài khoản</a>';
+								<a href="{{URL::to('/customer-logout')}}">Kiểm tra bảo hành</a>';
+								<a href="{{URL::to('/customer-logout')}}">Lịch sử mua hàng</a>';
+								<a href="{{URL::to('/customer-logout')}}">Đăng xuất</a>';
+						<?php } else{ ?>
+								<a href="{{URL::to('/login')}}">Đăng nhập</a>
+						<?php } ?>
 					</div>
 			</div>
 

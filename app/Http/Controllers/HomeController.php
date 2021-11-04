@@ -31,4 +31,35 @@ class HomeController extends Controller
         ->with('product_category_list', $product_category_list)
         ->with('all_product', $all_product);
     }
+
+    public function check_password(Request $request)
+    {
+        $email = $request->email;
+        $password = $request->password;
+
+        $result = DB::table('user')->where('email', $email)->where('password', $password)->where('Admin', 0)->first();
+        if($result == true)
+        {
+            // Session::put('CustomerFirstName', $result->FirstName);
+            // Session::put('CustomerLastName', $result->LastName);
+            // Session::put('CustomerImage', $result->UserImage);
+            Session::put('CustomerId', $result->UserId);
+            return Redirect::to('/home');
+        } 
+        else{
+            Session::put('message', 'Mật khẩu hoặc tài khoản sai. Xin nhập lại!');
+            return Redirect::to('/login');
+        }
+    }
+
+    public function login(Request $request)
+    {
+        return view('customer-login');
+    }
+
+    public function logout()
+    {
+        Session::put('CustomerId', null);
+        return Redirect::to('home');
+    }
 }
