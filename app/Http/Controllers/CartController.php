@@ -93,9 +93,9 @@ class CartController extends Controller
     public function add_to_cart(Request $request)
     {
         // Cái này để load layout thôi
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+        // $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        // $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+        // $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
 
         //Cái này là của function
         $ProductId = $request->ProductId;
@@ -110,5 +110,13 @@ class CartController extends Controller
         Cart::add($data);
         //Cart::setTax(rowId, 12) // Set thuế cho từng sản phẩm, số 12 có thể là 1 biến
         Cart::setGlobalTax(10); 
+    }
+
+    public function update_quantity(Request $request)
+    {
+        $rowId = $request->rowId;
+        $newQuantity = $request->newQuantity;
+
+        Cart::update($rowId, $newQuantity); 
     }
 }

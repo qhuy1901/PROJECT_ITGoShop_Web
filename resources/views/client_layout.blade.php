@@ -308,6 +308,7 @@
 		// 	});
 		// }
 
+
 		$(document).ready(function(){
 			$(".delete-button").click( function(){
 				$(this).parent().parent().remove();
@@ -330,6 +331,28 @@
 						alert('Lỗi');
 					}
 				});
+			}),
+
+			$(".input-number").on('input', function(){
+				var newQuantity = $(this).val();
+				var rowId = $(this).attr('id');
+				$.ajax({
+					url: '{{URL::to('/update-quantity')}}',
+					methed:"GET",
+					data:{rowId: rowId, newQuantity: newQuantity},
+					success:function(data)
+					{
+						alert('Thành công');
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}
+				});
+				var $parent = $(this).parents('tr');
+				var $soluong = $(this).val();
+                var $dongia = $parent.find('.price').attr('data-value');
+				$parent.find('.thanh-tien').text($soluong * $dongia);
 			}),
 
 			$('.add-to-cart-a-tag').click( function()

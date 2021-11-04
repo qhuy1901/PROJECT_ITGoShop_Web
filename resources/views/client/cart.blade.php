@@ -55,7 +55,7 @@
 									<td class="product-des" data-title="Description">
 										<p class="product-name"><a href="#">{{$item->name}}</a></p>
 									</td>
-									<td class="price" data-title="Price"><span>{{number_format($item->price).' đ'}}</span></td>
+									<td class="price" data-title="Price" data-value="{{$item->price}}" ><span>{{number_format($item->price).' đ'}}</span></td>
 									<td class="qty" data-title="Qty"><!-- Input Order -->
 										<div class="input-group">
 											<div class="button minus">
@@ -63,7 +63,7 @@
 													<i class="ti-minus"></i>
 												</button>
 											</div>
-											<input type="text" name="quant[{{$item->id}}]" class="input-number"  data-min="1" data-max="100" value="{{$item->qty}}">
+											<input type="text" name="quant[{{$item->id}}]" id="{{$item->rowId}}" class="input-number"  data-min="1" data-max="100" value="{{$item->qty}}">
 											<div class="button plus">
 												<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{$item->id}}]">
 													<i class="ti-plus"></i>
@@ -75,7 +75,7 @@
 									
 
 									<td class="total-amount" data-title="Total">
-										<span>
+										<span class="thanh-tien">
 											<?php
 												$subtotal = $item->price * $item->qty;
 												echo number_format($subtotal).' đ';
