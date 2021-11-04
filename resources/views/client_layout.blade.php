@@ -9,6 +9,12 @@
 	<!-- Title Tag  -->
 	<title>ITGo Shop</title>
 	<!--File css của Huy  -->
+	<style>
+		.swal-footer {
+			text-align: center;
+		}
+	</style>
+	
 	<link rel="stylesheet" href="{{asset('./public/client/css/huy.css')}}">
 	<!-- Favicon -->
 	<link rel="icon" href={{url('./public/client/images/favi.png')}}/>
@@ -52,7 +58,7 @@
 	<!-- Slicknav -->
 	<link rel="stylesheet" href="{{asset('./public/client/css/slicknav.min.css')}}">
 		
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body class="ps-loading">
 	<!-- Header -->
@@ -281,6 +287,7 @@
  
 	<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script  type="text/javascript">
 		function removeItem(id)
 		{
@@ -300,6 +307,35 @@
 				}
 			});
 		}
+
+		$(document).ready(function(){
+			$('.add-to-cart-a-tag').click( function()
+			{
+				var productId = $(this).parent().find('input').val();
+				$.ajax({
+					url: '{{URL::to('/add-to-cart')}}',
+					methed:"GET",
+					data:{ProductId:productId, Quantity: 1},
+					success:function(data)
+					{
+						swal({
+								title: "Thông báo",
+								text: "Đã thêm sản phẩm vào giỏ hàng!",
+								icon: "success",
+								buttons: ["Xem tiếp", "Đi đến giỏ hàng"],
+							}).then(function(isConfirm) {
+								if (isConfirm) {
+										window.location = "{{url('/show-cart')}}";
+								}
+							})
+					},
+					error:function(data)
+					{
+						alert('hi');
+					}
+				});
+			});
+		});
 
 	</script>
 	<!-- Jquery -->

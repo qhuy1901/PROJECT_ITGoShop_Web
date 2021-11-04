@@ -52,13 +52,13 @@
 								<td class="qty" data-title="Qty"><!-- Input Order -->
 									<div class="input-group">
 										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+											<button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[{{$item->id}}]">
 												<i class="ti-minus"></i>
 											</button>
 										</div>
-										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="{{$item->qty}}">
+										<input type="text" name="quant[{{$item->id}}]" class="input-number"  data-min="1" data-max="100" value="{{$item->qty}}">
 										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{$item->id}}]">
 												<i class="ti-plus"></i>
 											</button>
 										</div>
