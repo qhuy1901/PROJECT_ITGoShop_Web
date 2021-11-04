@@ -21,10 +21,11 @@
 	<div class="shopping-cart section">
 		<div class="container">
 			<div class="row">
-				<div class="col-12">
+				<div class="col-12 col-lg-9">
 					<!-- Shopping Summery -->
 					<?php
 						$content = Cart::content();
+						$number_product = Cart::count();
 						// echo '<prep>';
 						// print_r($content);
 						// echo '</prep>'
@@ -41,97 +42,119 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach($content as $item)
-							<tr>
-								<td class="image" data-title="No"><img src="{{URL::to('public/images_upload/product/'.$item->options->image)}}" alt="#"></td>
-								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">{{$item->name}}</a></p>
-									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
-								</td>
-								<td class="price" data-title="Price"><span>{{number_format($item->price).' đ'}}</span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
-									<div class="input-group">
-										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[{{$item->id}}]">
-												<i class="ti-minus"></i>
-											</button>
+							@if($number_product == 0)
+								<tr>
+                                    <td colspan="6">
+                                        <img style="display: block; width: auto; height: 250px; margin-left: auto; margin-right: auto; " src="{{URL::to('public/client/Images/empty-cart.png')}}">
+                                    </td>
+                                </tr>
+							@else
+								@foreach($content as $item)
+								<tr>
+									<td class="image" data-title="No" style="width: 60px; height: 60px;"><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->options->image)}}" alt="#"></td>
+									<td class="product-des" data-title="Description">
+										<p class="product-name"><a href="#">{{$item->name}}</a></p>
+									</td>
+									<td class="price" data-title="Price"><span>{{number_format($item->price).' đ'}}</span></td>
+									<td class="qty" data-title="Qty"><!-- Input Order -->
+										<div class="input-group">
+											<div class="button minus">
+												<button type="button" class="btn btn-primary btn-number" data-type="minus" data-field="quant[{{$item->id}}]">
+													<i class="ti-minus"></i>
+												</button>
+											</div>
+											<input type="text" name="quant[{{$item->id}}]" class="input-number"  data-min="1" data-max="100" value="{{$item->qty}}">
+											<div class="button plus">
+												<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{$item->id}}]">
+													<i class="ti-plus"></i>
+												</button>
+											</div>
 										</div>
-										<input type="text" name="quant[{{$item->id}}]" class="input-number"  data-min="1" data-max="100" value="{{$item->qty}}">
-										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[{{$item->id}}]">
-												<i class="ti-plus"></i>
-											</button>
-										</div>
-									</div>
-									<!--/ End Input Order -->
-								</td>
-								
+										<!--/ End Input Order -->
+									</td>
+									
 
-								<td class="total-amount" data-title="Total">
-									<span>
-										<?php
-											$subtotal = $item->price * $item->qty;
-											echo number_format($subtotal).' đ';
-										?>
-									</span>
-								</td> 
+									<td class="total-amount" data-title="Total">
+										<span>
+											<?php
+												$subtotal = $item->price * $item->qty;
+												echo number_format($subtotal).' đ';
+											?>
+										</span>
+									</td> 
 
-								<!-- <td class="action" data-title="Remove">
-									<a href="{{URL::to('/remove-item/'.$item->rowId)}}"><i class="ti-trash remove-icon"></i></a>
-								</td> -->
-								
-								<td class="action" data-title="Remove">
-									<button id = "{{$item->rowId}}" onClick="removeItem(this.id)"><i class="ti-trash remove-icon"></i></button>							
-								</td>
+									<!-- <td class="action" data-title="Remove">
+										<a href="{{URL::to('/remove-item/'.$item->rowId)}}"><i class="ti-trash remove-icon"></i></a>
+									</td> -->
+									<!-- //onClick="removeItem(this.id) -->
+									<td class="action" data-title="Remove">
+										<button id = "{{$item->rowId}}" class="delete-button"><i class="ti-trash remove-icon"></i></button>							
+									</td>
 
-							</tr>
-							@endforeach
+								</tr>
+								@endforeach
+							@endif
 						</tbody>
 					</table>
 					<!--/ End Shopping Summery -->
 				</div>
+
+				<div class="col-6 col-lg-3">
+                    <div style="padding: 20px; background-color: white; width: 280px;">
+                        <ul>
+                            <li style="margin-bottom: 3px;"><b>Giao tới</b><span style="float:right;"><a href="#">Thay đổi</a></span></li>
+                            <li style="font-size: 16px; margin: 3px 0px;"><b>Tạ Quang Huy</b>  |  <b>0365990290</b></li>
+                            <li><p>220/17 khu phố 9 phường Tam Hiệp thành phố Biên Hòa tỉnh Đồng Nai</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="total-amount">
+                        <div class="right" style="padding: 20px; width: 280px; background-color: white; position: absolute;">
+                            <ul>
+								<li>Tổng<span>{{(Cart::subtotal(0, ',', '.')).' đ'}}</span></li> <!-- Không cần number format ở đây vì Cart đã hỗ trợ-->
+								<li>Thuế VAT<span>{{(Cart::tax(0, ',', '.')).' đ'}}</span></li>
+								<li>Phí vận chuyển<span>Miễn phí</span></li>
+								<li class="last">Thành tiền<span>{{(Cart::total(0, ',', '.')).' đ'}}</span></li>
+                            </ul>
+                            <div class="button5">
+								<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>
+								<a href="#" class="btn">Continue shopping</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			</div>
 			<div class="row">
-				<div class="col-12">
-					<!-- Total Amount -->
-					<div class="total-amount">
-						<div class="row">
-							<div class="col-lg-8 col-md-5 col-12">
-								<div class="left">
-									<div class="coupon">
-										<form action="#" target="_blank">
-											<input name="Coupon" placeholder="Enter Your Coupon">
-											<button class="btn">Apply</button>
-										</form>
-									</div>
-									<div class="checkbox">
-										<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-4 col-md-7 col-12">
-								<div class="right">
-									<ul>
-										<li>Tổng<span>{{(Cart::subtotal(0, ',', '.')).' đ'}}</span></li> <!-- Không cần number format ở đây vì Cart đã hỗ trợ-->
-										<li>Thuế VAT<span>{{(Cart::tax(0, ',', '.')).' đ'}}</span></li>
-										<li>Phí vận chuyển<span>Miễn phí</span></li>
-										<li class="last">Thành tiền<span>{{(Cart::total(0, ',', '.')).' đ'}}</span></li>
-									</ul>
-									<div class="button5">
-										<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>
-										<a href="#" class="btn">Continue shopping</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--/ End Total Amount -->
-				</div>
-			</div>
+                <div class="col-12">
+                    <!-- Total Amount -->
+                    <div class="total-amount">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-5 col-12">
+                                <div class="left">
+                                    <div class="coupon">
+                                        <form action="#" target="_blank">
+                                            <input name="Coupon" placeholder="Enter Your Coupon">
+                                            <button class="btn">Apply</button>
+                                        </form>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-7 col-12">
+                                <div class="right" style="height:200px">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ End Total Amount -->
+                </div>
+            </div>
 		</div>
 	</div>
 	<!--/ End Shopping Cart -->
-			
+		
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
 		<div class="container">

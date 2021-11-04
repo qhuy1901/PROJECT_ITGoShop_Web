@@ -289,26 +289,49 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script  type="text/javascript">
-		function removeItem(id)
-		{
-			var id = id;
-			alert(id);
-			$.ajax({
-				url: '{{URL::to('/remove-item')}}',
-				methed:"GET",
-				data:{id:id},
-				success:function(data)
-				{
-					alert('Xóa sản phẩm trong giỏ hàng thành công');
-				},
-				error:function(data)
-				{
-					alert('hi');
-				}
-			});
-		}
+		// function removeItem(id)
+		// {
+		// 	var id = id;
+		// 	alert(id);
+		// 	$.ajax({
+		// 		url: '{{URL::to('/remove-item')}}',
+		// 		methed:"GET",
+		// 		data:{id:id},
+		// 		success:function(data)
+		// 		{
+		// 			alert('Xóa sản phẩm trong giỏ hàng thành công');
+		// 		},
+		// 		error:function(data)
+		// 		{
+		// 			alert('hi');
+		// 		}
+		// 	});
+		// }
 
 		$(document).ready(function(){
+			$(".delete-button").click( function(){
+				$(this).parent().parent().remove();
+				var ItemId = $(this).attr('id');
+				$.ajax({
+					url: '{{URL::to('/remove-item')}}',
+					methed:"GET",
+					data:{id:ItemId },
+					success:function(data)
+					{
+						swal({
+								title: "Thông báo",
+								text: "Đã xóa sản phẩm khỏi giỏ hàng!",
+								icon: "success",
+								buttons: true,
+							})
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}
+				});
+			}),
+
 			$('.add-to-cart-a-tag').click( function()
 			{
 				var productId = $(this).parent().find('input').val();
