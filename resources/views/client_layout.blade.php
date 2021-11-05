@@ -289,25 +289,10 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script  type="text/javascript">
-		// function removeItem(id)
-		// {
-		// 	var id = id;
-		// 	alert(id);
-		// 	$.ajax({
-		// 		url: '{{URL::to('/remove-item')}}',
-		// 		methed:"GET",
-		// 		data:{id:id},
-		// 		success:function(data)
-		// 		{
-		// 			alert('Xóa sản phẩm trong giỏ hàng thành công');
-		// 		},
-		// 		error:function(data)
-		// 		{
-		// 			alert('hi');
-		// 		}
-		// 	});
-		// }
-
+		function numberWithCommas(x) // Hàm để format tiền
+		{
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+		}
 
 		$(document).ready(function(){
 			$(".delete-button").click( function(){
@@ -350,9 +335,37 @@
 					}
 				});
 				var $parent = $(this).parents('tr');
-				var $soluong = $(this).val();
-                var $dongia = $parent.find('.price').attr('data-value');
-				$parent.find('.thanh-tien').text($soluong * $dongia);
+				var soluong = $(this).val();
+                var dongia = $parent.find('.price').attr('data-value');
+				 //var thanhtien = "\{\{number_format(" + soluong * dongia + ").' đ'\}\}";
+				 var thanhtien = numberWithCommas(soluong * dongia) +' đ';
+				//var thanhtien = "\<\?php echo" + soluong * dongia + "\?\>";
+				//"\<\?php echo '"+ soluong * dongia +"' \?\>"
+				$parent.find('.thanh-tien').html(thanhtien);
+			}),
+
+			$("button[data-type='plus'], button[data-type='minus']").click( function()
+			{
+				var $parent = $(this).parents('tr');
+				
+				var newQuantity = $parent.find('.input-number').val();
+				var rowId = $parent.find('.input-number').attr('id');
+				$.ajax({
+					url: '{{URL::to('/update-quantity')}}',
+					methed:"GET",
+					data:{rowId: rowId, newQuantity: newQuantity},
+					success:function(data)
+					{
+						alert('Thành công');
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}
+				});
+                var dongia = $parent.find('.price').attr('data-value');
+				var thanhtien = numberWithCommas(newQuantity * dongia) +' đ';
+				$parent.find('.thanh-tien').html(thanhtien);
 			}),
 
 			$('.add-to-cart-a-tag').click( function()
@@ -430,13 +443,13 @@
     <script type="text/javascript" src="{{asset('public/client/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('public/client/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
-<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
     <!-- Custom scripts-->
     <script type="text/javascript" src="{{asset('public/client/js/main.js')}}"></script>
 </body>
