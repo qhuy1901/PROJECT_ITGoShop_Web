@@ -111,7 +111,6 @@
 												<tr>
 													<th>Mã danh mục sản phẩm</th>
 													<th>Tên danh mục sản phẩm</th>
-													<th>Mô tả danh mục sản phẩm</th>
 													<th>Hiển thị</th>
 													<th>Hành động</th>
 
@@ -119,11 +118,10 @@
 											</thead>
 											<tfoot>
 												<tr>
-													<th>Name</th>
-													<th>Position</th>
-													<th>Office</th>
-													<th>Age</th>
-													<th>Salary</th>
+													<th>Mã danh mục sản phẩm</th>
+													<th>Tên danh mục sản phẩm</th>
+													<th>Hiển thị</th>
+													<th>Hành động</th>
 												</tr>
 											</tfoot>
 											<tbody>
@@ -131,7 +129,6 @@
 												<tr>
 													<td>{{$pro_category->CategoryId}}</td>
 													<td>{{$pro_category->CategoryName}}</td>
-													<td>{{$pro_category->Description}}</td>
 													<td>
 														<?php
 															if($pro_category->Status == 1){
