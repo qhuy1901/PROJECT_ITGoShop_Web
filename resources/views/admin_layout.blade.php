@@ -204,8 +204,7 @@
 							</a>
 							<div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
 								<div class="quick-actions-header">
-									<span class="title mb-1">Quick Actions</span>
-									<span class="subtitle op-8">Shortcuts</span>
+									<span class="title mb-1">Lối tắt</span>
 								</div>
 								<div class="quick-actions-scroll scrollbar-outer">
 									<div class="quick-actions-items">
@@ -219,33 +218,28 @@
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
 													<i class="flaticon-database"></i>
-													<span class="text">Create New Database</span>
+													<span class="text">Thêm danh mục sản phẩm mới</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
 													<i class="flaticon-pen"></i>
-													<span class="text">Create New Post</span>
+													<span class="text">Thêm thương hiệu mới</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
 													<i class="flaticon-interface-1"></i>
-													<span class="text">Create New Task</span>
+													<span class="text">Thêm sản phẩm mới</span>
 												</div>
 											</a>
 											<a class="col-6 col-md-4 p-0" href="#">
 												<div class="quick-actions-item">
 													<i class="flaticon-list"></i>
-													<span class="text">Completed Tasks</span>
+													<span class="text">Thêm bài viết mới</span>
 												</div>
 											</a>
-											<a class="col-6 col-md-4 p-0" href="#">
-												<div class="quick-actions-item">
-													<i class="flaticon-file"></i>
-													<span class="text">Create New Invoice</span>
-												</div>
-											</a>
+											
 										</div>
 									</div>
 								</div>
