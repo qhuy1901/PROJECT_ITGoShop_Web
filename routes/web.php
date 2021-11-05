@@ -116,3 +116,8 @@ Route::get('/order_status','App\Http\Controllers\OrderController@order_status');
 Route::post('/update-order','App\Http\Controllers\OrderController@update_order');
 
 Route::get('/order-detail', 'App\Http\Controllers\OrderController@order_detail');
+
+//Profile (Admin)
+Route::get('/ad_profile/{UserId}','App\Http\Controllers\AdminProfileController@profile');
+
+Route::post('/ad_profile/{UserId}','App\Http\Controllers\AdminProfileController@update_profile');

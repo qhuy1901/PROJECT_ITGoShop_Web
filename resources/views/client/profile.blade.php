@@ -24,24 +24,28 @@
 					<div class="row">
 						<div class="col-lg-12 col-12">
 							<div class="form-main">
-								<div class="title">
-                                    <h3>Thông tin tài khoản</h3>
-								</div>
 								<form class="form" method="post" id="formUpdateInfo">
-								{{ csrf_field() }}
-    							{{ method_field('patch') }}
+									<div class="title">
+										<h3>Thông tin tài khoản</h3>
+									</div>
 									<div class="row">
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
-												<label>tên</label>
-												<input name="name" type="text" placeholder="" value="{{ $user->FirstName }}">
+												<label>Họ</label>
+												<input name="name" type="text" placeholder="" >
+											</div>
+										</div>
+										<div class="col-lg-6 col-12">
+											<div class="form-group">
+												<label>Tên</label>
+												<input name="name" type="text" placeholder="" >
 											</div>
 										</div>
 										
 										<div class="col-lg-6 col-12">
 											<div class="form-group">
 												<label>Email</label>
-												<input name="email" type="email" placeholder="" value="{{ $user->Email }}">
+												<input name="email" type="email" placeholder="" >
 											</div>	
 										</div>
 										<div class="col-lg-6 col-12">
@@ -56,6 +60,7 @@
 												<button type="submit" class="btn ">Cập nhật</button>
 											</div>
 										</div>
+										
 									</div>
 								</form>
 							</div>

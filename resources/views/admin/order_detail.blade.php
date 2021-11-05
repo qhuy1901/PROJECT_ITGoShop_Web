@@ -1,6 +1,10 @@
 
 @extends('admin_layout')
 @section('admin_content')
+@foreach($order_detail  as $key => $order)
+    <?php
+      $Sum = 0;
+    ?>
     <div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
@@ -31,14 +35,15 @@
 							<div class="card">
 								<div class="card-header">
                   <div class="row align-items-center">
+                    {{csrf_field()}}
                     <div class="col-lg-6 col-md-6">
                       <span>
-                        <i class="fas fa-calendar-alt"></i> <b>Wed, Aug 13, 2020, 4:34PM</b>  
+                        <i class="fas fa-calendar-alt"></i> <b>{{$order->OrderDate}}</b>  
                       </span> <br>
-                      <small class="text-muted">Mã đơn hàng: 3453012</small>
+                      <small class="text-muted">Mã đơn hàng: {{$order->OrderId}}</small>
                     </div>
                     <div class="col-lg-6 col-md-6 ms-auto text-md-end" >
-                      <a  class=" d-inline-block"  style="max-width: 200px; line-height: 1.5; border: 1px solid black; padding: 0.5rem  0.75rem ; border-radius: 0.25rem; " > Pending    </a>
+                      <a  class=" d-inline-block"  style="max-width: 200px; line-height: 1.5; border: 1px solid black; padding: 0.5rem  0.75rem ; border-radius: 0.25rem; " > {{$order->Status}}    </a>
                     </div>
                   </div>
                 </header>
@@ -49,22 +54,20 @@
                           <div class="box shadow-sm bg-light">
                               <h5>Thông tin khách hàng</h5> 
                                       <p>
-                                        John Alexander <br> alex@example.com <br> +998 99 22123456
+                                      {{$order->FullName}} <br> {{$order->Email}} <br> {{$order->PhoneNumber}}
                                       </p>
                           </div>
                           
                           <div class="box shadow-sm bg-light">
                                 <h5>Địa chỉ giao hàng</h5> 
                                 <p>
-                                            City: Tashkent, Uzbekistan <br>Block A, House 123, Floor 2 <br> Po Box 10000
+                                  {{$order->	SpecificAddress}} <br>{{$order->	District}} ,  {{$order->	Provine}} 
                                 </p>
                           </div>
                           <div class="box shadow-sm bg-light">
                             <h5>Thông tin thanh toán</h5>
                             <p> 
-                              Master Card **** **** 4768  <br>
-                              Business name: Grand Market LLC <br>
-                              Phone: +1 (800) 555-154-52
+                              Hình thức thanh toán: {{$order->	PaymentMethod}}
                             </p>
                           </div>
                         </div> 
@@ -80,38 +83,49 @@
                           </tr>
                         </thead>
                         <tbody>
-                          
                           <tr>
-                            <td>
-                              <a class="itemside" href="https://www.ecommerce-admin.com/demo/page-orders-detail.html#">
-                                  <div class="left">
-                                      <img src="./Sample title - Ecommerce admin dashboard template_files/2.jpg" width="40" height="40" class="img-xs" alt="Item">
-                                  </div>
-                                  <div class="info">  Winter jacket for men  </div>
-                              </a>
-                            </td>
-                            <td> $7.50 </td>
-                            <td> 2 </td>
-                            <td style="text-align: right !important;">  $15.00  </td>
+                            @foreach($order_list as $key => $orderdetail)
+                              @if($orderdetail->OrderId == $order->OrderId)
+                                <td>
+                                  <a style="position: relative; display: flex;  width: 100%; align-items: center;" class="itemside" >
+                                      <div class="left">
+                                          <img src="{{URL::to('public/images_upload/product/'.$orderdetail->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item">
+                                      </div>
+                                      <div style="padding-left: 15px; padding-right: 7px;" class="info" >  {{$orderdetail->	ProductName}}  </div>
+                                  </a>
+                                </td>
+                                <td> {{number_format($orderdetail->Price).' '.'₫'}} </td>
+                                <td> {{$orderdetail->OrderQuantity}} </td>
+                                <?php
+
+                                  $Thanhtien = $orderdetail->OrderQuantity * $orderdetail->Price;
+                                  $Sum = $Sum + $Thanhtien;
+                                ?>
+                                <td style="text-align: right !important;"> {{number_format($Thanhtien).' '.'₫'}}  </td>
+                            @endif
+                          @endforeach
                           </tr>
-                          
+                          <?php
+
+                          $SumO = $Sum + $order->Ship;
+                          ?>
                           
                           <tr>
                             <td colspan="4"> 
                                 <article style="float: right !important; " class="float-end ">
                                   <dl style="display: flex;" class="dlist"> 
-                                      <dt style="width: 150px; font-weight: normal;">Tổng cộng:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;">$973.35</dd> 
+                                      <dt style="width: 150px; font-weight: normal;">Tổng cộng:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;">{{number_format($Sum).' '.'₫'}}</dd> 
                                     </dl>
                                     <dl style="display: flex;" class="dlist"> 
-                                      <dt style="width: 150px; font-weight: normal;">Phí vận chuyển:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;">$10.00</dd> 
+                                      <dt style="width: 150px; font-weight: normal;">Phí vận chuyển:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;">{{number_format($order->	Ship).' '.'₫'}}</dd> 
                                     </dl>
                                     <dl style="display: flex;" class="dlist"> 
-                                      <dt style="width: 150px; font-weight: normal;">Tổng đơn hàng:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;"> <b class="h5">$983.00</b> </dd> 
+                                      <dt style="width: 150px; font-weight: normal;">Tổng đơn hàng:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;"> <b class="h5">{{number_format($SumO).' '.'₫'}}</b> </dd> 
                                     </dl>
                                     <dl style="display: flex;" class="dlist"> 
                                       <dt style="width: 150px; font-weight: normal;" class="text-muted">Trạng thái:</dt> 
                                       <dd>  
-                                        <span style="color: #006d0e; background-color: #ccf0d1; border-color: #b3e9b9;"  class="badge rounded-pill  text-order">Payment done</span> 
+                                        <span style="color: #006d0e; background-color: #ccf0d1; border-color: #b3e9b9;"  class="badge rounded-pill  text-order">{{$order->PaymentStatus}} </span> 
                                       </dd> 
                                     </dl>
                                 </article>
@@ -130,6 +144,6 @@
         </div>
       </div>
     </div>
-
+    @endforeach
 									
 @endsection

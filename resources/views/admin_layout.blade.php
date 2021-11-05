@@ -251,20 +251,24 @@
 									<img src="./public/admin/images/profile.jpg" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
+							
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
 											<div class="avatar-lg"><img src="./public/admin/images/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<?php
+												$userId = Session::get('UserId');
+											?>
 											<div class="u-text">
 												<h4>Tạ Quang Huy</h4>
-												<p class="text-muted">admin1@gmail.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<p class="text-muted">admin1@gmail.com</p><a href="{{URL::to('/ad_profile/'.$userId)}}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">My Profile</a>
+										<a class="dropdown-item" href="{{URL::to('/ad_profile')}}">My Profile</a>
 										<a class="dropdown-item" href="#">My Balance</a>
 										<a class="dropdown-item" href="#">Inbox</a>
 										<div class="dropdown-divider"></div>
@@ -301,40 +305,18 @@
 										}
 									?>
 									<!-- Hizrian -->
-									<span class="user-level">Administrator</span>
-									<span class="caret"></span>
+									<span class="user-level">Quản trị viên</span>
 								</span>
 							</a>
 							<div class="clearfix"></div>
-
-							<div class="collapse in" id="collapseExample">
-								<ul class="nav">
-									<li>
-										<a href="#profile">
-											<span class="link-collapse">My Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#edit">
-											<span class="link-collapse">Edit Profile</span>
-										</a>
-									</li>
-									<li>
-										<a href="#settings">
-											<span class="link-collapse">Settings</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</div>
 					</div>
 					<ul class="nav nav-primary">
 						<li class="nav-item active">
-							<a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-							<i class="fas fa-home"></i>
-								<p>Dashboard</p>
-								<span class="caret"></span>
-							</a>
+								<a href="{{URL::to('/dashboard')}}">
+									<i class="fas fa-home"></i>
+									<p>Dashboard</p>
+								</a>
 							<div class="collapse" id="dashboard">
 								<ul class="nav nav-collapse">
 									<li>
@@ -354,7 +336,6 @@
 							<span class="sidebar-mini-icon">
 								<i class="fa fa-ellipsis-h"></i>
 							</span>
-							<h4 class="text-section">Components</h4>
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#base">
@@ -421,20 +402,10 @@
 							</div>
 						</li>
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#tables">
+							<a href="{{URL::to('/all_order')}}">
 								<i class="fa fa-shopping-cart"></i>
 								<p>Quản lý đơn hàng</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="tables">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="{{URL::to('/all_order')}}">
-											<span class="sub-item">Tất cả</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+							</a>							
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#charts">
@@ -573,9 +544,7 @@
 								</ul>
 							</div>
 						</li>
-						<li class="mx-4 mt-2">
-							<a href="http://themekita.com/atlantis-bootstrap-dashboard.html" class="btn btn-primary btn-block"><span class="btn-label mr-2"> <i class="fa fa-heart"></i> </span>Buy Pro</a> 
-						</li>
+						
 					</ul>
 				</div>
 			</div>

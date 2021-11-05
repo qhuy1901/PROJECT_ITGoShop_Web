@@ -57,9 +57,18 @@ class OrderController extends Controller
     public function order_detail()
     {
         $this->auth_login();
-
-        // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        return view('admin.order_detail');
+        $order_list = DB::table('orderdetail')
+        ->join('product','product.ProductId','=','orderdetail.ProductId')
+        ->select('orderdetail.*','product.*')
+        ->orderby('orderdetail.OrderDetailId', 'desc')->get();
+        $order_detail = DB::table('order')
+        ->join('customer','customer.CustomerId','=','order.CustomerId')
+        ->select('order.*', 'customer.*')
+        ->orderby('order.OrderId', 'desc')->get();
+        $manager_order = view('admin.order_detail')
+        ->with('order_list',$order_list)
+        ->with('order_detail', $order_detail);
+        return view('admin_layout')->with('admin.order_detail', $manager_order);
     }
 
     
