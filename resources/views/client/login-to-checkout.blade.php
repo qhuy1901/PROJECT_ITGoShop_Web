@@ -25,7 +25,7 @@
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-        <form action="{{URL::to('/home')}}" method="post" class="signin-form">
+        <form action="{{URL::to('/checkout-after-login')}}" method="post" class="signin-form">
 			{{csrf_field()}}
 			<div class="logo">
 				<a href="index.html"><img src="{{('public/client/images/logo.png')}}" alt="logo"></a>

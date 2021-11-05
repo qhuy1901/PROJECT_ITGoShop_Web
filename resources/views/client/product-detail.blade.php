@@ -55,6 +55,9 @@
 									<div class="content">
 										<!-- Nội dung sản phẩm -->
 										<div class="blog-meta">
+											@if($product->Quantity < 10)
+												<p>Chỉ còn lại {{$product->Quantity}} sản phẩm</p>
+											@endif
 											<p>{!!$product->Content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
 										</div>
 											<!-- End Nội dung sản phẩm -->

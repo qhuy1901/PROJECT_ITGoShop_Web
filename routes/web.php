@@ -80,10 +80,13 @@ Route::get('/remove-from-cart/{rowId}','App\Http\Controllers\CartController@remo
 Route::get('/add-to-cart','App\Http\Controllers\CartController@add_to_cart');
 Route::get('/update-quantity','App\Http\Controllers\CartController@update_quantity');
 
+
 //Route::get('', [CartController::class,'save_cart'])
 
 // Checkout
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
+Route::post('/checkout-after-login','App\Http\Controllers\CheckoutController@checkout_after_login');
+Route::get('/login-to-checkout','App\Http\Controllers\CheckoutController@login_to_checkout');
 
 //Profile
 Route::get('/profile','App\Http\Controllers\ProfileController@profile');
