@@ -316,6 +316,15 @@
 						alert('Lỗi');
 					}
 				});
+
+				// Tính lại tổng tiền
+				var sum = 0;
+                $('.thanh-tien').each(function() {
+                    sum += Number($(this).attr("data-value"));
+                });
+				sum = numberWithCommas(sum);
+				$("#tam-tinh").text(sum + ' ₫');
+				$("#tong-cong").text(sum + ' ₫');
 			}),
 
 			$(".input-number").on('input', function(){
@@ -394,7 +403,7 @@
 								title: "Thông báo",
 								text: "Đã thêm sản phẩm vào giỏ hàng!",
 								icon: "success",
-								buttons: ["Xem tiếp", "Đi đến giỏ hàng"],
+								buttons: ["Tiếp tục mua hàng", "Xem giỏ hàng"],
 							}).then(function(isConfirm) {
 								if (isConfirm) {
 										window.location = "{{url('/show-cart')}}";

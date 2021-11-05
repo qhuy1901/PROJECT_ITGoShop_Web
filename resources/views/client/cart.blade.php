@@ -55,7 +55,7 @@
 									<td class="product-des" data-title="Description">
 										<p class="product-name"><a href="{{URL::to('/product-detail/'.$item->id)}}">{{$item->name}}</a></p>
 									</td>
-									<td class="price" data-title="Price" data-value="{{$item->price}}" ><span>{{number_format($item->price).' ₫'}}</span></td>
+									<td class="price" data-title="Price" data-value="{{$item->price}}" ><span>{{number_format($item->price, 0, " ", ".").' ₫'}}</span></td>
 									<td class="qty" data-title="Qty"><!-- Input Order -->
 										<div class="input-group">
 											<div class="button minus">
@@ -77,7 +77,7 @@
 									<td class="total-amount" data-title="Total">
 										<?php $subtotal = $item->price * $item->qty; ?>
 										<span class="thanh-tien" data-value="{{$subtotal}}">
-											<?php echo number_format($subtotal).' ₫'; ?>
+											<?php echo number_format($subtotal, 0, " ", ".").' ₫'; ?>
 										</span>
 									</td> 
 
@@ -98,25 +98,32 @@
 				</div>
 
 				<div class="col-6 col-lg-3">
-                    <div style="padding: 20px; background-color: white; width: 280px;">
-                        <ul>
-                            <li style="margin-bottom: 3px;"><b>Giao tới</b><span style="float:right;"><a href="#">Thay đổi</a></span></li>
-                            <li style="font-size: 16px; margin: 3px 0px;"><b>Tạ Quang Huy</b>  |  <b>0365990290</b></li>
-                            <li><p>220/17 khu phố 9 phường Tam Hiệp thành phố Biên Hòa tỉnh Đồng Nai</p></li>
-                        </ul>
-                    </div>
+					<?php $CustomerId = Session::get('CustomerId'); ?>
+					@if($CustomerId)
+						<div style="padding: 20px; background-color: white; width: 280px;">
+							<ul>
+								<li style="margin-bottom: 3px;"><b>Giao tới</b><span style="float:right;"><a href="#">Thay đổi</a></span></li>
+								<li style="font-size: 16px; margin: 3px 0px;"><b>Tạ Quang Huy</b>  |  <b>0365990290</b></li>
+								<li><p>220/17 khu phố 9 phường Tam Hiệp thành phố Biên Hòa tỉnh Đồng Nai</p></li>
+							</ul>
+						</div>
+					@endif
 
                     <div class="total-amount">
-                        <div class="right" style="padding: 20px; width: 280px; background-color: white; position: absolute;">
+                        <div class="right" style="padding: 20px; width: 280px; background-color: white; position: absolute; top:0px">
                             <ul>
-								<li>Tạm tính<span id="tam-tinh">{{(Cart::subtotal(0, ',', '.')).' ₫'}}</span></li> <!-- Không cần number format ở đây vì Cart đã hỗ trợ-->
-								<!-- <li>Thuế VAT<span>{{(Cart::tax(0, ',', '.')).' ₫'}}</span></li> -->
+								<li>Tạm tính<span id="tam-tinh">{{(Cart::subtotal(0, ',', '.')).' ₫'}}</span></li> 
+								
 								<li>Giảm giá<span>0 ₫</span></li>
 								<li class="last">Tổng cộng<span id="tong-cong">{{(Cart::total(0, ',', '.')).' ₫'}}</span></li>
                             </ul>
                             <div class="button5">
-								<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>
-								<a href="#" class="btn">Continue shopping</a>
+								@if($CustomerId)
+									<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>
+								@else
+									<a href="{{URL::to('/login-to-checkout')}}" class="btn">Thanh Toán</a>
+								@endif
+								<a href="{{URL::to('/')}}" class="btn">Tiếp tục mua hàng</a>
                             </div>
                         </div>
                     </div>
