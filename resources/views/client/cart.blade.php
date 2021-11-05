@@ -53,9 +53,9 @@
 								<tr>
 									<td class="image" data-title="No" style="width: 60px; height: 60px;"><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->options->image)}}" alt="#"></td>
 									<td class="product-des" data-title="Description">
-										<p class="product-name"><a href="#">{{$item->name}}</a></p>
+										<p class="product-name"><a href="{{URL::to('/product-detail/'.$item->id)}}">{{$item->name}}</a></p>
 									</td>
-									<td class="price" data-title="Price" data-value="{{$item->price}}" ><span>{{number_format($item->price).' đ'}}</span></td>
+									<td class="price" data-title="Price" data-value="{{$item->price}}" ><span>{{number_format($item->price).' ₫'}}</span></td>
 									<td class="qty" data-title="Qty"><!-- Input Order -->
 										<div class="input-group">
 											<div class="button minus">
@@ -75,11 +75,9 @@
 									
 
 									<td class="total-amount" data-title="Total">
-										<span class="thanh-tien">
-											<?php
-												$subtotal = $item->price * $item->qty;
-												echo number_format($subtotal).' đ';
-											?>
+										<?php $subtotal = $item->price * $item->qty; ?>
+										<span class="thanh-tien" data-value="{{$subtotal}}">
+											<?php echo number_format($subtotal).' ₫'; ?>
 										</span>
 									</td> 
 
@@ -111,10 +109,10 @@
                     <div class="total-amount">
                         <div class="right" style="padding: 20px; width: 280px; background-color: white; position: absolute;">
                             <ul>
-								<li>Tổng<span>{{(Cart::subtotal(0, ',', '.')).' đ'}}</span></li> <!-- Không cần number format ở đây vì Cart đã hỗ trợ-->
-								<li>Thuế VAT<span>{{(Cart::tax(0, ',', '.')).' đ'}}</span></li>
-								<li>Phí vận chuyển<span>Miễn phí</span></li>
-								<li class="last">Thành tiền<span>{{(Cart::total(0, ',', '.')).' đ'}}</span></li>
+								<li>Tạm tính<span id="tam-tinh">{{(Cart::subtotal(0, ',', '.')).' ₫'}}</span></li> <!-- Không cần number format ở đây vì Cart đã hỗ trợ-->
+								<!-- <li>Thuế VAT<span>{{(Cart::tax(0, ',', '.')).' ₫'}}</span></li> -->
+								<li>Giảm giá<span>0 ₫</span></li>
+								<li class="last">Tổng cộng<span id="tong-cong">{{(Cart::total(0, ',', '.')).' ₫'}}</span></li>
                             </ul>
                             <div class="button5">
 								<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>

@@ -325,10 +325,10 @@
 					url: '{{URL::to('/update-quantity')}}',
 					methed:"GET",
 					data:{rowId: rowId, newQuantity: newQuantity},
-					success:function(data)
-					{
-						alert('Thành công');
-					},
+					// success:function(data)
+					// {
+					// 	alert('Thành công');
+					// },
 					error:function(data)
 					{
 						alert('Lỗi');
@@ -354,19 +354,32 @@
 					url: '{{URL::to('/update-quantity')}}',
 					methed:"GET",
 					data:{rowId: rowId, newQuantity: newQuantity},
-					success:function(data)
-					{
-						alert('Thành công');
-					},
+					// success:function(data)
+					// {
+					// 	alert('Thành công');
+					// },
 					error:function(data)
 					{
 						alert('Lỗi');
 					}
 				});
                 var dongia = $parent.find('.price').attr('data-value');
-				var thanhtien = numberWithCommas(newQuantity * dongia) +' đ';
+				var thanhtien = numberWithCommas(newQuantity * dongia) +' ₫';
+				$parent.find('.thanh-tien').attr("data-value", newQuantity * dongia);
 				$parent.find('.thanh-tien').html(thanhtien);
+				
 			}),
+
+			$('body').on('DOMSubtreeModified', '.thanh-tien', function(){
+                var sum = 0;
+                $('.thanh-tien').each(function() {
+					//alert($(this).text().replace(' ₫', '').replace('.', ''));
+                    sum += Number($(this).attr("data-value"));
+                });
+				sum = numberWithCommas(sum);
+				$("#tam-tinh").text(sum + ' ₫');
+				$("#tong-cong").text(sum + ' ₫');
+            }),
 
 			$('.add-to-cart-a-tag').click( function()
 			{
