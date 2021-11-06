@@ -33,7 +33,7 @@
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
-								<th>Hình ảnh</th>
+								<th> </th>
 								<th>Tên sản phẩm</th>
 								<th class="text-center">Đơn giá</th>
 								<th class="text-center">Số lượng</th>
