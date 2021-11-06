@@ -42,7 +42,7 @@ class CartController extends Controller
         $data['options']['image'] = $product_info->ProductImage;
         Cart::add($data);
         //Cart::setTax(rowId, 12) // Set thuế cho từng sản phẩm, số 12 có thể là 1 biến
-        Cart::setGlobalTax(10); // Set cho tất cả sản phẩm
+        Cart::setGlobalTax(0); // Set cho tất cả sản phẩm
 
         return Redirect::to('/show-cart');
     }
