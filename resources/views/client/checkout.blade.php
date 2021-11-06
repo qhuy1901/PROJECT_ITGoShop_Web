@@ -6,8 +6,8 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="{{URL::to('/')}}"">Trang chủ<i class="ti-arrow-right"></i></a></li>
-								<li><a href="{{URL::to('/show-cart')}}"">Giỏ hàng<i class="ti-arrow-right"></i></a></li>
+								<li><a href="{{URL::to('/')}}">Trang chủ<i class="ti-arrow-right"></i></a></li>
+								<li><a href="{{URL::to('/show-cart')}}">Giỏ hàng<i class="ti-arrow-right"></i></a></li>
 								<li class="active"><a href="{{URL::to('/checkout')}}">Thanh toán</a></li>
 							</ul>
 						</div>
