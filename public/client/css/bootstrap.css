@@ -2121,7 +2121,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 .form-check {
     position: relative;
     display: block;
-    margin-bottom: .5rem
+    margin-bottom: 1rem
 }
 
 .form-check.disabled .form-check-label {

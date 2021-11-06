@@ -16,9 +16,9 @@
 		</div>
 <section>
 			<div class="container">
-				<div class ="row" style="margin: 20px 0px 0px 0px;">
+				<div class ="col-lg-12" style="margin: 20px 0px 0px 0px; padding-right: 0px;padding-left: 0px;">
 					<div class="panel panel-default">
-						<div class="panel-body" style=" background-color: #77ACF1; color:white">
+						<div class="panel-body" style=" background-color: #77ACF1; color:white ; font-size: 14px;">
 							Do ảnh hưởng của dịch Covid-19, một số khu vực có thể nhận hàng chậm hơn dự kiến. <br> 
 							ITGoShop đang nỗ lực giao các đơn hàng trong thời gian sớm nhất. Cám ơn sự thông cảm của quý khách!
 						</div>
@@ -28,10 +28,10 @@
 				<div class ="row">
 					<div class="col-lg-8">
 						<div class="panel panel-default">
-							<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"></i>Thông tin đơn hàng</h4></div>
+							<div class="panel-heading" style="background-color: #77ACF1; "><h4 style="color: white;"></i>Thông tin đơn hàng</h4></div>
 							<div class="panel-body">
 								<table>
-									<thead>
+									<thead style="font-size: 16px;">
 										<tr>
 											<th><b>Sản phẩm</b></th>
 											<th><b>Đơn giá</b></th>
@@ -41,7 +41,7 @@
 									</thead>
 									
 									<tbody>
-										<tr>
+										<tr style="font-size: 14px;">
 											<td>
 												Dell Latitude 3520 Intel (Chính hãng)
 											</td>
@@ -62,16 +62,24 @@
 						</div>
 						<div class="panel panel-default">
 							<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"></i>Chọn hình thức thanh toán</h4></div>
-							<div class="panel-body">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" style="width: 18px; height: 18px;" checked> <img src="Images/thanh-toan-khi-nhan-hang.PNG" alt=""> Thanh toán tiền mặt khi nhận hàng
-								  </div>
-								  <div class="form-check">
-									<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" style="width: 18px; height: 18px;"> <img src="Images/thanh-toan-zalopay.PNG" alt="">Thanh toán bằng ví ZaloPay
+								<div class="panel-body" style="font-size: 14px;">
+									<div class="form-group cheque">
+										<div class="ps-radio">
+										<input class="form-control" type="radio" id="rdo01" name="payment" checked>
+										<label for="rdo01"><img src="./client/Images/payment/1.png" alt="">Thanh toán khi giao hàng</label>
+										</div>
+									</div>
+									<div class="form-group paypal">
+										<div class="ps-radio ps-radio--inline">
+										<input class="form-control" type="radio" name="payment" id="rdo02">
+										<label for="rdo02"><img src="./client/Images/payment/1.png" alt="">Thanh toán bằng thẻ</label>
+										</div>
+										
+										
+									</div>
 								</div>
 							</div>
-						</div>
-						<button type="button" class="btn btn-primary btn-lg" style="width:320px;font-size:20px">ĐẶT MUA</button>
+						<button type="button" class="btn btn-primary btn-lg" style="width:320px;font-size:20px; background-color: #000; ">ĐẶT MUA</button>
 						<p style="margin: 7px 0px;"><i>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</i></p>
 					</div>
 
