@@ -66,13 +66,13 @@
 									<div class="form-group cheque">
 										<div class="ps-radio">
 										<input class="form-control" type="radio" id="rdo01" name="payment" checked>
-										<label for="rdo01"><img src="./client/Images/payment/1.png" alt="">Thanh toán khi giao hàng</label>
+										<label for="rdo01"><img src="./client/Images/payment/1.png" alt="#">Thanh toán khi giao hàng</label>
 										</div>
 									</div>
 									<div class="form-group paypal">
 										<div class="ps-radio ps-radio--inline">
 										<input class="form-control" type="radio" name="payment" id="rdo02">
-										<label for="rdo02"><img src="./client/Images/payment/1.png" alt="">Thanh toán bằng thẻ</label>
+										<label for="rdo02"><img src="./client/Images/payment/1.png" alt="#">Thanh toán bằng thẻ</label>
 										</div>
 										
 										
@@ -86,7 +86,7 @@
 					<div class="col-lg-4">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<button type="button" style="float:right; padding: 6px; background-color: white;">Sửa</button>
+								<button type="button" style="float:right; padding: 6px; background-color: white;"><a href="{{URL::to('/show-shipping-address')}}">Sửa</a></button>
 								<h5><i class="fa fa-map-marker" aria-hidden="true" ></i>  Địa chỉ giao hàng </h5>
 								<hr>
 								<p><b>Tạ Quang Huy</b></p>

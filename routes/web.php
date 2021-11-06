@@ -87,6 +87,7 @@ Route::get('/update-quantity','App\Http\Controllers\CartController@update_quanti
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
 Route::post('/checkout-after-login','App\Http\Controllers\CheckoutController@checkout_after_login');
 Route::get('/login-to-checkout','App\Http\Controllers\CheckoutController@login_to_checkout');
+Route::get('/show-shipping-address','App\Http\Controllers\CheckoutController@show_shipping_address');
 
 //Profile
 Route::get('/profile','App\Http\Controllers\ProfileController@profile');

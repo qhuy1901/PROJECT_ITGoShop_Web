@@ -58,4 +58,15 @@ class CheckoutController extends Controller
     {
         return View('client.login-to-checkout');
     }
+
+    public function show_shipping_address()
+    {
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+        return View('client.shipping-address')
+        ->with('sub_brand_list',  $sub_brand_list )
+            ->with('main_brand_list', $main_brand_list)
+            ->with('product_category_list', $product_category_list);
+    }
 }
