@@ -15,19 +15,19 @@
 					</div>
 				</div>
 			</div>
-		</div>
+</div>
 <section>
 	<div class="container">
-		<div class ="row" style="margin: 20px 0px 0px 0px;">
-			<div class="panel panel-default">
+		<div class ="col-lg-12" >
+			<div class="panel panel-default" style="margin: 20px 0px 0px 0px;">
 				<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"></i>Địa chỉ giao hàng</h4></div>
 				<div class="panel-body">
 					<p style="padding-bottom: 10px;">Chọn địa chỉ giao hàng có sẵn bên dưới:</p>
 					
 					<div class="panel panel-default">
-						<div class="panel-body" style="border: 1px dashed;">
+						<div class="panel-body" style="border: 1px dashed; font-size: 14px">
 							<p style="float:right; color: red;"><i>Mặc đinh</i></p>
-							<h5 style="line-height: 1.8;">Tạ Quang Huy</h5>
+							<h5 style="line-height: 1.8; ">Tạ Quang Huy</h5>
 							<p>Địa chỉ: 220/17A Khu phố 9, Phường Tam Hiệp, Thành phố Biên Hòa, Đồng Nai Việt Nam</p>
 							<p>Điện thoại: 0365990290</p>
 							<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="margin-top: 4px;">
@@ -46,8 +46,7 @@
 					</div>
 
 					<div class="panel panel-default">
-						<div class="panel-body">
-							
+						<div class="panel-body" style="font-size: 14px">
 							<h5 style="line-height: 1.8;">Tạ Quang Huy</h5> 
 							<p>Địa chỉ: 220/17A Khu phố 9, Phường Tam Hiệp, Thành phố Biên Hòa, Đồng Nai Việt Nam</p>
 							<p>Điện thoại: 0365990290</p>
@@ -67,7 +66,9 @@
 						</div>
 						
 					</div>
+					
 				</div>
+				
 			</div>
 			<p style="padding: 20px 0px;">Bạn muốn giao hàng đến địa chỉ khác? <a href="javascript:void(0)" class="them-dia-chi-moi" style="color: #77ACF1;">Thêm địa chỉ giao hàng mới</a></p>
 		</div>
