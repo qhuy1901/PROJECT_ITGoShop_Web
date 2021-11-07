@@ -64,9 +64,13 @@
 														<option value="0">Ẩn</option>
 													</select>
 												</div>
+												
+											</div>
+										</div>
+									</div>
 									<div class="card-action">
-										<button type="submit" name="add_product_category" class="btn btn-success">Thêm danh mục sản phẩm</button>
-										<button class="btn btn-danger">Hủy</button>
+													<button type="submit" name="add_product_category" class="btn btn-success">Thêm danh mục sản phẩm</button>
+													<button class="btn btn-danger">Hủy</button>
 									</div>
 								</form>
 							</div>

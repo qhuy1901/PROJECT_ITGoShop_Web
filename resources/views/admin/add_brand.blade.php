@@ -64,6 +64,9 @@
 														<option value="0">Ẩn</option>
 													</select>
 												</div>
+											</div>
+										</div>
+									</div>
 									<div class="card-action">
 										<button type="submit" name="add_brand" class="btn btn-success">Thêm thương hiệu sản phẩm</button>
 										<button class="btn btn-danger">Hủy</button>

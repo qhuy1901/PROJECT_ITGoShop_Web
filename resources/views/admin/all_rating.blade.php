@@ -4,7 +4,7 @@
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Quản lý đơn hàng</h4>
+						<h4 class="page-title">Quản lý nhận xét</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<a href="#">
@@ -15,14 +15,9 @@
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Quản lý đơn hàng</a>
+								<a href="#">Quản lý nhận xét</a>
 							</li>
-							<li class="separator">
-								<i class="flaticon-right-arrow"></i>
-							</li>
-							<li class="nav-item">
-								<a href="#">Chờ xác nhận</a>
-							</li>
+							
 						</ul>
 					</div>
 					
@@ -30,7 +25,7 @@
 						<div class="card">
 							<div class="card-header">
 								<div class="d-flex align-items-center">
-									<h4 class="card-title">Đơn hàng chờ xác nhận</h4>
+									<h4 class="card-title">Tất cả nhận xét</h4>
 								</div>
 							</div>
 							<div class="card-body">
