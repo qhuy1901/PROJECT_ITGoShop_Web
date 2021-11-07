@@ -128,3 +128,4 @@ Route::post('/ad_profile/{UserId}','App\Http\Controllers\AdminProfileController@
 Route::get('/show-shipping-address','App\Http\Controllers\ShippingAddressController@index');
 Route::get('/load-quanhuyen-dropdownbox','App\Http\Controllers\ShippingAddressController@load_quanhuyen_dropdownbox');
 Route::get('/load-xaphuongthitran-dropdownbox','App\Http\Controllers\ShippingAddressController@load_xaphuongthitran_dropdownbox');
+Route::post('/add-first-shipping-address','App\Http\Controllers\ShippingAddressController@add_first_shipping_address');
