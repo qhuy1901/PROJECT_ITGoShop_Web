@@ -48,7 +48,7 @@
 	<!-- Themify Icons -->
 	<link rel="stylesheet" href="{{asset('./public/client/css/themify-icons.css')}}">
 	<!-- Nice Select CSS -->
-	<link rel="stylesheet" href="{{asset('./public/client/css/niceselect.css')}}">
+	<!-- <link rel="stylesheet" href="{{asset('./public/client/css/niceselect.css')}}"> -->
 	<!-- Animate CSS -->
 	<link rel="stylesheet" href="{{asset('./public/client/css/animate.css')}}">
 	<!-- Flex Slider CSS -->
@@ -440,7 +440,7 @@
 	<!-- Countdown JS -->
 	<script src="{{asset('public/client/js/finalcountdown.min.js')}}"></script>
 	<!-- Nice Select JS -->
-	<script src="{{asset('public/client/js/nicesellect.js')}}"></script>
+	<!-- <script src="{{asset('public/client/js/nicesellect.js')}}"></script> -->
 	<!-- Flex Slider JS -->
 	<script src="{{asset('public/client/js/flex-slider.js')}}"></script>
 	<!-- ScrollUp JS -->

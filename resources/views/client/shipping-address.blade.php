@@ -1,5 +1,6 @@
 @extends('client_layout')
 @section('client_content')
+
 <div class="breadcrumbs">
 			<div class="container">
 				<div class="row">
@@ -27,7 +28,7 @@
 					<div class="panel panel-default">
 						<div class="panel-body" style="border: 1px dashed; font-size: 14px">
 							<p style="float:right; color: red;"><i>Mặc đinh</i></p>
-							<h5 style="line-height: 1.8; ">Tạ Quang Huy</h5>
+							<h4 style="line-height: 1.8; "><b>Tạ Quang Huy</b></h4>
 							<p>Địa chỉ: 220/17A Khu phố 9, Phường Tam Hiệp, Thành phố Biên Hòa, Đồng Nai Việt Nam</p>
 							<p>Điện thoại: 0365990290</p>
 							<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="margin-top: 4px;">
@@ -47,7 +48,7 @@
 
 					<div class="panel panel-default">
 						<div class="panel-body" style="font-size: 14px">
-							<h5 style="line-height: 1.8;">Tạ Quang Huy</h5> 
+							<h4 style="line-height: 1.8;"><b>Tạ Quang Huy</b></h4> 
 							<p>Địa chỉ: 220/17A Khu phố 9, Phường Tam Hiệp, Thành phố Biên Hòa, Đồng Nai Việt Nam</p>
 							<p>Điện thoại: 0365990290</p>
 							<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" style="margin-top: 4px;">
@@ -70,19 +71,20 @@
 				</div>
 				
 			</div>
+			
 			<p style="padding: 20px 0px;">Bạn muốn giao hàng đến địa chỉ khác? <a href="javascript:void(0)" class="them-dia-chi-moi" style="color: #77ACF1;">Thêm địa chỉ giao hàng mới</a></p>
 			<div class="panel panel-default" id="form-dia-chi-moi">
 				<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"><b>Thông tin địa chỉ giao hàng</b></h4></div>
-				<div class='panel-body'> 
-					<div class='row'> 
-						<div class='col-sm-5'>
-							<div class='form-group'>
+				<div class="panel-body"> 
+					<div class="row"> 
+						<div class="col-sm-5">
+							<div class="form-group">
 								<p><b>Tên người nhận</b></p>
-								<input type='text' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' placeholder='Nhập tên người nhận'>
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập tên người nhận">
 							</div>
-							<div class='form-group'>
+							<div class="form-group">
 								<p><b>Điện thoại di động</b></p>
-								<input type='text' class='form-control' id='exampleInputEmail1' aria-describedby='emailHelp' placeholder='Nhập số điện thoại'>
+								<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập số điện thoại">
 							</div>
 							<p><i>Để nhận hàng thuận tiện hơn, bạn vui lòng cho ITGoShop biết loại địa chỉ.</i> </p><br>
 							<div class="ps-radio ps-radio--inline">
@@ -95,11 +97,11 @@
 							</div>		
   						</div>
 						
-						<div class='col-sm-7'>
+						<div class="col-sm-7">
 							<div class="row">
 								<div class="col-sm-6">
 									<p><b>Tỉnh/Thành phố</b></p>
-									<select class="form-control" id="select-tinhthanhpho" style="width:100%"> 
+									<select class="form-control" id="select-tinhthanhpho" style="height:35px"> 
 										<option>--- Chọn Tỉnh/Thành phố ---</option>
 										@foreach($all_tinhthanhpho as $key => $tinhthanhpho)
 											<option value="{{$tinhthanhpho->matp}}">{{$tinhthanhpho->name}}</option>
@@ -108,24 +110,24 @@
 								</div>
 								<div class="col-sm-6">
 									<p><b>Quận/Huyện</b></p>
-									<select class='form-control'>
+									<select class="form-control" style="height:35px">
 										<option>--- Chọn Quận/Huyện ---</option>
-										
 									</select>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
-									<p><b>Phường/Xã</b></p>
-									<select class='form-control'>
-										<option>--- Chọn Phường/Xã---</option>
+									<p style="margin-top:13px"><b>Phường/Xã</b></p>
+									<select class="form-control" style="height:35px">
+										<option>--- Chọn Phường/Xã ---</option>
+										<option>--- 2Chọn Phường/Xã ---</option>
 									</select>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
-									<p><b>Địa chỉ</b></p>
-									<textarea class='form-control' id='exampleFormControlTextarea1' rows='2' placeholder='Ví dụ: 14, Nguyễn Thị Minh Khai'></textarea>
+									<p style="margin-top:13px"><b>Địa chỉ</b></p>
+									<textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Ví dụ: 14, Nguyễn Thị Minh Khai"></textarea>
 								</div>
 							</div>
 						</div>
@@ -149,14 +151,18 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#form-dia-chi-moi").slideUp();
+
 		$(".them-dia-chi-moi").click(function(){
 			$("#form-dia-chi-moi").slideDown();
-		}),
+		});
 
-
-		$('body').on('click', '.button-huy-bo', function() {
+		$(".button-huy-bo").click(function(){
 			$("#form-dia-chi-moi").slideUp();
-		}),
+		});
+
+		// $('body').on('click', '.button-huy-bo', function() {
+		// 	$("#form-dia-chi-moi").slideUp();
+		// });
 
 		// $('body').on('change','#select-tinhthanhpho', function () {
 		// 	// var optionSelected = $("option:selected", this);
@@ -165,9 +171,11 @@
 		// });
 		$('#select-tinhthanhpho').change(function(){
 			alert("Hi");
-		})
-	});
+		});
 
-	
+		// $('body').on('change','select', function(){
+		// 	alert('This Works');
+		// });
+	});
 </script>
 @endsection
