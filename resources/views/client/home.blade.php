@@ -97,8 +97,7 @@
                             <div class="button-head">
                                 <div class="product-action">
                                     <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-                                    <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
                                 </div>
                                 <div class="product-action-2">
                                     <a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
@@ -164,11 +163,12 @@
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
 															<div class="product-action-2">
-																<a title="Add to cart" href="#">Add to cart</a>
+																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+																<input type="text" value="{{$product->ProductId}}" hidden>
 															</div>
 														</div>
 													</div>
@@ -306,17 +306,18 @@
 												<div class="single-product">
 													<div class="product-img" style="width: 250px; height: 200px;">
 														<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
-															<img class="default-img"   src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 														</a>
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
 															<div class="product-action-2">
-																<a title="Add to cart" href="#">Add to cart</a>
+																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+																<input type="text" value="{{$product->ProductId}}" hidden>
 															</div>
 														</div>
 													</div>
@@ -454,17 +455,18 @@
 												<div class="single-product">
 													<div class="product-img" style="width: 250px; height: 200px;">
 														<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
-															<img class="default-img"   src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 														</a>
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
 															<div class="product-action-2">
-																<a title="Add to cart" href="#">Add to cart</a>
+																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+																<input type="text" value="{{$product->ProductId}}" hidden>
 															</div>
 														</div>
 													</div>
@@ -685,64 +687,33 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="shop-section-title">
-								<h1>Best Seller</h1>
+								<h1>Bán chạy nhất</h1>
 							</div>
 						</div>
 					</div>
 					<!-- Start Single List  -->
+					@foreach($top_product as $key => $product)
 					<div class="single-list">
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
-								<div class="list-image overlay">
-									<img src="https://via.placeholder.com/115x140" alt="#">
+								<div class="list-image overlay" style="width: 230px; height: 200px;">
+									<img style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
+									
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
-									<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-									<p class="price with-discount">$65</p>
+									<h5 class="title"><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
+									<p class="price with-discount">{{number_format($product->Price).' '.'₫'}}</p>
+									<h5 class="title" ><a>Đã bán: {{$product->Sold}} sản phẩm </a> </h5>
 								</div>
 							</div>
 						</div>
 					</div>
+					@endforeach
 					<!-- End Single List  -->
-					<!-- Start Single List  -->
-					<div class="single-list">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-12">
-								<div class="list-image overlay">
-									<img src="https://via.placeholder.com/115x140" alt="#">
-									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-12 no-padding">
-								<div class="content">
-									<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-									<p class="price with-discount">$33</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Single List  -->
-					<!-- Start Single List  -->
-					<div class="single-list">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-12">
-								<div class="list-image overlay">
-									<img src="https://via.placeholder.com/115x140" alt="#">
-									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-12 no-padding">
-								<div class="content">
-									<h5 class="title"><a href="#">Licity jelly leg flat Sandals</a></h5>
-									<p class="price with-discount">$77</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- End Single List  -->
+					
 				</div>
 				<div class="col-lg-6 col-md-6 col-12">
 					<div class="row">
