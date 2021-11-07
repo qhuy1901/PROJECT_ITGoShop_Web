@@ -11,19 +11,7 @@ session_start();
 
 class ProfileController extends Controller
 {
-    public function auth_login() //Kiểm tra việc đăng nhập, không để user truy cập vô hệ thống bằng đường dẫn mà chưa đăng nhập
-    {
-        // Hàm kiểm tra có admin_id hay không
-        $UserId = Session::get('UserId');
-        if($UserId)
-        {
-            return Redirect::to('dashboard');
-        }
-        else
-        {
-            return Redirect::to('admin')->send(); // Nếu chưa đăng nhập thì quay lại trang login
-        }
-    }
+    
     public function profile()
     {
         // Cái này để load layout thôi

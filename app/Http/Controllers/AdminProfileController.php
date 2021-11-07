@@ -54,6 +54,6 @@ class AdminProfileController extends Controller
 
         DB::table('user')->where('UserId', $UserId)->update($data);
         Session::put('message', 'Cập nhật profile thành công');
-        return Redirect::to('ad_profile');
+        return Redirect::to('dashboard');
     }
 }

@@ -261,18 +261,22 @@
 												$userId = Session::get('UserId');
 											?>
 											<div class="u-text">
-												<h4>Tạ Quang Huy</h4>
+												<h4>
+													<?php
+														$firstName = Session::get('FirstName');
+														$lastName = Session::get('LastName');
+														if($firstName && $lastName)
+														{
+															echo $lastName .' '.$firstName;
+														}
+													?>
+												</h4>
 												<p class="text-muted">admin1@gmail.com</p><a href="{{URL::to('/ad_profile/'.$userId)}}" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>
 									<li>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="{{URL::to('/ad_profile')}}">My Profile</a>
-										<a class="dropdown-item" href="#">My Balance</a>
-										<a class="dropdown-item" href="#">Inbox</a>
-										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="#">Account Setting</a>
+										
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="{{URL::to('/logout')}}">Logout</a>
 									</li>
@@ -622,7 +626,7 @@
 			textClass:'circles-text',
 			styleWrapper:true,
 			styleText:true
-		})
+					})
 
 		Circles.create({
 			id:'circles-2',

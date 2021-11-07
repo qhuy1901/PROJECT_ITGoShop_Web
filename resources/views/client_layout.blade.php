@@ -17,7 +17,7 @@
 	
 	<link rel="stylesheet" href="{{asset('./public/client/css/huy.css')}}">
 	<!-- Favicon -->
-	<link rel="icon" href={{url('./public/client/images/favi.png')}}/>
+	<link rel="icon" href="{{url('./public/client/images/favi.png')}}"/>
 	 <!-- Fonts-->
 	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<!-- StyleSheet -->
 	 <link rel="stylesheet" href="{{asset('./public/client/plugins/font-awesome/css/font-awesome.min.css')}}">
@@ -64,8 +64,8 @@
 	<!-- Header -->
 	<div class="header--sidebar"></div>
 	<header class="header">
-	  <nav class="navigation">
-		<div class="container-fluid">
+	  <nav  class="navigation">
+		<div class="container-fluid" >
 		  <div class="navigation__column left">
 			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src={{url('./public/client/Images/logo.png')}} alt=""></a></div>
 		  </div>
@@ -75,16 +75,19 @@
 						<div class="mega-menu">
 					  		<div class="mega-wrap">
 								@foreach($main_brand_list as $key => $main_brand)
+									@if($main_brand->CategoryId == "LT000")
 									<div class="mega-column">
 										<h4 class="mega-heading">{{$main_brand->BrandName}}</h4>
-										<ul class="mega-item">
-												@foreach($sub_brand_list as $key => $SubBrand)
-													@if($SubBrand->SubBrand == $main_brand->BrandId)
-														<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->BrandName}}</a></li>
-													@endif
-												@endforeach	
-										</ul>
+										@foreach($sub_brand_list as $key => $SubBrand)
+											@if($SubBrand->BrandId == $main_brand->BrandId)
+											<ul class="mega-item">
+												<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
+														
+											</ul>
+											@endif
+										@endforeach	
 									</div>
+									@endif
 								@endforeach
 								
 					  		</div>
@@ -92,45 +95,28 @@
 				  	</li>
 				  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">PC</a>
 					<div class="mega-menu">
-					  <div class="mega-wrap">
-						<div class="mega-column">
-						  <h4 class="mega-heading">HP</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">Elitedesk</a></li>
-							<li><a href="product-listing.html">Z Workstation</a></li>
-							<li><a href="product-listing.html">Pavilion</a></li>
-						  </ul>
+						<div class="mega-wrap">
+									@foreach($main_brand_list as $key => $main_brand)
+										@if($main_brand->CategoryId == "PC000")
+										<div class="mega-column">
+											<h4 class="mega-heading">{{$main_brand->BrandName}}</h4>
+											@foreach($sub_brand_list as $key => $SubBrand)
+												@if($SubBrand->BrandId == $main_brand->BrandId)
+												<ul class="mega-item">
+													<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
+															
+												</ul>
+												@endif
+											@endforeach	
+										</div>
+										@endif
+									@endforeach
+									
 						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">DELL</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">Optiplex</a></li> 
-							<li><a href="product-listing.html">Precision</a></li>
-							<li><a href="product-listing.html">Alienware</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">Lenovo</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">ThinkCentre</a></li> 
-							<li><a href="product-listing.html">Legion</a></li>
-							<li><a href="product-listing.html">ThinkStation</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">Apple</h4>
-						  <ul class="mega-item">
-							<li><a href="product.php">iMac</a></li>  
-							<li><a href="product-listing.html">Mac</a></li>
-							<li><a href="product-listing.html">Mac Pro</a></li>
-						  </ul>
-						</div>
-						
-					  </div>
 					</div>
 				  </li>
 				  <li class="menu-item"><a href="product-listing.html">Phụ Kiện</a></li>
-				  <li class="menu-item"><a href="{{URL::to('/bloggrid')}}">Blogs</a></li>
+				  <li class="menu-item"><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
 				  
 				</ul>
 		  </div>
@@ -139,7 +125,7 @@
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="fa fa-search"></i></button>
 			</form>            
-			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}"><span><i>2</i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i>2</i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  <div class="ps-cart__listing">
 				<div class="ps-cart__content"> 
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
@@ -165,22 +151,18 @@
 
 			</div>
 			<div class="menu-toggle"><span></span></div>
-			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-			<a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}"><span><i>2</i></span><i  class="fa fa-file-text-o" aria-hidden="true"></i></a>
+			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true" title="Wish List"></i></a>
 			<div class="dropdown">
-				<div class="nut_dropdown"><a class="ps-cart__toggle"><i class="fa fa-user-circle-o" ></i></a></div>
+				<div class="nut_dropdown"><a href="{{URL::to('/login')}}" class="ps-cart__toggle"><i class="fa fa-user-circle-o"  title="Đăng Nhập"></i></a></div>
 					<div class="noidung_dropdown">
-						<a href="{{URL::to('/profile')}}">Profile</a>
 						<?php
 							$CustomerId= Session::get('CustomerId');
 							if($CustomerId)
 							{?>
-								<a href="{{URL::to('/customer-logout')}}">Tài khoản</a>';
+								<a href="{{URL::to('/profile')}}">Tài khoản</a>';
 								<a href="{{URL::to('/customer-logout')}}">Kiểm tra bảo hành</a>';
 								<a href="{{URL::to('/customer-logout')}}">Lịch sử mua hàng</a>';
 								<a href="{{URL::to('/customer-logout')}}">Đăng xuất</a>';
-						<?php } else{ ?>
-								<a href="{{URL::to('/login')}}">Đăng nhập</a>
 						<?php } ?>
 					</div>
 			</div>
@@ -203,7 +185,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="product-detail.html"><img src={{url('./public/client/Images/logo2.png')}} alt="#"></a>
+								<a href="product-detail.html"><img src="{{url('./public/client/Images/logo2.png')}}" alt="#"></a>
 							</div>
 							<p class="text">Công Ty TNHH Thương Mại ITGo</p>
 							<p class="text">Email: cskh@itgo.com </p>
@@ -275,7 +257,7 @@
 						</div>
 						<div class="col-lg-6 col-12">
 							<div class="right">
-								<img src={{url('./public/client/Images/payments.png')}} alt="#">
+								<img src="{{url('./public/client/Images/payments.png')}}" alt="">
 							</div>
 						</div>
 					</div>
