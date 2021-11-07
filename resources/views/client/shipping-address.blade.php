@@ -110,7 +110,7 @@
 								</div>
 								<div class="col-sm-6">
 									<p><b>Quận/Huyện</b></p>
-									<select class="form-control" style="height:35px">
+									<select class="form-control" id="select-quanhuyen" style="height:35px">
 										<option>--- Chọn Quận/Huyện ---</option>
 									</select>
 								</div>
@@ -118,9 +118,8 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<p style="margin-top:13px"><b>Phường/Xã</b></p>
-									<select class="form-control" style="height:35px">
+									<select class="form-control" style="height:35px" id="select-xaphuongthitran">
 										<option>--- Chọn Phường/Xã ---</option>
-										<option>--- 2Chọn Phường/Xã ---</option>
 									</select>
 								</div>
 							</div>
@@ -145,10 +144,29 @@
 			</div>
 		</div>
 	</div>
-	
 </section>
 
 <script type="text/javascript">
+
+	// Hàm load data vào dropdownbox Phường/Xã
+	function load_xaphuong_dropdownbox()
+	{
+		var maqh = $("#select-quanhuyen").val();
+		$.ajax({
+			url: '{{URL::to('/load-xaphuongthitran-dropdownbox')}}',
+			method:"GET",
+			data:{maqh: maqh},
+			success:function(data)
+			{
+				$("#select-xaphuongthitran").html(data);
+			},
+			error:function(data)
+			{
+				alert('Lỗi');
+			}	
+		});	
+	}
+
 	$(document).ready(function(){
 		$("#form-dia-chi-moi").slideUp();
 
@@ -164,18 +182,27 @@
 		// 	$("#form-dia-chi-moi").slideUp();
 		// });
 
-		// $('body').on('change','#select-tinhthanhpho', function () {
-		// 	// var optionSelected = $("option:selected", this);
-		// 	// var valueSelected = this.value;
-		// 	alert("Hi");
-		// });
 		$('#select-tinhthanhpho').change(function(){
-			alert("Hi");
+			var matp = $(this).val();
+			$.ajax({
+				url: '{{URL::to('/load-quanhuyen-dropdownbox')}}',
+				method:"GET",
+				data:{matp: matp},
+				success:function(data)
+				{
+					$("#select-quanhuyen").html(data);
+					load_xaphuong_dropdownbox();
+				},
+				error:function(data)
+				{
+					alert('Lỗi');
+				}	
+			});
 		});
 
-		// $('body').on('change','select', function(){
-		// 	alert('This Works');
-		// });
+		$('#select-quanhuyen').change(function(){
+			load_xaphuong_dropdownbox();
+		});
 	});
 </script>
 @endsection

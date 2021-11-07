@@ -87,7 +87,6 @@ Route::get('/update-quantity','App\Http\Controllers\CartController@update_quanti
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
 Route::post('/checkout-after-login','App\Http\Controllers\CheckoutController@checkout_after_login');
 Route::get('/login-to-checkout','App\Http\Controllers\CheckoutController@login_to_checkout');
-Route::get('/show-shipping-address','App\Http\Controllers\CheckoutController@show_shipping_address');
 
 //Profile
 Route::get('/profile','App\Http\Controllers\ProfileController@profile');
@@ -123,5 +122,9 @@ Route::get('/order-detail', 'App\Http\Controllers\OrderController@order_detail')
 
 //Profile (Admin)
 Route::get('/ad_profile/{UserId}','App\Http\Controllers\AdminProfileController@profile');
-
 Route::post('/ad_profile/{UserId}','App\Http\Controllers\AdminProfileController@update_profile');
+
+//ShippingAddress
+Route::get('/show-shipping-address','App\Http\Controllers\ShippingAddressController@index');
+Route::get('/load-quanhuyen-dropdownbox','App\Http\Controllers\ShippingAddressController@load_quanhuyen_dropdownbox');
+Route::get('/load-xaphuongthitran-dropdownbox','App\Http\Controllers\ShippingAddressController@load_xaphuongthitran_dropdownbox');
