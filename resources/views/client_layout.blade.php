@@ -288,20 +288,18 @@
 	<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	
 	<script type="text/javascript">
-
 	// Hàm load data vào dropdownbox Phường/Xã
 	function load_xaphuong_dropdownbox()
 	{
-		var maqh = $("#select-quanhuyen").val();
+		var maqh = $(".select-quanhuyen").val();
 		$.ajax({
 			url: '{{URL::to('/load-xaphuongthitran-dropdownbox')}}',
 			method:"GET",
 			data:{maqh: maqh},
 			success:function(data)
 			{
-				$("#select-xaphuongthitran").html(data);
+				$(".select-xaphuongthitran").html(data);
 			},
 			error:function(data)
 			{
@@ -311,21 +309,7 @@
 	}
 
 	$(document).ready(function(){
-		$("#form-dia-chi-moi").slideUp();
-
-		$(".them-dia-chi-moi").click(function(){
-			$("#form-dia-chi-moi").slideDown();
-		});
-
-		$(".button-huy-bo").click(function(){
-			$("#form-dia-chi-moi").slideUp();
-		});
-
-		// $('body').on('click', '.button-huy-bo', function() {
-		// 	$("#form-dia-chi-moi").slideUp();
-		// });
-
-		$('#select-tinhthanhpho').change(function(){
+		$('.select-tinhthanhpho').change(function(){
 			var matp = $(this).val();
 			$.ajax({
 				url: '{{URL::to('/load-quanhuyen-dropdownbox')}}',
@@ -333,7 +317,7 @@
 				data:{matp: matp},
 				success:function(data)
 				{
-					$("#select-quanhuyen").html(data);
+					$(".select-quanhuyen").html(data);
 					load_xaphuong_dropdownbox();
 				},
 				error:function(data)
@@ -343,11 +327,12 @@
 			});
 		});
 
-		$('#select-quanhuyen').change(function(){
+		$('.select-quanhuyen').change(function(){
 			load_xaphuong_dropdownbox();
 		});
 	});
 	</script>
+	
 	<script  type="text/javascript">
 		function numberWithCommas(x) // Hàm để format tiền
 		{
