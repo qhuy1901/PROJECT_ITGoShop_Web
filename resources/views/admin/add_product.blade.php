@@ -50,8 +50,7 @@
 													<!-- <small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small> -->
 												</div>
 											</div>
-
-											<div class="col-6 col-lg-3">
+											<div class="col-6 col-lg-6">
 												<div class="form-group">
 													<label for="exampleFormControlSelect1">Danh mục sản phẩm</label>
 													<select class="form-control" name="Category" id="exampleFormControlSelect1">
@@ -61,8 +60,7 @@
 													</select>
 												</div>
 											</div>
-
-											<div class="col-6 col-lg-3">
+											<div class="col-6 col-lg-6">
 												<div class="form-group">
 													<label for="exampleFormControlSelect1">Thương hiệu sản phẩm</label>
 													<select class="form-control" name="brand" id="exampleFormControlSelect1">
@@ -72,10 +70,17 @@
 													</select>
 												</div>
 											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-lg-3">
+											<div class="col-6 col-lg-6">
+												<div class="form-group">
+													<label for="exampleFormControlSelect1">Thương hiệu nhánh</label>
+													<select class="form-control" name="subbrand" id="exampleFormControlSelect1">
+														@foreach($sub_brand_list as $key => $subbrand)
+														<option value="{{$subbrand->SubBrandId}}">{{$subbrand->SubBrandName}}</option>
+														@endforeach
+													</select>
+												</div>
+											</div>
+											<div class="col-6 col-lg-6">
 												<div class="form-group">
                                                     <label class="mb-3"><b>Giá sản phẩm</b></label>
                                                     <div class="input-group mb-3">
@@ -90,7 +95,7 @@
                                                 </div>	
 											</div>
 											
-											<div class="col-lg-3">
+											<div class="col-6 col-lg-6">
 												<div class="form-group">
                                                     <label class="mb-3"><b>Giảm giá</b></label>
                                                     <div class="input-group mb-3">
@@ -102,7 +107,7 @@
                                                 </div>	
 											</div>
 
-											<div class="col-lg-3">
+											<div class="col-6 col-lg-6">
 												<div class="form-group">
 													<label for="email2">Số lượng tồn kho</label>
 													<input type="number" min="0" name="Quantity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm" required>
@@ -110,12 +115,13 @@
 											</div>
 
 
-                                            <div class="col-lg-3">	
+                                            <div class="col-6 col-lg-6">	
                                                 <div class="form-group">
                                                         <label for="exampleFormControlFile1">Thêm ảnh sản phẩm</label>
                                                         <input type="file" name="ProductImage" class="form-control-file" id="exampleFormControlFile1" required>
                                                 </div>
-
+											</div>
+											<div class="col-6 col-lg-6">
 												<div class="form-group">
                                                     <label class="form-label d-block">Hiển thị</label>
                                                     <div class="selectgroup selectgroup-secondary selectgroup-pills">
@@ -130,9 +136,6 @@
                                                     </div>
                                                 </div>
 											</div>
-										</div>
-
-										<div class="row">
 											<div class="col-lg-12">	
 												<div class="form-group">
                                                         <label for="comment">Nội dung sản phẩm</label>

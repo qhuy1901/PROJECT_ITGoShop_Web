@@ -698,8 +698,8 @@
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="list-image overlay" style="width: 230px; height: 200px;">
 									<img style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
-									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
-									
+									<a href="javascript:void(0)" class="buy add-to-cart-a-tag"><i class="fa fa-shopping-bag"></i></a>
+									<input type="text" value="{{$product->ProductId}}" hidden>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
@@ -834,47 +834,25 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="section-title">
-						<h2>From Our Blog</h2>
+						<h2>Bài Viết Nổi Bật</h2>
 					</div>
 				</div>
 			</div>
 			<div class="row">
+			@foreach($all_blog as $key => $blog)
 				<div class="col-lg-4 col-md-6 col-12">
 					<!-- Start Single Blog  -->
 					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
+						<img style="margin: auto; max-width: 330px; max-height: 300px; width: auto; height: auto;" src="{{URL::to('public/images_upload/blog/'.$blog->Image)}}" alt="#">
 						<div class="content">
-							<p class="date">22 July , 2020. Monday</p>
-							<a href="#" class="title">Sed adipiscing ornare.</a>
-							<a href="#" class="more-btn">Continue Reading</a>
+							<a class="title">{{$blog->Title}}</a>
+							<a href="{{URL::to('/blog-detail/')}}" class="more-btn">Đọc tiếp</a>
 						</div>
 					</div>
 					<!-- End Single Blog  -->
 				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
-						<div class="content">
-							<p class="date">22 July, 2020. Monday</p>
-							<a href="#" class="title">Man’s Fashion Winter Sale</a>
-							<a href="#" class="more-btn">Continue Reading</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<!-- Start Single Blog  -->
-					<div class="shop-single-blog">
-						<img src="https://via.placeholder.com/370x300" alt="#">
-						<div class="content">
-							<p class="date">22 July, 2020. Monday</p>
-							<a href="#" class="title">Women Fashion Festive</a>
-							<a href="#" class="more-btn">Continue Reading</a>
-						</div>
-					</div>
-					<!-- End Single Blog  -->
-				</div>
+			@endforeach
+				
 			</div>
 		</div>
 	</section>

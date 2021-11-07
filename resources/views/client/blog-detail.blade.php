@@ -1,6 +1,6 @@
 @extends('client_layout')
 @section('client_content')		
-@foreach($blog_detail  as $key => $blog)
+
 		<!-- Breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<!-- End Breadcrumbs -->
-			
+		@foreach($blog_detail  as $key => $blog)
 		<!-- Start Blog Single -->
 		<section class="blog-single section">
 			<div class="container">
@@ -38,6 +38,7 @@
 											<p>{{!!$blog->Content!!}}</p>
 										</div>
 									</div>
+									
 									<div class="share-social">
 										<div class="row">
 											<div class="col-12">
@@ -215,6 +216,7 @@
 					</div>
 				</div>
 			</div>
+			@endforeach
 		</section>
 		<!--/ End Blog Single -->
 			

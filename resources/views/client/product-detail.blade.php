@@ -36,6 +36,7 @@
 											
 							</div>
 						</div>
+						
 					</div>
 					<div class="col-lg-7 col-12">
 						<div class="main-sidebar">
@@ -49,43 +50,66 @@
 											<a> <i class="fa fa-calendar"></i>5 tháng</a>
 											<a><i class="fa fa-comments"></i>Bình luận (15)</a> 
 											<a><i class="fa fa-shopping-cart"></i>Đã bán 15</a>
-											<a><i class="fa fa-archive"></i>Còn lại {{$product->Quantity}} sản phẩm</a>
+											@if($product->Quantity < 10)
+												<a><i class="fa fa-archive"></i>Chỉ còn lại {{$product->Quantity}} sản phẩm</a>
+											@else
+												<a><i class="fa fa-archive"></i>Còn lại {{$product->Quantity}} sản phẩm</a>
+											@endif
 										</span>
 									</div>
 									<div class="content">
+										<div class="blog-meta">
+											<h1 style="color:red; background-color:#FAFAFA; padding: 20px;font-weight: bold; ">
+																	<!-- Gía sản phẩm -->
+																	Giá bán: 
+																	<b>{{number_format($product->Price).' '.' ₫'}}</b>
+																	<sub style="color:black; font-size:15px "> 
+																		<!--  Phần giảm giá -->
+																		<del>{{number_format($product->Price + $product->Price * $product->Discount / 100 ).' '.' ₫'}}</del> 
+																		<span class="o-giam-gia">-{{$product->Discount}}% </span> 
+																	</sub>
+											</h1>
+
+										</div>
+										<div class="single-widget get-button">
+													<div class="content">
+															<p>Số lượng: <input name="quantity" type="number" min="1" value="1" size="4" style="width:50px"></p> 
+														<div class="button">
+															<button type="submit" class="btn">
+																Thêm vào giỏ hàng
+															</button>
+														</div>
+														<input name="ProductId" type="hidden" value="{{$product->ProductId}}">
+													</div>
+								</div>
+									</div>
+
+									
+									
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 col-12">
+						<div class="main-sidebar">
+							<!-- Single Widget -->
+							<div class="blog-detail">
+								<form action="{{URL::to('/save-cart')}}" method="POST">
+									{{ csrf_field() }}
+									<h2 class="blog-title">Chi Tiết Sản Phẩm</h2>
+									
+									<div class="content">
 										<!-- Nội dung sản phẩm -->
 										<div class="blog-meta">
-											@if($product->Quantity < 10)
-												<p>Chỉ còn lại {{$product->Quantity}} sản phẩm</p>
-											@endif
+											
 											<p>{!!$product->Content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
 										</div>
 											<!-- End Nội dung sản phẩm -->
-											<div class="blog-meta">
-												<h1 style="color:red; background-color:#FAFAFA; padding: 20px">
-													<!-- Gía sản phẩm -->
-													<b>{{number_format($product->Price).' '.' ₫'}}</b>
-													<sub style="color:black; font-size:15px "> 
-														<!--  Phần giảm giá -->
-														<del>{{number_format($product->Price + $product->Price * $product->Discount / 100 ).' '.' ₫'}}</del> 
-														<span class="o-giam-gia">-{{$product->Discount}}% </span> 
-													</sub>
-												</h1>
-											</div>
+											
 										</div>
 									</div>
 
-									<div class="single-widget get-button">
-										<div class="content">
-												<p>Số lượng: <input name="quantity" type="number" min="1" value="1" size="4" style="width:50px"></p> 
-											<div class="button">
-												<button type="submit" class="btn">
-													Thêm vào giỏ hàng
-												</button>
-											</div>
-											<input name="ProductId" type="hidden" value="{{$product->ProductId}}">
-										</div>
-									</div>
+									
 									<div class="share-social">
 										<div class="row">
 											<div class="col-12">
@@ -105,9 +129,8 @@
 							</div>
 						</div>
 					</div>
-
 					
-					<div class="product-area section">
+	<div class="product-area section">
             <div class="container">
 				<div class="row">
 					<div class="col-12">

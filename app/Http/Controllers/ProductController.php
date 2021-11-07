@@ -30,7 +30,12 @@ class ProductController extends Controller
         $this->auth_login();
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
-        return view('admin.add_product')->with('product_category_list', $product_category_list)->with('brand_list', $brand_list);
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+
+        return view('admin.add_product')
+        ->with('product_category_list', $product_category_list)
+        ->with('brand_list', $brand_list)
+        ->with('sub_brand_list', $sub_brand_list);
     }
 
     public function view_product()
@@ -52,6 +57,7 @@ class ProductController extends Controller
         $data['ProductName'] = $request->ProductName;
         $data['CategoryId'] = $request->Category;
         $data['BrandId'] = $request->brand;
+        $data['SubBrandId'] = $request->subbrand;
         $data['content'] = $request->content;
         $data['Quantity'] = $request->Quantity;
         $data['price'] = $request->price;
@@ -101,11 +107,14 @@ class ProductController extends Controller
         // Lấy hết thông tin trong bảng Category và barnd để load lên cbb
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+
         // Lấy hết dữ liệu trong bảng product
         $product_info = DB::table('product')->where('ProductId',$ProductId)->get();  // first: lấy dòng đầu tiên
         $manager_product = view('admin.update_product')
         ->with('product_info', $product_info)
         ->with('product_category_list',$product_category_list)
+        ->with('sub_brand_list',$sub_brand_list)
         ->with('brand_list',$brand_list);
         // // biến chứa dữ liệu  $all_product đc gán cho all_product'
         return view('admin_layout')->with('admin.update_product', $manager_product);
@@ -118,10 +127,11 @@ class ProductController extends Controller
         $data['ProductName'] = $request->ProductName;
         $data['CategoryId'] = $request->Category;
         $data['BrandId'] = $request->Brand;
+        $data['SubBrandId'] = $request->subbrand;
         $data['content'] = $request->Content;
         $data['Quantity'] = $request->Quantity;
         $data['price'] = $request->Price;
-        $data['discount'] = $request->Discount;
+        $data['Discount'] = $request->Discount;
         $data['status'] = $request->Status;
         $data['UpdatedAt'] = date("Y-m-d H:i:s");
 

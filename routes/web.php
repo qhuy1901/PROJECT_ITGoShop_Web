@@ -108,7 +108,7 @@ Route::post('/update-post/{BlogId}','App\Http\Controllers\BlogController@update_
 
 //Blog (Client)
 Route::get('/all_blog', 'App\Http\Controllers\BlogController@all_blog');
-Route::get('/blog-detail', 'App\Http\Controllers\BlogController@blog_detail');
+Route::get('/blog-detail/{BlogId}', 'App\Http\Controllers\BlogController@blog_detail');
 
 
 //Order (Admin)
