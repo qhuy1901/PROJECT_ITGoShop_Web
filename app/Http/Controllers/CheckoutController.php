@@ -14,30 +14,14 @@ class CheckoutController extends Controller
 {
     public function checkout_after_login(Request $request)
     {
-        // Cái này để load layout thôi
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
-        $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
-
         $email = $request->email;
         $password = $request->password;
 
         $result = DB::table('user')->where('email', $email)->where('password', $password)->where('Admin', 0)->first();
         if($result == true)
         {
-            // Session::put('CustomerFirstName', $result->FirstName);
-            // Session::put('CustomerLastName', $result->LastName);
-            // Session::put('CustomerImage', $result->UserImage);
             Session::put('CustomerId', $result->UserId);
-
-            $shipping_address_list = DB::table('shippingaddress')->where('UserId', $result->UserId)->get();
-            return view('client.checkout')
-            ->with('sub_brand_list',  $sub_brand_list )
-            ->with('main_brand_list', $main_brand_list)
-            ->with('product_category_list', $product_category_list)
-            ->with('shipping_address_list',  $shipping_address_list)
-            ->with('all_tinhthanhpho', $all_tinhthanhpho);
+            return Redirect::to('/checkout');
         } 
         else{
             Session::put('message', 'Mật khẩu hoặc tài khoản sai. Xin nhập lại!');
@@ -52,15 +36,27 @@ class CheckoutController extends Controller
         $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
         $CustomerId = Session::get('CustomerId');
-        $shipping_address_list = DB::table('shippingaddress')->where('UserId', $CustomerId)->get();
         $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
+        $default_shipping_address = DB::table('shippingaddress')
+        ->select('ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+        ->where('UserId', $CustomerId)->where('isDefault', 1)->first();
+        $shipping_address_list = DB::table('shippingaddress')
+        ->select('ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+        ->where('UserId', $CustomerId)->where('isDefault', 0)->first();
 
         return view('client.checkout')
             ->with('sub_brand_list',  $sub_brand_list )
             ->with('main_brand_list', $main_brand_list)
             ->with('product_category_list', $product_category_list)
-            ->with('shipping_address_list',  $shipping_address_list)
-            ->with('all_tinhthanhpho', $all_tinhthanhpho);
+            ->with('all_tinhthanhpho', $all_tinhthanhpho)
+            ->with('default_shipping_address', $default_shipping_address)
+            ->with('shipping_address_list ', $shipping_address_list );
     }
 
 
@@ -68,17 +64,4 @@ class CheckoutController extends Controller
     {
         return View('client.login-to-checkout');
     }
-
-    // public function show_shipping_address()
-    // {
-    //     $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-    //     $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-    //     $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
-    //     $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
-    //     return View('client.shipping-address')
-    //     ->with('sub_brand_list',  $sub_brand_list )
-    //         ->with('main_brand_list', $main_brand_list)
-    //         ->with('product_category_list', $product_category_list)
-    //         ->with('all_tinhthanhpho', $all_tinhthanhpho);
-    // }
 }

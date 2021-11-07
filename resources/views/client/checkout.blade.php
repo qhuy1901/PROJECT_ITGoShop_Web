@@ -21,7 +21,6 @@
 			<?php
 				$content = Cart::content();
 				$number_product = Cart::count();
-				$number_shipping_address = count($shipping_address_list);
 			?>
 			<div class="container">
 				<div class ="col-lg-12" style="margin: 20px 0px 0px 0px; padding-right: 0px;padding-left: 0px;">
@@ -32,7 +31,8 @@
 						</div>
 					  </div>
 				</div>
-				@if($number_shipping_address > 0)
+				<!-- Nếu khách hàng đã có địa chỉ mặc định thì thanh toán luôn nếu ko thì phải thêm mới địa chỉ giao hàng -->
+				@if($default_shipping_address)
 				<div class ="row">
 					<div class="col-lg-8">
 						<div class="panel panel-default">
@@ -91,20 +91,22 @@
 					<div class="col-lg-4">
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<button type="button" style="float:right; padding: 6px; background-color: white;"><a href="{{URL::to('/show-shipping-address')}}">Sửa</a></button>
+								<button type="button" style="float:right; padding: 6px; background-color: white;"><a href="{{URL::to('/show-shipping-address')}}" style="font-size:11px">Sửa</a></button>
 								<h4><div style="margin-bottom:20px;"> <i class="fa fa-map-marker" aria-hidden="true" ></i> <b>Địa chỉ giao hàng </b>  </div></h4>
 								<div></div>
 								<hr>
-								<p><b>Tạ Quang Huy</b></p>
-								<p>220/17A Khu phố 9, Phường Tam Hiệp, Thành phố Biên Hòa, Đồng Nai Việt Nam</p>
-								<p>Điện thoại: 0365990290</p>
+								
+								<p><b>{{$default_shipping_address->ReceiverName}}</b></p>
+								<p>{{$default_shipping_address->Address. ", " .$default_shipping_address->xaphuongthitran. ", " .$default_shipping_address->quanhuyen. ", " .$default_shipping_address->tinhthanhpho}}</p>
+								<p>Điện thoại: {{$default_shipping_address->Phone}}</p>
+
 							</div>
 							
 						</div>
 						 
 						<div class="panel panel-default">
 							<div class="panel-body">
-								<button type="button" style="float:right; padding: 6px; background-color: white;"><a href="{{URL::to('/show-cart')}}">Sửa</a></button>
+								<button type="button" style="float:right; padding: 6px; background-color: white;"><a href="{{URL::to('/show-cart')}}" style="font-size:11px">Sửa</a></button>
 								<h4><b>Đơn hàng </b></h4>
 								<p><i>{{$number_product}} sản phẩm</i></p>
 								<hr>
@@ -124,7 +126,7 @@
 				@else
 				<div class="row">
 					<div class="col-lg-12">
-						<form action="{{URL::to('/add-first-shipping-address')}}" method="post">
+						<form action="{{URL::to('/add-shipping-address')}}" method="post">
 						{{ csrf_field() }}
 							<div class="panel panel-default">
 							<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"><b>Vui lòng điền thông tin địa chỉ giao hàng</b></h4></div>
