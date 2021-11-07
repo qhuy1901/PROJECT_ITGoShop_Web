@@ -154,13 +154,13 @@ class BlogController extends Controller
         ->with('related_blog',$related_blog);
     }
 
-    public function bloggrid()
+    public function all_blog()
     {
         $all_content = DB::table('blog')
         ->select('blog.*')
         ->orderby('blog.BlogId', 'desc')->get();
-        $manager_blog = view('client.bloggrid')->with('all_content', $all_content);
-        return view('client.bloggrid', $manager_blog);
+        $manager_blog = view('client.all_blog')->with('all_content', $all_content);
+        return view('client.all_blog', $manager_blog);
 
     }
 }

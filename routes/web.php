@@ -107,7 +107,7 @@ Route::post('/save-post','App\Http\Controllers\BlogController@save_post');
 Route::post('/update-post/{BlogId}','App\Http\Controllers\BlogController@update_post');
 
 //Blog (Client)
-Route::get('/bloggrid', 'App\Http\Controllers\BlogController@bloggrid');
+Route::get('/all_blog', 'App\Http\Controllers\BlogController@all_blog');
 Route::get('/blog-detail', 'App\Http\Controllers\BlogController@blog_detail');
 
 

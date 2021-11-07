@@ -13,8 +13,8 @@ class HomeController extends Controller
     public function index()
     {
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
 
         // $all_product = DB::table('product')
         // ->join('Category','Category.CategoryId','=','product.CategoryId')

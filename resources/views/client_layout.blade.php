@@ -75,16 +75,19 @@
 						<div class="mega-menu">
 					  		<div class="mega-wrap">
 								@foreach($main_brand_list as $key => $main_brand)
+									@if($main_brand->CategoryId == "LT000")
 									<div class="mega-column">
 										<h4 class="mega-heading">{{$main_brand->BrandName}}</h4>
-										<ul class="mega-item">
-												@foreach($sub_brand_list as $key => $SubBrand)
-													@if($SubBrand->SubBrand == $main_brand->BrandId)
-														<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->BrandName}}</a></li>
-													@endif
-												@endforeach	
-										</ul>
+										@foreach($sub_brand_list as $key => $SubBrand)
+											@if($SubBrand->BrandId == $main_brand->BrandId)
+											<ul class="mega-item">
+												<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
+														
+											</ul>
+											@endif
+										@endforeach	
 									</div>
+									@endif
 								@endforeach
 								
 					  		</div>
@@ -92,45 +95,28 @@
 				  	</li>
 				  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">PC</a>
 					<div class="mega-menu">
-					  <div class="mega-wrap">
-						<div class="mega-column">
-						  <h4 class="mega-heading">HP</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">Elitedesk</a></li>
-							<li><a href="product-listing.html">Z Workstation</a></li>
-							<li><a href="product-listing.html">Pavilion</a></li>
-						  </ul>
+						<div class="mega-wrap">
+									@foreach($main_brand_list as $key => $main_brand)
+										@if($main_brand->CategoryId == "PC000")
+										<div class="mega-column">
+											<h4 class="mega-heading">{{$main_brand->BrandName}}</h4>
+											@foreach($sub_brand_list as $key => $SubBrand)
+												@if($SubBrand->BrandId == $main_brand->BrandId)
+												<ul class="mega-item">
+													<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
+															
+												</ul>
+												@endif
+											@endforeach	
+										</div>
+										@endif
+									@endforeach
+									
 						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">DELL</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">Optiplex</a></li> 
-							<li><a href="product-listing.html">Precision</a></li>
-							<li><a href="product-listing.html">Alienware</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">Lenovo</h4>
-						  <ul class="mega-item">
-							<li><a href="product-listing.html">ThinkCentre</a></li> 
-							<li><a href="product-listing.html">Legion</a></li>
-							<li><a href="product-listing.html">ThinkStation</a></li>
-						  </ul>
-						</div>
-						<div class="mega-column">
-						  <h4 class="mega-heading">Apple</h4>
-						  <ul class="mega-item">
-							<li><a href="product.php">iMac</a></li>  
-							<li><a href="product-listing.html">Mac</a></li>
-							<li><a href="product-listing.html">Mac Pro</a></li>
-						  </ul>
-						</div>
-						
-					  </div>
 					</div>
 				  </li>
 				  <li class="menu-item"><a href="product-listing.html">Phụ Kiện</a></li>
-				  <li class="menu-item"><a href="{{URL::to('/bloggrid')}}">Blogs</a></li>
+				  <li class="menu-item"><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
 				  
 				</ul>
 		  </div>
@@ -199,7 +185,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="product-detail.html"><img src={{url('./public/client/Images/logo2.png')}} alt="#"></a>
+								<a href="product-detail.html"><img src="{{url('./public/client/Images/logo2.png')}}" alt="#"></a>
 							</div>
 							<p class="text">Công Ty TNHH Thương Mại ITGo</p>
 							<p class="text">Email: cskh@itgo.com </p>
@@ -271,7 +257,7 @@
 						</div>
 						<div class="col-lg-6 col-12">
 							<div class="right">
-								<img src={{url('./public/client/Images/payments.png')}} alt="#">
+								<img src="{{url('./public/client/Images/payments.png')}}" alt="">
 							</div>
 						</div>
 					</div>
