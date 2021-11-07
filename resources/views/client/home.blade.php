@@ -91,7 +91,7 @@
                         <div class="product-img" style="width: 250px; height: 200px;">
                             <a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
                                 <img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
-                                <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                <img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
                                 <span class="out-of-stock">-{{$product->Discount}}%</span>
                             </a>
                             <div class="button-head">

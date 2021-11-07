@@ -17,7 +17,7 @@
 	
 	<link rel="stylesheet" href="{{asset('./public/client/css/huy.css')}}">
 	<!-- Favicon -->
-	<link rel="icon" href={{url('./public/client/images/favi.png')}}/>
+	<link rel="icon" href="{{url('./public/client/images/favi.png')}}"/>
 	 <!-- Fonts-->
 	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<!-- StyleSheet -->
 	 <link rel="stylesheet" href="{{asset('./public/client/plugins/font-awesome/css/font-awesome.min.css')}}">
@@ -64,8 +64,8 @@
 	<!-- Header -->
 	<div class="header--sidebar"></div>
 	<header class="header">
-	  <nav class="navigation">
-		<div class="container-fluid">
+	  <nav  class="navigation">
+		<div class="container-fluid" >
 		  <div class="navigation__column left">
 			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src={{url('./public/client/Images/logo.png')}} alt=""></a></div>
 		  </div>
@@ -139,7 +139,7 @@
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="fa fa-search"></i></button>
 			</form>            
-			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}"><span><i>2</i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i>2</i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  <div class="ps-cart__listing">
 				<div class="ps-cart__content"> 
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
@@ -165,22 +165,18 @@
 
 			</div>
 			<div class="menu-toggle"><span></span></div>
-			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-			<a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}"><span><i>2</i></span><i  class="fa fa-file-text-o" aria-hidden="true"></i></a>
+			<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true" title="Wish List"></i></a>
 			<div class="dropdown">
-				<div class="nut_dropdown"><a class="ps-cart__toggle"><i class="fa fa-user-circle-o" ></i></a></div>
+				<div class="nut_dropdown"><a href="{{URL::to('/login')}}" class="ps-cart__toggle"><i class="fa fa-user-circle-o"  title="Đăng Nhập"></i></a></div>
 					<div class="noidung_dropdown">
-						<a href="{{URL::to('/profile')}}">Profile</a>
 						<?php
 							$CustomerId= Session::get('CustomerId');
 							if($CustomerId)
 							{?>
-								<a href="{{URL::to('/customer-logout')}}">Tài khoản</a>';
+								<a href="{{URL::to('/profile')}}">Tài khoản</a>';
 								<a href="{{URL::to('/customer-logout')}}">Kiểm tra bảo hành</a>';
 								<a href="{{URL::to('/customer-logout')}}">Lịch sử mua hàng</a>';
 								<a href="{{URL::to('/customer-logout')}}">Đăng xuất</a>';
-						<?php } else{ ?>
-								<a href="{{URL::to('/login')}}">Đăng nhập</a>
 						<?php } ?>
 					</div>
 			</div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Auth;
 use Session;
 use App\Http\Requests; 
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
