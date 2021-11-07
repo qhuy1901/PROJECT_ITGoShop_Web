@@ -156,7 +156,7 @@
 										<div class="row">
 											<div class="col-sm-6">
 												<p><b>Tỉnh/Thành phố</b></p>
-												<select class="form-control" id="select-tinhthanhpho" style="height:35px" name="tinhthanhpho"> 
+												<select class="form-control select-tinhthanhpho" style="height:35px" name="tinhthanhpho"> 
 													<option>--- Chọn Tỉnh/Thành phố ---</option>
 													@foreach($all_tinhthanhpho as $key => $tinhthanhpho)
 														<option value="{{$tinhthanhpho->matp}}">{{$tinhthanhpho->name}}</option>
@@ -165,7 +165,7 @@
 											</div>
 											<div class="col-sm-6">
 												<p><b>Quận/Huyện</b></p>
-												<select class="form-control" id="select-quanhuyen" style="height:35px" name="quanhuyen">
+												<select class="form-control select-quanhuyen" style="height:35px" name="quanhuyen">
 													<option>--- Chọn Quận/Huyện ---</option>
 												</select>
 											</div>
@@ -173,7 +173,7 @@
 										<div class="row">
 											<div class="col-sm-12">
 												<p style="margin-top:13px"><b>Phường/Xã</b></p>
-												<select class="form-control" style="height:35px" id="select-xaphuongthitran" name="xaphuongthitran">
+												<select class="form-control select-xaphuongthitran" style="height:35px"  name="xaphuongthitran">
 													<option>--- Chọn Phường/Xã ---</option>
 												</select>
 											</div>

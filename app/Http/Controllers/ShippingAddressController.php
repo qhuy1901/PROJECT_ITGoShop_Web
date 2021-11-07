@@ -19,13 +19,13 @@ class ShippingAddressController extends Controller
         $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
         $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
         $shipping_address_list = DB::table('shippingaddress')
-        ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->select('ShippingAddressId', 'ReceiverName', 'ShippingAddressType', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
         ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
         ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
         ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
         ->where('UserId', $CustomerId)->where('isDefault', 0)->get();
         $default_shipping_address = DB::table('shippingaddress')
-        ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->select('ShippingAddressId', 'ReceiverName', 'ShippingAddressType', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
         ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
         ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
         ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
@@ -94,5 +94,24 @@ class ShippingAddressController extends Controller
         $CustomerId = Session::get('CustomerId');
         $ShippingAddressId = $request->ShippingAddressId;
         DB::table('shippingaddress')->where('ShippingAddressId', '=', $ShippingAddressId)->delete();
+    }
+
+    public function change_default_shipping_address($ShippingAddressId)
+    {
+        $ShippingAddress = DB::table('shippingaddress')->where('ShippingAddressId', $ShippingAddressId)->First();
+        DB::table('shippingaddress')->where('UserId', $ShippingAddress->UserId)->update(['IsDefault' => 0]);
+        DB::table('shippingaddress')->where('ShippingAddressId', $ShippingAddressId)->update(['IsDefault' => 1]);
+        return Redirect::to('/checkout');
+    }
+
+    public function update_shipping_address(Request $request)
+    {
+        $data = array();
+        $data['ReceiverName'] = $request->ReceiverName;
+        $data['Phone'] = $request->Phone;
+        $data['Address'] = $request->Address;
+        $data['ShippingAddressType'] = $request->AddressType;
+        DB::table('shippingaddress')->where('ShippingAddressId', '=', $request->ShippingAddressId)->update($data);
+        return Redirect::to('/show-shipping-address');
     }
 }

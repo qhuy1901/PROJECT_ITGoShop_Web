@@ -130,3 +130,5 @@ Route::get('/load-quanhuyen-dropdownbox','App\Http\Controllers\ShippingAddressCo
 Route::get('/load-xaphuongthitran-dropdownbox','App\Http\Controllers\ShippingAddressController@load_xaphuongthitran_dropdownbox');
 Route::post('/add-shipping-address','App\Http\Controllers\ShippingAddressController@add_shipping_address');
 Route::get('/delete-shipping-address','App\Http\Controllers\ShippingAddressController@delete_shipping_address');
+Route::get('/change-default-shipping-address/{ShippingAddressId}','App\Http\Controllers\ShippingAddressController@change_default_shipping_address');
+Route::get('/update-shipping-address','App\Http\Controllers\ShippingAddressController@update_shipping_address');
