@@ -53,9 +53,7 @@ class CartController extends Controller
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
-        //
-
-
+        
         return view('client.cart')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
@@ -72,32 +70,10 @@ class CartController extends Controller
     {
         $data = $request->all();
         Cart::update($data['id'], 0);
-    //     $cart = Session::get('cart');
-
-    //     if($cart == true)
-    //     {
-    //         foreach($cart as $key => $val)
-    //         {
-    //             if($val['id'] == $data['id'])
-    //             {
-    //                 unset($cart[$key]);
-    //             }
-    //         }
-
-    //     }
-    //     Session::put('cart', $cart);
     }
-
-    //
 
     public function add_to_cart(Request $request)
     {
-        // Cái này để load layout thôi
-        // $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        // $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        // $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
-
-        //Cái này là của function
         $ProductId = $request->ProductId;
         $product_info = DB::table('product')->where('ProductId', $ProductId)->first();
 
@@ -116,7 +92,6 @@ class CartController extends Controller
     {
         $rowId = $request->rowId;
         $newQuantity = $request->newQuantity;
-
         Cart::update($rowId, $newQuantity); 
     }
 }

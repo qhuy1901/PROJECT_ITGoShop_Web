@@ -26,9 +26,6 @@
 					<?php
 						$content = Cart::content();
 						$number_product = Cart::count();
-						// echo '<prep>';
-						// print_r($content);
-						// echo '</prep>'
 					?>
 					<table class="table shopping-summery">
 						<thead>

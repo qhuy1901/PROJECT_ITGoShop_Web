@@ -315,12 +315,11 @@
 	});
 	</script>
 	
-	<script  type="text/javascript">
+	<script type="text/javascript">
 		function numberWithCommas(x) // Hàm để format tiền
 		{
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 		}
-
 		$(document).ready(function(){
 			$(".delete-button").click( function(){
 				$(this).parent().parent().remove();
@@ -343,7 +342,6 @@
 						alert('Lỗi');
 					}
 				});
-
 				// Tính lại tổng tiền
 				var sum = 0;
                 $('.thanh-tien').each(function() {
@@ -353,7 +351,6 @@
 				$("#tam-tinh").text(sum + ' ₫');
 				$("#tong-cong").text(sum + ' ₫');
 			}),
-
 			$(".input-number").on('input', function(){
 				var newQuantity = $(this).val();
 				var rowId = $(this).attr('id');
@@ -361,10 +358,6 @@
 					url: '{{URL::to('/update-quantity')}}',
 					methed:"GET",
 					data:{rowId: rowId, newQuantity: newQuantity},
-					// success:function(data)
-					// {
-					// 	alert('Thành công');
-					// },
 					error:function(data)
 					{
 						alert('Lỗi');
@@ -386,14 +379,11 @@
 				
 				var newQuantity = $parent.find('.input-number').val();
 				var rowId = $parent.find('.input-number').attr('id');
+				
 				$.ajax({
 					url: '{{URL::to('/update-quantity')}}',
 					methed:"GET",
 					data:{rowId: rowId, newQuantity: newQuantity},
-					// success:function(data)
-					// {
-					// 	alert('Thành công');
-					// },
 					error:function(data)
 					{
 						alert('Lỗi');
@@ -405,7 +395,6 @@
 				$parent.find('.thanh-tien').html(thanhtien);
 				
 			}),
-
 			$('body').on('DOMSubtreeModified', '.thanh-tien', function(){
                 var sum = 0;
                 $('.thanh-tien').each(function() {
@@ -416,7 +405,6 @@
 				$("#tam-tinh").text(sum + ' ₫');
 				$("#tong-cong").text(sum + ' ₫');
             }),
-
 			$('.add-to-cart-a-tag').click( function()
 			{
 				var productId = $(this).parent().find('input').val();
@@ -439,12 +427,11 @@
 					},
 					error:function(data)
 					{
-						alert('hi');
+						alert('Error');
 					}
 				});
 			});
 		});
-
 	</script>
 	<!-- Jquery -->
     <script src="{{asset('public/client/js/jquery.min.js')}}"></script>
