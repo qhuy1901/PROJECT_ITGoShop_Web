@@ -134,7 +134,7 @@
 														<td>{{$product->CategoryName}}</td>
 														<td>{{$product->BrandName}}</td>
 														<td>{{$product->Quantity}}</td>
-														<td><img src="public/images_upload/product/{{$product->ProductImage}}" height="80" width="80"></td>
+														<td><img src="public/images_upload/product/{{$product->ProductImage}}" style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; "></td>
 														<td>
 															<?php
 																if($product->Status == 1){
@@ -150,7 +150,7 @@
 															?>
 														</td>
 														<td>{{$product->Discount}}%</td>
-														<td>{{number_format($product->Price)}}</td>
+														<td>{{number_format($product->Price, 0, " ", ".").' ₫'}}</td>
 
 														<td>
 															<div class="form-button-action">

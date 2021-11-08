@@ -58,11 +58,11 @@ class ProductController extends Controller
         $data['CategoryId'] = $request->Category;
         $data['BrandId'] = $request->brand;
         $data['SubBrandId'] = $request->subbrand;
-        $data['content'] = $request->content;
+        //$data['content'] = $request->content;
         $data['Quantity'] = $request->Quantity;
         $data['price'] = $request->price;
         $data['discount'] = $request->discount;
-        $data['status'] = $request->status;
+        //$data['status'] = $request->status;
         $data['StartsAt'] = date("Y-m-d H:i:s");
         $data['CreatedAt'] = date("Y-m-d H:i:s");
 
@@ -109,15 +109,20 @@ class ProductController extends Controller
         $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
 
-        // Lấy hết dữ liệu trong bảng product
+        // // Lấy hết dữ liệu trong bảng product
         $product_info = DB::table('product')->where('ProductId',$ProductId)->get();  // first: lấy dòng đầu tiên
-        $manager_product = view('admin.update_product')
+        // $manager_product = view('admin.update_product')
+        // ->with('product_info', $product_info)
+        // ->with('product_category_list',$product_category_list)
+        // ->with('sub_brand_list',$sub_brand_list)
+        // ->with('brand_list',$brand_list);
+        // // // biến chứa dữ liệu  $all_product đc gán cho all_product'
+        // return view('admin_layout')->with('admin.update_product', $manager_product);
+        return View('admin.update_product')
         ->with('product_info', $product_info)
         ->with('product_category_list',$product_category_list)
         ->with('sub_brand_list',$sub_brand_list)
         ->with('brand_list',$brand_list);
-        // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        return view('admin_layout')->with('admin.update_product', $manager_product);
     }
 
     public function update_product(Request $request, $ProductId)

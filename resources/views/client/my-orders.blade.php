@@ -106,13 +106,13 @@
 								@foreach($order_list as $key => $item)
 								<tr>
 									<td>
-										<a href="#" style="color: #77ACF1">{{$item->OrderId}}</a>
+										<a href="{{URL::to('/show-order-detail/'.$item->OrderId)}}" style="color: #77ACF1">{{$item->OrderId}}</a>
 									</td>
 									<td>
 										{{date("d/m/Y", strtotime($item->OrderDate))}}
 									</td>
 									<td>
-										HP Elitebook 840 G8 và 2 sản phẩm khác
+										{{$item->Description}}
 									</td>
 									<td>
 										{{number_format($item->Total, 0, " ", ".").' ₫'}}
