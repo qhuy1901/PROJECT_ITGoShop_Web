@@ -51,13 +51,16 @@
 												</div>
 											</div>
 											<div class="col-6 col-lg-6">
-												<div class="form-group">
+												<div class="form-group" method="post">
 													<label for="exampleFormControlSelect1">Danh mục sản phẩm</label>
 													<select class="form-control" name="Category" id="exampleFormControlSelect1">
 														@foreach($product_category_list as $key => $Category)
-															<option value="{{$Category->CategoryId}}">{{$Category->CategoryName}}</option>
+															<option value="{{$Category->CategoryId}}">{{$Category->CategoryId}} : {{$Category->CategoryName}}</option>
+
 														@endforeach
+														
 													</select>
+													
 												</div>
 											</div>
 											<div class="col-6 col-lg-6">
@@ -65,8 +68,10 @@
 													<label for="exampleFormControlSelect1">Thương hiệu sản phẩm</label>
 													<select class="form-control" name="brand" id="exampleFormControlSelect1">
 														@foreach($brand_list as $key => $brand)
-														<option value="{{$brand->BrandId}}">{{$brand->BrandName}}</option>
+															<option value="{{$brand->BrandId}}">ID: {{$brand->BrandId}} - {{$brand->BrandName}} (Mã Danh Mục: {{$brand->CategoryId}} )</option>
+														
 														@endforeach
+
 													</select>
 												</div>
 											</div>
@@ -75,7 +80,7 @@
 													<label for="exampleFormControlSelect1">Thương hiệu nhánh</label>
 													<select class="form-control" name="subbrand" id="exampleFormControlSelect1">
 														@foreach($sub_brand_list as $key => $subbrand)
-														<option value="{{$subbrand->SubBrandId}}">{{$subbrand->SubBrandName}}</option>
+														<option value="{{$subbrand->SubBrandId}}">{{$subbrand->SubBrandName}} (ID Thương hiệu chính: {{$subbrand->BrandId}}) </option>
 														@endforeach
 													</select>
 												</div>

@@ -92,7 +92,7 @@
                             <a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
                                 <img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
                                 <img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
-                                <span class="out-of-stock">-{{$product->Discount}}%</span>
+                                <span class="out-of-stock">GIẢM {{$product->Discount}}%</span>
                             </a>
                             <div class="button-head">
                                 <div class="product-action">
@@ -108,9 +108,9 @@
                         <div class="product-content">
                             <h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
                             <div class="product-price">
-                                <span style="color:red; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
+                                <span style="color:red; font-size:17px"><b>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</b></span>
                                 <br>
-                                <span class="old">{{number_format($product->Price - $product->Price * ($product->Discount / 100)).' '.'₫'}}</span>
+                                <span class="old">{{number_format($product->Price).' '.'₫'}}</span>
                             </div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
 													<div class="product-content">
 														<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->Price).' '.'₫'}}</span>
+															<span>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</span>
 														</div>
 													</div>
 												</div>
@@ -324,7 +324,7 @@
 													<div class="product-content">
 														<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->Price).' '.'₫'}}</span>
+															<span>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</span>
 														</div>
 													</div>
 												</div>
@@ -473,7 +473,7 @@
 													<div class="product-content">
 														<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->Price).' '.'₫'}}</span>
+															<span>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</span>
 														</div>
 													</div>
 												</div>
@@ -705,7 +705,7 @@
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
 									<h5 class="title"><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
-									<p class="price with-discount">{{number_format($product->Price).' '.'₫'}}</p>
+									<p class="price with-discount">{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</p>
 									<h5 class="title" ><a>Đã bán: {{$product->Sold}} sản phẩm </a> </h5>
 								</div>
 							</div>
