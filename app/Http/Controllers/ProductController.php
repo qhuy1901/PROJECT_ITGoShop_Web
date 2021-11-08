@@ -179,7 +179,7 @@ class ProductController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->where('product.CategoryId',$CategoryId)
-        ->whereNotIn('product.ProductId', [$ProductId])->get();
+        ->whereNotIn('product.ProductId', [$ProductId])->limit(4)->get();
 
         return view('client.product-detail')
         ->with('sub_brand_list',  $sub_brand_list )
