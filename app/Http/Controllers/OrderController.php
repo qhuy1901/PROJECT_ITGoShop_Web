@@ -100,6 +100,7 @@ class OrderController extends Controller
 
     public function create_order(Request $request)
     {
+        $content = Cart::content();
         $data = array();
         // Thêm thông tin đơn hàng
         $CustomerId = Session::get('CustomerId');
@@ -113,7 +114,6 @@ class OrderController extends Controller
         $OrderId = DB::table('order')->insertGetId($data);
         
         // Thêm chi tiết đơn hàng
-        $content = Cart::content();
         foreach($content as $order_detail)
         {
             $item = array();
@@ -123,6 +123,15 @@ class OrderController extends Controller
             $item['UnitPrice'] = $order_detail->price;
             DB::table('orderdetail')->insert($item);
         }
+
+        // Cập nhật mô tả hóa đơn
+        $firstProductName = DB::table('orderdetail')
+        ->select('ProductName')
+        ->join('product', 'product.ProductId', '=', 'orderdetail.ProductId')
+        ->where('OrderId', '=', $OrderId)->First();
+        $numberProduct = DB::table('orderdetail')->where('OrderId', '=', $OrderId)->count() - 1;
+        $data['Description'] = $firstProductName->ProductName.' và '.$numberProduct.' sản phẩm khác';
+        DB::table('order')->where('OrderId', '=', $OrderId)->update($data);
         Cart::destroy();
         return Redirect::to('my-orders');
     }

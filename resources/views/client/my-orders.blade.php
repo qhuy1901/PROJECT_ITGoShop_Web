@@ -112,7 +112,7 @@
 										{{date("d/m/Y", strtotime($item->OrderDate))}}
 									</td>
 									<td>
-										HP Elitebook 840 G8 và 2 sản phẩm khác
+										{{$item->Description}}
 									</td>
 									<td>
 										{{number_format($item->Total, 0, " ", ".").' ₫'}}
