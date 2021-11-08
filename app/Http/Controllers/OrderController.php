@@ -130,7 +130,15 @@ class OrderController extends Controller
         ->join('product', 'product.ProductId', '=', 'orderdetail.ProductId')
         ->where('OrderId', '=', $OrderId)->First();
         $numberProduct = DB::table('orderdetail')->where('OrderId', '=', $OrderId)->count() - 1;
-        $data['Description'] = $firstProductName->ProductName.' và '.$numberProduct.' sản phẩm khác';
+        if($numberProduct < 1)
+        {
+            $data['Description'] = $firstProductName->ProductName;
+        }
+        else
+        {
+            $data['Description'] = $firstProductName->ProductName.' và '.$numberProduct.' sản phẩm khác';
+        }
+        
         DB::table('order')->where('OrderId', '=', $OrderId)->update($data);
         Cart::destroy();
         return Redirect::to('my-orders');

@@ -4,7 +4,7 @@
 	<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Chỉnh Sửa Sản Phẩm</h4>
+						<h4 class="page-title">Chỉnh sửa sản phẩm</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<a href="#">

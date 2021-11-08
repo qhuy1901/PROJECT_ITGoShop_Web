@@ -138,8 +138,8 @@
 								<tr>
 									<td><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt=""></td>
 									<td>{{$item->ProductName}}</td>
-									<td>x{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</td>
-									<td>{{$item->OrderQuantity}}</td>
+									<td>{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</td>
+									<td>x{{$item->OrderQuantity}}</td>
 									<td style="text-align: right;">{{number_format($item->UnitPrice * $item->OrderQuantity, 0, " ", ".").' ₫'}}</td>
 								</tr>
 								@endforeach

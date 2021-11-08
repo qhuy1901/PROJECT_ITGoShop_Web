@@ -27,7 +27,7 @@ Route::get('/login', 'App\Http\Controllers\HomeController@login');
 Route::post('/check-password', 'App\Http\Controllers\HomeController@check_password');
 Route::get('/customer-logout','App\Http\Controllers\HomeController@logout');
 
-//Chi tiết sản phẩm
+// Product Detail
 Route::get('/product-detail/{ProductId}', 'App\Http\Controllers\ProductController@product_detail');
 
 // Backend
@@ -79,9 +79,6 @@ Route::get('/remove-item','App\Http\Controllers\CartController@remove_item');
 Route::get('/remove-from-cart/{rowId}','App\Http\Controllers\CartController@remove_from_cart');
 Route::get('/add-to-cart','App\Http\Controllers\CartController@add_to_cart');
 Route::get('/update-quantity','App\Http\Controllers\CartController@update_quantity');
-
-
-//Route::get('', [CartController::class,'save_cart'])
 
 // Checkout
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
