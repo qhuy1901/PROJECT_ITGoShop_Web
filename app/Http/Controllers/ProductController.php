@@ -177,7 +177,8 @@ class ProductController extends Controller
         $related_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
-        ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.CategoryName', 'brand.BrandName','subbrand.SubBrandName')
         ->where('product.CategoryId',$CategoryId)
         ->whereNotIn('product.ProductId', [$ProductId])->limit(4)->get();
 
