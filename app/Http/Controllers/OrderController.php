@@ -51,7 +51,7 @@ class OrderController extends Controller
         Session::put('message', 'Cập nhật đơn hàng thành công');
         return Redirect::to('all_order');
     }
-    public function order_detail()
+    public function order_detail($OrderId)
     {
         $this->auth_login();
         
@@ -62,7 +62,7 @@ class OrderController extends Controller
         $order_detail = DB::table('order')
         ->join('user','user.UserId','=','order.UserId')
         ->select('order.*', 'user.*')
-        ->orderby('order.OrderId', 'desc')->get();
+        ->where('order.OrderId', $OrderId)->get();
         $default_shipping_address = DB::table('shippingaddress')
         ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
         ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')

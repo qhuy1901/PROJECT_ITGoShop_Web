@@ -46,7 +46,7 @@
 												@foreach($all_order as $key => $order)
 												<tr>
 													<td>
-														<a href="{{URL::to('/order-detail')}}">
+														<a href="{{URL::to('/order-detail/'.$order->OrderId)}}">
 															<span> {{$order->OrderId}}</span>
 														</a>
 													</td>
@@ -58,7 +58,7 @@
 													?>
 													<td>{{$fullname}}</td>
 													<td>{{$order->Total}}</td>
-													<td style="color: #77ACF1; font-size: 14px; font-weight: 900;">{{$order->Status}} </td>
+													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}} </td>
 													<td>{{$order->OrderDate}}</td>
 													<td>{{$order->OrderDateCompleted}}</td>
 													<td>
@@ -93,7 +93,7 @@
 																						
 																							<div class="col-md-6 pr-0 ">
 																									<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-																										<option selected>{{$order->Status}}</option>
+																										<option selected>{{$order->OrderStatus}}</option>
 																										<option value="2">Confirmed</option>
 																										<option value="3">Shipped</option>
 																										<option value="3">Delivering</option>

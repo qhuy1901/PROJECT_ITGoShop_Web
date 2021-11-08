@@ -1,8 +1,6 @@
 
 @extends('admin_layout')
 @section('admin_content')
-
-    
     <div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
@@ -42,7 +40,7 @@
                       <small class="text-muted">Mã đơn hàng: {{$order->OrderId}}</small>
                     </div>
                     <div class="col-lg-6 col-md-6 ms-auto text-md-end" >
-                      <a  class=" d-inline-block"  style="max-width: 200px; line-height: 1.5; border: 1px solid black; padding: 0.5rem  0.75rem ; border-radius: 0.25rem; " > {{$order->Status}}    </a>
+                      <a  class=" d-inline-block"  style="max-width: 200px; line-height: 1.5; border: 1px solid black; padding: 0.5rem  0.75rem ; border-radius: 0.25rem; " > {{$order->OrderStatus}}    </a>
                     </div>
                   </div>
                 </header>
@@ -118,7 +116,7 @@
                           @endforeach
                           <?php
 
-                          $SumO = $Sum + $order->Ship;
+                          $SumO = $Sum + $order->ShipFee;
                           ?>
                           
                           <tr>
@@ -128,7 +126,7 @@
                                       <dt style="width: 150px; font-weight: normal;">Tổng cộng:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;">{{number_format($Sum).' '.'₫'}}</dd> 
                                     </dl>
                                     <dl style="display: flex;" class="dlist"> 
-                                      <dt style="width: 150px; font-weight: normal;">Phí vận chuyển:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;">{{number_format($order->	Ship).' '.'₫'}}</dd> 
+                                      <dt style="width: 150px; font-weight: normal;">Phí vận chuyển:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;">{{number_format($order->	ShipFee).' '.'₫'}}</dd> 
                                     </dl>
                                     <dl style="display: flex;" class="dlist"> 
                                       <dt style="width: 150px; font-weight: normal;">Tổng đơn hàng:</dt> <dd style="margin-left: 30px; vertical-align: baseline; flex-grow: 1;  margin-bottom: 0;   text-align: right;"> <b class="h5">{{number_format($SumO).' '.'₫'}}</b> </dd> 
@@ -152,9 +150,10 @@
               </div>
             </div> 
           </div> 
+          @endforeach
         </div>
       </div>
     </div>
-    @endforeach
+    
 									
 @endsection
