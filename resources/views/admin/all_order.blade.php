@@ -58,7 +58,7 @@
 													?>
 													<td>{{$fullname}}</td>
 													<td>{{$order->Total}}</td>
-													<td style="color: #77ACF1; font-size: 14px; font-weight: 900;">{{$order->OrderStatus}} </td>
+													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}} </td>
 													<td>{{$order->OrderDate}}</td>
 													<td>{{$order->OrderDateCompleted}}</td>
 													<td>
