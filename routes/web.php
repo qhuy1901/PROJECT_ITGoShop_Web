@@ -116,7 +116,7 @@ Route::get('/confirm_order','App\Http\Controllers\OrderController@confirm_order'
 Route::get('/all_order','App\Http\Controllers\OrderController@all_order');
 Route::get('/order_status','App\Http\Controllers\OrderController@order_status');
 Route::post('/update-order','App\Http\Controllers\OrderController@update_order');
-Route::get('/order-detail', 'App\Http\Controllers\OrderController@order_detail');
+Route::get('/order-detail/{OrderId}', 'App\Http\Controllers\OrderController@order_detail');
 Route::get('/my-orders', 'App\Http\Controllers\OrderController@show_my_orders');
 Route::post('/create-order', 'App\Http\Controllers\OrderController@create_order');
 
