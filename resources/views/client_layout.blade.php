@@ -160,8 +160,8 @@
 							if($CustomerId)
 							{?>
 								<a href="{{URL::to('/profile')}}">Tài khoản</a>';
+								<a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi</a>';
 								<a href="{{URL::to('/customer-logout')}}">Kiểm tra bảo hành</a>';
-								<a href="{{URL::to('/customer-logout')}}">Lịch sử mua hàng</a>';
 								<a href="{{URL::to('/customer-logout')}}">Đăng xuất</a>';
 						<?php } ?>
 					</div>
