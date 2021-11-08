@@ -50,7 +50,13 @@
 															<span> {{$order->OrderId}}</span>
 														</a>
 													</td>
-													<td>{{$order->FullName}}</td>
+													<?php
+														$firstName = $order->FirstName;
+														$lastName = $order->LastName;
+														$fullname = $lastName.$firstName ;
+														
+													?>
+													<td>{{$fullname}}</td>
 													<td>{{$order->Total}}</td>
 													<td style="color: #77ACF1; font-size: 14px; font-weight: 900;">{{$order->Status}} </td>
 													<td>{{$order->OrderDate}}</td>

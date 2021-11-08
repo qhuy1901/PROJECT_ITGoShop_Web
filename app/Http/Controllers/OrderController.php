@@ -26,18 +26,14 @@ class OrderController extends Controller
         }
     }
 
-    public function confirm_order()
-    {
-        $this->auth_login();
-        return view('admin.confirm_order');
-    }
+    
 
     public function all_order()
     {
         $this->auth_login();
         $all_order = DB::table('order')
-        ->join('customer','customer.CustomerId','=','order.CustomerId')
-        ->select('order.*', 'customer.FullName')
+        ->join('user','user.UserId','=','order.UserId')
+        ->select('order.*', 'user.*')
         ->orderby('order.OrderId', 'desc')->get();
         $manager_order = view('admin.all_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.all_order', $manager_order);
@@ -58,18 +54,28 @@ class OrderController extends Controller
     public function order_detail()
     {
         $this->auth_login();
+        
         $order_list = DB::table('orderdetail')
         ->join('product','product.ProductId','=','orderdetail.ProductId')
         ->select('orderdetail.*','product.*')
-        ->orderby('orderdetail.OrderDetailId', 'desc')->get();
+        ->orderby('orderdetail.OrderId', 'desc')->get();
         $order_detail = DB::table('order')
-        ->join('customer','customer.CustomerId','=','order.CustomerId')
-        ->select('order.*', 'customer.*')
+        ->join('user','user.UserId','=','order.UserId')
+        ->select('order.*', 'user.*')
         ->orderby('order.OrderId', 'desc')->get();
+        $default_shipping_address = DB::table('shippingaddress')
+        ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+        ->join('user','user.UserId','=','shippingaddress.UserId')
+        ->where('isDefault', 1)->first();
         $manager_order = view('admin.order_detail')
         ->with('order_list',$order_list)
-        ->with('order_detail', $order_detail);
+        ->with('order_detail', $order_detail)
+        ->with('default_shipping_address', $default_shipping_address);
         return view('admin_layout')->with('admin.order_detail', $manager_order);
+        
     }
 
     public function show_my_orders()

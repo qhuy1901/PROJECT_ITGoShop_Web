@@ -1,10 +1,8 @@
 
 @extends('admin_layout')
 @section('admin_content')
-@foreach($order_detail  as $key => $order)
-    <?php
-      $Sum = 0;
-    ?>
+
+    
     <div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
@@ -30,6 +28,7 @@
 							</li>
 						</ul>
 					</div>
+          @foreach($order_detail  as $key => $order)
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -53,21 +52,31 @@
                         <div class="col-lg-4">
                           <div class="box shadow-sm bg-light">
                               <h5>Thông tin khách hàng</h5> 
+                              <?php
+                                  $Sum = 0;
+                                  $firstName = $order->FirstName;
+                                  $lastName = $order->LastName;
+                                  $fullname = $lastName.$firstName ;
+                              ?>
                                       <p>
-                                      {{$order->FullName}} <br> {{$order->Email}} <br> {{$order->PhoneNumber}}
+                                      Họ Tên: {{$fullname}} <br>Email: {{$order->Email}} <br>Số điện thoại: {{$order->Mobile}}
                                       </p>
                           </div>
                           
                           <div class="box shadow-sm bg-light">
-                                <h5>Địa chỉ giao hàng</h5> 
+                                <h5>Thông tin giao hàng</h5> 
                                 <p>
-                                  {{$order->	SpecificAddress}} <br>{{$order->	District}} ,  {{$order->	Provine}} 
+                                    Họ Tên Người Nhận: {{$default_shipping_address->ReceiverName}} 
+                                    <br>Số Điện Thoại: {{$default_shipping_address->Phone}}
+                                    <br>Địa Chỉ: {{$default_shipping_address->Address. ", " .$default_shipping_address->xaphuongthitran. ", " .$default_shipping_address->quanhuyen. ", " .$default_shipping_address->tinhthanhpho}}
+                                    
                                 </p>
+                                
                           </div>
                           <div class="box shadow-sm bg-light">
                             <h5>Thông tin thanh toán</h5>
                             <p> 
-                              Hình thức thanh toán: {{$order->	PaymentMethod}}
+                              Hình thức thanh toán: {{$order->PaymentMethod}}
                             </p>
                           </div>
                         </div> 
@@ -83,15 +92,16 @@
                           </tr>
                         </thead>
                         <tbody>
+                        @foreach($order_list as $key => $orderdetail)
+                              @if($order->OrderId == $orderdetail->OrderId)
                           <tr>
-                            @foreach($order_list as $key => $orderdetail)
-                              @if($orderdetail->OrderId == $order->OrderId)
+                           
                                 <td>
                                   <a style="position: relative; display: flex;  width: 100%; align-items: center;" class="itemside" >
                                       <div class="left">
                                           <img src="{{URL::to('public/images_upload/product/'.$orderdetail->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item">
                                       </div>
-                                      <div style="padding-left: 15px; padding-right: 7px;" class="info" >  {{$orderdetail->	ProductName}}  </div>
+                                      <div style="padding-left: 15px; padding-right: 7px;" class="info" >  {{$orderdetail->ProductName}}  </div>
                                   </a>
                                 </td>
                                 <td> {{number_format($orderdetail->Price).' '.'₫'}} </td>
@@ -102,9 +112,10 @@
                                   $Sum = $Sum + $Thanhtien;
                                 ?>
                                 <td style="text-align: right !important;"> {{number_format($Thanhtien).' '.'₫'}}  </td>
-                            @endif
-                          @endforeach
+                           
                           </tr>
+                          @endif
+                          @endforeach
                           <?php
 
                           $SumO = $Sum + $order->Ship;
