@@ -25,21 +25,13 @@
 							</li>
 						</ul>
 					</div>
+					@foreach($post_info as $key => $update_value)
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">Cập nhật nội dung bài viết</div>
 								</div>
-								<?php
-									$message = Session::get('message');
-									if($message)
-									{
-										echo '<label>'.$message.'</label>';
-										Session::put('message', null);
-									}
-								?>
-								@foreach($post_info as $key => $update_value)
 								<form role="form" action="{{URL::to('/update-post/'.$update_value->BlogId)}}" method="post" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" có cái này mới thêm ảnh đc-->
 									{{ csrf_field() }}
 										<div class="card-body">
@@ -48,7 +40,6 @@
 													<div class="form-group">
 														<label for="exampleFormControlFile1">Tác giả</label>
 														<div class="input-group mb-3">
-															
 															<input type="text" name="Author" class="form-control" aria-label="Username" aria-describedby="basic-addon1" value="{{$update_value->Author}}">
 														</div>
 													</div>
@@ -102,11 +93,11 @@
 													<div class="form-group">
 														<label for="exampleFormControlFile1">Hình minh hoạ</label>
 														<input type="file" name="Image" class="form-control-file" id="exampleFormControlFile1">
+														<img src="{{URL::to('public/images_upload/blog/'.$update_value->Image)}}" height=100 width=100>
 													</div>
 												</div>
 											</div>
 										</div>
-										@endforeach
 										<div class="card-action">
 											<button type="submit" name="update_post" class="btn btn-success">Cập nhật</button>
 											<button class="btn btn-danger">Huỷ</button>
@@ -115,5 +106,6 @@
 							</div>
 						</div>
 					</div>
+					@endforeach
 			</div>
 @endsection

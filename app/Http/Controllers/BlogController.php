@@ -119,7 +119,6 @@ class BlogController extends Controller
         }
 
         DB::table('blog')->where('BlogId', $BlogId)->update($data);
-        Session::put('message', 'Cập nhật bài viết thành công');
         return Redirect::to('view-content');
     }
 
@@ -137,14 +136,8 @@ class BlogController extends Controller
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $all_blog = DB::table('blog')->orderby('BlogId', 'desc')->limit(3)->get();
 
-        // $all_product = DB::table('product')
-        // ->join('Category','Category.CategoryId','=','product.CategoryId')
-        // ->join('brand','brand.BrandId','=','product.BrandId')
-        // ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
-        // ->orderby('product.ProductId', 'desc')->get();
-        // $manager_product = view('admin.view_product')->with('all_product', $all_product);
-        // // biến chứa dữ liệu  $all_product đc gán cho all_product'
         $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();
         $top_product = DB::table('product')->where('status', 1)->orderby('Sold', 'desc')->limit(3)->get();
         

@@ -212,6 +212,7 @@
 		
 	
 	</div>
+	@endsection
     <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
 	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
 	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script>
@@ -276,4 +277,3 @@
 			});
 		});
 	</script>
-@endsection

@@ -33,7 +33,8 @@ class OrderController extends Controller
         $this->auth_login();
         $all_order = DB::table('order')
         ->join('user','user.UserId','=','order.UserId')
-        ->select('order.*', 'user.*')
+        ->join('orderstatus','orderstatus.OrderStatusId','=','order.OrderStatusId')
+        ->select('order.*', 'user.*','orderstatus.*')
         ->orderby('order.OrderId', 'desc')->get();
         $manager_order = view('admin.all_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.all_order', $manager_order);
@@ -43,8 +44,8 @@ class OrderController extends Controller
         $this->auth_login();
         $data = array();
         $data['OrderId'] = $request->OrderId;
-        $data['OrderStatus'] = $request->Status;
-        $data['OrderDateCompleted'] = $request->OrderDateCompleted;
+        $data['OrderStatusId'] = $request->Status;
+        $data['DateUpdate'] = date("Y-m-d H:i:s");
         
 
         DB::table('order')->where('OrderId', $OrderId)->update($data);
@@ -61,7 +62,8 @@ class OrderController extends Controller
         ->orderby('orderdetail.OrderId', 'desc')->get();
         $order_detail = DB::table('order')
         ->join('user','user.UserId','=','order.UserId')
-        ->select('order.*', 'user.*')
+        ->join('orderstatus','orderstatus.OrderStatusId	','=','order.OrderStatusId')
+        ->select('order.*', 'user.*','orderstatus.*')
         ->where('order.OrderId', $OrderId)->get();
         $default_shipping_address = DB::table('shippingaddress')
         ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')

@@ -110,7 +110,8 @@
 					</div>
 				</div>
 			</div>
-			<script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
+@endsection
+	<script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
 	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
 	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script>
 	<!-- jQuery UI -->
@@ -174,4 +175,3 @@
 			});
 		});
 	</script>
-@endsection

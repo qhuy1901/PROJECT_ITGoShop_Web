@@ -1,7 +1,7 @@
 @extends('admin_layout')
 @section('admin_content')
-<div class="main-panel">
-	<div class="content">
+		<div class="main-panel">
+			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
 						<h4 class="page-title">Chỉnh Sửa Sản Phẩm</h4>
@@ -20,6 +20,7 @@
 							
 						</ul>
 					</div>
+					@foreach($product_info as $key => $update_value)
                     <div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -34,7 +35,6 @@
 										Session::put('message', null);
 									}
 								?>
-								@foreach($product_info as $key => $update_value)
 								<form role="form" action="{{URL::to('/update-product/'.$update_value->ProductId)}}" method="post" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" có cái này mới thêm ảnh đc-->
 									{{ csrf_field() }}								
 									<div class="card-body">
@@ -159,14 +159,13 @@
 											</div>
 											<div class="col-lg-12">	
 												<div class="form-group">
-                                                        <label for="comment">Nội dung sản phẩm</label>
-														<textarea  class="form-control" name="content" id="ckeditor1" rows="5" placeholder="Mô tả sản phẩm">
+                                                    <label for="comment">Nội dung sản phẩm</label>
+													<textarea  class="form-control" name="content" id="ckeditor1" rows="5" placeholder="Mô tả sản phẩm">
 														{{$update_value->Content}}
-                                                        </textarea>                                                </div>
+                                                    </textarea>                                                </div>
 											</div>
 										</div>
                                     </div> 
-									@endforeach
 									<div class="card-action">
 										<button type="submit" name="update_product" class="btn btn-success">Cập nhật thông tin sản phẩm</button>
 										<button class="btn btn-danger">Hủy</button>
@@ -175,8 +174,9 @@
 							</div>
 						</div>
 					</div>
+					@endforeach
 				</div>
-	</div>
-</div>	
+			</div>
+		</div>	
 
 @endsection
