@@ -7,8 +7,8 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="product-detail.html">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.php">Cart</a></li>
+							<li><a href="product-detail.html">Trang chủ<i class="ti-arrow-right"></i></a></li>
+							<li class="active"><a href="{{URL::to('/show-cart')}}">Giỏ hàng</a></li>
 						</ul>
 					</div>
 				</div>
