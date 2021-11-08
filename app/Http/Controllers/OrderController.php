@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests; 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 session_start();
 
@@ -71,5 +72,51 @@ class OrderController extends Controller
         return view('admin_layout')->with('admin.order_detail', $manager_order);
     }
 
-    
+    public function show_my_orders()
+    {
+        $CustomerId = Session::get('CustomerId');
+        if($CustomerId)
+        {
+            $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+            $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+            $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+            
+            $order_list =  DB::table('order')->where('CustomerId', '=' , $CustomerId)->get();
+            return view('client.my-orders')
+            ->with('sub_brand_list',  $sub_brand_list )
+            ->with('main_brand_list', $main_brand_list)
+            ->with('product_category_list', $product_category_list)
+            ->with('order_list', $order_list);
+        }
+        return Redirect::to('/login');
+    }
+
+    public function create_order(Request $request)
+    {
+        $data = array();
+        // Thêm thông tin đơn hàng
+        $CustomerId = Session::get('CustomerId');
+        $data['CustomerId'] = $CustomerId;
+        $data['Status'] = 'Đã tiếp nhận đơn hàng';
+        $data['OrderDate'] = date("Y-m-d H:i:s");
+        $data['Total']= Cart::total(0, ',', '');
+        $data['PaymentMethod'] = 'COD';
+        $data['PaymentStatus'] = 'Chờ thanh toán';
+        $data['ShippingAddressId'] = $request->ShippingAddressId;
+        $OrderId = DB::table('order')->insertGetId($data);
+        
+        // Thêm chi tiết đơn hàng
+        $content = Cart::content();
+        foreach($content as $order_detail)
+        {
+            $item = array();
+            $item['OrderId'] = $OrderId;
+            $item['ProductId'] = $order_detail->id;
+            $item['OrderQuantity'] = $order_detail->qty;
+            $item['UnitPrice'] = $order_detail->price;
+            DB::table('orderdetail')->insert($item);
+        }
+        Cart::destroy();
+        return Redirect::to('my-orders');
+    }
 }
