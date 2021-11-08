@@ -87,7 +87,7 @@ class OrderController extends Controller
             $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
             $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
             $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
-            $order_list =  DB::table('order')->where('UserId', '=' , $CustomerId)->get();
+            $order_list =  DB::table('order')->orderby('OrderId', 'desc')->where('UserId', '=' , $CustomerId)->get();
 
             return view('client.my-orders')
             ->with('sub_brand_list',  $sub_brand_list )

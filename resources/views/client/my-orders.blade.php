@@ -106,7 +106,7 @@
 								@foreach($order_list as $key => $item)
 								<tr>
 									<td>
-										<a href="#" style="color: #77ACF1">{{$item->OrderId}}</a>
+										<a href="{{URL::to('/show-order-detail/'.$item->OrderId)}}" style="color: #77ACF1">{{$item->OrderId}}</a>
 									</td>
 									<td>
 										{{date("d/m/Y", strtotime($item->OrderDate))}}
