@@ -117,7 +117,7 @@
 									<td>
 										{{number_format($item->Total, 0, " ", ".").' ₫'}}
 									</td>
-									<td>{{$item->Status}}</td>
+									<td>{{$item->OrderStatus}}</td>
 								</tr>
 								@endforeach
 							</tbody>

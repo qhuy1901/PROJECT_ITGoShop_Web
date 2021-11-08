@@ -125,7 +125,7 @@
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="fa fa-search"></i></button>
 			</form>            
-			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i>2</i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  <div class="ps-cart__listing">
 				<div class="ps-cart__content"> 
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>

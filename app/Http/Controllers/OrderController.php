@@ -43,7 +43,7 @@ class OrderController extends Controller
         $this->auth_login();
         $data = array();
         $data['OrderId'] = $request->OrderId;
-        $data['Status'] = $request->Status;
+        $data['OrderStatus'] = $request->Status;
         $data['OrderDateCompleted'] = $request->OrderDateCompleted;
         
 
@@ -87,7 +87,7 @@ class OrderController extends Controller
             $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
             $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
             $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
-            $order_list =  DB::table('order')->where('CustomerId', '=' , $CustomerId)->get();
+            $order_list =  DB::table('order')->where('UserId', '=' , $CustomerId)->get();
 
             return view('client.my-orders')
             ->with('sub_brand_list',  $sub_brand_list )
@@ -103,8 +103,8 @@ class OrderController extends Controller
         $data = array();
         // Thêm thông tin đơn hàng
         $CustomerId = Session::get('CustomerId');
-        $data['CustomerId'] = $CustomerId;
-        $data['Status'] = 'Đã tiếp nhận đơn hàng';
+        $data['UserId'] = $CustomerId;
+        $data['OrderStatus'] = 'Đã tiếp nhận đơn hàng';
         $data['OrderDate'] = date("Y-m-d H:i:s");
         $data['Total']= Cart::total(0, ',', '');
         $data['PaymentMethod'] = 'COD';
