@@ -134,3 +134,5 @@ Route::post('/add-shipping-address','App\Http\Controllers\ShippingAddressControl
 Route::get('/delete-shipping-address','App\Http\Controllers\ShippingAddressController@delete_shipping_address');
 Route::get('/change-default-shipping-address/{ShippingAddressId}','App\Http\Controllers\ShippingAddressController@change_default_shipping_address');
 Route::get('/update-shipping-address','App\Http\Controllers\ShippingAddressController@update_shipping_address');
+
+Route::get('/product-listing', 'App\Http\Controllers\ProductListingController@product_listing');

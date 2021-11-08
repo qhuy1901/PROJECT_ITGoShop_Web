@@ -17,13 +17,7 @@ class HomeController extends Controller
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $all_blog = DB::table('blog')->orderby('BlogId', 'desc')->limit(3)->get();
 
-        // $all_product = DB::table('product')
-        // ->join('Category','Category.CategoryId','=','product.CategoryId')
-        // ->join('brand','brand.BrandId','=','product.BrandId')
-        // ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
-        // ->orderby('product.ProductId', 'desc')->get();
-        // $manager_product = view('admin.view_product')->with('all_product', $all_product);
-        // // biến chứa dữ liệu  $all_product đc gán cho all_product'
+        
         $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();
         $top_product = DB::table('product')->where('status', 1)->orderby('Sold', 'desc')->limit(3)->get();
         return view('client.home')

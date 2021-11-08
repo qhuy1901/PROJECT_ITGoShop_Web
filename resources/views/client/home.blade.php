@@ -846,7 +846,7 @@
 						<img style="margin: auto; max-width: 330px; max-height: 300px; width: auto; height: auto;" src="{{URL::to('public/images_upload/blog/'.$blog->Image)}}" alt="#">
 						<div class="content">
 							<a class="title">{{$blog->Title}}</a>
-							<a href="{{URL::to('/blog-detail/')}}" class="more-btn">Đọc tiếp</a>
+							<a href="{{URL::to('/blog-detail/'.$blog->BlogId)}}" class="more-btn">Đọc tiếp</a>
 						</div>
 					</div>
 					<!-- End Single Blog  -->

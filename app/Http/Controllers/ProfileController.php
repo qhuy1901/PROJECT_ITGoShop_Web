@@ -16,9 +16,9 @@ class ProfileController extends Controller
     {
         // Cái này để load layout thôi
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
-
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        
         return view('client.profile')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)

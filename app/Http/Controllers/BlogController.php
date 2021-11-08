@@ -136,26 +136,18 @@ class BlogController extends Controller
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
-        $all_blog = DB::table('blog')->orderby('BlogId', 'desc')->limit(3)->get();
-
-        $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();
-        $top_product = DB::table('product')->where('status', 1)->orderby('Sold', 'desc')->limit(3)->get();
-        
-
         $blog_detail = DB::table('blog')
-        ->select('blog.*')
         ->where('blog.BlogId', $BlogId)->get();
 
-        
-
         $related_blog = DB::table('blog')
-        ->select('blog.*')
-        ->where('blog.BlogId',$BlogId)
-        ->whereNotIn('blog.BlogId', [$BlogId])->get();
+        ->whereNotIn('blog.BlogId', [$BlogId])->limit(3)->get();
 
-        return view('client.blog-detail')
-        ->with('blog_detail', $blog_detail)
-        ->with('related_blog',$related_blog);
+        return view('client.blog-detail') 
+        ->with('sub_brand_list',  $sub_brand_list )
+        ->with('main_brand_list', $main_brand_list)
+        ->with('product_category_list', $product_category_list)
+        ->with('blog_detail',  $blog_detail )
+        ->with('related_blog',  $related_blog );
     }
 
     public function all_blog()
