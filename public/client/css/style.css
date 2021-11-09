@@ -1007,7 +1007,7 @@ body {
   .ps-products-wrap .ps-sidebar {
     position: relative;
     float: left;
-    padding-right: 30px;
+    padding-right: 20px;
     width: 270px;
     right: calc(100% - 270px); }
   .ps-products-wrap .ps-products {
@@ -2577,9 +2577,9 @@ textarea.form-control {
     top: 10px;
     left: 0;
     width: 100%;
-    z-index: 10003;
-    min-height: 90px;
-    max-height: 90px;
+    z-index: 9003;
+    min-height: 40px;
+    max-height: 40px;
     visibility: hidden;
     opacity: 0;
     -webkit-transition: all 0.4s ease;
@@ -2591,8 +2591,7 @@ textarea.form-control {
     -o-transform: translateY(-100px);
     transform: translateY(-100px); }
     .ps-shoe .ps-shoe__variants .ps-shoe__variant {
-      padding: 0 25px;
-      margin-bottom: 10px; }
+      }
       .ps-shoe .ps-shoe__variants .ps-shoe__variant .owl-nav {
         position: absolute;
         top: 50%;
@@ -2697,8 +2696,8 @@ textarea.form-control {
   .ps-shoe:hover .ps-shoe__thumbnail {
     z-index: 10000; }
   .ps-shoe:hover .ps-shoe__content {
-    padding-top: 100px;
-    bottom: -90px;
+    padding-top: 30px;
+    bottom: -20px;
     max-height: none; }
   .ps-shoe:hover .ps-shoe__variants {
     visibility: visible;
