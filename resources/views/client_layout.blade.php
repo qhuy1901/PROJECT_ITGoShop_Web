@@ -71,13 +71,13 @@
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
-				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Laptop</a>
+				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing')}}">Laptop</a>
 						<div class="mega-menu">
 					  		<div class="mega-wrap">
 								@foreach($main_brand_list as $key => $main_brand)
 									@if($main_brand->CategoryId == "LT000")
 									<div class="mega-column">
-										<h4 class="mega-heading">{{$main_brand->BrandName}}</h4>
+											<a href="{{URL::to('/product-listing')}}"> <h4 class="mega-heading" >{{$main_brand->BrandName}}</h4> </a>
 										@foreach($sub_brand_list as $key => $SubBrand)
 											@if($SubBrand->BrandId == $main_brand->BrandId)
 											<ul class="mega-item">
@@ -93,17 +93,17 @@
 					  		</div>
 						</div>
 				  	</li>
-				  <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">PC</a>
+				  <li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing')}}">PC</a>
 					<div class="mega-menu">
 						<div class="mega-wrap">
 									@foreach($main_brand_list as $key => $main_brand)
 										@if($main_brand->CategoryId == "PC000")
 										<div class="mega-column">
-											<h4 class="mega-heading">{{$main_brand->BrandName}}</h4>
+											<a href="{{URL::to('/product-listing')}}"><h4 class="mega-heading">{{$main_brand->BrandName}}</h4></a>
 											@foreach($sub_brand_list as $key => $SubBrand)
 												@if($SubBrand->BrandId == $main_brand->BrandId)
 												<ul class="mega-item">
-													<li><a href="{{URL::to('/thuong-hieu-san-pham/'.$SubBrand->BrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
+													<li><a href="{{URL::to('/product-listing')}}">{{$SubBrand->SubBrandName}}</a></li>
 															
 												</ul>
 												@endif
@@ -115,7 +115,7 @@
 						</div>
 					</div>
 				  </li>
-				  <li class="menu-item"><a href="product-listing.html">Phụ Kiện</a></li>
+				  <li class="menu-item"><a href="{{URL::to('/product-listing')}}">Phụ Kiện</a></li>
 				  <li class="menu-item"><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
 				  
 				</ul>

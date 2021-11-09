@@ -40,7 +40,7 @@
                       <small class="text-muted">Mã đơn hàng: {{$order->OrderId}}</small>
                     </div>
                     <div class="col-lg-6 col-md-6 ms-auto text-md-end" >
-                      <a  class=" d-inline-block"  style="max-width: 200px; line-height: 1.5; border: 1px solid black; padding: 0.5rem  0.75rem ; border-radius: 0.25rem; " > {{$order->OrderStatus}}    </a>
+                      <a  class=" d-inline-block"  style="max-width: 200px; line-height: 1.5; border: 1px solid black; padding: 0.5rem  0.75rem ; border-radius: 0.25rem; " > {{$order->OrderStatusName}}    </a>
                     </div>
                     
                   </div>

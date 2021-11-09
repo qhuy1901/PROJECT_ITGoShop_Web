@@ -2534,7 +2534,7 @@ textarea.form-control {
     top: -15px;
     left: -15px;
     width: calc(100% + 30px);
-    height: calc(100% + 108px);
+    height: calc(100% + 80px);
     border: 1px solid #000;
     z-index: 1000;
     visibility: hidden;
@@ -9642,7 +9642,7 @@ html .bg--parallax {
 }
 .main-sidebar .info:before {
   content: "";
-  background: #06c1d4;
+  background: #77ACF1;
   width: 8px;
   height: 112px;
   left: 28px;

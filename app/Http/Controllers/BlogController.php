@@ -152,6 +152,9 @@ class BlogController extends Controller
 
     public function all_blog()
     {
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $all_content = DB::table('blog')
         ->select('blog.*')
         ->orderby('blog.BlogId', 'desc')->get();

@@ -63,7 +63,7 @@ class OrderController extends Controller
         ->orderby('orderdetail.OrderId', 'desc')->get();
         $order_detail = DB::table('order')
         ->join('user','user.UserId','=','order.UserId')
-        ->join('orderstatus','orderstatus.OrderStatusId	','=','order.OrderStatusId')
+        ->join('orderstatus','orderstatus.OrderStatusId','=','order.OrderStatusId')
         ->select('order.*', 'user.*','orderstatus.*')
         ->where('order.OrderId', $OrderId)->get();
         $default_shipping_address = DB::table('shippingaddress')

@@ -24,6 +24,7 @@
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                         @foreach($all_content as $key => $blog)
+                        {{csrf_field()}}
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                           <div class="ps-post mb-30">
                             <div class="ps-post__thumbnail"><a class="ps-post__overlay" ></a><img src="{{URL::to('public/images_upload/blog/'.$blog->Image)}}" alt=""></div>
