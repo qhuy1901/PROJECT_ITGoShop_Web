@@ -31,32 +31,37 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
-        // Cái này để load layout thôi
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
         $CustomerId = Session::get('CustomerId');
-        $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
-        $default_shipping_address = DB::table('shippingaddress')
-        ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
-        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
-        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
-        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
-        ->where('UserId', $CustomerId)->where('isDefault', 1)->first();
-        $shipping_address_list = DB::table('shippingaddress')
-        ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
-        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
-        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
-        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
-        ->where('UserId', $CustomerId)->where('isDefault', 0)->first();
-
-        return view('client.checkout')
-            ->with('sub_brand_list',  $sub_brand_list )
-            ->with('main_brand_list', $main_brand_list)
-            ->with('product_category_list', $product_category_list)
-            ->with('all_tinhthanhpho', $all_tinhthanhpho)
-            ->with('default_shipping_address', $default_shipping_address)
-            ->with('shipping_address_list ', $shipping_address_list );
+        if($CustomerId)
+        {
+            // Cái này để load layout thôi
+            $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+            $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
+            $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+            $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
+            $default_shipping_address = DB::table('shippingaddress')
+            ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+            ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+            ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+            ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+            ->where('UserId', $CustomerId)->where('isDefault', 1)->first();
+            $shipping_address_list = DB::table('shippingaddress')
+            ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+            ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+            ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+            ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+            ->where('UserId', $CustomerId)->where('isDefault', 0)->first();
+    
+    
+            return view('client.checkout')
+                ->with('sub_brand_list',  $sub_brand_list )
+                ->with('main_brand_list', $main_brand_list)
+                ->with('product_category_list', $product_category_list)
+                ->with('all_tinhthanhpho', $all_tinhthanhpho)
+                ->with('default_shipping_address', $default_shipping_address)
+                ->with('shipping_address_list ', $shipping_address_list );
+        }
+        return Redirect::to('/login-to-checkout');
     }
 
 

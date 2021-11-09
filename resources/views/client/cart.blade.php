@@ -115,11 +115,7 @@
 								<li class="last">Tổng cộng<span id="tong-cong">{{(Cart::total(0, ',', '.')).' ₫'}}</span></li>
                             </ul>
                             <div class="button5">
-								@if($CustomerId)
 									<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>
-								@else
-									<a href="{{URL::to('/login-to-checkout')}}" class="btn">Thanh Toán</a>
-								@endif
 								<a href="{{URL::to('/')}}" class="btn">Tiếp tục mua hàng</a>
                             </div>
                         </div>
