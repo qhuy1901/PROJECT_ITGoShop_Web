@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Mail;
 use Session;
 use App\Http\Requests; 
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -143,6 +144,32 @@ class OrderController extends Controller
         
         DB::table('order')->where('OrderId', '=', $OrderId)->update($data);
         Cart::destroy();
-        return Redirect::to('my-orders');
+        $this->send_order_mail($OrderId);
+        return redirect()->action(
+            [OrderDetailController::class, 'index'], ['OrderId' => $OrderId]
+        );
+    }
+
+    public function send_order_mail($OrderId)
+    {
+        $to_name = "ITGoShop";
+        $to_mail = "itgoshop863@gmail.com"; // Gửi đến email nào? 
+        $OrderInfo = DB::table('order')
+        ->select('FirstName','LastName', 'OrderId', 'OrderDate', 'Description', 'ShippingAddressId', 'Total')
+        ->join('user', 'user.UserId', '=', 'order.UserId')
+        ->where('OrderId', '=', $OrderId)->first();
+
+        $ShippingAddress = DB::table('shippingaddress')
+        ->select('ShippingAddressId', 'ReceiverName', 'ShippingAddressType', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+        ->where('ShippingAddressId', '=', $OrderInfo->ShippingAddressId)->first();
+
+        $data = array("OrderInfo" => $OrderInfo, "ShippingAddress" => $ShippingAddress);
+        Mail::send('mail.order_mail', $data, function($message) use ($to_name, $to_mail){
+            $message->to($to_mail)->subject('ITGoShop đã nhận được đơn hàng của bạn');
+            $message->from($to_mail, $to_name);
+        });
     }
 }
