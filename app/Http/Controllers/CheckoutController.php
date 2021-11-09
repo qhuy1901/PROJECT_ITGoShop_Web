@@ -36,8 +36,8 @@ class CheckoutController extends Controller
         {
             // Cái này để load layout thôi
             $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-            $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-            $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+            $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+            $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
             $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
             $default_shipping_address = DB::table('shippingaddress')
             ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')

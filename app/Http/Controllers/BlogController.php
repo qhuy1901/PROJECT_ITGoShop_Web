@@ -158,8 +158,11 @@ class BlogController extends Controller
         $all_content = DB::table('blog')
         ->select('blog.*')
         ->orderby('blog.BlogId', 'desc')->get();
-        $manager_blog = view('client.all_blog')->with('all_content', $all_content);
-        return view('client.all_blog', $manager_blog);
 
+        return view('client.all_blog')
+        ->with('sub_brand_list',  $sub_brand_list )
+        ->with('main_brand_list', $main_brand_list)
+        ->with('product_category_list', $product_category_list)
+        ->with('all_content', $all_content);
     }
 }

@@ -58,7 +58,7 @@
 													?>
 													<td>{{$fullname}}</td>
 													<td>{{$order->Total}}</td>
-													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatusName}} </td>
+													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}} </td>
 													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->PaymentStatus}} </td>
 													
 													<td>
@@ -93,14 +93,20 @@
 																						
 																							<div class="col-md-6 pr-0 ">
 																									<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-																										<option selected>{{$order->OrderStatusName}}</option>
+																										<option selected>{{$order->OrderStatus}}</option>
 																										<option value="2">Đã xác nhận</option>
 																										<option value="3">Đã giao cho đơn vị vận chuyển</option>
 																										<option value="3">Đang giao hàng</option>
 																										<option value="3">Hoàn thành</option>
 																									</select>
 																							</div>
-																							<div class="col-md-6 ">
+																							<div class="col-md-6 pr-0 ">
+																									<select class="form-select form-select-sm" aria-label=".form-select-sm example">
+																										<option selected>{{$order->PaymentStatus}}</option>
+																										<option value="3">Hoàn thành</option>
+																									</select>
+																							</div>
+																							<div class="col-md-8 ">
 																									<div class="custom-control custom-checkbox">
 																											<input type="checkbox" class="custom-control-input" id="defaultChecked2" checked>
 																											<label class="custom-control-label" for="defaultChecked2">Gửi email cho khách hàng</label>
