@@ -9,16 +9,15 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 session_start();
 
-class WishListController extends Controller
+class ProductListingController extends Controller
 {
-    public function wishlist()
+    public function product_listing()
     {
-        // Cái này để load layout thôi
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
-        return view('client.wishlist')
+        return view('client.product-listing')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list);

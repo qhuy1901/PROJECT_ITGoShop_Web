@@ -135,5 +135,9 @@ Route::get('/delete-shipping-address','App\Http\Controllers\ShippingAddressContr
 Route::get('/change-default-shipping-address/{ShippingAddressId}','App\Http\Controllers\ShippingAddressController@change_default_shipping_address');
 Route::get('/update-shipping-address','App\Http\Controllers\ShippingAddressController@update_shipping_address');
 
+<<<<<<< HEAD
 // // Mail
 // Route::get('/send-order-mail', 'App\Http\Controllers\OrderController@send_order_mail');
+=======
+Route::get('/product-listing', 'App\Http\Controllers\ProductListingController@product_listing');
+>>>>>>> 4552bfbf397695a2662bb7b36308ab01100eb4da

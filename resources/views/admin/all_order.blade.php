@@ -31,13 +31,13 @@
 									<div class="table-responsive">
 										<table id="basic-datatables" class="display table table-striped table-hover" >
 											<thead>
-												<tr>
+												<tr style=" font-size: 12px; font-weight: 500; text-align: center;">
 													<th>ID</th>
 													<th>Khách hàng</th>
 													<th>Tổng đơn hàng</th>
-													<th>Trạng thái</th>
-													<th>Ngày đặt hàng</th>
-													<th>Ngày hoàn thành</th>
+													<th>Trạng thái đơn hàng</th>
+													<th>Trạng thái thanh toán</th>
+													
 													<th> Thao tác </th>
 												</tr>
 											</thead>
@@ -58,9 +58,9 @@
 													?>
 													<td>{{$fullname}}</td>
 													<td>{{$order->Total}}</td>
-													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}} </td>
-													<td>{{$order->OrderDate}}</td>
-													<td>{{$order->OrderDateCompleted}}</td>
+													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatusName}} </td>
+													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->PaymentStatus}} </td>
+													
 													<td>
 															<div class="form-button-action" data-toggle="modal" data-target="#addRowModal">
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật trạng thái đơn hàng" >
@@ -93,11 +93,11 @@
 																						
 																							<div class="col-md-6 pr-0 ">
 																									<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-																										<option selected>{{$order->OrderStatus}}</option>
-																										<option value="2">Confirmed</option>
-																										<option value="3">Shipped</option>
-																										<option value="3">Delivering</option>
-																										<option value="3">Completed</option>
+																										<option selected>{{$order->OrderStatusName}}</option>
+																										<option value="2">Đã xác nhận</option>
+																										<option value="3">Đã giao cho đơn vị vận chuyển</option>
+																										<option value="3">Đang giao hàng</option>
+																										<option value="3">Hoàn thành</option>
 																									</select>
 																							</div>
 																							<div class="col-md-6 ">

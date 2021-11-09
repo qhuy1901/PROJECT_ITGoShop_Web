@@ -321,20 +321,6 @@
 									<i class="fas fa-home"></i>
 									<p>Dashboard</p>
 								</a>
-							<div class="collapse" id="dashboard">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="{{URL::to('/dashboard')}}">
-											<span class="sub-item">Dashboard 1</span>
-										</a>
-									</li>
-									<li>
-										<a href="../demo2/index.html">
-											<span class="sub-item">Dashboard 2</span>
-										</a>
-									</li>
-								</ul>
-							</div>
 						</li>
 						<li class="nav-section">
 							<span class="sidebar-mini-icon">
@@ -555,6 +541,32 @@
 		</div>
 		<!-- End Sidebar -->
 		@yield('admin_content')
+		<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									ITGo Shop
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Help
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Licenses
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="copyright ml-auto">
+						2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">ITGo Team</a>
+					</div>				
+				</div>
+			</footer>
 	</div>
 
 	<!-- <script src="{{asset('public/admin/js/jquery.form-validator.min.js')}}"></script>

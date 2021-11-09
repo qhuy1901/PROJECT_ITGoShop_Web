@@ -165,9 +165,41 @@ class ProductController extends Controller
     public function product_detail($ProductId)
     {
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        
+        $product_detail = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
+        ->where('product.ProductId', $ProductId)->get();
 
+        foreach($product_detail as $key => $value)
+        {
+            $CategoryId = $value->CategoryId;
+        }
+
+        $related_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.CategoryName', 'brand.BrandName','subbrand.SubBrandName')
+        ->where('product.CategoryId',$CategoryId)
+        ->whereNotIn('product.ProductId', [$ProductId])->limit(4)->get();
+
+        return view('client.product-detail')
+        ->with('sub_brand_list',  $sub_brand_list )
+        ->with('main_brand_list', $main_brand_list)
+        ->with('product_category_list', $product_category_list)
+        ->with('product_detail', $product_detail)
+        ->with('related_product',$related_product);
+    }
+    public function product_listing($ProductId)
+    {
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        
         $product_detail = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')

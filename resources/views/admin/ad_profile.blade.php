@@ -20,18 +20,10 @@
 							
 						</ul>
 					</div>
+                    @foreach($profile_info as $key => $update_value)
                     <div class="row">
 						<div class="col-md-12">
 							<div class="card">
-								<?php
-									$message = Session::get('message');
-									if($message)
-									{
-										echo '<label>'.$message.'</label>';
-										Session::put('message', null);
-									}
-								?>
-                                @foreach($profile_info as $key => $update_value)
 								<form role="form" action="{{URL::to('/ad_profile/'.$update_value->UserId)}}" method="post" enctype="multipart/form-data">
 									{{ csrf_field() }}
 									<div class= "card-body">
@@ -91,10 +83,10 @@
                                                                 <textarea rows="5" name="Intro" class="form-control form-control-line" >{{$update_value->Intro}}</textarea>
                                                             </div>
                                                         </div>
-                                                        @endforeach
+                                                        
                                                         <div class="form-group">
                                                             <div class="col-sm-12">
-                                                                <button class="btn btn-success" name="update_profile">Update Profile</button>
+                                                                <button type="submit" class="btn btn-success" name="update_profile">Update Profile</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -106,6 +98,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         <!-- /.container-fluid -->
