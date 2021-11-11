@@ -31,20 +31,20 @@
 					</div>
 			</div>
 			<div class="col-lg-4">
-				<div class="card" style="margin-top:50px; border-radius:  10px 10px 0px 0px;background-color:#333333; border-left: 6px solid #717171; border-bottom: 6px solid #717171;">
+				<div class="card" style="margin-top:50px; border-radius:  10px 10px 0px 0px;background-color:#ccf2f4; border-left: 6px solid #A2D2FF; border-bottom: 6px solid #A2D2FF;">
 					<div class="card-body">
-						<p style="color:white; font-size:17px;"><b>ITGOShop Thái Hà, Thả ga Sale Sốc - Khuyến mại ngập tràn xuyên suốt tháng khai trương</b></p>
+						<p style="color:#333; font-size:17px;"><b>ITGOShop Thái Hà, Thả ga Sale Sốc - Khuyến mại ngập tràn xuyên suốt tháng khai trương</b></p>
 					</div>
 				</div>
 
-				<div class="card" style="margin-top:20px; border-radius: 10px 10px 0px 0px; background-color:#333333; border-left: 6px solid #717171; border-bottom: 6px solid #717171;">
+				<div class="card" style="margin-top:20px; border-radius: 10px 10px 0px 0px; background-color:#ccf2f4; border-left: 6px solid #A2D2FF; border-bottom: 6px solid #A2D2FF;">
 					<div class="card-body">
-						<p style="color:white; font-size:17px;"><b>Đánh giá chi tiết Dell XPS 15 9510: Xứng đáng với vị thế dẫn đầu!</b></p>
+						<p style="color:#333; font-size:17px;"><b>Đánh giá chi tiết Dell XPS 15 9510: Xứng đáng với vị thế dẫn đầu!</b></p>
 					</div>
 				</div>
 
 				<div style="margin: 20px 0px;">
-					<h3><a href="" style="text-decoration:none"><b>Tất cả tin tức ></b></a></h3>
+					<h3><a href="" style="text-decoration:none;  "><b>Tất cả tin tức <i class="fa fa-angle-right" style="color:#A2D2FF;" aria-hidden="true"></i></b></a></h3>
 				</div>
 		
 			</div>
