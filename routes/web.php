@@ -139,3 +139,9 @@ Route::get('/send-order-mail', 'App\Http\Controllers\OrderController@send_order_
 
 Route::get('/product-listing', 'App\Http\Controllers\ProductListingController@product_listing');
 
+// Banner Slider
+Route::get('/view-banner-slider', 'App\Http\Controllers\BannerSliderController@view_banner_slider');
+Route::get('/add-banner-slider', 'App\Http\Controllers\BannerSliderController@add_banner_slider');
+Route::post('/save-banner-slider','App\Http\Controllers\BannerSliderController@save_banner_slider');
+Route::get('/unactive-banner-slider','App\Http\Controllers\BannerSliderController@unactive_banner_slider');
+Route::get('/active-banner-slider','App\Http\Controllers\BannerSliderController@active_banner_slider');

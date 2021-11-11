@@ -94,4 +94,5 @@ class CartController extends Controller
         $newQuantity = $request->newQuantity;
         Cart::update($rowId, $newQuantity); 
     }
+    
 }

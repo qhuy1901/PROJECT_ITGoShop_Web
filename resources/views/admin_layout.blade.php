@@ -6,7 +6,7 @@
 	<title>Trang Admin </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" type="image/png" href="{{URL::to('public/admin/images/favicon.svg')}}"/>
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Fonts and icons -->
 	<script src="{{asset('./public/admin/js/plugin/webfont/webfont.min.js')}}"></script>
 	<script>
@@ -421,19 +421,19 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
 								<i class="fas fa-table"></i>
-								<p>Tables</p>
+								<p>Quản lý Banner slider</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="tables">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="./tables/tables.html">
-											<span class="sub-item">Basic Table</span>
+										<a href="{{URL::to('/add-banner-slider')}}">
+											<span class="sub-item">Thêm Banner slider</span>
 										</a>
 									</li>
 									<li>
-										<a href="./tables/datatables.html">
-											<span class="sub-item">Datatables</span>
+										<a href="{{URL::to('/view-banner-slider')}}">
+											<span class="sub-item">Xem Banner slider</span>
 										</a>
 									</li>
 								</ul>

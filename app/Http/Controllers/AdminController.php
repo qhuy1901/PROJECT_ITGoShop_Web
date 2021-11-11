@@ -27,6 +27,11 @@ class AdminController extends Controller
 
     public function index()
     {
+        $UserId =  Session::get('UserId');
+        if($UserId)
+        {
+            return Redirect::to('/dashboard');
+        }
         return view('login');
     }
 
@@ -54,11 +59,6 @@ class AdminController extends Controller
             Session::put('message', 'Mật khẩu hoặc tài khoản sai. Xin nhập lại!');
             return Redirect::to('/admin');
         }
-        //return view('admin.dashboard');
-        
-        // echo '<pre>';
-        // print_r($result);
-        // echo '</pre>';
     }
 
     public function logout()
