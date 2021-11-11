@@ -58,4 +58,9 @@ class BannerSliderController extends Controller
     {
         DB::table('bannerslider')->where('SliderId', $request->SliderId)->update(['SliderStatus'=>0]); 
     }
+
+    public function delete_banner_slider(Request $request)
+    {
+        DB::table('bannerslider')->where('SliderId', $request->SliderId)->delete();
+    }
 }

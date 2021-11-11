@@ -13,8 +13,60 @@
 		.swal-footer {
 			text-align: center;
 		}
+
 	</style>
-	
+	<style>
+		.slider-area .mySlides {display: none}
+		.slider-area img {vertical-align: middle; border-radius: 10px  10px 0px 0px; max-height:260px;} 
+		.slideshow-container {
+			position: relative;
+			margin: 50px 0px 0px 0px;
+			border: 1px solid #D1D6E0;
+			border-radius: 10px;
+		}
+		/* Next & previous buttons */
+		.slider-area .prev, .next {
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		width: auto;
+		padding: 16px;
+		margin-top: -22px;
+		color: white;
+		font-weight: bold;
+		font-size: 18px;
+		transition: 0.6s ease;
+		border-radius: 0 3px 3px 0;
+		user-select: none;
+		}
+		/* Position the "next button" to the right */
+		.slider-area .next {
+		right: 0;
+		border-radius: 3px 0 0 3px;
+		}
+
+		/* On hover, add a black background color with a little bit see-through */
+		.prev:hover, .next:hover {
+		background-color: rgba(0,0,0,0.8);
+		}
+
+		/* The dots/bullets/indicators */
+		.slider-area .dot {
+		cursor: pointer;
+		height: 8px;
+		width: 8px;
+		margin: 0 2px;
+		background-color: #bbb;
+		border-radius: 50%;
+		display: inline-block;
+		transition: background-color 0.6s ease;
+		}
+
+		.slider-area .active, .dot:hover {
+		background-color: #717171;
+		}
+
+	</style>
 	<link rel="stylesheet" href="{{asset('./public/client/css/huy.css')}}">
 	<!-- Favicon -->
 	<link rel="icon" href="{{url('./public/client/images/favi.png')}}"/>
@@ -120,6 +172,7 @@
 				  
 				</ul>
 		  </div>
+		  
 		  <div class="navigation__column right">
 			<form class="ps-search--header" action="do_action" method="post">
 			  <input class="form-control" type="text" placeholder="Search Product…">

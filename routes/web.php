@@ -145,3 +145,4 @@ Route::get('/add-banner-slider', 'App\Http\Controllers\BannerSliderController@ad
 Route::post('/save-banner-slider','App\Http\Controllers\BannerSliderController@save_banner_slider');
 Route::get('/unactive-banner-slider','App\Http\Controllers\BannerSliderController@unactive_banner_slider');
 Route::get('/active-banner-slider','App\Http\Controllers\BannerSliderController@active_banner_slider');
+Route::get('/delete-banner-slider','App\Http\Controllers\BannerSliderController@delete_banner_slider');

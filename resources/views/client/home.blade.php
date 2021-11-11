@@ -1,8 +1,60 @@
 @extends('client_layout')
 @section('client_content')
 	<!-- Slider Area -->
+<section class="slider-area" style="height:340px">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+					<div class="slideshow-container" style="max-height:300px">
+						@foreach($slider_list as $key => $slider)
+						<div class="mySlides">
+							<img src="{{URL::to('public/images_upload/banner-slider/'.$slider->SliderImage)}}" style="width:100%;">
+						</div>
+						@endforeach
+						<!-- <div class="mySlides">
+							<img src="./public/client/Images/00_Product/Laptop/msi 15 amd.png" style="width:100%;">
+						</div>
+
+						<div class="mySlides">
+								<img src="https://lumen.thinkpro.vn//backend/uploads/banner/2021/11/11/image_2021-11-10_12-20-14-20211110052021%20(1).png" style="width:100%;">
+							</div>
+						<div class="mySlides">
+							<img src="https://lumen.thinkpro.vn//backend/uploads/banner/2021/11/3/resize%20800x288%20(2)%20copy.jpg" style="width:100%;">
+						</div> -->
+						<a class="prev" style="color: white;" onclick="plusSlides(-1)">&#10094;</a>
+						<a class="next" style="color: white;"  onclick="plusSlides(1)">&#10095;</a>
+						<div style="text-align:center; margin:10px">
+						<?php for ($x = 1; $x <= count($slider_list); $x+=1){ ?>
+							<span class="dot" onclick="currentSlide({{$x}})"></span> 
+						<?php }?>
+						</div>	
+					</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="card" style="margin-top:50px; border-radius:  10px 10px 0px 0px;background-color:#333333; border-left: 6px solid #717171; border-bottom: 6px solid #717171;">
+					<div class="card-body">
+						<p style="color:white; font-size:17px;"><b>ITGOShop Thái Hà, Thả ga Sale Sốc - Khuyến mại ngập tràn xuyên suốt tháng khai trương</b></p>
+					</div>
+				</div>
+
+				<div class="card" style="margin-top:20px; border-radius: 10px 10px 0px 0px; background-color:#333333; border-left: 6px solid #717171; border-bottom: 6px solid #717171;">
+					<div class="card-body">
+						<p style="color:white; font-size:17px;"><b>Đánh giá chi tiết Dell XPS 15 9510: Xứng đáng với vị thế dẫn đầu!</b></p>
+					</div>
+				</div>
+
+				<div style="margin: 20px 0px;">
+					<h3><a href="" style="text-decoration:none"><b>Tất cả tin tức ></b></a></h3>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+		
+	</section>
+	
+<!--  
 	<section class="hero-slider">
-		<!-- Single Slider -->
 		<div class="single-slider">
 			<div class="container">
 				<div class="row no-gutters">
@@ -24,18 +76,16 @@
 				</div>
 			</div>
 		</div>
-		<!--/ End Single Slider -->
 	</section>
-	<!--/ End Slider Area -->
+ -->
 	
-	<!-- Start Small Banner  -->
+
 	<section class="small-banner section">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
-				<!-- Single Banner  -->
-				<div class="col-lg-4 col-md-6 col-12">
+				<div class="col-lg-4 col-md-6">
 					<div class="single-banner">
-						<img src="./public/client/Images/00_Product/Laptop/msi 15 amd.png" alt="#">
+						<img src="./public/client/Images/00_Product/Laptop/msi 15 amd.png" alt="#" style="border-radius: 10px;">
 						<div class="content">
 							<p>MSI Collection</p>
 							<h3>MSI Modern <br> 15 AMD</h3>
@@ -43,11 +93,10 @@
 						</div>
 					</div>
 				</div>
-				<!-- /End Single Banner  -->
-				<!-- Single Banner  -->
-				<div class="col-lg-4 col-md-6 col-12">
+				
+				<div class="col-lg-4 col-md-6">
 					<div class="single-banner">
-						<img src="./public/client/Images/pannel/2.png" alt="#">
+						<img src="./public/client/Images/pannel/2.png" alt="#" style="border-radius: 10px;">
 						<div class="content">
 							<p>Logitech Collectons</p>
 							<h3>Tai nghe Gaming <br> Logitech G335</h3>
@@ -55,11 +104,10 @@
 						</div>
 					</div>
 				</div>
-				<!-- /End Single Banner  -->
-				<!-- Single Banner  -->
-				<div class="col-lg-4 col-12">
+				
+				<div class="col-lg-4">
 					<div class="single-banner tab-height">
-						<img src="./public/client/Images/pannel/3.png" alt="#">
+						<img src="./public/client/Images/pannel/3.png" alt="#" style="border-radius: 10px;">
 						<div class="content">
 							<p>Flash Sale 12.12</p>
 							<h3>Phụ Kiện <br> Up to <span>40%</span> Off</h3>
@@ -67,11 +115,10 @@
 						</div>
 					</div>
 				</div>
-				<!-- /End Single Banner  -->
+				
 			</div>
 		</div>
-	</section>
-	<!-- End Small Banner -->
+	</section> 
 
 <div class="product-area most-popular section">
     <div class="container">
@@ -881,4 +928,53 @@
             </div>
     </div>
     <!-- Modal end -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.mySlides:first').css("display","block"); // không có dòng này sẽ ko hiển bị banner đc
+		});
+	</script>
+	<script>
+		var slideIndex = 1;
+		showSlides(slideIndex);
+
+		function plusSlides(n) {
+		showSlides(slideIndex += n);
+		}
+
+		function currentSlide(n) {
+		showSlides(slideIndex = n);
+		}
+
+		function showSlides(n) {
+			var i;
+			var slides = document.getElementsByClassName("mySlides");
+			var dots = document.getElementsByClassName("dot");
+			if (n > slides.length) {slideIndex = 1}    
+			if (n < 1) {slideIndex = slides.length}
+			for (i = 0; i < slides.length; i++) {
+				slides[i].style.display = "none";  
+			}
+			for (i = 0; i < dots.length; i++) {
+				dots[i].className = dots[i].className.replace(" active", "");
+			}
+			slides[slideIndex-1].style.display = "block";  
+			dots[slideIndex-1].className += " active";
+		}
+	</script>
+	<script>
+		var slideIndex = 0;
+		carousel();
+
+		function carousel() {
+			var i;
+			var x = document.getElementsByClassName("mySlides");
+			for (i = 0; i < x.length; i++) {
+				x[i].style.display = "none";
+			}
+			slideIndex++;
+			if (slideIndex > x.length) {slideIndex = 1}
+			x[slideIndex-1].style.display = "block";
+			setTimeout(carousel, 4000); // Change image every 2 seconds
+		}
+	</script>
 @endsection

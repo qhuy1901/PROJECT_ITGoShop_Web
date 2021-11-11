@@ -103,7 +103,7 @@
 											<table id="multi-filter-select" class="display table table-striped table-hover" >
 												<thead>
 													<tr>
-														<th>Tên banner slider</th>
+														<th style="max-width:300px">Tên banner slider</th>
 														<th>Ảnh banner slider</th>
 														<th >Trạng thái</th>
 														<th>Hành động</th>
@@ -116,7 +116,7 @@
 															<input type="text" class="SliderId" value="{{$slide->SliderId}}" hidden>
 							
 														</td>
-                                                        <td><img src="public/images_upload/banner-slider/{{$slide->SliderImage}}" style="margin: auto; max-width: 160px; max-height: 160px; width: auto; height: auto; "></td>
+                                                        <td><img src="public/images_upload/banner-slider/{{$slide->SliderImage}}" style="margin: 15px; max-width: 260px; max-height: 260px; width: auto; height: auto; "></td>
                                                         <td>
                                                             <div class="form-button-action">
 																@if($slide->SliderStatus == 1)
@@ -140,12 +140,12 @@
                                                         <td>
                                                             <div class="form-button-action">
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật banner slider">
-																	<a href="#" class="active" ui-toggle-class="">
+																	<a href="javascript:void(0)" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
 																</button>
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa banner slider">
-																	<a onclick="return confirm('Bạn cho chắc muốn xóa sản phẩm này không?')" href="#" class="active" ui-toggle-class="">
+																	<a href="javascript:void(0)" class="active" ui-toggle-class="">
 																		<i class="fa fa-times text-danger text"></i>
 																	</a>
 																</button>
@@ -207,6 +207,40 @@
 						alert('Lỗi');
 					}	
 				});
+			});
+
+			$('button[data-original-title="Xóa banner slider"]').click(function(){
+				var SliderId = $(this).parents('tr').find('.SliderId').val();
+				var thisSlider = $(this).parents('tr');
+				swal({
+					title: "Xác nhận",
+					text: "Bạn có chắc muốn xóa slider này không?",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+					})
+					.then((willDelete) => {
+					if (willDelete) {
+						$.ajax({
+							url: '{{URL::to('/delete-banner-slider')}}',
+							method:"GET",
+							data:{SliderId: SliderId},
+							success:function(data)
+							{
+								thisSlider.remove();
+								swal("Xóa slider thành công!", {
+								icon: "success",
+								});
+							},
+							error:function(data)
+							{
+								alert('Lỗi');
+							}	
+						});
+						
+					} 
+				});
+				
 			});
 		});
 	</script>

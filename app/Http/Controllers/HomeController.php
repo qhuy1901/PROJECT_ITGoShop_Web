@@ -16,6 +16,7 @@ class HomeController extends Controller
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $all_blog = DB::table('blog')->orderby('BlogId', 'desc')->limit(3)->get();
+        $slider_list = DB::table('bannerslider')->where('SliderStatus', '=', 1)->orderby('SliderId', 'desc')->limit(4)->get();
 
         
         $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();
@@ -26,7 +27,8 @@ class HomeController extends Controller
         ->with('product_category_list', $product_category_list)
         ->with('all_product', $all_product)
         ->with('top_product', $top_product)
-        ->with('all_blog', $all_blog);
+        ->with('all_blog', $all_blog)
+        ->with('slider_list', $slider_list);
     }
 
     public function check_password(Request $request)
