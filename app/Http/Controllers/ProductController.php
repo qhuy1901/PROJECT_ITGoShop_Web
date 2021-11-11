@@ -46,9 +46,9 @@ class ProductController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->orderby('product.ProductId', 'desc')->get();
-        $manager_product = view('admin.view_product')->with('all_product', $all_product);
-        // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        return view('admin_layout')->with('admin.view_product', $manager_product);
+        
+        return view('admin.view_product')
+        ->with('all_product', $all_product);
     }
 
     public function save_product(Request $request)
@@ -127,7 +127,7 @@ class ProductController extends Controller
 
     public function update_product(Request $request, $ProductId)
     {
-        $this->auth_login();
+        //$this->auth_login();
         $data = array();
         $data['ProductName'] = $request->ProductName;
         $data['CategoryId'] = $request->Category;

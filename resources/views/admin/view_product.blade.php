@@ -108,13 +108,13 @@
 														<th>Thương hiệu</th>
 														<th>Số lượng</th>
 														<th>Ảnh sản phẩm</th>
-														<th>Hiển thị</th>
-														<th>Giảm giá</th>
+														<!-- <th>Hiển thị</th> -->
+														<!-- <th>Giảm giá</th> -->
 														<th>Giá</th>
 														<th>Hành động</th>
 													</tr>
 												</thead>
-												<tfoot>
+												<!-- <tfoot>
 													<tr>
 														<th>Name</th>
 														<th>Position</th>
@@ -122,44 +122,43 @@
 														<th>Office</th>
 														<th>Age</th>
 														<th>Start date</th>
-														<th>Salary</th>
+														<th>Salary</th> 
 														<th>Salary</th>
 														<th>Salary</th>
 													</tr>
-												</tfoot>
+												</tfoot> -->
 												<tbody>
 													@foreach($all_product as $key => $product)
 													<tr>
-														<td>{{$product->ProductName}}</td>
+														<td><a href="{{URL::to('/update-product/'.$product->ProductId)}}" class="active" ui-toggle-class="" style="color:black">{{$product->ProductName}}</a></td>
 														<td>{{$product->CategoryName}}</td>
 														<td>{{$product->BrandName}}</td>
 														<td>{{$product->Quantity}}</td>
 														<td><img src="public/images_upload/product/{{$product->ProductImage}}" style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; "></td>
-														<td>
-															<?php
-																if($product->Status == 1){
-															?>	
-																	<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
-																	<a href="{{URL::to('/unactive-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
-															<?php
-																}else{
-															?>	
-																	<a href="{{URL::to('/active-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
-															<?php
-																}
-															?>
-														</td>
-														<td>{{$product->Discount}}%</td>
+														<!-- <td>
+															
+														</td> -->
+														<!-- <td>{{$product->Discount}}%</td> -->
 														<td>{{number_format($product->Price, 0, " ", ".").' ₫'}}</td>
 
 														<td>
 															<div class="form-button-action">
-																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+																@if($product->Status == 1)
+																<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị sản phẩm">
+																		<a href="{{URL::to('/unactive-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px" data-original-title="Cập nhật sản phẩm"></span></a>
+																	</button>		
+																@else	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn sản phẩm">
+																		<a href="{{URL::to('/active-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
+																	</button>
+																@endif
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật sản phẩm">
 																	<a href="{{URL::to('/update-product/'.$product->ProductId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
 																</button>
-																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa sản phẩm">
 																	<a onclick="return confirm('Bạn cho chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/delete-product/'.$product->ProductId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-times text-danger text"></i>
 																	</a>
@@ -182,7 +181,7 @@
 					</div>
 				</div>
 			</div>
-			<footer class="footer">
+			<!-- <footer class="footer">
 				<div class="container-fluid">
 					<nav class="pull-left">
 						<ul class="nav">
@@ -207,10 +206,8 @@
 						2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">ITGo Team</a>
 					</div>				
 				</div>
-			</footer>
+			</footer> -->
 		</div>
-		
-	
 	</div>
 	@endsection
     <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
@@ -221,7 +218,7 @@
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
 	
 	<!-- jQuery Scrollbar -->
-	<script src="{{asset('public/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"')}}></script>
+	<script src="{{asset('public/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
 	<!-- Datatables -->
 	<script src="{{asset('public/admin/js/plugin/datatables/datatables.min.js')}}"></script>
 	<!-- Atlantis JS -->
@@ -263,7 +260,7 @@
 				"pageLength": 5,
 			});
 
-			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật sản phẩm"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
 			$('#addRowButton').click(function() {
 				$('#add-row').dataTable().fnAddData([
