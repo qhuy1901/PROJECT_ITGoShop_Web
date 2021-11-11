@@ -66,7 +66,7 @@
 											<div class="col-6 col-lg-6">
 												<div class="form-group">
 													<label for="exampleFormControlSelect1">Thương hiệu sản phẩm</label>
-													<select class="form-control" name="brand" id="exampleFormControlSelect1">
+													<select class="form-control" name="Brand" id="exampleFormControlSelect1">
 														@foreach($brand_list as $key => $brand)
 															<option value="{{$brand->BrandId}}">ID: {{$brand->BrandId}} - {{$brand->BrandName}} (Mã Danh Mục: {{$brand->CategoryId}} )</option>
 														
@@ -78,7 +78,7 @@
 											<div class="col-6 col-lg-6">
 												<div class="form-group">
 													<label for="exampleFormControlSelect1">Thương hiệu nhánh</label>
-													<select class="form-control" name="subbrand" id="exampleFormControlSelect1">
+													<select class="form-control" name="Subbrand" id="exampleFormControlSelect1">
 														@foreach($sub_brand_list as $key => $subbrand)
 														<option value="{{$subbrand->SubBrandId}}">{{$subbrand->SubBrandName}} (ID Thương hiệu chính: {{$subbrand->BrandId}}) </option>
 														@endforeach
@@ -92,7 +92,7 @@
                                                         <!-- <div class="input-group-prepend">
                                                             <span class="input-group-text">VND</span>
                                                         </div> -->
-                                                        <input type="text" name="price" class="form-control" aria-label="Amount (to the nearest dollar)" required> 
+                                                        <input type="text" name="Price" class="form-control" aria-label="Amount (to the nearest dollar)" required> 
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">VND</span>
                                                         </div>
@@ -104,7 +104,7 @@
 												<div class="form-group">
                                                     <label class="mb-3"><b>Giảm giá</b></label>
                                                     <div class="input-group mb-3">
-                                                        <input type="text" name="discount" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                                                        <input type="text" name="Discount" class="form-control" aria-label="Amount (to the nearest dollar)" required>
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">%</span>
                                                         </div>
@@ -131,11 +131,11 @@
                                                     <label class="form-label d-block">Hiển thị</label>
                                                     <div class="selectgroup selectgroup-secondary selectgroup-pills">
                                                         <label class="selectgroup-item">
-                                                            <input type="radio" name="status" value="1" class="selectgroup-input" checked="">
+                                                            <input type="radio" name="Status" value="1" class="selectgroup-input" checked="">
                                                             <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-eye"></i></span>
                                                         </label>
                                                         <label class="selectgroup-item">
-                                                            <input type="radio" name="status" value="0" class="selectgroup-input">
+                                                            <input type="radio" name="Status" value="0" class="selectgroup-input">
                                                             <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-eye-slash"></i></span>
                                                         </label>
                                                     </div>
@@ -144,7 +144,7 @@
 											<div class="col-lg-12">	
 												<div class="form-group">
                                                         <label for="comment">Nội dung sản phẩm</label>
-                                                        <textarea class="form-control" name="content" id="ckeditor1" rows="5" placeholder="Mô tả sản phẩm" required></textarea>
+                                                        <textarea class="form-control" name="Content" id="ckeditor1" rows="5" placeholder="Mô tả sản phẩm" required></textarea>
                                                 </div>
 											</div>
 										</div>

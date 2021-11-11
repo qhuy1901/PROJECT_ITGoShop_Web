@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>Trang Admin </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" type="image/png" href="{{('public/admin/images/favicon.svg')}}"/>
+	<link rel="icon" type="image/png" href="{{URL::to('public/admin/images/favicon.svg')}}"/>
 
 	<!-- Fonts and icons -->
 	<script src="{{asset('./public/admin/js/plugin/webfont/webfont.min.js')}}"></script>
@@ -20,8 +20,8 @@
 	</script>
 
 	<!-- CSS Files -->
-	<link rel="stylesheet" href="{{asset('./public/admin/css/bootstrap.min.css')}}">
-	<link rel="stylesheet" href="{{asset('./public/admin/css/atlantis.min.css')}}">
+	<link rel="stylesheet" href="{{URL::to('public/admin/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{URL::to('public/admin/css/atlantis.min.css')}}">
 	
 
 </head>
@@ -32,7 +32,7 @@
 			<div class="logo-header" data-background-color="blue">
 				
 				<a href="{{URL::to('/dashboard')}}" class="logo">
-					<img src="{{('public/admin/images/it.svg')}}" alt="navbar brand" class="navbar-brand">
+					<img src="{{URL::to('public/admin/images/it.svg')}}" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon">
@@ -248,7 +248,7 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="./public/admin/images/profile.jpg" alt="..." class="avatar-img rounded-circle">
+									<img src="{{URL::to('public/admin/images/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							
@@ -256,7 +256,7 @@
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="./public/admin/images/profile.jpg" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="{{URL::to('public/admin/images/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
 											<?php
 												$userId = Session::get('UserId');
 											?>
@@ -580,6 +580,7 @@
 		//CKEDITOR.replace('ckeditor');
 		CKEDITOR.replace('ckeditor1', {
 			extraPlugins: 'lineheight',
+			name: 'content',
 		});
 	</script>
 

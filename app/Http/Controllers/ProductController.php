@@ -46,7 +46,7 @@ class ProductController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->orderby('product.ProductId', 'desc')->get();
-        
+
         return view('admin.view_product')
         ->with('all_product', $all_product);
     }
@@ -56,13 +56,13 @@ class ProductController extends Controller
         $data = array();
         $data['ProductName'] = $request->ProductName;
         $data['CategoryId'] = $request->Category;
-        $data['BrandId'] = $request->brand;
-        $data['SubBrandId'] = $request->subbrand;
-        //$data['content'] = $request->content;
+        $data['BrandId'] = $request->Brand;
+        $data['SubBrandId'] = $request->Subbrand;
+        $data['content'] = $request->Content;
         $data['Quantity'] = $request->Quantity;
-        $data['price'] = $request->price;
-        $data['discount'] = $request->discount;
-        //$data['status'] = $request->status;
+        $data['price'] = $request->Price;
+        $data['discount'] = $request->Discount;
+        $data['status'] = $request->Status;
         $data['StartsAt'] = date("Y-m-d H:i:s");
         $data['CreatedAt'] = date("Y-m-d H:i:s");
 
@@ -97,27 +97,20 @@ class ProductController extends Controller
     public function unactive_product($ProductId)
     {
         DB::table('product')->where('ProductId', $ProductId)->update(['status'=>0]); 
-        Session::put('message','Ẩn sản phâm thành công');
+        Session::put('message','Ẩn sản phẩm thành công');
         return Redirect::to('view-product');
     }
 
     public function get_product_info($ProductId)
     {
-        $this->auth_login();
+        //$this->auth_login();
         // Lấy hết thông tin trong bảng Category và barnd để load lên cbb
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
 
         // // Lấy hết dữ liệu trong bảng product
-        $product_info = DB::table('product')->where('ProductId',$ProductId)->get();  // first: lấy dòng đầu tiên
-        // $manager_product = view('admin.update_product')
-        // ->with('product_info', $product_info)
-        // ->with('product_category_list',$product_category_list)
-        // ->with('sub_brand_list',$sub_brand_list)
-        // ->with('brand_list',$brand_list);
-        // // // biến chứa dữ liệu  $all_product đc gán cho all_product'
-        // return view('admin_layout')->with('admin.update_product', $manager_product);
+        $product_info = DB::table('product')->where('ProductId',$ProductId)->get();  
         return View('admin.update_product')
         ->with('product_info', $product_info)
         ->with('product_category_list',$product_category_list)
@@ -132,7 +125,7 @@ class ProductController extends Controller
         $data['ProductName'] = $request->ProductName;
         $data['CategoryId'] = $request->Category;
         $data['BrandId'] = $request->Brand;
-        $data['SubBrandId'] = $request->subbrand;
+        $data['SubBrandId'] = $request->Subbrand;
         $data['content'] = $request->Content;
         $data['Quantity'] = $request->Quantity;
         $data['price'] = $request->Price;

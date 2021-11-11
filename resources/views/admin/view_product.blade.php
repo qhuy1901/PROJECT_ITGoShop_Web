@@ -110,7 +110,7 @@
 														<th>Ảnh sản phẩm</th>
 														<!-- <th>Hiển thị</th> -->
 														<!-- <th>Giảm giá</th> -->
-														<th>Giá</th>
+														<th style="width:120px">Giá</th>
 														<th>Hành động</th>
 													</tr>
 												</thead>
