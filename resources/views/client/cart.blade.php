@@ -95,17 +95,6 @@
 				</div>
 
 				<div class="col-6 col-lg-3">
-					<?php $CustomerId = Session::get('CustomerId'); ?>
-					@if($CustomerId)
-						<div style="padding: 20px; background-color: white; width: 280px;">
-							<ul>
-								<li style="margin-bottom: 3px;"><b>Giao tới</b><span style="float:right;"><a href="#">Thay đổi</a></span></li>
-								<li style="font-size: 16px; margin: 3px 0px;"><b>Tạ Quang Huy</b>  |  <b>0365990290</b></li>
-								<li><p>220/17 khu phố 9 phường Tam Hiệp thành phố Biên Hòa tỉnh Đồng Nai</p></li>
-							</ul>
-						</div>
-					@endif
-
                     <div class="total-amount">
                         <div class="right" style="padding: 20px; width: 280px; background-color: white; position: absolute; top:0px">
                             <ul>
@@ -308,4 +297,203 @@
             </div>
         </div>
         <!-- Modal end -->
+	
+		<script type="text/javascript">
+		function numberWithCommas(x) // Hàm để format tiền
+		{
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+		}
+		$(document).ready(function(){
+			$(".delete-button").click( function(){
+				$(this).parent().parent().remove();
+				var ItemId = $(this).attr('id');
+				$.ajax({
+					url: '{{URL::to('/remove-item')}}',
+					methed:"GET",
+					data:{id:ItemId },
+					success:function(data)
+					{
+						swal({
+								title: "Thông báo",
+								text: "Đã xóa sản phẩm khỏi giỏ hàng!",
+								icon: "success",
+								buttons: true,
+							})
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}
+				});
+				// Tính lại tổng tiền
+				var sum = 0;
+                $('.thanh-tien').each(function() {
+                    sum += Number($(this).attr("data-value"));
+                });
+				sum = numberWithCommas(sum);
+				$("#tam-tinh").text(sum + ' ₫');
+				$("#tong-cong").text(sum + ' ₫');
+			}),
+			$(".input-number").on('input', function(){
+				var newQuantity = $(this).val();
+				var rowId = $(this).attr('id');
+				$.ajax({
+					url: '{{URL::to('/update-quantity')}}',
+					methed:"GET",
+					data:{rowId: rowId, newQuantity: newQuantity},
+					
+					error:function(data)
+					{
+						alert('Lỗi');
+					}
+				});
+				var $parent = $(this).parents('tr');
+				var soluong = $(this).val();
+                var dongia = $parent.find('.price').attr('data-value');
+				 //var thanhtien = "\{\{number_format(" + soluong * dongia + ").' đ'\}\}";
+				 var thanhtien = numberWithCommas(soluong * dongia) +' đ';
+				//var thanhtien = "\<\?php echo" + soluong * dongia + "\?\>";
+				//"\<\?php echo '"+ soluong * dongia +"' \?\>"
+				$parent.find('.thanh-tien').html(thanhtien);
+			}),
+
+			$("button[data-type='plus'], button[data-type='minus']").click( function()
+			{
+				var $parent = $(this).parents('tr');
+				
+				var newQuantity = $parent.find('.input-number').val();
+				var rowId = $parent.find('.input-number').attr('id');
+				
+				$.ajax({
+					url: '{{URL::to('/update-quantity')}}',
+					methed:"GET",
+					data:{rowId: rowId, newQuantity: newQuantity},
+					success:function(data)
+					{
+						alert(newQuantity);
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}
+				});
+                var dongia = $parent.find('.price').attr('data-value');
+				var thanhtien = numberWithCommas(newQuantity * dongia) +' ₫';
+				$parent.find('.thanh-tien').attr("data-value", newQuantity * dongia);
+				$parent.find('.thanh-tien').html(thanhtien);
+				
+			}),
+			$('body').on('DOMSubtreeModified', '.thanh-tien', function(){
+                var sum = 0;
+                $('.thanh-tien').each(function() {
+					//alert($(this).text().replace(' ₫', '').replace('.', ''));
+                    sum += Number($(this).attr("data-value"));
+                });
+				sum = numberWithCommas(sum);
+				$("#tam-tinh").text(sum + ' ₫');
+				$("#tong-cong").text(sum + ' ₫');
+            }),
+			$('.add-to-cart-a-tag').click( function()
+			{
+				var productId = $(this).parent().find('input').val();
+				$.ajax({
+					url: '{{URL::to('/add-to-cart')}}',
+					methed:"GET",
+					data:{ProductId:productId, Quantity: 1},
+					success:function(data)
+					{
+						swal({
+								title: "Thông báo",
+								text: "Đã thêm sản phẩm vào giỏ hàng!",
+								icon: "success",
+								buttons: ["Tiếp tục mua hàng", "Xem giỏ hàng"],
+							}).then(function(isConfirm) {
+								if (isConfirm) {
+										window.location = "{{url('/show-cart')}}";
+								}
+							})
+					},
+					error:function(data)
+					{
+						alert('Error');
+					}
+				});
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$('.btn-number').click(function(e){
+			e.preventDefault();
+			
+			fieldName = $(this).attr('data-field');
+			type      = $(this).attr('data-type');
+			var input = $("input[name='"+fieldName+"']");
+			var currentVal = parseInt(input.val());
+			if (!isNaN(currentVal)) {
+				if(type == 'minus') {
+					
+					if(currentVal > input.attr('data-min')) {
+						input.val(currentVal - 1).change();
+					} 
+					if(parseInt(input.val()) == input.attr('data-min')) {
+						$(this).attr('disabled', true);
+					}
+
+				} else if(type == 'plus') {
+
+					if(currentVal < input.attr('data-max')) {
+						input.val(currentVal + 1).change();
+					}
+					if(parseInt(input.val()) == input.attr('data-max')) {
+						$(this).attr('disabled', true);
+					}
+
+				}
+			} else {
+				input.val(0);
+			}
+		});
+		$('.input-number').focusin(function(){
+		$(this).data('oldValue', $(this).val());
+		});
+		$('.input-number').change(function() {
+			
+			minValue =  parseInt($(this).attr('data-min'));
+			maxValue =  parseInt($(this).attr('data-max'));
+			valueCurrent = parseInt($(this).val());
+			
+			name = $(this).attr('name');
+			if(valueCurrent >= minValue) {
+				$(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+			} else {
+				alert('Sorry, the minimum value was reached');
+				$(this).val($(this).data('oldValue'));
+			}
+			if(valueCurrent <= maxValue) {
+				$(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+			} else {
+				alert('Sorry, the maximum value was reached');
+				$(this).val($(this).data('oldValue'));
+			}
+			
+			
+		});
+		$(".input-number").keydown(function (e) {
+				// Allow: backspace, delete, tab, escape, enter and .
+				if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+					// Allow: Ctrl+A
+					(e.keyCode == 65 && e.ctrlKey === true) || 
+					// Allow: home, end, left, right
+					(e.keyCode >= 35 && e.keyCode <= 39)) {
+						// let it happen, don't do anything
+						return;
+				}
+				// Ensure that it is a number and stop the keypress
+				if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+					e.preventDefault();
+				}
+			});
+			</script>
 @endsection
+
