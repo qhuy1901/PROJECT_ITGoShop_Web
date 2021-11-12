@@ -16,7 +16,7 @@ class HomeController extends Controller
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $all_blog = DB::table('blog')->orderby('BlogId', 'desc')->limit(3)->get();
-        $slider_list = DB::table('bannerslider')->where('SliderStatus', '=', 1)->orderby('SliderId', 'desc')->limit(4)->get();
+        $slider_list = DB::table('bannerslider')->where('SliderStatus', '=', 1)->orderby('SliderId', 'desc')->limit(8)->get();
 
         
         $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();

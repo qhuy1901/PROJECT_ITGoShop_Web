@@ -103,19 +103,18 @@
 											<table id="multi-filter-select" class="display table table-striped table-hover" >
 												<thead>
 													<tr>
-														<th style="max-width:300px">Tên banner slider</th>
+														<th style="width:80px">Ngày tạo</th>
+														<th style="max-width:320px">Tên banner slider</th>
 														<th>Ảnh banner slider</th>
-														<th >Trạng thái</th>
+														<th style="max-width:30px">Trạng thái</th>
 														<th>Hành động</th>
 													</tr>
 												</thead>
 												<tbody>
                                                     @foreach($all_slide as $key => $slide)
 													<tr>
-														<td>{{$slide->SliderName}}
-															<input type="text" class="SliderId" value="{{$slide->SliderId}}" hidden>
-							
-														</td>
+														<td>{{date("d-m-Y", strtotime($slide->CreatedAt))}}</td>
+														<td>{{$slide->SliderName}}<input type="text" class="SliderId" value="{{$slide->SliderId}}" hidden></td>
                                                         <td><img src="public/images_upload/banner-slider/{{$slide->SliderImage}}" style="margin: 15px; max-width: 260px; max-height: 260px; width: auto; height: auto; "></td>
                                                         <td>
                                                             <div class="form-button-action">

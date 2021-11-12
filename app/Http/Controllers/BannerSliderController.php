@@ -14,7 +14,7 @@ class BannerSliderController extends Controller
 {
     public function view_banner_slider()
     {
-        $all_slide = BannerSlider::orderBy('SliderId', 'DESC')->get();
+        $all_slide = BannerSlider::orderBy('SliderId', 'ASC')->get();
         return View('admin.banner-slider.view-banner-slider')
         ->with('all_slide', $all_slide);
     }
