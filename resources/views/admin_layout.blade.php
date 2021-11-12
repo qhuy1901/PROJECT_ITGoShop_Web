@@ -566,7 +566,7 @@
 						2021, made with <i class="fa fa-heart heart text-danger"></i> by <a href="#">ITGo Team</a>
 					</div>				
 				</div>
-			</footer>
+		</footer>
 	</div>
 
 	<!-- <script src="{{asset('public/admin/js/jquery.form-validator.min.js')}}"></script>

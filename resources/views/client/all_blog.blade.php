@@ -19,14 +19,14 @@
 	<!-- End Breadcrumbs -->
 			
 <main class="ps-main">
-            <div class="ps-blog-grid pt-80 pb-80">
+            <div class="ps-blog-grid pt-80 ">
               <div class="ps-container">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                        @foreach($all_content as $key => $blog)
+                      @foreach($all_content as $key => $blog)
                         {{csrf_field()}}
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                          <div class="ps-post mb-30">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12  " style="height: 400px; width: 570px">
+                          <div class="ps-post">
                             <div class="ps-post__thumbnail"><a class="ps-post__overlay" ></a><img src="{{URL::to('public/images_upload/blog/'.$blog->Image)}}" alt=""></div>
                             <div class="ps-post__content"><a class="ps-post__title" href="{{URL::to('/blog-detail/'.$blog->BlogId)}}">{{$blog->Title}}</a>
                               <p class="ps-post__meta"><span>By:<a class="mr-5">{{$blog->Author}}</a></span>-<span class="ml-3">{{$blog->DatePost}}</span></p>
@@ -35,62 +35,9 @@
                           </div>
                         </div>
                         @endforeach
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                          <div class="ps-post mb-30">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.php"></a><img src="{{URL::to('public/client/Images/blog/1.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.php">An Inside Look at the Breaking2 Kit</a>
-                              <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.php">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                              <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further…</p><a class="ps-morelink" href="blog-detail.php">Read more<i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                          <div class="ps-post mb-30">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.php"></a><img src="{{URL::to('public/client/Images/blog/1.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.php">An Inside Look at the Breaking2 Kit</a>
-                              <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.php">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                              <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further…</p><a class="ps-morelink" href="blog-detail.php">Read more<i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                          <div class="ps-post mb-30">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.php"></a><img src="{{URL::to('public/client/Images/blog/1.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.php">An Inside Look at the Breaking2 Kit</a>
-                              <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.php">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                              <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further…</p><a class="ps-morelink" href="blog-detail.php">Read more<i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                          <div class="ps-post mb-30">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.php"></a><img src="{{URL::to('public/client/Images/blog/1.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.php">An Inside Look at the Breaking2 Kit</a>
-                              <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.php">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                              <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further…</p><a class="ps-morelink" href="blog-detail.php">Read more<i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                          <div class="ps-post mb-30">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.php"></a><img src="{{URL::to('public/client/Images/blog/1.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.php">An Inside Look at the Breaking2 Kit</a>
-                              <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.php">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                              <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further…</p><a class="ps-morelink" href="blog-detail.php">Read more<i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                          <div class="ps-post mb-30">
-                            <div class="ps-post__thumbnail"><a class="ps-post__overlay" href="blog-detail.php"></a><img src="{{URL::to('public/client/Images/blog/1.jpg')}}" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="blog-detail.php">An Inside Look at the Breaking2 Kit</a>
-                              <p class="ps-post__meta"><span>By:<a class="mr-5" href="blog.php">Alena Studio</a></span> -<span class="ml-5">Jun 10, 2017</span></p>
-                              <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further…</p><a class="ps-morelink" href="blog-detail.php">Read more<i class="fa fa-long-arrow-right"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                                <div class="ps-product-action" style="margin-left: 30px;">
+                  </div>
+                </div>
+                                <div class="ps-product-action" >
                                   <div class="ps-pagination">
                                     <ul class="pagination">
                                       <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
@@ -101,10 +48,9 @@
                                     </ul>
                                   </div>
                                 </div>
-                  </div>
+                  
                 </div>
             </div>
-</main>	
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
 		<div class="container">
