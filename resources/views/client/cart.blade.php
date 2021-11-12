@@ -393,32 +393,6 @@
 				$("#tam-tinh").text(sum + ' ₫');
 				$("#tong-cong").text(sum + ' ₫');
             }),
-			$('.add-to-cart-a-tag').click( function()
-			{
-				var productId = $(this).parent().find('input').val();
-				$.ajax({
-					url: '{{URL::to('/add-to-cart')}}',
-					methed:"GET",
-					data:{ProductId:productId, Quantity: 1},
-					success:function(data)
-					{
-						swal({
-								title: "Thông báo",
-								text: "Đã thêm sản phẩm vào giỏ hàng!",
-								icon: "success",
-								buttons: ["Tiếp tục mua hàng", "Xem giỏ hàng"],
-							}).then(function(isConfirm) {
-								if (isConfirm) {
-										window.location = "{{url('/show-cart')}}";
-								}
-							})
-					},
-					error:function(data)
-					{
-						alert('Error');
-					}
-				});
-			});
 		});
 	</script>
 

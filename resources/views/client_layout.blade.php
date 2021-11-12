@@ -119,7 +119,7 @@
 	  <nav  class="navigation">
 		<div class="container-fluid" >
 		  <div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src={{url('./public/client/Images/logo.png')}} alt=""></a></div>
+			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="{{URL::to('/public/client/Images/logo.png')}}" alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
 				<ul class="main-menu menu">
@@ -134,7 +134,6 @@
 											@if($SubBrand->BrandId == $main_brand->BrandId)
 											<ul class="mega-item">
 												<li><a href="{{URL::to('/product-listing')}}">{{$SubBrand->SubBrandName}}</a></li>
-														
 											</ul>
 											@endif
 										@endforeach	
@@ -163,7 +162,6 @@
 										</div>
 										@endif
 									@endforeach
-									
 						</div>
 					</div>
 				  </li>
@@ -178,7 +176,7 @@
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="fa fa-search"></i></button>
 			</form>            
-			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i id="so-luong-sp-gio-hang"><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  <div class="ps-cart__listing">
 				<div class="ps-cart__content"> 
 				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
@@ -210,14 +208,12 @@
 					<div class="noidung_dropdown">
 						<?php
 							$CustomerId= Session::get('CustomerId');
-							if($CustomerId)
-							{?>
+							if($CustomerId) { ?>
 								<a href="{{URL::to('/profile')}}">Tài khoản</a>
 								<a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi</a>
 								<a href="{{URL::to('/customer-logout')}}">Kiểm tra bảo hành</a>
 								<a href="{{URL::to('/customer-logout')}}">Đăng xuất</a>
-							<?php } 
-						?>
+							<?php } ?>
 					</div>
 			</div>
 
@@ -323,7 +319,38 @@
  
 	<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- Sweet Alert -->
+	<script src="{{asset('public/admin/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+	<script>
+		$('.add-to-cart-a-tag').click( function()
+			{
+				var productId = $(this).parent().find('input').val();
+				var numberOfProduct = Number($('#so-luong-sp-gio-hang').text()) + 1;
+				$.ajax({
+					url: '{{URL::to('/add-to-cart')}}',
+					methed:"GET",
+					data:{ProductId:productId, Quantity: 1},
+					success:function(data)
+					{
+						$('#so-luong-sp-gio-hang').text(numberOfProduct);
+						swal({
+								title: "Thông báo",
+								text: "Đã thêm sản phẩm vào giỏ hàng!",
+								icon: "success",
+								buttons: ["Tiếp tục mua hàng", "Xem giỏ hàng"],
+							}).then(function(isConfirm) {
+								if (isConfirm) {
+										window.location = "{{url('/show-cart')}}";
+								}
+							})
+					},
+					error:function(data)
+					{
+						alert('Error');
+					}
+				});
+			});
+	</script>
 	<script type="text/javascript">
 	// Hàm load data vào dropdownbox Phường/Xã
 	function load_xaphuong_dropdownbox()
