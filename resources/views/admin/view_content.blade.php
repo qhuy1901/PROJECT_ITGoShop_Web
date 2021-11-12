@@ -73,18 +73,19 @@
 														<td><img src="public/images_upload/blog/{{$blog->Image}}" height="80" width="80"></td>
 														
 														<td>
-															<?php
-																if($blog->Status == 1){
-																?>	
-																		<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
-																		<a href="{{URL::to('/unactive-blog/'.$blog->BlogId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span></a>
-																<?php
-															}else{
-																?>	
-																		<a href="{{URL::to('/active-blog/'.$blog->BlogId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
-																<?php
-																	}
-															?>
+															<div class="form-button-action">
+																@if($blog->Status == 1)
+																<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết">
+																		<a href="{{URL::to('/unactive-post/'.$blog->BlogId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px" data-original-title="Cập nhật bài viết"></span></a>
+																	</button>		
+																@else	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết">
+																		<a href="{{URL::to('/active-post/'.$blog->BlogId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
+																	</button>
+																@endif
+																
+															</div>
 														</td>
 														<td>
 															<div class="form-button-action">

@@ -43,7 +43,7 @@ class BlogController extends Controller
     public function active_post($BlogId)
     {
         // Câu truy vấn SQL  WHERE 
-        DB::table('blog')->where('BlogId', $BlogId)->update(['status'=>1]); // [ ] là cái cột, cái mảng
+        DB::table('blog')->where('BlogId', $BlogId)->update(['Status'=>1]); // [ ] là cái cột, cái mảng
         Session::put('message','Hiển thị bài viết thành công');
         return Redirect::to('view_content');
 
@@ -51,7 +51,7 @@ class BlogController extends Controller
 
     public function unactive_post($BlogId)
     {
-        DB::table('blog')->where('BlogId', $BlogId)->update(['status'=>0]); 
+        DB::table('blog')->where('BlogId', $BlogId)->update(['Status'=>0]); 
         Session::put('message','Ẩn bài viết thành công');
         return Redirect::to('view_content');
     }
@@ -157,6 +157,7 @@ class BlogController extends Controller
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $all_content = DB::table('blog')
         ->select('blog.*')
+        ->where('Status',1)
         ->orderby('blog.BlogId', 'desc')->get();
 
         return view('client.all_blog')
