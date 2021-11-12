@@ -8,7 +8,9 @@
 					<div class="slideshow-container" style="max-height:300px">
 						@foreach($slider_list as $key => $slider)
 						<div class="mySlides">
-							<img src="{{URL::to('public/images_upload/banner-slider/'.$slider->SliderImage)}}" style="width:100%;">
+							<a href="{{URL::to('/blog-detail/'.$slider->BlogId)}}">
+								<img src="{{URL::to('public/images_upload/banner-slider/'.$slider->SliderImage)}}" style="width:100%;">
+							</a>
 						</div>
 						@endforeach
 						<!-- <div class="mySlides">
@@ -44,7 +46,7 @@
 				</div>
 
 				<div style="margin: 20px 0px;">
-					<h3><a href="" style="text-decoration:none;  "><b>Tất cả tin tức <i class="fa fa-angle-right" style="color:#A2D2FF;" aria-hidden="true"></i></b></a></h3>
+					<h3><a href="{{URL::to('/all_blog')}}" style="text-decoration:none;  "><b>Tất cả tin tức <i class="fa fa-angle-right" style="color:#A2D2FF;" aria-hidden="true"></i></b></a></h3>
 				</div>
 		
 			</div>
@@ -78,7 +80,6 @@
 		</div>
 	</section>
  -->
-	
 
 	<section class="small-banner section">
 		<div class="container">

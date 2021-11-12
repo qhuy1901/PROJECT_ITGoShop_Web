@@ -140,7 +140,7 @@ class BlogController extends Controller
         ->where('blog.BlogId', $BlogId)->get();
 
         $related_blog = DB::table('blog')
-        ->whereNotIn('blog.BlogId', [$BlogId])->limit(3)->get();
+        ->whereNotIn('blog.BlogId', [$BlogId])->limit(5)->get();
 
         return view('client.blog-detail') 
         ->with('sub_brand_list',  $sub_brand_list )

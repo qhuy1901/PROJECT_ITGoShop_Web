@@ -41,7 +41,7 @@
 										<img style="margin: auto; max-width: 70px; max-height: 70px; width: auto; height: auto; " src="{{URL::to('public/images_upload/blog/'.$blog->Image)}}" alt="#">
 									</div>
 									<div class="content">
-										<h5><a href="#">{{$blog->Title}}</a></h5>
+										<h5><a href="{{URL::to('/blog-detail/'.$blog->BlogId)}}">{{$blog->Title}}</a></h5>
 										<ul class="comment">
 											<li><i class="fa fa-calendar" aria-hidden="true"></i>{{$blog->DatePost}}</li>
 										</ul>
@@ -52,7 +52,7 @@
 							<!--/ End Single Widget -->
 							<!-- Single Widget -->
 							<!--/ End Single Widget -->
-							<!-- Single Widget -->
+							<!-- Single Widget 
 							<div class="single-widget side-tags">
 								<h3 class="title">Tags</h3>
 								<ul class="tag">
@@ -64,7 +64,7 @@
 									<li><a href="#">template</a></li>
 									<li><a href="#">Ecommerce</a></li>
 								</ul>
-							</div>
+							</div>-->
 							<!--/ End Single Widget -->
 								
 						</div>
