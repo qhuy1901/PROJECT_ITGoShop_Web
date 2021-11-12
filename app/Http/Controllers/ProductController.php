@@ -187,5 +187,24 @@ class ProductController extends Controller
         ->with('product_detail', $product_detail)
         ->with('related_product',$related_product);
     }
+    public function product_detail2()
+    {
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        
+        $product_detail = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->select('product.*', 'Category.CategoryName', 'brand.BrandName');
+
+
+
+        return view('client.product-detail2')
+        ->with('sub_brand_list',  $sub_brand_list )
+        ->with('main_brand_list', $main_brand_list)
+        ->with('product_category_list', $product_category_list)
+        ->with('product_detail', $product_detail);
+    }
 
 }

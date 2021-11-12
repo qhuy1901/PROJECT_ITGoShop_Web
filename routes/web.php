@@ -29,6 +29,7 @@ Route::get('/customer-logout','App\Http\Controllers\HomeController@logout');
 
 // Product Detail
 Route::get('/product-detail/{ProductId}', 'App\Http\Controllers\ProductController@product_detail');
+Route::get('/product-detail2', 'App\Http\Controllers\ProductController@product_detail2');
 
 // Backend
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');
