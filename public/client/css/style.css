@@ -685,7 +685,7 @@ textarea {
 
 * {
   font-family: "Be Vietnam Pro", sans-serif;
-  font-weight: 400; }
+   font-weight: 500; }
 
 h1, h2, h3, h4, h5, h6 {
   position: relative;
@@ -969,7 +969,7 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 14px;
   color: #1d1d1d;
-  font-weight: 400; }
+   font-weight: 500; }
 
 /* thay đổi màu background khi hover vào đường dẫn */
 .noidung_dropdown a:hover {
@@ -1297,7 +1297,7 @@ textarea.form-control {
     padding-left: 30px;
     font-family: "Be Vietnam Pro", sans-serif;
     color: #737373;
-    font-weight: 400;
+     font-weight: 500;
     cursor: pointer; }
     .ps-checkbox label:before {
       content: '';
@@ -1360,7 +1360,7 @@ textarea.form-control {
     padding-left: 30px;
     font-family: "Be Vietnam Pro", sans-serif;
     color: #737373;
-    font-weight: 400;
+     font-weight: 500;
     cursor: pointer; }
     .ps-radio label:before {
       content: '';
@@ -1474,7 +1474,7 @@ textarea.form-control {
     padding-left: 30px;
     font-family: "Be Vietnam Pro", sans-serif;
     color: #737373;
-    font-weight: 400;
+     font-weight: 500;
     cursor: pointer; }
     .ps-radio label:before {
       content: '';
@@ -1558,7 +1558,7 @@ textarea.form-control {
     font-size: 16px;
     line-height: 1.3em;
     color: #5b5b5b;
-    font-weight: 400; }
+     font-weight: 500; }
   .form-group--inline.textarea label {
     -webkit-transform: translateY(50%);
     -moz-transform: translateY(50%);
@@ -2416,7 +2416,7 @@ textarea.form-control {
 
 .ps-widget--info p {
   font-family: "Be Vietnam Pro", sans-serif;
-  font-weight: 400;
+   font-weight: 500;
   color: #999; }
   .ps-widget--info p strong {
     margin-bottom: 20px;
@@ -3469,7 +3469,7 @@ textarea.form-control {
 .ps-widget--filter .ac-slider__meta {
   display: block;
   font-family: "Archivo Narrow", sans-serif;
-  font-weight: 400;
+   font-weight: 500;
   font-style: italic;
   font-size: 14px;
   color: #898989; }
@@ -3759,7 +3759,7 @@ textarea.form-control {
       font-family: "Be Vietnam Pro", sans-serif;
       font-size: 14px;
       color: #000;
-      font-weight: 400;
+       font-weight: 500;
       text-transform: uppercase; }
       .ps-home-contact .ps-home-contact__form form label span {
         margin-left: 5px; }
@@ -4147,7 +4147,7 @@ textarea.form-control {
     font-family: "Be Vietnam Pro", sans-serif;
     font-size: 14px;
     color: #1d1d1d;
-    font-weight: 400; }
+     font-weight: 500; }
     .mega-menu .mega-item a:before {
       position: absolute;
       top: 50%;
@@ -4517,7 +4517,7 @@ textarea.form-control {
   background-color: #333; }
   .ps-subscribe h3 {
     font-family: "Archivo Narrow", sans-serif;
-    font-weight: 400;
+     font-weight: 500;
     font-size: 20px;
     text-transform: uppercase;
     color: #fff;
@@ -4564,7 +4564,7 @@ textarea.form-control {
       border: none;
       padding: 0 40px;
       font-family: "Archivo Narrow", sans-serif;
-      font-weight: 400;
+       font-weight: 500;
       font-size: 16px;
       text-transform: uppercase;
       letter-spacing: .05em;
@@ -5072,7 +5072,7 @@ textarea.form-control {
   height: 560px; }
 
 .ps-contact .ps-contact__form label {
-  font-weight: 400;
+   font-weight: 500;
   font-size: 14px;
   color: #000;
   text-transform: uppercase; }
@@ -5414,7 +5414,7 @@ textarea.form-control {
       margin-bottom: 0;
       font-family: "Archivo Narrow", sans-serif;
       font-size: 16px;
-      font-weight: 400;
+       font-weight: 500;
       color: #999999;
       line-height: 25px;
       letter-spacing: .05em; }
@@ -5785,14 +5785,14 @@ textarea.form-control {
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 16px;
   line-height: 1.3em;
-  font-weight: 400;
+   font-weight: 500;
   color: #5b5b5b; }
 
 .ps-product--detail .ps-product__review .form-group {
   margin-bottom: 30px; }
   .ps-product--detail .ps-product__review .form-group label {
     margin-bottom: 15px;
-    font-weight: 400;
+     font-weight: 500;
     font-size: 16px;
     line-height: 1.3em;
     color: #5b5b5b; }
