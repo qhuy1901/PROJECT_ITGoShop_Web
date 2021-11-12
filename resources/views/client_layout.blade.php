@@ -197,7 +197,7 @@
 				  <p>Item Total:<span>£528.00</span></p>
 				</div>
 				
-				<div class="ps-cart__footer"><a href="{{URL::to('/checkout')}}" class="ps-btn">THANH TOÁN</a></div>
+				<div class="ps-cart__footer"><a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a></div>
 			  </div>
 
 			</div>
@@ -321,6 +321,23 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<!-- Sweet Alert -->
 	<script src="{{asset('public/admin/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
+	<script>
+		$('.btn-thanh-toan').click(function(){
+			var numberOfProduct = Number($('#so-luong-sp-gio-hang').text());
+			if(numberOfProduct == 0)
+			{
+				swal({
+					// title: "Giỏ hàng trống",
+					text: "Bạn vẫn chưa chọn sản phẩm nào để mua.",
+					// icon: "warning",
+					button: "OK",
+				});
+			}
+			else{
+				window.location.href = '{{URL::to('/checkout')}}';
+			}
+		});
+	</script>
 	<script>
 		$('.add-to-cart-a-tag').click( function()
 			{

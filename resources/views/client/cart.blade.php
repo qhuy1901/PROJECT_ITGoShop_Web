@@ -104,7 +104,7 @@
 								<li class="last">Tổng cộng<span id="tong-cong">{{(Cart::total(0, ',', '.')).' ₫'}}</span></li>
                             </ul>
                             <div class="button5">
-									<a href="{{URL::to('/checkout')}}" class="btn">Thanh Toán</a>
+									<a href="javascript:void(0)" class="btn btn-thanh-toan">Thanh Toán</a>
 								<a href="{{URL::to('/')}}" class="btn">Tiếp tục mua hàng</a>
                             </div>
                         </div>
@@ -307,12 +307,14 @@
 			$(".delete-button").click( function(){
 				$(this).parent().parent().remove();
 				var ItemId = $(this).attr('id');
+				var numberProduct = $(this).parents('tr').find('.input-number').val();
 				$.ajax({
 					url: '{{URL::to('/remove-item')}}',
 					methed:"GET",
 					data:{id:ItemId },
 					success:function(data)
 					{
+						$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - numberProduct);
 						swal({
 								title: "Thông báo",
 								text: "Đã xóa sản phẩm khỏi giỏ hàng!",
@@ -360,7 +362,7 @@
 			$("button[data-type='plus'], button[data-type='minus']").click( function()
 			{
 				var $parent = $(this).parents('tr');
-				
+				var thisButtonType = $(this).attr('data-type');
 				var newQuantity = $parent.find('.input-number').val();
 				var rowId = $parent.find('.input-number').attr('id');
 				
@@ -370,7 +372,16 @@
 					data:{rowId: rowId, newQuantity: newQuantity},
 					success:function(data)
 					{
-						alert(newQuantity);
+						var numberProduct = Number($('#so-luong-sp-gio-hang').text());
+						if(thisButtonType == 'plus')
+							$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) + 1);
+						else
+						{
+							if(numberProduct > 1)
+							{
+								$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - 1);
+							}
+						}
 					},
 					error:function(data)
 					{
@@ -392,7 +403,7 @@
 				sum = numberWithCommas(sum);
 				$("#tam-tinh").text(sum + ' ₫');
 				$("#tong-cong").text(sum + ' ₫');
-            }),
+            });
 		});
 	</script>
 
@@ -410,18 +421,18 @@
 					if(currentVal > input.attr('data-min')) {
 						input.val(currentVal - 1).change();
 					} 
-					if(parseInt(input.val()) == input.attr('data-min')) {
-						$(this).attr('disabled', true);
-					}
+					// if(parseInt(input.val()) == input.attr('data-min')) {
+					// 	$(this).attr('disabled', true);
+					// }
 
 				} else if(type == 'plus') {
 
 					if(currentVal < input.attr('data-max')) {
 						input.val(currentVal + 1).change();
 					}
-					if(parseInt(input.val()) == input.attr('data-max')) {
-						$(this).attr('disabled', true);
-					}
+					// if(parseInt(input.val()) == input.attr('data-max')) {
+					// 	$(this).attr('disabled', true);
+					// }
 
 				}
 			} else {
@@ -470,4 +481,3 @@
 			});
 			</script>
 @endsection
-

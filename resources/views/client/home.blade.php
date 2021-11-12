@@ -5,22 +5,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
-					<div class="slideshow-container" style="max-height:300px">
+					<div class="slideshow-container" style="max-height:300px; box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 10%); align-items: center;">
 						@foreach($slider_list as $key => $slider)
 						<div class="mySlides">
 							<img src="{{URL::to('public/images_upload/banner-slider/'.$slider->SliderImage)}}" style="width:100%;">
 						</div>
 						@endforeach
-						<!-- <div class="mySlides">
-							<img src="./public/client/Images/00_Product/Laptop/msi 15 amd.png" style="width:100%;">
-						</div>
-
-						<div class="mySlides">
-								<img src="https://lumen.thinkpro.vn//backend/uploads/banner/2021/11/11/image_2021-11-10_12-20-14-20211110052021%20(1).png" style="width:100%;">
-							</div>
-						<div class="mySlides">
-							<img src="https://lumen.thinkpro.vn//backend/uploads/banner/2021/11/3/resize%20800x288%20(2)%20copy.jpg" style="width:100%;">
-						</div> -->
 						<a class="prev" style="color: white;" onclick="plusSlides(-1)">&#10094;</a>
 						<a class="next" style="color: white;"  onclick="plusSlides(1)">&#10095;</a>
 						<div style="text-align:center; margin:10px">
@@ -50,35 +40,7 @@
 			</div>
 		</div>
 	</div>
-		
-	</section>
-	
-<!--  
-	<section class="hero-slider">
-		<div class="single-slider">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-lg-9 offset-lg-3 col-12">
-						<div class="text-inner">
-							<div class="row">
-								<div class="col-lg-7 col-12">
-									<div class="hero-text">
-										<h1><span>DEAL HOT </span>Macbook Air </h1>
-										<p>Giá chỉ từ : 26.490.000 ₫</p>
-										<div class="button">
-											<a href="product-detail.html" class="btn">Mua Ngay!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
- -->
-	
+</section>
 
 	<section class="small-banner section">
 		<div class="container">
