@@ -149,3 +149,7 @@ Route::post('/save-banner-slider','App\Http\Controllers\BannerSliderController@s
 Route::get('/unactive-banner-slider','App\Http\Controllers\BannerSliderController@unactive_banner_slider');
 Route::get('/active-banner-slider','App\Http\Controllers\BannerSliderController@active_banner_slider');
 Route::get('/delete-banner-slider','App\Http\Controllers\BannerSliderController@delete_banner_slider');
+
+//  Gallary
+Route::get('/view-product-gallary/{ProductId}', 'App\Http\Controllers\GallaryController@view_product_gallary');
+Route::post('/add-product-gallary/{ProductId}', 'App\Http\Controllers\GallaryController@add_product_gallary');

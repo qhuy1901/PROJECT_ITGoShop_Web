@@ -153,6 +153,11 @@
 																		<a href="{{URL::to('/active-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
 																	</button>
 																@endif
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Thư viện ảnh">
+																	<a href="{{URL::to('/view-product-gallary/'.$product->ProductId)}}" class="active" ui-toggle-class="">
+																		<i class="fas fa-images"></i>
+																	</a>
+																</button>
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật sản phẩm">
 																	<a href="{{URL::to('/update-product/'.$product->ProductId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
