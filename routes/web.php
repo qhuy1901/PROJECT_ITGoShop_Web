@@ -29,7 +29,6 @@ Route::get('/customer-logout','App\Http\Controllers\HomeController@logout');
 
 // Product Detail
 Route::get('/product-detail/{ProductId}', 'App\Http\Controllers\ProductController@product_detail');
-Route::get('/product-detail2', 'App\Http\Controllers\ProductController@product_detail2');
 
 // Backend
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');
@@ -138,7 +137,9 @@ Route::get('/update-shipping-address','App\Http\Controllers\ShippingAddressContr
 
 Route::get('/send-order-mail', 'App\Http\Controllers\OrderController@send_order_mail');
 
+//Product Listing
 Route::get('/product-listing', 'App\Http\Controllers\ProductListingController@product_listing');
+Route::get('/product-listing2/{CategoryId}', 'App\Http\Controllers\ProductListingController@product_listing2');
 
 // Banner Slider
 Route::get('/view-banner-slider', 'App\Http\Controllers\BannerSliderController@view_banner_slider');

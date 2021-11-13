@@ -122,8 +122,11 @@
 			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="{{URL::to('/public/client/Images/logo.png')}}" alt=""></a></div>
 		  </div>
 		  <div class="navigation__column center">
+				
 				<ul class="main-menu menu">
-				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing')}}">Laptop</a>
+				@foreach($product_category_list as $key => $category)
+					@if($category->CategoryId == "LT000")
+				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Laptop</a>
 						<div class="mega-menu">
 					  		<div class="mega-wrap">
 								@foreach($main_brand_list as $key => $main_brand)
@@ -144,31 +147,41 @@
 					  		</div>
 						</div>
 				  	</li>
-				  <li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing')}}">PC</a>
-					<div class="mega-menu">
-						<div class="mega-wrap">
-									@foreach($main_brand_list as $key => $main_brand)
-										@if($main_brand->CategoryId == "PC000")
-										<div class="mega-column">
-											<a href="{{URL::to('/product-listing')}}"><h4 class="mega-heading">{{$main_brand->BrandName}}</h4></a>
-											@foreach($sub_brand_list as $key => $SubBrand)
-												@if($SubBrand->BrandId == $main_brand->BrandId)
-												<ul class="mega-item">
-													<li><a href="{{URL::to('/product-listing')}}">{{$SubBrand->SubBrandName}}</a></li>
-															
-												</ul>
-												@endif
-											@endforeach	
-										</div>
-										@endif
-									@endforeach
+					@endif
+				@endforeach
+				@foreach($product_category_list as $key => $category)
+					@if ($category->CategoryId == "PC000")
+				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">PC</a>
+						<div class="mega-menu">
+							<div class="mega-wrap">
+										@foreach($main_brand_list as $key => $main_brand)
+											@if($main_brand->CategoryId == "PC000")
+											<div class="mega-column">
+												<a href="{{URL::to('/product-listing')}}"><h4 class="mega-heading">{{$main_brand->BrandName}}</h4></a>
+												@foreach($sub_brand_list as $key => $SubBrand)
+													@if($SubBrand->BrandId == $main_brand->BrandId)
+													<ul class="mega-item">
+														<li><a href="{{URL::to('/product-listing')}}">{{$SubBrand->SubBrandName}}</a></li>
+																
+													</ul>
+													@endif
+												@endforeach	
+											</div>
+											@endif
+										@endforeach
+							</div>
 						</div>
-					</div>
-				  </li>
-				  <li class="menu-item"><a href="{{URL::to('/product-listing')}}">Phụ Kiện</a></li>
-				  <li class="menu-item"><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
-				  
+				  	</li>
+					@endif
+				@endforeach
+				@foreach($product_category_list as $key => $category)
+					@if ($category->CategoryId == "PK000")
+						<li class="menu-item"><a href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Phụ Kiện</a></li>
+					@endif
+				@endforeach
+					<li class="menu-item"><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
 				</ul>
+				
 		  </div>
 		  
 		  <div class="navigation__column right">
