@@ -7,7 +7,7 @@
 				<div class="col-12">
 					<div class="bread-inner">
 						<ul class="bread-list">
-							<li><a href="product-detail.html">Home<i class="ti-arrow-right"></i></a></li>
+							<li><a href="product-detail.html">Trang chủ<i class="ti-arrow-right"></i></a></li>
 							<li class="active"><a href="bloggrid.php">Wish List</a></li>
 						</ul>
 					</div>
@@ -32,7 +32,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/1.jpg" alt=""> air jordan One mid</a></td>
+                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="{{URL::to('/public/client/Images/product/cart-preview/1.jpg')}}" alt=""> air jordan One mid</a></td>
                   <td>$150</td>
                   <td><a class="ps-product-link" href="product-detail.html">View Product</a></td>
                   <td>
@@ -40,7 +40,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/2.jpg" alt=""> The Crusty Croissant</a></td>
+                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="{{URL::to('/public/client/Images/product/cart-preview/2.jpg')}}" alt=""> The Crusty Croissant</a></td>
                   <td>$150</td>
                   <td><a class="ps-product-link" href="product-detail.html">View Product</a></td>
                   <td>
@@ -48,7 +48,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="images/product/cart-preview/3.jpg" alt="">The Rolling Pin</a></td>
+                  <td><a class="ps-product__preview" href="product-detail.html"><img class="mr-15" src="{{URL::to('/public/client/Images/product/cart-preview/3.jpg')}}" alt="">The Rolling Pin</a></td>
                   <td>$150</td>
                   <td><a class="ps-product-link" href="product-detail.html">View Product</a></td>
                   <td>

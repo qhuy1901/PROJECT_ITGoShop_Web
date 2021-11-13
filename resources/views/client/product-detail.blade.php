@@ -9,7 +9,7 @@
 						<div class="bread-inner">
 							<ul class="bread-list">
 								{{csrf_field()}}
-								<li><a href="index.html">Home<i class="ti-arrow-right"></i></a></li>
+								<li><a href="index.html">Trang chủ<i class="ti-arrow-right"></i></a></li>
 								<li class="active"><a href="#">{{$product->CategoryName}}  </a></li>
 								<li  class="active"><i class="ti-arrow-right"></i></li>
 								<li class="active"><a href="#">{{$product->BrandName}} </a></li>

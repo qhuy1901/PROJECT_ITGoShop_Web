@@ -138,8 +138,9 @@ Route::get('/update-shipping-address','App\Http\Controllers\ShippingAddressContr
 Route::get('/send-order-mail', 'App\Http\Controllers\OrderController@send_order_mail');
 
 //Product Listing
-Route::get('/product-listing', 'App\Http\Controllers\ProductListingController@product_listing');
+Route::get('/product-listing/{BrandId}', 'App\Http\Controllers\ProductListingController@product_listing');
 Route::get('/product-listing2/{CategoryId}', 'App\Http\Controllers\ProductListingController@product_listing2');
+Route::get('/product-listing/{SubBrandId}', 'App\Http\Controllers\ProductListingController@product_listing3');
 
 // Banner Slider
 Route::get('/view-banner-slider', 'App\Http\Controllers\BannerSliderController@view_banner_slider');

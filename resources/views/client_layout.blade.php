@@ -132,11 +132,11 @@
 								@foreach($main_brand_list as $key => $main_brand)
 									@if($main_brand->CategoryId == "LT000")
 									<div class="mega-column">
-											<a href="{{URL::to('/product-listing')}}"> <h4 class="mega-heading" >{{$main_brand->BrandName}}</h4> </a>
+											<a href="{{URL::to('/product-listing/'.$main_brand->BrandId)}}"> <h4 class="mega-heading" >{{$main_brand->BrandName}}</h4> </a>
 										@foreach($sub_brand_list as $key => $SubBrand)
 											@if($SubBrand->BrandId == $main_brand->BrandId)
 											<ul class="mega-item">
-												<li><a href="{{URL::to('/product-listing')}}">{{$SubBrand->SubBrandName}}</a></li>
+												<li><a href="{{URL::to('/product-listing/'.$SubBrand->SubBrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
 											</ul>
 											@endif
 										@endforeach	
@@ -157,11 +157,11 @@
 										@foreach($main_brand_list as $key => $main_brand)
 											@if($main_brand->CategoryId == "PC000")
 											<div class="mega-column">
-												<a href="{{URL::to('/product-listing')}}"><h4 class="mega-heading">{{$main_brand->BrandName}}</h4></a>
+												<a href="{{URL::to('/product-listing/'.$main_brand->BrandId)}}"><h4 class="mega-heading">{{$main_brand->BrandName}}</h4></a>
 												@foreach($sub_brand_list as $key => $SubBrand)
 													@if($SubBrand->BrandId == $main_brand->BrandId)
 													<ul class="mega-item">
-														<li><a href="{{URL::to('/product-listing')}}">{{$SubBrand->SubBrandName}}</a></li>
+														<li><a href="{{URL::to('/product-listing/'.$SubBrand->SubBrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
 																
 													</ul>
 													@endif

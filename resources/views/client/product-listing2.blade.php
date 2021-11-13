@@ -1,6 +1,6 @@
 @extends('client_layout')
 @section('client_content')
-
+@foreach($des_cate as $key => $category)
 <div class="breadcrumbs">
 	<div class="container">
 		<div class="row">
@@ -10,7 +10,7 @@
 						<li><a>Trang chủ<i class="ti-arrow-right"></i></a></li>
 						<li class="active">
               <a>
-                Laptop
+                {{$category->CategoryName}}
               </a>
             </li>
 					</ul>
@@ -19,8 +19,9 @@
 		</div>
 	</div>
 </div>
+@endforeach
 <main class="ps-main">
-      <div class="ps-products-wrap pt-80 pb-80">
+      <div class="ps-products-wrap pr-80 pl-80 pt-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
                                 <div class="ps-product__columns">
                                   @foreach($all_product as $key => $product)
