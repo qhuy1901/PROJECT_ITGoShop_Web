@@ -146,7 +146,7 @@ class ProductController extends Controller
     }
     // Kết thúc trang admin 
 
-    // Trang client
+    /* ======================= Trang client =======================*/
     public function product_detail($ProductId)
     {
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
@@ -172,11 +172,40 @@ class ProductController extends Controller
         ->where('product.CategoryId',$CategoryId)
         ->whereNotIn('product.ProductId', [$ProductId])->limit(4)->get();
 
+        $product_gallary = DB::table('productgallary')
+        ->select('Admin', 'GallaryImage', 'GallaryId','CreatedAt', 'GallaryStatus', 'GallaryImage')
+        ->join('user','user.UserId','=','productgallary.UserId')
+        ->where('ProductId', '=', $ProductId)
+        ->where('Admin', '=', 1)
+        ->where('GallaryStatus', '=', 1)->get(); // chỉ hiện thị ảnh Admin nhập
+
         return view('client.product-detail')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list)
         ->with('product_detail', $product_detail)
-        ->with('related_product',$related_product);
+        ->with('related_product',$related_product)
+        ->with('product_gallary',$product_gallary);
+    }
+
+    public function load_comment(Request $request)
+    {
+        $comment = DB::table('comment')->where('ProductId', $request->ProductId)->get();
+        foreach($comment as $key => $item)
+        {
+            
+        }
+        $output = '
+            <div class="single-comment">
+                <img src="https://via.placeholder.com/80x80" alt="#">
+                <div class="content">
+                    <h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
+                    <p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
+                    <div class="button">
+                        <a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
+                    </div>
+                </div>
+            </div>';
+        echo $output;
     }
 }

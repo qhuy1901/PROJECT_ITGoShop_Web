@@ -32,24 +32,29 @@
 										<div class="ps-product__preview">
 											<div class="ps-product__variants" >
 												<div class="item" ><img src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt=""></div>
-												<div class="item"><img src="{{URL::to('/public/client/Images/shoe-detail/2.jpg')}}" alt=""></div>
-												<div class="item"><img src="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}" alt=""></div>
-												<div class="item"><img src="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}" alt=""></div>
-												<div class="item"><img src="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}" alt=""></div>
+												@foreach($product_gallary as $key => $item)
+												<div class="item"><img src="{{URL::to('/public/images_upload/product-gallary/'.$item->GallaryImage)}}" alt=""></div>
+												@endforeach
 											</div>
 										</div>
 										<div class="ps-product__image" style="max-height: 395px; max-width: 450px; width: auto; height: auto;">
 											<div class="item"><img class="zoom" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="" data-zoom-image="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}"></div>
-											<div class="item"><img class="zoom" src="{{URL::to('/public/client/Images/shoe-detail/2.jpg')}}" alt="" data-zoom-image="{{URL::to('/public/client/Images/shoe-detail/2.jpg')}}"></div>
-											<div class="item"><img class="zoom" src="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}" alt="" data-zoom-image="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}"></div>
+											@foreach($product_gallary as $key => $item)
+												<div class="item"><img class="zoom"  src="{{URL::to('/public/images_upload/product-gallary/'.$item->GallaryImage)}}" alt=""></div>
+											@endforeach
+											<!-- <div class="item"><img class="zoom" src="{{URL::to('/public/client/Images/shoe-detail/2.jpg')}}" alt="" data-zoom-image="{{URL::to('/public/client/Images/shoe-detail/2.jpg')}}"></div> -->
+											<!-- <div class="item"><img class="zoom" src="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}" alt="" data-zoom-image="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}"></div> -->
 										</div>
 									</div>
 									<div class="ps-product__thumbnail--mobile">
 										<div class="ps-product__main-img"><img src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt=""></div>
 										<div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on">
-											<img src="{{URL::to('/public/client/Images/shoe-detail/1.jpg')}}" alt="">
+											@foreach($product_gallary as $key => $item)
+												<img src="{{URL::to('/public/images_upload/product-gallary/'.$item->GallaryImage)}}" alt="">
+											@endforeach
+										<!-- <img src="{{URL::to('/public/client/Images/shoe-detail/1.jpg')}}" alt="">
 											<img src="{{URL::to('/public/client/Images/shoe-detail/2.jpg')}}" alt="">
-											<img src="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}" alt="">
+											<img src="{{URL::to('/public/client/Images/shoe-detail/3.jpg')}}" alt=""> -->
 										</div>
 									</div>
 									<div class="ps-product__info" style="padding-left: 0px;">
@@ -99,7 +104,7 @@
 																				</button>
 																			</div>
 																			
-																			<input name="ProductId" type="hidden" value="{{$product->ProductId}}">
+																			<input name="ProductId" type="hidden" class="input_product_id" value="{{$product->ProductId}}">
 																	</div>
 														</div>
 													</div>
@@ -162,22 +167,37 @@
 															<option value="1">4</option>
 															<option value="2">5</option>
 														</select>
-														
 											</div>
-
 										</h3>
-										<!-- Single Comment -->
-										<div class="single-comment">
-											<img src="https://via.placeholder.com/80x80" alt="#">
-											<div class="content">
-												<h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
-												<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
-												<div class="button">
-													<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
+										<h3 class="comment-title" >
+											<a style="font-weight: bold;">Bình luận</a>
+										</h3>
+										<h4>Bình luận của bạn</h4>
+										<div>
+										<button type="button" style="position: absolute;right: 60px; bottom:550px;width: 60px;height: 30px; width: 60px;height: 30px;border-radius: 50px;font-size: 14px;background: black;"> <a href="#" style="color: white;font-weight: bold;">Gửi</a> </button>
+											<textarea name="message" rows="4" style="padding: 16px; border-radius: 8px;margin: 10px 0px 30px; resize: none; font-size: 16px; background-color:#F3F5F8;" placeholder="Mời bạn để lại bình luận"></textarea>
+											
+										</div>
+										
+											
+										<!-- </div> -->
+										
+										<form>
+											@csrf
+											<input name="ProductId" type="hidden" class="input_product_id" value="{{$product->ProductId}}">
+											<div id="show_comment"></div>
+											<div class="single-comment">
+												<img src="https://via.placeholder.com/80x80" alt="#">
+												<div class="content">
+													<h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
+													<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
+													<div class="button">
+														<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
+													</div>
 												</div>
 											</div>
-										</div>
-										<!-- End Single Comment -->
+										</form>
+
 										<!-- Single Comment -->
 										<div class="single-comment left">
 											<img src="https://via.placeholder.com/80x80" alt="#">
@@ -292,4 +312,29 @@
 		</section>
 		@endforeach
 		<!--/ End Blog Single -->
+		<script>
+		// $(document).ready(function(){
+		// 	var product_id = $('.input_product_id').val();
+		// 	var _token = $('input[name="_token"]').val();
+		// 	load_comment();
+		// 	function load_comment()
+		// 	{
+		// 		$.ajax({
+		// 			url: "{{url('/load-comment')}}",
+		// 			method:"POST",
+		// 			data:{product_id: product_id, _token:_token},
+		// 			success:function(data){
+		// 				$('#show_comment').html(data);
+		// 				alert("Thành công");
+		// 			},
+		// 			error:function(data)
+		// 			{
+		// 				alert("Lỗi");
+		// 			}
+		// 		});
+		// 	}
+			
+		// });
+
+		</script>
 @endsection

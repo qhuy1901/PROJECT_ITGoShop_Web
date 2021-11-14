@@ -72,6 +72,8 @@ Route::get('/active-product','App\Http\Controllers\ProductController@active_prod
 Route::post('/save-product','App\Http\Controllers\ProductController@save_product');
 Route::post('/update-product/{ProductId}','App\Http\Controllers\ProductController@update_product');
 
+Route::post('/load-comment','App\Http\Controllers\ProductController@load_comment');
+
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
 Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');

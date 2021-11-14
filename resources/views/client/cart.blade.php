@@ -32,9 +32,9 @@
 							<tr class="main-hading">
 								<th> </th>
 								<th>Tên sản phẩm</th>
-								<th class="text-center">Đơn giá</th>
+								<th class="text-center" style="width:140px">Đơn giá</th>
 								<th class="text-center">Số lượng</th>
-								<th class="text-center">Tổng tiền</th> 
+								<th class="text-center" style="width:140px">Tổng tiền</th> 
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
