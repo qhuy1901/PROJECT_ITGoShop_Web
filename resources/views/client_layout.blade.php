@@ -138,7 +138,7 @@
 										@foreach($sub_brand_list as $key => $SubBrand)
 											@if($SubBrand->BrandId == $main_brand->BrandId)
 											<ul class="mega-item">
-												<li><a href="{{URL::to('/product-listing/'.$SubBrand->SubBrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
+												<li><a href="{{URL::to('/product-listing3/'.$SubBrand->SubBrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
 											</ul>
 											@endif
 										@endforeach	
@@ -163,7 +163,7 @@
 												@foreach($sub_brand_list as $key => $SubBrand)
 													@if($SubBrand->BrandId == $main_brand->BrandId)
 													<ul class="mega-item">
-														<li><a href="{{URL::to('/product-listing/'.$SubBrand->SubBrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
+														<li><a href="{{URL::to('/product-listing3/'.$SubBrand->SubBrandId)}}">{{$SubBrand->SubBrandName}}</a></li>
 																
 													</ul>
 													@endif
