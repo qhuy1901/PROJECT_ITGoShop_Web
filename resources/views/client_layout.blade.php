@@ -120,7 +120,9 @@
 		<div class="container-fluid" >
 		  <div class="navigation__column left">
 			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="{{URL::to('/public/client/Images/logo.png')}}" alt=""></a></div>
-		  </div>
+			<input type="text" id="input-customer-id" value="{{Session::get('CustomerId')}}" hidden><!--Đừng xóa cái này  -->
+			
+		</div>
 		  <div class="navigation__column center">
 				
 				<ul class="main-menu menu">

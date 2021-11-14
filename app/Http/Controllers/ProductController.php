@@ -190,22 +190,41 @@ class ProductController extends Controller
 
     public function load_comment(Request $request)
     {
-        $comment = DB::table('comment')->where('ProductId', $request->ProductId)->get();
+        $comment = DB::table('comment')
+        ->select('UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt')
+        ->join('user','user.UserId','=','comment.UserId')
+        ->where('ProductId', $request->ProductId)->get();
+        $output = '';
         foreach($comment as $key => $item)
         {
-            
-        }
-        $output = '
+            $created_at = date("H:i d/m/Y",strtotime($item->CreatedAt));
+            $output .= '
             <div class="single-comment">
-                <img src="https://via.placeholder.com/80x80" alt="#">
+                <img src="'.url("/public/images_upload/user/{$item->UserImage}").'" alt="#">
                 <div class="content">
-                    <h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
-                    <p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
+                    <h4>'.$item->LastName.' '.$item->FirstName.'<span>'.$created_at.'</span></h4>
+                    <p>'.$item->CommentContent.'</p>
                     <div class="button">
-                        <a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
+                        <a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Trả lời</a>
                     </div>
                 </div>
             </div>';
+        }
         echo $output;
+    }
+
+    public function send_comment(Request $request)
+    {
+        // Chú ý để chạy hàm này cần phải đăng nhập thành công
+        $CustomerId = Session::get('CustomerId');
+        if($CustomerId)
+        {
+            $data = array(); 
+            $data['CommentContent'] = $request->CommentContent;
+            $data['ProductId'] = $request->ProductId;
+            $data['UserId'] = $CustomerId;
+            $data['CommentStatus'] = 1;
+            DB::table('comment')->insert($data);
+        }
     }
 }

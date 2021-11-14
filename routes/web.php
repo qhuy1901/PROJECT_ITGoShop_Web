@@ -73,6 +73,7 @@ Route::post('/save-product','App\Http\Controllers\ProductController@save_product
 Route::post('/update-product/{ProductId}','App\Http\Controllers\ProductController@update_product');
 
 Route::post('/load-comment','App\Http\Controllers\ProductController@load_comment');
+Route::post('/send-comment','App\Http\Controllers\ProductController@send_comment');
 
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');

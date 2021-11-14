@@ -173,10 +173,10 @@
 											<a style="font-weight: bold;">Bình luận</a>
 										</h3>
 										<h4>Bình luận của bạn</h4>
-										<div>
-										<button type="button" style="position: absolute;right: 60px; bottom:550px;width: 60px;height: 30px; width: 60px;height: 30px;border-radius: 50px;font-size: 14px;background: black;"> <a href="#" style="color: white;font-weight: bold;">Gửi</a> </button>
-											<textarea name="message" rows="4" style="padding: 16px; border-radius: 8px;margin: 10px 0px 30px; resize: none; font-size: 16px; background-color:#F3F5F8;" placeholder="Mời bạn để lại bình luận"></textarea>
-											
+										<div class="o-binh-luan" style="margin:0px 0px 30px;">
+											<!-- <button type="button" style="position: absolute;right: 60px; bottom:550px;width: 60px;height: 30px; width: 60px;height: 30px;border-radius: 50px;font-size: 14px;background: black;"> <a href="#" style="color: white;font-weight: bold;">Gửi</a> </button> -->
+											<textarea class="textarea-commnent-content" name="CommentContent" rows="4" style="padding: 16px; border-radius: 8px; resize: none; margin: 10px 0px 10px; font-size: 16px; background-color:#F3F5F8;" placeholder="Mời bạn để lại bình luận"></textarea>
+											<button class="send-comment-button" type="button" style="margin-bottom:30px;float:right;width: 60px;height: 30px; width: 60px;height: 30px;border-radius: 50px;font-size: 14px;background: black;"> <a href="javascript:void(0)" style="color: white;font-weight: bold;">Gửi</a> </button>
 										</div>
 										
 											
@@ -310,31 +310,57 @@
 				</div>
 			</div>
 		</section>
+		<a href="{{URL::to('/send-comment')}}">Hi</a>
 		@endforeach
 		<!--/ End Blog Single -->
 		<script>
-		// $(document).ready(function(){
-		// 	var product_id = $('.input_product_id').val();
-		// 	var _token = $('input[name="_token"]').val();
-		// 	load_comment();
-		// 	function load_comment()
-		// 	{
-		// 		$.ajax({
-		// 			url: "{{url('/load-comment')}}",
-		// 			method:"POST",
-		// 			data:{product_id: product_id, _token:_token},
-		// 			success:function(data){
-		// 				$('#show_comment').html(data);
-		// 				alert("Thành công");
-		// 			},
-		// 			error:function(data)
-		// 			{
-		// 				alert("Lỗi");
-		// 			}
-		// 		});
-		// 	}
+		$(document).ready(function(){
+			var product_id = $('.input_product_id').val();
+			var _token = $('input[name="_token"]').val();
+			load_comment();
+			function load_comment()
+			{
+				$.ajax({
+					url: "{{url('/load-comment')}}",
+					method:"POST",
+					data:{ProductId: product_id, _token:_token},
+					success:function(data){
+						$('#show_comment').html(data);
+					},
+					error:function(data)
+					{
+						alert("Lỗi");
+					}
+				});
+			}
+			$('.send-comment-button').click(function(){
+				var customer_id = $('#input-customer-id').val();
+				if(customer_id)
+				{
+					var ProductId = $('.input_product_id').val();
+					var CommentContent = $('.textarea-commnent-content').val();
+					var _token = $('input[name="_token"]').val();
+					$.ajax({
+						url:"{{url('/send-comment')}}",
+						method: "POST",
+						data:{ProductId: ProductId, CommentContent: CommentContent, _token:_token},
+						success:function(data){
+							load_comment();
+							$('.textarea-commnent-content').val('');
+						},
+						error:function(data)
+						{
+							alert("Lỗi");
+						}
+					});
+				}
+				else
+				{
+					window.location.href = "{{URL::to('/login')}}";
+				}
+				
+			});
 			
-		// });
-
+		});
 		</script>
 @endsection
