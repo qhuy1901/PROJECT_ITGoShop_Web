@@ -47,9 +47,9 @@ class ProductListingController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
-        ->where('product.SubBrandId',$SubBrandId)->get();
+        ->where('product.SubBrandId','=',$SubBrandId)->get();
 
-        return view('client.product-listing')
+        return view('client.product-listing3')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list)
