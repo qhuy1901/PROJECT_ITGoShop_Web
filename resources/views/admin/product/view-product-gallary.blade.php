@@ -31,7 +31,7 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title">Danh sách thư viện ảnh</h4>
+										<h4 class="card-title">Thư viện ảnh của sản phẩm <a href="#">#{{$ProductId}}</a></h4>
 										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 											<i class="fa fa-plus"></i>
 												Thêm ảnh vào thư viện
@@ -92,7 +92,7 @@
 														<th style="width:80px">Ngày tạo</th>
 														<th style="max-width:320px">Tên file ảnh</th>
 														<th>Hình ảnh</th>
-														<th style="max-width:30px">Trạng thái</th>
+														<th>Loại ảnh</th>
 														<th>Hành động</th>
 													</tr>
 												</thead>
@@ -100,23 +100,32 @@
                                                     @foreach($product_gallary as $key => $item)
 													<tr>
 														<td>{{date("d-m-Y", strtotime($item->CreatedAt))}}</td>
-                                                        <td>{{$item->GallaryImage}}</td>
+                                                        <td>{{$item->GallaryImage}}<input type="text" class="GallaryId" value="{{$item->GallaryId}}" hidden></td>
                                                         <td><img src="{{URL::to('public/images_upload/product-gallary/'.$item->GallaryImage)}}" style="margin: 15px; max-width: 260px; max-height: 260px; width: auto; height: auto; "></td>
+														<td>
+															@if($item->Admin)
+																Ảnh do Admin thêm
+															@else
+																Ảnh từ khách hàng
+															@endif
+														</td>
                                                         <td>
                                                             <div class="form-button-action">
-																
-																<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
+																@if($item->GallaryStatus == 1)
 																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị thư viện ảnh">
 																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
 																	</button>	
 																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn thư viện ảnh" hidden>
 																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
 																	</button>	
-																
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-button-action">
+																@else	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị thư viện ảnh" hidden>
+																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
+																	</button>	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn thư viện ảnh">
+																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
+																	</button>
+																@endif
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật thư viện ảnh">
 																	<a href="javascript:void(0)" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
@@ -178,13 +187,13 @@
 	<script>
 		$(document).ready(function(){
 			$('button[data-original-title="Hiển thị thư viện ảnh"]').click(function(){
-				var SliderId = $(this).parents('tr').find('.SliderId').val();
+				var GallaryId = $(this).parents('tr').find('.GallaryId').val();
 				var activeButton = $(this);
 				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn thư viện ảnh"]');
 				$.ajax({
-					url: '{{URL::to('/unactive-banner-slider')}}',
+					url: '{{URL::to('/unactive-product-gallary')}}',
 					method:"GET",
-					data:{SliderId: SliderId},
+					data:{GallaryId: GallaryId},
 					success:function(data)
 					{
 						activeButton.attr('hidden',true);
@@ -198,13 +207,13 @@
 			});
 
 			$('button[data-original-title="Ẩn thư viện ảnh"]').click(function(){
-				var SliderId = $(this).parents('tr').find('.SliderId').val();
+				var GallaryId = $(this).parents('tr').find('.GallaryId').val();
 				var unactiveButton = $(this);
 				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị thư viện ảnh"]');
 				$.ajax({
-					url: '{{URL::to('/active-banner-slider')}}',
+					url: '{{URL::to('/active-product-gallary')}}',
 					method:"GET",
-					data:{SliderId: SliderId},
+					data:{GallaryId: GallaryId},
 					success:function(data)
 					{
 						unactiveButton.attr('hidden',true);
@@ -218,11 +227,11 @@
 			});
 
 			$('button[data-original-title="Xóa thư viện ảnh"]').click(function(){
-				var SliderId = $(this).parents('tr').find('.SliderId').val();
-				var thisSlider = $(this).parents('tr');
+				var GallaryId = $(this).parents('tr').find('.GallaryId').val();
+				var thisImage = $(this).parents('tr');
 				swal({
 					title: "Xác nhận",
-					text: "Bạn có chắc muốn xóa slider này không?",
+					text: "Bạn có chắc muốn xóa ảnh này không?",
 					icon: "warning",
 					buttons: true,
 					dangerMode: true,
@@ -230,13 +239,13 @@
 					.then((willDelete) => {
 					if (willDelete) {
 						$.ajax({
-							url: '{{URL::to('/delete-banner-slider')}}',
+							url: '{{URL::to('/delete-product-gallary')}}',
 							method:"GET",
-							data:{SliderId: SliderId},
+							data:{GallaryId: GallaryId},
 							success:function(data)
 							{
-								thisSlider.remove();
-								swal("Xóa slider thành công!", {
+								thisImage.remove();
+								swal("Xóa ảnh thành công!", {
 								icon: "success",
 								});
 							},
@@ -253,9 +262,7 @@
 		});
 	</script>
 
-    <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
-	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
-	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script>
+    
 	<!-- jQuery UI -->
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
@@ -275,7 +282,7 @@
 			});
 
 			$('#multi-filter-select').DataTable( {
-				"pageLength": 5,
+				"pageLength": 10,
 				initComplete: function () {
 					this.api().columns().every( function () {
 						var column = this;
@@ -300,7 +307,7 @@
 
 			// Add Row
 			$('#add-row').DataTable({
-				"pageLength": 5,
+				"pageLength": 10,
 			});
 
 			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật thư viện ảnh"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';

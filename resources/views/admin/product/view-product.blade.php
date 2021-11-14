@@ -131,26 +131,31 @@
 													@foreach($all_product as $key => $product)
 													<tr>
 														<td><a href="{{URL::to('/update-product/'.$product->ProductId)}}" class="active" ui-toggle-class="" style="color:black">{{$product->ProductName}}</a></td>
-														<td>{{$product->CategoryName}}</td>
+														<td>{{$product->CategoryName}} 
+														<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
+														</td>
 														<td>{{$product->BrandName}}</td>
 														<td>{{$product->Quantity}}</td>
 														<td><img src="public/images_upload/product/{{$product->ProductImage}}" style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; "></td>
-														<!-- <td>
-															
-														</td> -->
+														
 														<!-- <td>{{$product->Discount}}%</td> -->
 														<td>{{number_format($product->Price, 0, " ", ".").' ₫'}}</td>
 
 														<td>
 															<div class="form-button-action">
 																@if($product->Status == 1)
-																<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
 																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị sản phẩm">
-																		<a href="{{URL::to('/unactive-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px" data-original-title="Cập nhật sản phẩm"></span></a>
-																	</button>		
+																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
+																	</button>	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn sản phẩm" hidden>
+																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
+																	</button>	
 																@else	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị sản phẩm" hidden>
+																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
+																	</button>	
 																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn sản phẩm">
-																		<a href="{{URL::to('/active-product/'.$product->ProductId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
+																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
 																	</button>
 																@endif
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Thư viện ảnh">
@@ -159,12 +164,12 @@
 																	</a>
 																</button>
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật sản phẩm">
-																	<a href="{{URL::to('/update-product/'.$product->ProductId)}}" class="active" ui-toggle-class="">
+																	<a href="javascript:void(0)" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
 																</button>
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa sản phẩm">
-																	<a onclick="return confirm('Bạn cho chắc muốn xóa sản phẩm này không?')" href="{{URL::to('/delete-product/'.$product->ProductId)}}" class="active" ui-toggle-class="">
+																	<a href="javascript:void(0)" class="active" ui-toggle-class="">
 																		<i class="fa fa-times text-danger text"></i>
 																	</a>
 																</button>
@@ -175,8 +180,6 @@
 													@endforeach
 												</tbody>
 											</table>
-											
-											
 										</div>
 									</div>
 									
@@ -186,10 +189,85 @@
 					</div>
 		</div>
 	</div>
-	@endsection
-    <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
-	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
-	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script>
+
+	<script>
+		$(document).ready(function(){
+			$('button[data-original-title="Hiển thị sản phẩm"]').click(function(){
+				var ProductId = $(this).parents('tr').find('.ProductId').val();
+				var activeButton = $(this);
+				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn sản phẩm"]');
+				$.ajax({
+					url: '{{URL::to('/unactive-product')}}',
+					method:"GET",
+					data:{ProductId: ProductId},
+					success:function(data)
+					{
+						activeButton.attr('hidden',true);
+						unactiveButton.removeAttr('hidden');
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}	
+				});
+			});
+
+			$('button[data-original-title="Ẩn sản phẩm"]').click(function(){
+				var ProductId = $(this).parents('tr').find('.ProductId').val();
+				var unactiveButton = $(this);
+				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị sản phẩm"]');
+				$.ajax({
+					url: '{{URL::to('/active-product')}}',
+					method:"GET",
+					data:{ProductId: ProductId},
+					success:function(data)
+					{
+						unactiveButton.attr('hidden',true);
+						activeButton.removeAttr('hidden');
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}	
+				});
+			});
+
+			$('button[data-original-title="Xóa sản phẩm"]').click(function(){
+				var ProductId = $(this).parents('tr').find('.ProductId').val();
+				var thisImage = $(this).parents('tr');
+				swal({
+					title: "Xác nhận",
+					text: "Bạn có chắc muốn xóa sản phẩm này không?",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+					})
+					.then((willDelete) => {
+					if (willDelete) {
+						$.ajax({
+							url: '{{URL::to('/delete-product')}}',
+							method:"GET",
+							data:{ProductId: ProductId},
+							success:function(data)
+							{
+								thisImage.remove();
+								swal("Xóa sản phẩm thành công!", {
+								icon: "success",
+								});
+							},
+							error:function(data)
+							{
+								alert('Lỗi');
+							}	
+						});
+						
+					} 
+				});
+				
+			});
+		});
+	</script>
+
 	<!-- jQuery UI -->
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
@@ -209,7 +287,7 @@
 			});
 
 			$('#multi-filter-select').DataTable( {
-				"pageLength": 5,
+				"pageLength": 10,
 				initComplete: function () {
 					this.api().columns().every( function () {
 						var column = this;
@@ -251,3 +329,6 @@
 			});
 		});
 	</script>
+
+	@endsection
+    
