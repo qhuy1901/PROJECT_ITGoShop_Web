@@ -37,17 +37,25 @@
               <div class="card mt-4" >
                 <ul class="list-group list-group-flush">
 				  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h4 class="mb-0" href="#"><i style="font-size: 20px; padding-right: 15px;" class="fa fa-user-circle-o" class="fa fa-user-circle-o" ></i> Tài khoản</h4>
+                    <h4 class="mb-0" >
+						<i style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-user-circle-o" class="fa fa-user-circle-o" ></i> 
+						<a href="#" style="color:#333; font-weight:500;">Tài khoản</a>
+					</h4>
                     
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h4 class="mb-0" ><i  style="font-size: 20px; padding-right: 15px;" class="fa fa-heart-o"  ></i>Sản phẩm yêu thích</h4>
-                    <span class="text-secondary"></span>
+                    <h4 class="mb-0" >
+						<i  style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-heart-o"  ></i>
+						<a href="#" style="color:#333; font-weight:500;">Sản phẩm yêu thích</a>
+					</h4>
+                    
                   </li>
                   
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h4 class="mb-0"><i style="font-size: 20px; padding-right: 15px;" class="fa fa-history" class="fa fa-history" ></i>Lịch sử mua hàng</h4>
-                    <span class="text-secondary"></span>
+                    <h4 class="mb-0">
+						<i style="font-size: 20px; padding-right: 15px;" class="fa fa-history" class="fa fa-history" ></i>
+						<a href="#" style="color:#333; font-weight:500;">Lịch sử mua hàng</a>
+					</h4>
                   </li>
                   
                 </ul>
