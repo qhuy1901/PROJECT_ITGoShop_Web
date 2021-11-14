@@ -32,7 +32,7 @@ class ProductController extends Controller
         $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
 
-        return view('admin.add_product')
+        return view('admin.product.add-product')
         ->with('product_category_list', $product_category_list)
         ->with('brand_list', $brand_list)
         ->with('sub_brand_list', $sub_brand_list);
@@ -47,7 +47,7 @@ class ProductController extends Controller
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->orderby('product.ProductId', 'desc')->get();
 
-        return view('admin.view_product')
+        return view('admin.product.view-product')
         ->with('all_product', $all_product);
     }
 
@@ -85,20 +85,19 @@ class ProductController extends Controller
         return Redirect::to('add-product');
     }
 
-    public function active_product($ProductId)
+    public function active_product(Request $request)
     {
-        // Câu truy vấn SQL  WHERE 
-        DB::table('product')->where('ProductId', $ProductId)->update(['status'=>1]); // [ ] là cái cột, cái mảng
-        Session::put('message','Hiển thị sản phâm thành công');
-        return Redirect::to('view-product');
-
+        DB::table('product')->where('ProductId', $request->ProductId)->update(['Status'=>1]); 
     }
 
-    public function unactive_product($ProductId)
+    public function unactive_product(Request $request)
     {
-        DB::table('product')->where('ProductId', $ProductId)->update(['status'=>0]); 
-        Session::put('message','Ẩn sản phẩm thành công');
-        return Redirect::to('view-product');
+        DB::table('product')->where('ProductId', $request->ProductId)->update(['Status'=>0]); 
+    }
+
+    public function delete_product(Request $request)
+    {
+        DB::table('product')->where('ProductId', $request->ProductId)->delete();
     }
 
     public function get_product_info($ProductId)
@@ -111,7 +110,7 @@ class ProductController extends Controller
 
         // // Lấy hết dữ liệu trong bảng product
         $product_info = DB::table('product')->where('ProductId',$ProductId)->get();  
-        return View('admin.update_product')
+        return View('admin.product.update-product')
         ->with('product_info', $product_info)
         ->with('product_category_list',$product_category_list)
         ->with('sub_brand_list',$sub_brand_list)
@@ -143,13 +142,6 @@ class ProductController extends Controller
 
         DB::table('product')->where('ProductId', $ProductId)->update($data);
         Session::put('message', 'Cập nhật sản phẩm thành công');
-        return Redirect::to('view-product');
-    }
-
-    public function delete_product($ProductId)
-    {
-        DB::table('product')->where('ProductId', $ProductId)->delete();
-        Session::put('message', 'Xóa sản phẩm thành công');
         return Redirect::to('view-product');
     }
     // Kết thúc trang admin 
@@ -187,6 +179,4 @@ class ProductController extends Controller
         ->with('product_detail', $product_detail)
         ->with('related_product',$related_product);
     }
-    
-
 }

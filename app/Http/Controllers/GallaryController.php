@@ -13,7 +13,12 @@ class GallaryController extends Controller
 {
     public function view_product_gallary($ProductId)
     {
-        $product_gallary = DB::table('productgallary')->where('ProductId', '=', $ProductId)->get();
+        $product_gallary = DB::table('productgallary')
+        ->select('Admin', 'GallaryImage', 'GallaryId','CreatedAt', 'GallaryStatus', 'GallaryImage')
+        ->join('user','user.UserId','=','productgallary.UserId')
+        ->where('ProductId', '=', $ProductId)
+        ->orderby('Admin','DESC')->get();
+
         return View('admin.product.view-product-gallary')
         ->with('product_gallary', $product_gallary)
         ->with('ProductId', $ProductId);
@@ -31,10 +36,26 @@ class GallaryController extends Controller
                 $data['GallaryImage'] = $image_name;
                 $data['ProductId'] = $ProductId;
                 $data['UserId'] = Session::get('UserId');
+                $data['GallaryStatus'] = 1;
                 DB::table('productgallary')->insert($data);
             }
         }
         Session::put('message', 'Thêm ảnh thành công');
         return redirect()->back();
+    }
+
+    public function active_product_gallary(Request $request)
+    {
+        DB::table('productgallary')->where('GallaryId', $request->GallaryId)->update(['GallaryStatus'=>1]); 
+    }
+
+    public function unactive_product_gallary(Request $request)
+    {
+        DB::table('productgallary')->where('GallaryId', $request->GallaryId)->update(['GallaryStatus'=>0]); 
+    }
+
+    public function delete_product_gallary(Request $request)
+    {
+        DB::table('productgallary')->where('GallaryId', $request->GallaryId)->delete();
     }
 }

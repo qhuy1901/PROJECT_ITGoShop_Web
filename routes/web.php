@@ -64,10 +64,10 @@ Route::post('/update-brand/{id}','App\Http\Controllers\BrandController@update_br
 Route::get('/add-product','App\Http\Controllers\ProductController@add_product');
 Route::get('/view-product','App\Http\Controllers\ProductController@view_product');
 Route::get('/update-product/{ProductId}','App\Http\Controllers\ProductController@get_product_info');
-Route::get('/delete-product/{ProductId}','App\Http\Controllers\ProductController@delete_product');
 
-Route::get('/unactive-product/{ProductId}','App\Http\Controllers\ProductController@unactive_product');
-Route::get('/active-product/{ProductId}','App\Http\Controllers\ProductController@active_product');
+Route::get('/delete-product','App\Http\Controllers\ProductController@delete_product');
+Route::get('/unactive-product','App\Http\Controllers\ProductController@unactive_product');
+Route::get('/active-product','App\Http\Controllers\ProductController@active_product');
 
 Route::post('/save-product','App\Http\Controllers\ProductController@save_product');
 Route::post('/update-product/{ProductId}','App\Http\Controllers\ProductController@update_product');
@@ -153,3 +153,6 @@ Route::get('/delete-banner-slider','App\Http\Controllers\BannerSliderController@
 //  Gallary
 Route::get('/view-product-gallary/{ProductId}', 'App\Http\Controllers\GallaryController@view_product_gallary');
 Route::post('/add-product-gallary/{ProductId}', 'App\Http\Controllers\GallaryController@add_product_gallary');
+Route::get('/unactive-product-gallary','App\Http\Controllers\GallaryController@unactive_product_gallary');
+Route::get('/active-product-gallary','App\Http\Controllers\GallaryController@active_product_gallary');
+Route::get('/delete-product-gallary','App\Http\Controllers\GallaryController@delete_product_gallary');
