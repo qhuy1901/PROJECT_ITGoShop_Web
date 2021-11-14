@@ -53,7 +53,7 @@
                   
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="mb-0">
-						<i style="font-size: 20px; padding-right: 15px;" class="fa fa-history" class="fa fa-history" ></i>
+						<i style="font-size: 20px; padding-right: 18px;" class="fa fa-history" class="fa fa-history" ></i>
 						<a href="#" style="color:#333; font-weight:500;">Lịch sử mua hàng</a>
 					</h4>
                   </li>
