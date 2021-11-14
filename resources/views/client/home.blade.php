@@ -23,17 +23,14 @@
 					</div>
 			</div>
 			<div class="col-lg-4">
+				@foreach($latestnew as $key => $new)
 				<div class="card" style="margin-top:50px; border-radius:  10px 10px 0px 0px;background-color:#ccf2f4; border-left: 6px solid #A2D2FF; border-bottom: 6px solid #A2D2FF;">
 					<div class="card-body">
-						<p style="color:#333; font-size:17px;"><b>ITGOShop Thái Hà, Thả ga Sale Sốc - Khuyến mại ngập tràn xuyên suốt tháng khai trương</b></p>
+						<a style="color:#333; font-size:17px;" href="{{URL::to('/blog-detail/'.$new->BlogId)}}"><b>{{$new->Title}}</b></a>
 					</div>
 				</div>
-
-				<div class="card" style="margin-top:20px; border-radius: 10px 10px 0px 0px; background-color:#ccf2f4; border-left: 6px solid #A2D2FF; border-bottom: 6px solid #A2D2FF;">
-					<div class="card-body">
-						<p style="color:#333; font-size:17px;"><b>Đánh giá chi tiết Dell XPS 15 9510: Xứng đáng với vị thế dẫn đầu!</b></p>
-					</div>
-				</div>
+				@endforeach
+				
 
 				<div style="margin: 20px 0px;">
 					<h3><a href="{{URL::to('/all_blog')}}" style="text-decoration:none;  "><b>Tất cả tin tức <i class="fa fa-angle-right" style="color:#A2D2FF;" aria-hidden="true"></i></b></a></h3>
@@ -91,7 +88,7 @@
 						<div class="content">
 							<p>Logitech Collectons</p>
 							<h3>Tai nghe Gaming <br> Logitech G335</h3>
-							<a href="{{URL::to('/product-detail2/')}}">Mua Ngay</a>
+							<a href="{{URL::to('/product-detail2/')}}">Xem Chi Tiết</a>
 						</div>
 					</div>
 				</div>
