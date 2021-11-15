@@ -1,6 +1,9 @@
 @extends('client_layout')
 @section('client_content')
-<!-- Breadcrumbs -->
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>	
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Breadcrumbs -->
 <div class="breadcrumbs">
 	<div class="container">
 		<div class="row">
@@ -16,83 +19,57 @@
 		</div>
 	</div>
 </div>
-<!-- End Breadcrumbs -->
-
-<section>
-	<div class="container" style="margin-top: 20px;">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="panel panel-default">
-					<div class="panel-heading" style="background-color: #77ACF1;">
-						<div class="row">
-							<div class="col-sm-4">
-                                <img src="{{URL::to('public/images_upload/user/Huy.jpg')}}" class="rounded-circle" alt="#" style="height:40px"> 
-							</div>
-							<div class="col-sm-8" >
-								<p style="color: white;">Xin chào<br><b>Tạ Quang Huy</b></p>
-							</div>
-						</div>
-					</div>
-					<div class="panel-body">
-						<ul>
-							<li>
-								<div class="row" style="font-size: 20px;">
-									<div class="col-sm-2">
-										<i class="fa fa-user" aria-hidden="true"></i>
-									</div>
-									<div class="col-sm-10" >
-										<p>
-											<a href="#" style="color: black;text-decoration: none;">Thông tin tài khoản</a>
-										<p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="row" style="font-size: 20px;">
-									<div class="col-sm-2">
-										<i class="fa fa-bell" aria-hidden="true"></i>
-									</div>
-									<div class="col-sm-10" >
-										<p>
-											<a href="#" style="color: black;text-decoration: none;">Thông báo của tôi</a>
-										<p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="row" style="font-size: 20px;">
-									<div class="col-sm-2">
-										<i class="fa fa-sticky-note" aria-hidden="true"></i>
-									</div>
-									<div class="col-sm-10" >
-										<p>
-											<a href="{{URL::to('/my-orders')}}" style="color: black;text-decoration: none;">Quản lý đơn hàng</a>
-										<p>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="row" style="font-size: 20px;">
-									<div class="col-sm-2">
-										<i class="fa fa-heart" aria-hidden="true"></i>
-									</div>
-									<div class="col-sm-10" >
-										<p>
-											<a href="#" style="color: black;text-decoration: none;">Sản phẩm yêu thích</a>
-										<p>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-			<div class="col-lg-9">
-				<div class="panel panel-default">
-					<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"><b>Đơn hàng của tôi</b></h4></div>
-					<div class="panel-body">
-						<table class="table table-striped">
+	<!-- End Breadcrumbs -->
+  
+	<!-- Start Contact -->
+	<div class="row gutters-sm pt-20 pl-60 pr-60 pb-80">
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="{{URL::to('public/images_upload/user/Huy.jpg')}}" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>Xin chào, Tạ Quang Huy!</h4>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-4" >
+                <ul class="list-group list-group-flush">
+				  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h4 class="mb-0" >
+						<i style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-user-circle-o" class="fa fa-user-circle-o" ></i> 
+						<a href="{{URL::to('/profile')}}" style="color:#333; font-weight:500;">Tài khoản</a>
+					</h4>
+                    
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h4 class="mb-0" >
+						<i  style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-heart-o"  ></i>
+						<a href="#" style="color:#333; font-weight:500;">Sản phẩm yêu thích</a>
+					</h4>
+                    
+                  </li>
+                  
+                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                    <h4 class="mb-0">
+						<i style="font-size: 20px; padding-right: 18px;" class="fa fa-history" class="fa fa-history" ></i>
+						<a href="{{URL::to('/my-orders')}}" style="color:#333; font-weight:500;">Lịch sử mua hàng</a>
+					</h4>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="title">
+                            <h1>Lịch sử đơn hàng</h1>
+                        </div>
+                        <Br>
+                        <table class="table table-striped">
 							<thead>
 							  <tr>
 								<th scope="col"><b>Mã đơn hàng</b></th>
@@ -122,10 +99,63 @@
 								@endforeach
 							</tbody>
 						  </table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>		
+                    </div>
+                </div>
+                
+
+               
+            </div>
+        </div>
+	<!--/ End Contact -->
+	<style type="text/css">
+body{
+    
+    color: #1a202c;
+    text-align: left;  
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgb(176, 190, 197), 0 1px 2px 0 rgb(144, 164, 174);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .5rem;
+	font-size: 14px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.5rem;
+}
+
+
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+</style>	
+	<!-- Map Section -->
 @endsection

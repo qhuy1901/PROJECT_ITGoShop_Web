@@ -40,15 +40,21 @@ class ProductListingController extends Controller
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
-        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->get();
-        $sub_brand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$BrandId)->get();
+           
         $all_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
         ->where('product.SubBrandId','=',$SubBrandId)->get();
-
+        
+        foreach($all_product as $key => $value)
+        {
+            $BrandId = $value->BrandId;
+        }
+        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->get();
+        $sub_brand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$BrandId)->get();
+    
         return view('client.product-listing3')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
