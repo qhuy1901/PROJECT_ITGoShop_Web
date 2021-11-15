@@ -154,9 +154,9 @@ class ProductController extends Controller
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
         $product_detail = DB::table('product')
+        ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
-        ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->where('product.ProductId', $ProductId)->get();
 
         foreach($product_detail as $key => $value)
@@ -193,7 +193,8 @@ class ProductController extends Controller
         $comment = DB::table('comment')
         ->select('UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt')
         ->join('user','user.UserId','=','comment.UserId')
-        ->where('ProductId', $request->ProductId)->get();
+        ->where('ProductId', $request->ProductId)
+        ->orderby('CommentId', 'DESC')->get();
         $output = '';
         foreach($comment as $key => $item)
         {

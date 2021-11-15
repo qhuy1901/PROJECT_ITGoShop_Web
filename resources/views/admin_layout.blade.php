@@ -440,6 +440,12 @@
 							</div>
 						</li>
 						<li class="nav-item">
+							<a href="{{URL::to('/view-comment')}}">
+								<i class="fa fa-shopping-cart"></i>
+								<p>Bình luận</p>
+							</a>							
+						</li>
+						<li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
 								<i class="fas fa-map-marker-alt"></i>
 								<p>Maps</p>

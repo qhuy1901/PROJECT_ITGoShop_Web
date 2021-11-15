@@ -159,3 +159,6 @@ Route::post('/add-product-gallary/{ProductId}', 'App\Http\Controllers\GallaryCon
 Route::get('/unactive-product-gallary','App\Http\Controllers\GallaryController@unactive_product_gallary');
 Route::get('/active-product-gallary','App\Http\Controllers\GallaryController@active_product_gallary');
 Route::get('/delete-product-gallary','App\Http\Controllers\GallaryController@delete_product_gallary');
+
+//Comment
+Route::get('/view-comment','App\Http\Controllers\CommentController@view_comment');
