@@ -57,9 +57,9 @@
 										<div class="row">
 											<div class=" col-xl-4 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
-													<div class="product-img" style="width: 250px; height: 200px;">
+													<div class="product-img" >
 														<a href="product-detail.html">
-															<img class="default-img" src="https://via.placeholder.com/550x750" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " alt="#">
+															<img class="default-img" src="https://via.placeholder.com/550x750"  alt="#">
 															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
 														</a>
 														<div class="button-head">
