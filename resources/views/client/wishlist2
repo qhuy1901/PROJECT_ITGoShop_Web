@@ -22,7 +22,7 @@
 	<!-- End Breadcrumbs -->
   
 	<!-- Start Contact -->
-	<div class="row gutters-sm pt-45 pl-60 pr-60 pb-80">
+	<div class="row gutters-sm pt-20 pl-60 pr-60 pb-80">
             <div class="col-md-3 mb-4">
               <div class="card">
                 <div class="card-body">
@@ -63,48 +63,37 @@
               </div>
             </div>
             <div class="col-md-9">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="title">
-                            <h1>Lịch sử đơn hàng</h1>
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                        <div class="single-product">
+                            <div class="product-img">
+                                <a href="product-detail.html">
+                                    <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
+                                    <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
+                                    <span class="new">New</span>
+                                </a>
+                                <div class="button-head">
+                                    <div class="product-action">
+                                        <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+                                        <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+                                        <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+                                    </div>
+                                    <div class="product-action-2">
+                                        <a title="Add to cart" href="#">Add to cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="product-detail.html">Women Pant Collectons</a></h3>
+                                <div class="product-price">
+                                    <span>$29.00</span>
+                                </div>
+                            </div>
                         </div>
-                        <Br>
-                        <table class="table table-striped">
-							<thead>
-							  <tr>
-								<th scope="col"><b>Mã đơn hàng</b></th>
-								<th scope="col"><b>Ngày mua</b></th>
-								<th scope="col"><b>Sản phẩm</b></th>
-								<th scope="col"><b>Tổng tiền</b></th>
-								<th scope="col"><b>Trạng thái đơn hàng</b></th>
-							  </tr>
-							</thead>
-							<tbody>
-								@foreach($order_list as $key => $item)
-								<tr>
-									<td>
-										<a href="{{URL::to('/show-order-detail/'.$item->OrderId)}}" style="color: #77ACF1">{{$item->OrderId}}</a>
-									</td>
-									<td>
-										{{date("d/m/Y", strtotime($item->OrderDate))}}
-									</td>
-									<td>
-										{{$item->Description}}
-									</td>
-									<td>
-										{{number_format($item->Total, 0, " ", ".").' ₫'}}
-									</td>
-									<td>{{$item->OrderStatus}}</td>
-								</tr>
-								@endforeach
-							</tbody>
-						  </table>
                     </div>
                 </div>
                 
 
                
-            </div>
         </div>
 	<!--/ End Contact -->
 	<style type="text/css">
