@@ -221,6 +221,7 @@
 			<?php
 					$CustomerId= Session::get('CustomerId');
 					if($CustomerId) { ?>
+						
 						<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true" title="Wish List"></i></a>
 
 			<?php } ?>
