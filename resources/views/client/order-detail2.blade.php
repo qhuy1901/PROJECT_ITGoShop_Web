@@ -3,7 +3,7 @@
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>	
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Breadcrumbs -->
+<!-- Breadcrumbs -->
 <div class="breadcrumbs">
 	<div class="container">
 		<div class="row">
@@ -12,7 +12,8 @@
 					<ul class="bread-list">
 						<li><a href="{{URL::to('/')}}">Trang chủ<i class="ti-arrow-right"></i></a></li>
 						<li class="active"><a href="{{URL::to('/')}}">Tài khoản<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi</a></li>
+                        <li class="active"><a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi<i class="ti-arrow-right"></i></a></li>
+                        <li class="active"><a href="{{URL::to('/my-orders')}}">Chi tiết đơn hàng</a></li>
 					</ul>
 				</div>
 			</div>
@@ -27,7 +28,7 @@
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{{URL::to('public/images_upload/user/Huy.jpg')}}" alt="Admin" class="rounded-circle" width="150">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>Xin chào, Tạ Quang Huy!</h4>
                       
@@ -66,7 +67,7 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="title">
-                            <h1>Lịch sử đơn hàng</h1>
+                            <h3 style="margin: 20px 0px;">Chi tiết đơn hàng #{{$order_info->OrderId}} - <b>{{$order_info->OrderStatus}}</b> <p style="float:right;">Ngày đặt hàng: {{date("H:i d/m/Y", strtotime($order_info->OrderDate))}} </p></h3>
                         </div>
                         <Br>
                         <table class="table table-striped">

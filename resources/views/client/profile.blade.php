@@ -22,11 +22,11 @@
   
 	<!-- Start Contact -->
 	<div class="row gutters-sm pt-20 pl-60 pr-80 pb-80">
-            <div class="col-md-4 mb-4">
+            <div class="col-md-3 mb-4">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{URL::to('public/images_upload/user/Huy.jpg')}}" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
                       <h4>Xin chào, Tạ Quang Huy!</h4>
                       
@@ -39,7 +39,7 @@
 				  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="mb-0" >
 						<i style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-user-circle-o" class="fa fa-user-circle-o" ></i> 
-						<a href="#" style="color:#333; font-weight:500;">Tài khoản</a>
+						<a href="{{URL::to('/profile')}}" style="color:#333; font-weight:500;">Tài khoản</a>
 					</h4>
                     
                   </li>
@@ -50,18 +50,17 @@
 					</h4>
                     
                   </li>
-                  
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="mb-0">
 						<i style="font-size: 20px; padding-right: 18px;" class="fa fa-history" class="fa fa-history" ></i>
-						<a href="#" style="color:#333; font-weight:500;">Lịch sử mua hàng</a>
+						<a href="{{URL::to('/my-orders')}}" style="color:#333; font-weight:500;">Lịch sử mua hàng</a>
 					</h4>
                   </li>
                   
                 </ul>
               </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="title">
