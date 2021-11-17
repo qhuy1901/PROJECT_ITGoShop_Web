@@ -191,25 +191,54 @@ class ProductController extends Controller
     public function load_comment(Request $request)
     {
         $comment = DB::table('comment')
-        ->select('UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt')
+        ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment')
         ->join('user','user.UserId','=','comment.UserId')
         ->where('ProductId', $request->ProductId)
+        ->where('ParentComment', null)
         ->orderby('CommentId', 'DESC')->get();
         $output = '';
         foreach($comment as $key => $item)
         {
             $created_at = date("H:i d/m/Y",strtotime($item->CreatedAt));
+            $userImage = $item->UserImage;
+                if($userImage == '')
+                {
+                    $userImage='default-user-icon.png';
+                }
             $output .= '
             <div class="single-comment">
-                <img src="'.url("/public/images_upload/user/{$item->UserImage}").'" alt="#">
+                <img src="'.url("/public/images_upload/user/{$userImage}").'" alt="#">
                 <div class="content">
                     <h4>'.$item->LastName.' '.$item->FirstName.'<span>'.$created_at.'</span></h4>
                     <p>'.$item->CommentContent.'</p>
                     <div class="button">
-                        <a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Trả lời</a>
+                        <a href="javascript:void(0)" class="btn btn-reply"><i class="fa fa-reply" aria-hidden="true"></i>Trả lời</a>
                     </div>
                 </div>
             </div>';
+            $sub_comment = $comment = DB::table('comment')
+            ->select('UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment')
+            ->join('user','user.UserId','=','comment.UserId')
+            ->where('ProductId', $request->ProductId)
+            ->Where('ParentComment', $item->CommentId)
+            ->orderby('CommentId', 'DESC')->get();
+            foreach($sub_comment as $key => $scomment)
+            {
+                $created_at = date("H:i d/m/Y",strtotime($scomment->CreatedAt));
+                $userImage = $scomment->UserImage;
+                if($userImage == '')
+                {
+                    $userImage='default-user-icon.png';
+                }
+                $output .= '<div class="single-comment left">
+                    <img src="'.url("/public/images_upload/user/{$userImage}").'" alt="#">';
+                $output .= "<div class='content'>
+                        <h4>$scomment->LastName $scomment->FirstName<span>$created_at</span></h4>
+                        <p>$scomment->CommentContent</p>
+                        <div class='button'><a href='javascript:void(0)' class='btn btn-reply'><i class='fa fa-reply' aria-hidden='true'></i>Trả lời</a></div>
+                    </div>
+                </div>";
+            }
         }
         echo $output;
     }

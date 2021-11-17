@@ -187,20 +187,9 @@
 											@csrf
 											<input name="ProductId" type="hidden" class="input_product_id" value="{{$product->ProductId}}">
 											<div id="show_comment"></div>
-											<div class="single-comment">
-												<img src="https://via.placeholder.com/80x80" alt="#">
-												<div class="content">
-													<h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
-													<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
-													<div class="button">
-														<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-													</div>
-												</div>
-											</div>
 										</form>
-
-										<!-- Single Comment -->
-										<div class="single-comment left">
+										
+										<!-- <div class="single-comment left">
 											<img src="https://via.placeholder.com/80x80" alt="#">
 											<div class="content">
 												<h4>john deo <span>Feb 28, 2018 at 8:59 pm</span></h4>
@@ -210,57 +199,18 @@
 												</div>
 											</div>
 										</div>
-										<!-- End Single Comment -->
-										<!-- Single Comment -->
 										<div class="single-comment">
 											<img src="https://via.placeholder.com/80x80" alt="#">
 											<div class="content">
 												<h4>megan mart <span>Feb 28, 2018 at 8:59 pm</span></h4>
 												<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
 												<div class="button">
-													<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
+													<a href="javascript:void(0)" class="btn btn-reply"><i class="fa fa-reply" aria-hidden="true"></i>Trả lời</a>
 												</div>
 											</div>
-										</div>
-										<!-- End Single Comment -->
+										</div> -->
 									</div>									
-								</div>											
-								<div class="col-12">			
-									<div class="reply">
-										<div class="reply-head">
-											<h2 class="reply-title">Leave a Comment</h2>
-											<!-- Comment Form -->
-											<form class="form" action="#">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-12">
-														<div class="form-group">
-															<label>Your Name<span>*</span></label>
-															<input type="text" name="name" placeholder="" required="required">
-														</div>
-													</div>
-													<div class="col-lg-6 col-md-6 col-12">
-														<div class="form-group">
-															<label>Your Email<span>*</span></label>
-															<input type="email" name="email" placeholder="" required="required">
-														</div>
-													</div>
-													<div class="col-12">
-														<div class="form-group">
-															<label>Your Message<span>*</span></label>
-															<textarea name="message" placeholder=""></textarea>
-														</div>
-													</div>
-													<div class="col-12">
-														<div class="form-group button">
-															<button type="submit" class="btn">Post comment</button>
-														</div>
-													</div>
-												</div>
-											</form>
-											<!-- End Comment Form -->
-										</div>
-									</div>			
-								</div>
+								</div>	
 					<div class="product-area most-popular section">
 						<div class="container">
 							<div class="row">
@@ -341,6 +291,7 @@
 					var ProductId = $('.input_product_id').val();
 					var CommentContent = $('.textarea-commnent-content').val();
 					var _token = $('input[name="_token"]').val();
+					
 					$.ajax({
 						url:"{{url('/send-comment')}}",
 						method: "POST",
@@ -359,9 +310,43 @@
 				{
 					window.location.href = "{{URL::to('/login')}}";
 				}
-				
 			});
-			
+
+			$('body').on('click', '.send-sub-comment-button' ,function(){
+				var customer_id = $('#input-customer-id').val();
+				if(customer_id)
+				{
+					var ProductId = $('.input_product_id').val();
+					var CommentContent = $('.textarea-sub-commnent-content').val();
+					var ParentComment = $('.textarea-sub-commnent-content').val();
+					var _token = $('input[name="_token"]').val();
+					alert(CommentContent);
+					$.ajax({
+						url:"{{url('/send-comment')}}",
+						method: "POST",
+						data:{ProductId: ProductId, CommentContent: CommentContent, _token:_token},
+						success:function(data){
+							load_comment();
+							$('.textarea-commnent-content').val('');
+						},
+						error:function(data)
+						{
+							alert("Lỗi");
+						}
+					});
+				}
+				else
+				{
+					window.location.href = "{{URL::to('/login')}}";
+				}
+			});
+			$('body').on('click', '.btn-reply', function(){
+				var o_binh_luan_khac = $(this).parents('.comments').find('.o-binh-luan-con').remove();
+				var noidung = '';
+				noidung += "<form> <input type='hidden' name='_token' value='{{ csrf_token() }}' /><div class='o-binh-luan-con' style='margin:0px 0px 30px;'><textarea class='textarea-sub-commnent-content' name='CommentContent' rows='2' style='padding: 16px; border-radius: 8px; resize: none; margin: 10px 0px 10px; font-size: 16px; background-color:#F3F5F8;' placeholder='Mời bạn để lại bình luận'></textarea>";
+				noidung += "<button class='send-sub-comment-button' type='button'style='margin-bottom:30px;float:right;width: 60px;height: 30px; width: 60px;height: 30px;border-radius: 50px;font-size: 14px;background: black;'>  <a href='javascript:void(0)' style='color: white;font-weight: bold;'>Gửi</a> </button></div></form>";
+				$(this).parents('.single-comment').append(noidung);
+			});
 		});
 		</script>
 @endsection
