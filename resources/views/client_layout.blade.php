@@ -7,13 +7,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-	<title>ITGo Shop</title>
+	<title>ITGoShop - @yield('title')</title>
 	<!--File css của Huy  -->
 	<style>
 		.swal-footer {
 			text-align: center;
 		}
-
 	</style>
 	<style>
 		.slider-area .mySlides {display: none}
@@ -65,7 +64,6 @@
 		.slider-area .active, .dot:hover {
 		background-color: #717171;
 		}
-
 	</style>
 	<link rel="stylesheet" href="{{asset('./public/client/css/huy.css')}}">
 	<!-- Favicon -->

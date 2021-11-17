@@ -1,4 +1,5 @@
 @extends('client_layout')
+@section('title', 'Tên sản phẩm')
 @section('client_content')
 		@foreach($product_detail  as $key => $product)
 		<!-- Breadcrumbs -->
