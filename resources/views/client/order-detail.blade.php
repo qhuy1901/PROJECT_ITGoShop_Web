@@ -23,7 +23,7 @@
 	<!-- End Breadcrumbs -->
   
 	<!-- Start Contact -->
-	<div class="row gutters-sm pt-20 pl-60 pr-60 pb-80">
+	<div class="row gutters-sm pt-45 pl-60 pr-60 pb-80">
             <div class="col-md-3 mb-4">
               <div class="card">
                 <div class="card-body">
