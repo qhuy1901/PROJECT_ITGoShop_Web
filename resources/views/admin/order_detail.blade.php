@@ -32,7 +32,6 @@
 							<div class="card">
 								<div class="card-header">
                   <div class="row align-items-center">
-                    {{csrf_field()}}
                     <div class="col-lg-6 col-md-6">
                       <span>
                         <i class="fas fa-calendar-alt"></i> <b>Ngày đặt hàng: {{$order->OrderDate}}</b>  

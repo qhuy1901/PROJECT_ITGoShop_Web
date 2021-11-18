@@ -5,11 +5,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Breadcrumbs -->
 <div class="breadcrumbs">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
 				<div class="bread-inner">
-					<ul class="bread-list">
+					<ul class="bread-list" style="margin-left:50px">
 						<li><a href="{{URL::to('/')}}">Trang chủ<i class="ti-arrow-right"></i></a></li>
 						<li class="active"><a href="{{URL::to('/')}}">Tài khoản<i class="ti-arrow-right"></i></a></li>
                         <li class="active"><a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi</a></li>
@@ -20,7 +20,6 @@
 	</div>
 </div>
 	<!-- End Breadcrumbs -->
-  
 	<!-- Start Contact -->
 	<div class="row gutters-sm pt-45 pl-60 pr-60 pb-80">
             <div class="col-md-3 mb-4">
@@ -29,8 +28,8 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="{{URL::to('public/images_upload/user/Huy.jpg')}}" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>Xin chào, Tạ Quang Huy!</h4>
-                      
+						<?php $LastName=Session::get('CustomerLastName'); $FirstName=Session::get('CustomerFirstName');?>
+                      <h4>Xin chào, {{$LastName.' '.$FirstName}}!</h4>
                     </div>
                   </div>
                 </div>
@@ -69,6 +68,9 @@
                             <h1>Lịch sử đơn hàng</h1>
                         </div>
                         <Br>
+						@if(count($order_list) == 0)
+							<p>Khách hàng chưa có đơn hàng nào.</p>
+						@else
                         <table class="table table-striped">
 							<thead>
 							  <tr>
@@ -98,12 +100,10 @@
 								</tr>
 								@endforeach
 							</tbody>
-						  </table>
+						</table>
+						@endif
                     </div>
                 </div>
-                
-
-               
             </div>
         </div>
 	<!--/ End Contact -->

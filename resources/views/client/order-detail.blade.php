@@ -64,8 +64,8 @@
               </div>
             </div>
             <div class="col-md-9">
-            	<h3 style="margin: 20px 0px;">Chi tiết đơn hàng #{{$order_info->OrderId}} - <b>{{$order_info->OrderStatus}}</b> <p style="float:right;">Ngày đặt hàng: {{date("H:i d/m/Y", strtotime($order_info->OrderDate))}} </p></h3>
-				
+            	<h3 style="margin: 20px 0px;">Chi tiết đơn hàng #{{$order_info->OrderId}} - <b class="OrderStatus">{{$order_info->OrderStatus}}</b> <p style="float:right;">Ngày đặt hàng: {{date("H:i d/m/Y", strtotime($order_info->OrderDate))}} </p></h3>
+				<input type="text" class="OrderId" value="{{$order_info->OrderId}}" hidden>
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="card panel-default">
@@ -137,11 +137,15 @@
 						  </table>
 					</div>
 				</div>
+				<?php $status = $order_info->OrderStatus ?>
+				<?php if($status != "Đã hủy"){?>
+				<button type="button" style="height:40px;width:150px;float:right;font-size: 14px;" class="btn btn-warning">
+					<a href="javascript:void(0)" style="text-decoration:none; color: white;" class="button-huy-don-hang">Hủy đơn hàng</a> 
+				</button>
+				<?php } ?>
 				<p><a href="{{URL::to('/my-orders')}}"><< Quay lại đơn hàng của tôi</a></p>
 			</div>
                 
-
-               
             </div>
         </div>
 	<!--/ End Contact -->
@@ -195,5 +199,56 @@ body{
 }
 
 </style>	
+<script>
+	$(document).ready(function(){
+		$('.button-huy-don-hang').click(function(){
+			// alert("Hi");
+			var OrderId = $('.OrderId').val();
+			var thisbutton = $(this);
+			swal({
+				title: "Xác nhận",
+				text: "Bạn có chắc muốn hủy hóa đơn này không?",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+				})
+				.then((willDelete) => {
+				if (willDelete) {
+					swal("Hãy cho ITGoShop biết lý do nhé!", {
+						content: "input",
+					})
+					.then((value) => {
+						$.ajax({
+							url:"{{url('/cancel-order')}}",
+							method: "GET",
+							data:{OrderId: OrderId},
+							success:function(data){
+								
+								swal("Hủy đơn hàng thành công!", {
+									icon: "success",
+								})
+								.then((willDelete) => {
+  								if (willDelete) {
+									thisbutton.parent().remove();
+									$('.OrderStatus').text('Đã hủy');
+									$('html, body').animate({scrollTop: $('.bread-inner').offset().top}, 500);
+									
+								}
+								});
+								
+							},
+							error:function(data)
+							{
+								alert("Lỗi");
+							}
+						});
+					});
+					
+				} 
+			});
+		});
+	});
+	
+</script>
 	<!-- Map Section -->
 @endsection
