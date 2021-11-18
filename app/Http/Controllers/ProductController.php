@@ -169,7 +169,7 @@ class ProductController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName','subbrand.SubBrandName')
-        ->where('product.CategoryId',$CategoryId)
+        // ->where('product.CategoryId',$CategoryId)
         ->whereNotIn('product.ProductId', [$ProductId])->limit(4)->get();
 
         $product_gallary = DB::table('productgallary')
@@ -191,7 +191,7 @@ class ProductController extends Controller
     public function load_comment(Request $request)
     {
         $comment = DB::table('comment')
-        ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment')
+        ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment', 'comment.UserId')
         ->join('user','user.UserId','=','comment.UserId')
         ->where('ProductId', $request->ProductId)
         ->where('ParentComment', null)
@@ -208,8 +208,14 @@ class ProductController extends Controller
             $output .= '
             <div class="o-comment"><div class="single-comment">
                 <img src="'.url("/public/images_upload/user/{$userImage}").'" alt="#">
-                <div class="content">
-                    <h4>'.$item->LastName.' '.$item->FirstName.'<span>'.$created_at.'</span></h4>
+                <div class="content"><input type="text" class="CommentId" value='.$item->CommentId.' hidden>';
+            if($item->UserId == Session::get('CustomerId') || $item->UserId == Session::get('UserId'))
+            {
+                $output .='<div class="button" style="float:right">
+                                <a href="javascript:void(0)" class="btn btn-xoa-comment"><i class="fa fa-times" aria-hidden="true"></i></a>
+                            </div>';
+            }
+            $output .='<h4>'.$item->LastName.' '.$item->FirstName.'<span>'.$created_at.'</span></h4>
                     <p>'.$item->CommentContent.'</p>
                     <input type="text" class="ParentCommentId" value="'.$item->CommentId.'" hidden>
                     <div class="button">
@@ -232,8 +238,15 @@ class ProductController extends Controller
                     $userImage='default-user-icon.png';
                 }
                 $output .= '<div class="single-comment left">
-                    <img src="'.url("/public/images_upload/user/{$userImage}").'" alt="#">';
-                $output .= "<div class='content'>
+                    <img src="'.url("/public/images_upload/user/{$userImage}").'" alt="#">
+                    <div class="content"><input type="text" class="CommentId" value='.$scomment->CommentId.' hidden>';
+                if($item->UserId == Session::get('CustomerId') || $item->UserId == Session::get('UserId'))
+                {
+                        $output .='<div class="button" style="float:right">
+                                        <a href="javascript:void(0)" class="btn btn-xoa-comment"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                    </div>';
+                }    
+                $output .= "
                         <h4>$scomment->LastName $scomment->FirstName<span>$created_at</span></h4>
                         <p>$scomment->CommentContent</p>
                         <div class='button'>
@@ -262,5 +275,12 @@ class ProductController extends Controller
                 $data['ParentComment'] = $request->ParentComment;
             DB::table('comment')->insert($data);
         }
+    }
+
+    public function delete_comment(Request $request)
+    {
+        DB::table('comment')
+        ->where('CommentId', $request->comment_id)
+        ->orWhere('ParentComment', $request->comment_id)->delete();
     }
 }

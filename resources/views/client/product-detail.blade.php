@@ -261,7 +261,6 @@
 				</div>
 			</div>
 		</section>
-		<a href="{{URL::to('/send-comment')}}">Hi</a>
 		@endforeach
 		<!--/ End Blog Single -->
 		<script>
@@ -355,6 +354,35 @@
 					window.location.href = "{{URL::to('/login')}}";
 				}
 			});
+
+			$('body').on('click', '.btn-xoa-comment' ,function(){
+				var comment_id = $(this).parents('.single-comment').find('.CommentId').val();
+				var thisdiv = $(this).parents('.single-comment');
+				$.ajax({
+					url:"{{url('/delete-comment')}}",
+					method: "GET",
+					data:{comment_id: comment_id},
+					success:function(data){
+						swal({
+								title: "Xác nhận",
+								text: "Bạn có chắc muốn xóa bình luận này không?",
+								icon: "warning",
+								buttons: true,
+								dangerMode: true,
+								})
+								.then((willDelete) => {
+								if (willDelete) {
+									load_comment();
+								} 
+							});
+					},
+					error:function(data)
+					{
+						alert("Lỗi");
+					}
+				});
+			});
+
 			$('body').on('click', '.btn-reply', function(){
 				var o_binh_luan_khac = $(this).parents('.comments').find('.o-binh-luan-con').remove();
 				var noidung = '';
