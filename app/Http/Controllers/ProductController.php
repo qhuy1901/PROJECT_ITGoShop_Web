@@ -169,7 +169,7 @@ class ProductController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName','subbrand.SubBrandName')
-        // ->where('product.CategoryId',$CategoryId)
+        ->where('product.CategoryId',$CategoryId)
         ->whereNotIn('product.ProductId', [$ProductId])->limit(4)->get();
 
         $product_gallary = DB::table('productgallary')
@@ -282,6 +282,10 @@ class ProductController extends Controller
             }
             else{
                 $data['UserId'] = $AdminId;
+                if($request->ParentComment != 0)
+                {
+                    DB::table('comment')->where('CommentId', $request->ParentComment)->update(['Reply'=>1]); 
+                }
             }
             $data['CommentStatus'] = 1;
             if($request->ParentComment != 0)

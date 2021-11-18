@@ -394,4 +394,5 @@
 			});
 		});
 		</script>
+		<!-- <a href="{{URL::to('/check_reply_for_comment')}}">Hi</a> -->
 @endsection

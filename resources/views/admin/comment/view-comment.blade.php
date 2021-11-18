@@ -50,6 +50,7 @@
 														<th style="max-width:320px">Nội dung bình luận</th>
 														<th>Tên khách hàng</th>
 														<th>Tên sản phẩm</th>
+														<th>Trả lời</th>
 														<th>Hành động</th>
 													</tr>
 												</thead>
@@ -60,10 +61,17 @@
                                                         <td>{{$comment->CommentContent}}<input type="text" class="CommentId" value="{{$comment->CommentId}}" hidden></td>
                                                         <td>{{$comment->LastName. ' ' .$comment->FirstName}}</td>
 														<td>{{$comment->ProductName}}</td>
+														<td style="text-align:center;">
+															@if($comment->Reply == 1)
+																<input class="form-check-input" type="checkbox" value="" checked>
+															@else
+																<input class="form-check-input" type="checkbox" value="">
+															@endif
+														</td>
                                                         <td>
                                                             <div class="form-button-action">
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Trả lời bình luận">
-																	<a href="{{URL::to('/product-detail/'.$comment->ProductId)}}" class="active" ui-toggle-class="">
+																	<a href="javascript:void(0)" onclick="return window.open('{{URL::to('/product-detail/'.$comment->ProductId)}}')" class="active" ui-toggle-class="">
 																		<i class="fa fa-reply" aria-hidden="true"></i>
 																	</a>
 																</button>
