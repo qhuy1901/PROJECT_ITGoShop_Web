@@ -7,7 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Title Tag  -->
-	<title>ITGoShop - @yield('title')</title>
+	<title>@yield('title')</title>
 	<!--File css của Huy  -->
 	<style>
 		.swal-footer {

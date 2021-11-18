@@ -157,12 +157,9 @@ class ProductController extends Controller
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
-        ->where('product.ProductId', $ProductId)->get();
+        ->where('product.ProductId', $ProductId)->first();
 
-        foreach($product_detail as $key => $value)
-        {
-            $CategoryId = $value->CategoryId;
-        }
+        $CategoryId = $product_detail->CategoryId;
 
         $related_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')

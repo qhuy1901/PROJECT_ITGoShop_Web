@@ -1,7 +1,6 @@
 @extends('client_layout')
-@section('title', 'Tên sản phẩm')
+@section('title', $product_detail->ProductName)
 @section('client_content')
-		@foreach($product_detail  as $key => $product)
 		<!-- Breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">
@@ -11,9 +10,9 @@
 							<ul class="bread-list">
 								{{csrf_field()}}
 								<li><a href="index.html">Trang chủ<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="#">{{$product->CategoryName}}  </a></li>
+								<li class="active"><a href="#">{{$product_detail->CategoryName}}  </a></li>
 								<li  class="active"><i class="ti-arrow-right"></i></li>
-								<li class="active"><a href="#">{{$product->BrandName}} </a></li>
+								<li class="active"><a href="#">{{$product_detail->BrandName}} </a></li>
 							</ul>
 						</div>
 					</div>
@@ -32,14 +31,14 @@
 									<div class="ps-product__thumbnail" style="height: 395px; width: 600px;" >
 										<div class="ps-product__preview">
 											<div class="ps-product__variants" >
-												<div class="item" ><img src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt=""></div>
+												<div class="item" ><img src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt=""></div>
 												@foreach($product_gallary as $key => $item)
 												<div class="item"><img src="{{URL::to('/public/images_upload/product-gallary/'.$item->GallaryImage)}}" alt=""></div>
 												@endforeach
 											</div>
 										</div>
 										<div class="ps-product__image" style="max-height: 395px; max-width: 450px; width: auto; height: auto;">
-											<div class="item"><img class="zoom" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="" data-zoom-image="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}"></div>
+											<div class="item"><img class="zoom" src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt="" data-zoom-image="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}"></div>
 											@foreach($product_gallary as $key => $item)
 												<div class="item"><img class="zoom"  src="{{URL::to('/public/images_upload/product-gallary/'.$item->GallaryImage)}}" alt=""></div>
 											@endforeach
@@ -48,7 +47,7 @@
 										</div>
 									</div>
 									<div class="ps-product__thumbnail--mobile">
-										<div class="ps-product__main-img"><img src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt=""></div>
+										<div class="ps-product__main-img"><img src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt=""></div>
 										<div class="ps-product__preview owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="20" data-owl-nav="true" data-owl-dots="false" data-owl-item="3" data-owl-item-xs="3" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="3" data-owl-duration="1000" data-owl-mousedrag="on">
 											@foreach($product_gallary as $key => $item)
 												<img src="{{URL::to('/public/images_upload/product-gallary/'.$item->GallaryImage)}}" alt="">
@@ -61,7 +60,7 @@
 									<div class="ps-product__info" style="padding-left: 0px;">
 												<form action="{{URL::to('/save-cart')}}" method="POST">
 													{{ csrf_field() }}
-													<h2 class="blog-title">{{$product->ProductName}}</h2>
+													<h2 class="blog-title">{{$product_detail->ProductName}}</h2>
 													
 													<div class="blog-meta" style="padding-top:30px">
 														<span class="author">
@@ -76,11 +75,11 @@
 																product->Rating</a>	
 															endif-->
 															<a><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>Chưa có đánh giá</a>	
-															<a><i class="fa fa-shopping-cart"></i>Đã bán {{$product->Sold}}</a>
-															@if($product->Quantity < 10)
-																<a><i class="fa fa-archive"></i>Chỉ còn lại {{$product->Quantity}} sản phẩm</a>
+															<a><i class="fa fa-shopping-cart"></i>Đã bán {{$product_detail->Sold}}</a>
+															@if($product_detail->Quantity < 10)
+																<a><i class="fa fa-archive"></i>Chỉ còn lại {{$product_detail->Quantity}} sản phẩm</a>
 															@else
-																<a><i class="fa fa-archive"></i>Còn {{$product->Quantity}} sản phẩm</a>
+																<a><i class="fa fa-archive"></i>Còn {{$product_detail->Quantity}} sản phẩm</a>
 															@endif
 														</span>
 													</div>
@@ -88,11 +87,11 @@
 														<div class="blog-meta">
 															<h1 style="color:red; background-color:#FAFAFA;padding: 10px;font-weight: bold; ">
 																<!-- Gía sản phẩm -->			 
-																<b>{{number_format($product->Price).' '.' ₫'}}</b>
+																<b>{{number_format($product_detail->Price).' '.' ₫'}}</b>
 																					<sub style="color:black; font-size:15px "> 
 																						<!--  Phần giảm giá --> 
-																						<del>{{number_format($product->Price + $product->Price * $product->Discount / 100 ).' '.' ₫'}}</del> 
-																						<span class="o-giam-gia">-{{$product->Discount}}% </span> 
+																						<del>{{number_format($product_detail->Price + $product_detail->Price * $product_detail->Discount / 100 ).' '.' ₫'}}</del> 
+																						<span class="o-giam-gia">-{{$product_detail->Discount}}% </span> 
 																					</sub>										
 															</h1>
 														</div>
@@ -105,7 +104,7 @@
 																				</button>
 																			</div>
 																			
-																			<input name="ProductId" type="hidden" class="input_product_id" value="{{$product->ProductId}}">
+																			<input name="ProductId" type="hidden" class="input_product_id" value="{{$product_detail->ProductId}}">
 																	</div>
 														</div>
 													</div>
@@ -129,7 +128,7 @@
 										<!-- Nội dung sản phẩm -->
 										<div class="blog-meta">
 											
-											<p>{!!$product->Content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
+											<p>{!!$product_detail->Content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
 										</div>
 											<!-- End Nội dung sản phẩm -->
 											
@@ -185,30 +184,9 @@
 										
 										<form>
 											@csrf
-											<input name="ProductId" type="hidden" class="input_product_id" value="{{$product->ProductId}}">
+											<input name="ProductId" type="hidden" class="input_product_id" value="{{$product_detail->ProductId}}">
 											<div id="show_comment"></div>
 										</form>
-										
-										<!-- <div class="single-comment left">
-											<img src="https://via.placeholder.com/80x80" alt="#">
-											<div class="content">
-												<h4>john deo <span>Feb 28, 2018 at 8:59 pm</span></h4>
-												<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
-												<div class="button">
-													<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-												</div>
-											</div>
-										</div>
-										<div class="single-comment">
-											<img src="https://via.placeholder.com/80x80" alt="#">
-											<div class="content">
-												<h4>megan mart <span>Feb 28, 2018 at 8:59 pm</span></h4>
-												<p>Enthusiastically leverage existing premium quality vectors with enterprise-wide innovation collaboration Phosfluorescently leverage others enterprisee  Phosfluorescently leverage.</p>
-												<div class="button">
-													<a href="javascript:void(0)" class="btn btn-reply"><i class="fa fa-reply" aria-hidden="true"></i>Trả lời</a>
-												</div>
-											</div>
-										</div> -->
 									</div>									
 								</div>	
 					<div class="product-area most-popular section">
@@ -223,13 +201,13 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="owl-carousel popular-slider">
-										@foreach($related_product as $key => $product)
+										@foreach($related_product as $key => $product_detail)
 										<!-- Start Single Product -->
 										<div class="single-product">
 											<div class="product-img" style="width: 250px; height: 200px;">
-												<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
-													<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
-													<img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
+												<a href="{{URL::to('/product-detail/'.$product_detail->ProductId)}}">
+													<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt="#">
+													<img class="hover-img" src="{{URL::to('/product-detail/'.$product_detail->ProductId)}}" alt="">
 													
 												</a>
 												<div class="button-head">
@@ -239,14 +217,14 @@
 													</div>
 													<div class="product-action-2">
 														<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
-														<input type="text" value="{{$product->ProductId}}" hidden>
+														<input type="text" value="{{$product_detail->ProductId}}" hidden>
 													</div>
 												</div>
 											</div>
 											<div class="product-content">
-																	<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+																	<h3><a href="{{URL::to('/product-detail/'.$product_detail->ProductId)}}">{{$product_detail->ProductName}}</a></h3>
 																	<div class="product-price">
-																		<span>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</span>
+																		<span>{{number_format($product_detail->Price * ((100- $product_detail->Discount)/100)).' '.'₫'}}</span>
 																	</div>
 											</div>
 										</div>
@@ -261,7 +239,6 @@
 				</div>
 			</div>
 		</section>
-		@endforeach
 		<!--/ End Blog Single -->
 		<script>
 		$(document).ready(function(){

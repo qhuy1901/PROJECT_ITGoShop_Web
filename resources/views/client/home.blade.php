@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'Hệ thống Máy tính và Phụ kiện')
+@section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
 @section('client_content')
 	<!-- Slider Area -->
 <section class="slider-area" style="height:340px">
