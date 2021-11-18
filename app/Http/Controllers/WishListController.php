@@ -23,4 +23,23 @@ class WishListController extends Controller
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list);
     }
+
+    public function add_product_to_wishlist(Request $request)
+    {
+        $CustomerId = Session::get('CustomerId');
+        $check_product_in_wishlist = DB::table('wishlist')
+        ->where('ProductId', $request->ProductId)
+        ->where('UserId', $CustomerId)->first();
+        if(!$check_product_in_wishlist)
+        {
+            $data = array();
+            $data['ProductId'] = $request->ProductId;
+            $data['UserId'] = $CustomerId;
+            DB::table('wishlist')->insert($data);
+            echo 1;
+        }
+        else{
+            echo 0;
+        }
+    }
 }

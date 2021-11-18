@@ -164,3 +164,6 @@ Route::get('/delete-product-gallary','App\Http\Controllers\GallaryController@del
 //Comment
 Route::get('/view-comment','App\Http\Controllers\CommentController@view_comment');
 Route::get('/delete-comment','App\Http\Controllers\ProductController@delete_comment');
+
+// WishList
+Route::get('/add-product-to-wishlist','App\Http\Controllers\WishListController@add_product_to_wishlist');
