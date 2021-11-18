@@ -291,20 +291,26 @@
 					var ProductId = $('.input_product_id').val();
 					var CommentContent = $('.textarea-commnent-content').val();
 					var _token = $('input[name="_token"]').val();
-					
-					$.ajax({
-						url:"{{url('/send-comment')}}",
-						method: "POST",
-						data:{ProductId: ProductId, CommentContent: CommentContent, _token:_token},
-						success:function(data){
-							load_comment();
-							$('.textarea-commnent-content').val('');
-						},
-						error:function(data)
-						{
-							alert("Lỗi");
-						}
-					});
+					if(CommentContent != '')
+					{
+						$.ajax({
+							url:"{{url('/send-comment')}}",
+							method: "POST",
+							data:{ProductId: ProductId, CommentContent: CommentContent, _token:_token, ParentComment:0},
+							success:function(data){
+								load_comment();
+								$('.textarea-commnent-content').val('');
+							},
+							error:function(data)
+							{
+								alert("Lỗi");
+							}
+						});
+					}
+					else
+					{
+						swal("Vui lòng nhập nội dung bình luận.");
+					}
 				}
 				else
 				{
@@ -318,22 +324,31 @@
 				{
 					var ProductId = $('.input_product_id').val();
 					var CommentContent = $('.textarea-sub-commnent-content').val();
-					var ParentComment = $('.textarea-sub-commnent-content').val();
+					var ParentComment = $(this).parents('.o-comment').find('.ParentCommentId').val();
 					var _token = $('input[name="_token"]').val();
-					alert(CommentContent);
-					$.ajax({
-						url:"{{url('/send-comment')}}",
-						method: "POST",
-						data:{ProductId: ProductId, CommentContent: CommentContent, _token:_token},
-						success:function(data){
-							load_comment();
-							$('.textarea-commnent-content').val('');
-						},
-						error:function(data)
-						{
-							alert("Lỗi");
-						}
-					});
+					var add_next_cmt = $(this).parents('.o-comment').find('.single-comment').last();
+					if(CommentContent != '')
+					{
+						$.ajax({
+							url:"{{url('/send-comment')}}",
+							method: "POST",
+							data:{ProductId: ProductId, CommentContent: CommentContent, _token:_token, ParentComment: ParentComment},
+							success:function(data){
+								load_comment();
+								$('.textarea-commnent-content').val('');
+								add_next_cmt.css('background','#ccf2f4');
+								$('html, body').animate({scrollTop: add_next_cmt.offset().top}, 700);
+							},
+							error:function(data)
+							{
+								alert("Lỗi");
+							}
+						});
+					}
+					else
+					{
+						swal("Vui lòng nhập nội dung bình luận.");
+					}
 				}
 				else
 				{

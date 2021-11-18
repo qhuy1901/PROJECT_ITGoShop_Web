@@ -201,27 +201,28 @@ class ProductController extends Controller
         {
             $created_at = date("H:i d/m/Y",strtotime($item->CreatedAt));
             $userImage = $item->UserImage;
-                if($userImage == '')
-                {
-                    $userImage='default-user-icon.png';
-                }
+            if($userImage == '')
+            {
+                $userImage='default-user-icon.png';
+            }
             $output .= '
-            <div class="single-comment">
+            <div class="o-comment"><div class="single-comment">
                 <img src="'.url("/public/images_upload/user/{$userImage}").'" alt="#">
                 <div class="content">
                     <h4>'.$item->LastName.' '.$item->FirstName.'<span>'.$created_at.'</span></h4>
                     <p>'.$item->CommentContent.'</p>
+                    <input type="text" class="ParentCommentId" value="'.$item->CommentId.'" hidden>
                     <div class="button">
                         <a href="javascript:void(0)" class="btn btn-reply"><i class="fa fa-reply" aria-hidden="true"></i>Trả lời</a>
                     </div>
                 </div>
             </div>';
             $sub_comment = $comment = DB::table('comment')
-            ->select('UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment')
+            ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment')
             ->join('user','user.UserId','=','comment.UserId')
             ->where('ProductId', $request->ProductId)
             ->Where('ParentComment', $item->CommentId)
-            ->orderby('CommentId', 'DESC')->get();
+            ->orderby('CommentId', 'asc')->get();
             foreach($sub_comment as $key => $scomment)
             {
                 $created_at = date("H:i d/m/Y",strtotime($scomment->CreatedAt));
@@ -235,10 +236,13 @@ class ProductController extends Controller
                 $output .= "<div class='content'>
                         <h4>$scomment->LastName $scomment->FirstName<span>$created_at</span></h4>
                         <p>$scomment->CommentContent</p>
-                        <div class='button'><a href='javascript:void(0)' class='btn btn-reply'><i class='fa fa-reply' aria-hidden='true'></i>Trả lời</a></div>
+                        <div class='button'>
+                            <a href='javascript:void(0)' class='btn btn-reply'><i class='fa fa-reply' aria-hidden='true'></i>Trả lời</a>
+                        </div>
                     </div>
                 </div>";
             }
+            $output .="</div>";
         }
         echo $output;
     }
@@ -254,6 +258,8 @@ class ProductController extends Controller
             $data['ProductId'] = $request->ProductId;
             $data['UserId'] = $CustomerId;
             $data['CommentStatus'] = 1;
+            if($request->ParentComment != 0)
+                $data['ParentComment'] = $request->ParentComment;
             DB::table('comment')->insert($data);
         }
     }
