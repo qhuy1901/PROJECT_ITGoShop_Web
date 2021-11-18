@@ -191,7 +191,7 @@ class ProductController extends Controller
     public function load_comment(Request $request)
     {
         $comment = DB::table('comment')
-        ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment', 'comment.UserId')
+        ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment', 'comment.UserId', 'Admin')
         ->join('user','user.UserId','=','comment.UserId')
         ->where('ProductId', $request->ProductId)
         ->where('ParentComment', null)
@@ -224,7 +224,7 @@ class ProductController extends Controller
                 </div>
             </div>';
             $sub_comment = $comment = DB::table('comment')
-            ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment')
+            ->select('CommentId','UserImage', 'FirstName', 'LastName', 'CommentContent', 'comment.CreatedAt as CreatedAt', 'ParentComment', 'Admin', 'comment.UserId')
             ->join('user','user.UserId','=','comment.UserId')
             ->where('ProductId', $request->ProductId)
             ->Where('ParentComment', $item->CommentId)
@@ -240,14 +240,20 @@ class ProductController extends Controller
                 $output .= '<div class="single-comment left">
                     <img src="'.url("/public/images_upload/user/{$userImage}").'" alt="#">
                     <div class="content"><input type="text" class="CommentId" value='.$scomment->CommentId.' hidden>';
-                if($item->UserId == Session::get('CustomerId') || $item->UserId == Session::get('UserId'))
+                if($scomment->UserId == Session::get('CustomerId') || $scomment->UserId == Session::get('UserId'))
                 {
                         $output .='<div class="button" style="float:right">
                                         <a href="javascript:void(0)" class="btn btn-xoa-comment"><i class="fa fa-times" aria-hidden="true"></i></a>
                                     </div>';
                 }    
                 $output .= "
-                        <h4>$scomment->LastName $scomment->FirstName<span>$created_at</span></h4>
+                        <h4>$scomment->LastName $scomment->FirstName";
+                if($scomment->Admin == 1)
+                {
+                    $output .= "
+                        <span><i>Nhân viên ITGoShop</i></span>";
+                }
+                $output .="<span>$created_at</span></h4>
                         <p>$scomment->CommentContent</p>
                         <div class='button'>
                             <a href='javascript:void(0)' class='btn btn-reply'><i class='fa fa-reply' aria-hidden='true'></i>Trả lời</a>
@@ -264,12 +270,19 @@ class ProductController extends Controller
     {
         // Chú ý để chạy hàm này cần phải đăng nhập thành công
         $CustomerId = Session::get('CustomerId');
-        if($CustomerId)
+        $AdminId = Session::get('UserId');
+        if($CustomerId || $AdminId)
         {
             $data = array(); 
             $data['CommentContent'] = $request->CommentContent;
             $data['ProductId'] = $request->ProductId;
-            $data['UserId'] = $CustomerId;
+            if($CustomerId)
+            {
+                $data['UserId'] = $CustomerId;
+            }
+            else{
+                $data['UserId'] = $AdminId;
+            }
             $data['CommentStatus'] = 1;
             if($request->ParentComment != 0)
                 $data['ParentComment'] = $request->ParentComment;

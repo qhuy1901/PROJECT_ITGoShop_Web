@@ -47,7 +47,7 @@
 												<thead>
 													<tr>
 														<th style="width:80px">Thời gian</th>
-														<th style="max-width:320px">Bình luận</th>
+														<th style="max-width:320px">Nội dung bình luận</th>
 														<th>Tên khách hàng</th>
 														<th>Tên sản phẩm</th>
 														<th>Hành động</th>
@@ -58,26 +58,31 @@
 													<tr>
 														<td>{{date("d-m-Y", strtotime($comment->CreatedAt))}}</td>
                                                         <td>{{$comment->CommentContent}}<input type="text" class="CommentId" value="{{$comment->CommentId}}" hidden></td>
-                                                        <td>{{$comment->FirstName. ' ' .$comment->LastName}}</td>
+                                                        <td>{{$comment->LastName. ' ' .$comment->FirstName}}</td>
 														<td>{{$comment->ProductName}}</td>
                                                         <td>
                                                             <div class="form-button-action">
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Trả lời bình luận">
+																	<a href="{{URL::to('/product-detail/'.$comment->ProductId)}}" class="active" ui-toggle-class="">
+																		<i class="fa fa-reply" aria-hidden="true"></i>
+																	</a>
+																</button>
 																@if($comment->CommentStatus == 1)
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị thư viện ảnh">
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bình luận">
 																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
 																	</button>	
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn thư viện ảnh" hidden>
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bình luận" hidden>
 																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
 																	</button>	
 																@else	
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị thư viện ảnh" hidden>
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bình luận" hidden>
 																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
 																	</button>	
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn thư viện ảnh">
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bình luận">
 																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
 																	</button>
 																@endif
-																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa thư viện ảnh">
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa bình luận">
 																	<a href="javascript:void(0)" class="active" ui-toggle-class="">
 																		<i class="fa fa-times text-danger text"></i>
 																	</a>
@@ -132,14 +137,14 @@
 	
 	<script>
 		$(document).ready(function(){
-			$('button[data-original-title="Hiển thị thư viện ảnh"]').click(function(){
-				var GallaryId = $(this).parents('tr').find('.GallaryId').val();
+			$('button[data-original-title="Hiển thị bình luận"]').click(function(){
+				var CommentId = $(this).parents('tr').find('.CommentId').val();
 				var activeButton = $(this);
-				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn thư viện ảnh"]');
+				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn bình luận"]');
 				$.ajax({
 					url: '{{URL::to('/unactive-product-gallary')}}',
 					method:"GET",
-					data:{GallaryId: GallaryId},
+					data:{CommentId: CommentId},
 					success:function(data)
 					{
 						activeButton.attr('hidden',true);
@@ -152,14 +157,14 @@
 				});
 			});
 
-			$('button[data-original-title="Ẩn thư viện ảnh"]').click(function(){
-				var GallaryId = $(this).parents('tr').find('.GallaryId').val();
+			$('button[data-original-title="Ẩn bình luận"]').click(function(){
+				var CommentId = $(this).parents('tr').find('.CommentId').val();
 				var unactiveButton = $(this);
-				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị thư viện ảnh"]');
+				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị bình luận"]');
 				$.ajax({
 					url: '{{URL::to('/active-product-gallary')}}',
 					method:"GET",
-					data:{GallaryId: GallaryId},
+					data:{CommentId: CommentId},
 					success:function(data)
 					{
 						unactiveButton.attr('hidden',true);
@@ -172,12 +177,12 @@
 				});
 			});
 
-			$('button[data-original-title="Xóa thư viện ảnh"]').click(function(){
-				var GallaryId = $(this).parents('tr').find('.GallaryId').val();
+			$('button[data-original-title="Xóa bình luận"]').click(function(){
+				var comment_id = $(this).parents('tr').find('.CommentId').val();
 				var thisImage = $(this).parents('tr');
 				swal({
 					title: "Xác nhận",
-					text: "Bạn có chắc muốn xóa ảnh này không?",
+					text: "Bạn có chắc muốn xóa bình luận này không?",
 					icon: "warning",
 					buttons: true,
 					dangerMode: true,
@@ -185,13 +190,13 @@
 					.then((willDelete) => {
 					if (willDelete) {
 						$.ajax({
-							url: '{{URL::to('/delete-product-gallary')}}',
+							url: '{{URL::to('/delete-comment')}}',
 							method:"GET",
-							data:{GallaryId: GallaryId},
+							data:{comment_id: comment_id},
 							success:function(data)
 							{
 								thisImage.remove();
-								swal("Xóa ảnh thành công!", {
+								swal("Xóa bình luận thành công!", {
 								icon: "success",
 								});
 							},
@@ -256,7 +261,7 @@
 				"pageLength": 10,
 			});
 
-			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật thư viện ảnh"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+			var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật bình luận"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
 
 			$('#addRowButton').click(function() {
 				$('#add-row').dataTable().fnAddData([

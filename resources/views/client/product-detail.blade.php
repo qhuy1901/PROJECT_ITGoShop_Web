@@ -285,7 +285,8 @@
 			}
 			$('.send-comment-button').click(function(){
 				var customer_id = $('#input-customer-id').val();
-				if(customer_id)
+				var admin_id = $('#input-admin-id').val();
+				if(customer_id || admin_id)
 				{
 					var ProductId = $('.input_product_id').val();
 					var CommentContent = $('.textarea-commnent-content').val();
@@ -319,7 +320,8 @@
 
 			$('body').on('click', '.send-sub-comment-button' ,function(){
 				var customer_id = $('#input-customer-id').val();
-				if(customer_id)
+				var admin_id = $('#input-admin-id').val();
+				if(customer_id || admin_id)
 				{
 					var ProductId = $('.input_product_id').val();
 					var CommentContent = $('.textarea-sub-commnent-content').val();

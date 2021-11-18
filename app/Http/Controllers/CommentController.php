@@ -14,10 +14,10 @@ class CommentController extends Controller
     public function view_comment() 
     {
         $all_comment = DB::table('comment')
-        ->select('CommentId', 'CommentContent', 'comment.CreatedAt','ProductName','FirstName' ,'LastName', 'CommentStatus')
+        ->select('CommentId', 'CommentContent', 'comment.CreatedAt','ProductName','FirstName' ,'LastName', 'CommentStatus', 'comment.ProductId')
         ->join('product','product.ProductId','=','comment.ProductId')
         ->join('user','user.UserId','=','comment.UserId')
-        ->orderby('CommentId', 'desc')->get();
+        ->orderBy('CommentId', 'desc')->get();
 
         return view('admin.comment.view-comment')
         ->with('all_comment', $all_comment);
