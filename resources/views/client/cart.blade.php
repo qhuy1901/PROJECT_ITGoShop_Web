@@ -319,7 +319,7 @@
 								title: "Thông báo",
 								text: "Đã xóa sản phẩm khỏi giỏ hàng!",
 								icon: "success",
-								buttons: true,
+								buttons: "OK",
 							})
 					},
 					error:function(data)

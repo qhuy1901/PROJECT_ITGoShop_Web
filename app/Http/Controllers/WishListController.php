@@ -17,11 +17,16 @@ class WishListController extends Controller
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $wishlist = DB::table('wishlist')
+        ->select('product.ProductName', 'wishlist.ProductId', 'product.ProductImage', 'Price')
+        ->join('product','product.ProductId','=','wishlist.ProductId')
+        ->where('UserId', Session::get('CustomerId'))->get();
         
         return view('client.wishlist')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
-        ->with('product_category_list', $product_category_list);
+        ->with('product_category_list', $product_category_list)
+        ->with('wishlist', $wishlist);
     }
 
     public function add_product_to_wishlist(Request $request)
@@ -41,5 +46,13 @@ class WishListController extends Controller
         else{
             echo 0;
         }
+    }
+
+    public function remove_product_from_wishlist(Request $request)
+    {
+        DB::table('wishlist')
+        ->Where('ProductId', $request->ProductId)
+        ->Where('UserId', Session::get('CustomerId'))
+        ->delete();
     }
 }
