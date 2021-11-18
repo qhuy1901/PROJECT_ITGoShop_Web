@@ -100,7 +100,7 @@
 						<div class="content">
 							<p>Flash Sale 12.12</p>
 							<h3>Phụ Kiện <br> Up to <span>40%</span> Off</h3>
-							<a href="{{URL::to('/campaign')}}">Xem Chi Tiết</a>
+							<a href="#">Xem Chi Tiết</a>
 						</div>
 					</div>
 				</div>
@@ -133,7 +133,8 @@
                             <div class="button-head">
                                 <div class="product-action">
                                     <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-                                    <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+                                    <a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+									<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
                                 </div>
                                 <div class="product-action-2">
                                     <a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
@@ -193,13 +194,14 @@
 												<div class="single-product">
 													<div class="product-img" style="width: 250px; height: 200px;">
 														<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
-															<img class="default-img"   src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 														</a>
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
@@ -267,7 +269,8 @@
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
@@ -415,7 +418,9 @@
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
+																<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
@@ -834,6 +839,57 @@
             </div>
     </div>
     <!-- Modal end -->
+	<script>
+		$(document).ready(function(){
+			$('a[title="Wishlist"]').click(function(){
+				var customer_id = $('#input-customer-id').val();
+				if(customer_id)
+				{
+					var ProductId = $(this).parents('.button-head').find('.ProductId').val();
+					$.ajax({
+						url:"{{url('/add-product-to-wishlist')}}",
+						method: "GET",
+						data:{ProductId: ProductId},
+						success:function(data){
+							if(data == '1')
+							{
+								swal({
+									title: "Thành công",
+									text: "Đã thêm sản phẩm vào danh sách yêu thích.",
+									icon: "success",
+									button: "OK",
+								});
+							}
+							else
+							{
+								swal({
+									text: "Sản phẩm đã tồn tại trong danh sách yêu thích",
+									icon: "info",
+									button: "OK",
+								});
+							}
+								
+						},
+						error:function(data)
+						{
+							alert("Lỗi");
+						}
+					});	
+				}else{
+					swal({
+						text: "Bạn cần đăng nhập để thêm sản phẩm vào danh sách yêu thích",
+						icon: "info",
+						buttons: ["OK", "Đăng nhập"],
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								window.location = "{{url('/login')}}";
+							}
+					})
+				}
+						
+			});
+		});
+	</script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.mySlides:first').css("display","block"); // không có dòng này sẽ ko hiển bị banner đc
@@ -883,4 +939,6 @@
 			setTimeout(carousel, 4000); // Change image every 2 seconds
 		}
 	</script>
+	<!-- <p id="o-test"></p> -->
+	<!-- <a href="{{URL::to('/add-product-to-withlist')}}">Hi</a> -->
 @endsection

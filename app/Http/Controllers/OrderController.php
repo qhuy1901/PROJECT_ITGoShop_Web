@@ -170,4 +170,9 @@ class OrderController extends Controller
             $message->from($to_mail, $to_name);
         });
     }
+
+    public function cancel_order(Request $request)
+    {
+        DB::table('order')->where('OrderId', $request->OrderId)->update(['OrderStatus'=>'Đã hủy']); 
+    }
 }

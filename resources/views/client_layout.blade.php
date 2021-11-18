@@ -10,7 +10,7 @@
 	<title>@yield('title')</title>
 	<!--File css của Huy  -->
 	<style>
-		.swal-footer {
+		.swal-footer, .swal-text {
 			text-align: center;
 		}
 	</style>
@@ -191,29 +191,36 @@
 			  <button><i class="fa fa-search"></i></button>
 			</form>            
 			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i id="so-luong-sp-gio-hang"><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-			  <div class="ps-cart__listing">
-				<div class="ps-cart__content"> 
-				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-					<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="./public/client/Images/cart-preview/2.jpg" alt=""></div>
-					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Crusty Croissant</a>
-					  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
+			  	<div class="ps-cart__listing">
+					<div class="ps-cart__content"> 
+					<?php
+						$content = Cart::content();
+						$number_product = Cart::count();
+					?>
+					@if($number_product == 0)
+						<p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+					@else
+						@foreach($content as $item)
+						<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+							<div class="ps-cart-item__thumbnail">
+								<a href="{{URL::to('/product-detail/'.$item->id)}}"></a><img src="{{URL::to('public/images_upload/product/'.$item->options->image)}}" alt="">
+							</div>
+							<div class="ps-cart-item__content">
+								<a class="ps-cart-item__title" href="{{URL::to('/product-detail/'.$item->id)}}">{{$item->name}}</a>
+								<p>{{number_format($item->price, 0, " ", ".").' ₫'}} x{{$item->qty}}</p>
+							</div>
+						</div>
+						@endforeach
+					@endif
 					</div>
-				  </div>
-				  <div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-					<div class="ps-cart-item__thumbnail"><a href="product-detail.html"></a><img src="./public/client/Images/cart-preview/3.jpg" alt=""></div>
-					<div class="ps-cart-item__content"><a class="ps-cart-item__title" href="product-detail.html">The Rolling Pin</a>
-					  <p><span>Quantity:<i>12</i></span><span>Total:<i>£176</i></span></p>
-					</div>
-				  </div>
+					<div class="ps-cart__total">
+					<p>Số sản phẩm:<span>{{$number_product}}</span></p>
+					<p>Tổng tiền:<span>{{(Cart::total(0, ',', '.')).' ₫'}}</span></p>
 				</div>
-				<div class="ps-cart__total">
-				  <p>Number of items:<span>36</span></p>
-				  <p>Item Total:<span>£528.00</span></p>
+				<div class="ps-cart__footer">
+					<a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a>
 				</div>
-				
-				<div class="ps-cart__footer"><a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a></div>
-			  </div>
-
+			</div>
 			</div>
 			<div class="menu-toggle"><span></span></div>
 			<a class="ps-cart__toggle" href="{{URL::to('/')}}" ><i class="fa fa-bell-o" aria-hidden="true" title="Thông báo"></i></a>

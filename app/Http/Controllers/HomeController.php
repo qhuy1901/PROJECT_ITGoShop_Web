@@ -49,9 +49,9 @@ class HomeController extends Controller
         $result = DB::table('user')->where('email', $email)->where('password', $password)->where('Admin', 0)->first();
         if($result == true)
         {
-            // Session::put('CustomerFirstName', $result->FirstName);
-            // Session::put('CustomerLastName', $result->LastName);
-            // Session::put('CustomerImage', $result->UserImage);
+            Session::put('CustomerFirstName', $result->FirstName);
+            Session::put('CustomerLastName', $result->LastName);
+            Session::put('CustomerImage', $result->UserImage);
             Session::put('CustomerId', $result->UserId);
             return Redirect::to('/home');
         } 

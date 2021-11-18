@@ -121,6 +121,7 @@ Route::get('/order-detail/{OrderId}', 'App\Http\Controllers\OrderController@orde
 //Order (Client)
 Route::get('/my-orders', 'App\Http\Controllers\OrderController@show_my_orders');
 Route::post('/create-order', 'App\Http\Controllers\OrderController@create_order');
+Route::get('/cancel-order','App\Http\Controllers\OrderController@cancel_order');
 
 // OrderDetail (Client)
 Route::get('/show-order-detail/{OrderId}', 'App\Http\Controllers\OrderDetailController@index');
@@ -164,13 +165,6 @@ Route::get('/delete-product-gallary','App\Http\Controllers\GallaryController@del
 Route::get('/view-comment','App\Http\Controllers\CommentController@view_comment');
 Route::get('/delete-comment','App\Http\Controllers\ProductController@delete_comment');
 
-//Campaign
-Route::get('/campaign', 'App\Http\Controllers\CampaignController@campaign');
-
-Route::get('/all_campaign', 'App\Http\Controllers\CampaignController@all_campaign');
-Route::get('/add_campaign', 'App\Http\Controllers\CampaignController@add_campaign');
-Route::post('/save-campaign','App\Http\Controllers\CampaignController@save_campaign');
-Route::get('/unactive-campaign','App\Http\Controllers\GallaryController@unactive_campaign');
-Route::get('/active-campaign','App\Http\Controllers\GallaryController@active_campaign');
-Route::get('/delete-campaign','App\Http\Controllers\GallaryController@delete_campaign');
-
+// WishList
+Route::get('/add-product-to-wishlist','App\Http\Controllers\WishListController@add_product_to_wishlist');
+Route::get('/remove-product-from-wishlist','App\Http\Controllers\WishListController@remove_product_from_wishlist');
