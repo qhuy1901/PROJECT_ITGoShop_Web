@@ -439,11 +439,33 @@
 								</ul>
 							</div>
 						</li>
+						
 						<li class="nav-item">
 							<a href="{{URL::to('/view-comment')}}">
 								<i class="fa fa-shopping-cart"></i>
 								<p>Bình luận</p>
 							</a>							
+						</li>
+						<li class="nav-item">
+							<a data-toggle="collapse" href="#maps">
+								<i class="fas fa-map-marker-alt"></i>
+								<p>Quản lý Campaign</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="maps">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="{{URL::to('/add_campaign')}}">
+											<span class="sub-item">Thêm campaign</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{URL::to('/all_campaign')}}">
+											<span class="sub-item">Tất cả campaign</span>
+										</a>
+									</li>
+								</ul>
+							</div>
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#maps">

@@ -107,6 +107,7 @@
 	<link rel="stylesheet" href="{{asset('./public/client/css/owl-carousel.css')}}">
 	<!-- Slicknav -->
 	<link rel="stylesheet" href="{{asset('./public/client/css/slicknav.min.css')}}">
+	
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>

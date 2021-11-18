@@ -1,4 +1,5 @@
 @extends('client_layout')
+@section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
 @section('client_content')
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>	
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">

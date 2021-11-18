@@ -163,3 +163,14 @@ Route::get('/delete-product-gallary','App\Http\Controllers\GallaryController@del
 //Comment
 Route::get('/view-comment','App\Http\Controllers\CommentController@view_comment');
 Route::get('/delete-comment','App\Http\Controllers\ProductController@delete_comment');
+
+//Campaign
+Route::get('/campaign', 'App\Http\Controllers\CampaignController@campaign');
+
+Route::get('/all_campaign', 'App\Http\Controllers\CampaignController@all_campaign');
+Route::get('/add_campaign', 'App\Http\Controllers\CampaignController@add_campaign');
+Route::post('/save-campaign','App\Http\Controllers\CampaignController@save_campaign');
+Route::get('/unactive-campaign','App\Http\Controllers\GallaryController@unactive_campaign');
+Route::get('/active-campaign','App\Http\Controllers\GallaryController@active_campaign');
+Route::get('/delete-campaign','App\Http\Controllers\GallaryController@delete_campaign');
+

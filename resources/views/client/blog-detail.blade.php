@@ -1,5 +1,6 @@
 @extends('client_layout')
-@section('client_content')		
+@section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
+@section('client_content')
 @foreach($blog_detail  as $key => $blog)
 		<!-- Breadcrumbs -->
 		
