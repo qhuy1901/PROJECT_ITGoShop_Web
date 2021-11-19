@@ -25,12 +25,17 @@ class CampaignController extends Controller
         }
     }
 
-    public function campaign()
+    public function campaign($CampaignId)
     {
         // Cái này để load layout thôi
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        
+        $list_campaign = DB::table('campaign')
+        ->select('bannerslider.*', 'campaign.*','product.*')
+        ->join('bannerslider','bannerslider.CampaignId','=','campaign.CampaignId')
+        ->join('product','product.SliderId','=','bannerslider.SliderId')->get();
         
         return view('client.campaign')
         ->with('sub_brand_list',  $sub_brand_list )
