@@ -100,7 +100,7 @@
 						<div class="content">
 							<p>Flash Sale 12.12</p>
 							<h3>Phụ Kiện <br> Up to <span>40%</span> Off</h3>
-							<a href="#">Xem Chi Tiết</a>
+							<a href="{{URL::to('/campaign')}}">Xem Chi Tiết</a>
 						</div>
 					</div>
 				</div>
