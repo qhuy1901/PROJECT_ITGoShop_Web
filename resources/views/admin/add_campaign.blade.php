@@ -77,6 +77,18 @@
                                                         <input type="file" name="CampaignImage" class="form-control-file" id="exampleFormControlFile1" required>
                                                 </div>
 											</div>
+											<div class="col-lg-12">	
+												<div class="form-group">
+                                                        <label for="comment">Nội dung Campaign</label>
+                                                        <textarea class="form-control" name="CampaignContent"  rows="5" placeholder="Mô tả campaign" required></textarea>
+                                                </div>
+											</div>
+											<div class="col-lg-12">	
+												<div class="form-group">
+                                                        <label for="comment">Thể lệ Campaign</label>
+                                                        <textarea class="form-control" name="CampaignNote" id="ckeditor1" rows="5" placeholder="Mô tả thể lệ" required></textarea>
+                                                </div>
+											</div>
 											<div class="col-6 col-lg-6">
 												<div class="form-group">
                                                     <label class="form-label d-block">Hiển thị</label>

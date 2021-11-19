@@ -35,11 +35,12 @@ class CampaignController extends Controller
         $list_campaign = DB::table('campaign')
         ->select('bannerslider.*', 'campaign.*','product.*')
         ->join('bannerslider','bannerslider.CampaignId','=','campaign.CampaignId')
-        ->join('product','product.SliderId','=','bannerslider.SliderId')->get();
+        ->join('product','product.SliderId','=','bannerslider.SliderId')->limit(1)->get();
         
         return view('client.campaign')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
+        ->with('list_campaign', $list_campaign)
         ->with('product_category_list', $product_category_list);
     }
     public function all_campaign()
@@ -57,15 +58,11 @@ class CampaignController extends Controller
         $data = array();
         $data['CampaignId'] = $request->CampaignId;
         $data['CampaignName	'] = $request->CampaignName;
-        $data['BrandId'] = $request->Brand;
-        $data['SubBrandId'] = $request->Subbrand;
-        $data['content'] = $request->Content;
-        $data['Quantity'] = $request->Quantity;
-        $data['price'] = $request->Price;
-        $data['discount'] = $request->Discount;
+        $data['CampaignContent'] = $request->CampaignContent;
+        $data['CampaignNote'] = $request->CampaignNote;
+        $data['DateStart'] = $request->DateStart;
+        $data['DateFinish'] = $request->DateFinish;
         $data['status'] = $request->Status;
-        $data['StartsAt'] = date("Y-m-d H:i:s");
-        $data['CreatedAt'] = date("Y-m-d H:i:s");
 
         $get_image = $request->file('CampaignImage');
         if($get_image == true)
