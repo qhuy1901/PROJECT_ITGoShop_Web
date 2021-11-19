@@ -125,7 +125,9 @@ class CartController extends Controller
             $output .= '</div>
             <div class="ps-cart__total">
             <p>Số sản phẩm:<span>'.$number_product.'</span></p>
-            <p>Tổng tiền:<span>'.(Cart::total(0, ',', '.')).' ₫</span></p>';
+            <p>Tổng tiền:<span>'.(Cart::total(0, ',', '.')).' ₫</span></p></div>
+            <div class="ps-cart__footer">
+            <a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a>';
         }
         echo $output;
     }

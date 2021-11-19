@@ -122,6 +122,7 @@ Route::get('/order-detail/{OrderId}', 'App\Http\Controllers\OrderController@orde
 //Order (Client)
 Route::get('/my-orders', 'App\Http\Controllers\OrderController@show_my_orders');
 Route::post('/create-order', 'App\Http\Controllers\OrderController@create_order');
+Route::get('/create-order', 'App\Http\Controllers\OrderController@create_order');
 Route::get('/cancel-order','App\Http\Controllers\OrderController@cancel_order');
 
 // OrderDetail (Client)
@@ -169,3 +170,4 @@ Route::get('/delete-comment','App\Http\Controllers\ProductController@delete_comm
 // WishList
 Route::get('/add-product-to-wishlist','App\Http\Controllers\WishListController@add_product_to_wishlist');
 Route::get('/remove-product-from-wishlist','App\Http\Controllers\WishListController@remove_product_from_wishlist');
+

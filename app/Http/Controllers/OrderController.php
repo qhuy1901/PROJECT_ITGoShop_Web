@@ -146,6 +146,7 @@ class OrderController extends Controller
         return redirect()->action(
             [OrderDetailController::class, 'index'], ['OrderId' => $OrderId]
         );
+        // echo $OrderId;
     }
 
     public function send_order_mail($OrderId)

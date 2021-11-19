@@ -193,16 +193,11 @@
 			@csrf           
 			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i id="so-luong-sp-gio-hang"><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  	<div class="ps-cart__listing">
-					  <div id="load_card">
-					  </div>
-					  <?php $content = Cart::content();?>
-				@if(count($content) > 0)
-				<div class="ps-cart__footer">
-					<a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a>
+					  <div id="load_card"></div>
+				<!-- <div class="ps-cart__footer">
+					<a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a> -->
 				<!-- </div> -->
-				@endif
 				</div> 
-				
 				<!-- </div> -->
 			</div>
 			<div class="menu-toggle"><span></span></div>
@@ -406,7 +401,7 @@
 	</script>
 	<script src="{{asset('public/admin/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
 	<script>
-		$('.btn-thanh-toan').click(function(){
+		$('body').on('click', '.btn-thanh-toan' ,function(){ 
 			var numberOfProduct = Number($('#so-luong-sp-gio-hang').text());
 			if(numberOfProduct == 0)
 			{

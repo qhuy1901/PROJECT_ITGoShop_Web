@@ -87,7 +87,7 @@
 										</div>
 									</div>
 								</div>
-							<button type="submit" class="btn btn-primary btn-lg" style="width:320px;font-size:20px; background-color: #000; ">ĐẶT MUA</button>
+							<button type="submit" class="btn btn-primary btn-lg btn-dat-mua" style="width:320px;font-size:20px; background-color: #000; ">ĐẶT MUA</button>
 							<p style="margin: 7px 0px;"><i>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</i></p>
 						</div>
 
@@ -98,7 +98,7 @@
 									<h4><div style="margin-bottom:20px;"> <i class="fa fa-map-marker" aria-hidden="true" ></i> <b>Địa chỉ giao hàng </b>  </div></h4>
 									<div></div>
 									<hr>
-									<input type="text" name="ShippingAddressId" value="{{$default_shipping_address->ShippingAddressId}}" hidden>
+									<input type="text" id="ShippingAddressId" name="ShippingAddressId" value="{{$default_shipping_address->ShippingAddressId}}" hidden>
 									<p><b>{{$default_shipping_address->ReceiverName}}</b></p>
 									<p>{{$default_shipping_address->Address. ", " .$default_shipping_address->xaphuongthitran. ", " .$default_shipping_address->quanhuyen. ", " .$default_shipping_address->tinhthanhpho}}</p>
 									<p>Điện thoại: {{$default_shipping_address->Phone}}</p>
@@ -206,4 +206,49 @@
 				@endif
 			</div>
 		</section>	
+		<script>
+			$(document).ready(function(){
+				$('.btn-dat-mua').click(function(){
+					swal("Đặt hàng hàng công! Cảm ơn quý khách.", {
+							icon: "success",
+							});
+				// 	swal({
+				// 	title: "Xác nhận",
+				// 	text: "Bạn chắc chắn muốn đặt hàng chứ?",
+				// 	icon: "info",
+				// 	buttons: true,
+				// 	dangerMode: true,
+				// })
+				// .then((willDelete) => {
+				// if (willDelete) {
+				// 	var ShippingAddressId = $('#ShippingAddressId').val();
+				// 	$.ajax({
+				// 		url: '{{URL::to('/create-order')}}',
+				// 		methed:"POST",
+				// 		data:{ShippingAddressId: ShippingAddressId},
+				// 		success:function(data)
+				// 		{
+				// 			swal("Đặt hàng hàng công! Cảm ơn quý khách.", {
+				// 			icon: "success",
+				// 			});
+				// 			// var url = "{{URL::to('/show-order-detail/data')}}";
+				// 			// alert(url);
+				// 			// window.location.href = "{{URL::to('/show-order-detail/" + data + "')}}";
+				// 			window.location.href = "{{URL::to('/my-orders')}}";
+				// 		},
+				// 		error:function(data)
+				// 		{
+				// 			alert('Lỗi');
+				// 		}
+				// 	});
+					
+				// } else {
+				// 	swal("Your imaginary file is safe!");
+				// }
+				// });
+				});
+				
+			});
+		</script>
+		<a href="{{URL::to('/create-order')}}">HiHI</a>
 @endsection
