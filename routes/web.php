@@ -168,3 +168,13 @@ Route::get('/delete-comment','App\Http\Controllers\ProductController@delete_comm
 // WishList
 Route::get('/add-product-to-wishlist','App\Http\Controllers\WishListController@add_product_to_wishlist');
 Route::get('/remove-product-from-wishlist','App\Http\Controllers\WishListController@remove_product_from_wishlist');
+
+//Campaign
+Route::get('/campaign','App\Http\Controllers\CampaignController@campaign');
+
+Route::get('/all_campaign','App\Http\Controllers\CampaignController@all_campaign');
+Route::get('/add_campaign','App\Http\Controllers\CampaignController@add_campaign');
+Route::post('/save_campaign','App\Http\Controllers\CampaignController@save_campaign');
+Route::get('/active_campaign','App\Http\Controllers\CampaignController@active_campaign');
+Route::get('/unactive_campaign','App\Http\Controllers\CampaignController@unactive_campaign');
+Route::get('/delete_campaign','App\Http\Controllers\CampaignController@delete_campaign');
