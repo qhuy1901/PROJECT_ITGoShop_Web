@@ -94,5 +94,39 @@ class CartController extends Controller
         $newQuantity = $request->newQuantity;
         Cart::update($rowId, $newQuantity); 
     }
-    
+
+    public function load_cart(Request $request)
+    {
+        $content = Cart::content();
+		$number_product = Cart::count();
+        $output = '';
+        $output .='<div class="ps-cart__content">';
+		if($number_product == 0)
+        {
+            $output .='<img style="display: block; width: auto; height: 150px; margin-left: auto; margin-right: auto; " src="'.url("/public/client/Images/empty-cart.png").'">
+            <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>';
+        }
+		else{
+            foreach($content as $item)
+            {
+                $image = $item->options->image; 
+                $output .='<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+                <div class="ps-cart-item__thumbnail">
+                    <a href="'.url("/product-detail/".$item->id).'"></a><img src="'.url("public/images_upload/product/$image").'" alt="">
+                </div>
+                <div class="ps-cart-item__content">
+                    <a class="ps-cart-item__title" href="'.url("/product-detail/".$item->id).'">'.$item->name.'</a>
+                    <p>'.number_format($item->price, 0, " ", ".").' ₫ x'. $item->qty.'</p>
+                </div>
+            </div>';
+            }
+            //{{URL::to('/product-detail/'.$item->id)}}
+            //{{URL::to('public/images_upload/product/'.$item->options->image)}}
+            $output .= '</div>
+            <div class="ps-cart__total">
+            <p>Số sản phẩm:<span>'.$number_product.'</span></p>
+            <p>Tổng tiền:<span>'.(Cart::total(0, ',', '.')).' ₫</span></p>';
+        }
+        echo $output;
+    }
 }

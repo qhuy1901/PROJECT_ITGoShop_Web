@@ -839,57 +839,7 @@
             </div>
     </div>
     <!-- Modal end -->
-	<script>
-		$(document).ready(function(){
-			$('a[title="Wishlist"]').click(function(){
-				var customer_id = $('#input-customer-id').val();
-				if(customer_id)
-				{
-					var ProductId = $(this).parents('.button-head').find('.ProductId').val();
-					$.ajax({
-						url:"{{url('/add-product-to-wishlist')}}",
-						method: "GET",
-						data:{ProductId: ProductId},
-						success:function(data){
-							if(data == '1')
-							{
-								swal({
-									title: "Thành công",
-									text: "Đã thêm sản phẩm vào danh sách yêu thích.",
-									icon: "success",
-									button: "OK",
-								});
-							}
-							else
-							{
-								swal({
-									text: "Sản phẩm đã tồn tại trong danh sách yêu thích",
-									icon: "info",
-									button: "OK",
-								});
-							}
-								
-						},
-						error:function(data)
-						{
-							alert("Lỗi");
-						}
-					});	
-				}else{
-					swal({
-						text: "Bạn cần đăng nhập để thêm sản phẩm vào danh sách yêu thích",
-						icon: "info",
-						buttons: ["OK", "Đăng nhập"],
-						}).then(function(isConfirm) {
-							if (isConfirm) {
-								window.location = "{{url('/login')}}";
-							}
-					})
-				}
-						
-			});
-		});
-	</script>
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('.mySlides:first').css("display","block"); // không có dòng này sẽ ko hiển bị banner đc

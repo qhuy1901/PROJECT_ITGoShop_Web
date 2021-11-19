@@ -189,38 +189,21 @@
 			<form class="ps-search--header" action="do_action" method="post">
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="fa fa-search"></i></button>
-			</form>            
+			</form> 
+			@csrf           
 			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i id="so-luong-sp-gio-hang"><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  	<div class="ps-cart__listing">
-					<div class="ps-cart__content"> 
-					<?php
-						$content = Cart::content();
-						$number_product = Cart::count();
-					?>
-					@if($number_product == 0)
-						<p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
-					@else
-						@foreach($content as $item)
-						<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
-							<div class="ps-cart-item__thumbnail">
-								<a href="{{URL::to('/product-detail/'.$item->id)}}"></a><img src="{{URL::to('public/images_upload/product/'.$item->options->image)}}" alt="">
-							</div>
-							<div class="ps-cart-item__content">
-								<a class="ps-cart-item__title" href="{{URL::to('/product-detail/'.$item->id)}}">{{$item->name}}</a>
-								<p>{{number_format($item->price, 0, " ", ".").' ₫'}} x{{$item->qty}}</p>
-							</div>
-						</div>
-						@endforeach
-					@endif
-					</div>
-					<div class="ps-cart__total">
-					<p>Số sản phẩm:<span>{{$number_product}}</span></p>
-					<p>Tổng tiền:<span>{{(Cart::total(0, ',', '.')).' ₫'}}</span></p>
-				</div>
+					  <div id="load_card">
+					  </div>
+					  <?php $content = Cart::content();?>
+				@if(count($content) > 0)
 				<div class="ps-cart__footer">
 					<a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a>
-				</div>
-			</div>
+				<!-- </div> -->
+				@endif
+				</div> 
+				
+				<!-- </div> -->
 			</div>
 			<div class="menu-toggle"><span></span></div>
 			<a class="ps-cart__toggle" href="{{URL::to('/')}}" ><i class="fa fa-bell-o" aria-hidden="true" title="Thông báo"></i></a>
@@ -348,6 +331,79 @@
 	<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<!-- Sweet Alert -->
+	<a href="{{URL::to('/load-cart')}}">Quang</a>
+	<script>
+		$(document).ready(function(){
+			load_cart();
+		});
+		function load_cart()
+		{
+				var _token = $('input[name="_token"]').val();
+				$.ajax({
+					url: "{{url('/load-cart')}}",
+					method:"POST",
+					data:{ _token:_token},
+					success:function(data){
+						$('#load_card').html(data);
+					},
+					error:function(data)
+					{
+						alert("Lỗi");
+					}
+				});
+		}	
+	</script>
+	<script>
+		$(document).ready(function(){
+			$('a[title="Wishlist"]').click(function(){
+				var customer_id = $('#input-customer-id').val();
+				if(customer_id)
+				{
+					var ProductId = $(this).parents('.button-head').find('.ProductId').val();
+					$.ajax({
+						url:"{{url('/add-product-to-wishlist')}}",
+						method: "GET",
+						data:{ProductId: ProductId},
+						success:function(data){
+							if(data == '1')
+							{
+								swal({
+									title: "Thành công",
+									text: "Đã thêm sản phẩm vào danh sách yêu thích.",
+									icon: "success",
+									button: "OK",
+								});
+							}
+							else
+							{
+								swal({
+									text: "Sản phẩm đã tồn tại trong danh sách yêu thích",
+									icon: "info",
+									button: "OK",
+								});
+							}
+								
+						},
+						error:function(data)
+						{
+							alert("Lỗi");
+						}
+					});	
+				}else{
+					swal({
+						text: "Bạn cần đăng nhập để thêm sản phẩm vào danh sách yêu thích",
+						icon: "info",
+						buttons: ["OK", "Đăng nhập"],
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								window.location = "{{url('/login')}}";
+							}
+					})
+				}
+						
+			});
+		});
+	</script>
 	<script src="{{asset('public/admin/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
 	<script>
 		$('.btn-thanh-toan').click(function(){
@@ -377,6 +433,7 @@
 					data:{ProductId:productId, Quantity: 1},
 					success:function(data)
 					{
+						load_cart();
 						$('#so-luong-sp-gio-hang').text(numberOfProduct);
 						swal({
 								title: "Thông báo",
