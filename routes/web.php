@@ -171,8 +171,8 @@ Route::get('/delete-comment','App\Http\Controllers\ProductController@delete_comm
 Route::get('/add-product-to-wishlist','App\Http\Controllers\WishListController@add_product_to_wishlist');
 Route::get('/remove-product-from-wishlist','App\Http\Controllers\WishListController@remove_product_from_wishlist');
 
-
-Route::get('/campaign','App\Http\Controllers\CampaignController@campaign');
+//Campaign
+Route::get('/campaign/{CampaignId}','App\Http\Controllers\CampaignController@campaign');
 
 Route::get('/all_campaign','App\Http\Controllers\CampaignController@all_campaign');
 Route::get('/add_campaign','App\Http\Controllers\CampaignController@add_campaign');
