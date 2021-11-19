@@ -82,7 +82,8 @@ Route::get('/remove-item','App\Http\Controllers\CartController@remove_item');
 Route::get('/remove-from-cart/{rowId}','App\Http\Controllers\CartController@remove_from_cart');
 Route::get('/add-to-cart','App\Http\Controllers\CartController@add_to_cart');
 Route::get('/update-quantity','App\Http\Controllers\CartController@update_quantity');
-
+Route::post('/load-cart','App\Http\Controllers\CartController@load_cart');
+Route::get('/load-cart','App\Http\Controllers\CartController@load_cart');
 // Checkout
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
 Route::post('/checkout-after-login','App\Http\Controllers\CheckoutController@checkout_after_login');

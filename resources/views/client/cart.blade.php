@@ -39,7 +39,7 @@
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="table-card">
 							@if($number_product == 0)
 								<tr>
                                     <td colspan="6">
@@ -315,6 +315,7 @@
 					data:{id:ItemId },
 					success:function(data)
 					{
+						load_cart();
 						$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - numberProduct);
 						swal({
 								title: "Thông báo",
@@ -322,6 +323,10 @@
 								icon: "success",
 								buttons: "OK",
 							})
+						// if($('tr').length == 0)
+						// {
+						// 	$('#table-card').append('<tr><td colspan="6"><img style="display: block; width: auto; height: 250px; margin-left: auto; margin-right: auto; " src="{{URL::to('public/client/Images/empty-cart.png')}}"></td></tr>');
+						// }
 					},
 					error:function(data)
 					{
@@ -337,6 +342,7 @@
 				$("#tam-tinh").text(sum + ' ₫');
 				$("#tong-cong").text(sum + ' ₫');
 			}),
+			
 			$(".input-number").on('input', function(){
 				var newQuantity = $(this).val();
 				var rowId = $(this).attr('id');
@@ -344,7 +350,10 @@
 					url: '{{URL::to('/update-quantity')}}',
 					methed:"GET",
 					data:{rowId: rowId, newQuantity: newQuantity},
-					
+					// success:funtion(data)
+					// {
+					// 	load_cart();
+					// },
 					error:function(data)
 					{
 						alert('Lỗi');
@@ -373,6 +382,7 @@
 					data:{rowId: rowId, newQuantity: newQuantity},
 					success:function(data)
 					{
+						load_cart();
 						var numberProduct = Number($('#so-luong-sp-gio-hang').text());
 						if(thisButtonType == 'plus')
 							$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) + 1);

@@ -291,7 +291,15 @@
 				}
 				else
 				{
-					window.location.href = "{{URL::to('/login')}}";
+					swal({
+						text: "Bạn cần đăng nhập để thêm bình luận cho sản phẩm.",
+						icon: "info",
+						buttons: ["OK", "Đăng nhập"],
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								window.location = "{{url('/login')}}";
+							}
+					})
 				}
 			});
 
@@ -330,7 +338,15 @@
 				}
 				else
 				{
-					window.location.href = "{{URL::to('/login')}}";
+					swal({
+						text: "Bạn cần đăng nhập để thêm bình luận cho sản phẩm.",
+						icon: "info",
+						buttons: ["OK", "Đăng nhập"],
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								window.location = "{{url('/login')}}";
+							}
+					})
 				}
 			});
 
