@@ -68,4 +68,23 @@ class AdminController extends Controller
         Session::put('UserId', null);
         return Redirect::to('admin');
     }
+
+    public function filter_by_date(Request $request)
+    {
+        $data = $request->all();
+        // $from_date = $data['from_date'];
+        // $to_date = $data['to_date'];
+        $get = DB::table('statistic')->get();
+        foreach($get as $key => $val)
+        {
+            $chart_data[] = array(
+                'period' => $val->StatisticDate,
+                'order' => $val->TotalOrder,
+                'sales' => $val->Sales,
+                'profit' => $val->Profit,
+                'quantity' => $val->TotalProductQuantity
+            );
+        }
+        echo json_encode($chart_data);
+    }
 }

@@ -30,11 +30,14 @@ Route::get('/customer-logout','App\Http\Controllers\HomeController@logout');
 // Product Detail
 Route::get('/product-detail/{ProductId}', 'App\Http\Controllers\ProductController@product_detail');
 
-// Backend
+// Admin
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');
 Route::get('/dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
 Route::get('/logout','App\Http\Controllers\AdminController@logout');
 Route::post('/admin-dashboard', 'App\Http\Controllers\AdminController@dashboard');
+Route::post('/filter-by-date', 'App\Http\Controllers\AdminController@filter_by_date');
+Route::get('/filter-by-date', 'App\Http\Controllers\AdminController@filter_by_date');
+
 
 // Product Category
 Route::get('/add-product-category','App\Http\Controllers\ProductCategoryController@add_product_category');

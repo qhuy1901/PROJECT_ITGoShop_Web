@@ -1,28 +1,117 @@
 @extends('admin_layout')
 @section('admin_content')
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <div class="main-panel">
 			<div class="content">
 				<div class="panel-header bg-primary-gradient">
 					<div class="page-inner py-5">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white pb-2 fw-bold">Phân Tích Bán Hàng</h2>
+								<form>
+									@csrf
+								<h2 class="text-white pb-2 fw-bold">Thống kê bán hàng</h2>
 								<div class="ml-md-auto py-2 py-md-0">
-									<a class="text-white fw-bold" style="margin-right: 8px;">Khung Thời Gian</a> 
+									<a class="text-white fw-bold" style="margin-right: 8px;">Thời gian báo cáo</a> 
+									<a class="btn btn-white btn-border mr-2" > 
+										<span class="btn-label"><i class="fas fa-calendar-alt"></i></span>
+										Từ ngày: <input type="date" class="form-control" id="tu-ngay" min="2020-01-01" style="display:inline-block; width: 65%;">
+									</a>
 									<a class="btn btn-white btn-border mr-2"> 
 										<span class="btn-label" >
 											<i class="fas fa-calendar-alt"></i>
 										</span>
-										Thời gian báo cáo: 
+										Đến ngày: <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;">
 									</a>
+									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success">Hiển thị kết quả</button>
 								</div>
 							</div>
-							
+							</form>
 						</div>
 					</div>
 				</div>
 				<div class="page-inner mt--5">
-					<div class="row mt--2">
+				<div class="row row-card-no-pd mt--2">
+							<div class="col-sm-6 col-md-3">
+								<div class="card card-stats card-round">
+									<div class="card-body ">
+										<div class="row">
+											<div class="col-5">
+												<div class="icon-big text-center">
+													<i class="flaticon-chart-pie text-warning"></i>
+												</div>
+											</div>
+											<div class="col-7 col-stats">
+												<div class="numbers">
+													<p class="card-category">Tổng số đơn hàng</p>
+													<h4 class="card-title">150GB</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="card card-stats card-round">
+									<div class="card-body ">
+										<div class="row">
+											<div class="col-5">
+												<div class="icon-big text-center">
+													<i class="flaticon-coins text-success"></i>
+												</div>
+											</div>
+											<div class="col-7 col-stats">
+												<div class="numbers">
+													<p class="card-category">Revenue</p>
+													<h4 class="card-title">$ 1,345</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="card card-stats card-round">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-5">
+												<div class="icon-big text-center">
+													<i class="flaticon-error text-danger"></i>
+												</div>
+											</div>
+											<div class="col-7 col-stats">
+												<div class="numbers">
+													<p class="card-category">Errors</p>
+													<h4 class="card-title">23</h4>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="card card-stats card-round">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-5">
+												<div class="icon-big text-center">
+													<i class="flaticon-twitter text-primary"></i>
+												</div>
+											</div>
+											<div class="col-7 col-stats">
+												<div class="numbers">
+													<p class="card-category">Followers</p>
+													<h4 class="card-title">+45K</h4>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="row mt--2">
 						<div class="col-md-12">
 							<div class="card full-height">
 								<div class="card-body">
@@ -45,7 +134,7 @@
 							</div>
 						</div>
 						
-					</div>
+					</div> -->
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -70,9 +159,12 @@
 								</div>
 								<div class="card-body">
 									<div class="chart-container" style="min-height: 375px">
-										<canvas id="statisticsChart"></canvas>
+										<!-- <canvas id="statisticsChart"></canvas> -->
+										<div id="bieuDoDoanhThu"></div>
+										<div id="myfirstchart" style="height: 250px;"></div>
 									</div>
-									<div id="myChartLegend"></div>
+									<!-- <div id="myChartLegend"></div> -->
+									
 								</div>
 							</div>
 						</div>
@@ -380,4 +472,77 @@
 					</div>
 				</div>
 			</div>
+			<a href="{{url('/filter-by-date')}}">HiHI</a>
+<script>
+	$(document).ready(function(){
+		// new Morris.Line({
+		// 	// ID of the element in which to draw the chart.
+		// 	element: 'myfirstchart',
+		// 	// Chart data records -- each entry in this array corresponds to a point on
+		// 	// the chart.
+		// 	data: [
+		// 		{ year: '2008', value: 20 },
+		// 		{ year: '2009', value: 10 },
+		// 		{ year: '2010', value: 5 },
+		// 		{ year: '2011', value: 5 },
+		// 		{ year: '2012', value: 20 }
+		// 	],
+		// 	// The name of the data record attribute that contains x-values.
+		// 	xkey: 'year',
+		// 	// A list of names of data record attributes that contain y-values.
+		// 	ykeys: ['value'],
+		// 	// Labels for the ykeys -- will be displayed when you hover over the
+		// 	// chart.
+		// 	labels: ['Value']
+		// 	});
+		var chart = new Morris.Line({
+			element: 'bieuDoDoanhThu',
+			lineColors: ['#819C79', '#fc8710', '#FF6541', '#A4ADD3', '#766B56'],
+			pointFillColors:['#ffffff'],
+			pointStrokeColors:['black'],
+			// data: [
+			// 	{ period: '2008', sales: 20, order: 20, profit: 5  },
+			// 	{ period: '2009', sales: 10,order: 20, profit: 5  },
+			// 	{ period: '2010', sales: 5, order: 20, profit: 5},
+			// 	{ period: '2011', sales: 5,order: 20, profit: 5 },
+			// 	{ period: '2012', sales: 20 ,order: 20, profit: 5}
+			// ],
+			// data: [{"period":"2021-11-20 15:16:46","order":1,"sales":30000,"profit":2000,"quantity":5}],
+			fillOpacity: 0.6,
+			hideHover: 'auto',
+			parseTime: false,
+			xkey: 'period',
+			ykeys:['sales', 'order', 'profit', 'quantity'],
+			behaveLikeLine: true,
+			labels: ['đơn hàng', 'doanh số', 'lợi nhuận', 'số lượng']
+		});
+
+		$('#btn-hien-thi-thong-ke').click(function(){
+			var _token = $('input[name="_token"]').val();
+			var tu_ngay = $('#tu-ngay').val();
+			var den_ngay = $('#den-ngay').val();
+			$.ajax({
+				url:"{{url('/filter-by-date')}}",
+				method: "POST",
+				dataType:"json",
+				data:{from_date: tu_ngay, to_date: den_ngay, _token: _token},
+				success:function(data)
+				{
+					//alert(JSON.stringify(data));
+					alert(data);
+					chart.setData(data);
+				},
+				error:function(data)
+				{
+					alert("Error: Không load đc biểu đồ.");
+				}
+			});
+		});
+
+		function load_bieudo_doanh_thu()
+		{
+			
+		}
+	});
+</script>
 @endsection
