@@ -32,6 +32,9 @@ class CampaignController extends Controller
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
+        $banner = DB::table('campaign')
+        ->select('campaign.*')
+        ->where('campaign.CampaignId', $CampaignId)->get();
         $list_campaign = DB::table('campaign')
         ->select('bannerslider.*', 'campaign.*','product.*')
         ->join('bannerslider','bannerslider.CampaignId','=','campaign.CampaignId')
@@ -42,7 +45,8 @@ class CampaignController extends Controller
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('list_campaign', $list_campaign)
-        ->with('product_category_list', $product_category_list);
+        ->with('product_category_list', $product_category_list)
+        ->with('banner', $banner);
     }
     public function all_campaign()
     {
