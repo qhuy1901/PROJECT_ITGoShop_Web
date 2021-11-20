@@ -50,7 +50,16 @@
 													<!-- <small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small> -->
 												</div>
 											</div>
-											
+											<div class="col-6 col-lg-6">
+												<div class="form-group">
+													<label for="exampleFormControlSelect1">Chiến dịch khuyến mãi</label>
+													<select class="form-control" name="CampaignId" id="exampleFormControlSelect1">
+														@foreach($campaign_list as $key => $campaign)
+														<option value="{{$campaign->CampaignId}}">{{$campaign->CampaignName}} </option>
+														@endforeach
+													</select>
+												</div>
+											</div>
                                             <div class="col-6 col-lg-6">	
                                                 <div class="form-group">
                                                         <label for="exampleFormControlFile1">Thêm ảnh banner slider</label>
