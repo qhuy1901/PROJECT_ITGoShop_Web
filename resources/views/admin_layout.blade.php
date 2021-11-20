@@ -22,7 +22,7 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{URL::to('public/admin/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{URL::to('public/admin/css/atlantis.min.css')}}">
-	
+
 
 </head>
 <body>
