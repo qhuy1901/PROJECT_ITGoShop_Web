@@ -112,7 +112,7 @@
 								@foreach($order_detail as $key => $item)
 								<tr>
 									<td><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt=""></td>
-									<td>{{$item->ProductName}}</td>
+									<td>{{$item->ProductName}}<br><button type="button" class="btn btn-primary btn-danh-gia" style="margin:10px 0px">Đánh giá sản phẩm</button></td>
 									<td>{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</td>
 									<td>x{{$item->OrderQuantity}}</td>
 									<td style="text-align: right;">{{number_format($item->UnitPrice * $item->OrderQuantity, 0, " ", ".").' ₫'}}</td>
@@ -202,6 +202,14 @@ body{
 </style>	
 <script>
 	$(document).ready(function(){
+		$('.btn-danh-gia').click(function(){
+			swal("Write something here:", {
+			content: "input",
+			})
+			.then((value) => {
+				swal(`You typed: ${value}`);
+			});
+		});
 		$('.button-huy-don-hang').click(function(){
 			// alert("Hi");
 			var OrderId = $('.OrderId').val();

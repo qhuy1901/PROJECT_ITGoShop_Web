@@ -100,6 +100,7 @@
                                           <img src="{{URL::to('public/images_upload/product/'.$orderdetail->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item">
                                       </div>
                                       <div style="padding-left: 15px; padding-right: 7px;" class="info" >  {{$orderdetail->ProductName}}  </div>
+                                      
                                   </a>
                                 </td>
                                 <td> {{number_format($orderdetail->Price).' '.'₫'}} </td>
@@ -110,7 +111,7 @@
                                   $Sum = $Sum + $Thanhtien;
                                 ?>
                                 <td style="text-align: right !important;"> {{number_format($Thanhtien).' '.'₫'}}  </td>
-                           
+                                
                           </tr>
                           @endif
                           @endforeach
