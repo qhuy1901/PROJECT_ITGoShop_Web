@@ -93,18 +93,19 @@
 						</div>
 					</div>
 				</div>
-				
+				@foreach($list_campaign as $key => $campaign)
 				<div class="col-lg-4">
-					<div class="single-banner tab-height">
-						<img src="./public/client/Images/pannel/3.png" alt="#" style="border-radius: 10px;">
+					<div class="single-banner tab-height" style="width: 350px; height: 185.25px;">
+						<img src="{{URL::to('public/images_upload/campaign/'.$campaign->CampaignImage)}}" alt="#" style="border-radius: 10px;margin: auto; max-width: 350px; height: 185px;">
 						<div class="content">
-							<p>Flash Sale 12.12</p>
-							<h3>Phụ Kiện <br> Up to <span>40%</span> Off</h3>
-							<a href="{{URL::to('/campaign')}}">Xem Chi Tiết</a>
+							<p>{{$campaign->CampaignName}}</p>
+							<h3>{{$campaign->CampaignContent}}</h3>
+							<br><br>
+							<a href="{{URL::to('/campaign/'.$campaign->CampaignId)}}">Xem Chi Tiết</a>
 						</div>
 					</div>
 				</div>
-				
+				@endforeach
 			</div>
 		</div>
 	</section> 

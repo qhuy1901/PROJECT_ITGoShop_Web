@@ -35,11 +35,13 @@ class CampaignController extends Controller
         $list_campaign = DB::table('campaign')
         ->select('bannerslider.*', 'campaign.*','product.*')
         ->join('bannerslider','bannerslider.CampaignId','=','campaign.CampaignId')
-        ->join('product','product.SliderId','=','bannerslider.SliderId')->get();
+        ->join('product','product.SliderId','=','bannerslider.SliderId')
+        ->where('campaign.CampaignId', $CampaignId)->get();
         
         return view('client.campaign')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
+        ->with('list_campaign', $list_campaign)
         ->with('product_category_list', $product_category_list);
     }
     public function all_campaign()
@@ -52,20 +54,22 @@ class CampaignController extends Controller
         return view('admin.all_campaign')
         ->with('all_campaign', $all_campaign);
     }
-    public function save_campaign()
+    public function add_campaign()
+    {
+        $this->auth_login();
+
+        return view('admin.add_campaign');
+    }
+    public function save_campaign(Request $request)
     {
         $data = array();
         $data['CampaignId'] = $request->CampaignId;
-        $data['CampaignName	'] = $request->CampaignName;
-        $data['BrandId'] = $request->Brand;
-        $data['SubBrandId'] = $request->Subbrand;
-        $data['content'] = $request->Content;
-        $data['Quantity'] = $request->Quantity;
-        $data['price'] = $request->Price;
-        $data['discount'] = $request->Discount;
+        $data['CampaignName'] = $request->CampaignName;
+        $data['CampaignContent'] = $request->CampaignContent;
+        $data['CampaignNote'] = $request->CampaignNote;
+        $data['DateStart'] = $request->DateStart;
+        $data['DateFinish'] = $request->DateFinish;
         $data['status'] = $request->Status;
-        $data['StartsAt'] = date("Y-m-d H:i:s");
-        $data['CreatedAt'] = date("Y-m-d H:i:s");
 
         $get_image = $request->file('CampaignImage');
         if($get_image == true)
@@ -75,7 +79,7 @@ class CampaignController extends Controller
             $image_name = date("Y_m_d_His").'_'.$get_image->getClientOriginalName(); //$get_image_name.rand(0, 99).'.'.$get_image->getClientOriginalExtension(); 
             $get_image->move('public/images_upload/campaign', $image_name);
             $data['CampaignImage'] = $image_name;
-            DB::table('product')->insert($data);
+            DB::table('campaign')->insert($data);
             Session::put('message', 'Thêm campaign thành công');
             return Redirect::to('add_campaign');
         }
@@ -86,12 +90,7 @@ class CampaignController extends Controller
         return Redirect::to('add_campaign');
     }
     
-    public function add_campaign()
-    {
-        $this->auth_login();
-
-        return view('admin.add_campaign');
-    }
+    
     public function active_campaign(Request $request)
     {
         DB::table('campaign')->where('CampaignId', $request->CampaignId)->update(['Status'=>1]); 

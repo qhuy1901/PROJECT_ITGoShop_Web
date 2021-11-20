@@ -60,7 +60,7 @@
 													<tr>
                                                         <td>{{$campaign->CampaignId}}</td>
 														<td>{{$campaign->CampaignName}} 
-														<td><img src="public/images_upload/product/{{$campaign->CampaignImage}}" style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; "></td>
+														<td><img src="public/images_upload/campaign/{{$campaign->CampaignImage}}" style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; "></td>
 														<td>{{$campaign->DateStart}}</td>
                                                         <td>{{$campaign->DateFinish}}</td>
 														

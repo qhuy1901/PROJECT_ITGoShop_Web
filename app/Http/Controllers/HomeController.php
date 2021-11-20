@@ -23,6 +23,9 @@ class HomeController extends Controller
         ->orderby('CreatedAt', 'desc')
         ->limit(8)->get();
 
+        $list_campaign = DB::table('campaign')->limit(1)->get();
+
+
         $latestnew = DB::table('blog')
         ->select('bannerslider.*','blog.*' )
         ->join('bannerslider', 'blog.BlogId', '=', 'bannerslider.BlogId')
@@ -38,7 +41,8 @@ class HomeController extends Controller
         ->with('top_product', $top_product)
         ->with('all_blog', $all_blog)
         ->with('slider_list', $slider_list)
-        ->with('latestnew', $latestnew);
+        ->with('latestnew', $latestnew)
+        ->with('list_campaign', $list_campaign);
     }
 
     public function check_password(Request $request)
