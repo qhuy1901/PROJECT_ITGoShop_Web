@@ -95,8 +95,8 @@
 				</div>
 				@foreach($list_campaign as $key => $campaign)
 				<div class="col-lg-4">
-					<div class="single-banner tab-height">
-						<img src="{{URL::to('public/images_upload/campaign/'.$campaign->CampaignImage)}}" alt="#" style="border-radius: 10px;">
+					<div class="single-banner tab-height" style="width: 350px; height: 185.25px;">
+						<img src="{{URL::to('public/images_upload/campaign/'.$campaign->CampaignImage)}}" alt="#" style="border-radius: 10px;margin: auto; max-width: 350px; height: 185px;">
 						<div class="content">
 							<p>{{$campaign->CampaignName}}</p>
 							<h3>{{$campaign->CampaignContent}}</h3>

@@ -2,13 +2,33 @@
 @section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
 @section('client_content')
 
+@foreach($list_campaign as $key => $campaign)
 <section class="hero-slider">
-		<!-- Single Slider -->
 		<div class="single-slider">
-			<img src="./Images/pannel/pn.png">
+			<img src="{{URL::to('public/images_upload/campaign/'.$campaign->CampaignImage)}}">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-lg-9 offset-lg-3 col-12">
+						<div class="text-inner">
+							<div class="row">
+								<div class="col-lg-7 col-12">
+									<div class="hero-text">
+										
+										<h1><span>DEAL HOT </span>Macbook Air </h1>
+										<p>Giá chỉ từ : 26.490.000 ₫</p>
+										<div class="button">
+											<a href="product-detail.html" class="btn">Mua Ngay!</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<!--/ End Single Slider -->
-</section>
+	</section>
+@endforeach
 <div class="product-area section">
             <div class="container">
 				<div class="row">
