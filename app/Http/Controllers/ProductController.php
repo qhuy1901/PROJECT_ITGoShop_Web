@@ -31,11 +31,13 @@ class ProductController extends Controller
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $banner_list = DB::table('bannerslider')->get();
 
         return view('admin.product.add-product')
         ->with('product_category_list', $product_category_list)
         ->with('brand_list', $brand_list)
-        ->with('sub_brand_list', $sub_brand_list);
+        ->with('sub_brand_list', $sub_brand_list)
+        ->with('banner_list', $banner_list);
     }
 
     public function view_product()
@@ -60,6 +62,7 @@ class ProductController extends Controller
         $data['SubBrandId'] = $request->Subbrand;
         $data['content'] = $request->Content;
         $data['Quantity'] = $request->Quantity;
+        $data['SliderId'] = $request->SliderId;
         $data['price'] = $request->Price;
         $data['discount'] = $request->Discount;
         $data['status'] = $request->Status;

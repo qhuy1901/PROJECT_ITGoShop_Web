@@ -87,6 +87,16 @@
 											</div>
 											<div class="col-6 col-lg-6">
 												<div class="form-group">
+													<label for="exampleFormControlSelect1">Chương trình khuyến mãi</label>
+													<select class="form-control" name="SliderId" id="exampleFormControlSelect1">
+														@foreach($banner_list as $key => $banner)
+														<option value="{{$banner->SliderId}}">{{$banner->SliderName}} </option>
+														@endforeach
+													</select>
+												</div>
+											</div>
+											<div class="col-6 col-lg-6">
+												<div class="form-group">
                                                     <label class="mb-3"><b>Giá sản phẩm</b></label>
                                                     <div class="input-group mb-3">
                                                         <!-- <div class="input-group-prepend">
@@ -118,6 +128,7 @@
 													<input type="number" min="0" name="Quantity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm" required>
 												</div>
 											</div>
+											
 
 
                                             <div class="col-6 col-lg-6">	
