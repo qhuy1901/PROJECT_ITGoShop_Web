@@ -245,6 +245,7 @@
 			var product_id = $('.input_product_id').val();
 			var _token = $('input[name="_token"]').val();
 			load_comment();
+			setInterval(load_comment, 20000);
 			function load_comment()
 			{
 				$.ajax({
