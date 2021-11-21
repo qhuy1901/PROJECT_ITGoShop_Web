@@ -71,14 +71,14 @@ class AdminController extends Controller
 
     public function filter_by_date(Request $request)
     {
-        $data = $request->all();
-        // $from_date = $data['from_date'];
-        // $to_date = $data['to_date'];
-        $get = DB::table('statistic')->get();
+        $get = DB::table('statistic')
+        ->whereDate('StatisticDate','>=', $request->tu_ngay)
+        ->whereDate('StatisticDate','<=', $request->den_ngay)->get();
+
         foreach($get as $key => $val)
         {
             $chart_data[] = array(
-                'period' => $val->StatisticDate,
+                'period' => date("d-m-Y", strtotime($val->StatisticDate)),
                 'order' => $val->TotalOrder,
                 'sales' => $val->Sales,
                 'profit' => $val->Profit,
@@ -86,5 +86,23 @@ class AdminController extends Controller
             );
         }
         echo json_encode($chart_data);
+    }
+
+    public function load_chart(Request $request)
+    {
+        // $data = $request->all();
+        // $get = DB::table('statistic')->whereDate('StatisticDate', '2016-12-31')->get();
+        // foreach($get as $key => $val)
+        // {
+        //     $chart_data[] = array(
+        //         'period' => date("d-m-Y", strtotime($val->StatisticDate)),
+        //         'order' => $val->TotalOrder,
+        //         'sales' => $val->Sales,
+        //         'profit' => $val->Profit,
+        //         'quantity' => $val->TotalProductQuantity
+        //     );
+        // }
+        // echo json_encode($chart_data);
+        
     }
 }
