@@ -17,13 +17,13 @@
 									<a class="text-white fw-bold" style="margin-right: 8px;">Thời gian báo cáo</a> 
 									<a class="btn btn-white btn-border mr-2" > 
 										<span class="btn-label"><i class="fas fa-calendar-alt"></i></span>
-										Từ ngày: <input type="date" class="form-control" id="tu-ngay" min="2020-01-01" style="display:inline-block; width: 65%;">
+										Từ ngày: <input type="date" class="form-control" id="tu-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required>
 									</a>
 									<a class="btn btn-white btn-border mr-2"> 
 										<span class="btn-label" >
 											<i class="fas fa-calendar-alt"></i>
 										</span>
-										Đến ngày: <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;">
+										Đến ngày: <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required>
 									</a>
 									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success">Hiển thị kết quả</button>
 								</div>
@@ -45,8 +45,9 @@
 											</div>
 											<div class="col-7 col-stats">
 												<div class="numbers">
-													<p class="card-category">Tổng số đơn hàng</p>
-													<h4 class="card-title">150GB</h4>
+												
+													<p class="card-category">Khách hàng</p>
+													<h4 class="card-title">150GB <div class="float-right text-warning">+7%</div></h4>
 												</div>
 											</div>
 										</div>
@@ -64,7 +65,7 @@
 											</div>
 											<div class="col-7 col-stats">
 												<div class="numbers">
-													<p class="card-category">Revenue</p>
+													<p class="card-category">Sản phẩm</p>
 													<h4 class="card-title">$ 1,345</h4>
 												</div>
 											</div>
@@ -83,7 +84,7 @@
 											</div>
 											<div class="col-7 col-stats">
 												<div class="numbers">
-													<p class="card-category">Errors</p>
+													<p class="card-category">Đơn hàng</p>
 													<h4 class="card-title">23</h4>
 												</div>
 											</div>
@@ -102,7 +103,7 @@
 											</div>
 											<div class="col-7 col-stats">
 												<div class="numbers">
-													<p class="card-category">Followers</p>
+													<p class="card-category">Đánh giá</p>
 													<h4 class="card-title">+45K</h4>
 											</div>
 										</div>
@@ -475,68 +476,64 @@
 			<a href="{{url('/filter-by-date')}}">HiHI</a>
 <script>
 	$(document).ready(function(){
-		// new Morris.Line({
-		// 	// ID of the element in which to draw the chart.
-		// 	element: 'myfirstchart',
-		// 	// Chart data records -- each entry in this array corresponds to a point on
-		// 	// the chart.
-		// 	data: [
-		// 		{ year: '2008', value: 20 },
-		// 		{ year: '2009', value: 10 },
-		// 		{ year: '2010', value: 5 },
-		// 		{ year: '2011', value: 5 },
-		// 		{ year: '2012', value: 20 }
-		// 	],
-		// 	// The name of the data record attribute that contains x-values.
-		// 	xkey: 'year',
-		// 	// A list of names of data record attributes that contain y-values.
-		// 	ykeys: ['value'],
-		// 	// Labels for the ykeys -- will be displayed when you hover over the
-		// 	// chart.
-		// 	labels: ['Value']
-		// 	});
+		var today = new Date();
+		$('#tu-ngay').attr('max', today);
+		chart30daysorder();
+		function chart30daysorder()
+		{
+
+		}
 		var chart = new Morris.Line({
 			element: 'bieuDoDoanhThu',
 			lineColors: ['#819C79', '#fc8710', '#FF6541', '#A4ADD3', '#766B56'],
 			pointFillColors:['#ffffff'],
 			pointStrokeColors:['black'],
-			// data: [
-			// 	{ period: '2008', sales: 20, order: 20, profit: 5  },
-			// 	{ period: '2009', sales: 10,order: 20, profit: 5  },
-			// 	{ period: '2010', sales: 5, order: 20, profit: 5},
-			// 	{ period: '2011', sales: 5,order: 20, profit: 5 },
-			// 	{ period: '2012', sales: 20 ,order: 20, profit: 5}
-			// ],
-			// data: [{"period":"2021-11-20 15:16:46","order":1,"sales":30000,"profit":2000,"quantity":5}],
 			fillOpacity: 0.6,
 			hideHover: 'auto',
 			parseTime: false,
 			xkey: 'period',
 			ykeys:['sales', 'order', 'profit', 'quantity'],
 			behaveLikeLine: true,
-			labels: ['đơn hàng', 'doanh số', 'lợi nhuận', 'số lượng']
+			labels: ['Đơn hàng', 'Doanh số', 'Lợi nhuận', 'Số lượng']
 		});
 
 		$('#btn-hien-thi-thong-ke').click(function(){
 			var _token = $('input[name="_token"]').val();
 			var tu_ngay = $('#tu-ngay').val();
 			var den_ngay = $('#den-ngay').val();
-			$.ajax({
-				url:"{{url('/filter-by-date')}}",
-				method: "POST",
-				dataType:"json",
-				data:{from_date: tu_ngay, to_date: den_ngay, _token: _token},
-				success:function(data)
-				{
-					//alert(JSON.stringify(data));
-					alert(data);
-					chart.setData(data);
-				},
-				error:function(data)
-				{
-					alert("Error: Không load đc biểu đồ.");
-				}
-			});
+			if(!tu_ngay || !den_ngay)
+			{
+				swal({
+					text: "Vui lòng nhập ngày cần báo cáo",
+					icon: "info",
+					});
+			}
+			else if(den_ngay < tu_ngay)
+			{
+				swal({
+					text: "Ngày báo cáo không hợp lệ! Vui lòng nhập lại",
+					icon: "info",
+					});
+			}
+			else
+			{
+				$.ajax({
+					url:"{{url('/filter-by-date')}}",
+					method: "POST",
+					dataType:"json",
+					data:{tu_ngay: tu_ngay, den_ngay: den_ngay, _token: _token},
+					success:function(data)
+					{
+						chart.setData(data);
+					},
+					error:function(data)
+					{
+						alert("Error: Không load đc biểu đồ.");
+					}
+				});
+
+			}
+			
 		});
 
 		function load_bieudo_doanh_thu()
