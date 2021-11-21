@@ -185,7 +185,7 @@
 		  </div>
 		  
 		  <div class="navigation__column right">
-			<form class="ps-search--header" action="do_action" method="post">
+			<form class="ps-search--header" action="do_action" method="post" >
 			  <input class="form-control" type="text" placeholder="Search Product…">
 			  <button><i class="fa fa-search"></i></button>
 			</form> 
@@ -491,6 +491,21 @@
 		});
 	});
 	</script>
+	<style>
+	.ps-search--header > input {
+		padding: 0 20px;
+		border: none;
+		height: 40px;
+		background-color: #e8e8e8;
+		/* -webkit-border-radius: 40px; */
+		-moz-border-radius: 40px;
+		-ms-border-radius: 40px;
+		border-radius: 40px;
+		font-size: 13px;
+		color: #767779;
+}
+
+	</style>
 
 	<!-- Jquery -->
     <script src="{{asset('public/client/js/jquery.min.js')}}"></script>
