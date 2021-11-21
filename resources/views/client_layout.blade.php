@@ -185,9 +185,10 @@
 		  </div>
 		  
 		  <div class="navigation__column right">
-			<form class="ps-search--header" action="do_action" method="post" >
-			  <input class="form-control" type="text" placeholder="Search Product…">
-			  <button><i class="fa fa-search"></i></button>
+			<form class="ps-search--header" action="{{URL::to('/search_result')}}" method="POST" >
+				{{ csrf_field() }}
+			  <input class="form-control" type="text" name="kw_submit" placeholder="Tìm kiếm">
+			  <button type="submit"><i class="fa fa-search"></i></button>
 			</form> 
 			@csrf           
 			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i id="so-luong-sp-gio-hang"><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
