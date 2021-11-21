@@ -25,7 +25,7 @@
 										</span>
 										Đến ngày: <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required>
 									</a>
-									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success">Hiển thị kết quả</button>
+									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success" style="background: #39A2DB !important; padding: 10px;">Hiển thị kết quả</button>
 								</div>
 							</div>
 							</form>

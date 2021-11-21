@@ -35,25 +35,28 @@ class CampaignController extends Controller
         $banner = DB::table('campaign')
         ->select('campaign.*')
         ->where('campaign.CampaignId', $CampaignId)->get();
-        $list_campaign = DB::table('campaign')
-        ->select('bannerslider.*', 'campaign.*','product.*')
-        ->join('bannerslider','bannerslider.CampaignId','=','campaign.CampaignId')
-        ->join('product','product.SliderId','=','bannerslider.SliderId')
-        ->where('campaign.CampaignId', $CampaignId)->get();
+
+        $list_banner = DB::table('bannerslider')
+        ->select('bannerslider.*')
+        ->where('bannerslider.CampaignId', $CampaignId)->get();
+
+        $list_product = DB::table('product')
+        ->select('product.*')->get();
+
         
         return view('client.campaign')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
-        ->with('list_campaign', $list_campaign)
         ->with('product_category_list', $product_category_list)
-        ->with('banner', $banner);
+        ->with('banner', $banner)
+        ->with('list_banner', $list_banner)
+        ->with('list_product', $list_product);
     }
     public function all_campaign()
     {
         $this->auth_login();
         $all_campaign = DB::table('campaign')
-        ->select('bannerslider.*', 'campaign.*')
-        ->join('bannerslider','bannerslider.CampaignId','=','campaign.CampaignId')->get();
+        ->select('campaign.*')->get();
 
         return view('admin.all_campaign')
         ->with('all_campaign', $all_campaign);

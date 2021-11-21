@@ -2,22 +2,21 @@
 @section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
 @section('client_content')
 
-
+@foreach($banner as $key => $campaign)
+{{csrf_field()}}
 <section class="hero-slider">
 		<!-- Single Slider -->
-		@foreach($banner as $key => $campaign)
 		<div class="single-slider">
 			<img src="{{URL::to('public/images_upload/campaign/'.$campaign->CampaignImage)}}">
 		</div>
 		<!--/ End Single Slider -->
-		@endforeach
 </section>
-
+@foreach($list_banner as $key => $banner)
 <div class="product-area section">
             <div class="container">
 				<div class="row">
                         <div class="banner-online-t7">
-                            <img src="./public/client/Images/campaign/Banner_online.png">
+                            <img src="{{URL::to('public/images_upload/banner-slider/'.$banner->SliderImage)}}">
                         </div>
 				</div>
                 <div class="row">
@@ -28,32 +27,39 @@
 								<div class="tab-pane fade show active" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
+										@foreach($list_product as $key => $product)
+											@if(($product->SliderId == $banner->SliderId)&& ($product->Quantity >= $banner->SaleQuantity))
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
-													<div class="product-img">
-														<a href="product-details.html">
-															<img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
-															<img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
-														</a>
-														<div class="button-head">
+													<div class="product-img" style="width: 250px; height: 200px;">
+															<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
+																<img class="default-img"   src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+																<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+															</a>
+															<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
 															<div class="product-action-2">
-																<a title="Add to cart" href="#">Add to cart</a>
+																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+																<input type="text" value="{{$product->ProductId}}" hidden>
 															</div>
-														</div>
+															</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">Women Hot Collection</a></h3>
-														<div class="product-price">
-															<span>$29.00</span>
-														</div>
+															<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+															<div class="product-price">
+																<span style="color:red; font-size:17px"><b>{{number_format($product->Price * ((100- $banner->CampaignDiscount)/100)).' '.'₫'}}</b></span>
+																<br>
+																<span class="old">{{number_format($product->Price).' '.'₫'}}</span>
+															</div>
 													</div>
 												</div>
 											</div>
+											@endif
+											@endforeach
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
@@ -250,6 +256,7 @@
 				</div>
             </div>
     </div>
+	@endforeach
 	<!-- End Product Area -->
     
 	<!-- End Product Area -->
@@ -257,21 +264,14 @@
             <div class="col-12">
                 <div class="card ">
                     <div class="card-body">
-                        <div class="title" style="text-align: center; font-weight:700;">
-                            <h1>Thể lệ chương trình</h1>
-                        </div>
-                        <Br>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mt-0">Họ</p>
-                            </div>
-                            
-                        </div>
+                        
+                                <p>{!!$campaign->CampaignNote!!}</p>
                     </div>
                 </div>
                
             </div>
-        </div>
+    </div>
+@endforeach
 <style>
 .section-banner-image {
   margin-bottom: 24px;
