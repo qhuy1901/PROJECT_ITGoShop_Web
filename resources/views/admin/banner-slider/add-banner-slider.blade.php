@@ -57,6 +57,7 @@
 														@foreach($campaign_list as $key => $campaign)
 														<option value="{{$campaign->CampaignId}}">{{$campaign->CampaignName}} </option>
 														@endforeach
+														<option value=""> </option>
 													</select>
 												</div>
 											</div>

@@ -92,6 +92,7 @@
 														@foreach($banner_list as $key => $banner)
 														<option value="{{$banner->SliderId}}">{{$banner->SliderName}} </option>
 														@endforeach
+														<option value=""> </option>
 													</select>
 												</div>
 											</div>
