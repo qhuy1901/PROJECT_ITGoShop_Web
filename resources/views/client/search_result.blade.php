@@ -15,7 +15,7 @@
 			</div>
 		</div>
 	</div>
-      <div class="ps-products-wrap pb-80">
+      <div class="ps-products-wrap pb-80 pt-40">
                               <div class="col-12" data-mh="product-listing" >
                                 <div class="ps-product__columns">
                                   @foreach($search_product as $key => $product)
@@ -48,7 +48,6 @@
                                   </div>
                                   
                                   @endforeach
-                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
                                     @foreach($search_blog as $key => $blog)
                                       {{csrf_field()}}
                                       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12  " style="height: 400px; width: 570px">
@@ -61,7 +60,6 @@
                                         </div>
                                       </div>
                                       @endforeach
-                                </div>
                                 </div>
                                
                                 <div class="ps-product-action">
