@@ -19,7 +19,7 @@
 	<!-- End Breadcrumbs -->
 			
 <main class="ps-main">
-            <div class="ps-blog-grid pt-80 ">
+            <div class="ps-blog-grid pt-80 pb-80">
               <div class="ps-container">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -37,7 +37,8 @@
                         @endforeach
                   </div>
                 </div>
-                                <div class="ps-product-action" >
+				{{ $all_content->links() }}
+                                <!--<div class="ps-product-action" >
                                   <div class="ps-pagination">
                                     <ul class="pagination">
                                       <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
@@ -47,58 +48,10 @@
                                       <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
                                     </ul>
                                   </div>
-                                </div>
+                                </div>-->
                   
                 </div>
             </div>
-	<!-- Start Shop Services Area -->
-	<section class="shop-services section home">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Miễn phí vận chuyển</h4>
-						<p>Đơn đặt hàng trên 1.000.000VND</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-reload"></i>
-						<h4>Miễn phí đổi trả</h4>
-						<p>Trong vòng 30 ngày</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-lock"></i>
-						<h4>Bảo mật tuyệt đối</h4>
-						<p>100% thanh toán an toàn</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-tag"></i>
-						<h4>Giá tốt nhất</h4>
-						<p>Quà tặng và ưu đãi hấp dẫn</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Shop Services Area -->
-	
-	
-	
-	
 	<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">

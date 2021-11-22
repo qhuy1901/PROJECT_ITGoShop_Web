@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests; 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 session_start();
 
@@ -158,7 +159,7 @@ class BlogController extends Controller
         $all_content = DB::table('blog')
         ->select('blog.*')
         ->where('Status',1)
-        ->orderby('blog.BlogId', 'desc')->get();
+        ->orderby('blog.BlogId', 'desc')->paginate(9);
 
         return view('client.all_blog')
         ->with('sub_brand_list',  $sub_brand_list )
