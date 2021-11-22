@@ -138,7 +138,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="name" type="text" placeholder="" style="width: 400px; border-radius: 3px; height: 28px;" >
+                                    <input name="name" type="text" placeholder="{{$default_shipping_address->tinhthanhpho}}" style="width: 400px; border-radius: 3px; height: 28px;" >
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="name" type="text" placeholder="" style="width: 400px; border-radius: 3px; height: 28px;">
+                                    <input name="name" type="text" placeholder="{{$default_shipping_address->quanhuyen}}" style="width: 400px; border-radius: 3px; height: 28px;">
                                 </div>
                             </div>
                         </div>
@@ -158,7 +158,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="name" type="text" placeholder="" style="width: 400px; border-radius: 3px; height: 28px;">
+                                    <input name="name" type="text" placeholder="{{$default_shipping_address->xaphuongthitran}}" style="width: 400px; border-radius: 3px; height: 28px;">
                                 </div>
                             </div>
                         </div>
