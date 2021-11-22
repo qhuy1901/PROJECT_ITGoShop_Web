@@ -47,24 +47,24 @@
 												<tr>
 													<td>
 														<a href="{{URL::to('/order-detail/'.$order->OrderId)}}">
-															<span> {{$order->OrderId}}</span>
+															<span class="OrderId">{{$order->OrderId}}</span>
 														</a>
 													</td>
 													<?php
-														$orderId = $order->OrderId;
 														$firstName = $order->FirstName;
 														$lastName = $order->LastName;
-														$fullname = $lastName.$firstName ;
-														
+														$fullname = $lastName.' '.$firstName ;
 													?>
 													<td>{{$fullname}}</td>
 													<td>{{$order->Total}}</td>
-													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}} </td>
-													<td style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->PaymentStatus}} </td>
+													
+													<td class="OrderStatus" style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}}<!-- CHÚ Ý !!!! Không thêm khoảng cách (SPACE) vô đây, tránh bị lỗi js  --></td>
+													<td class= "PaymentStatus" style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">@if($order->OrderStatus != 'Đã hủy'){{$order->PaymentStatus}}@else - @endif<!-- CHÚ Ý !!!! Không thêm khoảng cách (SPACE) vô đây, tránh bị lỗi js  --></td>
 													
 													<td>
-															<div class="form-button-action" data-toggle="modal" data-target="#addRowModal">
-																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật trạng thái đơn hàng" >
+														@if($order->OrderStatus != 'Đã hủy')
+															<div class="form-button-action" >
+																<button type="button" data-target="#addRowModal" data-toggle="modal" title="" class="btn btn-link btn-primary btn-lg btn-update-order" data-original-title="Cập nhật trạng thái đơn hàng" >
 																	<a class="active" ui-toggle-class="" > 
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
@@ -75,7 +75,13 @@
 																	</a>
 																</button>
 															</div>
-															<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+														@endif	
+													</td>
+												</tr>
+												@endforeach
+											</tbody>
+										</table>
+										<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
 																		<div class="modal-dialog" role="document">
 																			<div class="modal-content">
 																				<div class="modal-header no-bd">
@@ -84,48 +90,42 @@
 																					</h5>
 																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																						<span aria-hidden="true">&times;</span>
-																						<?php
-																							$orderId = $order->OrderId;
-																							
-																						?>
 																					</button>
 																				</div>
 																				
 																				<div class="modal-body">
-																					<form action="{{url('/update-order/'.$orderId)}}" method="POST">
-																						@csrf
-																						<h1 class="small">Mã đơn hàng: {{$orderId}} </h1>
-																						<div class="row"> 
-																							<div class="col-md-6 pr-0 ">
-																									<select class="form-select form-select-sm"  name="status" aria-label=".form-select-sm example">
-																										<option selected value="Đã xác nhận">Đã xác nhận</option>
+																					<!-- <form action="{{url('/update-order/'.$order->OrderId)}}" method="POST">
+																						@csrf -->
+																						<input type="text" id="ma-don-hang-hidden" value="" hidden>
+																						<h1 class="small" id="ma-don-hang">Mã đơn hàng: {{$order->OrderId}} </h1>
+																						<div class="row">
+																							<div class="col-md-12 pr-0" style="margin-bottom:30px">
+																								<b style="margin-bottom:15px">Trạng thái đơn hàng</b>
+																									<select class="form-control" id="trang-thai-don-hang"  name="status" aria-label=".form-select-sm example" style="width:90%;margin-top: 10px">
+																										<option value="Đã xác nhận">Đã xác nhận</option>
 																										<option value="Đã giao cho đơn vị vận chuyển">Đã giao cho đơn vị vận chuyển</option>
 																										<option value="Đang giao hàng">Đang giao hàng</option>
 																										<option value="Hoàn thành">Hoàn thành</option>
 																									</select>
 																							</div>
-																							<div class="col-md-6 pr-0 ">
-																									<select class="form-select form-select-sm" name="payment" aria-label=".form-select-sm example">
-																										<option selected value="Hoàn thành">Hoàn thành</option>
+																							<div class="col-md-12 pr-0">
+																							<b style="margin-bottom:15px">Trạng thái thanh toán</b>
+																									<select class="form-control" name="payment" id="trang-thai-thanh-toan" aria-label=".form-select-sm example"  style="width:90%;margin-top: 10px">
+																										<option value="Hoàn thành">Hoàn thành</option>
 																										<option value="Chờ thanh toán">Chờ thanh toán</option>
 																									</select>
 																							</div>
 																						</div>
 																						<div class="modal-footer no-bd">
-																							<button type="submit" id="addRowButton" class="btn btn-primary">Lưu</button>
+																							<button type="button" class="btn btn-primary btn-luu-update-order" data-dismiss="modal">Lưu</button>
 																							<button type="button" class="btn btn-danger" data-dismiss="modal">Huỷ</button>
 																						</div>
-																					</form>
+																					<!-- </form> -->
 																				</div>
 																				
 																			</div>
 																		</div>
 																</div>
-														</td>
-												</tr>
-												@endforeach
-											</tbody>
-										</table>
 									</div>
 								</div>
 							</div>
@@ -148,7 +148,54 @@
 	<script src="{{asset('public/admin/js/atlantis.min.js')}}"></script>
 	<!-- Atlantis DEMO methods, don't include it in your project! -->
 	<script src="{{asset('public/admin/js/setting-demo2.js')}}"></script>
+	<script>
+		var local_parent;
+		$(document).ready(function() { 
+			
 
+			$('.btn-update-order').click(function(){ 
+				var parent = $(this).parents('tr'); 
+				local_parent = parent;
+				var OrderId = parent.find('.OrderId').text(); 
+				var OrderStatus = parent.find('.OrderStatus').text(); 
+				var PaymentStatus = parent.find('.PaymentStatus').text(); 
+				$('#ma-don-hang').text("Mã đơn hàng: " + OrderId); 
+				$('#ma-don-hang-hidden').val(OrderId);
+				$('#trang-thai-don-hang option[value="'+OrderStatus+'"]').attr('selected','selected');
+				$('#trang-thai-thanh-toan option[value="'+ PaymentStatus +'"]').attr('selected','selected');
+				// alert(local_parent.attr('class'));
+				}); 
+			});
+
+			$('.btn-luu-update-order').click(function(){
+				
+				var OrderId = $('#ma-don-hang-hidden').val();
+				var OrderStatus = $('#trang-thai-don-hang').val();
+				var PaymentStatus = $('#trang-thai-thanh-toan').val(); 
+				$.ajax({
+					url: '{{URL::to('/update-order-status')}}',
+					method:"GET",
+					data:{OrderId: OrderId, OrderStatus: OrderStatus, PaymentStatus: PaymentStatus},
+					success:function(data)
+					{
+						$('#addRowModal').modal('hide');
+						local_parent.find('.OrderStatus').text(OrderStatus);
+						local_parent.find('.PaymentStatus').text(PaymentStatus);
+						swal({
+						text: "Cập nhật trạng thái đơn hàng thành công!",
+						icon: "success",
+						});
+					},
+					error:function(data)
+					{
+						swal({
+						text: "Cập nhật trạng thái đơn hàng không thành công!",
+						icon: "error",
+						});
+					}	
+				});
+			});
+	</script>
     <script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({
@@ -187,7 +234,7 @@
 
 			$('#addRowButton').click(function() {
 				$('#add-row').dataTable().fnAddData([
-					$("#addName").val(),
+					$(".sel-status").val(),
 					$("#addPosition").val(),
 					$("#addOffice").val(),action
 					]);

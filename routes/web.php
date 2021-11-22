@@ -122,8 +122,9 @@ Route::get('/blog-detail/{BlogId}', 'App\Http\Controllers\BlogController@blog_de
 //Order (Admin)
 Route::get('/confirm_order','App\Http\Controllers\OrderController@confirm_order');
 Route::get('/all_order','App\Http\Controllers\OrderController@all_order');
-Route::post('/update-order/{OrderId}','App\Http\Controllers\OrderController@update_order');
+//Route::post('/update-order/{OrderId}','App\Http\Controllers\OrderController@update_order');
 Route::get('/order-detail/{OrderId}', 'App\Http\Controllers\OrderController@order_detail');
+Route::get('/update-order-status', 'App\Http\Controllers\OrderController@update_order_status');
 
 //Order (Client)
 Route::get('/my-orders', 'App\Http\Controllers\OrderController@show_my_orders');
