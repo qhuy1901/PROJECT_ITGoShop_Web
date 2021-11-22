@@ -18,11 +18,11 @@
 	</div>
 	<!-- End Breadcrumbs -->
 			
-  <div class="product-area section">
+  <div class="product-area section ">
     <div class="container">
 				<div class="row">
 					<div class="col-12">
-						<div class="product-info">
+						<div class="product-info pb-80">
 							<div class="nav-main pb-20" >
 								<!-- Tab Nav -->
 								<ul  class="nav nav-tabs" id="myTab" role="tablist">
