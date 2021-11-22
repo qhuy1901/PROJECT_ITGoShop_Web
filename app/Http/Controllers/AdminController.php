@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests; 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 session_start();
 
@@ -38,7 +39,14 @@ class AdminController extends Controller
     public function show_dashboard()
     {
         $this->auth_login(); // Hàm kiểm tra có admin_id hay không
-        return view('admin.dashboard');
+        $number_of_customer = DB::table('user')->where('Admin', 0)->count();
+        $number_of_order = DB::table('order')->where('OrderStatus', 'Đã hủy')->count();
+        $number_of_product = DB::table('product')->count();
+
+        return view('admin.dashboard')
+        ->with('number_of_customer', $number_of_customer)
+        ->with('number_of_order', $number_of_order)
+        ->with('number_of_product', $number_of_product);
     }
 
     public function dashboard(Request $request)
@@ -88,21 +96,78 @@ class AdminController extends Controller
         echo json_encode($chart_data);
     }
 
-    public function load_chart(Request $request)
+    public function load_default_chart(Request $request)
     {
-        // $data = $request->all();
-        // $get = DB::table('statistic')->whereDate('StatisticDate', '2016-12-31')->get();
-        // foreach($get as $key => $val)
-        // {
-        //     $chart_data[] = array(
-        //         'period' => date("d-m-Y", strtotime($val->StatisticDate)),
-        //         'order' => $val->TotalOrder,
-        //         'sales' => $val->Sales,
-        //         'profit' => $val->Profit,
-        //         'quantity' => $val->TotalProductQuantity
-        //     );
-        // }
-        // echo json_encode($chart_data);
-        
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $get = DB::table('statistic')
+        ->whereDate('StatisticDate','>=', $dauthangnay)
+        ->whereDate('StatisticDate','<=', $now)
+        ->orderBy('StatisticDate', 'ASC')->get();
+        foreach($get as $key => $val)
+        {
+            $chart_data[] = array(
+                    'period' => date("d-m-Y", strtotime($val->StatisticDate)),
+                    'order' => $val->TotalOrder,
+                    'sales' => $val->Sales,
+                    'profit' => $val->Profit,
+                    'quantity' => $val->TotalProductQuantity
+                );
+        }
+        echo json_encode($chart_data);
     }
+
+    public function filter_by_time_span(Request $request)
+    {
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
+        $cuoi_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->endOfMonth()->toDateString();
+        
+        $sub7days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(7)->toDateString();
+        $sub365days = Carbon::now('Asia/Ho_Chi_Minh')->subday(365)->toDateString();
+
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+
+        if($request->time_span == '7ngay')
+        {
+            $get = DB::table('statistic')
+            ->whereDate('StatisticDate','>=', $sub7days)
+            ->whereDate('StatisticDate','<=', $now)
+            ->orderBy('StatisticDate', 'ASC')->get();
+        }
+        else if($request->time_span == 'thangnay')
+        {
+            $get = DB::table('statistic')
+            ->whereDate('StatisticDate','>=', $dauthangnay)
+            ->whereDate('StatisticDate','<=', $now)
+            ->orderBy('StatisticDate', 'ASC')->get();
+        }
+        else if($request->time_span == 'thangtruoc')
+        {
+            $get = DB::table('statistic')
+            ->whereDate('StatisticDate','>=', $dau_thangtruoc)
+            ->whereDate('StatisticDate','<=', $cuoi_thangtruoc)
+            ->orderBy('StatisticDate', 'ASC')->get();
+        }
+        else
+        {
+            $get = DB::table('statistic')
+            ->whereDate('StatisticDate','>=', $sub365days)
+            ->whereDate('StatisticDate','<=', $now)
+            ->orderBy('StatisticDate', 'ASC')->get();
+        }
+        foreach($get as $key => $val)
+        {
+            $chart_data[] = array(
+                'period' => date("d-m-Y", strtotime($val->StatisticDate)),
+                'order' => $val->TotalOrder,
+                'sales' => $val->Sales,
+                'profit' => $val->Profit,
+                'quantity' => $val->TotalProductQuantity
+            );
+        }
+        echo json_encode($chart_data);
+    }
+
+    
 }

@@ -25,7 +25,22 @@
 										</span>
 										Đến ngày: <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required>
 									</a>
-									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success" style="background: #39A2DB !important; padding: 10px;">Hiển thị kết quả</button>
+									
+									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success" style=" background: #39A2DB !important; padding: 10px;">Hiển thị kết quả</button>
+									<a class="btn btn-white btn-border mr-2"> 
+										<span class="btn-label" >
+											<i class="fas fa-calendar-alt"></i>
+										</span>
+										Lọc theo:
+										<select name="" id="sel-loc-theo" class="form-control" style="display:inline-block; width: 62%; margin">
+											<option>----Chọn----</option>
+											<option value="7ngay">7 ngày qua</option>
+											<option value="thangtruoc">Tháng trước</option>
+											<option value="thangnay">Tháng này</option>
+											<option value="namqua">1 năm qua</option>
+										</select>
+										 <!-- <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required> -->
+									</a>
 								</div>
 							</div>
 							</form>
@@ -40,14 +55,17 @@
 										<div class="row">
 											<div class="col-5">
 												<div class="icon-big text-center">
-													<i class="flaticon-chart-pie text-warning"></i>
+													<!-- <i class="flaticon-chart-pie text-warning"></i> -->
+													<i class="fas fa-users text-warning"></i>
 												</div>
 											</div>
+											
 											<div class="col-7 col-stats">
 												<div class="numbers">
 												
 													<p class="card-category">Khách hàng</p>
-													<h4 class="card-title">150GB <div class="float-right text-warning">+7%</div></h4>
+													
+													<h4 class="card-title">{{$number_of_customer}} <div class="float-right text-warning">(+7%)</div></h4>
 												</div>
 											</div>
 										</div>
@@ -60,13 +78,14 @@
 										<div class="row">
 											<div class="col-5">
 												<div class="icon-big text-center">
-													<i class="flaticon-coins text-success"></i>
+													<!-- <i class="flaticon-coins text-success"></i> -->
+													<i class="fas fa-boxes text-success"></i>
 												</div>
 											</div>
 											<div class="col-7 col-stats">
 												<div class="numbers">
 													<p class="card-category">Sản phẩm</p>
-													<h4 class="card-title">$ 1,345</h4>
+													<h4 class="card-title">{{$number_of_product}}</h4>
 												</div>
 											</div>
 										</div>
@@ -79,13 +98,14 @@
 										<div class="row">
 											<div class="col-5">
 												<div class="icon-big text-center">
-													<i class="flaticon-error text-danger"></i>
+													<!-- <i class="flaticon-error text-danger"></i> -->
+													<i class="fas fa-shopping-cart  text-danger"></i>
 												</div>
 											</div>
 											<div class="col-7 col-stats">
 												<div class="numbers">
 													<p class="card-category">Đơn hàng</p>
-													<h4 class="card-title">23</h4>
+													<h4 class="card-title">{{$number_of_order}}</h4>
 												</div>
 											</div>
 										</div>
@@ -98,7 +118,8 @@
 										<div class="row">
 											<div class="col-5">
 												<div class="icon-big text-center">
-													<i class="flaticon-twitter text-primary"></i>
+													<!-- <i class="flaticon-twitter text-primary"></i> -->
+													<i class="fas fa-comment-dots text-primary"></i>
 												</div>
 											</div>
 											<div class="col-7 col-stats">
@@ -141,7 +162,7 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Biểu đồ</div>
+										<div class="card-title">Biểu đồ doanh thu</div>
 										<div class="card-tools">
 											<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
 												<span class="btn-label">
@@ -162,7 +183,7 @@
 									<div class="chart-container" style="min-height: 375px">
 										<!-- <canvas id="statisticsChart"></canvas> -->
 										<div id="bieuDoDoanhThu"></div>
-										<div id="myfirstchart" style="height: 250px;"></div>
+										<!-- <div id="myfirstchart" style="height: 250px;"></div> -->
 									</div>
 									<!-- <div id="myChartLegend"></div> -->
 									
@@ -186,7 +207,7 @@
 							</div>
 							<div class="card">
 								<div class="card-body pb-0">
-									<div class="h1 fw-bold float-right text-warning">+7%</div>
+									<div class="h1 fw-bold float-right text-warning">(+7%)</div>
 									<h2 class="mb-2">213</h2>
 									<p class="text-muted">Lượt Truy Cập</p>
 									<div class="pull-in sparkline-fix">
@@ -201,7 +222,7 @@
 						<div class="col-md-4">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Top Bán Chạy</div>
+									<div class="card-title">Top sản phẩm bán chạy</div>
 								</div>
 								<div class="card-body pb-0">
 									<div class="d-flex">
@@ -473,16 +494,62 @@
 					</div>
 				</div>
 			</div>
-			<a href="{{url('/filter-by-date')}}">HiHI</a>
+			<a href="{{url('/filter-by-time-span')}}">HiHI</a>
 <script>
 	$(document).ready(function(){
 		var today = new Date();
 		$('#tu-ngay').attr('max', today);
-		chart30daysorder();
-		function chart30daysorder()
-		{
 
+		load_default_chart();
+
+		function load_default_chart()
+		{
+			var _token = $('input[name="_token"]').val();
+			$.ajax({
+					url:"{{url('/load-default-chart')}}",
+					method: "POST",
+					dataType:"json",
+					data:{ _token: _token},
+					success:function(data)
+					{
+						chart.setData(data);
+					},
+					error:function(data)
+					{
+						swal({
+						text: "Không tìm thấy dữ liệu",
+						icon: "error",
+						});
+					}
+				});
 		}
+
+		$('#sel-loc-theo').change(function(){
+			var _token = $('input[name="_token"]').val();
+			var time_span = $('#sel-loc-theo').val();
+			if(time_span != '----Chọn----')
+			{
+				$.ajax({
+					url:"{{url('/filter-by-time-span')}}",
+					method: "POST",
+					dataType:"json",
+					data:{ time_span: time_span, _token: _token},
+					success:function(data)
+					{
+						chart.setData(data);
+					},
+					error:function(data)
+					{
+						swal({
+						text: "Không tìm thấy dữ liệu",
+						icon: "error",
+						});
+					}
+				});
+			}
+			
+		});
+
 		var chart = new Morris.Line({
 			element: 'bieuDoDoanhThu',
 			lineColors: ['#819C79', '#fc8710', '#FF6541', '#A4ADD3', '#766B56'],
@@ -504,7 +571,7 @@
 			if(!tu_ngay || !den_ngay)
 			{
 				swal({
-					text: "Vui lòng nhập ngày cần báo cáo",
+					text: "Vui lòng chọn thời gian báo cáo",
 					icon: "info",
 					});
 			}
@@ -528,18 +595,16 @@
 					},
 					error:function(data)
 					{
-						alert("Error: Không load đc biểu đồ.");
+						swal({
+						text: "Không tìm thấy dữ liệu",
+						icon: "error",
+						});
 					}
 				});
 
 			}
 			
 		});
-
-		function load_bieudo_doanh_thu()
-		{
-			
-		}
 	});
 </script>
 @endsection
