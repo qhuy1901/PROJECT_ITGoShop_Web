@@ -252,51 +252,27 @@
 						<div class="col-md-4">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Top sản phẩm bán chạy</div>
+									<?php $last_month = date("m",strtotime("-1 month"));
+										$now_month = date('m');
+									?>
+									<div class="card-title">Top sản phẩm bán chạy tháng {{$last_month}} và tháng {{$now_month}}</div>
 								</div>
 								<div class="card-body pb-0">
+									@foreach($top_product as $key => $item)
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+											<img src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="..." class="avatar-img rounded border">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">CSS</h6>
-											<small class="text-muted">Cascading Style Sheets</small>
+											<h6 class="fw-bold mb-1"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}">{{$item->ProductName}}</a></h6>
+											<small class="text-muted"></small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$17</h3>
+											<h3 class="text-info fw-bold">{{$item->number_solded}}</h3>
 										</div>
 									</div>
 									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
-											<small class="text-muted">The Best Donuts</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$300</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">Ready Pro</h6>
-											<small class="text-muted">Bootstrap 4 Admin Dashboard</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$350</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="pull-in">
-										<canvas id="topProductsChart"></canvas>
-									</div>
+									@endforeach
 								</div>
 							</div>
 						</div>
@@ -385,48 +361,24 @@
 									<div class="card-title">Sản phẩm tồn kho cần thanh lý</div>
 								</div>
 								<div class="card-body pb-0">
+									@foreach($inventory_list as $key => $item)
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+											<img src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="..." class="avatar-img rounded border">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">CSS</h6>
-											<small class="text-muted">Cascading Style Sheets</small>
+											<h6 class="fw-bold mb-1"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}">{{$item->ProductName}}</a></h6>
+											<small class="text-muted">Ngày mở bán: {{date("d/m/Y", strtotime($item->StartsAt))}}</small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$17</h3>
+											<h3 class="text-info fw-bold">{{$item->Quantity}}</h3>
 										</div>
 									</div>
 									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
-											<small class="text-muted">The Best Donuts</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$300</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">Ready Pro</h6>
-											<small class="text-muted">Bootstrap 4 Admin Dashboard</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$350</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="pull-in">
+									@endforeach
+									<!-- <div class="pull-in">
 										<canvas id="topProductsChart"></canvas>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -549,7 +501,7 @@
 										<div class="flex-1 ml-3 pt-1">
 											<h6 class="text-uppercase fw-bold mb-1">Peter Parker <span class="text-success pl-3">open</span></h6>
 											<span class="text-muted">I have some query regarding the license issue.</span>
-										</div>
+										</div> 
 										<div class="float-right pt-1">
 											<small class="text-muted">2 Day Ago</small>
 										</div>

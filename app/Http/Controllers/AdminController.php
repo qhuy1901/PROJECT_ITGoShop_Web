@@ -42,13 +42,28 @@ class AdminController extends Controller
         $number_of_customer = DB::table('user')->where('Admin', 0)->count();
         $number_of_order = DB::table('order')->where('OrderStatus', 'Đã hủy')->count();
         $number_of_product = DB::table('product')->count();
-        $inventory_list = DB::table('product')->orderBy('StartsAt', 'asc')->orderBy('Sold','desc')->count();
+        $inventory_list = DB::table('product')->orderBy('Sold','desc')->orderBy('StartsAt', 'asc')->limit(5)->get();
+
+        $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $top_product = DB::table('product')
+        ->select(DB::raw('sum(OrderQuantity) as number_solded, ProductName, ProductImage, product.ProductId'))
+        ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
+        ->join('order','order.OrderId','=','orderdetail.OrderId')
+        ->where('OrderStatus', '<>','Đã hủy')
+        ->whereDate('OrderDate','>=', $dau_thangtruoc)
+        ->whereDate('OrderDate','<=', $now)
+        ->groupBy('ProductName')
+        ->groupBy('ProductImage')
+        ->groupBy('product.ProductId')
+        ->orderBy('number_solded','desc')->limit(5)->get();
 
         return view('admin.dashboard')
         ->with('number_of_customer', $number_of_customer)
         ->with('number_of_order', $number_of_order)
         ->with('number_of_product', $number_of_product)
-        ->with('inventory_list',  $inventory_list);
+        ->with('inventory_list',  $inventory_list)
+        ->with('top_product',  $top_product);;
     }
 
     public function dashboard(Request $request)
