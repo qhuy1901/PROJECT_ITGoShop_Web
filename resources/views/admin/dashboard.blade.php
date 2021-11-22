@@ -195,12 +195,12 @@
 						<div class="col-md-4">
 							<div class="card card-primary">
 								<div class="card-header">
-									<div class="card-title">Doanh Thu</div>
-									<div class="card-category">March 25 - April 02</div>
+									<div class="card-title">Doanh thu tháng <?php echo date('m') ?></div>
+									<div class="card-category"><?php echo date('F j, Y',strtotime("first day of this month")).' - '.date('F j, Y'); ?></div>
 								</div>
 								<div class="card-body pb-0">
 									<div class="mb-4 mt-2">
-										<h1>$4,578.58</h1>
+										<h1>{{number_format($this_month_revenue->totalProfit).' '.'₫'}}</h1>
 									</div>
 									<div class="pull-in">
 										<canvas id="dailySalesChart"></canvas>
@@ -222,7 +222,7 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Biểu đồ doanh thu</div>
+										<div class="card-title">Thống kê đơn hàng</div>
 										<div class="card-tools">
 											<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
 												<span class="btn-label">
@@ -241,7 +241,10 @@
 								</div>
 								<div class="card-body">
 									<div class="chart-container" style="min-height: 375px">
-										Biểu đồ tình trạng đơn hàng hiện nay
+									<form>
+									@csrf
+										<div id="pieChart" style="height: 250px;"></div>
+									</form>
 									</div>
 								</div>
 							</div>
@@ -252,51 +255,27 @@
 						<div class="col-md-4">
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Top sản phẩm bán chạy</div>
+									<?php $last_month = date("m",strtotime("-1 month"));
+										$now_month = date('m');
+									?>
+									<div class="card-title">Top sản phẩm bán chạy tháng {{$last_month}} và tháng {{$now_month}}</div>
 								</div>
 								<div class="card-body pb-0">
+									@foreach($top_product as $key => $item)
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+											<img src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="..." class="avatar-img rounded border">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">CSS</h6>
-											<small class="text-muted">Cascading Style Sheets</small>
+											<h6 class="fw-bold mb-1"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}">{{$item->ProductName}}</a></h6>
+											<small class="text-muted"></small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$17</h3>
+											<h3 class="text-info fw-bold">{{$item->number_solded}}</h3>
 										</div>
 									</div>
 									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
-											<small class="text-muted">The Best Donuts</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$300</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">Ready Pro</h6>
-											<small class="text-muted">Bootstrap 4 Admin Dashboard</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$350</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="pull-in">
-										<canvas id="topProductsChart"></canvas>
-									</div>
+									@endforeach
 								</div>
 							</div>
 						</div>
@@ -385,48 +364,24 @@
 									<div class="card-title">Sản phẩm tồn kho cần thanh lý</div>
 								</div>
 								<div class="card-body pb-0">
+									@foreach($inventory_list as $key => $item)
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+											<img src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="..." class="avatar-img rounded border">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">CSS</h6>
-											<small class="text-muted">Cascading Style Sheets</small>
+											<h6 class="fw-bold mb-1"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}">{{$item->ProductName}}</a></h6>
+											<small class="text-muted">Ngày mở bán: {{date("d/m/Y", strtotime($item->StartsAt))}}</small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$17</h3>
+											<h3 class="text-info fw-bold">{{$item->Quantity}}</h3>
 										</div>
 									</div>
 									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
-											<small class="text-muted">The Best Donuts</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$300</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="d-flex">
-										<div class="avatar">
-											<img src="./public/admin/images/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
-										</div>
-										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1">Ready Pro</h6>
-											<small class="text-muted">Bootstrap 4 Admin Dashboard</small>
-										</div>
-										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">+$350</h3>
-										</div>
-									</div>
-									<div class="separator-dashed"></div>
-									<div class="pull-in">
+									@endforeach
+									<!-- <div class="pull-in">
 										<canvas id="topProductsChart"></canvas>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -549,7 +504,7 @@
 										<div class="flex-1 ml-3 pt-1">
 											<h6 class="text-uppercase fw-bold mb-1">Peter Parker <span class="text-success pl-3">open</span></h6>
 											<span class="text-muted">I have some query regarding the license issue.</span>
-										</div>
+										</div> 
 										<div class="float-right pt-1">
 											<small class="text-muted">2 Day Ago</small>
 										</div>
@@ -573,13 +528,48 @@
 					</div>
 				</div>
 			</div>
-			<a href="{{url('/filter-by-time-span')}}">HiHI</a>
+			<a href="{{url('/load-pie-chart')}}">HiHI</a>
 <script>
 	$(document).ready(function(){
-		var today = new Date();
-		$('#tu-ngay').attr('max', today);
-
+		load_pie_chart();
 		load_default_chart();
+		// var today = new Date();
+		// $('#tu-ngay').attr('max', today);
+		var pie_chart = new Morris.Donut({
+			element: 'pieChart',
+			resize: true,
+			colors: ['#819C79', '#fc8710', '#FF6541', '#A4ADD3', '#766B56'],
+			data: [
+				{ label: 'Đã tiếp nhận', value: 20 },
+				{ label: 'Đang vận chuyển', value: 10 },
+				{ label: 'Đã hủy', value: 5 },
+				{ label: 'Đã xác nhận', value: 5 },
+				{ label: 'Hoàn thành', value: 20 }
+			],
+		});
+		setInterval(load_pie_chart, 3000);
+
+		function load_pie_chart()
+		{
+			var _token = $('input[name="_token"]').val();
+			$.ajax({
+					url:"{{url('/load-pie-chart')}}",
+					method: "POST",
+					dataType:"json",
+					data:{ _token: _token},
+					success:function(data)
+					{
+						pie_chart.setData(data);
+					},
+					error:function(data)
+					{
+						swal({
+						text: "Không tìm thấy dữ liệu",
+						icon: "error",
+						});
+					}
+				});
+		}
 
 		function load_default_chart()
 		{

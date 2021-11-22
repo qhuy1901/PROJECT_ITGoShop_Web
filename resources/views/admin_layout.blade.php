@@ -248,7 +248,9 @@
 						<li class="nav-item dropdown hidden-caret">
 							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
 								<div class="avatar-sm">
-									<img src="{{URL::to('public/admin/images/profile.jpg')}}" alt="..." class="avatar-img rounded-circle">
+									<?php $avt = Session::get('UserImage');
+									if($avt == ''){$avt = 'default-user-icon.png';} ?>
+									<img src="{{URL::to('public/images_upload/user/'.$avt)}}" alt="..." class="avatar-img rounded-circle">
 								</div>
 							</a>
 							
@@ -256,7 +258,7 @@
 								<div class="dropdown-user-scroll scrollbar-outer">
 									<li>
 										<div class="user-box">
-											<div class="avatar-lg"><img src="{{URL::to('public/admin/images/profile.jpg')}}" alt="image profile" class="avatar-img rounded"></div>
+											<div class="avatar-lg"><img src="{{URL::to('public/images_upload/user/'.$avt)}}" alt="image profile" class="avatar-img rounded"></div>
 											<?php
 												$userId = Session::get('UserId');
 											?>
@@ -278,7 +280,7 @@
 									<li>
 										
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="{{URL::to('/logout')}}">Logout</a>
+										<a class="dropdown-item" href="{{URL::to('/logout')}}">Đăng xuất</a>
 									</li>
 								</div>
 							</ul>
@@ -295,19 +297,11 @@
 				<div class="sidebar-content">
 					<div class="user">
 						<div class="avatar-sm float-left mr-2">
-							<img src="./public/admin/images/profile.jpg" alt="..." class="avatar-img rounded-circle">
+							<img src="{{URL::to('public/images_upload/user/'.$avt)}}" alt="..." class="avatar-img rounded-circle">
 						</div>
 						<div class="info">
 							<a data-toggle="collapse" href="#" aria-expanded="true">
-								<span>
-									<?php
-										$firstName = Session::get('FirstName');
-										$lastName = Session::get('LastName');
-										if($firstName && $lastName)
-										{
-											echo $lastName .' '.$firstName;
-										}
-									?>
+								<span>{{$lastName .' '.$firstName}}
 									<!-- Hizrian -->
 									<span class="user-level">Quản trị viên</span>
 								</span>

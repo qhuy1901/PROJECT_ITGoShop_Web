@@ -42,13 +42,34 @@ class AdminController extends Controller
         $number_of_customer = DB::table('user')->where('Admin', 0)->count();
         $number_of_order = DB::table('order')->where('OrderStatus', 'Đã hủy')->count();
         $number_of_product = DB::table('product')->count();
-        $inventory_list = DB::table('product')->orderBy('StartsAt', 'asc')->orderBy('Sold','desc')->count();
+        $inventory_list = DB::table('product')->orderBy('Sold','desc')->orderBy('StartsAt', 'asc')->limit(5)->get();
+
+        $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $top_product = DB::table('product')
+        ->select(DB::raw('sum(OrderQuantity) as number_solded, ProductName, ProductImage, product.ProductId'))
+        ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
+        ->join('order','order.OrderId','=','orderdetail.OrderId')
+        ->where('OrderStatus', '<>','Đã hủy')
+        ->whereDate('OrderDate','>=', $dau_thangtruoc)
+        ->whereDate('OrderDate','<=', $now)
+        ->groupBy('ProductName')
+        ->groupBy('ProductImage')
+        ->groupBy('product.ProductId')
+        ->orderBy('number_solded','desc')->limit(5)->get();
+
+        $this_month_revenue = DB::table('statistic')
+        ->select(DB::raw('sum(Profit) as totalProfit'))
+        ->whereDate('StatisticDate','>=', $dau_thangtruoc)
+        ->whereDate('StatisticDate','<=', $now)->first();
 
         return view('admin.dashboard')
+        ->with('this_month_revenue', $this_month_revenue)
         ->with('number_of_customer', $number_of_customer)
         ->with('number_of_order', $number_of_order)
         ->with('number_of_product', $number_of_product)
-        ->with('inventory_list',  $inventory_list);
+        ->with('inventory_list',  $inventory_list)
+        ->with('top_product',  $top_product);;
     }
 
     public function dashboard(Request $request)
@@ -106,6 +127,7 @@ class AdminController extends Controller
         ->whereDate('StatisticDate','>=', $dauthangnay)
         ->whereDate('StatisticDate','<=', $now)
         ->orderBy('StatisticDate', 'ASC')->get();
+        
         foreach($get as $key => $val)
         {
             $chart_data[] = array(
@@ -114,6 +136,26 @@ class AdminController extends Controller
                     'sales' => $val->Sales,
                     'profit' => $val->Profit,
                     'quantity' => $val->TotalProductQuantity
+                );
+        }
+        echo json_encode($chart_data);
+    }
+
+    public function load_pie_chart(Request $request)
+    {
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $get = DB::table('order')
+        ->select(DB::raw('count(*) as number_order, OrderStatus'))
+        ->whereDate('OrderDate','>=', $dauthangnay)
+        ->whereDate('OrderDate','<=', $now)
+        ->groupBy('OrderStatus')->get();
+
+        foreach($get as $key => $val)
+        {
+            $chart_data[] = array(
+                    'label' => $val->OrderStatus,
+                    'value' => $val->number_order
                 );
         }
         echo json_encode($chart_data);
@@ -170,6 +212,4 @@ class AdminController extends Controller
         }
         echo json_encode($chart_data);
     }
-
-    
 }
