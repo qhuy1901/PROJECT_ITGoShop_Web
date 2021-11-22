@@ -51,6 +51,7 @@
 														</a>
 													</td>
 													<?php
+														$orderId = $order->OrderId;
 														$firstName = $order->FirstName;
 														$lastName = $order->LastName;
 														$fullname = $lastName.$firstName ;
@@ -83,43 +84,41 @@
 																					</h5>
 																					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 																						<span aria-hidden="true">&times;</span>
+																						<?php
+																							$orderId = $order->OrderId;
+																							
+																						?>
 																					</button>
 																				</div>
 																				
 																				<div class="modal-body">
-																					<p class="small">Mã đơn hàng: {{$order->OrderId}} </p>
-																					<form>
-																						<div class="row">
-																						
+																				
+																					<form action="{{url('/update-order/'.$orderId)}}" method="POST">
+																						@csrf
+																						<h1 class="small">Mã đơn hàng: {{$orderId}} </h1>
+																						<div class="row"> 
 																							<div class="col-md-6 pr-0 ">
-																									<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-																										<option selected>{{$order->OrderStatus}}</option>
-																										<option value="2">Đã xác nhận</option>
-																										<option value="3">Đã giao cho đơn vị vận chuyển</option>
-																										<option value="3">Đang giao hàng</option>
-																										<option value="3">Hoàn thành</option>
+																									<select class="form-select form-select-sm"  name="status" aria-label=".form-select-sm example">
+																										<option selected value="Đã xác nhận">Đã xác nhận</option>
+																										<option value="Đã giao cho đơn vị vận chuyển">Đã giao cho đơn vị vận chuyển</option>
+																										<option value="Đang giao hàng">Đang giao hàng</option>
+																										<option value="Hoàn thành">Hoàn thành</option>
 																									</select>
 																							</div>
 																							<div class="col-md-6 pr-0 ">
-																									<select class="form-select form-select-sm" aria-label=".form-select-sm example">
-																										<option selected>{{$order->PaymentStatus}}</option>
-																										<option value="3">Hoàn thành</option>
+																									<select class="form-select form-select-sm" name="payment" aria-label=".form-select-sm example">
+																										<option selected value="Hoàn thành">Hoàn thành</option>
+																										<option value="Chờ thanh toán">Chờ thanh toán</option>
 																									</select>
 																							</div>
-																							<div class="col-md-8 ">
-																									<div class="custom-control custom-checkbox">
-																											<input type="checkbox" class="custom-control-input" id="defaultChecked2" checked>
-																											<label class="custom-control-label" for="defaultChecked2">Gửi email cho khách hàng</label>
-																									</div>
-																							</div>
-																							
+																						</div>
+																						<div class="modal-footer no-bd">
+																							<button type="submit" id="addRowButton" class="btn btn-primary">Lưu</button>
+																							<button type="button" class="btn btn-danger" data-dismiss="modal">Huỷ</button>
 																						</div>
 																					</form>
 																				</div>
-																				<div class="modal-footer no-bd">
-																					<button type="button" id="addRowButton" class="btn btn-primary">Lưu</button>
-																					<button type="button" class="btn btn-danger" data-dismiss="modal">Huỷ</button>
-																				</div>
+																				
 																			</div>
 																		</div>
 																</div>
