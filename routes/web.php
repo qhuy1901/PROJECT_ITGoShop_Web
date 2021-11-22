@@ -22,6 +22,9 @@ use App\Http\Controllers\Cart;
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
 
+Route::post('/search_result', 'App\Http\Controllers\HomeController@search_result');
+
+
 // Customer Login
 Route::get('/login', 'App\Http\Controllers\HomeController@login');
 Route::post('/check-password', 'App\Http\Controllers\HomeController@check_password');
