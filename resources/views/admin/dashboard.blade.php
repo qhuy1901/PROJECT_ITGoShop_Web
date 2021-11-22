@@ -124,7 +124,7 @@
 											</div>
 											<div class="col-7 col-stats">
 												<div class="numbers">
-													<p class="card-category">Đánh giá</p>
+													<p class="card-category">Lượt truy cập</p>
 													<h4 class="card-title">+45K</h4>
 											</div>
 										</div>
@@ -190,7 +190,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12">
+					</div>
+					<div class="row">
+						<div class="col-md-4">
 							<div class="card card-primary">
 								<div class="card-header">
 									<div class="card-title">Doanh Thu</div>
@@ -212,6 +214,34 @@
 									<p class="text-muted">Lượt Truy Cập</p>
 									<div class="pull-in sparkline-fix">
 										<div id="lineChart"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-head-row">
+										<div class="card-title">Biểu đồ doanh thu</div>
+										<div class="card-tools">
+											<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
+												<span class="btn-label">
+													<i class="fa fa-pencil"></i>
+												</span>
+												Export
+											</a>
+											<a href="#" class="btn btn-info btn-border btn-round btn-sm">
+												<span class="btn-label">
+													<i class="fa fa-print"></i>
+												</span>
+												Print
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="chart-container" style="min-height: 375px">
+										Biểu đồ tình trạng đơn hàng hiện nay
 									</div>
 								</div>
 							</div>
@@ -271,7 +301,7 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-							<div class="card">
+							<!-- <div class="card">
 								<div class="card-body">
 									<div class="card-title fw-mediumbold">Suggested People</div>
 									<div class="card-list">
@@ -349,6 +379,55 @@
 										</div>
 									</div>
 								</div>
+							</div> -->
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Sản phẩm tồn kho cần thanh lý</div>
+								</div>
+								<div class="card-body pb-0">
+									<div class="d-flex">
+										<div class="avatar">
+											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+										</div>
+										<div class="flex-1 pt-1 ml-2">
+											<h6 class="fw-bold mb-1">CSS</h6>
+											<small class="text-muted">Cascading Style Sheets</small>
+										</div>
+										<div class="d-flex ml-auto align-items-center">
+											<h3 class="text-info fw-bold">+$17</h3>
+										</div>
+									</div>
+									<div class="separator-dashed"></div>
+									<div class="d-flex">
+										<div class="avatar">
+											<img src="./public/admin/images/logoproduct.svg" alt="..." class="avatar-img rounded-circle">
+										</div>
+										<div class="flex-1 pt-1 ml-2">
+											<h6 class="fw-bold mb-1">J.CO Donuts</h6>
+											<small class="text-muted">The Best Donuts</small>
+										</div>
+										<div class="d-flex ml-auto align-items-center">
+											<h3 class="text-info fw-bold">+$300</h3>
+										</div>
+									</div>
+									<div class="separator-dashed"></div>
+									<div class="d-flex">
+										<div class="avatar">
+											<img src="./public/admin/images/logoproduct3.svg" alt="..." class="avatar-img rounded-circle">
+										</div>
+										<div class="flex-1 pt-1 ml-2">
+											<h6 class="fw-bold mb-1">Ready Pro</h6>
+											<small class="text-muted">Bootstrap 4 Admin Dashboard</small>
+										</div>
+										<div class="d-flex ml-auto align-items-center">
+											<h3 class="text-info fw-bold">+$350</h3>
+										</div>
+									</div>
+									<div class="separator-dashed"></div>
+									<div class="pull-in">
+										<canvas id="topProductsChart"></canvas>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="col-md-4">
@@ -407,7 +486,7 @@
 							<div class="card full-height">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Support Tickets</div>
+										<div class="card-title">Bài viết xem nhiều nhất</div>
 										<div class="card-tools">
 											<ul class="nav nav-pills nav-secondary nav-pills-no-bd nav-sm" id="pills-tab" role="tablist">
 												<li class="nav-item">
