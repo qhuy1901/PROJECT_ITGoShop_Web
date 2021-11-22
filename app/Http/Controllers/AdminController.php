@@ -42,11 +42,13 @@ class AdminController extends Controller
         $number_of_customer = DB::table('user')->where('Admin', 0)->count();
         $number_of_order = DB::table('order')->where('OrderStatus', 'Đã hủy')->count();
         $number_of_product = DB::table('product')->count();
+        $inventory_list = DB::table('product')->orderBy('StartsAt', 'asc')->orderBy('Sold','desc')->count();
 
         return view('admin.dashboard')
         ->with('number_of_customer', $number_of_customer)
         ->with('number_of_order', $number_of_order)
-        ->with('number_of_product', $number_of_product);
+        ->with('number_of_product', $number_of_product)
+        ->with('inventory_list',  $inventory_list);
     }
 
     public function dashboard(Request $request)
