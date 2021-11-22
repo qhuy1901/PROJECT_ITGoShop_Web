@@ -18,7 +18,7 @@
       <div class="ps-products-wrap pb-80">
                               <div class="col-12" data-mh="product-listing" >
                                 <div class="ps-product__columns">
-                                @foreach($search_product as $key => $product)
+                                  @foreach($search_product as $key => $product)
                                   <div class="ps-product__column">
                                     <div class="single-product">
                                       <div class="product-img" style="width: 250px; height: 200px;">
@@ -48,6 +48,20 @@
                                   </div>
                                   
                                   @endforeach
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    @foreach($search_blog as $key => $blog)
+                                      {{csrf_field()}}
+                                      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12  " style="height: 400px; width: 570px">
+                                        <div class="ps-post">
+                                          <div class="ps-post__thumbnail"><a class="ps-post__overlay" ></a><img src="{{URL::to('public/images_upload/blog/'.$blog->Image)}}" alt=""></div>
+                                          <div class="ps-post__content"><a class="ps-post__title" href="{{URL::to('/blog-detail/'.$blog->BlogId)}}">{{$blog->Title}}</a>
+                                            <p class="ps-post__meta"><span>By:<a class="mr-5">{{$blog->Author}}</a></span>-<span class="ml-3">{{$blog->DatePost}}</span></p>
+                                            <p>{{$blog->Summary}}</p><a class="ps-morelink" href="{{URL::to('/blog-detail/'.$blog->BlogId)}}">Đọc tiếp<i class="fa fa-long-arrow-right"></i></a>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      @endforeach
                                 </div>
                                 <div class="ps-product-action">
                                   <div class="ps-pagination">

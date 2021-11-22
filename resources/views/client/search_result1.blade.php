@@ -9,7 +9,7 @@
 					<div class="bread-inner">
 						<ul class="bread-list">
 							<li><a>Trang chủ<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a>Tất cả bài đăng</a></li>
+							<li class="active"><a>Kết quả tìm kiếm</a></li>
 						</ul>
 					</div>
 				</div>
