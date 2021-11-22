@@ -94,7 +94,6 @@
 																				</div>
 																				
 																				<div class="modal-body">
-<<<<<<< HEAD
 																					<!-- <form action="{{url('/update-order/'.$order->OrderId)}}" method="POST">
 																						@csrf -->
 																						<input type="text" id="ma-don-hang-hidden" value="" hidden>
@@ -104,15 +103,6 @@
 																								<b style="margin-bottom:15px">Trạng thái đơn hàng</b>
 																									<select class="form-control" id="trang-thai-don-hang"  name="status" aria-label=".form-select-sm example" style="width:90%;margin-top: 10px">
 																										<option value="Đã xác nhận">Đã xác nhận</option>
-=======
-																					<form action="{{url('/update-order/'.$orderId)}}" method="POST">
-																						@csrf
-																						<h1 class="small">Mã đơn hàng: {{$orderId}} </h1>
-																						<div class="row"> 
-																							<div class="col-md-6 pr-0 ">
-																									<select class="form-select form-select-sm"  name="status" aria-label=".form-select-sm example">
-																										<option selected value="Đã xác nhận">Đã xác nhận</option>
->>>>>>> 94f759c662f8a5aa941e319428c1258d14e3b750
 																										<option value="Đã giao cho đơn vị vận chuyển">Đã giao cho đơn vị vận chuyển</option>
 																										<option value="Đang giao hàng">Đang giao hàng</option>
 																										<option value="Hoàn thành">Hoàn thành</option>
