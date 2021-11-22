@@ -23,7 +23,6 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
 
 Route::post('/search_result', 'App\Http\Controllers\HomeController@search_result');
-Route::post('/search_result', 'App\Http\Controllers\HomeController@search_result1');
 
 
 // Customer Login

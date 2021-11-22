@@ -88,34 +88,19 @@ class HomeController extends Controller
         ->where('ProductName','like','%'.$key.'%')
         ->where('Status', 1)
         ->get();
-
-        return view('client.search_result')
-        ->with('sub_brand_list',  $sub_brand_list )
-        ->with('main_brand_list', $main_brand_list)
-        ->with('product_category_list', $product_category_list)
-        ->with('search_product', $search_product);
-
-
-    }
-    public function search_result1(Request $request)
-    {
-        $key = $request->kw_submit;
-
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
-
         $search_blog = DB::table('blog')
         ->where('Title','like','%'.$key.'%')
         ->where('Status', 1)
         ->get();
 
-        return view('client.search_result1')
+        return view('client.search_result')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list)
+        ->with('search_product', $search_product)
         ->with('search_blog', $search_blog);
 
 
     }
+    
 }

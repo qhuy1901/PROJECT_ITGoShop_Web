@@ -13,6 +13,7 @@ class ProductListingController extends Controller
 {
     public function product_listing($BrandId)
     {
+        
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
