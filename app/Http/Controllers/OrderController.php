@@ -42,15 +42,17 @@ class OrderController extends Controller
     public function update_order(Request $request, $OrderId)
     {
         $this->auth_login();
+        $key1 = $request->status;
+        $key2 = $request->payment;
         $data = array();
-        $data['OrderId'] = $request->OrderId;
-        $data['OrderStatusId'] = $request->Status;
+        $data['OrderStatus'] = $key1;
+        $data['PaymentStatus'] = $key2;
         $data['DateUpdate'] = date("Y-m-d H:i:s");
         
 
-        DB::table('order')->where('OrderId', $OrderId)->update($data);
+        DB::table('order')->where('OrderId',$OrderId)->update($data);
         Session::put('message', 'Cập nhật đơn hàng thành công');
-        return Redirect::to('all_order');
+        return redirect()->back();
     }
     public function order_detail($OrderId)
     {
