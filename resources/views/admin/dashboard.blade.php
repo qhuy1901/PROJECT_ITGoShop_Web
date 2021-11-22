@@ -195,12 +195,12 @@
 						<div class="col-md-4">
 							<div class="card card-primary">
 								<div class="card-header">
-									<div class="card-title">Doanh Thu</div>
-									<div class="card-category">March 25 - April 02</div>
+									<div class="card-title">Doanh thu tháng <?php echo date('m') ?></div>
+									<div class="card-category"><?php echo date('F j, Y',strtotime("first day of this month")).' - '.date('F j, Y'); ?></div>
 								</div>
 								<div class="card-body pb-0">
 									<div class="mb-4 mt-2">
-										<h1>$4,578.58</h1>
+										<h1>{{number_format($this_month_revenue->totalProfit).' '.'₫'}}</h1>
 									</div>
 									<div class="pull-in">
 										<canvas id="dailySalesChart"></canvas>

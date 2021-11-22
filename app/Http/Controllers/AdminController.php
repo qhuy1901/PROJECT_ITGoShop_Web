@@ -58,7 +58,13 @@ class AdminController extends Controller
         ->groupBy('product.ProductId')
         ->orderBy('number_solded','desc')->limit(5)->get();
 
+        $this_month_revenue = DB::table('statistic')
+        ->select(DB::raw('sum(Profit) as totalProfit'))
+        ->whereDate('StatisticDate','>=', $dau_thangtruoc)
+        ->whereDate('StatisticDate','<=', $now)->first();
+
         return view('admin.dashboard')
+        ->with('this_month_revenue', $this_month_revenue)
         ->with('number_of_customer', $number_of_customer)
         ->with('number_of_order', $number_of_order)
         ->with('number_of_product', $number_of_product)
