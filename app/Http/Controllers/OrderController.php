@@ -39,21 +39,30 @@ class OrderController extends Controller
         $manager_order = view('admin.all_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.all_order', $manager_order);
     }
-    public function update_order(Request $request, $OrderId)
-    {
-        $this->auth_login();
-        $key1 = $request->status;
-        $key2 = $request->payment;
-        $data = array();
-        $data['OrderStatus'] = $key1;
-        $data['PaymentStatus'] = $key2;
-        $data['DateUpdate'] = date("Y-m-d H:i:s");
+    // public function update_order(Request $request, $OrderId)
+    // {
+    //     $this->auth_login();
+    //     $key1 = $request->status;
+    //     $key2 = $request->payment;
+    //     $data = array();
+    //     $data['OrderStatus'] = $key1;
+    //     $data['PaymentStatus'] = $key2;
+    //     $data['DateUpdate'] = date("Y-m-d H:i:s"); 
         
 
-        DB::table('order')->where('OrderId',$OrderId)->update($data);
-        Session::put('message', 'Cập nhật đơn hàng thành công');
-        return redirect()->back();
+    //     DB::table('order')->where('OrderId', 20013)->update($data);
+    //     return redirect()->back();
+    // }
+
+    public function update_order_status(Request $request)
+    {
+        $data = array();
+        $data['OrderStatus'] = $request->OrderStatus;
+        $data['PaymentStatus'] = $request->PaymentStatus;
+        $data['DateUpdate'] = date("Y-m-d H:i:s"); 
+        DB::table('order')->where('OrderId', $request->OrderId)->update($data);
     }
+
     public function order_detail($OrderId)
     {
         $this->auth_login();
