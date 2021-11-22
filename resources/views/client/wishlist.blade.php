@@ -16,15 +16,18 @@
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
-    
+  <?php   
+            $userId = Session::get('UserId');
+            $avt = Session::get('UserImage');
+	?>
   <div class="row gutters-sm pt-20 pl-60 pr-60 pb-80">
   <div class="col-md-3 mb-4">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{{URL::to('public/images_upload/user/Huy.jpg')}}" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{URL::to('public/images_upload/user/'.$avt)}}" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-						        <?php $LastName=Session::get('CustomerLastName'); $FirstName=Session::get('CustomerFirstName');?>
+						        <?php $LastName=Session::get('LastName'); $FirstName=Session::get('FirstName');?>
                       <h4>Xin chào, {{$LastName.' '.$FirstName}}!</h4>
                     </div>
                   </div>
@@ -35,14 +38,19 @@
 				  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="mb-0" >
 						<i style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-user-circle-o" class="fa fa-user-circle-o" ></i> 
-						<a href="{{URL::to('/profile')}}" style="color:#333; font-weight:500;">Tài khoản</a>
+						<a href="{{URL::to('/profile/'.$userId)}}" style="color:#333; font-weight:500;">Tài khoản</a>
 					</h4>
                     
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="mb-0" >
 						<i  style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-heart-o"  ></i>
-						<a href="#" style="color:#333; font-weight:500;">Sản phẩm yêu thích</a>
+						<?php
+                $UserId= Session::get('UserId');
+                if($UserId) { ?>
+                  <a href="{{URL::to('/wishlist')}}" style="color:#333; font-weight:500;">Sản phẩm yêu thích</a>
+            <?php } ?>
+      
 					</h4>
                     
                   </li>

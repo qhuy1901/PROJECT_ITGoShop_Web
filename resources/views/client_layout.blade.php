@@ -203,8 +203,8 @@
 			<div class="menu-toggle"><span></span></div>
 			<a class="ps-cart__toggle" href="{{URL::to('/')}}" ><i class="fa fa-bell-o" aria-hidden="true" title="Thông báo"></i></a>
 			<?php
-					$CustomerId= Session::get('CustomerId');
-					if($CustomerId) { ?>
+					$UserId= Session::get('UserId');
+					if($UserId) { ?>
 						
 						<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true" title="Wish List"></i></a>
 
@@ -213,9 +213,9 @@
 				<div class="nut_dropdown"><a href="{{URL::to('/login')}}" class="ps-cart__toggle"><i class="fa fa-user-circle-o"  title="Đăng Nhập"></i></a></div>
 					<div class="noidung_dropdown">
 						<?php
-							$CustomerId= Session::get('CustomerId');
-							if($CustomerId) { ?>
-								<a href="{{URL::to('/profile')}}">Tài khoản</a>
+							$UserId= Session::get('UserId');
+							if($UserId) { ?>
+								<a href="{{URL::to('/profile/'.$UserId)}}">Tài khoản</a>
 								<a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi</a>
 								<a href="{{URL::to('/customer-logout')}}">Kiểm tra bảo hành</a>
 								<a href="{{URL::to('/customer-logout')}}">Đăng xuất</a>

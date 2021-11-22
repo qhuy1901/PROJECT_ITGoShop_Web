@@ -101,7 +101,7 @@ Route::post('/checkout-after-login','App\Http\Controllers\CheckoutController@che
 Route::get('/login-to-checkout','App\Http\Controllers\CheckoutController@login_to_checkout');
 
 //Profile
-Route::get('/profile','App\Http\Controllers\ProfileController@profile');
+Route::get('/profile/{UserId}','App\Http\Controllers\ProfileController@profile');
 
 //WishList
 Route::get('/wishlist','App\Http\Controllers\WishListController@wishlist');
