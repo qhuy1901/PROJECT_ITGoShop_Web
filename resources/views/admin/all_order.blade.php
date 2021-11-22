@@ -92,7 +92,6 @@
 																				</div>
 																				
 																				<div class="modal-body">
-																				
 																					<form action="{{url('/update-order/'.$orderId)}}" method="POST">
 																						@csrf
 																						<h1 class="small">Mã đơn hàng: {{$orderId}} </h1>
