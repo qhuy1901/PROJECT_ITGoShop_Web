@@ -42,7 +42,9 @@ Route::post('/admin-dashboard', 'App\Http\Controllers\AdminController@dashboard'
 Route::post('/filter-by-date', 'App\Http\Controllers\AdminController@filter_by_date');
 Route::post('/load-default-chart', 'App\Http\Controllers\AdminController@load_default_chart');
 Route::post('/filter-by-time-span', 'App\Http\Controllers\AdminController@filter_by_time_span');
-Route::get('/filter-by-time-span', 'App\Http\Controllers\AdminController@filter_by_time_span');
+// Route::get('/filter-by-time-span', 'App\Http\Controllers\AdminController@filter_by_time_span');
+Route::post('/load-pie-chart', 'App\Http\Controllers\AdminController@load_pie_chart');
+// Route::get('/load-pie-chart', 'App\Http\Controllers\AdminController@load_pie_chart');
 
 // Product Category
 Route::get('/add-product-category','App\Http\Controllers\ProductCategoryController@add_product_category');
@@ -92,6 +94,7 @@ Route::get('/add-to-cart','App\Http\Controllers\CartController@add_to_cart');
 Route::get('/update-quantity','App\Http\Controllers\CartController@update_quantity');
 Route::post('/load-cart','App\Http\Controllers\CartController@load_cart');
 Route::get('/load-cart','App\Http\Controllers\CartController@load_cart');
+
 // Checkout
 Route::get('/checkout','App\Http\Controllers\CheckoutController@checkout');
 Route::post('/checkout-after-login','App\Http\Controllers\CheckoutController@checkout_after_login');

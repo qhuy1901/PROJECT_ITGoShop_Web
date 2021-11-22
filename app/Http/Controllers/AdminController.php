@@ -121,6 +121,7 @@ class AdminController extends Controller
         ->whereDate('StatisticDate','>=', $dauthangnay)
         ->whereDate('StatisticDate','<=', $now)
         ->orderBy('StatisticDate', 'ASC')->get();
+        
         foreach($get as $key => $val)
         {
             $chart_data[] = array(
@@ -129,6 +130,26 @@ class AdminController extends Controller
                     'sales' => $val->Sales,
                     'profit' => $val->Profit,
                     'quantity' => $val->TotalProductQuantity
+                );
+        }
+        echo json_encode($chart_data);
+    }
+
+    public function load_pie_chart(Request $request)
+    {
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $get = DB::table('order')
+        ->select(DB::raw('count(*) as number_order, OrderStatus'))
+        ->whereDate('OrderDate','>=', $dauthangnay)
+        ->whereDate('OrderDate','<=', $now)
+        ->groupBy('OrderStatus')->get();
+
+        foreach($get as $key => $val)
+        {
+            $chart_data[] = array(
+                    'label' => $val->OrderStatus,
+                    'value' => $val->number_order
                 );
         }
         echo json_encode($chart_data);
@@ -185,6 +206,4 @@ class AdminController extends Controller
         }
         echo json_encode($chart_data);
     }
-
-    
 }

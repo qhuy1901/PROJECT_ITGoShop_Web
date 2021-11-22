@@ -222,7 +222,7 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Biểu đồ doanh thu</div>
+										<div class="card-title">Thống kê đơn hàng</div>
 										<div class="card-tools">
 											<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
 												<span class="btn-label">
@@ -241,7 +241,10 @@
 								</div>
 								<div class="card-body">
 									<div class="chart-container" style="min-height: 375px">
-										Biểu đồ tình trạng đơn hàng hiện nay
+									<form>
+									@csrf
+										<div id="pieChart" style="height: 250px;"></div>
+									</form>
 									</div>
 								</div>
 							</div>
@@ -525,13 +528,48 @@
 					</div>
 				</div>
 			</div>
-			<a href="{{url('/filter-by-time-span')}}">HiHI</a>
+			<a href="{{url('/load-pie-chart')}}">HiHI</a>
 <script>
 	$(document).ready(function(){
-		var today = new Date();
-		$('#tu-ngay').attr('max', today);
-
+		load_pie_chart();
 		load_default_chart();
+		// var today = new Date();
+		// $('#tu-ngay').attr('max', today);
+		var pie_chart = new Morris.Donut({
+			element: 'pieChart',
+			resize: true,
+			colors: ['#819C79', '#fc8710', '#FF6541', '#A4ADD3', '#766B56'],
+			data: [
+				{ label: 'Đã tiếp nhận', value: 20 },
+				{ label: 'Đang vận chuyển', value: 10 },
+				{ label: 'Đã hủy', value: 5 },
+				{ label: 'Đã xác nhận', value: 5 },
+				{ label: 'Hoàn thành', value: 20 }
+			],
+		});
+		setInterval(load_pie_chart, 3000);
+
+		function load_pie_chart()
+		{
+			var _token = $('input[name="_token"]').val();
+			$.ajax({
+					url:"{{url('/load-pie-chart')}}",
+					method: "POST",
+					dataType:"json",
+					data:{ _token: _token},
+					success:function(data)
+					{
+						pie_chart.setData(data);
+					},
+					error:function(data)
+					{
+						swal({
+						text: "Không tìm thấy dữ liệu",
+						icon: "error",
+						});
+					}
+				});
+		}
 
 		function load_default_chart()
 		{
