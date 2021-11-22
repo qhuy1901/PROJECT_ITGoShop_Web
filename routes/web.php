@@ -36,8 +36,9 @@ Route::get('/dashboard', 'App\Http\Controllers\AdminController@show_dashboard');
 Route::get('/logout','App\Http\Controllers\AdminController@logout');
 Route::post('/admin-dashboard', 'App\Http\Controllers\AdminController@dashboard');
 Route::post('/filter-by-date', 'App\Http\Controllers\AdminController@filter_by_date');
-Route::get('/filter-by-date', 'App\Http\Controllers\AdminController@filter_by_date');
-
+Route::post('/load-default-chart', 'App\Http\Controllers\AdminController@load_default_chart');
+Route::post('/filter-by-time-span', 'App\Http\Controllers\AdminController@filter_by_time_span');
+Route::get('/filter-by-time-span', 'App\Http\Controllers\AdminController@filter_by_time_span');
 
 // Product Category
 Route::get('/add-product-category','App\Http\Controllers\ProductCategoryController@add_product_category');
