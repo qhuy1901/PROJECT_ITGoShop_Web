@@ -46,6 +46,7 @@
                                       </div>
                                     </div>
                                   </div>
+                                  
                                   @endforeach
                                 </div>
                                 <div class="ps-product-action">
