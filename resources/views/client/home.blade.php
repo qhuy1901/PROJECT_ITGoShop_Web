@@ -111,7 +111,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <h2>Giảm giá sốc</h2>
+                    <h2 style="text-transform:none;">Giảm giá sốc</h2>
                 </div>
             </div>
         </div>
@@ -142,9 +142,9 @@
                         <div class="product-content">
                             <h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
                             <div class="product-price">
-                                <span style="color:red; font-size:17px"><b>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</b></span>
+                                <span style="color:red; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
                                 <br>
-                                <span class="old">{{number_format($product->Price).' '.'₫'}}</span>
+                                <span class="old">{{number_format($product->Price - ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
                             </div>
                         </div>
                     </div>
