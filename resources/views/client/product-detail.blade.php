@@ -58,7 +58,7 @@
 										</div>
 									</div>
 									<div class="ps-product__info" style="padding-left: 0px;">
-												<form action="{{URL::to('/save-cart')}}" method="POST">
+												<form action="{{URL::to('/save-cart')}}" method="POST" style="max-width:620px;">
 													{{ csrf_field() }}
 													<h2 class="blog-title">{{$product_detail->ProductName}}</h2>
 													
