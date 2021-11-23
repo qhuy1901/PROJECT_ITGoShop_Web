@@ -117,7 +117,7 @@
 	  <nav  class="navigation">
 		<div class="container-fluid" >
 		  <div class="navigation__column left">
-			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="{{URL::to('/public/client/Images/logo.png')}}" alt=""></a></div>
+			<div class="header__logo pl-40"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="{{URL::to('/public/client/Images/logo.png')}}" alt=""></a></div>
 			<input type="text" id="input-customer-id" value="{{Session::get('CustomerId')}}" hidden><!--Đừng xóa cái này  -->
 			<input type="text" id="input-admin-id" value="{{Session::get('CustomerId')}}" hidden>
 		</div>

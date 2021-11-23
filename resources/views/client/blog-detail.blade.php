@@ -20,7 +20,7 @@
 									<div class="blog-detail">
 										<h2 class="blog-title" style="text-align: center;">{{$blog->Title}}</h2>
 										<div class="blog-meta">
-											<span class="author"><a><i class="fa fa-user"></i>{{$blog->Author}}</a><a ><i class="fa fa-calendar"></i>{{$blog->DatePost}}</a><a ></a></span>
+											<span class="author"><a><i class="fa fa-user"></i>{{$blog->Author}}</a><a ><i class="fa fa-calendar"></i>{{$blog->DatePost}}</a><a><i class="ti-eye"></i>{{$blog->View}}</a></span>
 										</div>
 										<div class="content">
 											<p>{!!$blog->Content!!}</p>
