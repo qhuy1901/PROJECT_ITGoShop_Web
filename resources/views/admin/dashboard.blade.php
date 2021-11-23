@@ -126,7 +126,7 @@
 											<div class="col-7 col-stats">
 												<div class="numbers">
 													<p class="card-category">Lượt truy cập</p>
-													<h4 class="card-title">+45K</h4>
+													<h4 class="card-title">{{$login_namnay}}</h4>
 											</div>
 										</div>
 									</div>
