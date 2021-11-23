@@ -198,3 +198,10 @@ Route::get('/active_campaign','App\Http\Controllers\CampaignController@active_ca
 Route::get('/unactive_campaign','App\Http\Controllers\CampaignController@unactive_campaign');
 Route::get('/delete_campaign','App\Http\Controllers\CampaignController@delete_campaign');
 
+// Shipping
+Route::get('/add-shipmethod','App\Http\Controllers\ShipMethodController@add_shipmethod');
+Route::post('/save-shipmethod','App\Http\Controllers\ShipMethodController@save_shipmethod');
+Route::get('/view-shipmethod','App\Http\Controllers\ShipMethodController@view_shipmethod');
+Route::get('/unactive-shipmethod','App\Http\Controllers\ShipMethodController@unactive_shipmethod');
+Route::get('/active-shipmethod','App\Http\Controllers\ShipMethodController@active_shipmethod');
+Route::get('/delete-shipmethod','App\Http\Controllers\ShipMethodController@delete_shipmethod');

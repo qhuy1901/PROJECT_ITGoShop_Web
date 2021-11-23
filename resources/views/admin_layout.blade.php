@@ -344,7 +344,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
+								<i class="fab fa-apple"></i>
 								<p>Thương hiệu</p>
 								<span class="caret"></span>
 							</a>
@@ -365,7 +365,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#forms">
-								<i class="fas fa-pen-square"></i>
+								<i class="fas fa-truck-loading"></i>
 								<p>Sản phẩm</p>
 								<span class="caret"></span>
 							</a>
@@ -414,8 +414,8 @@
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
-								<p>Quản lý Banner slider</p>
+								<i class="fas fa-flag"></i>
+								<p>Banner slider</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="tables">
@@ -436,13 +436,13 @@
 						
 						<li class="nav-item">
 							<a href="{{URL::to('/view-comment')}}">
-								<i class="fa fa-shopping-cart"></i>
+								<i class="fas fa-comments"></i>
 								<p>Bình luận</p>
 							</a>							
 						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
+								<i class="fas fa-pen-square"></i>
 								<p>Quản lý Campaign</p>
 								<span class="caret"></span>
 							</a>
@@ -461,50 +461,35 @@
 								</ul>
 							</div>
 						</li>
+						
 						<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
-								<p>Maps</p>
+							<a data-toggle="collapse" href="#vanchuyen">
+								<i class="fas fa-shipping-fast"></i>
+								<p>Vận chuyển</p>
 								<span class="caret"></span>
 							</a>
-							<div class="collapse" id="maps">
+							<div class="collapse" id="vanchuyen">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="maps/jqvmap.html">
-											<span class="sub-item">JQVMap</span>
+										<a href="{{URL::to('/add-shipmethod')}}">
+											<span class="sub-item">Thêm phương thức vận chuyển mới</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{URL::to('/view-shipmethod')}}">
+											<span class="sub-item">Xem các phương thức vận chuyển</span>
 										</a>
 									</li>
 								</ul>
 							</div>
 						</li>
-						<li class="nav-item">
-							<a data-toggle="collapse" href="#charts">
-								<i class="far fa-chart-bar"></i>
-								<p>Charts</p>
-								<span class="caret"></span>
-							</a>
-							<div class="collapse" id="charts">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="charts/charts.html">
-											<span class="sub-item">Chart Js</span>
-										</a>
-									</li>
-									<li>
-										<a href="charts/sparkline.html">
-											<span class="sub-item">Sparkline</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li class="nav-item">
+						<!-- <li class="nav-item">
 							<a href="widgets.html">
 								<i class="fas fa-desktop"></i>
 								<p>Widgets</p>
 								<span class="badge badge-success">4</span>
 							</a>
-						</li>
+						</li> -->
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#submenu">
 								<i class="fas fa-bars"></i>
