@@ -144,7 +144,7 @@
                             <div class="product-price">
                                 <span style="color:red; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
                                 <br>
-                                <span class="old">{{number_format($product->Price - ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
+                                <span class="old">{{number_format($product->Price + ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
                             </div>
                         </div>
                     </div>

@@ -68,6 +68,7 @@ class ProductController extends Controller
         $data['status'] = $request->Status;
         $data['StartsAt'] = date("Y-m-d H:i:s");
         $data['CreatedAt'] = date("Y-m-d H:i:s");
+        $data['Cost'] = $request->Cost;
 
         $get_image = $request->file('ProductImage');
         if($get_image == true)

@@ -158,7 +158,7 @@
 					</div>
 				</div>
 				<?php $status = $order_info->OrderStatus ?>
-				<?php if($status != "Đã hủy" && $status != "Đang giao hàng" && $status != "Đã giao cho đơn vị vận chuyển"){?>
+				<?php if($status != "Đã hủy" && $status != "Đang giao hàng" && $status != "Đã giao cho đơn vị vận chuyển" && $status != "Giao hàng thành công"){?>
 				<button type="button" style="height:40px;width:150px;float:right;font-size: 14px;" class="btn btn-warning">
 					<a href="javascript:void(0)" style="text-decoration:none; color: white;" class="button-huy-don-hang">Hủy đơn hàng</a> 
 				</button>

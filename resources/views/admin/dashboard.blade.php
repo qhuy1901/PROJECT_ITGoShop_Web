@@ -464,7 +464,7 @@
 						<div class="col-md-4">
 							<div class="card" style="height:510px">
 								<div class="card-header">
-									<div class="card-title"><i class="fas fa-warehouse" style="color:green;"></i> Sản phẩm tồn kho cần thanh lý</div>
+									<div class="card-title"><i class="fas fa-warehouse" style="color:green;"></i> Sản phẩm tồn kho</div>
 								</div>
 								<div class="card-body pb-0">
 									@foreach($inventory_list as $key => $item)
