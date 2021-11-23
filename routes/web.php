@@ -43,7 +43,7 @@ Route::post('/load-default-chart', 'App\Http\Controllers\AdminController@load_de
 Route::post('/filter-by-time-span', 'App\Http\Controllers\AdminController@filter_by_time_span');
 // Route::get('/filter-by-time-span', 'App\Http\Controllers\AdminController@filter_by_time_span');
 Route::post('/load-pie-chart', 'App\Http\Controllers\AdminController@load_pie_chart');
-// Route::get('/load-pie-chart', 'App\Http\Controllers\AdminController@load_pie_chart');
+Route::post('/load-access-chart', 'App\Http\Controllers\AdminController@load_access_chart');
 
 // Product Category
 Route::get('/add-product-category','App\Http\Controllers\ProductCategoryController@add_product_category');

@@ -57,6 +57,11 @@ class HomeController extends Controller
             Session::put('CustomerLastName', $result->LastName);
             Session::put('CustomerImage', $result->UserImage);
             Session::put('CustomerId', $result->UserId);
+
+            $data = array();
+            $data['UserId'] = $result->UserId;
+            $data['LoginTime'] = date("H:i:s");
+            DB::table('loginhistory')->insert($data);
             return Redirect::to('/home');
         } 
         else{

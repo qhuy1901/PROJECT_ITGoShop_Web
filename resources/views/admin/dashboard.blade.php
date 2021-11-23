@@ -202,18 +202,28 @@
 									<div class="mb-4 mt-2">
 										<h1>{{number_format($this_month_revenue->totalProfit).' '.'₫'}}</h1>
 									</div>
-									<div class="pull-in">
+									<!-- <div class="pull-in">
 										<canvas id="dailySalesChart"></canvas>
-									</div>
+									</div> -->
 								</div>
 							</div>
 							<div class="card">
 								<div class="card-body pb-0">
 									<div class="h1 fw-bold float-right text-warning">(+7%)</div>
-									<h2 class="mb-2">213</h2>
-									<p class="text-muted">Lượt Truy Cập</p>
+									<h2 class="mb-2">{{$order_homnay}}</h2>
+									<p class="text-muted">Số đơn hàng mới hôm nay</p>
 									<div class="pull-in sparkline-fix">
-										<div id="lineChart"></div>
+										<!-- <div id="lineChart"></div> -->
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-body pb-0">
+									<div class="h1 fw-bold float-right text-warning">(+30%)</div>
+									<h2 class="mb-2">{{$login_today}}</h2>
+									<p class="text-muted">Lượt truy cập hôm nay</p>
+									<div class="pull-in sparkline-fix">
+										<!-- <div id="lineChart"></div> -->
 									</div>
 								</div>
 							</div>
@@ -222,7 +232,8 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="card-head-row">
-										<div class="card-title">Thống kê đơn hàng</div>
+										<div class="card-title">Thống kê tình trạng đơn hàng<p class="text-muted">30 ngày gần đây</p></div>
+										
 										<div class="card-tools">
 											<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
 												<span class="btn-label">
@@ -237,10 +248,11 @@
 												Print
 											</a>
 										</div>
+										
 									</div>
 								</div>
 								<div class="card-body">
-									<div class="chart-container" style="min-height: 375px">
+									<div class="chart-container" >
 									<form>
 									@csrf
 										<div id="pieChart" style="height: 250px;"></div>
@@ -258,7 +270,8 @@
 									<?php $last_month = date("m",strtotime("-1 month"));
 										$now_month = date('m');
 									?>
-									<div class="card-title">Top sản phẩm bán chạy tháng {{$last_month}} và tháng {{$now_month}}</div>
+									<div class="card-title"><i class="fas fa-fire" style="color:red;"></i> Top sản phẩm bán chạy</div>
+									<small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small>
 								</div>
 								<div class="card-body pb-0">
 									@foreach($top_product as $key => $item)
@@ -361,7 +374,35 @@
 							</div> -->
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Sản phẩm tồn kho cần thanh lý</div>
+									<div class="card-title"><i class="fas fa-eye text-success"></i> Sản phẩm được xem nhiều nhất</div>
+									<small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small>
+								</div>
+								<div class="card-body pb-0">
+									@foreach($top_product_view as $key => $item)
+									<div class="d-flex">
+										<div class="avatar">
+											<img src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="..." class="avatar-img rounded border">
+										</div>
+										<div class="flex-1 pt-1 ml-2">
+											<h6 class="fw-bold mb-1"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}">{{$item->ProductName}}</a></h6>
+											<small class="text-muted">Ngày mở bán: {{date("d/m/Y", strtotime($item->StartsAt))}}</small>
+										</div>
+										<div class="d-flex ml-auto align-items-center">
+											<h3 class="text-info fw-bold">{{$item->View}}</h3>
+										</div>
+									</div>
+									<div class="separator-dashed"></div>
+									@endforeach
+									<!-- <div class="pull-in">
+										<canvas id="topProductsChart"></canvas>
+									</div> -->
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title"><i class="fas fa-warehouse" style="color:green;"></i> Sản phẩm tồn kho cần thanh lý</div>
 								</div>
 								<div class="card-body pb-0">
 									@foreach($inventory_list as $key => $item)
@@ -385,7 +426,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-4">
+						<!-- <div class="col-md-4">
 							<div class="card card-primary bg-primary-gradient">
 								<div class="card-body">
 									<h4 class="mt-3 b-b1 pb-2 mb-4 fw-bold">Active user right now</h4>
@@ -399,10 +440,10 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 					<div class="row">
-						<div class="col-md-6">
+						<!-- <div class="col-md-6">
 							<div class="card full-height">
 								<div class="card-header">
 									<div class="card-title">Feed Activity</div>
@@ -436,8 +477,8 @@
 									</ol>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6">
+						</div> -->
+						<!-- <div class="col-md-6">
 							<div class="card full-height">
 								<div class="card-header">
 									<div class="card-head-row">
@@ -524,17 +565,161 @@
 									</div>
 								</div>
 							</div>
+						</div> -->
+						<div class="col-md-4">
+						<div class="card">
+								<div class="card-header">
+									<div class="card-head-row">
+										<h4 class="card-title">Thống kê lượt truy cập</h4>
+										<div class="card-tools">
+											<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-angle-down"></span></button>
+											<button class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card"><span class="fa fa-sync-alt"></span></button>
+											<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-times"></span></button>
+										</div>
+									</div>
+									<!-- <p class="card-category">
+									Map of the distribution of users around the world</p> -->
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive table-hover table-sales">
+												<table class="table">
+													<thead>
+														<tr>
+															<th>Thời điểm</th>
+															<th>Tổng lượng truy cập</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td class="text-left">
+																Đang online
+															</td>
+															<td class="text-right">
+																1
+															</td>
+														</tr>
+														<tr>
+															<td class="text-left">
+																Hôm nay
+															</td>
+															<td class="text-right">
+																{{$login_today}} lượt truy cập
+															</td>
+														</tr>
+														<tr>
+															<td class="text-left"">
+																Tháng nay
+															</td>
+															<td class="text-right">
+																{{$login_thangnay}} lượt truy cập
+															</td>
+														</tr>
+														<tr>
+															<td class="text-left">
+																Tháng trước
+															</td>
+															<td class="text-right">
+																{{$login_thangtruoc}} lượt truy cập
+															</td>
+														</tr>
+														<tr>
+															<td class="text-left">
+																Một năm qua
+															</td>
+															<td class="text-right">
+																{{$login_namnay}} lượt truy cập
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8">
+						<div class="card" style="height:490px">
+								<div class="card-header">
+									<div class="card-head-row">
+										<div class="card-title">Lượt truy cập<p class="text-muted">7 ngày gần đây</p></div>
+										
+										<div class="card-tools">
+											<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
+												<span class="btn-label">
+													<i class="fa fa-pencil"></i>
+												</span>
+												Export
+											</a>
+											<a href="#" class="btn btn-info btn-border btn-round btn-sm">
+												<span class="btn-label">
+													<i class="fa fa-print"></i>
+												</span>
+												Print
+											</a>
+										</div>
+										
+									</div>
+								</div>
+								<div class="card-body">
+									<h4 class="mb-1 fw-bold"></h4>
+									<!-- <div id="task-complete" class="chart-circle mt-4 mb-3"></div> -->
+									<form>
+									@csrf
+										<div id="lineChart" style="height: 250px;"></div>
+									</form>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<a href="{{url('/load-pie-chart')}}">HiHI</a>
+			<!-- <a href="{{url('/load-pie-chart')}}">HiHI</a> -->
 <script>
 	$(document).ready(function(){
 		load_pie_chart();
 		load_default_chart();
+		load_access_chart();
 		// var today = new Date();
 		// $('#tu-ngay').attr('max', today);
+		var line_chart = new Morris.Line({
+			element: 'lineChart',
+			lineColors: ['#819C79', '#fc8710', '#FF6541', '#A4ADD3', '#766B56'],
+			pointFillColors:['#ffffff'],
+			pointStrokeColors:['black'],
+			fillOpacity: 0.6,
+			hideHover: 'auto',
+			parseTime: false,
+			xkey: 'period',
+			ykeys:['number_access'],
+			behaveLikeLine: true,
+			labels: ['Lượng truy cập']
+		});
+		function load_access_chart()
+		{
+			var _token = $('input[name="_token"]').val();
+			$.ajax({
+					url:"{{url('/load-access-chart')}}",
+					method: "POST",
+					dataType:"json",
+					data:{ _token: _token},
+					success:function(data)
+					{
+						line_chart.setData(data);
+					},
+					error:function(data)
+					{
+						swal({
+						text: "Không tìm thấy dữ liệu",
+						icon: "error",
+						});
+					}
+				});
+		}
+
 		var pie_chart = new Morris.Donut({
 			element: 'pieChart',
 			resize: true,
@@ -619,7 +804,7 @@
 			
 		});
 
-		var chart = new Morris.Line({
+		var chart = new Morris.Bar({
 			element: 'bieuDoDoanhThu',
 			lineColors: ['#819C79', '#fc8710', '#FF6541', '#A4ADD3', '#766B56'],
 			pointFillColors:['#ffffff'],

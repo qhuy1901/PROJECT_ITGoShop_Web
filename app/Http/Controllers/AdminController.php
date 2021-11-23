@@ -58,10 +58,38 @@ class AdminController extends Controller
         ->groupBy('product.ProductId')
         ->orderBy('number_solded','desc')->limit(5)->get();
 
+        $top_product_view = DB::table('product')
+        // ->whereDate('OrderDate','>=', $dau_thangtruoc)
+        // ->whereDate('OrderDate','<=', $now)
+        ->orderBy('View','desc')->limit(5)->get();
+
         $this_month_revenue = DB::table('statistic')
         ->select(DB::raw('sum(Profit) as totalProfit'))
         ->whereDate('StatisticDate','>=', $dau_thangtruoc)
         ->whereDate('StatisticDate','<=', $now)->first();
+
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
+        $cuoi_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->endOfMonth()->toDateString();
+        
+        //$sub7days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(7)->toDateString();
+        $sub365days = Carbon::now('Asia/Ho_Chi_Minh')->subday(365)->toDateString();
+
+        $login_today = DB::table('loginhistory')
+        ->whereDate('LoginDate','<=', $now)->count();
+        $login_thangnay = DB::table('loginhistory')
+        ->whereDate('LoginDate','>=', $dauthangnay)
+        ->whereDate('LoginDate','<=', $now)->count();
+        $login_thangtruoc = DB::table('loginhistory')
+        ->whereDate('LoginDate','>=', $dau_thangtruoc)
+        ->whereDate('LoginDate','<=', $cuoi_thangtruoc)->count();
+        $login_namnay = DB::table('loginhistory')
+        ->whereDate('LoginDate','>=', $sub365days)
+        ->whereDate('LoginDate','<=', $now)->count();
+
+        $order_homnay = DB::table('order')
+        ->whereDate('OrderDate', $now)->count();
+
 
         return view('admin.dashboard')
         ->with('this_month_revenue', $this_month_revenue)
@@ -69,7 +97,13 @@ class AdminController extends Controller
         ->with('number_of_order', $number_of_order)
         ->with('number_of_product', $number_of_product)
         ->with('inventory_list',  $inventory_list)
-        ->with('top_product',  $top_product);;
+        ->with('top_product',  $top_product)
+        ->with('top_product_view',  $top_product_view)
+        ->with('login_today',  $login_today)
+        ->with('login_thangnay',  $login_thangnay)
+        ->with('login_thangtruoc',  $login_thangtruoc)
+        ->with('login_namnay',  $login_namnay)
+        ->with('order_homnay',  $order_homnay);
     }
 
     public function dashboard(Request $request)
@@ -84,6 +118,10 @@ class AdminController extends Controller
             Session::put('LastName', $result->LastName);
             Session::put('UserImage', $result->UserImage);
             Session::put('UserId', $result->UserId);
+            $data = array();
+            $data['UserId'] = $result->UserId;
+            $data['LoginTime'] = date("H:i:s");
+            DB::table('loginhistory')->insert($data);
             return Redirect::to('/dashboard');
         } 
         else{
@@ -143,11 +181,11 @@ class AdminController extends Controller
 
     public function load_pie_chart(Request $request)
     {
-        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $sub30days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(30)->toDateString();
         $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
         $get = DB::table('order')
         ->select(DB::raw('count(*) as number_order, OrderStatus'))
-        ->whereDate('OrderDate','>=', $dauthangnay)
+        ->whereDate('OrderDate','>=', $sub30days)
         ->whereDate('OrderDate','<=', $now)
         ->groupBy('OrderStatus')->get();
 
@@ -156,6 +194,26 @@ class AdminController extends Controller
             $chart_data[] = array(
                     'label' => $val->OrderStatus,
                     'value' => $val->number_order
+                );
+        }
+        echo json_encode($chart_data);
+    }
+
+    public function load_access_chart(Request $request)
+    {
+        $sub7days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(7)->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $get = DB::table('loginhistory')
+        ->select(DB::raw('count(*) as number_access, LoginDate'))
+        ->whereDate('LoginDate','>=', $sub7days)
+        ->whereDate('LoginDate','<=', $now)
+        ->groupBy('LoginDate')->get();
+
+        foreach($get as $key => $val)
+        {
+            $chart_data[] = array(
+                    'period' => $val->LoginDate,
+                    'number_access' => $val->number_access
                 );
         }
         echo json_encode($chart_data);

@@ -142,6 +142,10 @@ class BlogController extends Controller
         $related_blog = DB::table('blog')
         ->whereNotIn('blog.BlogId', [$BlogId])->limit(5)->get();
 
+        // Cập nhật lượt xem blog
+        $view = DB::table('blog')->where('BlogId', $BlogId)->first();
+        DB::table('blog')->where('BlogId', $BlogId)->update(['View'=> ($view->View + 1)]); 
+
         return view('client.blog-detail') 
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)

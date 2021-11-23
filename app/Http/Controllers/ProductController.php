@@ -179,6 +179,10 @@ class ProductController extends Controller
         ->where('Admin', '=', 1)
         ->where('GallaryStatus', '=', 1)->get(); // chỉ hiện thị ảnh Admin nhập
 
+        // Cập nhật lượt xem sản phẩm
+        $view = DB::table('product')->where('ProductId', $ProductId)->first();
+        DB::table('product')->where('ProductId', $ProductId)->update(['View'=> ($view->View + 1)]); 
+
         return view('client.product-detail')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
