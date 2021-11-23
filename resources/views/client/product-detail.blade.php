@@ -212,7 +212,7 @@
 												</a>
 												<div class="button-head">
 													<div class="product-action">
-														<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+														<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product_detail->View}}</span></a>
 														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
 													</div>
 													<div class="product-action-2">
