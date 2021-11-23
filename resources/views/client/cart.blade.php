@@ -346,27 +346,29 @@
 			$(".input-number").on('input', function(){
 				var newQuantity = $(this).val();
 				var rowId = $(this).attr('id');
-				$.ajax({
-					url: '{{URL::to('/update-quantity')}}',
-					methed:"GET",
-					data:{rowId: rowId, newQuantity: newQuantity},
-					// success:funtion(data)
-					// {
-					// 	load_cart();
-					// },
-					error:function(data)
-					{
-						alert('Lỗi');
-					}
-				});
+				if(newQuantity != 0)
+				{
+
+					$.ajax({
+						url: '{{URL::to('/update-quantity')}}',
+						methed:"GET",
+						data:{rowId: rowId, newQuantity: newQuantity},
+						// success:funtion(data)
+						// {
+						// 	load_cart();
+						// },
+						error:function(data)
+						{
+							alert('Lỗi nhập');
+						}
+					});
+				}
 				var $parent = $(this).parents('tr');
 				var soluong = $(this).val();
-                var dongia = $parent.find('.price').attr('data-value');
-				 //var thanhtien = "\{\{number_format(" + soluong * dongia + ").' đ'\}\}";
-				 var thanhtien = numberWithCommas(soluong * dongia) +' đ';
-				//var thanhtien = "\<\?php echo" + soluong * dongia + "\?\>";
-				//"\<\?php echo '"+ soluong * dongia +"' \?\>"
+				var dongia = $parent.find('.price').attr('data-value');
+				var thanhtien = numberWithCommas(soluong * dongia) +' đ';
 				$parent.find('.thanh-tien').html(thanhtien);
+				
 			}),
 
 			$("button[data-type='plus'], button[data-type='minus']").click( function()
@@ -383,16 +385,16 @@
 					success:function(data)
 					{
 						load_cart();
-						var numberProduct = Number($('#so-luong-sp-gio-hang').text());
-						if(thisButtonType == 'plus')
-							$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) + 1);
-						else
-						{
-							if(numberProduct > 1)
-							{
-								$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - 1);
-							}
-						}
+						// var numberProduct = Number($('#so-luong-sp-gio-hang').text());
+						// if(thisButtonType == 'plus')
+						// 	$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) + 1);
+						// else
+						// {
+						// 	if(numberProduct > 1)
+						// 	{
+						// 		$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - 1);
+						// 	}
+						// }
 					},
 					error:function(data)
 					{

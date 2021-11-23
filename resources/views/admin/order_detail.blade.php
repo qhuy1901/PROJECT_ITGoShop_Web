@@ -99,7 +99,7 @@
                                       <div class="left">
                                           <img src="{{URL::to('public/images_upload/product/'.$orderdetail->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item">
                                       </div>
-                                      <div style="padding-left: 15px; padding-right: 7px;" class="info" >  {{$orderdetail->ProductName}}  </div>
+                                      <div style="padding-left: 15px; padding-right: 7px;" class="info" > <a href="{{URL::to('/product-detail/'.$orderdetail->ProductId"></a> {{$orderdetail->ProductName}}  </div>
                                       
                                   </a>
                                 </td>
