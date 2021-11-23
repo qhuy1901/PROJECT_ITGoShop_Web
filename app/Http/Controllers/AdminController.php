@@ -47,7 +47,7 @@ class AdminController extends Controller
         $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
         $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
         $top_product = DB::table('product')
-        ->select(DB::raw('sum(OrderQuantity) as number_solded, ProductName, ProductImage, product.ProductId'))
+        ->select(DB::raw('sum(OrderQuantity) as number_solded, ProductName, ProductImage, product.ProductId, product.StartsAt, product.Quantity, product.Cost, product.Price'))
         ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
         ->join('order','order.OrderId','=','orderdetail.OrderId')
         ->where('OrderStatus', '<>','Đã hủy')
@@ -56,7 +56,14 @@ class AdminController extends Controller
         ->groupBy('ProductName')
         ->groupBy('ProductImage')
         ->groupBy('product.ProductId')
+        ->groupBy('product.StartsAt')
+        ->groupBy('product.Quantity')
+        ->groupBy('product.Cost')
+        ->groupBy('product.Price')
         ->orderBy('number_solded','desc')->limit(5)->get();
+
+        $top_blog_view = DB::table('blog')
+        ->orderBy('View','desc')->limit(5)->get();
 
         $top_product_view = DB::table('product')
         // ->whereDate('OrderDate','>=', $dau_thangtruoc)
@@ -90,7 +97,7 @@ class AdminController extends Controller
         $order_homnay = DB::table('order')
         ->whereDate('OrderDate', $now)->count();
 
-
+        
         return view('admin.dashboard')
         ->with('this_month_revenue', $this_month_revenue)
         ->with('number_of_customer', $number_of_customer)
@@ -103,7 +110,8 @@ class AdminController extends Controller
         ->with('login_thangnay',  $login_thangnay)
         ->with('login_thangtruoc',  $login_thangtruoc)
         ->with('login_namnay',  $login_namnay)
-        ->with('order_homnay',  $order_homnay);
+        ->with('order_homnay',  $order_homnay)
+        ->with('top_blog_view',  $top_blog_view);
     }
 
     public function dashboard(Request $request)
@@ -148,10 +156,10 @@ class AdminController extends Controller
         {
             $chart_data[] = array(
                 'period' => date("d-m-Y", strtotime($val->StatisticDate)),
-                'order' => $val->TotalOrder,
+                //'order' => $val->TotalOrder,
                 'sales' => $val->Sales,
                 'profit' => $val->Profit,
-                'quantity' => $val->TotalProductQuantity
+                //'quantity' => $val->TotalProductQuantity
             );
         }
         echo json_encode($chart_data);
@@ -170,10 +178,10 @@ class AdminController extends Controller
         {
             $chart_data[] = array(
                     'period' => date("d-m-Y", strtotime($val->StatisticDate)),
-                    'order' => $val->TotalOrder,
+                    //'order' => $val->TotalOrder,
                     'sales' => $val->Sales,
                     'profit' => $val->Profit,
-                    'quantity' => $val->TotalProductQuantity
+                    //'quantity' => $val->TotalProductQuantity
                 );
         }
         echo json_encode($chart_data);

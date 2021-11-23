@@ -263,29 +263,90 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<?php $last_month = date("m",strtotime("-1 month"));
+										$now_month = date('m');
+									?>
+								<div class="card-header">
+									<div class="card-title"><i class="fas fa-fire" style="color:red;"></i> Top sản phẩm bán chạy</div>
+									<small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="table-responsive table-hover table-sales">
+												<table class="table">
+													<thead>
+														<tr>
+															<th colspan="2">Sản phẩm</th>
+															<th>Ngày mở bán</th>
+															<th>Doanh thu đem lại</th>
+															<th class="text-right">Số sản phẩm bán được</th>
+															<th class="text-right">Số sản phẩm còn lại</th>
+															<!-- Số sản phẩm còn lại để biết cần nhập thêm nữa không -->
+														</tr>
+													</thead>
+													<tbody>
+														@foreach($top_product as $key => $item)
+														<tr>
+															<td>
+																<div class="avatar">
+																	<img src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="..." class="avatar-img rounded">
+																</div>
+															</td>
+															<td>
+																<h6 class="fw-bold mb-1"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}">{{$item->ProductName}}</a></h6>
+															</td>
+															<td>
+																{{date("d/m/Y", strtotime($item->StartsAt))}}
+															</td>
+															<td>
+																<h4 class="text-info fw-bold">+{{number_format($item->number_solded * ($item->Price - $item->Cost)).' '.'₫'}}</h4>
+															</td>
+															<td class="text-right">
+																<h4 class="text-info fw-bold">{{$item->number_solded}}</h4>
+															</td>
+															<td  class="text-right">
+																<h4 class="text-info">{{$item->Quantity}}</h4>
+															</td>
+														</tr>
+														@endforeach
+													</tbody>
+												</table>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
 
 					<div class="row">
 						<div class="col-md-4">
-							<div class="card">
+							<div class="card" style="height:510px">
 								<div class="card-header">
 									<?php $last_month = date("m",strtotime("-1 month"));
 										$now_month = date('m');
 									?>
-									<div class="card-title"><i class="fas fa-fire" style="color:red;"></i> Top sản phẩm bán chạy</div>
-									<small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small>
+									<div class="card-title"><i class="fas fa-fire" style="color:red;"></i>  Bài viết được xem nhiều nhất</div>
+									<!-- <small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small> -->
 								</div>
 								<div class="card-body pb-0">
-									@foreach($top_product as $key => $item)
+									@foreach($top_blog_view as $key => $item)
 									<div class="d-flex">
 										<div class="avatar">
-											<img src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="..." class="avatar-img rounded border">
+											<img src="{{URL::to('public/images_upload/blog/'.$item->Image)}}" alt="..." class="avatar-img rounded border">
 										</div>
 										<div class="flex-1 pt-1 ml-2">
-											<h6 class="fw-bold mb-1"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}">{{$item->ProductName}}</a></h6>
+											<h6 class="fw-bold mb-1"><a href="{{URL::to('/blog-detail/'.$item->BlogId)}}">{{$item->Title}}</a></h6>
 											<small class="text-muted"></small>
 										</div>
 										<div class="d-flex ml-auto align-items-center">
-											<h3 class="text-info fw-bold">{{$item->number_solded}}</h3>
+											<h3 class="text-info fw-bold">{{$item->View}}</h3>
 										</div>
 									</div>
 									<div class="separator-dashed"></div>
@@ -373,7 +434,7 @@
 									</div>
 								</div>
 							</div> -->
-							<div class="card">
+							<div class="card" style="height:510px">
 								<div class="card-header">
 									<div class="card-title"><i class="fas fa-eye text-success"></i> Sản phẩm được xem nhiều nhất</div>
 									<small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small>
@@ -401,7 +462,7 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-							<div class="card">
+							<div class="card" style="height:510px">
 								<div class="card-header">
 									<div class="card-title"><i class="fas fa-warehouse" style="color:green;"></i> Sản phẩm tồn kho cần thanh lý</div>
 								</div>
@@ -814,9 +875,9 @@
 			hideHover: 'auto',
 			parseTime: false,
 			xkey: 'period',
-			ykeys:['sales', 'order', 'profit', 'quantity'],
+			ykeys:['sales', 'profit'],
 			behaveLikeLine: true,
-			labels: ['Đơn hàng', 'Doanh số', 'Lợi nhuận', 'Số lượng']
+			labels: ['Bán hàng', 'Doanh thu']
 		});
 
 		$('#btn-hien-thi-thong-ke').click(function(){
