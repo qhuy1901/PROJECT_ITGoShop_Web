@@ -13,7 +13,7 @@
 								<form>
 									@csrf
 								<h2 class="text-white pb-2 fw-bold">Thống kê bán hàng</h2>
-								<div class="ml-md-auto py-2 py-md-0">
+								<div class="ml-md-auto py-2 py-md-3">
 									<a class="text-white fw-bold" style="margin-right: 8px;">Thời gian báo cáo</a> 
 									<a class="btn btn-white btn-border mr-2" > 
 										<span class="btn-label"><i class="fas fa-calendar-alt"></i></span>
@@ -27,6 +27,7 @@
 									</a>
 									
 									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success" style=" background: #39A2DB !important; padding: 10px;">Hiển thị kết quả</button>
+									
 									<a class="btn btn-white btn-border mr-2"> 
 										<span class="btn-label" >
 											<i class="fas fa-calendar-alt"></i>
@@ -252,7 +253,11 @@
 									</div>
 								</div>
 								<div class="card-body">
+<<<<<<< HEAD
 									<div class="chart-container" >
+=======
+									<div class="chart-container" style="min-height: 375px; ">
+>>>>>>> 4a130dc7064630bd2429ff66e017e561f95d72b2
 									<form>
 									@csrf
 										<div id="pieChart" style="height: 250px;"></div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests; 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 session_start();
 
@@ -25,7 +26,7 @@ class ProductListingController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
-        ->where('product.BrandId',$BrandId)->get();
+        ->where('product.BrandId',$BrandId)->paginate(12);
 
         return view('client.product-listing')
         ->with('sub_brand_list',  $sub_brand_list )
@@ -47,7 +48,7 @@ class ProductListingController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
-        ->where('product.SubBrandId','=',$SubBrandId)->get();
+        ->where('product.SubBrandId','=',$SubBrandId)->paginate(12);
         
         foreach($all_product as $key => $value)
         {
@@ -75,7 +76,7 @@ class ProductListingController extends Controller
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
-        ->where('product.CategoryId',$CategoryId)->get();
+        ->where('product.CategoryId',$CategoryId)->paginate(12);
 
         return view('client.product-listing2')
         ->with('sub_brand_list',  $sub_brand_list )

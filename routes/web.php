@@ -23,6 +23,7 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
 
 Route::post('/search_result', 'App\Http\Controllers\HomeController@search_result');
+Route::post('/', 'App\Http\Controllers\HomeController@search_result');
 
 
 // Customer Login
@@ -100,7 +101,7 @@ Route::post('/checkout-after-login','App\Http\Controllers\CheckoutController@che
 Route::get('/login-to-checkout','App\Http\Controllers\CheckoutController@login_to_checkout');
 
 //Profile
-Route::get('/profile','App\Http\Controllers\ProfileController@profile');
+Route::get('/profile/{UserId}','App\Http\Controllers\ProfileController@profile');
 
 //WishList
 Route::get('/wishlist','App\Http\Controllers\WishListController@wishlist');

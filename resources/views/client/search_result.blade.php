@@ -36,7 +36,7 @@
 								<div class="tab-pane fade show active" id="man" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
-                    @foreach($search_product as $key => $product)
+                   							@foreach($search_product as $key => $product)
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img" style="width: 250px; height: 200px;">
