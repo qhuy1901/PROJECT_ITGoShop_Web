@@ -120,8 +120,8 @@ class OrderController extends Controller
         // Thêm thông tin đơn hàng
         $CustomerId = Session::get('CustomerId');
         $data['UserId'] = $CustomerId;
-        $data['OrderStatus'] = 'Đã tiếp nhận đơn hàng';
-        $data['OrderDate'] = date("Y-m-d H:i:s");
+        $data['OrderStatus'] = 'Đặt hàng thành công';
+        //$data['OrderDate'] = date("Y-m-d H:i:s");
         $data['EstimatedDeliveryTime'] =  date('Y-m-d H:00:00', strtotime("+$shipmethod->EstimatedDeliveryTime hours"));
         $data['ShipMethod'] =  $shipmethod->ShipMethodName;
         $data['ShipFee'] =  $shipmethod->ShipFee;

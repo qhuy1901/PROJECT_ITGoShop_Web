@@ -74,7 +74,7 @@
               </div>
             </div>
             <div class="col-md-9">
-            	<h3 style="margin: 20px 0px;">Chi tiết đơn hàng #{{$order_info->OrderId}} - <b class="OrderStatus">{{$order_info->OrderStatus}}</b> <p style="float:right;">Ngày đặt hàng: {{date("H:i d/m/Y", strtotime($order_info->OrderDate))}} </p></h3>
+            	<h3 style="margin: 20px 0px;">Chi tiết đơn hàng #{{$order_info->OrderId}} - <b class="OrderStatus">{{$order_info->OrderStatus}}</b> <p style="float:right;">Ngày đặt hàng: {{date("h:i d/m/Y", strtotime($order_info->OrderDate))}} </p></h3>
 				<input type="text" class="OrderId" value="{{$order_info->OrderId}}" hidden>
 				<div class="row">
 					<div class="col-sm-4">
@@ -110,6 +110,8 @@
 							<div class="panel-body" style="height:200px">
 								<p>{{$order_info->PaymentMethod}}</p>
 								<p>Tình trạng: {{$order_info->PaymentStatus}}</p>
+								
+								<!-- <img style="height:70px" src="{{URL::to('public/client/Images/da-thanh-toan.png')}}" alt=""> -->
 							</div>
 						</div>
 					</div>
@@ -156,7 +158,7 @@
 					</div>
 				</div>
 				<?php $status = $order_info->OrderStatus ?>
-				<?php if($status != "Đã hủy"){?>
+				<?php if($status != "Đã hủy" && $status != "Đang giao hàng" && $status != "Đã giao cho đơn vị vận chuyển"){?>
 				<button type="button" style="height:40px;width:150px;float:right;font-size: 14px;" class="btn btn-warning">
 					<a href="javascript:void(0)" style="text-decoration:none; color: white;" class="button-huy-don-hang">Hủy đơn hàng</a> 
 				</button>

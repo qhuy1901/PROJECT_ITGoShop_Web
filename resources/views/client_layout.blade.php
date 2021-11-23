@@ -119,7 +119,7 @@
 		  <div class="navigation__column left">
 			<div class="header__logo"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="{{URL::to('/public/client/Images/logo.png')}}" alt=""></a></div>
 			<input type="text" id="input-customer-id" value="{{Session::get('CustomerId')}}" hidden><!--Đừng xóa cái này  -->
-			<input type="text" id="input-admin-id" value="{{Session::get('UserId')}}" hidden>
+			<input type="text" id="input-admin-id" value="{{Session::get('CustomerId')}}" hidden>
 		</div>
 		  <div class="navigation__column center">
 				
@@ -201,8 +201,9 @@
 			<div class="menu-toggle"><span></span></div>
 			<a class="ps-cart__toggle" href="{{URL::to('/')}}" ><i class="fa fa-bell-o" aria-hidden="true" title="Thông báo"></i></a>
 			<?php
-					$UserId= Session::get('UserId');
-					if($UserId) { ?>
+					//$CustomerId= Session::get('CustomerIdId');
+					$CustomerId= Session::get('CustomerId');
+					if($CustomerId) { ?>
 						
 						<a class="ps-cart__toggle" href="{{URL::to('/wishlist')}}" ><i class="fa fa-heart-o" aria-hidden="true" title="Wish List"></i></a>
 
@@ -211,9 +212,8 @@
 				<div class="nut_dropdown"><a href="{{URL::to('/login')}}" class="ps-cart__toggle"><i class="fa fa-user-circle-o"  title="Đăng Nhập"></i></a></div>
 					<div class="noidung_dropdown">
 						<?php
-							$UserId= Session::get('UserId');
-							if($UserId) { ?>
-								<a href="{{URL::to('/profile/'.$UserId)}}">Tài khoản</a>
+							if($CustomerId) { ?>
+								<a href="{{URL::to('/profile/'.$CustomerId)}}">Tài khoản</a>
 								<a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi</a>
 								<a href="{{URL::to('/customer-logout')}}">Kiểm tra bảo hành</a>
 								<a href="{{URL::to('/customer-logout')}}">Đăng xuất</a>
@@ -324,7 +324,7 @@
 	<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<!-- Sweet Alert -->
-	<a href="{{URL::to('/load-cart-quantity')}}">Quang</a>
+	<!-- <a href="{{URL::to('/load-cart-quantity')}}">Quang</a> -->
 	
 	<script>
 		$(document).ready(function(){

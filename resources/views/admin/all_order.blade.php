@@ -102,16 +102,19 @@
 																							<div class="col-md-12 pr-0" style="margin-bottom:30px">
 																								<b style="margin-bottom:15px">Trạng thái đơn hàng</b>
 																									<select class="form-control" id="trang-thai-don-hang"  name="status" aria-label=".form-select-sm example" style="width:90%;margin-top: 10px">
-																										<option value="Đã xác nhận">Đã xác nhận</option>
+																										<option value="Đặt hàng thành công">Đặt hàng thành công</option>
+																										<option value="Đã tiếp nhận đơn hàng">Đã tiếp nhận đơn hàng</option>
+																										<option value="Đang lấy hàng">Đang lấy hàng</option>
+																										<option value="Đang đóng gói">Đang đóng gói</option>
 																										<option value="Đã giao cho đơn vị vận chuyển">Đã giao cho đơn vị vận chuyển</option>
 																										<option value="Đang giao hàng">Đang giao hàng</option>
-																										<option value="Hoàn thành">Hoàn thành</option>
+																										<option value="Giao hàng thành công">Giao hàng thành công</option>
 																									</select>
 																							</div>
 																							<div class="col-md-12 pr-0">
 																							<b style="margin-bottom:15px">Trạng thái thanh toán</b>
 																									<select class="form-control" name="payment" id="trang-thai-thanh-toan" aria-label=".form-select-sm example"  style="width:90%;margin-top: 10px">
-																										<option value="Hoàn thành">Hoàn thành</option>
+																										<option value="Đã thanh toán">Đã thanh toán</option>
 																										<option value="Chờ thanh toán">Chờ thanh toán</option>
 																									</select>
 																							</div>
