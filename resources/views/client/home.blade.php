@@ -673,7 +673,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="shop-section-title">
-								<h1>Top viewed</h1>
+								<h1>Xem Nhiều Nhất</h1>
 							</div>
 						</div>
 					</div>
