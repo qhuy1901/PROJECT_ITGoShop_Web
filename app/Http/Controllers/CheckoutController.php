@@ -51,7 +51,7 @@ class CheckoutController extends Controller
             ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
             ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
             ->where('UserId', $CustomerId)->where('isDefault', 0)->first();
-    
+            $shipmethod_list= DB::table('shipmethod')->where('Status', 1)->get();
     
             return view('client.checkout')
                 ->with('sub_brand_list',  $sub_brand_list )
@@ -59,7 +59,9 @@ class CheckoutController extends Controller
                 ->with('product_category_list', $product_category_list)
                 ->with('all_tinhthanhpho', $all_tinhthanhpho)
                 ->with('default_shipping_address', $default_shipping_address)
-                ->with('shipping_address_list ', $shipping_address_list );
+                ->with('shipping_address_list', $shipping_address_list)
+                ->with('shipmethod_list', $shipmethod_list);
+                
         }
         return Redirect::to('/login-to-checkout');
     }

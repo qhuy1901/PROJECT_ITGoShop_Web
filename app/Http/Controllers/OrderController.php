@@ -113,14 +113,20 @@ class OrderController extends Controller
     public function create_order(Request $request)
     {
         $content = Cart::content();
+        // Lấy thông tin vận chuyển
+        $shipmethod = DB::table('shipmethod')->where('ShipMethodId', $request->vanchuyen)->first();
+        
         $data = array();
         // Thêm thông tin đơn hàng
         $CustomerId = Session::get('CustomerId');
         $data['UserId'] = $CustomerId;
         $data['OrderStatus'] = 'Đã tiếp nhận đơn hàng';
         $data['OrderDate'] = date("Y-m-d H:i:s");
-        $data['Total']= Cart::total(0, ',', '');
-        $data['PaymentMethod'] = 'COD';
+        $data['EstimatedDeliveryTime'] =  date('Y-m-d H:00:00', strtotime("+$shipmethod->EstimatedDeliveryTime hours"));
+        $data['ShipMethod'] =  $shipmethod->ShipMethodName;
+        $data['ShipFee'] =  $shipmethod->ShipFee;
+        $data['Total']= Cart::total(0, ',', '') + $shipmethod->ShipFee;
+        $data['PaymentMethod'] = $request->payment;
         $data['PaymentStatus'] = 'Chờ thanh toán';
         $data['ShippingAddressId'] = $request->ShippingAddressId;
         $OrderId = DB::table('order')->insertGetId($data);

@@ -91,9 +91,16 @@
 						<div class="card panel-default" >
 							<div class="panel-heading" style="background-color: white;"><h5><b>HÌNH THỨC GIAO HÀNG</b></h5></div>
 							<div class="panel-body" style="height:200px">
-								<p>Giao Tiết Kiệm</p>
-								<p>Giao vào Thứ bảy, 14/08</p>
-								<p>Phí vận chuyển: 22.000đ</p>
+								<p>{{$order_info->ShipMethod}}</p>
+								<p>
+									@if($order_info->EstimatedDeliveryTime <= 24)
+										Thời gian giao hàng dự kiến: khoảng {{date('h:00 d-m-Y',strtotime($order_info->EstimatedDeliveryTime))}}
+									@else
+										Thời gian giao hàng dự kiến: {{date('d-m-Y',strtotime($order_info->EstimatedDeliveryTime))}}
+									@endif
+								</p>
+								<p>Phí vận chuyển: {{number_format($order_info->ShipFee, 0, " ", ".").' ₫'}}</p>
+								<p>Đơn vị vận chuyển: ITGoFast</p>
 							</div>
 						</div>
 					</div>
@@ -101,7 +108,8 @@
 						<div class="card panel-default">
 							<div class="panel-heading" style="background-color: white;"><h5><b>HÌNH THỨC THANH TOÁN</b></h5></div>
 							<div class="panel-body" style="height:200px">
-								<p>Thanh toán khi giao hàng</p>
+								<p>{{$order_info->PaymentMethod}}</p>
+								<p>Tình trạng: {{$order_info->PaymentStatus}}</p>
 							</div>
 						</div>
 					</div>
@@ -137,9 +145,9 @@
 										<p>Tổng cộng</p>
 									</td>
 									<td style="text-align: right;">
-										<p>{{number_format($order_info->Total, 0, " ", ".").' ₫'}}</p>
+										<p>{{number_format($order_info->Total - $order_info->ShipFee, 0, " ", ".").' ₫'}}</p>
 										<p>-0 ₫</p>
-										<p>0 ₫</p>
+										<p>{{number_format($order_info->ShipFee, 0, " ", ".").' ₫'}}</p>
 										<p style="color: red; font-size: 20px">{{number_format($order_info->Total, 0, " ", ".").' ₫'}}</p>
 									</td>
 								</tr>

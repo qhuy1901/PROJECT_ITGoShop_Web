@@ -113,9 +113,15 @@
 												<tbody>
                                                     @foreach($all_shipmethod as $key => $item)
 													<tr>
-														<td>{{$item->ShipMethodName}}</td>
-														<td>{{$item->EstimatedDeliveryTime}} ngày
-                                                            <input type="text" class="ShipMethodId" value="{{$item->ShipMethodId}}" hidden>
+														<td>{{$item->ShipMethodName}}
+                                                        <input type="text" class="ShipMethodId" value="{{$item->ShipMethodId}}" hidden>
+                                                        </td>
+														<td>
+                                                            @if($item->EstimatedDeliveryTime >= 24)
+                                                                {{$item->EstimatedDeliveryTime / 24}} ngày
+                                                            @else
+                                                                {{$item->EstimatedDeliveryTime}} giờ
+                                                            @endif
                                                         </td>
                                                         <td>{{$item->ShipFee}}</td>
                                                         <td>
