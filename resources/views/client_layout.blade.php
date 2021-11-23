@@ -179,7 +179,7 @@
 						<li class="menu-item"><a href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Phụ Kiện</a></li>
 					@endif
 				@endforeach
-					<li class="menu-item"><a href="{{URL::to('/all_blog')}}">Blogs</a></li>
+					<li class="menu-item"><a href="{{URL::to('/all_blog')}}">Tin Tức</a></li>
 				</ul>
 				
 		  </div>
