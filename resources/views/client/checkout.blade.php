@@ -45,7 +45,7 @@
 									@foreach($shipmethod_list as $key => $item)
 										<div class="form-group">
 											<div class="ps-radio">
-												<input class="form-control" type="radio" id="radio-btn[{{$item->ShipMethodId}}]" name="vanchuyen" value="{{$item->ShipMethodId}}">
+												<input class="form-control" type="radio" id="radio-btn[{{$item->ShipMethodId}}]" name="vanchuyen" value="{{$item->ShipMethodId}}" required>
 												<label for="radio-btn[{{$item->ShipMethodId}}]"><img src="{{URL::to('public/client/Images/thanh-toan-khi-nhan-hang.PNG')}}" alt="#" hidden>{{$item->ShipMethodName}}<i> 
 													@if($item->EstimatedDeliveryTime <= 24)
 														(Thời gian giao hàng dự kiến: khoảng {{date('h:00 d-m-Y',strtotime("+$item->EstimatedDeliveryTime hours"))}})
@@ -240,9 +240,19 @@
 					$('#TotalFee').text(numberWithCommas(Number(TotalFee) + Number(ShipFee))+ ' ₫');
 				});
 				$('.btn-dat-mua').click(function(){
-					swal("Đặt hàng hàng công! Cảm ơn quý khách.", {
+					if($('input[name="vanchuyen"]:checked').length > 0)
+					{
+						swal("Đặt hàng hàng công! Cảm ơn quý khách.", {
 							icon: "success",
 							});
+					}
+					else{
+						
+							swal("Vui lòng chọn phương thức giao hàng", {
+							icon: "info",
+							});
+					}
+					
 				// 	swal({
 				// 	title: "Xác nhận",
 				// 	text: "Bạn chắc chắn muốn đặt hàng chứ?",
