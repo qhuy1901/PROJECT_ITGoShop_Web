@@ -72,18 +72,19 @@
 	<section class="small-banner section">
 		<div class="container">
 			<div class="row">
+			@foreach($new_product as $key => $product)
 				<div class="col-lg-4 col-md-6">
-					<div class="single-banner">
-						<img src="./public/client/Images/00_Product/Laptop/msi 15 amd.png" alt="#" style="border-radius: 10px;">
+					<div class="single-banner" style="width: 350px; height: 185.25px;">
+						<img src="{{URL::to('public/images_upload/banner-slider/'.$product->SliderImage)}}"  alt="#" style="border-radius: 10px;margin: auto; width: 350px; height: 185.25px;">
 						<div class="content">
-							<p>MSI Collection</p>
-							<h3>MSI Modern <br> 15 AMD</h3>
-							<a href="#">Xem Chi Tiết</a>
+							<p>{{$product->CategoryName}}</p>
+							<h3>{{$product->ProductName}}</h3>
+							<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">Xem Chi Tiết</a>
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-lg-4 col-md-6">
+			@endforeach
+				<!--<div class="col-lg-4 col-md-6">
 					<div class="single-banner">
 						<img src="./public/client/Images/pannel/2.png" alt="#" style="border-radius: 10px;">
 						<div class="content">
@@ -92,7 +93,7 @@
 							<a href="{{URL::to('/product-detail2/')}}">Xem Chi Tiết</a>
 						</div>
 					</div>
-				</div>
+				</div>-->
 				@foreach($list_campaign as $key => $campaign)
 				<div class="col-lg-4">
 					<div class="single-banner tab-height" style="width: 350px; height: 185.25px;">

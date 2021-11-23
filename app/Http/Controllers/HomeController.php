@@ -33,6 +33,13 @@ class HomeController extends Controller
         
         $top_product = DB::table('product')->where('status', 1)->orderby('Sold', 'desc')->limit(3)->get();
 
+        $new_product = DB::table('product')
+        ->select('bannerslider.*','product.*','Category.*' )
+        ->join('Category', 'product.CategoryId', '=', 'Category.CategoryId')
+        ->join('bannerslider', 'product.SliderId', '=', 'bannerslider.SliderId')
+        ->orderby('product.CreatedAt', 'desc')
+        ->limit(2)->get();
+
         $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();
         $top_view = DB::table('product')->where('status', 1)->orderby('View', 'desc')->limit(3)->get();
         return view('client.home')
@@ -45,6 +52,7 @@ class HomeController extends Controller
         ->with('slider_list', $slider_list)
         ->with('latestnew', $latestnew)
         ->with('top_view', $top_view)
+        ->with('new_product', $new_product)
         ->with('list_campaign', $list_campaign);
     }
 
