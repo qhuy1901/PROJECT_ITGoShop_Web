@@ -23,7 +23,9 @@
 	<!-- End Breadcrumbs -->
 	<?php   
             $userId = Session::get('UserId');
-            $avt = Session::get('UserImage');
+            $avt = Session::get('CustomerImage'); 
+			$LastName=Session::get('CustomerLastName');
+			$FirstName=Session::get('CustomerFirstName');
 	?>
 
 	<!-- Start Contact -->
@@ -34,7 +36,6 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="{{URL::to('public/images_upload/user/'.$avt)}}" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-						<?php $LastName=Session::get('LastName'); $FirstName=Session::get('FirstName');?>
                       <h4>Xin chào, {{$LastName.' '.$FirstName}}!</h4>
                     </div>
                   </div>

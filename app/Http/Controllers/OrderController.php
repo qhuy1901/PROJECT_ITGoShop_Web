@@ -133,7 +133,7 @@ class OrderController extends Controller
             $item['ProductId'] = $order_detail->id;
             $item['OrderQuantity'] = $order_detail->qty;
             $item['UnitPrice'] = $order_detail->price;
-            // Update thông tin doanh thu lên bảng statistic
+            //Update thông tin doanh thu lên bảng statistic
             $today = date('Y-m-d');
             $statistic_info = DB::table('statistic')->where('StatisticDate', $today)->first();
             $product_info = DB::table('product')->where('ProductId', $order_detail->id)->first();
@@ -141,14 +141,14 @@ class OrderController extends Controller
             {
                 $statistic_new_data = array();
                 $statistic_new_data['Sales'] = $statistic_info->Sales + $product_info->Price * $order_detail->qty;
-                $statistic_new_data['Profit'] = $statistic_info->Profit + ($product_info->Cost -$product_info->Price) * $order_detail->qty;
+                $statistic_new_data['Profit'] = $statistic_info->Profit + ($product_info->Price - $product_info->Cost) * $order_detail->qty;
                 DB::table('statistic')->where('StatisticDate', $today)->update($statistic_new_data);
             }
             else
             {
                 $statistic_data = array();
                 $statistic_data['Sales'] = $product_info->Price * $order_detail->qty;
-                $statistic_data['Profit'] = ($product_info->Cost - $product_info->Price) * $order_detail->qty;
+                $statistic_data['Profit'] = ($product_info->Price - $product_info->Cost) * $order_detail->qty;
                 DB::table('statistic')->insert($statistic_data);
             }
             DB::table('orderdetail')->insert($item);

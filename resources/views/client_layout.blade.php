@@ -191,14 +191,12 @@
 			  <button type="submit"><i class="fa fa-search"></i></button>
 			</form> 
 			@csrf           
-			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng"><span><i id="so-luong-sp-gio-hang"><?php echo Cart::count(); ?></i></span><i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng">
+				<span><i id="so-luong-sp-gio-hang"></i></span>
+				<i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  	<div class="ps-cart__listing">
 					  <div id="load_card"></div>
-				<!-- <div class="ps-cart__footer">
-					<a href="javascript:void(0)" class="ps-btn btn-thanh-toan">THANH TOÁN</a> -->
-				<!-- </div> -->
 				</div> 
-				<!-- </div> -->
 			</div>
 			<div class="menu-toggle"><span></span></div>
 			<a class="ps-cart__toggle" href="{{URL::to('/')}}" ><i class="fa fa-bell-o" aria-hidden="true" title="Thông báo"></i></a>
@@ -326,11 +324,30 @@
 	<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<!-- Sweet Alert -->
-	<a href="{{URL::to('/load-cart')}}">Quang</a>
+	<a href="{{URL::to('/load-cart-quantity')}}">Quang</a>
+	
 	<script>
 		$(document).ready(function(){
 			load_cart();
+			load_cart_quantity();
+			setInterval(load_cart_quantity, 2000);
 		});
+		function load_cart_quantity()
+		{
+			var _token = $('input[name="_token"]').val();
+				$.ajax({
+					url: "{{url('/load-cart-quantity')}}",
+					method:"POST",
+					data:{ _token:_token},
+					success:function(data){
+						$('#so-luong-sp-gio-hang').html(data);
+					},
+					error:function(data)
+					{
+						alert("Lỗi");
+					}
+				});
+		}
 		function load_cart()
 		{
 				var _token = $('input[name="_token"]').val();

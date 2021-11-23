@@ -131,4 +131,9 @@ class CartController extends Controller
         }
         echo $output;
     }
+
+    public function load_cart_quantity()
+    {
+        echo Cart::count();
+    }
 }
