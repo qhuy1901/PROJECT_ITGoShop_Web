@@ -28,7 +28,7 @@
 						<div class="ps-container">
 							<div class="row">
 								<div class="col-lg-12 col-12">
-									<div class="ps-product__thumbnail" style="height: 395px; width: 600px;" >
+									<div class="ps-product__thumbnail" style="height: 350px; width: 500px;" >
 										<div class="ps-product__preview">
 											<div class="ps-product__variants" >
 												<div class="item" ><img src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt=""></div>
@@ -37,7 +37,7 @@
 												@endforeach
 											</div>
 										</div>
-										<div class="ps-product__image" style="max-height: 395px; max-width: 450px; width: auto; height: auto;">
+										<div class="ps-product__image" style="max-height: 350px; max-width: 350px; width: auto; height: auto;">
 											<div class="item"><img class="zoom" src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt="" data-zoom-image="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}"></div>
 											@foreach($product_gallary as $key => $item)
 												<div class="item"><img class="zoom"  src="{{URL::to('/public/images_upload/product-gallary/'.$item->GallaryImage)}}" alt=""></div>
