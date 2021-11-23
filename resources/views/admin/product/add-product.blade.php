@@ -96,7 +96,7 @@
 													</select>
 												</div>
 											</div>
-											<div class="col-6 col-lg-6">
+											<div class="col-6 col-lg-3">
 												<div class="form-group">
                                                     <label class="mb-3"><b>Giá sản phẩm</b></label>
                                                     <div class="input-group mb-3">
@@ -104,6 +104,17 @@
                                                             <span class="input-group-text">VND</span>
                                                         </div> -->
                                                         <input type="text" name="Price" class="form-control" aria-label="Amount (to the nearest dollar)" required> 
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text">VND</span>
+                                                        </div>
+                                                    </div>
+                                                </div>	
+											</div>
+											<div class="col-6 col-lg-3">
+												<div class="form-group">
+                                                    <label class="mb-3"><b>Giá vốn</b></label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" name="Cost" class="form-control" aria-label="Amount (to the nearest dollar)" required> 
                                                         <div class="input-group-append">
                                                             <span class="input-group-text">VND</span>
                                                         </div>
