@@ -85,9 +85,9 @@
 													</div>
 													<div class="content">
 														<div class="blog-meta">
-															<h1 style="color:red; background-color:#FAFAFA;padding: 10px;font-weight: bold; ">
+															<h1 style="color:red; background-color:#FAFAFA;padding: 25px;font-weight: bold; ">
 																<!-- Gía sản phẩm -->			 
-																<b>{{number_format($product_detail->Price).' '.' ₫'}}</b>
+																{{number_format($product_detail->Price).' '.' ₫'}}
 																					<sub style="color:black; font-size:15px "> 
 																						<!--  Phần giảm giá --> 
 																						<del>{{number_format($product_detail->Price + $product_detail->Price * $product_detail->Discount / 100 ).' '.' ₫'}}</del> 
@@ -189,6 +189,8 @@
 										</form>
 									</div>									
 								</div>	
+					<?php $number_of_related_product = count($related_product); ?>
+					@if($number_of_related_product != 0)
 					<div class="product-area most-popular section">
 						<div class="container">
 							<div class="row">
@@ -212,7 +214,7 @@
 												</a>
 												<div class="button-head">
 													<div class="product-action">
-														<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+														<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product_detail->View}}</span></a>
 														<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
 													</div>
 													<div class="product-action-2">
@@ -235,7 +237,7 @@
 							</div>
 						</div>
 					</div>
-					
+					@endif
 				</div>
 			</div>
 		</section>
