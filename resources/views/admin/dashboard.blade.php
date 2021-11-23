@@ -253,11 +253,7 @@
 									</div>
 								</div>
 								<div class="card-body">
-<<<<<<< HEAD
 									<div class="chart-container" >
-=======
-									<div class="chart-container" style="min-height: 375px; ">
->>>>>>> 4a130dc7064630bd2429ff66e017e561f95d72b2
 									<form>
 									@csrf
 										<div id="pieChart" style="height: 250px;"></div>
