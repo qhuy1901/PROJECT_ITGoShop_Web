@@ -133,6 +133,8 @@ class OrderController extends Controller
             $item['ProductId'] = $order_detail->id;
             $item['OrderQuantity'] = $order_detail->qty;
             $item['UnitPrice'] = $order_detail->price;
+            DB::table('orderdetail')->insert($item);
+
             //Update thông tin doanh thu lên bảng statistic
             $today = date('Y-m-d');
             $statistic_info = DB::table('statistic')->where('StatisticDate', $today)->first();
@@ -151,8 +153,16 @@ class OrderController extends Controller
                 $statistic_data['Profit'] = ($product_info->Price - $product_info->Cost) * $order_detail->qty;
                 DB::table('statistic')->insert($statistic_data);
             }
-            DB::table('orderdetail')->insert($item);
+
+            // Trừ số lượng tồn kho
+            $update_product = DB::table('product')->where('ProductId', $order_detail->id)->first();
+            $update_product_data = array();
+            $update_product_data['Quantity'] = $update_product->Quantity - $order_detail->qty;
+            $update_product_data['Sold'] = $update_product->Sold + $order_detail->qty;
+            DB::table('product')->where('ProductId', $order_detail->id)->update($update_product_data);
         }
+
+        
 
         // Cập nhật mô tả hóa đơn
         $firstProductName = DB::table('orderdetail')
@@ -204,5 +214,14 @@ class OrderController extends Controller
     public function cancel_order(Request $request)
     {
         DB::table('order')->where('OrderId', $request->OrderId)->update(['OrderStatus'=>'Đã hủy']); 
+        $this_order = DB::table('orderdetail')->where('OrderId', $request->OrderId)->get();
+        foreach($this_order as $item)
+        {
+            $update_product = DB::table('product')->where('ProductId', $item->ProductId)->first();
+            $update_product_data = array();
+            $update_product_data['Quantity'] = $update_product->Quantity + $item->OrderQuantity;
+            $update_product_data['Sold'] = $update_product->Sold - $item->OrderQuantity;
+            DB::table('product')->where('ProductId', $item->ProductId)->update($update_product_data);
+        }
     }
 }
