@@ -39,6 +39,27 @@
 					<div class ="row">
 						<div class="col-lg-8">
 							<div class="panel panel-default">
+								<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"><b>Chọn phương thức giao hàng</b></h4></div>
+									<div class="panel-body" style="font-size: 14px;">
+									<?php $today = date('d/m/Y'); ?>
+									@foreach($shipmethod_list as $key => $item)
+										<div class="form-group">
+											<div class="ps-radio">
+												<input class="form-control" type="radio" id="radio-btn[{{$item->ShipMethodId}}]" name="vanchuyen" value="{{$item->ShipMethodId}}">
+												<label for="radio-btn[{{$item->ShipMethodId}}]"><img src="{{URL::to('public/client/Images/thanh-toan-khi-nhan-hang.PNG')}}" alt="#" hidden>{{$item->ShipMethodName}}<i> 
+													@if($item->EstimatedDeliveryTime <= 24)
+														(Thời gian giao hàng dự kiến: khoảng {{date('h:00 d-m-Y',strtotime("+$item->EstimatedDeliveryTime hours"))}})
+													@else
+														(Thời gian giao hàng dự kiến: {{date('d-m-Y',strtotime("+$item->EstimatedDeliveryTime hours"))}})
+													@endif
+												</i></label>
+												<input type="text" class="ShipFee" value="{{$item->ShipFee}}" hidden>
+											</div>
+										</div>
+									@endforeach
+									</div>
+								</div>
+							<div class="panel panel-default">
 								<div class="panel-heading" style="background-color: #77ACF1; "><h4 style="color: white;"><b>Thông tin đơn hàng</b></h4></div>
 								<div class="panel-body">
 									<table>
@@ -65,29 +86,28 @@
 											@endforeach
 										</tbody>
 									</table>
-									
 								</div>
 							</div>
+							
 							<div class="panel panel-default">
 								<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"><b>Chọn hình thức thanh toán</b></h4></div>
 									<div class="panel-body" style="font-size: 14px;">
 										<div class="form-group cheque">
 											<div class="ps-radio">
-											<input class="form-control" type="radio" id="rdo01" name="payment" checked>
+											<input class="form-control" type="radio" id="rdo01" name="payment" value="Thanh toán khi giao hàng" checked>
 											<label for="rdo01"><img src="{{URL::to('public/client/Images/thanh-toan-khi-nhan-hang.PNG')}}" alt="#">Thanh toán khi giao hàng</label>
 											</div>
 										</div>
 										<div class="form-group paypal">
 											<div class="ps-radio ps-radio--inline">
-											<input class="form-control" type="radio" name="payment" id="rdo02">
-											<label for="rdo02"><img src="{{URL::to('public/client/Images/thanh-toan-zalopay.PNG')}}" alt="#">Thanh toán bằng thẻ</label>
+											<input class="form-control" type="radio" name="payment" id="rdo02" value="Thanh toán bằng thẻ">
+											<label for="rdo02"><img style="max-height: 40px; max-width: 40px; width: auto; height: auto;" src="{{URL::to('public/client/Images/thanh-toan-online.PNG')}}" alt="#">Thanh toán bằng thẻ</label>
 											</div>
-											
-											
 										</div>
 									</div>
 								</div>
-							<button type="submit" class="btn btn-primary btn-lg btn-dat-mua" style="width:320px;font-size:20px; background-color: #000; ">ĐẶT MUA</button>
+								
+							<button type="submit" class="btn btn-primary btn-lg btn-dat-mua" style="width:320px;font-size:20px; background-color: #000; height:50px">ĐẶT MUA</button>
 							<p style="margin: 7px 0px;"><i>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</i></p>
 						</div>
 
@@ -115,11 +135,12 @@
 									<hr>
 									<p style="float:right">{{(Cart::subtotal(0, ',', '.')).' ₫'}}</p>
 									<p>Tạm tính: </p> 
-									<p style="float:right">0 ₫</p>
+									<p style="float:right" id="ShipFee">0 ₫</p>
 									<p>Phí vận chuyển: </p> 
 									<p style="float:right; color: red;">- 0 ₫</p>
 									<p>Giảm giá: </p> 
-									<p style="float:right; color: red; font-size: 20px">{{(Cart::total(0, ',', '.')).' ₫'}}</p> 
+									<p style="float:right; color: red; font-size: 20px" id="TotalFee">{{(Cart::total(0, ',', '.')).' ₫'}}</p> 
+									<input type="text" id="TotalFee-hidden" value="{{Cart::total(0, ',', '')}}" hidden>
 									<p><b style="color:black">Thành tiền: </b> </p>  
 									<p style="float:right;"><i>(Đã bao gồm VAT nếu có)</i></p> 
 								</div>
@@ -208,6 +229,16 @@
 		</section>	
 		<script>
 			$(document).ready(function(){
+				function numberWithCommas(x) // Hàm để format tiền
+				{
+					return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+				}
+				$('input[type=radio][name=vanchuyen]').change(function() {
+					var ShipFee = $(this).parent().find('.ShipFee').val();
+					$('#ShipFee').text(numberWithCommas(ShipFee) + ' ₫');
+					var TotalFee = $('#TotalFee-hidden').val();
+					$('#TotalFee').text(numberWithCommas(Number(TotalFee) + Number(ShipFee))+ ' ₫');
+				});
 				$('.btn-dat-mua').click(function(){
 					swal("Đặt hàng hàng công! Cảm ơn quý khách.", {
 							icon: "success",

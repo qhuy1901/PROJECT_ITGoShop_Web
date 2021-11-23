@@ -44,8 +44,9 @@
 											</div>
                                             <div class="col-12 col-lg-6">
 												<div class="form-group">
-													<label for="email2">Số ngày vận chuyển dự kiến</label>
+													<label for="email2">Thời gian vận chuyển (DVT: giờ/hours)</label>
 													<input type="number" min="0" name="EstimatedDeliveryTime" class="form-control" id="email2" placeholder="Nhập số ngày vận chuyển dự kiến" required>
+                                                    
 												</div>
 											</div>
                                             <div class="col-6 col-lg-6">
