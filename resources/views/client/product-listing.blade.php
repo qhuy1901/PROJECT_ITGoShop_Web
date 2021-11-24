@@ -30,12 +30,12 @@
                                     <div class="single-product">
                                       <div class="product-img" style="width: 250px; height: 200px;">
                                             <a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
-                                              <img class="default-img"   src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+                                              <img class="default-img"  style="margin: auto; width: 250px; height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
                                               <img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
                                             </a>
                                             <div class="button-head">
                                               <div class="product-action">
-                                                <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+                                                <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
                                                 <a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
                                                 <a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
                                               </div>

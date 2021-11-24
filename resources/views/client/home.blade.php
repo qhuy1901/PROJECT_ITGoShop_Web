@@ -74,7 +74,7 @@
 			<div class="row">
 			@foreach($new_product as $key => $product)
 				<div class="col-lg-4 col-md-6">
-					<div class="single-banner" style="width: 350px; height: 185.25px;">
+					<div class="single-banner" style="width: 350px; height: 185.25px; ">
 						<img src="{{URL::to('public/images_upload/banner-slider/'.$product->SliderImage)}}"  alt="#" style="border-radius: 10px;margin: auto; width: 350px; height: 185.25px;">
 						<div class="content">
 							<p>{{$product->CategoryName}}</p>
@@ -134,7 +134,7 @@
                             </a>
                             <div class="button-head">
                                 <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
                                     <a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
 									<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
                                 </div>
@@ -190,8 +190,7 @@
 								<div class="tab-pane fade show active" id="man" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
-											@foreach($all_product as $key => $product)
-											@if($product->CategoryId == "LT000" )
+											@foreach($LT_product as $key => $product)
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img" style="width: 250px; height: 200px;">
@@ -206,7 +205,7 @@
 														
 														<div class="button-head">
 															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
 																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
@@ -224,7 +223,6 @@
 													</div>
 												</div>
 											</div>
-											@endif
 											@endforeach
 											
 											
@@ -264,8 +262,7 @@
 								<div class="tab-pane fade" id="women" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
-										@foreach($all_product as $key => $product)
-											@if($product->CategoryId == "PC000" )
+										@foreach($PC_product as $key => $product)
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img" style="width: 250px; height: 200px;">
@@ -275,7 +272,7 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
 																<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
 																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
@@ -293,10 +290,9 @@
 													</div>
 												</div>
 											</div>
-											@endif
 											@endforeach
 											
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+											<!--<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
 														<a href="product-detail.html">
@@ -306,7 +302,7 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
 															</div>
@@ -404,7 +400,7 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div>-->
 										</div>
 									</div>
 								</div>
@@ -413,8 +409,7 @@
 								<div class="tab-pane fade" id="kids" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
-										@foreach($all_product as $key => $product)
-											@if($product->CategoryId == "PK000" )
+										@foreach($PK_product as $key => $product)
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img" style="width: 250px; height: 200px;">
@@ -424,7 +419,7 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lược xem: {{$product->View}}</span></a>
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
 																<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
 																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 																<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
@@ -443,9 +438,8 @@
 													</div>
 												</div>
 											</div>
-											@endif
 											@endforeach
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+											<!--<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
 													<div class="product-img">
 														<a href="product-detail.html">
@@ -630,7 +624,7 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											</div>-->
 										</div>
 									</div>
 								</div>
@@ -703,7 +697,7 @@
 								<div class="content">
 									<h5 class="title"><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
 									<p class="price with-discount">{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</p>
-									<h5 class="title" ><a>Lược xem: {{$product->View}} <i class=" ti-eye"></i></a> </h5>
+									<h5 class="title" ><a>Lượt xem: {{$product->View}} <i class=" ti-eye"></i></a> </h5>
 								</div>
 							</div>
 						</div>

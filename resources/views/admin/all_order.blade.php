@@ -46,7 +46,7 @@
 												@foreach($all_order as $key => $order)
 												<tr>
 													<td>
-														<a href="{{URL::to('/order-detail/'.$order->OrderId)}}">
+														<a href="{{URL::to('/order_detail/'.$order->OrderId)}}">
 															<span class="OrderId">{{$order->OrderId}}</span>
 														</a>
 													</td>

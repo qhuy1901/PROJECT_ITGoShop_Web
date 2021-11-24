@@ -26,7 +26,7 @@ class ProductListingController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
-        ->where('product.BrandId',$BrandId)->paginate(12);
+        ->where('product.BrandId',$BrandId)->paginate(9);
 
         return view('client.product-listing')
         ->with('sub_brand_list',  $sub_brand_list )
@@ -48,7 +48,7 @@ class ProductListingController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
-        ->where('product.SubBrandId','=',$SubBrandId)->paginate(12);
+        ->where('product.SubBrandId','=',$SubBrandId)->paginate(9);
         
         foreach($all_product as $key => $value)
         {
@@ -76,7 +76,7 @@ class ProductListingController extends Controller
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
-        ->where('product.CategoryId',$CategoryId)->paginate(12);
+        ->where('product.CategoryId',$CategoryId)->paginate(6);
 
         return view('client.product-listing2')
         ->with('sub_brand_list',  $sub_brand_list )

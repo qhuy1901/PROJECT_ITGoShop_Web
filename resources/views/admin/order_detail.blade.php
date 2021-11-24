@@ -80,45 +80,42 @@
                         </div> 
                     <div class="col-lg-8">
                       <div class="table-responsive">
-                      <table class="table border table-hover table-lg">
-                        <thead>
-                          <tr>
-                            <th width="40%">Sản phẩm</th>
-                            <th width="20%">Đơn giá</th>
-                            <th width="20%">Số lượng</th>
-                            <th width="20%" class="text-end">Thành tiền</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($order_list as $key => $orderdetail)
+                        <table class="table border table-hover table-lg">
+                          <thead>
+                            <tr>
+                              <th width="40%">Sản phẩm</th>
+                              <th width="20%">Đơn giá</th>
+                              <th width="20%">Số lượng</th>
+                              <th width="20%" class="text-end">Thành tiền</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              @foreach($order_list as $key => $orderdetail)
                               @if($order->OrderId == $orderdetail->OrderId)
-                          <tr>
-                           
-                                <td>
-                                  <a style="position: relative; display: flex;  width: 100%; align-items: center;" class="itemside" >
-                                      <div class="left">
-                                          <img src="{{URL::to('public/images_upload/product/'.$orderdetail->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item">
-                                      </div>
-                                      <div style="padding-left: 15px; padding-right: 7px;" class="info" > <a href="{{URL::to('/product-detail/'.$orderdetail->ProductId"></a> {{$orderdetail->ProductName}}  </div>
-                                      
-                                  </a>
-                                </td>
-                                <td> {{number_format($orderdetail->Price).' '.'₫'}} </td>
-                                <td> {{$orderdetail->OrderQuantity}} </td>
-                                <?php
+                              <tr>
+                                    <td>
+                                      <a style="position: relative; display: flex;  width: 100%; align-items: center;" class="itemside" >
+                                          <div class="left">
+                                              <img src="{{URL::to('public/images_upload/product/'.$orderdetail->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item">
+                                          </div>
+                                          <div style="padding-left: 15px; padding-right: 7px;" class="info" > <a href="{{URL::to('/product-detail/'.$orderdetail->ProductId"></a> {{$orderdetail->ProductName}}  </div>
+                                      </a>
+                                    </td>
+                                    <td> {{$orderdetail->UnitPrice}} </td>
+                                    <td> {{$orderdetail->OrderQuantity}} </td>
+                                    <?php
 
-                                  $Thanhtien = $orderdetail->OrderQuantity * $orderdetail->Price;
-                                  $Sum = $Sum + $Thanhtien;
-                                ?>
-                                <td style="text-align: right !important;"> {{number_format($Thanhtien).' '.'₫'}}  </td>
-                                
-                          </tr>
-                          @endif
-                          @endforeach
-                          <?php
-
-                          $SumO = $Sum + $order->ShipFee;
-                          ?>
+                                      $Thanhtien = $orderdetail->OrderQuantity * $orderdetail->UnitPrice;
+                                      $Sum = $Sum + $Thanhtien;
+                                    ?>
+                                    <td style="text-align: right !important;"> {{number_format($Thanhtien).' '.'₫'}}  </td>
+                                    
+                              </tr>
+                              @endif
+                              @endforeach
+                              <?php
+                                $SumO = $Sum + $order->ShipFee;
+                              ?>
                           
                           <tr>
                             <td colspan="4"> 
@@ -143,8 +140,8 @@
                           </tr>
                         </tbody>
                       </table>
-                      </div> <!-- table-responsive// -->
-                    </div>  <!-- col// -->
+                      </div> 
+                    </div>  col// -->
                     
                   </div>
                 </div>
