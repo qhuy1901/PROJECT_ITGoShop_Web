@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Carbon\Carbon;
 use App\Http\Requests; 
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 session_start();
@@ -31,7 +32,24 @@ class HomeController extends Controller
         ->join('bannerslider', 'blog.BlogId', '=', 'bannerslider.BlogId')
         ->orderby('DateCreate', 'asc')->limit(2)->get();
         
-        $top_product = DB::table('product')->where('status', 1)->orderby('Sold', 'desc')->limit(3)->get();
+        $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        $top_product = DB::table('product')
+        ->select(DB::raw('sum(OrderQuantity) as number_solded, ProductName, ProductImage, product.ProductId, product.StartsAt, product.Quantity, product.Cost, product.Price, product.Discount'))
+        ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
+        ->join('order','order.OrderId','=','orderdetail.OrderId')
+        ->where('OrderStatus', '<>','Đã hủy')
+        ->whereDate('OrderDate','>=', $dau_thangtruoc)
+        ->whereDate('OrderDate','<=', $now)
+        ->groupBy('ProductName') 
+        ->groupBy('ProductImage')
+        ->groupBy('product.ProductId')
+        ->groupBy('product.StartsAt')
+        ->groupBy('product.Quantity')
+        ->groupBy('product.Cost')
+        ->groupBy('product.Price')
+        ->groupBy('product.Discount')
+        ->orderBy('number_solded','desc')->limit(4)->get();
 
         $new_product = DB::table('product')
         ->select('bannerslider.*','product.*','Category.*' )
@@ -46,18 +64,18 @@ class HomeController extends Controller
         $PC_product = DB::table('product')
         ->where('status', 1)
         ->where('CategoryId','=', 'PC000')
-        ->orderby('CreatedAt', 'desc')->limit(8)->get();
+        ->orderby('CreatedAt', 'desc')->limit(12)->get();
 
         $LT_product = DB::table('product')
         ->where('status', 1)
         ->where('CategoryId','=', 'LT000')
-        ->orderby('CreatedAt', 'desc')->limit(8)->get();
+        ->orderby('CreatedAt', 'desc')->limit(12)->get();
 
         $PK_product = DB::table('product')
         ->where('status', 1)
         ->where('CategoryId','=', 'PK000')
-        ->orderby('CreatedAt', 'desc')->limit(8)->get();
-        $top_view = DB::table('product')->where('status', 1)->orderby('View', 'desc')->limit(3)->get();
+        ->orderby('CreatedAt', 'desc')->limit(12)->get();
+        $top_view = DB::table('product')->where('status', 1)->orderby('View', 'desc')->limit(4)->get();
         return view('client.home')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)

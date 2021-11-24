@@ -53,7 +53,7 @@ class AdminController extends Controller
         ->where('OrderStatus', '<>','Đã hủy')
         ->whereDate('OrderDate','>=', $dau_thangtruoc)
         ->whereDate('OrderDate','<=', $now)
-        ->groupBy('ProductName')
+        ->groupBy('ProductName') 
         ->groupBy('ProductImage')
         ->groupBy('product.ProductId')
         ->groupBy('product.StartsAt')

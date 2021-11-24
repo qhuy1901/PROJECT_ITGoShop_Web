@@ -145,7 +145,7 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
+                            <h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
                             <div class="product-price">
                                 <span style="color:red; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
                                 <br>
@@ -216,9 +216,14 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+														<h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</span>
+															<span style="color:black; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
+															@if($product->Discount != 0)
+															<br>
+															<span class="old">{{number_format($product->Price + ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
+															<span class="o-giam-gia" style="font-size:10px">-{{$product->Discount}}% </span> 
+															@endif
 														</div>
 													</div>
 												</div>
@@ -269,6 +274,10 @@
 														<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
 															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
+															@if($so_ngay_da_moban <= 14)
+																<span class="new">New</span>
+															@endif
 														</a>
 														<div class="button-head">
 															<div class="product-action">
@@ -283,9 +292,14 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+														<h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</span>
+															<span style="color:black; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
+															@if($product->Discount != 0)
+															<br>
+															<span class="old">{{number_format($product->Price + ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
+															<span class="o-giam-gia" style="font-size:10px">-{{$product->Discount}}% </span> 
+															@endif
 														</div>
 													</div>
 												</div>
@@ -416,6 +430,10 @@
 														<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
 															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
+															@if($so_ngay_da_moban <= 14)
+																<span class="new">New</span>
+															@endif
 														</a>
 														<div class="button-head">
 															<div class="product-action">
@@ -431,9 +449,14 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+														<h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
-															<span>{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</span>
+															<span style="color:black; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
+															@if($product->Discount != 0)
+															<br>
+															<span class="old">{{number_format($product->Price + ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
+															<span class="o-giam-gia" style="font-size:10px">-{{$product->Discount}}% </span> 
+															@endif
 														</div>
 													</div>
 												</div>
@@ -641,13 +664,18 @@
 	<section class="shop-home-list section">
 		<div class="container">
 			<div class="row">
-				
 				<div class="col-lg-6 col-md-6 col-12">
 					<div class="row">
-						<div class="col-12">
+						<div class="col-10" style="height: 70px;">
 							<div class="shop-section-title">
-								<h1>Bán chạy nhất</h1>
+								
+								<?php $now_month = date('m') ?>
+								<h1 style="text-transform:none">Top sản phẩm bán chạy nhất<p style="font-size:18px;margin-top: 10px">Tháng {{$now_month}}<p></h1>
+								
 							</div>
+						</div>
+						<div class="col-2" style="height: 70px; padding:0px">
+							<img style="height:60px" src="{{URL::to('public/client/Images/top.png')}}" alt="">
 						</div>
 					</div>
 					<!-- Start Single List  -->
@@ -663,9 +691,9 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
-									<h5 class="title"><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
-									<p class="price with-discount">{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</p>
-									<h5 class="title" ><a>Đã bán: {{$product->Sold}} sản phẩm </a> </h5>
+									<h5 class="title"><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
+									<p class="price with-discount">{{number_format($product->Price).' '.'₫'}}</p>
+									<h5 class="title" ><a>Đã bán: {{$product->number_solded}} sản phẩm </a> </h5>
 								</div>
 							</div>
 						</div>
@@ -676,9 +704,9 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-12">
 					<div class="row">
-						<div class="col-12">
+						<div class="col-12" style="height: 70px;">
 							<div class="shop-section-title">
-								<h1>Xem Nhiều Nhất</h1>
+								<h1 style="text-transform:none">Xem nhiều nhất</h1>
 							</div>
 						</div>
 					</div>
@@ -695,7 +723,7 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
-									<h5 class="title"><a href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
+									<h5 class="title"><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
 									<p class="price with-discount">{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</p>
 									<h5 class="title" ><a>Lượt xem: {{$product->View}} <i class=" ti-eye"></i></a> </h5>
 								</div>
@@ -770,7 +798,7 @@
 					<!-- Start Single Blog  -->
 					<div class="shop-single-blog">
 						<img style="margin: auto; max-width: 330px; max-height: 300px; width: auto; height: auto;" src="{{URL::to('public/images_upload/blog/'.$blog->Image)}}" alt="#">
-						<div class="content">
+						<div class="content" style="text-align: justify; text-decoration:none;">
 							<a class="title">{{$blog->Title}}</a>
 							<a href="{{URL::to('/blog-detail/'.$blog->BlogId)}}" class="more-btn">Đọc tiếp</a>
 						</div>
