@@ -40,11 +40,8 @@ class HomeController extends Controller
         ->orderby('product.CreatedAt', 'desc')
         ->limit(2)->get();
 
-<<<<<<< HEAD
         $all_product = DB::table('product')->where('status', 1)->get();
         $giam_gia_soc = DB::table('product')->where('status', 1)->where('Discount', '<>', '0')->orderby('Discount', 'desc')->limit(6)->get();
-=======
-        $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();
 
         $PC_product = DB::table('product')
         ->where('status', 1)
@@ -60,8 +57,6 @@ class HomeController extends Controller
         ->where('status', 1)
         ->where('CategoryId','=', 'PK000')
         ->orderby('CreatedAt', 'desc')->limit(8)->get();
->>>>>>> d6da2ce8e0c2f0a9d810c4ebd14ae261af8cf747
-
         $top_view = DB::table('product')->where('status', 1)->orderby('View', 'desc')->limit(3)->get();
         return view('client.home')
         ->with('sub_brand_list',  $sub_brand_list )
@@ -75,14 +70,11 @@ class HomeController extends Controller
         ->with('top_view', $top_view)
         ->with('new_product', $new_product)
         ->with('list_campaign', $list_campaign)
-<<<<<<< HEAD
-        ->with('giam_gia_soc', $giam_gia_soc);
-=======
+        ->with('giam_gia_soc', $giam_gia_soc)
         ->with('PC_product', $PC_product)
         ->with('LT_product', $LT_product)
         ->with('PK_product', $PK_product);
-
->>>>>>> d6da2ce8e0c2f0a9d810c4ebd14ae261af8cf747
+        
     }
 
     public function check_password(Request $request)
