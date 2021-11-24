@@ -40,7 +40,9 @@ class HomeController extends Controller
         ->orderby('product.CreatedAt', 'desc')
         ->limit(2)->get();
 
-        $all_product = DB::table('product')->where('status', 1)->orderby('Discount', 'desc')->limit(8)->get();
+        $all_product = DB::table('product')->where('status', 1)->get();
+        $giam_gia_soc = DB::table('product')->where('status', 1)->where('Discount', '<>', '0')->orderby('Discount', 'desc')->limit(6)->get();
+
         $top_view = DB::table('product')->where('status', 1)->orderby('View', 'desc')->limit(3)->get();
         return view('client.home')
         ->with('sub_brand_list',  $sub_brand_list )
@@ -53,7 +55,8 @@ class HomeController extends Controller
         ->with('latestnew', $latestnew)
         ->with('top_view', $top_view)
         ->with('new_product', $new_product)
-        ->with('list_campaign', $list_campaign);
+        ->with('list_campaign', $list_campaign)
+        ->with('giam_gia_soc', $giam_gia_soc);
     }
 
     public function check_password(Request $request)
