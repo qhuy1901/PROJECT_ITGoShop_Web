@@ -129,7 +129,7 @@
                                 <span class="out-of-stock">GIẢM {{$product->Discount}}%</span>
 								<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
 								@if($so_ngay_da_moban < 14)
-									<span class="new">New</span>
+									<span class="new" style="right: 180px;">New</span>
 								@endif
                             </a>
                             <div class="button-head">
@@ -199,7 +199,7 @@
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
 															@if($so_ngay_da_moban <= 14)
-																<span class="new">New</span>
+																<span class="new" style="right: 180px;" >New</span>
 															@endif
 														</a>
 														
@@ -276,7 +276,7 @@
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
 															@if($so_ngay_da_moban <= 14)
-																<span class="new">New</span>
+																<span class="new" style="right: 180px;">New</span>
 															@endif
 														</a>
 														<div class="button-head">
