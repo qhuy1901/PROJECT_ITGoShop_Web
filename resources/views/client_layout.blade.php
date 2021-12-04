@@ -121,7 +121,7 @@
 			<input type="text" id="input-customer-id" value="{{Session::get('CustomerId')}}" hidden><!--Đừng xóa cái này  -->
 			<input type="text" id="input-admin-id" value="{{Session::get('CustomerId')}}" hidden>
 		</div>
-		  <div class="navigation__column center">
+		<div class="navigation__column center">
 				
 				<ul class="main-menu menu">
 				@foreach($product_category_list as $key => $category)

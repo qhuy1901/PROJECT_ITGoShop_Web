@@ -25,7 +25,7 @@
                               <div class="ps-products" data-mh="product-listing">
                                 <div class="ps-product__columns">
                                   @foreach($all_product as $key => $product)
-                                  <div class="ps-product__column">
+                                  <div class="ps-product__column" style="width: 250px; height: 350px;">
                                     <div class="single-product">
                                       <div class="product-img" style="width: 250px; height: 200px;">
                                             <a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
