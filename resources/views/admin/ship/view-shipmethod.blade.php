@@ -123,7 +123,7 @@
                                                                 {{$item->EstimatedDeliveryTime}} giờ
                                                             @endif
                                                         </td>
-                                                        <td>{{$item->ShipFee}}</td>
+                                                        <td>{{number_format($item->ShipFee, 0, " ", ".").' ₫'}}</td>
                                                         <td>
                                                             <div class="form-button-action">
 																@if($item->Status == 1)

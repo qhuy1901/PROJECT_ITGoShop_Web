@@ -129,7 +129,7 @@
                                 <span class="out-of-stock">GIẢM {{$product->Discount}}%</span>
 								<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
 								@if($so_ngay_da_moban < 14)
-									<span class="new">New</span>
+									<span class="new" style="right:0px;">New</span>
 								@endif
                             </a>
                             <div class="button-head">

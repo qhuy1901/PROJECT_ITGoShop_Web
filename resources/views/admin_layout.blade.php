@@ -6,6 +6,11 @@
 	<title>Trang Admin </title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" type="image/png" href="{{URL::to('public/admin/images/favicon.svg')}}"/>
+	<style>
+		.swal-footer, .swal-text {
+			text-align: center;
+		}
+	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Fonts and icons -->
 	<script src="{{asset('./public/admin/js/plugin/webfont/webfont.min.js')}}"></script>

@@ -209,8 +209,7 @@
 											<div class="product-img" style="width: 250px; height: 200px;">
 												<a href="{{URL::to('/product-detail/'.$product_detail->ProductId)}}">
 													<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt="#">
-													<img class="hover-img" src="{{URL::to('/product-detail/'.$product_detail->ProductId)}}" alt="">
-													
+													<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt="">
 												</a>
 												<div class="button-head">
 													<div class="product-action">

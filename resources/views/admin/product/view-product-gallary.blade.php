@@ -134,7 +134,7 @@
 																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa thư viện ảnh">
 																	<a href="javascript:void(0)" class="active" ui-toggle-class="">
 																		<i class="fa fa-times text-danger text"></i>
-																	</a>
+																	</a> 
 																</button>
 															</div>
                                                         </td>

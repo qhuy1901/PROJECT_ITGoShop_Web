@@ -56,7 +56,7 @@
 														$fullname = $lastName.' '.$firstName ;
 													?>
 													<td>{{$fullname}}</td>
-													<td>{{$order->Total}}</td>
+													<td>{{number_format($order->Total, 0, " ", ".").' ₫'}}</td> 
 													
 													<td class="OrderStatus" style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}}<!-- CHÚ Ý !!!! Không thêm khoảng cách (SPACE) vô đây, tránh bị lỗi js  --></td>
 													<td class= "PaymentStatus" style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">@if($order->OrderStatus != 'Đã hủy'){{$order->PaymentStatus}}@else - @endif<!-- CHÚ Ý !!!! Không thêm khoảng cách (SPACE) vô đây, tránh bị lỗi js  --></td>

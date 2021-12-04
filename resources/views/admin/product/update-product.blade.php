@@ -131,7 +131,7 @@
                                                 <div class="form-group">
                                                         <label for="exampleFormControlFile1">Hình ảnh sản phẩm</label>
                                                         <input type="file" name="product_image" class="form-control-file" id="exampleFormControlFile1">
-														<img src="{{URL::to('public/images_upload/product/'.$update_value->ProductImage)}}" height=100 width=100>
+														<img src="{{URL::to('public/images_upload/product/'.$update_value->ProductImage)}}" style="margin: auto; max-width: 160px; max-height: 160px; width: auto; height: auto;">
                                                 </div>
 											</div>
 											<div class="col-6 col-lg-6">

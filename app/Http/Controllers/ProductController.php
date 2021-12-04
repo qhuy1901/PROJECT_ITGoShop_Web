@@ -171,7 +171,7 @@ class ProductController extends Controller
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName','subbrand.SubBrandName')
         ->where('product.CategoryId',$CategoryId)
-        ->whereNotIn('product.ProductId', [$ProductId])->limit(4)->get();
+        ->whereNotIn('product.ProductId', [$ProductId])->limit(10)->get();
 
         $product_gallary = DB::table('productgallary')
         ->select('Admin', 'GallaryImage', 'GallaryId','CreatedAt', 'GallaryStatus', 'GallaryImage')

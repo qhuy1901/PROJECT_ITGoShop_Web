@@ -31,8 +31,8 @@
 				<a href="index.html"><img src="{{('public/client/images/logo.png')}}" alt="logo"></a>
 			</div>
 			<h1>Đăng nhập</h1>
-			<input type="email" name="email" placeholder="Email" />
-			<input type="password" name="password" placeholder="Password" />
+			<input type="email" name="email" placeholder="Email" required/>
+			<input type="password" name="password" placeholder="Password" required/>
             <?php
 				$message = Session::get('message');
 				if($message)

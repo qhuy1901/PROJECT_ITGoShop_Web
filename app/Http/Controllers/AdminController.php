@@ -40,7 +40,7 @@ class AdminController extends Controller
     {
         $this->auth_login(); // Hàm kiểm tra có admin_id hay không
         $number_of_customer = DB::table('user')->where('Admin', 0)->count();
-        $number_of_order = DB::table('order')->where('OrderStatus', 'Đã hủy')->count();
+        $number_of_order = DB::table('order')->where('OrderStatus', '<>', 'Đã hủy')->count();
         $number_of_product = DB::table('product')->count();
         $inventory_list = DB::table('product')->orderBy('Sold','desc')->orderBy('StartsAt', 'asc')->limit(5)->get();
 
@@ -70,20 +70,17 @@ class AdminController extends Controller
         // ->whereDate('OrderDate','<=', $now)
         ->orderBy('View','desc')->limit(5)->get();
 
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
         $this_month_revenue = DB::table('statistic')
         ->select(DB::raw('sum(Profit) as totalProfit'))
-        ->whereDate('StatisticDate','>=', $dau_thangtruoc)
+        ->whereDate('StatisticDate','>=', $dauthangnay)
         ->whereDate('StatisticDate','<=', $now)->first();
 
-        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
-        $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
         $cuoi_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->endOfMonth()->toDateString();
-        
-        //$sub7days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(7)->toDateString();
         $sub365days = Carbon::now('Asia/Ho_Chi_Minh')->subday(365)->toDateString();
 
         $login_today = DB::table('loginhistory')
-        ->whereDate('LoginDate','<=', $now)->count();
+        ->whereDate('LoginDate','=', $now)->count();
         $login_thangnay = DB::table('loginhistory')
         ->whereDate('LoginDate','>=', $dauthangnay)
         ->whereDate('LoginDate','<=', $now)->count();
@@ -96,7 +93,6 @@ class AdminController extends Controller
 
         $order_homnay = DB::table('order')
         ->whereDate('OrderDate', $now)->count();
-
         
         return view('admin.dashboard')
         ->with('this_month_revenue', $this_month_revenue)
@@ -122,7 +118,7 @@ class AdminController extends Controller
         $result = DB::table('user')->where('email', $email)->where('password', $password)->first();
         if($result == true)
         {
-            Session::put('FirstName', $result->FirstName);
+            Session::put('FirstName', $result->FirstName); 
             Session::put('LastName', $result->LastName);
             Session::put('UserImage', $result->UserImage);
             Session::put('UserId', $result->UserId);
@@ -130,7 +126,7 @@ class AdminController extends Controller
             $data['UserId'] = $result->UserId;
             $data['LoginTime'] = date("H:i:s");
             DB::table('loginhistory')->insert($data);
-            return Redirect::to('/dashboard');
+            return Redirect::to('/dashboard'); 
         } 
         else{
             Session::put('message', 'Mật khẩu hoặc tài khoản sai. Xin nhập lại!');
