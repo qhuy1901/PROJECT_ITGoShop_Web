@@ -199,7 +199,6 @@
 				</div> 
 			</div>
 			<div class="menu-toggle"><span></span></div>
-			<a class="ps-cart__toggle" href="{{URL::to('/')}}" ><i class="fa fa-bell-o" aria-hidden="true" title="Thông báo"></i></a>
 			<?php
 					//$CustomerId= Session::get('CustomerIdId');
 					$CustomerId= Session::get('CustomerId');

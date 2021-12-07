@@ -361,8 +361,18 @@
 										</a>
 									</li>
 									<li>
+										<a href="{{URL::to('/add-subbrand')}}">
+											<span class="sub-item">Thêm thương hiệu nhánh</span>
+										</a>
+									</li>
+									<li>
 										<a href="{{URL::to('/view-brand')}}">
-											<span class="sub-item">Xem thương hiệu sản phẩm</span>
+											<span class="sub-item">Tất cả thương hiệu sản phẩm</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{URL::to('/view-subbrand')}}">
+											<span class="sub-item">Tất cả thương hiệu nhánh</span>
 										</a>
 									</li>
 								</ul>
@@ -384,7 +394,7 @@
 
 									<li>
 										<a href="{{URL::to('/view-product')}}">
-											<span class="sub-item">Xem sản phẩm</span>
+											<span class="sub-item">Tất cả sản phẩm</span>
 										</a>
 									</li>
 								</ul>

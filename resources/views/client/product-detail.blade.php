@@ -134,23 +134,6 @@
 											
 										</div>
 									</div>
-
-									
-									<div class="share-social">
-										<div class="row">
-											<div class="col-12">
-												<div class="content-tags">
-													<h4>Tags:</h4>
-													<ul class="tag-inner">
-														<li><a href="#">Glass</a></li>
-														<li><a href="#">Pant</a></li>
-														<li><a href="#">t-shirt</a></li>
-														<li><a href="#">swater</a></li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
 								</form>
 							</div>
 						</div>
