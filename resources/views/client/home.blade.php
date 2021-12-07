@@ -102,7 +102,31 @@
 					</div>
 				</div>
 				@endforeach
+				<div class="product-area most-popular section" style="background-color: #F6FCFF">
+					<div class="container">
+						<div class="row">
+							<div class="col-12" style="background-color: white">
+								<div class="owl-carousel popular-slider">
+								@foreach($giam_gia_soc as $key => $product)
+									<div class="single-product">
+										<div class="product-img" style="width: 250px; height: 200px;">
+											<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
+												<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+												<img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
+												
+											</a>
+											
+										</div>
+									</div>
+									<!-- End Single Product -->
+									@endforeach
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+
 		</div>
 	</section> 
 
