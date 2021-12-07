@@ -2,15 +2,15 @@
 @section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
 @section('client_content')
 	<!-- Slider Area -->
-<section class="slider-area" style="height:340px">
+<section class="slider-area" style="height:400px">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
-					<div class="slideshow-container" style="max-height:300px; box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 10%); align-items: center;">
+					<div class="slideshow-container" style="height:360px; box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 10%); align-items: center;">
 						@foreach($slider_list as $key => $slider)
-						<div class="mySlides">
+						<div class="mySlides pt-45">
 							<a href="{{URL::to('/blog-detail/'.$slider->BlogId)}}">
-								<img src="{{URL::to('public/images_upload/banner-slider/'.$slider->SliderImage)}}" style="width:100%;">
+								<img src="{{URL::to('public/images_upload/banner-slider/'.$slider->SliderImage)}}" style="width:100%; border-radius:0">
 							</a>
 						</div>
 						@endforeach
@@ -23,9 +23,9 @@
 						</div>	
 					</div>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-lg-4" style="margin-top:50px;">
 				@foreach($latestnew as $key => $new)
-				<div class="card" style="margin-top:50px; border-radius:  10px 10px 0px 0px;background-color:#ccf2f4; border-left: 6px solid #A2D2FF; border-bottom: 6px solid #A2D2FF;">
+				<div class="card" style="margin-bottom:10px; border-radius:  10px 10px 0px 0px;background-color:#ccf2f4; border-left: 6px solid #A2D2FF; border-bottom: 6px solid #A2D2FF;">
 					<div class="card-body">
 						<a style="color:#333; font-size:17px;" href="{{URL::to('/blog-detail/'.$new->BlogId)}}"><b>{{$new->Title}}</b></a>
 					</div>
@@ -72,7 +72,7 @@
 	<section class="small-banner section">
 		<div class="container">
 			<div class="row">
-			@foreach($new_product as $key => $product)
+			<!--@foreach($new_product as $key => $product)
 				<div class="col-lg-4 col-md-6">
 					<div class="single-banner" style="width: 350px; height: 185.25px; ">
 						<img src="{{URL::to('public/images_upload/banner-slider/'.$product->SliderImage)}}"  alt="#" style="border-radius: 10px;margin: auto; width: 350px; height: 185.25px;">
@@ -84,7 +84,7 @@
 					</div>
 				</div>
 			@endforeach
-				<!--<div class="col-lg-4 col-md-6">
+				<div class="col-lg-4 col-md-6">
 					<div class="single-banner">
 						<img src="./public/client/Images/pannel/2.png" alt="#" style="border-radius: 10px;">
 						<div class="content">
@@ -93,7 +93,7 @@
 							<a href="{{URL::to('/product-detail2/')}}">Xem Chi Tiết</a>
 						</div>
 					</div>
-				</div>-->
+				</div>
 				@foreach($list_campaign as $key => $campaign)
 				<div class="col-lg-4">
 					<div class="single-banner tab-height" style="width: 350px; height: 185.25px;">
@@ -101,25 +101,33 @@
 						
 					</div>
 				</div>
-				@endforeach
-				<div class="product-area most-popular section" style="background-color: #F6FCFF">
+				@endforeach-->
+				<div class="product-area most-popular section">
 					<div class="container">
 						<div class="row">
-							<div class="col-12" style="background-color: white">
+							<div class="col-12">
+								<div class="section-title">
+									<h2 style="text-transform:none;">Thương hiệu nổi bật</h2>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12" >
 								<div class="owl-carousel popular-slider">
-								@foreach($giam_gia_soc as $key => $product)
-									<div class="single-product">
-										<div class="product-img" style="width: 250px; height: 200px;">
-											<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
-												<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
-												<img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
-												
+								@foreach($main_brand_list as $key => $brand)
+									@if($brand->BrandName != "No Brand")
+									<div class="single-banner tab-height">
+										<div class="product-img" style="width: 200px; height: 150px; ">
+											<a href="{{URL::to('/product-listing4/'.$brand->BrandName)}}">
+												<img class="default-img" style="margin: auto; max-width: 200px; max-height: 150px; width: auto; height: auto; border-radius: 10px; " src="{{URL::to('public/images_upload/brand/'.$brand->BrandLogo)}}" alt="#">
+												<img class="hover-img" src="{{URL::to('/product-listing4/'.$brand->BrandName)}}" alt="">
 											</a>
 											
 										</div>
 									</div>
 									<!-- End Single Product -->
-									@endforeach
+									@endif
+								@endforeach
 								</div>
 							</div>
 						</div>

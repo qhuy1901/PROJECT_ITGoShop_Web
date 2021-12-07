@@ -12,6 +12,32 @@ session_start();
 
 class ProductListingController extends Controller
 {
+    public function product_listing4($BrandName)
+    {
+        
+        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        
+        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandName',$BrandName)->limit(1)->get();
+        $sub_brand = DB::table('subbrand')->select('subbrand.*')
+        ->join('brand','brand.BrandId','=','subbrand.BrandId')
+        ->where('brand.BrandName',$BrandName)->get();
+        $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('brand.BrandName',$BrandName)->paginate(9);
+
+        return view('client.product-listing')
+        ->with('sub_brand_list',  $sub_brand_list )
+        ->with('main_brand_list', $main_brand_list)
+        ->with('product_category_list', $product_category_list)
+        ->with('des_brand', $des_brand)
+        ->with('sub_brand', $sub_brand)
+        ->with('all_product', $all_product);
+    }
     public function product_listing($BrandId)
     {
         
@@ -19,7 +45,7 @@ class ProductListingController extends Controller
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
-        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->get();
+        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->limit(1)->get();
         $sub_brand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$BrandId)->get();
         $all_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
@@ -54,7 +80,7 @@ class ProductListingController extends Controller
         {
             $BrandId = $value->BrandId;
         }
-        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->get();
+        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->limit(1)->get();
         $sub_brand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$BrandId)->get();
     
         return view('client.product-listing3')

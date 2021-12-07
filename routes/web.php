@@ -167,6 +167,7 @@ Route::get('/send-order-mail', 'App\Http\Controllers\OrderController@send_order_
 Route::get('/product-listing/{BrandId}', 'App\Http\Controllers\ProductListingController@product_listing');
 Route::get('/product-listing2/{CategoryId}', 'App\Http\Controllers\ProductListingController@product_listing2');
 Route::get('/product-listing3/{SubBrandId}', 'App\Http\Controllers\ProductListingController@product_listing3');
+Route::get('/product-listing4/{SubBrandId}', 'App\Http\Controllers\ProductListingController@product_listing4');
 
 // Banner Slider
 Route::get('/view-banner-slider', 'App\Http\Controllers\BannerSliderController@view_banner_slider');
