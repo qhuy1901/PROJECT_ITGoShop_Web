@@ -61,13 +61,19 @@ Route::post('/update-product-category/{CategoryId}','App\Http\Controllers\Produc
 // Thương hiệu sản phẩm (Brand)
 Route::get('/add-brand','App\Http\Controllers\BrandController@add_brand');
 Route::get('/view-brand','App\Http\Controllers\BrandController@view_brand');
+Route::get('/add-subbrand','App\Http\Controllers\BrandController@add_subbrand');
+Route::get('/view-subbrand','App\Http\Controllers\BrandController@view_subbrand');
 Route::get('/update-brand/{BrandId}','App\Http\Controllers\BrandController@get_brand_info');
 Route::get('/delete-brand/{BrandId}','App\Http\Controllers\BrandController@delete_brand');
 
 Route::get('/unactive-brand/{BrandId}','App\Http\Controllers\BrandController@unactive_brand');
 Route::get('/active-brand/{BrandId}','App\Http\Controllers\BrandController@active_brand');
 
+Route::get('/unactive-subbrand/{SubBrandId}','App\Http\Controllers\BrandController@unactive_subbrand');
+Route::get('/active-subbrand/{SubBrandId}','App\Http\Controllers\BrandController@active_subbrand');
+
 Route::post('/save-brand','App\Http\Controllers\BrandController@save_brand');
+Route::post('/save-subbrand','App\Http\Controllers\BrandController@save_subbrand');
 Route::post('/update-brand/{id}','App\Http\Controllers\BrandController@update_brand');
 
 // Sản phẩm (Product)

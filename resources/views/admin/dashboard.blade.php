@@ -335,7 +335,7 @@
 									<div class="card-title"><i class="fas fa-fire" style="color:red;"></i>  Bài viết được xem nhiều nhất</div>
 									<!-- <small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small> -->
 								</div>
-								<div class="card-body pb-0">
+								<div class="card-body pb-20">
 									@foreach($top_blog_view as $key => $item)
 									<div class="d-flex">
 										<div class="avatar">
@@ -439,7 +439,7 @@
 									<div class="card-title"><i class="fas fa-eye text-success"></i> Sản phẩm được xem nhiều nhất</div>
 									<small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small>
 								</div>
-								<div class="card-body pb-0">
+								<div class="card-body pb-20">
 									@foreach($top_product_view as $key => $item)
 									<div class="d-flex">
 										<div class="avatar">
@@ -629,82 +629,81 @@
 							</div>
 						</div> -->
 						<div class="col-md-4">
-						<div class="card">
-								<div class="card-header">
-									<div class="card-head-row">
-										<h4 class="card-title">Thống kê lượt truy cập</h4>
-										<div class="card-tools">
-											<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-angle-down"></span></button>
-											<button class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card"><span class="fa fa-sync-alt"></span></button>
-											<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-times"></span></button>
-										</div>
-									</div>
-									<!-- <p class="card-category">
-									Map of the distribution of users around the world</p> -->
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-md-12">
-											<div class="table-responsive table-hover table-sales">
-												<table class="table">
-													<thead>
-														<tr>
-															<th>Thời điểm</th>
-															<th>Tổng lượng truy cập</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td class="text-left">
-																Đang online
-															</td>
-															<td class="text-right">
-																1
-															</td>
-														</tr>
-														<tr>
-															<td class="text-left">
-																Hôm nay
-															</td>
-															<td class="text-right">
-																{{$login_today}} lượt truy cập
-															</td>
-														</tr>
-														<tr>
-															<td class="text-left"">
-																Tháng nay
-															</td>
-															<td class="text-right">
-																{{$login_thangnay}} lượt truy cập
-															</td>
-														</tr>
-														<tr>
-															<td class="text-left">
-																Tháng trước
-															</td>
-															<td class="text-right">
-																{{$login_thangtruoc}} lượt truy cập
-															</td>
-														</tr>
-														<tr>
-															<td class="text-left">
-																Một năm qua
-															</td>
-															<td class="text-right">
-																{{$login_namnay}} lượt truy cập
-															</td>
-														</tr>
-													</tbody>
-												</table>
+								<div class="card">
+									<div class="card-header">
+										<div class="card-head-row">
+											<h4 class="card-title">Thống kê lượt truy cập</h4>
+											<div class="card-tools">
+												<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-angle-down"></span></button>
+												<button class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card"><span class="fa fa-sync-alt"></span></button>
+												<button class="btn btn-icon btn-link btn-primary btn-xs"><span class="fa fa-times"></span></button>
 											</div>
 										</div>
-										
+										<!-- <p class="card-category">
+										Map of the distribution of users around the world</p> -->
+									</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="table-responsive table-hover table-sales">
+													<table class="table">
+														<thead>
+															<tr>
+																<th>Thời điểm</th>
+																<th>Tổng lượng truy cập</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td class="text-left">
+																	Đang online
+																</td>
+																<td class="text-right">
+																	1
+																</td>
+															</tr>
+															<tr>
+																<td class="text-left">
+																	Hôm nay
+																</td>
+																<td class="text-right">
+																	{{$login_today}} lượt truy cập
+																</td>
+															</tr>
+															<tr>
+																<td class="text-left"">
+																	Tháng nay
+																</td>
+																<td class="text-right">
+																	{{$login_thangnay}} lượt truy cập
+																</td>
+															</tr>
+															<tr>
+																<td class="text-left">
+																	Tháng trước
+																</td>
+																<td class="text-right">
+																	{{$login_thangtruoc}} lượt truy cập
+																</td>
+															</tr>
+															<tr>
+																<td class="text-left">
+																	Một năm qua
+																</td>
+																<td class="text-right">
+																	{{$login_namnay}} lượt truy cập
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
 						</div>
 						<div class="col-md-8">
-						<div class="card" style="height:490px">
+							<div class="card" style="height:490px">
 								<div class="card-header">
 									<div class="card-head-row">
 										<div class="card-title">Lượt truy cập<p class="text-muted">7 ngày gần đây</p></div>
