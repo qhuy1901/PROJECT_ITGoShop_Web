@@ -1,5 +1,6 @@
 @extends('admin_layout')
 @section('admin_content')
+
 <div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
@@ -69,10 +70,10 @@
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
 																</button>
-																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="In đơn hàng" >
-																	<a class="active" ui-toggle-class="" > 
+																<button type="button" onclick="window.open('{{URL::to('/print-order/20000')}}');"  data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="In đơn hàng" >
+																	<!-- <a class="active" href="{{URL::to('/print-order/'.$order->OrderId)}}" ui-toggle-class="" >  -->
 																		<i class="fa fa-print text-active"></i>
-																	</a>
+																	<!-- </a> -->
 																</button>
 															</div>
 														@endif	
@@ -125,7 +126,6 @@
 																						</div>
 																					<!-- </form> -->
 																				</div>
-																				
 																			</div>
 																		</div>
 																</div>
@@ -151,7 +151,7 @@
 	<script>
 		var local_parent;
 		$(document).ready(function() { 
-			
+	
 
 			$('.btn-update-order').click(function(){ 
 				var parent = $(this).parents('tr'); 
