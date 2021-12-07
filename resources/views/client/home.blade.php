@@ -2,7 +2,7 @@
 @section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
 @section('client_content')
 	<!-- Slider Area -->
-<section class="slider-area" style="height:400px">
+<section class="slider-area " style="height:400px">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8">
@@ -41,7 +41,7 @@
 		</div>
 	</div>
 		
-	</section>
+</section>
 	
 <!--  
 	<section class="hero-slider">
@@ -69,6 +69,63 @@
 	</section>
  -->
 
+	
+<br> <br> <br>
+<div class="product-area most-popular section " style="background-color: #F6FCFF">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title" style="margin-bottom: 0px;">
+                    <h2 style="text-transform:none;">
+					<img style="height:45px" src="{{URL::to('public/client/Images/fire.gif')}}" alt="">Giảm giá sốc
+					<img style="height:45px" src="{{URL::to('public/client/Images/fire.gif')}}" alt=""></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" style="background-color: white;border-radius: 30px">
+                <div class="owl-carousel popular-slider">
+					@foreach($giam_gia_soc as $key => $product)
+                    <div class="single-product">
+                        <div class="product-img" style="width: 250px; height: 200px;">
+                            <a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
+                                <img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
+                                <img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
+                                <span class="out-of-stock">GIẢM {{$product->Discount}}%</span>
+								<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
+								@if($so_ngay_da_moban < 7)
+									<span class="new" style="right: 180px;">New</span>
+								@endif
+                            </a>
+                            <div class="button-head">
+                                <div class="product-action">
+                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
+                                    <a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
+									<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
+                                </div>
+                                <div class="product-action-2">
+                                    <a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
+									<input type="text" value="{{$product->ProductId}}" hidden>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
+                            <div class="product-price">
+                                <span style="color:red; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
+                                <br>
+                                <span class="old">{{number_format($product->Price + ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Product -->
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	<!-- End Sản phẩm mới nhất -->
 	<section class="small-banner section">
 		<div class="container">
 			<div class="row">
@@ -137,63 +194,6 @@
 
 		</div>
 	</section> 
-
-<div class="product-area most-popular section" style="background-color: #F6FCFF">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title" style="margin-bottom: 0px;">
-                    <h2 style="text-transform:none;">
-					<img style="height:45px" src="{{URL::to('public/client/Images/fire.gif')}}" alt="">Giảm giá sốc
-					<img style="height:45px" src="{{URL::to('public/client/Images/fire.gif')}}" alt=""></h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" style="background-color: white;border-radius: 30px">
-                <div class="owl-carousel popular-slider">
-					@foreach($giam_gia_soc as $key => $product)
-                    <div class="single-product">
-                        <div class="product-img" style="width: 250px; height: 200px;">
-                            <a href="{{URL::to('/product-detail/'.$product->ProductId)}}">
-                                <img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
-                                <img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
-                                <span class="out-of-stock">GIẢM {{$product->Discount}}%</span>
-								<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-								@if($so_ngay_da_moban < 14)
-									<span class="new" style="right: 180px;">New</span>
-								@endif
-                            </a>
-                            <div class="button-head">
-                                <div class="product-action">
-                                    <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
-                                    <a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
-									<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
-                                </div>
-                                <div class="product-action-2">
-                                    <a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
-									<input type="text" value="{{$product->ProductId}}" hidden>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
-                            <div class="product-price">
-                                <span style="color:red; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
-                                <br>
-                                <span class="old">{{number_format($product->Price + ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Product -->
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-	<!-- End Sản phẩm mới nhất -->
-
 	<!-- Start Product Area -->
     <div class="product-area section">
             <div class="container">
@@ -230,7 +230,7 @@
 															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-															@if($so_ngay_da_moban <= 14)
+															@if($so_ngay_da_moban <= 7)
 																<span class="new" style="right: 180px;" >New</span>
 															@endif
 														</a>
@@ -307,7 +307,7 @@
 															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-															@if($so_ngay_da_moban <= 14)
+															@if($so_ngay_da_moban <= 7)
 																<span class="new" style="right: 180px;">New</span>
 															@endif
 														</a>
@@ -463,7 +463,7 @@
 															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-															@if($so_ngay_da_moban <= 14)
+															@if($so_ngay_da_moban <= 7)
 																<span class="new">New</span>
 															@endif
 														</a>
