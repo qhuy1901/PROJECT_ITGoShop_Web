@@ -65,9 +65,9 @@
                                 <img class="hover-img" src="{{URL::to('/product-detail/'.$product->ProductId)}}" alt="">
                                 <span class="out-of-stock">GIẢM {{$product->Discount}}%</span>
 								<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-								@if($so_ngay_da_moban < 7)
+								@if($so_ngay_da_moban < 14)
 									<span class="new" style="right: 180px;">New</span>
-								@endif
+								@endif 
                             </a>
                             <div class="button-head">
                                 <div class="product-action">
@@ -83,7 +83,69 @@
                         </div>
                         <div class="product-content">
                             <h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
-                            <div class="product-price">
+                            <?php $avg_rating = $product->number_rating?> 
+							@if($avg_rating >= 1)
+								<div class="star-wrapper" style="display: inline-block;">
+								<p style="display:inline-block; font-size:10px; margin-left:10px">{{round($avg_rating, 1)}}</p>	
+															@if($avg_rating > 4.5) <!-- 5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 4) <!-- 4.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star-half-o s1" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 3.5) <!-- 4 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 3) <!-- 3.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star-half-o s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 2.5) <!-- 3 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 2) <!-- 2.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star-half-o s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 1.5) <!-- 2 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 1) <!-- 1.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star-half-o s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@else <!-- 1 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@endif		
+															
+												</div>
+							@endif
+							<div class="product-price">
                                 <span style="color:red; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
                                 <br>
                                 <span class="old">{{number_format($product->Price + ($product->Price * ($product->Discount)/100)).' '.'₫'}}</span>
@@ -751,4 +813,25 @@
 	</script>
 	<!-- <p id="o-test"></p> -->
 	<!-- <a href="{{URL::to('/add-product-to-withlist')}}">Hi</a> -->
+	<style>
+	.star-wrapper {
+  direction: rtl;
+}
+.star-wrapper a {
+  font-size: 2em;
+  color: #DEDDE3;
+  text-decoration: none;
+  transition: all 0.5s;
+  margin: 4px;
+}
+/* .star-wrapper a:hover {
+  color: gold;
+  transform: scale(1.3);
+} */
+.wraper {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+	</style>
 @endsection
