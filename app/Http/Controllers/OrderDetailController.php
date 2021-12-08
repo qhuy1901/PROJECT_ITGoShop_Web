@@ -19,7 +19,7 @@ class OrderDetailController extends Controller
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $order_info = DB::table('order')->where('OrderId', '=', $OrderId)->first();
         $order_detail = DB::table('orderdetail')
-        ->select('ProductName', 'ProductImage', 'OrderQuantity', 'UnitPrice')
+        ->select('product.ProductId', 'ProductName', 'ProductImage', 'OrderQuantity', 'UnitPrice')
         ->join('product', 'product.ProductId', '=', 'orderdetail.ProductId')
         ->where('OrderId', '=', $OrderId)->get();
 

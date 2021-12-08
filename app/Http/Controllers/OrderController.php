@@ -243,114 +243,114 @@ class OrderController extends Controller
         // return $pdf->stream();
     }
 
-    public function print_order_convert($order_id)
-    {
+    // public function print_order_convert($order_id)
+    // {
 
-        $output = '
-        <title>Hóa đơn #</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    //     $output = '
+    //     <title>Hóa đơn #</title>
+    //     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         
-        <div class="container-fluid" style="max-width:675px">
-            <div class="row" style="background-color:red">
-                <div class="col-12">
-                    <img src="'.url("/public/client/Images/logo3.png").'" alt="">
-                </div>
-                <div class="col-7">
-                    <b>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ ITGOSHOP</b>
-                    <p>Tầng 5, Số 117-119-121 Nguyễn Du, Phường Bến Thành, Quận 1, Thành Phố Hồ Chí Minh</p>
-                </div>
+    //     <div class="container-fluid" style="max-width:675px">
+    //         <div class="row" style="background-color:red">
+    //             <div class="col-12">
+    //                 <img src="'.url("/public/client/Images/logo3.png").'" alt="">
+    //             </div>
+    //             <div class="col-7">
+    //                 <b>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ ITGOSHOP</b>
+    //                 <p>Tầng 5, Số 117-119-121 Nguyễn Du, Phường Bến Thành, Quận 1, Thành Phố Hồ Chí Minh</p>
+    //             </div>
                
-                    <p style="color:#F70C72;font-weight: bold;">"Tất cả vì khách hàng"</p>
-            </div>
-            <hr style="margin:0px 0px 40px 0px">
-            <div class="row" style="margin-bottom:40px;">
-                <div class="col-12" style="text-align: center;">
-                    <b style="font-size: 22px;">HÓA ĐƠN BÁN HÀNG</b>
-                </div>
-                <div class="col-12" style="text-align: right;">
-                    <p>Ngày hóa đơn: 30/11/2021</p>
-                    <!-- <p>Người bán hàng: Lê Thị Hồng Cúc</p> -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <p><b style="font-size: 18px;">I. Thông tin hóa đơn</b></p>
-                    <p>Mã hóa đơn: #</p>
-                    <p>Họ tên người mua hàng: Tạ Quang Huy</p>
-                    <p>Số điện thoại: 0365990290</p>
-                    <p>Địa chỉ: 220/17 khu phố 9 phường Tam Hiệp, TP.Biên Hòa, tỉnh Đồng Nai</p>
-                    <p>Hình thức thanh toán: Thanh toán online</p>
-                </div>
-            </div>
+    //                 <p style="color:#F70C72;font-weight: bold;">"Tất cả vì khách hàng"</p>
+    //         </div>
+    //         <hr style="margin:0px 0px 40px 0px">
+    //         <div class="row" style="margin-bottom:40px;">
+    //             <div class="col-12" style="text-align: center;">
+    //                 <b style="font-size: 22px;">HÓA ĐƠN BÁN HÀNG</b>
+    //             </div>
+    //             <div class="col-12" style="text-align: right;">
+    //                 <p>Ngày hóa đơn: 30/11/2021</p>
+    //                 <!-- <p>Người bán hàng: Lê Thị Hồng Cúc</p> -->
+    //             </div>
+    //         </div>
+    //         <div class="row">
+    //             <div class="col-12">
+    //                 <p><b style="font-size: 18px;">I. Thông tin hóa đơn</b></p>
+    //                 <p>Mã hóa đơn: #</p>
+    //                 <p>Họ tên người mua hàng: Tạ Quang Huy</p>
+    //                 <p>Số điện thoại: 0365990290</p>
+    //                 <p>Địa chỉ: 220/17 khu phố 9 phường Tam Hiệp, TP.Biên Hòa, tỉnh Đồng Nai</p>
+    //                 <p>Hình thức thanh toán: Thanh toán online</p>
+    //             </div>
+    //         </div>
     
-            <div class="row">
-                <div class="col-12">
-                    <p><b style="font-size: 18px;">II. Chi tiết hóa đơn</b></p>
-                    <table class="table"> 
-                        <tr>
-                            <th>Sản phẩm</th>
-                            <th>Đơn giá</th>
-                            <th>Số lượng</th>
-                            <th>Tạm tính</th>
-                        </tr>
-                        <tr>
-                            <td>Dell Inspiron All in One 24" 5400</td>
-                            <td>19.890.000 ₫</td>
-                            <td>x1</td>
-                            <td>19.890.000 ₫</td>
-                        </tr>
-                        <tr>
-                            <td>Dell Inspiron All in One 24" 5400</td>
-                            <td>19.890.000 ₫</td>
-                            <td>x1</td>
-                            <td>19.890.000 ₫</td>
-                        </tr>
-                        <tr>
-                            <td>Dell Inspiron All in One 24" 5400</td>
-                            <td>19.890.000 ₫</td>
-                            <td>x1</td>
-                            <td>19.890.000 ₫</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                            </td>
-                            <td>
-                                <p>Tạm tính</p>
-                                <p>Giảm giá</p>
-                                <p>Phí vận chuyển</p>
-                                <p style="font-weight: bold;">Tổng cộng</p>
-                            </td>
+    //         <div class="row">
+    //             <div class="col-12">
+    //                 <p><b style="font-size: 18px;">II. Chi tiết hóa đơn</b></p>
+    //                 <table class="table"> 
+    //                     <tr>
+    //                         <th>Sản phẩm</th>
+    //                         <th>Đơn giá</th>
+    //                         <th>Số lượng</th>
+    //                         <th>Tạm tính</th>
+    //                     </tr>
+    //                     <tr>
+    //                         <td>Dell Inspiron All in One 24" 5400</td>
+    //                         <td>19.890.000 ₫</td>
+    //                         <td>x1</td>
+    //                         <td>19.890.000 ₫</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <td>Dell Inspiron All in One 24" 5400</td>
+    //                         <td>19.890.000 ₫</td>
+    //                         <td>x1</td>
+    //                         <td>19.890.000 ₫</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <td>Dell Inspiron All in One 24" 5400</td>
+    //                         <td>19.890.000 ₫</td>
+    //                         <td>x1</td>
+    //                         <td>19.890.000 ₫</td>
+    //                     </tr>
+    //                     <tr>
+    //                         <td colspan="2">
+    //                         </td>
+    //                         <td>
+    //                             <p>Tạm tính</p>
+    //                             <p>Giảm giá</p>
+    //                             <p>Phí vận chuyển</p>
+    //                             <p style="font-weight: bold;">Tổng cộng</p>
+    //                         </td>
                             
-                            <td style="text-align: right;">
-                                <p> ₫</p>
-                                <p>-0 ₫</p>
-                                <p>₫</p>
-                                <p style="color: red; font-size: 20px;">₫</p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-8" style="text-align: right;">
-                </div>
-                <div class="col-4" style="text-align: center;">
-                    <p style="margin:20px 0px 100px 0px">
-                        <b style="font-size: 18px;">Người lập hóa đơn</b><br>
-                        <i>(Kí, đóng dấu và ghi rõ họ tên)</i>
-                    </p>
+    //                         <td style="text-align: right;">
+    //                             <p> ₫</p>
+    //                             <p>-0 ₫</p>
+    //                             <p>₫</p>
+    //                             <p style="color: red; font-size: 20px;">₫</p>
+    //                         </td>
+    //                     </tr>
+    //                 </table>
+    //             </div>
+    //         </div>
+    //         <div class="row">
+    //             <div class="col-8" style="text-align: right;">
+    //             </div>
+    //             <div class="col-4" style="text-align: center;">
+    //                 <p style="margin:20px 0px 100px 0px">
+    //                     <b style="font-size: 18px;">Người lập hóa đơn</b><br>
+    //                     <i>(Kí, đóng dấu và ghi rõ họ tên)</i>
+    //                 </p>
                     
-                    <p>Tạ Quang Huy</p>
-                </div>
-            </div>
-            <div class="row" style="margin-bottom:10px;">
-                <div class="col-12" style="text-align: center;">
-                    <hr>
-                    <b>Cảm ơn quý khách đã tin tưởng và mua hàng tại ITGoShop!</b>
-                    <hr>
-                </div>
-            </div>
-        </div>';
-        return $output;
-    }
+    //                 <p>Tạ Quang Huy</p>
+    //             </div>
+    //         </div>
+    //         <div class="row" style="margin-bottom:10px;">
+    //             <div class="col-12" style="text-align: center;">
+    //                 <hr>
+    //                 <b>Cảm ơn quý khách đã tin tưởng và mua hàng tại ITGoShop!</b>
+    //                 <hr>
+    //             </div>
+    //         </div>
+    //     </div>';
+    //     return $output;
+    // }
 }

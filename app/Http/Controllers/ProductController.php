@@ -305,4 +305,15 @@ class ProductController extends Controller
         ->where('CommentId', $request->comment_id)
         ->orWhere('ParentComment', $request->comment_id)->delete();
     }
+
+
+    // Bổ sung qua bên fw
+    public function get_product(Request $request)
+    {
+        $product = DB::table('product')->where('ProductId', $request->ProductId)->first();
+        $output = '<p><b style="font-size:20px">ĐÁNH GIÁ SẢN PHẨM #'.$product->ProductId.'</b></p><img src="'.url("/public/images_upload/product/{$product->ProductImage}").'"  style="margin: auto; max-width: 100px; max-height: 80px; width: auto; height: auto;"/>';
+        $output .= '<p style="display:inline-block; margin-left:10px">'.$product->ProductName.'</p>';
+        $output .= '<input type="hidden" value="'.$product->ProductId.'"</p>';
+        echo  $output;
+    }
 }

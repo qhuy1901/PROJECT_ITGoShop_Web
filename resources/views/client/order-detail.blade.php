@@ -131,7 +131,7 @@
 								@foreach($order_detail as $key => $item)
 								<tr>
 									<td><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt=""></td>
-									<td>{{$item->ProductName}}<br><button type="button" class="btn btn-primary btn-danh-gia" style="margin:10px 0px">Đánh giá sản phẩm</button></td>
+									<td>{{$item->ProductName}}<br><button type="button" class="btn btn-primary btn-danh-gia" style="margin:10px 0px;position: inherit;">Đánh giá sản phẩm</button> <input type="hidden" class="ProductId" value="{{$item->ProductId}}"> </td>
 									<td>{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</td>
 									<td>x{{$item->OrderQuantity}}</td>
 									<td style="text-align: right;">{{number_format($item->UnitPrice * $item->OrderQuantity, 0, " ", ".").' ₫'}}</td>
@@ -163,11 +163,40 @@
 					<a href="javascript:void(0)" style="text-decoration:none; color: white;" class="button-huy-don-hang">Hủy đơn hàng</a> 
 				</button>
 				<?php } ?>
+				<!--  -->
+				<!-- Trigger/Open The Modal -->
+				<div id="myModal" class="modal">
+					<div class="modal-content" style="width:50%">
+						<span class="close" style="text-align: right; background-color:white">&times;</span>
+						<div class="row" style="margin:10px;">
+							<div class ="col-12">
+								<form>
+									@csrf
+									<div class="product-info"></div>
+								</form>
+								<p>1. Đánh giá của bạn về sản phẩm này</p>
+								<div class="star-wrapper">
+									<a href="javascript:void(0)" class="fa fa-star s1"></a>
+									<a href="javascript:void(0)" class="fa fa-star s2"></a>
+									<a href="javascript:void(0)" class="fa fa-star s3"></a>
+									<a href="javascript:void(0)" class="fa fa-star s4"></a>
+									<a href="javascript:void(0)" class="fa fa-star s5"></a>
+								</div>
+								<p>2. Tiêu đề của nhận xét</p>
+								<input type="text" class="Title" placeholder="Nhập tiêu đề nhận xét (không bắt buộc)" style="width: 100%;margin-bottom:20px;font-size:16px; padding:10px;">
+								<p>3. Viết nhận xét của bạn vào bên dưới</p>
+								<textarea rows="4" class="Content" placeholder="Nhận xét của bạn về sản phẩm này" style="width: 100%; margin-bottom:20px;resize: none;font-size:16px;padding:10px;" required></textarea>  
+							</div>
+							<button class="btn btn-warning btn-gui-danh-gia" style="color:white;margin:auto; height:40px;width:150px;font-size: 14px;">Gửi đánh giá</button>
+						</div>
+					</div>
+				</div>
+				<!--  -->
 				<p><a href="{{URL::to('/my-orders')}}"><< Quay lại đơn hàng của tôi</a></p>
 			</div>
-                
             </div>
         </div>
+		<a href="{{URL::to('/add-rating')}}"> Hello</a>
 	<!--/ End Contact -->
 	<style type="text/css">
 body{
@@ -217,18 +246,248 @@ body{
 .shadow-none {
     box-shadow: none!important;
 }
-
+.modal-content p{
+	color:black;
+	font-size: 16px;
+	line-height: 1.5;
+}
 </style>	
+
+<!-- Thêm cái này vào Fw-->
+<style>
+	/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 10%);
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+
 <script>
+	var modal = document.getElementById("myModal");
+	var btn = document.getElementsByClassName("myBtn");
+	var span = document.getElementsByClassName("close")[0];
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	var ProductId = 0;
 	$(document).ready(function(){
 		$('.btn-danh-gia').click(function(){
-			swal("Write something here:", {
-			content: "input",
-			})
-			.then((value) => {
-				swal(`You typed: ${value}`);
+			// Reset form
+			var parent = $("#myModal");
+			parent.find('.Title').val("");
+			parent.find('.Content').val("");
+
+			var _token = $('input[name="_token"]').val();
+			ProductId = $(this).parents('tr').find('.ProductId').val();
+			modal.style.display = "block";
+			$.ajax({
+				url:"{{url('/get-product')}}",
+				method: "GET",
+				data:{ProductId: ProductId, _token:_token},
+				success:function(data){
+					$('.product-info').html(data);
+				},
+				error:function(data)
+				{
+					alert('Lỗi');
+				}
 			});
+		});	
+		$('.btn-gui-danh-gia').click(function(){
+			$.ajax({
+				url:"{{url('/is-rating-exit')}}",
+				method: "GET",
+				data:{ProductId: ProductId},
+				success:function(data){
+					if(data == "1")
+					{
+						swal("Bạn đã đánh giá cho sản phẩm này rồi!");
+					}
+					else{
+						var parent = $(this).parents('.modal-content');
+						var Title = parent.find('.Title').val();
+						var Content = parent.find('.Content').val();
+						var Rating = 0;
+						if(parent.find('.s1').css("color") == "rgb(255, 215, 0)")
+						{
+							Rating = 5;
+						}
+						else
+						{
+							if(parent.find('.s2').css("color") == "rgb(255, 215, 0)")
+							{
+								Rating = 4;
+							}
+							else{
+								if(parent.find('.s3').css("color") == "rgb(255, 215, 0)")
+								{
+									Rating = 3;
+								}
+								else
+								{
+									if(parent.find('.s3').css("color") == "rgb(255, 215, 0)")
+									{
+										Rating = 2;
+									}
+									else
+										Rating = 1;
+								}
+							}
+						}
+						$.ajax({
+							url:"{{url('/add-rating')}}",
+							method: "GET",
+							data:{ProductId: ProductId, Title: Title, Content: Content, Rating: Rating},
+							success:function(data){
+								modal.style.display = "none";
+								swal({
+									text: "Cảm ơn bạn đã đánh giá sản phẩm!",
+									icon: "success",
+								});
+							},
+							error:function(data)
+							{
+								alert("Lỗi");
+							}
+						}); 
+					}
+				},
+				error:function(data)
+				{
+					alert("Lỗi");
+				}
+			}); 
+
+			
 		});
+		
+	});
+</script>
+<style>
+	.star-wrapper {
+  direction: rtl;
+}
+.star-wrapper a {
+  font-size: 4em;
+  color: #DEDDE3;
+  text-decoration: none;
+  transition: all 0.5s;
+  margin: 4px;
+}
+.star-wrapper a:hover {
+  color: gold;
+  transform: scale(1.3);
+}
+.s1:hover ~ a {
+  color: gold;
+}
+.s2:hover ~ a {
+  color: gold;
+}
+.s3:hover ~ a {
+  color: gold;
+}
+.s4:hover ~ a {
+  color: gold;
+}
+.s5:hover ~ a {
+  color: gold;
+}
+.wraper {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+</style>
+<script>
+	$(document).ready(function(){
+		$('.s1').click(function(){ // 5 sao
+			$('.star-wrapper a').css("color", "gold");
+		});
+
+		$('.s2').click(function(){ // 4 sao
+			var parent = $(this).parents('.star-wrapper');
+			parent.find('.s1').css("color", "#DEDDE3");
+			parent.find('.s2').css("color", "gold");
+			parent.find('.s3').css("color", "gold");
+			parent.find('.s4').css("color", "gold");
+			parent.find('.s5').css("color", "gold");
+		});
+
+		$('.s3').click(function(){ // 3 sao
+			var parent = $(this).parents('.star-wrapper');
+			parent.find('.s1').css("color", "#DEDDE3");
+			parent.find('.s2').css("color", "#DEDDE3");
+			parent.find('.s3').css("color", "gold");
+			parent.find('.s4').css("color", "gold");
+			parent.find('.s5').css("color", "gold");
+		});
+
+		$('.s4').click(function(){ // 2 sao
+			var parent = $(this).parents('.star-wrapper');
+			parent.find('.s1').css("color", "#DEDDE3");
+			parent.find('.s2').css("color", "#DEDDE3");
+			parent.find('.s3').css("color", "#DEDDE3");
+			parent.find('.s4').css("color", "gold");
+			parent.find('.s5').css("color", "gold");
+		});
+
+		$('.s5').click(function(){ // 1 sao
+			var parent = $(this).parents('.star-wrapper');
+			parent.find('.s1').css("color", "#DEDDE3");
+			parent.find('.s2').css("color", "#DEDDE3");
+			parent.find('.s3').css("color", "#DEDDE3");
+			parent.find('.s4').css("color", "#DEDDE3");
+			parent.find('.s5').css("color", "gold");
+		});
+
+
+	});
+</script>
+<!-- End Fw -->
+<script>
+	$(document).ready(function(){
 		$('.button-huy-don-hang').click(function(){
 			// alert("Hi");
 			var OrderId = $('.OrderId').val();

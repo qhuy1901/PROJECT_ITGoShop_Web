@@ -90,7 +90,7 @@ Route::post('/update-product/{ProductId}','App\Http\Controllers\ProductControlle
 
 Route::post('/load-comment','App\Http\Controllers\ProductController@load_comment');
 Route::post('/send-comment','App\Http\Controllers\ProductController@send_comment');
-
+Route::get('/get-product','App\Http\Controllers\ProductController@get_product');
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
 Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');
@@ -147,6 +147,7 @@ Route::get('/print-order/{order_id}','App\Http\Controllers\OrderController@print
 
 // OrderDetail (Client)
 Route::get('/show-order-detail/{OrderId}', 'App\Http\Controllers\OrderDetailController@index');
+
 
 //Profile (Admin)
 Route::get('/ad_profile/{UserId}','App\Http\Controllers\AdminProfileController@profile');
@@ -213,3 +214,8 @@ Route::get('/view-shipmethod','App\Http\Controllers\ShipMethodController@view_sh
 Route::get('/unactive-shipmethod','App\Http\Controllers\ShipMethodController@unactive_shipmethod');
 Route::get('/active-shipmethod','App\Http\Controllers\ShipMethodController@active_shipmethod');
 Route::get('/delete-shipmethod','App\Http\Controllers\ShipMethodController@delete_shipmethod');
+
+// Rating
+
+Route::get('/is-rating-exit','App\Http\Controllers\RatingController@is_rating_exit');
+Route::get('/add-rating','App\Http\Controllers\RatingController@add_rating');
