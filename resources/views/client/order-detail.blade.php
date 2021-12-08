@@ -131,7 +131,7 @@
 								@foreach($order_detail as $key => $item)
 								<tr>
 									<td><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt=""></td>
-									<td>{{$item->ProductName}}<br><button type="button" class="btn btn-primary btn-danh-gia" style="margin:10px 0px;position: inherit;">Đánh giá sản phẩm</button> <input type="hidden" class="ProductId" value="{{$item->ProductId}}"> </td>
+									<td><a href="{{URL::to('/product-detail/'.$item->ProductId)}}" style="text-decoration:none; color:black; font-weight:bold">{{$item->ProductName}}<br></a><button type="button" class="btn btn-primary btn-danh-gia" style="margin:10px 0px;position: inherit;">Đánh giá sản phẩm</button> <input type="hidden" class="ProductId" value="{{$item->ProductId}}"> </td>
 									<td>{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</td>
 									<td>x{{$item->OrderQuantity}}</td>
 									<td style="text-align: right;">{{number_format($item->UnitPrice * $item->OrderQuantity, 0, " ", ".").' ₫'}}</td>
@@ -174,7 +174,7 @@
 									@csrf
 									<div class="product-info"></div>
 								</form>
-								<p>1. Đánh giá của bạn về sản phẩm này</p>
+								<p>1. Đánh giá của bạn về sản phẩm này</p> 
 								<div class="star-wrapper">
 									<a href="javascript:void(0)" class="fa fa-star s1"></a>
 									<a href="javascript:void(0)" class="fa fa-star s2"></a>
@@ -192,11 +192,10 @@
 					</div>
 				</div>
 				<!--  -->
-				<p><a href="{{URL::to('/my-orders')}}"><< Quay lại đơn hàng của tôi</a></p>
+				<p><a href="{{URL::to('/my-orders')}}" style="text-decoration:none"><< Quay lại đơn hàng của tôi</a></p>
 			</div>
             </div>
         </div>
-		<a href="{{URL::to('/add-rating')}}"> Hello</a>
 	<!--/ End Contact -->
 	<style type="text/css">
 body{
@@ -313,28 +312,7 @@ body{
 	var ProductId = 0;
 	$(document).ready(function(){
 		$('.btn-danh-gia').click(function(){
-			// Reset form
-			var parent = $("#myModal");
-			parent.find('.Title').val("");
-			parent.find('.Content').val("");
-
-			var _token = $('input[name="_token"]').val();
 			ProductId = $(this).parents('tr').find('.ProductId').val();
-			modal.style.display = "block";
-			$.ajax({
-				url:"{{url('/get-product')}}",
-				method: "GET",
-				data:{ProductId: ProductId, _token:_token},
-				success:function(data){
-					$('.product-info').html(data);
-				},
-				error:function(data)
-				{
-					alert('Lỗi');
-				}
-			});
-		});	
-		$('.btn-gui-danh-gia').click(function(){
 			$.ajax({
 				url:"{{url('/is-rating-exit')}}",
 				method: "GET",
@@ -345,8 +323,43 @@ body{
 						swal("Bạn đã đánh giá cho sản phẩm này rồi!");
 					}
 					else{
-						var parent = $(this).parents('.modal-content');
-						var Title = parent.find('.Title').val();
+						// Reset form
+						$('.star-wrapper .s1').css("color", "");
+						$('.star-wrapper .s3').css("color", "");
+						$('.star-wrapper .s2').css("color", "");
+						$('.star-wrapper .s4').css("color", "");
+						$('.star-wrapper .s5').css("color", "");
+						var parent = $("#myModal");
+						parent.find('.Title').val("");
+						parent.find('.Content').val("");
+
+						var _token = $('input[name="_token"]').val();
+						modal.style.display = "block";
+						$.ajax({
+							url:"{{url('/get-product')}}",
+							method: "GET",
+							data:{ProductId: ProductId, _token:_token},
+							success:function(data){
+								$('.product-info').html(data);
+							},
+							error:function(data)
+							{
+								alert('Lỗi');
+							}
+						});
+					}
+				},
+				error:function(data)
+				{
+					alert("Lỗi");
+				}
+			}); 
+
+			
+		});	
+		$('.btn-gui-danh-gia').click(function(){
+			var parent = $(this).parents('.modal-content');
+			var Title = parent.find('.Title').val();
 						var Content = parent.find('.Content').val();
 						var Rating = 0;
 						if(parent.find('.s1').css("color") == "rgb(255, 215, 0)")
@@ -391,15 +404,6 @@ body{
 								alert("Lỗi");
 							}
 						}); 
-					}
-				},
-				error:function(data)
-				{
-					alert("Lỗi");
-				}
-			}); 
-
-			
 		});
 		
 	});
@@ -519,7 +523,6 @@ body{
 									thisbutton.parent().remove();
 									$('.OrderStatus').text('Đã hủy');
 									$('html, body').animate({scrollTop: $('.bread-inner').offset().top}, 500);
-									
 								}
 								});
 								

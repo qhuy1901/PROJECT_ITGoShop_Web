@@ -216,6 +216,6 @@ Route::get('/active-shipmethod','App\Http\Controllers\ShipMethodController@activ
 Route::get('/delete-shipmethod','App\Http\Controllers\ShipMethodController@delete_shipmethod');
 
 // Rating
-
 Route::get('/is-rating-exit','App\Http\Controllers\RatingController@is_rating_exit');
 Route::get('/add-rating','App\Http\Controllers\RatingController@add_rating');
+Route::get('/load-rating','App\Http\Controllers\RatingController@load_rating');

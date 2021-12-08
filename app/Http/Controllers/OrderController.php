@@ -169,8 +169,6 @@ class OrderController extends Controller
             DB::table('product')->where('ProductId', $order_detail->id)->update($update_product_data);
         }
 
-        
-
         // Cập nhật mô tả hóa đơn
         $firstProductName = DB::table('orderdetail')
         ->select('ProductName')

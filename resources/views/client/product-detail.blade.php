@@ -127,7 +127,6 @@
 									<div class="content">
 										<!-- Nội dung sản phẩm -->
 										<div class="blog-meta">
-											
 											<p>{!!$product_detail->Content!!}</p> <!-- Thêm !! để dataa ko bị lỗi nếu data đã được styling-->
 										</div>
 											<!-- End Nội dung sản phẩm -->
@@ -140,18 +139,177 @@
 					</div>
 					<div class="col-12">
 									<div class="comments">
+									
 										<h3 class="comment-title" >
-											<a style="font-weight: bold;">Đánh giá sản phẩm</a>
-											<div class="ps-product__rating" >
-														<select class="ps-rating">
-															<option value="1">1</option>
-															<option value="1">2</option>
-															<option value="1">3</option>
-															<option value="1">4</option>
-															<option value="2">5</option>
-														</select>
-											</div>
+											<a style="font-weight: bold; text-transform:none">Đánh giá - Nhận xét từ khách hàng</a>
 										</h3>
+										@if(count($rating_list) > 0)
+										<div class="card" style="margin-bottom:20px">
+											<div class="card-body" style="margin:20px">
+												<?php $avg_rating = round($avg_rating, 1)?>
+												<b style="font-size:30px">{{$avg_rating}}</b>
+												<div class="star-wrapper" style="display: inline-block; margin-left:60px;">
+															@if($avg_rating > 4.5) <!-- 5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 4) <!-- 4.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star-half-o s1" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 3.5) <!-- 4 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 3) <!-- 3.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star-half-o s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 2.5) <!-- 3 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 2) <!-- 2.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star-half-o s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 1.5) <!-- 2 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($avg_rating > 1) <!-- 1.5 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star-half-o s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@else <!-- 1 sao -->
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@endif			
+												</div>
+												<p style="font-size:10px" >{{count($rating_list)}} đánh giá</p>
+
+												<hr style="height:0.1px;border:none;margin: 20px 0px">
+												@foreach($rating_list as $key => $item)
+												<div class="row" style="padding: 20px 0px;">
+													<div class="col-5">
+														<img src="{{URL::to('public/images_upload/user/'.$item->UserImage)}}" style="margin-right:30px; max-width: 100px; max-height: 70px; width: auto; height: auto; border-radius:100%" class="float-left" alt="#">
+
+														
+														<div class="o-comment">
+															<H4>{{$item->LastName}} {{$item->FirstName}}</H4>
+															<?php date_default_timezone_set("Asia/Ho_Chi_Minh");
+															$thangdanhgia = round((strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($item->CreatedAt))))/ 2592000, 0);
+															$ngaydanhgia = round((strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($item->CreatedAt))))/ 86400, 0);
+															$giodanhgia = round((strtotime(date("H:i:s d-m-Y")) - strtotime(date("H:i:s d-m-Y", strtotime($item->CreatedAt))))/ 3600, 0);
+															$phutdanhgia = round((strtotime(date("H:i:s d-m-Y")) - strtotime(date("H:i:s d-m-Y", strtotime($item->CreatedAt))))/ 60, 0);
+															$giaydanhgia = round((strtotime(date("H:i:s d-m-Y")) - strtotime(date("H:i:s d-m-Y", strtotime($item->CreatedAt)))), 0);
+															 ?>
+															@if($thangdanhgia > 0)
+																<p>Đánh giá vào {{$thangdanhgia}} tháng trước</p>
+															@elseif($ngaydanhgia > 0)
+																<p>Đánh giá vào {{$ngaydanhgia}} ngày trước</p>
+															@elseif($giodanhgia > 0)
+																<p>Đánh giá vào {{$giodanhgia}} giờ trước</p>	
+															@elseif($phutdanhgia > 0)
+																<p>Đánh giá vào {{$phutdanhgia}} phút trước</p>
+															@else
+																<p>Đánh giá vào {{$giaydanhgia}} giây trước</p>
+															@endif
+														</div>
+													</div>
+													<div class="col-7" style="font-size:15px">
+														<div class="star-wrapper" style="display: inline-block;font-size:6px">
+															@if($item->Rating == 5)
+															<a href="javascript:void(0)" class="fa fa-star s1" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($item->Rating == 4)
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($item->Rating == 3)
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@elseif($item->Rating == 2)
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4" style="color:gold"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@else 
+															<a href="javascript:void(0)" class="fa fa-star s1"></a>
+															<a href="javascript:void(0)" class="fa fa-star s2"></a>
+															<a href="javascript:void(0)" class="fa fa-star s3"></a>
+															<a href="javascript:void(0)" class="fa fa-star s4"></a>
+															<a href="javascript:void(0)" class="fa fa-star s5" style="color:gold"></a>
+															@endif
+														</div>
+														@if($item->Title == "")
+															@if($item->Rating == 5)
+															<b style="margin-left:10px">Cực kì hài lòng</b>
+															@elseif($item->Rating == 4)
+															<b style="margin-left:10px">Hài lòng</b>
+															@elseif($item->Rating == 3)
+															<b style="margin-left:10px">Bình thường</b>
+															@elseif($item->Rating == 2)
+															<b style="margin-left:10px">Không hài lòng</b>
+															@else 
+															<b style="margin-left:10px">Rất không hài lòng</b>
+															@endif
+														@else
+															<b style="margin-left:10px">{{$item->Title}}</b>
+														@endif
+														<p style="color:#00AB56"><i class="fa fa-check" aria-hidden="true" style="color:white; background-color:#00AB56; border-radius: 25px; padding:2px;margin-right:3px"></i>Đã mua hàng</p>
+														<div style="margin-top:10px;">
+															<p>{{$item->Content}}</p>
+														</div>
+													</div>
+												</div>
+												@endforeach
+											</div>
+												<nav aria-label="Page navigation example">
+													<div style="float:right;margin:30px;">
+													{!! $rating_list !!}
+													</div>
+												</nav>
+										</div>
+										@else
+										<div class="card" style="margin-bottom:20px">
+											<div class="card-body" style="margin:20px">
+												<img src="{{URL::to('public/client/Images/rating-star.PNG')}}" style="height:80px; margin:auto;  display: block;" alt="">
+												<p style="text-align:center; margin-top:20px">Chưa có đánh giá nào cho sản phẩm này</p>
+											</div>
+										</div>
+											
+										@endif
+
+
 										<h3 class="comment-title" >
 											<a style="font-weight: bold;">Bình luận</a>
 										</h3>
@@ -161,10 +319,6 @@
 											<textarea class="textarea-commnent-content" name="CommentContent" rows="4" style="padding: 16px; border-radius: 8px; resize: none; margin: 10px 0px 10px; font-size: 16px; background-color:#F3F5F8;" placeholder="Mời bạn để lại bình luận"></textarea>
 											<button class="send-comment-button" type="button" style="margin-bottom:30px;float:right;width: 60px;height: 30px; width: 60px;height: 30px;border-radius: 50px;font-size: 14px;background: black;"> <a href="javascript:void(0)" style="color: white;font-weight: bold;">Gửi</a> </button>
 										</div>
-										
-											
-										<!-- </div> -->
-										
 										<form>
 											@csrf
 											<input name="ProductId" type="hidden" class="input_product_id" value="{{$product_detail->ProductId}}">
@@ -224,6 +378,33 @@
 			</div>
 		</section>
 		<!--/ End Blog Single -->
+
+		<!--  Framework -->
+<style>
+ul.pagination{
+	left:0 !important
+}
+	.star-wrapper {
+  direction: rtl;
+}
+.star-wrapper a {
+  font-size: 3em;
+  color: #DEDDE3;
+  text-decoration: none;
+  transition: all 0.5s;
+  margin: 4px;
+}
+/* .star-wrapper a:hover {
+  color: gold;
+  transform: scale(1.3);
+} */
+.wraper {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+</style>
+		<!--  -->
 		<script>
 		$(document).ready(function(){
 			var product_id = $('.input_product_id').val();
@@ -334,7 +515,7 @@
 					})
 				}
 			});
-
+			
 			$('body').on('click', '.btn-xoa-comment' ,function(){
 				var comment_id = $(this).parents('.single-comment').find('.CommentId').val();
 				var thisdiv = $(this).parents('.single-comment');

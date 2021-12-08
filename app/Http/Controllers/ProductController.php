@@ -184,13 +184,22 @@ class ProductController extends Controller
         $view = DB::table('product')->where('ProductId', $ProductId)->first();
         DB::table('product')->where('ProductId', $ProductId)->update(['View'=> ($view->View + 1)]); 
 
+        // Framework
+        $rating_list = DB::table('productrating')
+        ->join('user','user.UserId','=','productrating.UserId')
+        ->where('ProductId', $ProductId)->Paginate(10);
+        $avg_rating = DB::table('productrating')->where('ProductId', $ProductId)->avg('Rating');
+        // Framework
+
         return view('client.product-detail')
         ->with('sub_brand_list',  $sub_brand_list )
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list)
         ->with('product_detail', $product_detail)
         ->with('related_product',$related_product)
-        ->with('product_gallary',$product_gallary);
+        ->with('product_gallary', $product_gallary)
+        ->with('rating_list', $rating_list)
+        ->with('avg_rating', $avg_rating);
     }
 
     public function load_comment(Request $request)
