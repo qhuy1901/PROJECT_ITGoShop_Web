@@ -131,7 +131,10 @@
 								@foreach($order_detail as $key => $item)
 								<tr>
 									<td><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt=""></td>
-									<td><a href="{{URL::to('/product-detail/'.$item->ProductId)}}" style="text-decoration:none; color:black; font-weight:bold">{{$item->ProductName}}<br></a><button type="button" class="btn btn-primary btn-danh-gia" style="margin:10px 0px;position: inherit;">Đánh giá sản phẩm</button> <input type="hidden" class="ProductId" value="{{$item->ProductId}}"> </td>
+									<td><a href="{{URL::to('/product-detail/'.$item->ProductId)}}" style="text-decoration:none; color:black; font-weight:bold">{{$item->ProductName}}<br></a>
+									@if($order_info->OrderStatus == "Giao hàng thành công")
+									<button type="button" class="btn btn-primary btn-danh-gia" style="margin:10px 0px;position: inherit;">Đánh giá sản phẩm</button> <input type="hidden" class="ProductId" value="{{$item->ProductId}}"> </td>
+									@endif
 									<td>{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</td>
 									<td>x{{$item->OrderQuantity}}</td>
 									<td style="text-align: right;">{{number_format($item->UnitPrice * $item->OrderQuantity, 0, " ", ".").' ₫'}}</td>

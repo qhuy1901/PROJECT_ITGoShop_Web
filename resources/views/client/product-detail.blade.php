@@ -388,7 +388,7 @@ ul.pagination{
   direction: rtl;
 }
 .star-wrapper a {
-  font-size: 3em;
+  font-size: 2em;
   color: #DEDDE3;
   text-decoration: none;
   transition: all 0.5s;
