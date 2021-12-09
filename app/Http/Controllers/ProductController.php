@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductExport;
+use App\Imports\ProductImport;
 session_start();
 
 class ProductController extends Controller
@@ -329,7 +330,13 @@ class ProductController extends Controller
 
     public function export_product()
     {
-        //$product = DB::table('product')->get();
         return Excel::download(new ProductExport , 'product.xlsx');
+    }
+
+    public function import_product(Request $request)
+    {
+        $path = $request->file('file')->getRealPath();
+        Excel::import(new ProductImport, $path);
+        return back();
     }
 }

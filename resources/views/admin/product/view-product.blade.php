@@ -62,24 +62,24 @@
 															<span aria-hidden="true">&times;</span>
 														</button>
 													</div>
-													
-													<div class="modal-body">
-														<!-- <p class="small">Create a new row using this form, make sure you fill them all</p> -->
-														<form>
-															<div class="row">
-																<div class="col-sm-12">
-																	<div class="form-group form-group-default">
-																		<label>Thêm file sản phẩm (.xlsx)</label>
-																		<input id="addName" type="file" class="form-control" placeholder="fill name" style="margin: 20px 0px;">
+													<form action="{{URL::to('/import-product')}}" method="POST" enctype="multipart/form-data">
+														@csrf
+														<div class="modal-body">
+															<!-- <p class="small">Create a new row using this form, make sure you fill them all</p> -->
+																<div class="row">
+																	<div class="col-sm-12">
+																		<div class="form-group form-group-default">
+																			<label>Thêm file sản phẩm (.xlsx)</label>
+																			<input type="file" class="form-control" name="file" accept=".xlsx" style="margin: 20px 0px;" required>
+																		</div>
 																	</div>
 																</div>
-															</div>
-														</form>
-													</div>
-													<div class="modal-footer no-bd">
-														<button type="button" id="addRowButton" class="btn btn-primary">Thêm</button>
-														<button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-													</div>
+														</div>
+														<div class="modal-footer no-bd">
+															<input type="submit" class="btn btn-primary" value="Thêm"></input>
+															<button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+														</div>
+													</form>
 												</div>
 											</div>
 										</div>
