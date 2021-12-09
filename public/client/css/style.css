@@ -956,12 +956,14 @@ body {
 
 .noidung_dropdown {
   /*Ẩn nội dụng các đường dẫn*/
+  top:100%;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1000;
+  z-index: 999;
+  
   
 }
 
@@ -4094,9 +4096,9 @@ textarea.form-control {
 
 .mega-menu {
   position: absolute;
-  top: 122%;
+  top: 125%;
   left: 0;
-  width: 920px;
+  width: 100%;
   z-index: 999;
   background-color: #fff;
   -webkit-transition: all 0.4s ease;
@@ -4138,7 +4140,7 @@ textarea.form-control {
     color: #1d1d1d;
     text-transform: uppercase; }
   .mega-menu .mega-column {
-    width: 35%;
+    width: 20%;
     padding: 0 10px;
     border-right: 1px solid #d8d8d8; }
     .mega-menu .mega-column:last-child {
@@ -4641,7 +4643,7 @@ textarea.form-control {
       background-color: #77ACF1; }
   .ps-cart__listing {
     position: absolute;
-    top: 100%;
+    top: 80%;
     right: 0;
     width: 300px;
     background-color: #fff;
