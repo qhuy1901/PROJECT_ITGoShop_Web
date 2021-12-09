@@ -23,21 +23,23 @@
 <main class="ps-main">
       <div class="ps-products-wrap pr-80 pl-80 pt-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
-                                <div class="ps-product__columns">
-                                    <div class="col-md-3">
+                                <div class="ps-product-action">
+                                  <div class="ps-product__filter">
                                       <form>
                                           @csrf
                                           <select nam="sort" id="sort" class ="form-control" style="font-size:12px;">
                                             <option value="{{Request::url()}}?sort_by=none" style="font-size:12px;">Sắp Xếp Theo</option>
-                                            <option value="{{Request::url()}}?sort_by=tang_dan" style="font-size:12px;">-Giá Tăng Dần- </option>
+                                            <option value="{{Request::url()}}?sort_by=tangdan" style="font-size:12px;">-Giá Tăng Dần- </option>
                                             <option value="{{Request::url()}}?sort_by=giamdan" style="font-size:12px;">-Giá Giảm Dần- </option>
                                             <option value="{{Request::url()}}?sort_by=az" style="font-size:12px;">-A - Z- </option>
                                             <option value="{{Request::url()}}?sort_by=za" style="font-size:12px;">-Z - A- </option>
                                           </select>
                                       </form>
-                                    </div>
+                                  </div>
+                                </div>
+                                <div class="ps-product__columns">
                                   @foreach($all_product as $key => $product)
-                                  <div class="ps-product__column" style="width: 250px; height: 350px;">
+                                  <div class="ps-product__column" style="width: 250px; height: 300px;">
                                     <div class="single-product">
                                       <div class="product-img" style="width: 250px; height: 200px;">
                                             <a href="{{URL::to('/product-detail/'.$product->ProductId)}}">

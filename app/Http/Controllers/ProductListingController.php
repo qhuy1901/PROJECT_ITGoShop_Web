@@ -23,12 +23,56 @@ class ProductListingController extends Controller
         $sub_brand = DB::table('subbrand')->select('subbrand.*')
         ->join('brand','brand.BrandId','=','subbrand.BrandId')
         ->where('brand.BrandName',$BrandName)->get();
-        $all_product = DB::table('product')
+
+        if(isset($_GET['sort_by'])){
+            $sort_by = $_GET['sort_by'];
+            if($sort_by == 'giamdan'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('brand.BrandName',$BrandName)
+                ->orderBy('product.Price','DESC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'tangdan'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('brand.BrandName',$BrandName)
+                ->orderBy('product.Price','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'az'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('brand.BrandName',$BrandName)
+                ->orderBy('product.ProductName','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'za'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('brand.BrandName',$BrandName)
+                ->orderBy('product.ProductName','DESC')->paginate(9)->appends(request()->query());
+            }
+
+        }
+        else{
+            $all_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
         ->where('brand.BrandName',$BrandName)->paginate(9);
+        }
+        
 
         return view('client.product-listing')
         ->with('sub_brand_list',  $sub_brand_list )
@@ -47,12 +91,56 @@ class ProductListingController extends Controller
         
         $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->limit(1)->get();
         $sub_brand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$BrandId)->get();
-        $all_product = DB::table('product')
+        
+        if(isset($_GET['sort_by'])){
+            $sort_by = $_GET['sort_by'];
+            if($sort_by == 'giamdan'){
+                $all_product = DB::table('product')
+                ->join('Category','Category.CategoryId','=','product.CategoryId')
+                ->join('brand','brand.BrandId','=','product.BrandId')
+                ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+                ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+                ->where('product.BrandId',$BrandId)
+                ->orderBy('product.Price','DESC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'tangdan'){
+                $all_product = DB::table('product')
+                ->join('Category','Category.CategoryId','=','product.CategoryId')
+                ->join('brand','brand.BrandId','=','product.BrandId')
+                ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+                ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+                ->where('product.BrandId',$BrandId)
+                ->orderBy('product.Price','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'az'){
+                $all_product = DB::table('product')
+                ->join('Category','Category.CategoryId','=','product.CategoryId')
+                ->join('brand','brand.BrandId','=','product.BrandId')
+                ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+                ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+                ->where('product.BrandId',$BrandId)
+                ->orderBy('product.ProductName','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'za'){
+                $all_product = DB::table('product')
+                ->join('Category','Category.CategoryId','=','product.CategoryId')
+                ->join('brand','brand.BrandId','=','product.BrandId')
+                ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+                ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+                ->where('product.BrandId',$BrandId)
+                ->orderBy('product.ProductName','DESC')->paginate(9)->appends(request()->query());
+            }
+
+        }
+        else{
+            $all_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
         ->where('product.BrandId',$BrandId)->paginate(9);
+        }
+        
 
         return view('client.product-listing')
         ->with('sub_brand_list',  $sub_brand_list )
@@ -68,13 +156,55 @@ class ProductListingController extends Controller
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
-           
-        $all_product = DB::table('product')
+        if(isset($_GET['sort_by'])){
+            $sort_by = $_GET['sort_by'];
+            if($sort_by == 'giamdan'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('product.SubBrandId','=',$SubBrandId)
+                ->orderBy('product.Price','DESC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'tangdan'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('product.SubBrandId','=',$SubBrandId)
+                ->orderBy('product.Price','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'az'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('product.SubBrandId','=',$SubBrandId)
+                ->orderBy('product.ProductName','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'za'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
+        ->where('product.SubBrandId','=',$SubBrandId)
+                ->orderBy('product.ProductName','DESC')->paginate(9)->appends(request()->query());
+            }
+
+        }
+        else{
+            $all_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
         ->select('product.*', 'Category.*', 'brand.*','subbrand.*')
         ->where('product.SubBrandId','=',$SubBrandId)->paginate(9);
+        }
+        
         
         foreach($all_product as $key => $value)
         {
@@ -98,11 +228,50 @@ class ProductListingController extends Controller
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $des_cate = DB::table('Category')->select('Category.*')->where('Category.CategoryId',$CategoryId)->get();
 
-        $all_product = DB::table('product')
+        if(isset($_GET['sort_by'])){
+            $sort_by = $_GET['sort_by'];
+            if($sort_by == 'giamdan'){
+                $all_product = DB::table('product')
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
-        ->where('product.CategoryId',$CategoryId)->paginate(6);
+        ->where('product.CategoryId',$CategoryId)
+                ->orderBy('product.Price','DESC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'tangdan'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->where('product.CategoryId',$CategoryId)
+                ->orderBy('product.Price','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'az'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->where('product.CategoryId',$CategoryId)
+                ->orderBy('product.ProductName','ASC')->paginate(9)->appends(request()->query());
+            }
+            elseif($sort_by == 'za'){
+                $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->where('product.CategoryId',$CategoryId)
+                ->orderBy('product.ProductName','DESC')->paginate(9)->appends(request()->query());
+            }
+
+        }
+        else{
+            $all_product = DB::table('product')
+        ->join('Category','Category.CategoryId','=','product.CategoryId')
+        ->join('brand','brand.BrandId','=','product.BrandId')
+        ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
+        ->where('product.CategoryId',$CategoryId)->paginate(9);
+        }
+        
 
         return view('client.product-listing2')
         ->with('sub_brand_list',  $sub_brand_list )
