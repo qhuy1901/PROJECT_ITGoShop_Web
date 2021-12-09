@@ -113,15 +113,15 @@
 <body class="ps-loading">
 	<!-- Header -->
 	<div class="header--sidebar"></div>
-	<header class="header">
-	  <nav  class="navigation">
+	<header class="header" >
+	  <nav  class="navigation" style="height:70px; margin-bottom: 15px;">
 		<div class="container-fluid" >
 		  <div class="navigation__column left">
 			<div class="header__logo pl-40"><a class="ps-logo" href="{{URL::to('/home')}}"><img src="{{URL::to('/public/client/Images/logo.png')}}" alt=""></a></div>
 			<input type="text" id="input-customer-id" value="{{Session::get('CustomerId')}}" hidden><!--Đừng xóa cái này  -->
 			<input type="text" id="input-admin-id" value="{{Session::get('CustomerId')}}" hidden>
 		</div>
-		<div class="navigation__column center">
+		<div class="navigation__column center" style="height:70px; margin-bottom: 15px;">
 				<ul class="main-menu menu">
 				@foreach($product_category_list as $key => $category)
 					@if($category->CategoryId == "LT000")
@@ -183,7 +183,7 @@
 				
 		  </div>
 		  
-		  <div class="navigation__column right">
+		  <div class="navigation__column right" style="height:70px; margin-bottom: 15px;">
 			<form class="ps-search--header" action="{{URL::to('/search_result')}}" method="POST" >
 				{{ csrf_field() }}
 			  <input class="form-control" type="text" name="kw_submit" placeholder="Tìm kiếm">
