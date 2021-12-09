@@ -95,21 +95,21 @@
 									<div class="panel-body" style="font-size: 14px;">
 										<div class="form-group cheque">
 											<div class="ps-radio">
-											<input class="form-control" type="radio" id="rdo01" name="payment" value="Thanh toán khi giao hàng" checked>
+											<input class="form-control" type="radio"  id="rdo01" name="payment" value="Thanh toán khi giao hàng" checked>
 											<label for="rdo01"><img src="{{URL::to('public/client/Images/thanh-toan-khi-nhan-hang.PNG')}}" alt="#">Thanh toán khi giao hàng</label>
 											</div>
 										</div>
 										<div class="form-group paypal">
 											<div class="ps-radio ps-radio--inline">
-											<input class="form-control" type="radio" name="payment" id="rdo02" value="Chuyển khoản online">
+											<input class="form-control" type="radio" data-toggle="modal" data-target="#exampleModal" name="payment" id="rdo02" value="Chuyển khoản online">
 											<label for="rdo02"><img style="max-height: 40px; max-width: 40px; width: auto; height: auto;" src="{{URL::to('public/client/Images/thanh-toan-online.PNG')}}" alt="#">Chuyển khoản online</label>
 											</div>
 										</div>
 									</div>
 								</div>
 								
-							<button type="submit" class="btn btn-primary btn-lg btn-dat-mua" style="width:320px;font-size:20px; background-color: #000; height:50px">ĐẶT MUA</button>
-							<p style="margin: 7px 0px;"><i>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</i></p>
+							<button type="submit" class="btn btn-primary btn-lg btn-dat-mua" style="width:320px;font-size:20px; background-color: #000; height:50px; ">ĐẶT MUA</button>
+							<p style="margin: 7px 0px; margin-bottom: 80px;"><i>(Xin vui lòng kiểm tra lại đơn hàng trước khi Đặt Mua)</i></p>
 						</div>
 
 						<div class="col-lg-4">
@@ -228,71 +228,69 @@
 				@endif
 				<!-- Trigger/Open The Modal -->
 				<!-- The Modal -->
-				<div id="myModal" class="modal">
+				
 
 				<!-- Modal content -->
-				<div class="modal-content">
-					<!-- <span class="close">&times;</span> -->
-					<div style="margin:30px">
-						<p style="text-align:center;"><b style="font-size:22px;margin:auto">Chuyển khoản online</b></p>
-						<div style="text-align:center; background-color: #fbfbfb; border-radius: 8px; padding:20px;margin-bottom:20px">
-							<p>Quý khách vui lòng chuyển khoản với nội dung ghi rõ<br>
-							<b>Tên & Số Điện Thoại người</b> nhận hàng:<br>
-							Ví dụ: <b>A THANH 0988888888</b></p>
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content" style="border-radius: 10px;">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+								</div>
+								<div class="modal-body">
+									<div class="row no-gutters">
+										<div class="col-lg-10 offset-lg-1 col-12">
+											<h4 style="margin-top:50px;font-size:14px; font-weight:500; color:#77ACF1; display:block; margin-bottom:15px;">ITGo Shop</h4>
+											<h3 style="font-size:30px;color:#333; text-align:center;">Chuyển khoản online<h3>
+											<div style="text-align:center; background-color: #fbfbfb; border-radius: 8px; padding:20px;margin-bottom:20px">
+												<p>Quý khách vui lòng chuyển khoản với nội dung ghi rõ<br>
+												<b>Tên & Số Điện Thoại người</b> nhận hàng:<br>
+												Ví dụ: <b>A THANH 0988888888</b></p>
+											</div>
+											<b style="font-size:18px;">Chuyển qua ngân hàng</b>
+											<div style="border: 2px solid #fbfbfb; padding: 10px; border-radius:10px;margin-top:10px">
+												<p style="line-height: 3;">
+												<b>Vietcombank - Ngân Hàng Ngoại Thương Việt Nam</b> <br>
+												Chủ tài khoản: LE LAM LINH <br>
+												Số tài khoản: <b>0011004366653</b> <br>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<b style="font-size:18px;">Chuyển qua ngân hàng</b>
-						<div style="border: 2px solid #fbfbfb; padding: 10px; border-radius:10px;margin-top:10px">
-							<p style="line-height: 3;">
-							<b>Vietcombank - Ngân Hàng Ngoại Thương Việt Nam</b> <br>
-							Chủ tài khoản: LE LAM LINH <br>
-							Số tài khoản: <b>0011004366653</b> <br>
-							</p>
+				</div>
+				<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							 <span class="close">&times;</span> 
+							<div style="margin:30px">
+								<p style="text-align:center;"><b style="font-size:22px;margin:auto">Chuyển khoản online</b></p>
+								<div style="text-align:center; background-color: #fbfbfb; border-radius: 8px; padding:20px;margin-bottom:20px">
+									<p>Quý khách vui lòng chuyển khoản với nội dung ghi rõ<br>
+									<b>Tên & Số Điện Thoại người</b> nhận hàng:<br>
+									Ví dụ: <b>A THANH 0988888888</b></p>
+								</div>
+								<b style="font-size:18px;">Chuyển qua ngân hàng</b>
+								<div style="border: 2px solid #fbfbfb; padding: 10px; border-radius:10px;margin-top:10px">
+									<p style="line-height: 3;">
+									<b>Vietcombank - Ngân Hàng Ngoại Thương Việt Nam</b> <br>
+									Chủ tài khoản: LE LAM LINH <br>
+									Số tài khoản: <b>0011004366653</b> <br>
+									</p>
+								</div>
+							</div>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close" class="btn btn-primary"  style="width:30%;margin:auto;border-radius:25px;">Đã hiểu</button>
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary" id="button-da-hieu" style="width:30%;margin:auto;border-radius:25px;">Đã hiểu</button>
-				</div>
-
-				</div>
+    			</div>-->
 			</div>
 		</section>
 			<!-- FRAMEWORK -->
 			<style>
 /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-.modal-content p{
-	color:black;
-	font-size:16px;
-}
 
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 50%;
-  border-radius: 10px;
-  box-shadow: 2px 2px 6px 0px rgb(0 0 0 / 10%);
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
 </style>
 			<script>
 var modal = document.getElementById("myModal");
