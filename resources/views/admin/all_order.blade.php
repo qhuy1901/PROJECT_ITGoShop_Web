@@ -51,12 +51,7 @@
 															<span class="OrderId">{{$order->OrderId}}</span>
 														</a>
 													</td>
-													<?php
-														$firstName = $order->FirstName;
-														$lastName = $order->LastName;
-														$fullname = $lastName.' '.$firstName ;
-													?>
-													<td>{{$fullname}}</td>
+													<td>{{$order->LastName}} {{$order->FirstName}}</td>
 													<td>{{number_format($order->Total, 0, " ", ".").' ₫'}}</td> 
 													
 													<td class="OrderStatus" style="color: #77ACF1; font-size: 14px; font-weight: 600; text-align: center;">{{$order->OrderStatus}}<!-- CHÚ Ý !!!! Không thêm khoảng cách (SPACE) vô đây, tránh bị lỗi js  --></td>
@@ -133,8 +128,6 @@
 								</div>
 							</div>
 						</div>
-
-						
 		</div>
 	<!-- jQuery UI -->
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
@@ -151,8 +144,6 @@
 	<script>
 		var local_parent;
 		$(document).ready(function() { 
-	
-
 			$('.btn-update-order').click(function(){ 
 				var parent = $(this).parents('tr'); 
 				local_parent = parent;
@@ -168,7 +159,6 @@
 			});
 
 			$('.btn-luu-update-order').click(function(){
-				
 				var OrderId = $('#ma-don-hang-hidden').val();
 				var OrderStatus = $('#trang-thai-don-hang').val();
 				var PaymentStatus = $('#trang-thai-thanh-toan').val(); 
@@ -184,6 +174,16 @@
 						swal({
 						text: "Cập nhật trạng thái đơn hàng thành công!",
 						icon: "success",
+						});
+
+						$.ajax({
+							url: '{{URL::to('/add-order-tracking')}}',
+							method:"GET",
+							data:{OrderId: OrderId, OrderStatus: OrderStatus},
+							error:function(data)
+							{
+								alert("Lỗi cập nhật hóa đơn");
+							}	
 						});
 					},
 					error:function(data)

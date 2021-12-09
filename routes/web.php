@@ -102,7 +102,6 @@ Route::get('/remove-from-cart/{rowId}','App\Http\Controllers\CartController@remo
 Route::get('/add-to-cart','App\Http\Controllers\CartController@add_to_cart');
 Route::get('/update-quantity','App\Http\Controllers\CartController@update_quantity');
 Route::post('/load-cart','App\Http\Controllers\CartController@load_cart');
-// Route::get('/load-cart','App\Http\Controllers\CartController@load_cart');
 Route::post('/load-cart-quantity','App\Http\Controllers\CartController@load_cart_quantity');
 Route::get('/load-cart-quantity','App\Http\Controllers\CartController@load_cart_quantity');
 
@@ -137,9 +136,9 @@ Route::get('/blog-detail/{BlogId}', 'App\Http\Controllers\BlogController@blog_de
 //Order (Admin)
 Route::get('/confirm_order','App\Http\Controllers\OrderController@confirm_order');
 Route::get('/all_order','App\Http\Controllers\OrderController@all_order');
-//Route::post('/update-order/{OrderId}','App\Http\Controllers\OrderController@update_order');
 Route::get('/order_detail/{OrderId}', 'App\Http\Controllers\OrderController@order_detail');
 Route::get('/update-order-status', 'App\Http\Controllers\OrderController@update_order_status');
+Route::get('/add-order-tracking', 'App\Http\Controllers\OrderController@add_order_tracking');
 
 //Order (Client)
 Route::get('/my-orders', 'App\Http\Controllers\OrderController@show_my_orders');
@@ -223,3 +222,6 @@ Route::get('/update-extra-shipfee','App\Http\Controllers\ShipMethodController@up
 Route::get('/is-rating-exit','App\Http\Controllers\RatingController@is_rating_exit');
 Route::get('/add-rating','App\Http\Controllers\RatingController@add_rating');
 Route::get('/load-rating','App\Http\Controllers\RatingController@load_rating');
+
+//OrderTracking
+Route::get('/show-order-tracking/{OrderId}','App\Http\Controllers\OrderTrackingController@show_order_tracking');
