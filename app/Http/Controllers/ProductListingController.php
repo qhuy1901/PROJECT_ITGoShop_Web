@@ -269,7 +269,7 @@ class ProductListingController extends Controller
         ->join('Category','Category.CategoryId','=','product.CategoryId')
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
-        ->where('product.CategoryId',$CategoryId)->paginate(6);
+        ->where('product.CategoryId',$CategoryId)->paginate(9);
         }
         
 
