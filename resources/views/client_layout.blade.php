@@ -323,7 +323,18 @@
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 	<!-- Sweet Alert -->
 	<!-- <a href="{{URL::to('/load-cart-quantity')}}">Quang</a> -->
-	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#sort').on('change',function(){
+				var url = $(this).val();
+				if(url) {
+					window.location = url;
+				}
+				return false;
+			})
+		})
+
+	</script>
 	<script>
 		$(document).ready(function(){
 			load_cart();

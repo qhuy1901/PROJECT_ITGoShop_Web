@@ -25,6 +25,20 @@
       <div class="ps-products-wrap pr-80 pl-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
                                 <div class="ps-product__columns">
+                                  <div class="row">
+                                    <div class="col-md-3">
+                                      <form>
+                                          @csrf
+                                          <select nam="sort" id="sort" class ="form-control" style="font-size:12px;">
+                                            <option value="{{Request::url()}}?sort_by=none" style="font-size:12px;">Sắp Xếp Theo</option>
+                                            <option value="{{Request::url()}}?sort_by=tang_dan" style="font-size:12px;">-Giá Tăng Dần- </option>
+                                            <option value="{{Request::url()}}?sort_by=giamdan" style="font-size:12px;">-Giá Giảm Dần- </option>
+                                            <option value="{{Request::url()}}?sort_by=az" style="font-size:12px;">-A - Z- </option>
+                                            <option value="{{Request::url()}}?sort_by=za" style="font-size:12px;">-Z - A- </option>
+                                          </select>
+                                      </form>
+                                    </div>
+                                  </div>
                                 @foreach($all_product as $key => $product)
                                   <div class="ps-product__column" style="width: 250px; height: 350px;">
                                     <div class="single-product">
@@ -67,7 +81,7 @@
                                     <ul class="ps-list--checked">
                                       <!--<li class="current"><a href="product-listing.html">Life(521)</a></li>-->
                                       @foreach($sub_brand as $key => $subbrand)
-                                        <li><a href="#">{{$subbrand->SubBrandName}}</a></li>
+                                        <li><a href="{{URL::to('/product-listing3/'.$subbrand->SubBrandId)}}">{{$subbrand->SubBrandName}}</a></li>
                                       @endforeach
                                       
                                     </ul>
