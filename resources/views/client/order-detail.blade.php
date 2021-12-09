@@ -14,7 +14,8 @@
 						<li><a href="{{URL::to('/')}}">Trang chủ<i class="ti-arrow-right"></i></a></li>
 						<li class="active"><a href="{{URL::to('/')}}">Tài khoản<i class="ti-arrow-right"></i></a></li>
                         <li class="active"><a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="{{URL::to('/my-orders')}}">Chi tiết đơn hàng</a></li>
+                        <li class="active"><a href="{{URL::to('/my-orders')}}">Chi tiết đơn hàng<i class="ti-arrow-right"></i></a></li>
+						<li class="active"><a href="{{URL::to('/my-orders')}}">Theo dõi đơn hàng</a></li>
 					</ul>
 				</div>
 			</div>
@@ -40,8 +41,7 @@
                   <div class="d-flex flex-column align-items-center text-center">
                     <img src="{{URL::to('public/images_upload/user/'.$avt)}}" alt="Admin" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>Xin chào, {{$fullname}}!</h4>
-                      
+                      	<h4>Xin chào, {{$fullname}}!</h4>
                     </div>
                   </div>
                 </div>
@@ -53,7 +53,6 @@
 						<i style="font-size: 20px; padding-right: 15px; font-weight:bold;" class="fa fa-user-circle-o" class="fa fa-user-circle-o" ></i> 
 						<a href="{{URL::to('/profile/'.$CustomerId)}}" style="color:#333; font-weight:500;">Tài khoản</a>
 					</h4>
-                    
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h4 class="mb-0" >
@@ -71,7 +70,6 @@
 						<a href="{{URL::to('/my-orders')}}" style="color:#333; font-weight:500;">Lịch sử mua hàng</a>
 					</h4>
                   </li>
-                  
                 </ul>
               </div>
             </div>
@@ -164,10 +162,15 @@
 				</div>
 				<?php $status = $order_info->OrderStatus ?>
 				<?php if($status != "Đã hủy" && $status != "Đang giao hàng" && $status != "Đã giao cho đơn vị vận chuyển" && $status != "Giao hàng thành công"){?>
-				<button type="button" style="height:40px;width:150px;float:right;font-size: 14px;" class="btn btn-warning">
+				<button type="button" style="height:40px;width:150px;float:right;font-size: 14px;" class="btn btn-success">
 					<a href="javascript:void(0)" style="text-decoration:none; color: white;" class="button-huy-don-hang">Hủy đơn hàng</a> 
 				</button>
 				<?php } ?>
+				@if($status != "Đã hủy")
+				<button type="button" style="height:40px;width:200px;float:right;font-size: 14px;margin-right:20px" class="btn btn-warning">
+					<a href="{{URL::to('/show-order-tracking/'.$order_info->OrderId)}}" style="text-decoration:none; color: white;">Theo dõi đơn hàng</a> 
+				</button>
+				@endif
 				<!--  -->
 				<!-- Trigger/Open The Modal -->
 				<div id="myModal" class="modal">

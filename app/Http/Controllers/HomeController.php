@@ -126,6 +126,8 @@ class HomeController extends Controller
             $data['UserId'] = $result->UserId;
             $data['LoginTime'] = date("H:i:s");
             DB::table('loginhistory')->insert($data);
+            //return Redirect::to($request->request->get('http_referrer'));
+            //return back(back());
             return Redirect::to('/home');
         } 
         else{
@@ -142,7 +144,8 @@ class HomeController extends Controller
     public function logout()
     {
         Session::put('CustomerId', null);
-        return Redirect::to('home');
+        return back();
+        //return Redirect::to('home');
     }
 
     public function search_result(Request $request)
