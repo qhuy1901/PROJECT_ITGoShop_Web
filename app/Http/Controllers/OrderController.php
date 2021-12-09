@@ -195,8 +195,8 @@ class OrderController extends Controller
 
     public function send_order_mail($OrderId)
     {
-        $to_name = "ITGoShop";
-        $to_mail = "itgoshop863@gmail.com"; // Gửi đến email nào? 
+        $to_name = "Hồng Cúc";
+        $to_mail = "cuclth2701@gmail.com"; // Gửi đến email nào? 
         $OrderInfo = DB::table('order')
         ->select('FirstName','LastName', 'OrderId', 'OrderDate', 'Description', 'ShippingAddressId', 'Total')
         ->join('user', 'user.UserId', '=', 'order.UserId')
