@@ -7,6 +7,8 @@ use DB;
 use Session;
 use App\Http\Requests; 
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductExport;
 session_start();
 
 class ProductController extends Controller
@@ -48,7 +50,6 @@ class ProductController extends Controller
         ->join('brand','brand.BrandId','=','product.BrandId')
         ->select('product.*', 'Category.CategoryName', 'brand.BrandName')
         ->orderby('product.ProductId', 'desc')->get();
-
         return view('admin.product.view-product')
         ->with('all_product', $all_product);
     }
@@ -324,5 +325,11 @@ class ProductController extends Controller
         $output .= '<p style="display:inline-block; margin-left:10px">'.$product->ProductName.'</p>';
         $output .= '<input type="hidden" value="'.$product->ProductId.'"</p>';
         echo  $output;
+    }
+
+    public function export_product()
+    {
+        //$product = DB::table('product')->get();
+        return Excel::download(new ProductExport , 'product.xlsx');
     }
 }

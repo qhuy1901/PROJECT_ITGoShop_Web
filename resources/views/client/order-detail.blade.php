@@ -25,6 +25,8 @@
 	<?php   
             $CustomerId = Session::get('CustomerId');
             $avt = Session::get('CustomerImage');
+			if($avt == '')
+				$avt = 'default-user-icon.png';
 			$firstName = Session::get('CustomerFirstName');
 			$lastName = Session::get('CustomerLastName');
             $fullname = $lastName.' '.$firstName ;

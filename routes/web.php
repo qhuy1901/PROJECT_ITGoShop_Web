@@ -91,6 +91,9 @@ Route::post('/update-product/{ProductId}','App\Http\Controllers\ProductControlle
 Route::post('/load-comment','App\Http\Controllers\ProductController@load_comment');
 Route::post('/send-comment','App\Http\Controllers\ProductController@send_comment');
 Route::get('/get-product','App\Http\Controllers\ProductController@get_product');
+Route::post('/export-product','App\Http\Controllers\ProductController@export_product');
+
+
 //Cart
 Route::post('/save-cart','App\Http\Controllers\CartController@save_cart');
 Route::get('/show-cart','App\Http\Controllers\CartController@show_cart');

@@ -31,11 +31,19 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title">Danh sách danh mục sản phẩm</h4>
-										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-											<i class="fa fa-plus"></i>
-												Thêm sản phẩm
-										</button>
+										<h4 class="card-title" style="margin-right:30px">Danh sách sản phẩm</h4>
+											<button class="btn btn-info btn-border btn-round btn-sm mr-2" data-toggle="modal" data-target="#addRowModal" style="height:36px;">
+												<span class="btn-label">
+													<i class="fas fa-file-import"></i>
+												</span>Import
+											</button>
+											<form action="{{URL::to('/export-product')}}" method="POST" class="btn btn-info btn-border btn-round btn-sm">
+												@csrf
+												<span class="btn-label">
+													<i class="fas fa-download"></i>
+												</span>
+												<input type="submit" value="Export" style="background: none;border: none;"></input>
+											</form>	
 									</div>
 								</div>
 								<div class="card-body">
@@ -45,7 +53,7 @@
 													<div class="modal-header no-bd">
 														<h5 class="modal-title">
 															<span class="fw-mediumbold">
-															Thêm</span> 
+															Import</span> 
 															<span class="fw-light">
 																sản phẩm mới
 															</span>
@@ -56,33 +64,21 @@
 													</div>
 													
 													<div class="modal-body">
-														<p class="small">Create a new row using this form, make sure you fill them all</p>
+														<!-- <p class="small">Create a new row using this form, make sure you fill them all</p> -->
 														<form>
 															<div class="row">
 																<div class="col-sm-12">
 																	<div class="form-group form-group-default">
-																		<label>Name</label>
-																		<input id="addName" type="text" class="form-control" placeholder="fill name">
-																	</div>
-																</div>
-																<div class="col-md-6 pr-0">
-																	<div class="form-group form-group-default">
-																		<label>Position</label>
-																		<input id="addPosition" type="text" class="form-control" placeholder="fill position">
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="form-group form-group-default">
-																		<label>Office</label>
-																		<input id="addOffice" type="text" class="form-control" placeholder="fill office">
+																		<label>Thêm file sản phẩm (.xlsx)</label>
+																		<input id="addName" type="file" class="form-control" placeholder="fill name" style="margin: 20px 0px;">
 																	</div>
 																</div>
 															</div>
 														</form>
 													</div>
 													<div class="modal-footer no-bd">
-														<button type="button" id="addRowButton" class="btn btn-primary">Add</button>
-														<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+														<button type="button" id="addRowButton" class="btn btn-primary">Thêm</button>
+														<button type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
 													</div>
 												</div>
 											</div>
@@ -90,7 +86,6 @@
 
 									<div class="table-responsive">
 										<div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-
 											<?php
 												$message = Session::get('message');
 												if($message)
@@ -99,7 +94,6 @@
 													Session::put('message', null);
 												}
 											?>
-											
 											<table id="multi-filter-select" class="display table table-striped table-hover" >
 												<thead>
 													<tr>
@@ -137,10 +131,8 @@
 														<td>{{$product->BrandName}}</td>
 														<td>{{$product->Quantity}}</td>
 														<td><img src="public/images_upload/product/{{$product->ProductImage}}" style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; "></td>
-														
 														<!-- <td>{{$product->Discount}}%</td> -->
 														<td>{{number_format($product->Price, 0, " ", ".").' ₫'}}</td>
-
 														<td>
 															<div class="form-button-action">
 																@if($product->Status == 1)
@@ -174,7 +166,6 @@
 																	</a>
 																</button>
 															</div>
-															
 														</td>
 													</tr>
 													@endforeach

@@ -211,9 +211,12 @@
 												@foreach($rating_list as $key => $item)
 												<div class="row" style="padding: 20px 0px;">
 													<div class="col-5">
-														<img src="{{URL::to('public/images_upload/user/'.$item->UserImage)}}" style="margin-right:30px; max-width: 100px; max-height: 70px; width: auto; height: auto; border-radius:100%" class="float-left" alt="#">
-
-														
+														<?php $userImage = $item->UserImage;
+															if($userImage == '')
+															{
+																$userImage = 'default-user-icon.png';
+															}?>
+														<img src="{{URL::to('public/images_upload/user/'.$userImage)}}" style="margin-right:30px; max-width: 100px; max-height: 70px; width: auto; height: auto; border-radius:100%" class="float-left" alt="#">
 														<div class="o-comment">
 															<H4>{{$item->LastName}} {{$item->FirstName}}</H4>
 															<?php date_default_timezone_set("Asia/Ho_Chi_Minh");
