@@ -24,6 +24,17 @@
       <div class="ps-products-wrap pr-80 pl-80 pt-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
                                 <div class="ps-product__columns">
+                                    <div class="col-md-4">
+                                      <label for="amount">Sắp Xếp Theo</label>
+                                      <form>
+                                          @csrf
+                                          <select nam="sort" id="sort" class ="form-control" style="font-size:12px;">
+                                            <option value="{{Request::url()}}?sort_by=none" style="font-size:12px;">--Lọc--</option>
+                                            <option value="{{Request::url()}}?sort_by=tang_dan" style="font-size:12px;">--Giá tăng dần--</option>
+                                            <option value="{{Request::url()}}?sort_by=giamdan" style="font-size:12px;">--Giá giảm dần--</option>
+                                          </select>
+                                      </form>
+                                    </div>
                                   @foreach($all_product as $key => $product)
                                   <div class="ps-product__column" style="width: 250px; height: 350px;">
                                     <div class="single-product">

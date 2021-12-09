@@ -25,6 +25,17 @@
       <div class="ps-products-wrap pr-80 pl-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
                                 <div class="ps-product__columns">
+                                    <div class="col-md-4">
+                                      <label for="amount">Sắp Xếp Theo</label>
+                                        <form>
+                                            @csrf
+                                            <select nam="sort" id="sort" class ="form-control" style="font-size:12px;">
+                                              <option value="{{Request::url()}}?sort_by=none" style="font-size:12px;">--Lọc--</option>
+                                              <option value="{{Request::url()}}?sort_by=tang_dan" style="font-size:12px;">--Giá tăng dần--</option>
+                                              <option value="{{Request::url()}}?sort_by=giamdan" style="font-size:12px;">--Giá giảm dần--</option>
+                                            </select>
+                                        </form>
+                                    </div>
                                 @foreach($all_product as $key => $product)
                                   <div class="ps-product__column">
                                     <div class="single-product">
@@ -66,7 +77,7 @@
                                     <ul class="ps-list--checked">
                                       <!--<li class="current"><a href="product-listing.html">Life(521)</a></li>-->
                                       @foreach($sub_brand as $key => $subbrand)
-                                        <li><a href="#">{{$subbrand->SubBrandName}}</a></li>
+                                        <li><a href="{{URL::to('/product-listing3/'.$subbrand->SubBrandId)}}">{{$subbrand->SubBrandName}}</a></li>
                                       @endforeach
                                       
                                     </ul>
