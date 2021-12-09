@@ -122,7 +122,6 @@
 			<input type="text" id="input-admin-id" value="{{Session::get('CustomerId')}}" hidden>
 		</div>
 		<div class="navigation__column center">
-				
 				<ul class="main-menu menu">
 				@foreach($product_category_list as $key => $category)
 					@if($category->CategoryId == "LT000")
@@ -343,7 +342,7 @@
 					},
 					error:function(data)
 					{
-						alert("Lỗi");
+						alert("Lỗi load sl");
 					}
 				});
 		}
@@ -393,7 +392,6 @@
 									button: "OK",
 								});
 							}
-								
 						},
 						error:function(data)
 						{

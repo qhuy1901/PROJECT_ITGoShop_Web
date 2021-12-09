@@ -495,6 +495,11 @@
 											<span class="sub-item">Xem các phương thức vận chuyển</span>
 										</a>
 									</li>
+									<li>
+										<a href="{{URL::to('/view-extra-shipfee')}}">
+											<span class="sub-item">Vận chuyển theo địa phương</span>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</li>

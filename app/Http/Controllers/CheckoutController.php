@@ -40,7 +40,7 @@ class CheckoutController extends Controller
             $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
             $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
             $default_shipping_address = DB::table('shippingaddress')
-            ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+            ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'ExtraShippingFee', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
             ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
             ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
             ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')

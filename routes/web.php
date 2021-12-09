@@ -161,7 +161,6 @@ Route::post('/add-shipping-address','App\Http\Controllers\ShippingAddressControl
 Route::get('/delete-shipping-address','App\Http\Controllers\ShippingAddressController@delete_shipping_address');
 Route::get('/change-default-shipping-address/{ShippingAddressId}','App\Http\Controllers\ShippingAddressController@change_default_shipping_address');
 Route::get('/update-shipping-address','App\Http\Controllers\ShippingAddressController@update_shipping_address');
-
 Route::get('/send-order-mail', 'App\Http\Controllers\OrderController@send_order_mail');
 
 //Product Listing
@@ -214,6 +213,8 @@ Route::get('/view-shipmethod','App\Http\Controllers\ShipMethodController@view_sh
 Route::get('/unactive-shipmethod','App\Http\Controllers\ShipMethodController@unactive_shipmethod');
 Route::get('/active-shipmethod','App\Http\Controllers\ShipMethodController@active_shipmethod');
 Route::get('/delete-shipmethod','App\Http\Controllers\ShipMethodController@delete_shipmethod');
+Route::get('/view-extra-shipfee','App\Http\Controllers\ShipMethodController@view_extra_shipfee');
+Route::get('/update-extra-shipfee','App\Http\Controllers\ShipMethodController@update_extra_shipfee');
 
 // Rating
 Route::get('/is-rating-exit','App\Http\Controllers\RatingController@is_rating_exit');

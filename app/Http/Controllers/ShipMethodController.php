@@ -50,4 +50,18 @@ class ShipMethodController extends Controller
     {
         DB::table('shipmethod')->where('ShipMethodId', $request->ShipMethodId)->delete();
     }
+
+    public function view_extra_shipfee()
+    {
+        $extra_shipfee= DB::table('devvn_quanhuyen')
+        ->select('devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhtp', 'ExtraShippingFee', 'maqh')
+        ->join('devvn_tinhthanhpho','devvn_tinhthanhpho.matp','=','devvn_quanhuyen.matp')->get();
+        return View('admin.ship.view-extra-shipfee')
+        ->with('extra_shipfee', $extra_shipfee);
+    }
+    public function update_extra_shipfee(Request $request)
+    {
+        $extra_shippingfee = $request->ExtraShippingFee;
+        DB::table('devvn_quanhuyen')->where('maqh', $request->maqh)->update(['ExtraShippingFee'=>  $extra_shippingfee]);
+    }
 }

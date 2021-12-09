@@ -54,7 +54,7 @@
 														(Thời gian giao hàng dự kiến: {{date('d-m-Y',strtotime("+$item->EstimatedDeliveryTime hours"))}})
 													@endif
 												</i></label>
-												<input type="text" class="ShipFee" value="{{$item->ShipFee}}" hidden>
+												<input type="text" class="ShipFee" value="{{$item->ShipFee + $default_shipping_address->ExtraShippingFee}}" hidden>
 											</div>
 										</div>
 									@endforeach
