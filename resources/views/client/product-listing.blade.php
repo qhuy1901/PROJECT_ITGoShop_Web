@@ -26,14 +26,15 @@
                               <div class="ps-products" data-mh="product-listing">
                                 <div class="ps-product__columns">
                                   <div class="row">
-                                    <div class="col-md-4">
-                                      <label for="amount">Sắp Xếp Theo</label>
+                                    <div class="col-md-3">
                                       <form>
                                           @csrf
                                           <select nam="sort" id="sort" class ="form-control" style="font-size:12px;">
-                                            <option value="{{Request::url()}}?sort_by=none" style="font-size:12px;">--Lọc--</option>
-                                            <option value="{{Request::url()}}?sort_by=tang_dan" style="font-size:12px;">--Giá tăng dần--</option>
-                                            <option value="{{Request::url()}}?sort_by=giamdan" style="font-size:12px;">--Giá giảm dần--</option>
+                                            <option value="{{Request::url()}}?sort_by=none" style="font-size:12px;">Sắp Xếp Theo</option>
+                                            <option value="{{Request::url()}}?sort_by=tang_dan" style="font-size:12px;">-Giá Tăng Dần- </option>
+                                            <option value="{{Request::url()}}?sort_by=giamdan" style="font-size:12px;">-Giá Giảm Dần- </option>
+                                            <option value="{{Request::url()}}?sort_by=az" style="font-size:12px;">-A - Z- </option>
+                                            <option value="{{Request::url()}}?sort_by=za" style="font-size:12px;">-Z - A- </option>
                                           </select>
                                       </form>
                                     </div>
