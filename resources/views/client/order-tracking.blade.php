@@ -107,7 +107,7 @@
                                         <img style="max-width:80px;" class="rounded" src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="">
                                     </div>
                                     <div class="col-8">
-                                    <p style="color:black"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}" style="text-decoration:none;color:black">{{$item->ProductName}}</a> <b>x{{$item->OrderQuantity}}</b></p>
+                                    <p style="color:black"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}" style="text-decoration:none;color:black">{{$item->ProductName}}</a><br> <b>x{{$item->OrderQuantity}}</b></p>
                                     </div>
                                 </div>
                                 <hr>

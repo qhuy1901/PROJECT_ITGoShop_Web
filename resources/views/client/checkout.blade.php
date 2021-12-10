@@ -17,8 +17,6 @@
 				</div>
 			</div>
 		</div>
-
-
 <section>
 			<?php
 				$content = Cart::content();

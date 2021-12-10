@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         $all_blog = DB::table('blog')->orderby('BlogId', 'desc')->limit(3)->get();

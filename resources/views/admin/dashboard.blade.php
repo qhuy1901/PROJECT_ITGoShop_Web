@@ -171,11 +171,11 @@
 												</span>
 												Export
 											</a>
-											<a href="#" class="btn btn-info btn-border btn-round btn-sm">
+											<a target="_blank" rel="noopener noreferrer" id="print-revenue-report" href="{{URL::to('/print-revenue-report')}}" class="btn btn-info btn-border btn-round btn-sm">
 												<span class="btn-label">
 													<i class="fa fa-print"></i>
 												</span>
-												Print
+												In thống kê
 											</a>
 										</div>
 									</div>
@@ -907,6 +907,10 @@
 					success:function(data)
 					{
 						chart.setData(data);
+						var newURL = "{{URL::to('/print-revenue-report/tu-ngay/den-ngay')}}";
+						newURL = newURL.replace('tu-ngay', tu_ngay);
+						newURL = newURL.replace('den-ngay', den_ngay);
+						$('#print-revenue-report').attr("href", newURL);
 					},
 					error:function(data)
 					{

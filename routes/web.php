@@ -228,3 +228,6 @@ Route::get('/show-order-tracking/{OrderId}','App\Http\Controllers\OrderTrackingC
 Route::post('/load-order-tracking','App\Http\Controllers\OrderTrackingController@load_order_tracking');
 Route::post('/load-order-status','App\Http\Controllers\OrderTrackingController@load_order_status');
 Route::get('/load-order-status','App\Http\Controllers\OrderTrackingController@load_order_status');
+
+// Report
+Route::get('/print-revenue-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@print_revenue_report');
