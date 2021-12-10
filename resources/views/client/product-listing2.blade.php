@@ -27,7 +27,7 @@
                                   <div class="ps-product__filter">
                                       <form>
                                           @csrf
-                                          <select nam="sort" id="sort" class ="form-control" style="font-size:12px;">
+                                          <select name="sort" id="sort" class ="form-control" style="font-size:12px;">
                                             <option value="{{Request::url()}}?sort_by=none" style="font-size:12px;">Sắp Xếp Theo</option>
                                             <option value="{{Request::url()}}?sort_by=tangdan" style="font-size:12px;">-Giá Tăng Dần- </option>
                                             <option value="{{Request::url()}}?sort_by=giamdan" style="font-size:12px;">-Giá Giảm Dần- </option>
