@@ -14,7 +14,7 @@ class CartController extends Controller
     public function save_cart(Request $request)
     {
         // Cái này để load layout thôi
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
@@ -50,7 +50,7 @@ class CartController extends Controller
     public function show_cart()
     {
         // Cái này để load layout thôi
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
 
