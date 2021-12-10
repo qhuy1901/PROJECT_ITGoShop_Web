@@ -134,7 +134,7 @@
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
 	
 	<!-- jQuery Scrollbar -->
-	<script src="{{asset('public/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"')}}></script>
+	<script src="{{asset('public/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
 	<!-- Datatables -->
 	<script src="{{asset('public/admin/js/plugin/datatables/datatables.min.js')}}"></script>
 	<!-- Atlantis JS -->

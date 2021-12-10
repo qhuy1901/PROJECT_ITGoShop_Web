@@ -93,6 +93,14 @@ class AdminController extends Controller
 
         $order_homnay = DB::table('order')
         ->whereDate('OrderDate', $now)->count();
+
+        $all_comment = DB::table('comment')
+        ->select('CommentId', 'CommentContent', 'comment.CreatedAt','ProductName','FirstName' ,'LastName', 'CommentStatus', 'comment.ProductId', 'Reply', 'ParentComment')
+        ->join('product','product.ProductId','=','comment.ProductId')
+        ->join('user','user.UserId','=','comment.UserId')
+        ->where('ParentComment', NULL)
+        ->orderBy('Reply', 'asc')
+        ->orderBy('CommentId', 'desc')->get();
         
         return view('admin.dashboard')
         ->with('this_month_revenue', $this_month_revenue)
@@ -107,7 +115,8 @@ class AdminController extends Controller
         ->with('login_thangtruoc',  $login_thangtruoc)
         ->with('login_namnay',  $login_namnay)
         ->with('order_homnay',  $order_homnay)
-        ->with('top_blog_view',  $top_blog_view);
+        ->with('top_blog_view',  $top_blog_view)
+        ->with('all_comment', $all_comment);
     }
 
     public function dashboard(Request $request)

@@ -41,11 +41,18 @@ class OrderController extends Controller
     
     public function update_order_status(Request $request)
     {
+        $os = $request->OrderStatus;
+        $OrderId = Session::get('OrderId');
         $data = array();
         $data['OrderStatus'] = $request->OrderStatus;
         $data['PaymentStatus'] = $request->PaymentStatus;
         $data['DateUpdate'] = date("Y-m-d H:i:s"); 
         DB::table('order')->where('OrderId', $request->OrderId)->update($data);
+        if($os == "Giao hàng thành công")
+        {
+            $this->send_complete_mail($OrderId);
+        }
+        
     }
 
     public function order_detail($OrderId)
@@ -74,7 +81,28 @@ class OrderController extends Controller
         return view('admin_layout')->with('admin.order_detail', $manager_order);
         
     }
+    public function send_complete_mail($OrderId)
+    {
+        $to_name = "Hồng Cúc";
+        $to_mail = "cuclth2701@gmail.com"; // Gửi đến email nào? 
+        $OrderInfo = DB::table('order')
+        ->select('FirstName','LastName', 'OrderId', 'OrderDate', 'Description', 'ShippingAddressId', 'Total')
+        ->join('user', 'user.UserId', '=', 'order.UserId')
+        ->where('OrderId', '=', $OrderId)->first();
 
+        $ShippingAddress = DB::table('shippingaddress')
+        ->select('ShippingAddressId', 'ReceiverName', 'ShippingAddressType', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+        ->where('ShippingAddressId', '=', $OrderInfo->ShippingAddressId)->first();
+
+        $data = array("OrderInfo" => $OrderInfo, "ShippingAddress" => $ShippingAddress);
+        Mail::send('mail.complete_order_mail', $data, function($message) use ($to_name, $to_mail){
+            $message->to($to_mail)->subject('ITGoShop - Đơn hàng đã giao thành công');
+            $message->from($to_mail, $to_name);
+        });
+    }
     /*Trang Client */
     public function show_my_orders()
     {
@@ -176,17 +204,18 @@ class OrderController extends Controller
         DB::table('ordertracking')->insert($tracking_data);
 
         Cart::destroy();
-        $this->send_order_mail($OrderId);
+        $this->send_order_mail($OrderId,$CustomerId);
         return redirect()->action(
             [OrderDetailController::class, 'index'], ['OrderId' => $OrderId]
         );
         // echo $OrderId;
     }
 
-    public function send_order_mail($OrderId)
+    public function send_order_mail($OrderId,$CustomerId)
     {
-        $to_name = "Hồng Cúc";
-        $to_mail = "cuclth2701@gmail.com"; // Gửi đến email nào? 
+        $info = DB::table('user')->where('UserId','=',$CustomerId)->get();
+        $to_name = $info->FirstName;
+        $to_mail = $info->Email; // Gửi đến email nào? 
         $OrderInfo = DB::table('order')
         ->select('FirstName','LastName', 'OrderId', 'OrderDate', 'Description', 'ShippingAddressId', 'Total')
         ->join('user', 'user.UserId', '=', 'order.UserId')

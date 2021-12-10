@@ -163,7 +163,7 @@ class BlogController extends Controller
         $all_content = DB::table('blog')
         ->select('blog.*')
         ->where('Status',1)
-        ->orderby('blog.BlogId', 'desc')->paginate(9);
+        ->orderby('blog.DatePost', 'desc')->paginate(9);
 
         return view('client.all_blog')
         ->with('sub_brand_list',  $sub_brand_list )
