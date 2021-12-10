@@ -22,10 +22,12 @@
     <?php   
             $CustomerId = Session::get('CustomerId');
             $avt = Session::get('CustomerImage');
-			$firstName = Session::get('CustomerFirstName');
-			$lastName = Session::get('CustomerLastName');
-            $fullname = $lastName.' '.$firstName ;
-	?>											
+			if($avt == '')
+				$avt = "default-user-icon.png";
+				$firstName = Session::get('CustomerFirstName');
+				$lastName = Session::get('CustomerLastName');
+				$fullname = $lastName.' '.$firstName ;
+	?>												
 	<!-- Start Contact -->
 	<div class="row gutters-sm pt-20 pl-60 pr-80 pb-80">
             <div class="col-md-3 mb-4">

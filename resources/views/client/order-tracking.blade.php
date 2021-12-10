@@ -38,7 +38,7 @@
               <div class="card">
 			  <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="{{URL::to('public/images_upload/user/'.$avt)}}" alt="Admin" class="rounded-circle" width="150">
+                    <img src="{{URL::to('public/images_upload/user/'.$avt)}}"  class="rounded-circle" width="150">
                     <div class="mt-3">
                         <h4>Xin chào, {{$fullname}}!</h4>
                     </div>
