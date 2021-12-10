@@ -28,8 +28,6 @@ class OrderController extends Controller
         }
     }
 
-    
-
     public function all_order()
     {
         $this->auth_login();
@@ -40,21 +38,7 @@ class OrderController extends Controller
         $manager_order = view('admin.all_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.all_order', $manager_order);
     }
-    // public function update_order(Request $request, $OrderId)
-    // {
-    //     $this->auth_login();
-    //     $key1 = $request->status;
-    //     $key2 = $request->payment;
-    //     $data = array();
-    //     $data['OrderStatus'] = $key1;
-    //     $data['PaymentStatus'] = $key2;
-    //     $data['DateUpdate'] = date("Y-m-d H:i:s"); 
-        
-
-    //     DB::table('order')->where('OrderId', 20013)->update($data);
-    //     return redirect()->back();
-    // }
-
+    
     public function update_order_status(Request $request)
     {
         $data = array();
@@ -125,8 +109,8 @@ class OrderController extends Controller
         //$data['OrderDate'] = date("Y-m-d H:i:s");
         $data['EstimatedDeliveryTime'] =  date('Y-m-d H:00:00', strtotime("+$shipmethod->EstimatedDeliveryTime hours"));
         $data['ShipMethod'] =  $shipmethod->ShipMethodName;
-        $data['ShipFee'] =  $shipmethod->ShipFee;
-        $data['Total']= Cart::total(0, ',', '') + $shipmethod->ShipFee;
+        $data['ShipFee'] =  $shipmethod->ShipFee + $request->ExtraShippingFee;
+        $data['Total']= Cart::total(0, ',', '') + $shipmethod->ShipFee + $request->ExtraShippingFee;
         $data['PaymentMethod'] = $request->payment;
         $data['PaymentStatus'] = 'Chờ thanh toán';
         $data['ShippingAddressId'] = $request->ShippingAddressId;

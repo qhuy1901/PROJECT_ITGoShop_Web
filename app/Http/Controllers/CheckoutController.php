@@ -31,6 +31,10 @@ class CheckoutController extends Controller
 
     public function checkout()
     {
+        if(Cart::count() < 1)
+        {
+            return Redirect::to('/show-cart');
+        }
         $CustomerId = Session::get('CustomerId');
         if($CustomerId)
         {
