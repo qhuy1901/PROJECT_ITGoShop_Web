@@ -34,7 +34,7 @@ class OrderTrackingController extends Controller
 
     public function load_order_tracking(Request $request)
     {
-        $order_tracking = DB::table('ordertracking')->where('OrderId', 20159)->orderBy('CreatedAt', 'desc')->get();
+        $order_tracking = DB::table('ordertracking')->where('OrderId', $request->OrderId)->orderBy('CreatedAt', 'desc')->get();
         $output = '<table class="track_tbl">
                         <tbody>';
         foreach($order_tracking as $key => $item)
@@ -53,5 +53,11 @@ class OrderTrackingController extends Controller
         $output .= '</tbody>
         </table>';
         echo $output;                         
+    }
+
+    public function load_order_status(Request $request)
+    {
+        $order_info = DB::table('order')->where('OrderId', $request->OrderId)->first();
+        echo '<b style="font-size:18px; color:red">'.$order_info->OrderStatus.'</b>';
     }
 }

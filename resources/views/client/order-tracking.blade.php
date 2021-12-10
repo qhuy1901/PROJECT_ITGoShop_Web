@@ -1,6 +1,6 @@
 @extends('client_layout')
 @section('title', 'Theo dõi đơn hàng #'. $order_info->OrderId .' - ITGoShop')
-@section('client_content')
+ @section('client_content') 
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>	
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -83,7 +83,10 @@
 					<div class="col-sm-8">
 						<div class="card panel-default">
 							<div class="panel-heading" style="background-color: white;line-height: 2.5;">
-                                <b class="OrderStatus" style="font-size:18px; color:red">{{$order_info->OrderStatus}}</b>
+                                <form>
+                                    @csrf
+                                    <div id="OrderStatus"></div>
+                                </form>
                                 <p>Được giao bởi ITGoFast</p>
                             </div>
 							<div class="panel-body">
@@ -227,6 +230,8 @@ body{
     {
         load_order_tracking();
         setInterval(load_order_tracking, 2000);
+        load_order_status();
+        setInterval(load_order_status, 2000);
         function load_order_tracking()
         {
             var _token = $('input[name="_token"]').val();
@@ -241,6 +246,23 @@ body{
                 error:function(data)
                 {
                     alert("Lỗi");
+                }
+            });
+        }
+        function load_order_status()
+        {
+            var _token = $('input[name="_token"]').val();
+            var OrderId = $('#OrderId-hidden').val();
+            $.ajax({
+                url: "{{url('/load-order-status')}}",
+                method:"GET",
+                data:{OrderId: OrderId, _token:_token},
+                success:function(data){
+                    $('#OrderStatus').html(data);
+                },
+                error:function(data)
+                {
+                    alert("Lỗi status");
                 }
             });
         }

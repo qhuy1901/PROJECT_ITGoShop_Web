@@ -226,4 +226,5 @@ Route::get('/load-rating','App\Http\Controllers\RatingController@load_rating');
 //OrderTracking
 Route::get('/show-order-tracking/{OrderId}','App\Http\Controllers\OrderTrackingController@show_order_tracking');
 Route::post('/load-order-tracking','App\Http\Controllers\OrderTrackingController@load_order_tracking');
-Route::get('/load-order-tracking','App\Http\Controllers\OrderTrackingController@load_order_tracking');
+Route::post('/load-order-status','App\Http\Controllers\OrderTrackingController@load_order_status');
+Route::get('/load-order-status','App\Http\Controllers\OrderTrackingController@load_order_status');
