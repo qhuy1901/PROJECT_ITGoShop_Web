@@ -115,7 +115,7 @@ class AdminController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        $result = DB::table('user')->where('email', $email)->where('password', $password)->first();
+        $result = DB::table('user')->where('email', $email)->where('password', $password)->where('admin', 1)->first();
         if($result == true)
         {
             Session::put('FirstName', $result->FirstName); 

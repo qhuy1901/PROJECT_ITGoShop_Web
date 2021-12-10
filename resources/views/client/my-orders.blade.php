@@ -24,9 +24,11 @@
 	<?php   
             $CustomerId = Session::get('CustomerId');
             $avt = Session::get('CustomerImage');
-			$firstName = Session::get('CustomerFirstName');
-			$lastName = Session::get('CustomerLastName');
-            $fullname = $lastName.' '.$firstName ;
+			if($avt == '')
+				$avt = "default-user-icon.png";
+				$firstName = Session::get('CustomerFirstName');
+				$lastName = Session::get('CustomerLastName');
+				$fullname = $lastName.' '.$firstName ;
 	?>	
 
 	<!-- Start Contact -->

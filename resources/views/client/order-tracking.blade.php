@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'Theo dõi đơn hàng # - ITGoShop')
+@section('title', 'Theo dõi đơn hàng #'. $order_info->OrderId .' - ITGoShop')
 @section('client_content')
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>	
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -70,13 +70,15 @@
 						<a href="{{URL::to('/my-orders')}}" style="color:#333; font-weight:500;">Lịch sử mua hàng</a>
 					</h4>
                   </li>
-                  
                 </ul>
               </div>
             </div>
             <div class="col-md-9">
-            	<h3 style="margin: 20px 0px;">Theo dõi đơn hàng #{{$order_info->OrderId}}<p style="float:right;">Ngày đặt hàng: {{date("h:i d/m/Y", strtotime($order_info->OrderDate))}} </p></h3>
-				<input type="text" class="OrderId" value="{{$order_info->OrderId}}" hidden>
+                <button type="button" style="height:40px;width:200px;float:right;font-size: 14px;" class="btn btn-warning">
+					<a href="{{URL::to('/show-order-detail/'.$order_info->OrderId)}}" style="text-decoration:none; color: white;">Xem chi tiết đơn hàng</a> 
+				</button>
+            	<h3 style="margin: 20px 0px;">Theo dõi đơn hàng #{{$order_info->OrderId}}</h3>
+				<input type="text" id="OrderId-hidden" value="{{$order_info->OrderId}}" hidden>
 				<div class="row">
 					<div class="col-sm-8">
 						<div class="card panel-default">
@@ -85,94 +87,40 @@
                                 <p>Được giao bởi ITGoFast</p>
                             </div>
 							<div class="panel-body">
-                            <table class="track_tbl">
-                                <tbody>
-                                    <tr class="active">
-                                        <td class="track_dot">
-                                            <span class="track_line"></span>
-                                        </td>
-                                        <td>
-                                            <b>Dispatched from distibutor address</b><br>
-                                            31/07/2018 22:24:PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="track_dot">
-                                            <span class="track_line"></span>
-                                        </td>
-                                        <td>
-                                            <b>Dispatched from distibutor address</b><br>
-                                            31/07/2018 22:24:PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="track_dot">
-                                            <span class="track_line"></span>
-                                        </td>
-                                        <td>
-                                            <b>Dispatched from distibutor address</b><br>
-                                            31/07/2018 22:24:PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="track_dot">
-                                            <span class="track_line"></span>
-                                        </td>
-                                        <td>
-                                            <b>Dispatched from distibutor address</b><br>
-                                            31/07/2018 22:24:PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="track_dot">
-                                            <span class="track_line"></span>
-                                        </td>
-                                        <td>
-                                            <b>Dispatched from distibutor address</b><br>
-                                            31/07/2018 22:24:PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="track_dot">
-                                            <span class="track_line"></span>
-                                        </td>
-                                        <td>
-                                            <b>Dispatched from distibutor address</b><br>
-                                            31/07/2018 22:24:PM
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="track_dot">
-                                            <span class="track_line"></span>
-                                        </td>
-                                        <td>
-                                            <b>Dispatched from distibutor address</b><br>
-                                            31/07/2018 22:24:PM
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                <form>
+                                    @csrf 
+                                    <div id="show-order-tracking"></div>
+                                </form>
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<div class="card panel-default" >
 							<div class="panel-heading" style="background-color: white;"><h5><b style="font-size:16px;">Kiện hàng gồm</b></h5></div>
-							<div class="panel-body" style="height:200px">
-								
+							<div class="panel-body">
+								@foreach($order_detail as $key => $item)
+                                <div class="row" style="margin:20px 0px">
+                                    <div class="col-4">
+                                        <img style="max-width:80px;" class="rounded" src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" alt="">
+                                    </div>
+                                    <div class="col-8">
+                                    <p style="color:black"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}" style="text-decoration:none;color:black">{{$item->ProductName}}</a> <b>x{{$item->OrderQuantity}}</b></p>
+                                    </div>
+                                </div>
+                                <hr>
+                                @endforeach
 							</div>
 						</div>
 					</div>
+                    
 				</div>
-				
-				<p><a href="{{URL::to('/my-orders')}}" style="text-decoration:none"><< Quay lại đơn hàng của tôi</a></p>
+				<!-- <p><a href="{{URL::to('/my-orders')}}" style="text-decoration:none"><< Quay lại đơn hàng của tôi</a></p> -->
 			</div>
             </div>
         </div>
 	<!--/ End Contact -->
 	<style type="text/css">
 body{
-    
     color: #1a202c;
     text-align: left;  
 }
@@ -260,13 +208,42 @@ body{
 }
 .track_tbl tr{
     height:70px;
+    color:#787878;
 }
 .track_tbl tr:first-child td.track_dot:after{
     color: red;
     background: #CCEBCC;
     padding: 0px 5px;
     border-radius: 100%;
-    margin-left: -9px;
+    margin-left: -10px;
+}
+
+.track_tbl tr:first-child td{
+    color: black;
 }
 </style>
+<script>
+    $(document).ready(function()
+    {
+        load_order_tracking();
+        setInterval(load_order_tracking, 2000);
+        function load_order_tracking()
+        {
+            var _token = $('input[name="_token"]').val();
+            var OrderId = $('#OrderId-hidden').val();
+            $.ajax({
+                url: "{{url('/load-order-tracking')}}",
+                method:"POST",
+                data:{OrderId: OrderId, _token:_token},
+                success:function(data){
+                    $('#show-order-tracking').html(data);
+                },
+                error:function(data)
+                {
+                    alert("Lỗi");
+                }
+            });
+        }
+    });
+</script>
 @endsection

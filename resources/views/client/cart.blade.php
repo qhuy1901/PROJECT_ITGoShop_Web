@@ -1,5 +1,5 @@
 @extends('client_layout')
-@section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
+@section('title', 'Giỏ hàng - ITGoShop)
 @section('client_content')
 	<!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -385,16 +385,6 @@
 					success:function(data)
 					{
 						load_cart();
-						// var numberProduct = Number($('#so-luong-sp-gio-hang').text());
-						// if(thisButtonType == 'plus')
-						// 	$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) + 1);
-						// else
-						// {
-						// 	if(numberProduct > 1)
-						// 	{
-						// 		$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - 1);
-						// 	}
-						// }
 					},
 					error:function(data)
 					{

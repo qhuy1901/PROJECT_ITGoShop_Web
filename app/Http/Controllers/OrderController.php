@@ -185,6 +185,12 @@ class OrderController extends Controller
         }
         
         DB::table('order')->where('OrderId', '=', $OrderId)->update($data);
+
+        $tracking_data = array();
+        $tracking_data['OrderId'] = $OrderId;
+        $tracking_data['OrderStatus'] = "Đặt hàng thành công";
+        DB::table('ordertracking')->insert($tracking_data);
+
         Cart::destroy();
         $this->send_order_mail($OrderId);
         return redirect()->action(

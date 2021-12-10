@@ -18,17 +18,40 @@ class OrderTrackingController extends Controller
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
 
         $order_info = DB::table('order')->where('OrderId', '=', $OrderId)->first();
-        $order_tracking = DB::table('ordertracking')->where('OrderId', $OrderId)->get();
+        
         $order_detail = DB::table('orderdetail')
         ->select('product.ProductId', 'ProductName', 'ProductImage', 'OrderQuantity', 'UnitPrice')
         ->join('product', 'product.ProductId', '=', 'orderdetail.ProductId')
         ->where('OrderId', '=', $OrderId)->get();
+
         return View('client.order-tracking')
         ->with('product_category_list',$product_category_list)
         ->with('sub_brand_list',$sub_brand_list)
         ->with('main_brand_list',$main_brand_list)
-        ->with('order_tracking ', $order_tracking)
         ->with('order_detail', $order_detail)
         ->with('order_info', $order_info);
+    }
+
+    public function load_order_tracking(Request $request)
+    {
+        $order_tracking = DB::table('ordertracking')->where('OrderId', 20159)->orderBy('CreatedAt', 'desc')->get();
+        $output = '<table class="track_tbl">
+                        <tbody>';
+        foreach($order_tracking as $key => $item)
+        { 
+            $output .= '
+                                <tr>
+                                    <td class="track_dot">
+                                        <span class="track_line"></span>
+                                    </td>
+                                    <td>
+                                        <b>'.$item->OrderStatus.'</b><br>
+                                        '.date("h:i:s d-m-Y", strtotime($item->CreatedAt)).'
+                                    </td>
+                                </tr>';
+        }
+        $output .= '</tbody>
+        </table>';
+        echo $output;                         
     }
 }
