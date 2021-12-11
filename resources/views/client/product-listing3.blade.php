@@ -90,10 +90,11 @@
                                   <ul class="ps-list--checked">
                                     @foreach($subbrand as $key => $subbrand)
                                     <li>
-                                      <label class="checkbox-inline"> 
+                                      <label class="checkbox-inline" style="font-size: 14px;  "> 
                                         <input type="checkbox" 
                                         {{ in_array($subbrand->SubBrandId, $sbrand_arr)? 'checked' : '' }}
-                                        class="form-control-checkbox subbrand-filter" data-filters="subbrand" value="{{$subbrand->SubBrandId}}" name="subbrand-filter">{{$subbrand->SubBrandName}}
+                                        class="form-control-checkbox subbrand-filter" data-filters="subbrand" value="{{$subbrand->SubBrandId}}" name="subbrand-filter" style="width: 20px; height: 20px; padding-right: 30px;">
+                                        <span style="padding-left: 20px;  display: block;  position: relative; color: #313131;">{{$subbrand->SubBrandName}}</span>
                                       </label>
                                 </li>
                                     @endforeach
