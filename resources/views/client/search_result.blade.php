@@ -17,7 +17,10 @@
 		</div>
 	</div>
 	<!-- End Breadcrumbs -->
-			
+	<?php 
+		$number_result = count($search_product);
+		$number_result1 = count($search_blog);
+	?>		
   <div class="product-area section ">
     <div class="container">
 				<div class="row">
@@ -36,6 +39,13 @@
 								<div class="tab-pane fade show active" id="man" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
+										@if($number_result == 0)
+										<div class="box_search_null"><img src="{{URL::to('public/images_upload/Null.png')}}" alt="null"> <div class="font-primary font-bold text-2xl text-dark-gray mb-2">
+											Không tìm thấy kết quả
+										</div> <p class="text-gray-600">
+											Thử kiểm tra lỗi chính tả của từ khóa đã nhập hoặc thử lại bằng từ khóa khác
+										</p></div>
+										@else
                    							@foreach($search_product as $key => $product)
 											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
 												<div class="single-product">
@@ -64,7 +74,8 @@
 													</div>
 												</div>
 											</div>
-										@endforeach
+											@endforeach
+										@endif
 										</div>
 									</div>
 								</div>
@@ -73,6 +84,13 @@
 								<div class="tab-pane fade" id="women" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
+										@if($number_result1 == 0)
+										<div class="box_search_null"><img src="{{URL::to('public/images_upload/Null.png')}}" alt="null"> <div class="font-primary font-bold text-2xl text-dark-gray mb-2">
+											Không tìm thấy kết quả
+										</div> <p class="text-gray-600">
+											Thử kiểm tra lỗi chính tả của từ khóa đã nhập hoặc thử lại bằng từ khóa khác
+										</p></div>
+										@else
 										@foreach($search_blog as $key => $blog)
                                       {{csrf_field()}}
                                       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12  " style="height: 400px; width: 570px">
@@ -85,6 +103,7 @@
                                         </div>
                                       </div>
                                       @endforeach
+									  @endif
 										</div>
 									</div>
 								</div>
@@ -94,6 +113,40 @@
 				</div>
       </div>
   </div>
-    
+<style>
+.box_search_null {
+    text-align: center;
+    max-width: 440px;
+    color: #414956;
+    font-size: 16px;
+    margin: 0 auto 70px;
+}
+.box_search_null img {
+    display: block;
+    margin: 0 auto;
+}
+.text-dark-gray {
+    --text-opacity: 1;
+    color: #0e0e0e;
+    color: rgba(14,14,14,var(--text-opacity));
+}
+.text-2xl {
+    font-size: 1.5rem;
+}
+.font-bold {
+    font-weight: 700;
+}
+.font-primary {
+    font-family: SF_Pro_Display,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.mb-2 {
+    margin-bottom: 0.5rem;
+}
+.text-gray-600 {
+    --text-opacity: 1;
+    color: #414956;
+    color: rgba(65,73,86,var(--text-opacity));
+}
+</style>  
         <!-- Modal end -->
 @endsection
