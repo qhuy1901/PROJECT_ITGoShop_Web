@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Carbon\Carbon;
 use App\Http\Requests; 
 use Illuminate\Support\Facades\Redirect; // Giống return, trả về 1 trang gì đó
 session_start();
@@ -19,6 +20,21 @@ class ReportController extends Controller
         return View('report.print-revenue-report')
         ->with('tu_ngay', $tu_ngay)
         ->with('den_ngay', $den_ngay)
+        ->with('statistic_info', $statistic_info);
+    }
+
+    public function print_default_revenue_report()
+    {
+        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+
+        $statistic_info = DB::table('statistic')
+        ->whereDate('StatisticDate','>=', $dauthangnay)
+        ->whereDate('StatisticDate','<=', $now)->get();
+
+        return View('report.print-revenue-report')
+        ->with('tu_ngay', $dauthangnay)
+        ->with('den_ngay', $now)
         ->with('statistic_info', $statistic_info);
     }
 }

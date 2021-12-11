@@ -231,3 +231,4 @@ Route::get('/load-order-status','App\Http\Controllers\OrderTrackingController@lo
 
 // Report
 Route::get('/print-revenue-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@print_revenue_report');
+Route::get('/print-revenue-report','App\Http\Controllers\ReportController@print_default_revenue_report');
