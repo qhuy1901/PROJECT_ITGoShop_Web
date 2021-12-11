@@ -1,6 +1,5 @@
 @extends('client_layout')
 @section('client_content')
-@foreach($des_cate as $key => $category)
 <div class="breadcrumbs">
 	<div class="container">
 		<div class="row">
@@ -10,7 +9,7 @@
 						<li><a>Trang chủ<i class="ti-arrow-right"></i></a></li>
 						<li class="active">
               <a>
-                {{$category->CategoryName}}
+                {{$des_cate->CategoryName}}
               </a>
             </li>
 					</ul>
@@ -19,7 +18,6 @@
 		</div>
 	</div>
 </div>
-@endforeach
 <main class="ps-main">
       <div class="ps-products-wrap pr-80 pl-80 pt-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
@@ -88,13 +86,13 @@
                                   </div>
                                 </aside>
                                 
-                                <aside class="ps-widget--sidebar ps-widget--category">
+                                <!--<aside class="ps-widget--sidebar ps-widget--category">
                                   <div class="ps-widget__header">
                                     <h2 style="font-weight: bold;">CPU</h2>
                                   </div>
                                   <div class="ps-widget__content">
                                     <ul class="ps-list--checked">
-                                      <!--<li class="current"><a href="product-listing.html">Nike(521)</a></li>-->
+                                      <li class="current"><a href="product-listing.html">Nike(521)</a></li>
                                       <li><a href="product-listing.html">Intel Dual Core</a></li>
                                       <li><a href="product-listing.html">Intel Core i3</a></li>
                                       <li><a href="product-listing.html">Intel Core i5</a></li>
@@ -111,7 +109,7 @@
                                   </div>
                                   <div class="ps-widget__content">
                                     <ul class="ps-list--checked">
-                                      <!--<li class="current"><a href="product-listing.html">Narrow</a></li>-->
+                                      <li class="current"><a href="product-listing.html">Narrow</a></li>
                                       <li><a href="product-listing.html">4 Gb</a></li>
                                       <li><a href="product-listing.html">8 Gb</a></li>
                                       <li><a href="product-listing.html">12 Gb</a></li>
@@ -124,12 +122,12 @@
                                   </div>
                                   <div class="ps-widget__content">
                                     <ul class="ps-list--checked">
-                                      <!--<li class="current"><a href="product-listing.html">Narrow</a></li>-->
+                                      <li class="current"><a href="product-listing.html">Narrow</a></li>
                                       <li><a href="product-listing.html">SSD</a></li>
                                       <li><a href="product-listing.html">HDD</a></li>
                                     </ul>
                                   </div>
-                                </aside>
+                                </aside>-->
                               </div>
                             </div>
                           </div> 

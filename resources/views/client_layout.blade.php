@@ -336,14 +336,32 @@
 
 	</script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$('#filter').on('change',function(){
-				var url = $(this).val();
-				if(url) {
-					window.location = url;
-				}
-				return false;
-			})
+		$('.brand-filter').click(function(){
+			var brand = [], tempArray = [];
+			$.each($("[data-filters='brand']:checked"),function() {
+				tempArray.push($(this).val());
+				
+			});
+			tempArray.reverse();
+			if(tempArray.length !== 0){
+				brand+='?brand='+tempArray.toString();
+			}
+			window.location.href = brand
+		})
+
+	</script>
+	<script type="text/javascript">
+		$('.subbrand-filter').click(function(){
+			var subbrand = [], tempArray = [];
+			$.each($("[data-filters='subbrand']:checked"),function() {
+				tempArray.push($(this).val());
+				
+			});
+			tempArray.reverse();
+			if(tempArray.length !== 0){
+				subbrand+='?subbrand='+tempArray.toString();
+			}
+			window.location.href = subbrand
 		})
 
 	</script>
