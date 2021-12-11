@@ -1,17 +1,16 @@
 @extends('client_layout')
 @section('client_content')
 <main class="ps-main">
-@foreach($des_brand as $key => $brand)
       <section class="blog-single section " style="display: flex; flex-wrap: nowrap;">
                   <div class="col-md-12  col-12 " style="padding-right: 80px; padding-left: 65px">
                     <div class="main-sidebar" style="margin-top: 5px; margin-bottom: 20px; margin-left:17px; padding: 10px 40px; border: 1px solid #e3e7ef;">
                       <div class="info">
                         <!-- Single Widget -->
                           <div class="blog-detail" style="padding-bottom: 30px">
-                            <img src="{{URL::to('public/images_upload/brand/'.$brand->BrandLogo)}}" style="float: left; width: 200px; height: 140;margin-right:15px;">
-                              <h2 class="blog-title">{{$brand->BrandName}}</h2>
+                            <img src="{{URL::to('public/images_upload/brand/'.$des_brand->BrandLogo)}}" style="float: left; width: 200px; height: 140;margin-right:15px;">
+                              <h2 class="blog-title">{{$des_brand->BrandName}}</h2>
                               <p>
-                                {{$brand->Description}}
+                                {{$des_brand->Description}}
                               </p>
                           </div>
                         </div>
@@ -21,7 +20,6 @@
                   
           </div>
       </section>
-      @endforeach
       <div class="ps-products-wrap pr-80 pl-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
                                 <div class="ps-product-action">
@@ -77,24 +75,30 @@
                                   <div class="ps-widget__header">
                                     <h2 style="font-weight: bold;">Thương hiệu nhánh</h2>
                                   </div>
-                                  <?php
-                                          $brandId= Session::get('BrandId');
-                                  ?>
-                                  <div class="ps-widget__content">
-                                    <ul class="ps-list--checked">
-                                      <!--<li class="current"><a href="product-listing.html">Life(521)</a></li>-->
-                                      @foreach($sub_brand as $key => $subbrand)
-                                          @if($brandId == $subbrand->BrandId) 
-                                            <li class="current"><a href="{{URL::to('/product-listing3/'.$subbrand->SubBrandId)}}">{{$subbrand->SubBrandName}}</a></li>
-                                             
-                                          @else
-                                            <li><a href="{{URL::to('/product-listing3/'.$subbrand->SubBrandId)}}">{{$subbrand->SubBrandName}}</a></li>
-                                             
-                                          @endif
-                                      @endforeach
-                                      
+                                  
+                                  @php
+                                  $sbrand_id = [];
+                                  $sbrand_arr = [];
+                                  if(isset($_GET['subbrand'])){
+                                    $sbrand_id = $_GET['subbrand'];
+                                  }else{
+                                    $sbrand_id = $des_brand->SubBrandId.",";
+                                  }
+                                  $sbrand_arr = explode(",", $sbrand_id);
+                                @endphp
+                                <div class="ps-widget__content">
+                                  <ul class="ps-list--checked">
+                                    @foreach($subbrand as $key => $subbrand)
+                                    <li>
+                                      <label class="checkbox-inline"> 
+                                        <input type="checkbox" 
+                                        {{ in_array($subbrand->SubBrandId, $sbrand_arr)? 'checked' : '' }}
+                                        class="form-control-checkbox subbrand-filter" data-filters="subbrand" value="{{$subbrand->SubBrandId}}" name="subbrand-filter">{{$subbrand->SubBrandName}}
+                                      </label>
+                                </li>
+                                    @endforeach
                                     </ul>
-                                  </div>
+                                </div>
                                 </aside>
                                 
                                 <aside class="ps-widget--sidebar ps-widget--category">
