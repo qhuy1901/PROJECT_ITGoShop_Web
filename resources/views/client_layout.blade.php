@@ -341,7 +341,7 @@
 			$.each($("[data-filters='brand']:checked"),function() {
 				tempArray.push($(this).val());
 				
-			})
+			});
 			tempArray.reverse();
 			if(tempArray.length !== 0){
 				brand+='?brand='+tempArray.toString();
@@ -356,7 +356,7 @@
 			$.each($("[data-filters='subbrand']:checked"),function() {
 				tempArray.push($(this).val());
 				
-			})
+			});
 			tempArray.reverse();
 			if(tempArray.length !== 0){
 				subbrand+='?subbrand='+tempArray.toString();
