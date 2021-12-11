@@ -236,3 +236,6 @@ Route::get('/print-product-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\Re
 Route::get('/print-product-report','App\Http\Controllers\ReportController@print_default_product_report');
 Route::get('/load-product-chart/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@load_product_chart');
 Route::post('/load-product-chart','App\Http\Controllers\ReportController@load_product_chart');
+Route::get('/print-customer-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@print_customer_report');
+Route::get('/print-customer-report','App\Http\Controllers\ReportController@print_default_customer_report');
+Route::post('/load-customer-chart','App\Http\Controllers\ReportController@load_customer_chart');
