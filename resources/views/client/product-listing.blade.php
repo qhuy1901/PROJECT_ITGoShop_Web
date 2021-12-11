@@ -1,17 +1,16 @@
 @extends('client_layout')
 @section('client_content')
 <main class="ps-main">
-@foreach($des_brand as $key => $brand)
       <section class="blog-single section " style="display: flex; flex-wrap: nowrap;">
                   <div class="col-md-12  col-12 " style="padding-right: 80px; padding-left: 65px">
                     <div class="main-sidebar" style="margin-top: 5px; margin-bottom: 20px; margin-left:17px; padding: 10px 40px; border: 1px solid #e3e7ef;">
                       <div class="info">
                         <!-- Single Widget -->
                           <div class="blog-detail" style="padding-bottom: 30px">
-                            <img src="{{URL::to('public/images_upload/brand/'.$brand->BrandLogo)}}" style="float: left; width: 200px; height: 140;margin-right:15px;">
-                              <h2 class="blog-title">{{$brand->BrandName}}</h2>
+                            <img src="{{URL::to('public/images_upload/brand/'.$des_brand->BrandLogo)}}" style="float: left; width: 200px; height: 140;margin-right:15px;">
+                              <h2 class="blog-title">{{$des_brand->BrandName}}</h2>
                               <p>
-                                {{$brand->Description}}
+                                {{$des_brand->Description}}
                               </p>
                           </div>
                         </div>
@@ -21,7 +20,6 @@
                   
           </div>
       </section>
-      @endforeach
       <div class="ps-products-wrap pr-80 pl-80 pb-80">
                               <div class="ps-products" data-mh="product-listing">
                               <div class="ps-product-action">
@@ -72,6 +70,10 @@
                                 
                                 {{ $all_product->links() }}
                               </div>
+                              <?php   
+                                          $SubBrandId = Session::get('SubBrandId');
+                                    
+                              ?>
                               <div class="ps-sidebar" data-mh="product-listing">
                                 <aside class="ps-widget--sidebar ps-widget--category">
                                   <div class="ps-widget__header">
@@ -83,7 +85,7 @@
                                       if(isset($_GET['subbrand'])){
                                         $sbrand_id = $_GET['subbrand'];
                                       }else{
-                                        $sbrand_id = $des_brand->SubBrandId.",";
+                                        $sbrand_id = $SubBrandId.",";
                                       }
                                       $sbrand_arr = explode(",", $sbrand_id);
                                     @endphp

@@ -79,18 +79,8 @@ class ProductListingController extends Controller
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
         $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->first();
-        
-        if(isset($_GET['subbrand'])){
-            $sbrand_id = $_GET['subbrand'];
-            $sbrand_arr = explode(",", $sbrand_id);
-            $all_product = DB::table('product')
-                ->join('brand','brand.BrandId','=','product.BrandId')
-                ->whereIn('product.SubBrandId',$sbrand_arr)->paginate(9);
-          }else{
-            $all_product = DB::table('product')
-            ->join('brand','brand.BrandId','=','product.BrandId')
-            ->where('product.BrandId',$BrandId)->paginate(9);
-          }
+        $subbrand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$des_brand->BrandId)->get();
+
         
         if(isset($_GET['sort_by'])){
             $sort_by = $_GET['sort_by'];
@@ -128,7 +118,7 @@ class ProductListingController extends Controller
             $sbrand_id = $_GET['subbrand'];
             $sbrand_arr = explode(",", $sbrand_id);
             $all_product = DB::table('product')
-                ->join('brand','brand.BrandId','=','product.BrandId')
+                ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
                 ->whereIn('product.SubBrandId',$sbrand_arr)->paginate(9);
           }
         else{
@@ -144,6 +134,7 @@ class ProductListingController extends Controller
         ->with('main_brand_list', $main_brand_list)
         ->with('product_category_list', $product_category_list)
         ->with('des_brand', $des_brand)
+        ->with('subbrand', $subbrand)
         ->with('all_product', $all_product);
     }
     public function product_listing3(Request $request,$SubBrandId)
