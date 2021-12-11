@@ -89,16 +89,13 @@ class ReportController extends Controller
 
     public function print_product_report($tu_ngay, $den_ngay)
     {
-        $sub14days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(14)->toDateString();
-        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
-
         $top_product = DB::table('product')
         ->select(DB::raw('sum(OrderQuantity) as number_solded, ProductName, ProductImage, product.ProductId, product.StartsAt, product.Quantity, product.Cost, product.Price'))
         ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
         ->join('order','order.OrderId','=','orderdetail.OrderId')
         ->where('OrderStatus', '<>','Đã hủy')
         ->whereDate('OrderDate','>=', $tu_ngay)
-        ->whereDate('OrderDate','<=', $now)
+        ->whereDate('OrderDate','<=', $den_ngay)
         ->groupBy('ProductName') 
         ->groupBy('ProductImage')
         ->groupBy('product.ProductId')
@@ -113,8 +110,8 @@ class ReportController extends Controller
         ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
         ->join('order','order.OrderId','=','orderdetail.OrderId')
         ->where('OrderStatus', '<>','Đã hủy')
-        ->whereDate('OrderDate','>=', $sub14days)
-        ->whereDate('OrderDate','<=', $now)
+        ->whereDate('OrderDate','>=', $tu_ngay)
+        ->whereDate('OrderDate','<=', $den_ngay)
         ->groupBy('ProductName') 
         ->groupBy('product.Cost')
         ->groupBy('product.Price')
@@ -126,7 +123,7 @@ class ReportController extends Controller
             ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
             ->join('order','order.OrderId','=','orderdetail.OrderId')
             ->whereDate('OrderDate','>=', $tu_ngay)
-            ->whereDate('OrderDate','<=', $now))->get();
+            ->whereDate('OrderDate','<=', $den_ngay))->get();
 
         return View('report.print-product-report')
         ->with('tu_ngay', $tu_ngay)
@@ -136,17 +133,26 @@ class ReportController extends Controller
         ->with('sp_ko_ban_dc', $sp_ko_ban_dc);
     }
 
-    public function load_product_chart()
+    public function load_product_chart(Request $request)
     {
-        $sub14days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(14)->toDateString();
-        $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        if($request->tu_ngay || $request->den_ngay)
+        {
+            $tu_ngay = $request->tu_ngay;
+            $den_ngay = $request->den_ngay;
+        }
+        else
+        {
+            $tu_ngay = Carbon::now('Asia/Ho_Chi_Minh')->subdays(14)->toDateString();
+            $den_ngay = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
+        }
+        
         $get_limit = DB::table('product')
         ->select(DB::raw('sum(OrderQuantity) as number_solded, ProductName, product.Cost, product.Price'))
         ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
         ->join('order','order.OrderId','=','orderdetail.OrderId')
         ->where('OrderStatus', '<>','Đã hủy')
-        ->whereDate('OrderDate','>=', $sub14days)
-        ->whereDate('OrderDate','<=', $now)
+        ->whereDate('OrderDate','>=', $tu_ngay)
+        ->whereDate('OrderDate','<=', $den_ngay)
         ->groupBy('ProductName') 
         ->groupBy('product.Cost')
         ->groupBy('product.Price')
@@ -157,8 +163,8 @@ class ReportController extends Controller
         ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
         ->join('order','order.OrderId','=','orderdetail.OrderId')
         ->where('OrderStatus', '<>','Đã hủy')
-        ->whereDate('OrderDate','>=', $sub14days)
-        ->whereDate('OrderDate','<=', $now)
+        ->whereDate('OrderDate','>=', $tu_ngay)
+        ->whereDate('OrderDate','<=', $den_ngay)
         ->groupBy('ProductName') 
         ->groupBy('product.Cost')
         ->groupBy('product.Price')

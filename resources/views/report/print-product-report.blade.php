@@ -207,7 +207,7 @@
                         url:"{{url('/load-product-chart')}}",
                         method: "POST",
                         dataType:"json",
-                        data:{  _token: _token},
+                        data:{  tu_ngay: tu_ngay, den_ngay: den_ngay, _token: _token},
                         success:function(data)
                         {
                             pie_chart.setData(data);
