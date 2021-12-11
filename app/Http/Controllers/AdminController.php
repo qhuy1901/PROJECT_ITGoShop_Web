@@ -172,10 +172,10 @@ class AdminController extends Controller
 
     public function load_default_chart(Request $request)
     {
-        $dauthangnay = Carbon::now('Asia/Ho_Chi_Minh')->startOfMonth()->toDateString();
+        $sub14days = Carbon::now('Asia/Ho_Chi_Minh')->subdays(14)->toDateString();
         $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
         $get = DB::table('statistic')
-        ->whereDate('StatisticDate','>=', $dauthangnay)
+        ->whereDate('StatisticDate','>=', $sub14days)
         ->whereDate('StatisticDate','<=', $now)
         ->orderBy('StatisticDate', 'ASC')->get();
         

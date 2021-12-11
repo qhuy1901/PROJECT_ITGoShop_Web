@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thống kê doanh thu từ ngày {{date('d-m-Y', strtotime($tu_ngay))}} đến ngày {{date('d-m-Y', strtotime($den_ngay))}}</title>
+    <title>Thống kê doanh thu bán hàng từ ngày {{date('d-m-Y', strtotime($tu_ngay))}} đến ngày {{date('d-m-Y', strtotime($den_ngay))}}</title>
     <link rel="icon" type="image/png" href="{{URL::to('public/admin/images/pdf-icon.jpg')}}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,7 @@
         <hr style="margin:20px 0px 40px 0px">
         <div class="row" style="margin-bottom:40px;">
             <div class="col-md-12" style="text-align: center;">
-                <b style="font-size: 26px;">THỐNG KÊ VÀ PHÂN TÍCH DOANH THU</b><br>
+                <b style="font-size: 26px;">THỐNG KÊ VÀ PHÂN TÍCH DOANH THU BÁN HÀNG</b><br>
                 <i>(Từ ngày {{date('d-m-Y', strtotime($tu_ngay))}} đến ngày {{date('d-m-Y', strtotime($den_ngay))}})</i>
             </div>
             <div class="col-md-12" style="text-align: right;">

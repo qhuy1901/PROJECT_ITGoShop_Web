@@ -165,17 +165,11 @@
 									<div class="card-head-row">
 										<div class="card-title">Biểu đồ doanh thu</div>
 										<div class="card-tools">
-											<a href="#" class="btn btn-info btn-border btn-round btn-sm mr-2">
-												<span class="btn-label">
-													<i class="fa fa-pencil"></i>
-												</span>
-												Export
-											</a>
 											<a target="_blank" rel="noopener noreferrer" id="print-revenue-report" href="{{URL::to('/print-revenue-report')}}" class="btn btn-info btn-border btn-round btn-sm">
 												<span class="btn-label">
 													<i class="fa fa-print"></i>
 												</span>
-												In thống kê
+												In thống kê doanh thu
 											</a>
 										</div>
 									</div>
@@ -272,6 +266,12 @@
 								<div class="card-header">
 									<div class="card-title"><i class="fas fa-fire" style="color:red;"></i> Top sản phẩm bán chạy</div>
 									<small class="text-muted">Tháng {{$last_month}} và tháng {{$now_month}}</small>
+									<a target="_blank" style="float:right" rel="noopener noreferrer" id="print-product-report" href="{{URL::to('/print-product-report')}}" class="btn btn-info btn-border btn-round btn-sm">
+												<span class="btn-label">
+													<i class="fa fa-print"></i>
+												</span>
+												In thống kê sản phẩm
+											</a>
 								</div>
 								<div class="card-body">
 									<div class="row">
@@ -355,85 +355,6 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-							<!-- <div class="card">
-								<div class="card-body">
-									<div class="card-title fw-mediumbold">Suggested People</div>
-									<div class="card-list">
-										<div class="item-list">
-											<div class="avatar">
-												<img src="./public/admin/images/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
-											</div>
-											<div class="info-user ml-3">
-												<div class="username">Jimmy Denis</div>
-												<div class="status">Graphic Designer</div>
-											</div>
-											<button class="btn btn-icon btn-primary btn-round btn-xs">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-										<div class="item-list">
-											<div class="avatar">
-												<img src="./public/admin/images/chadengle.jpg" alt="..." class="avatar-img rounded-circle">
-											</div>
-											<div class="info-user ml-3">
-												<div class="username">Chad</div>
-												<div class="status">CEO Zeleaf</div>
-											</div>
-											<button class="btn btn-icon btn-primary btn-round btn-xs">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-										<div class="item-list">
-											<div class="avatar">
-												<img src="./public/admin/images/talha.jpg" alt="..." class="avatar-img rounded-circle">
-											</div>
-											<div class="info-user ml-3">
-												<div class="username">Talha</div>
-												<div class="status">Front End Designer</div>
-											</div>
-											<button class="btn btn-icon btn-primary btn-round btn-xs">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-										<div class="item-list">
-											<div class="avatar">
-												<img src="./public/admin/images/mlane.jpg" alt="..." class="avatar-img rounded-circle">
-											</div>
-											<div class="info-user ml-3">
-												<div class="username">John Doe</div>
-												<div class="status">Back End Developer</div>
-											</div>
-											<button class="btn btn-icon btn-primary btn-round btn-xs">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-										<div class="item-list">
-											<div class="avatar">
-												<img src="./public/admin/images/talha.jpg" alt="..." class="avatar-img rounded-circle">
-											</div>
-											<div class="info-user ml-3">
-												<div class="username">Talha</div>
-												<div class="status">Front End Designer</div>
-											</div>
-											<button class="btn btn-icon btn-primary btn-round btn-xs">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-										<div class="item-list">
-											<div class="avatar">
-												<img src="./public/admin/images/jm_denis.jpg" alt="..." class="avatar-img rounded-circle">
-											</div>
-											<div class="info-user ml-3">
-												<div class="username">Jimmy Denis</div>
-												<div class="status">Graphic Designer</div>
-											</div>
-											<button class="btn btn-icon btn-primary btn-round btn-xs">
-												<i class="fa fa-plus"></i>
-											</button>
-										</div>
-									</div>
-								</div>
-							</div> -->
 							<div class="card" style="height:510px">
 								<div class="card-header">
 									<div class="card-title"><i class="fas fa-eye text-success"></i> Sản phẩm được xem nhiều nhất</div>
@@ -911,6 +832,10 @@
 						newURL = newURL.replace('tu-ngay', tu_ngay);
 						newURL = newURL.replace('den-ngay', den_ngay);
 						$('#print-revenue-report').attr("href", newURL);
+						var newProductURL = "{{URL::to('/print-product-report/tu-ngay/den-ngay')}}";
+						newProductURL = newProductURL.replace('tu-ngay', tu_ngay);
+						newProductURL = newProductURL.replace('den-ngay', den_ngay);
+						$('#print-product-report').attr("href", newProductURL);
 					},
 					error:function(data)
 					{

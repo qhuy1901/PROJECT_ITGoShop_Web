@@ -232,3 +232,7 @@ Route::get('/load-order-status','App\Http\Controllers\OrderTrackingController@lo
 // Report
 Route::get('/print-revenue-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@print_revenue_report');
 Route::get('/print-revenue-report','App\Http\Controllers\ReportController@print_default_revenue_report');
+Route::get('/print-product-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@print_product_report');
+Route::get('/print-product-report','App\Http\Controllers\ReportController@print_default_product_report');
+Route::get('/load-product-chart/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@load_product_chart');
+Route::post('/load-product-chart','App\Http\Controllers\ReportController@load_product_chart');
