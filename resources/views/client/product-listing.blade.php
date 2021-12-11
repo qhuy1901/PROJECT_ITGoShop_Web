@@ -77,15 +77,30 @@
                                   <div class="ps-widget__header">
                                     <h2 style="font-weight: bold;">Thương hiệu nhánh</h2>
                                   </div>
-                                  <div class="ps-widget__content">
-                                    <ul class="ps-list--checked">
-                                      <!--<li class="current"><a href="product-listing.html">Life(521)</a></li>-->
-                                      @foreach($sub_brand as $key => $subbrand)
-                                        <li><a href="{{URL::to('/product-listing3/'.$subbrand->SubBrandId)}}">{{$subbrand->SubBrandName}}</a></li>
-                                      @endforeach
-                                      
-                                    </ul>
-                                  </div>
+                                      @php
+                                      $sbrand_id = [];
+                                      $sbrand_arr = [];
+                                      if(isset($_GET['subbrand'])){
+                                        $sbrand_id = $_GET['subbrand'];
+                                      }else{
+                                        $sbrand_id = $des_brand->SubBrandId.",";
+                                      }
+                                      $sbrand_arr = explode(",", $sbrand_id);
+                                    @endphp
+                                    <div class="ps-widget__content">
+                                      <ul class="ps-list--checked">
+                                        @foreach($subbrand as $key => $subbrand)
+                                        <li>
+                                          <label class="checkbox-inline" style="font-size: 14px;  "> 
+                                            <input type="checkbox" 
+                                            {{ in_array($subbrand->SubBrandId, $sbrand_arr)? 'checked' : '' }}
+                                            class="form-control-checkbox subbrand-filter" data-filters="subbrand" value="{{$subbrand->SubBrandId}}" name="subbrand-filter" style="width: 20px; height: 20px; padding-right: 30px;">
+                                            <span style="padding-left: 20px;  display: block;  position: relative; color: #313131;">{{$subbrand->SubBrandName}}</span>
+                                          </label>
+                                        </li>
+                                        @endforeach
+                                        </ul>
+                                    </div>
                                 </aside>
                                 
                                 <aside class="ps-widget--sidebar ps-widget--category">
