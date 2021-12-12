@@ -102,14 +102,17 @@
                                         </ul>
                                     </div>
                                 </aside>
-                                <aside class="ps-widget__content">
+                                <aside class="ps-widget--sidebar ">
                                   <div class="ps-widget__header">
-                                  <h2 for="amount" style="font-weight: bold; padding-bottom: 20px;">Khoảng Giá</h2>
+                                  <h2 for="amount" >Khoảng Giá</h2>
                                   </div>
                                   <form>  
-                                    <input type="text" id="amount" readonly style="border:0; color:#77ACF1; font-weight:bold; left:0;">
+                                    <input type="text" id="amount" readonly style="border:0; color:#77ACF1; font-weight:bold; left:0; padding-bottom:10px; ">
                                                           
                                     <div id="slider-range"></div>
+                                    <div style="padding-top:10px; ">
+                                        <input type="submit" id="filter_price" value="Lọc" class="btn btn-default" >
+                                    </div>
                                     
                                   </form>
                                   
