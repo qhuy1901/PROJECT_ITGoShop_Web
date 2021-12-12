@@ -109,7 +109,7 @@
                                   <form>  
                                     
                                     <div id="slider-range"></div>
-                                    <input type="text" id="amount" readonly style="border:0; color:#77ACF1; font-weight:bold; left:0; padding-top:10px; ">
+                                    <input type="text" id="sotien" readonly style="border:0; color:#77ACF1; font-weight:bold; left:0; padding-top:10px; ">
                                     <input type="hidden" name="start_price" id="start_price" >
                                     <input type="hidden" name="end_price" id="end_price" >
                                     <div style="padding-top:10px; ">
@@ -170,15 +170,15 @@
 			min: {{$min_price_range}},
 			max: {{$max_price_range}},
 			step: 100000,
-			values: [ {{$min_price_range}} , {{$max_price}} ],
+			values: [ {{$min_price}} , {{$max_price}} ],
 			slide: function( event, ui ) {
-				$( "#amount" ).val( "đ" + ui.values[ 0 ] + " - đ" + ui.values[ 1 ] );
+				$( "#sotien" ).val( ui.values[ 0 ] + " đ - " + ui.values[ 1 ] + " đ");
 				$( "#start_price" ).val( ui.values[ 0 ] );
 				$( "#end_price" ).val( ui.values[ 1 ] );
 			}
 			});
-			$( "#amount" ).val( "đ" + $( "#slider-range" ).slider( "values", 0 ) +
-			" - đ" + $( "#slider-range" ).slider( "values", 1 ) );
+			$( "#sotien" ).val( $( "#slider-range" ).slider( "values", 0 ) +
+			" đ - " + $( "#slider-range" ).slider( "values", 1 ) + " đ");
 		});
 
 	</script>

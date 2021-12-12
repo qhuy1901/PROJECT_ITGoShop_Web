@@ -102,15 +102,19 @@
                                         </ul>
                                     </div>
                                 </aside>
-                                <aside class="ps-widget__content">
+                                <aside class="ps-widget--sidebar ">
                                   <div class="ps-widget__header">
-                                  <h2 for="amount" style="font-weight: bold; padding-bottom: 20px;">Khoảng Giá</h2>
+                                  <h2 for="amount" >Khoảng Giá</h2>
                                   </div>
                                   <form>  
-                                    <input type="text" id="amount" readonly style="border:0; color:#77ACF1; font-weight:bold; left:0;">
-                                                          
-                                    <div id="slider-range"></div>
                                     
+                                    <div id="slider-range"></div>
+                                    <input type="text" id="sotien" readonly style="border:0; color:#77ACF1; font-weight:bold; left:0; padding-top:10px; ">
+                                    <input type="hidden" name="start_price" id="start_price" >
+                                    <input type="hidden" name="end_price" id="end_price" >
+                                    <div style="padding-top:10px; ">
+                                        <input type="submit" name="filter_price" value="Lọc" class="btn btn-sm btn-default" >
+                                    </div>     
                                   </form>
                                   
                                 </aside>
@@ -160,4 +164,23 @@
                             </div>
                           </div> 
 
+  <script type="text/javascript">
+		$(document).ready(function(){
+			$( "#slider-range" ).slider({
+			range: true,
+			min: {{$min_price_range}},
+			max: {{$max_price_range}},
+			step: 100000,
+			values: [ {{$min_price}} , {{$max_price}} ],
+			slide: function( event, ui ) {
+				$( "#sotien" ).val( ui.values[ 0 ] + " đ - " + ui.values[ 1 ] + " đ");
+				$( "#start_price" ).val( ui.values[ 0 ] );
+				$( "#end_price" ).val( ui.values[ 1 ] );
+			}
+			});
+			$( "#sotien" ).val( $( "#slider-range" ).slider( "values", 0 ) +
+			" đ - " + $( "#slider-range" ).slider( "values", 1 ) + " đ");
+		});
+
+	</script>
 @endsection

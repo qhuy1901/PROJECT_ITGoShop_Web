@@ -110,7 +110,6 @@
 		
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 	
 </head>
 <body>
@@ -617,7 +616,6 @@
     <script type="text/javascript" src="{{asset('public/client/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
 	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
