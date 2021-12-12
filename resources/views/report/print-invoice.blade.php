@@ -11,7 +11,7 @@
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <style>
         body {
-            background-color: #eee
+            background-color: #fff
         }
 
         .fs-14 {
@@ -35,14 +35,14 @@
 <body oncontextmenu='return false' class='snippet-body'>
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-center row">
-            <div class="col-md-10">
+            <div class="col-12">
                 <div class="receipt bg-white p-5 rounded">
                     <div class="row" style="background-color: #A2D2FF; padding-top: 15px; padding-bottom: 15px;">
                         <div class="col-md-5 ">
                             <img src="/public/client/Images/logo2.png" alt="" style="display: block; margin-left: auto; margin-right: auto;  padding-top: 20px; float: center;">
                             <p style="color:#333;font-weight: bold; text-align: center;">Hệ thống máy tính và phụ kiện</p>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             <b>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ ITGOSHOP</b>
                             <br>Địa chỉ: Số 95 Trần Thiện Chánh, Phuờng 12, Quận 10, Thành phố Hồ Chí Minh
                             
