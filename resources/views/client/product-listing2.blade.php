@@ -67,23 +67,39 @@
                                 </div>
                                 {{ $all_product->links() }}
                               </div>
+                              <?php   
+                                          $BrandId = Session::get('BrandId');
+                                    
+                              ?>
                               <div class="ps-sidebar" data-mh="product-listing">
                                 <aside class="ps-widget--sidebar ps-widget--category">
                                   <div class="ps-widget__header">
                                     <h2 style="font-weight: bold;">Thương hiệu</h2>
                                   </div>
-                                  <div class="ps-widget__content">
-                                    <ul class="ps-list--checked">
-                                      <!--<li class="current"><a href="product-listing.html">Life(521)</a></li>-->
-                                      <li><a href="product-listing.html">Lenovo</a></li>
-                                      <li><a href="product-listing.html">Razer</a></li>
-                                      <li><a href="product-listing.html">Dell</a></li>
-                                      <li><a href="product-listing.html">Asus</a></li>
-                                      <li><a href="product-listing.html">HP</a></li>
-                                      <li><a href="product-listing.html">Microsoft</a></li>
-                                      <li><a href="product-listing.html">MSI</a></li>
-                                    </ul>
-                                  </div>
+                                  @php
+                                      $brand_id = [];
+                                      $brand_arr = [];
+                                      if(isset($_GET['brand'])){
+                                        $brand_id = $_GET['brand'];
+                                      }else{
+                                        $brand_id = $BrandId.",";
+                                      }
+                                      $brand_arr = explode(",", $brand_id);
+                                    @endphp
+                                    <div class="ps-widget__content">
+                                      <ul class="ps-list--checked">
+                                        @foreach($brand as $key => $brand)
+                                        <li>
+                                          <label class="checkbox-inline" style="font-size: 14px;  "> 
+                                            <input type="checkbox" 
+                                            {{ in_array($brand->BrandId, $brand_arr)? 'checked' : '' }}
+                                            class="form-control-checkbox brand-filter" data-filters="brand" value="{{$brand->BrandId}}" name="brand-filter" style="width: 20px; height: 20px; padding-right: 30px;">
+                                            <span style="padding-left: 20px;  display: block;  position: relative; color: #313131;">{{$brand->BrandName}}</span>
+                                          </label>
+                                        </li>
+                                        @endforeach
+                                        </ul>
+                                    </div>
                                 </aside>
                                 
                                 <!--<aside class="ps-widget--sidebar ps-widget--category">
