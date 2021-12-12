@@ -14,17 +14,17 @@ class ProductListingController extends Controller
 {
     public function product_listing4(Request $request,$BrandName)
     {
-        $brandinfo = DB::table('brand')
-        ->where('brand.BrandName',$BrandName)->get();
+        
 
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
         $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
         $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
         
-        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandName',$BrandName)->fisrt();
+        $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandName',$BrandName)->first();
         
         $subbrand = DB::table('subbrand')->select('subbrand.*')
         ->join('brand','brand.BrandId','=','subbrand.BrandId')
+        ->select('subbrand.*', 'brand.*')
         ->where('brand.BrandName',$BrandName)->get();
 
         if(isset($_GET['sort_by'])){
