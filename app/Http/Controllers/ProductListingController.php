@@ -91,7 +91,10 @@ class ProductListingController extends Controller
         $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->first();
         $subbrand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$des_brand->BrandId)->get();
 
-        
+        $min_price= DB::table('product')->min('product.Price');
+        $max_price= DB::table('product')->max('product.Price');
+        $min_price_range = $min_price + 400000  ;
+        $max_price_range = $max_price + 40000000  ;
         if(isset($_GET['sort_by'])){
             $sort_by = $_GET['sort_by'];
             if($sort_by == 'giamdan'){
@@ -131,6 +134,16 @@ class ProductListingController extends Controller
                 ->join('subbrand','subbrand.SubBrandId','=','product.SubBrandId')
                 ->whereIn('product.SubBrandId',$sbrand_arr)->paginate(9);
           }
+          elseif(isset($_GET['start_price']) && ($_GET['end_price']) ){
+            $min_price = $_GET['start_price'];
+            $max_price = $_GET['end_price'];
+            $all_product = DB::table('product')
+            ->join('brand','brand.BrandId','=','product.BrandId')
+            ->select('product.*','brand.*')
+            ->where('product.BrandId',$BrandId)
+            ->whereBetween('product.price',[$min_price,$max_price])
+            ->orderBy('product.price','ASC')->paginate(9)->appends(request()->query());
+          }
         else{
             $all_product = DB::table('product')
             ->join('brand','brand.BrandId','=','product.BrandId')
@@ -145,7 +158,11 @@ class ProductListingController extends Controller
         ->with('product_category_list', $product_category_list)
         ->with('des_brand', $des_brand)
         ->with('subbrand', $subbrand)
-        ->with('all_product', $all_product);
+        ->with('all_product', $all_product)
+        ->with('min_price', $min_price)
+        ->with('max_price', $max_price)
+        ->with('max_price_range', $max_price_range)
+        ->with('min_price_range', $min_price_range);
     }
     public function product_listing3(Request $request,$SubBrandId)
     {

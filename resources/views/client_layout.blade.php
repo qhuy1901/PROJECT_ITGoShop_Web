@@ -113,9 +113,8 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 	
 </head>
-<body class="ps-loading">
+<body>
 	<!-- Header -->
-	<div class="header--sidebar"></div>
 	<header class="header" >
 	  <nav  class="navigation" style="height:60px; margin-bottom: 15px;">
 		<div class="container-fluid" >
@@ -329,22 +328,7 @@
 
 	
 
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$( "#slider-range" ).slider({
-			range: true,
-			min: 0,
-			max: 400,
-			values: [ 75, 300 ],
-			slide: function( event, ui ) {
-				$( "#amount" ).val( "đ" + ui.values[ 0 ] + " - đ" + ui.values[ 1 ] );
-			}
-			});
-			$( "#amount" ).val( "đ" + $( "#slider-range" ).slider( "values", 0 ) +
-			" - đ" + $( "#slider-range" ).slider( "values", 1 ) );
-		})
-
-	</script>
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#sort').on('change',function(){
