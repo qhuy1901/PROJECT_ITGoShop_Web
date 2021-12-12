@@ -55,32 +55,6 @@ class OrderController extends Controller
         
     }
 
-    public function order_detail($OrderId)
-    {
-        $this->auth_login();
-        
-        $order_list = DB::table('orderdetail')
-        ->join('product','product.ProductId','=','orderdetail.ProductId')
-        ->select('orderdetail.*','product.*')
-        ->orderby('orderdetail.OrderId', 'desc')->get();
-        $order_detail = DB::table('order')
-        ->join('user','user.UserId','=','order.UserId')
-        ->select('order.*', 'user.*')
-        ->where('order.OrderId', $OrderId)->get();
-        $default_shipping_address = DB::table('shippingaddress')
-        ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
-        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
-        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
-        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
-        ->join('user','user.UserId','=','shippingaddress.UserId')
-        ->where('isDefault', 1)->first();
-        $manager_order = view('admin.order_detail')
-        ->with('order_list',$order_list)
-        ->with('order_detail', $order_detail)
-        ->with('default_shipping_address', $default_shipping_address);
-        return view('admin_layout')->with('admin.order_detail', $manager_order);
-        
-    }
     public function send_complete_mail($OrderId)
     {
         $to_name = "Hồng Cúc";
