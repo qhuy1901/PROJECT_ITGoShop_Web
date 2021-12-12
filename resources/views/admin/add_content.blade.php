@@ -52,7 +52,7 @@
 													</div>
 													<div class="form-group">
 														<label for="exampleFormControlFile1">Ngày đăng</label>
-														<input type="text" name="DatePost" placeholder="30/10/2021" data-date-format="mm/dd/yyyy" id="dp2">
+														<input type="date" name="DatePost" placeholder="30/10/2021" data-date-format="mm/dd/yyyy" id="dp2">
 													</div>
 													<div class="form-group">
 														<div class="input-group mb-3">

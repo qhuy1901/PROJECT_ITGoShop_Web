@@ -12,23 +12,20 @@
 							<div>
 								<form>
 									@csrf
-								<h2 class="text-white pb-2 fw-bold">Thống kê bán hàng</h2>
+								<h2 class="text-white pb-2 fw-bold">PHÂN TÍCH BÁN HÀNG</h2>
+								<a class="text-white fw-bold" style="margin-right: 8px;">Khung thời gian</a> 
 								<div class="ml-md-auto py-2 py-md-3">
-									<a class="text-white fw-bold" style="margin-right: 8px;">Thời gian báo cáo</a> 
-									<a class="btn btn-white btn-border mr-2" > 
+									<a class="btn btn-white btn-border mr-2" style="padding: 0.5rem"> 
 										<span class="btn-label"><i class="fas fa-calendar-alt"></i></span>
 										Từ ngày: <input type="date" class="form-control" id="tu-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required>
 									</a>
-									<a class="btn btn-white btn-border mr-2"> 
+									<a class="btn btn-white btn-border mr-2" style="padding:  0.5rem"> 
 										<span class="btn-label" >
 											<i class="fas fa-calendar-alt"></i>
 										</span>
 										Đến ngày: <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required>
 									</a>
-									
-									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success" style=" background: #39A2DB !important; padding: 10px;">Hiển thị kết quả</button>
-									
-									<a class="btn btn-white btn-border mr-2"> 
+									<a class="btn btn-white btn-border mr-2" style="padding:  0.5rem"> 
 										<span class="btn-label" >
 											<i class="fas fa-calendar-alt"></i>
 										</span>
@@ -42,6 +39,12 @@
 										</select>
 										 <!-- <input type="date" class="form-control" id="den-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required> -->
 									</a>
+								</div>
+								<div class="ml-md-auto py-2 py-md-3">
+									
+									
+									<button type="button" id="btn-hien-thi-thong-ke" class="btn btn-success" style=" background: #39A2DB !important; padding: 10px;">Hiển thị kết quả</button>
+
 								</div>
 							</div>
 							</form>

@@ -45,7 +45,7 @@
 													</div>
 													<div class="form-group">
 														<label for="exampleFormControlFile1">Ngày đăng</label>
-														<input type="text" name="DatePost"  data-date-format="mm/dd/yyyy" id="dp2" value="{{$update_value->DatePost}}">
+														<input type="date" name="DatePost"   id="dp2" value="{{$update_value->DatePost}}">
 													</div>
 													<div class="form-group">
 														<label for="exampleFormControlFile1">Tiêu đề bài viết</label>

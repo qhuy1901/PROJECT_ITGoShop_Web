@@ -75,7 +75,7 @@
 								<i class="fa fa-search"></i>
 							</a>
 						</li>
-						<li class="nav-item dropdown hidden-caret">
+						<!--<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fa fa-envelope"></i>
 								<span class="notification">4</span>
@@ -85,7 +85,7 @@
 									<div class="dropdown-title d-flex justify-content-between align-items-center">
 										Bình Luận 			
 																
-										<!--<a href="#" class="small">Mark all as read</a>-->
+										<a href="#" class="small">Mark all as read</a>
 									</div>
 								</li>
 								<li>
@@ -205,7 +205,7 @@
 								</li>
 							</ul>
 						</li>
-						<!--<li class="nav-item dropdown hidden-caret">
+						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
 								<i class="fas fa-layer-group"></i>
 							</a>
@@ -457,7 +457,7 @@
 								<p>Bình luận</p>
 							</a>							
 						</li>
-						<li class="nav-item">
+						<!--<li class="nav-item">
 							<a data-toggle="collapse" href="#maps">
 								<i class="fas fa-pen-square"></i>
 								<p>Quản lý Campaign</p>
@@ -477,7 +477,7 @@
 									</li>
 								</ul>
 							</div>
-						</li>
+						</li>-->
 						
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#vanchuyen">

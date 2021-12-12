@@ -69,7 +69,6 @@ class ProductCategoryController extends Controller
     {
         $data = array();
         $data['CategoryName'] = $request->CategoryName;
-        $data['description'] = $request->description;
 
         DB::table('Category')->where('CategoryId', $CategoryId)->update($data);
         Session::put('message', 'Cập nhật danh mục sản phẩm thành công');

@@ -43,28 +43,33 @@
 									{{ csrf_field() }}
 									<div class="card-body">
 										<div class="row">
-											<div class="col-md-6 col-lg-4">
+											<div class="col-md-12 col-lg-12">
+												<div class="form-group">
+													<label for="email2">Mã danh mục sản phẩm</label>
+													<input type="text" name="CategoryId" class="form-control" id="email2" placeholder="Nhập mã danh mục">
+												</div>
 												<div class="form-group">
 													<label for="email2">Tên danh mục sản phẩm</label>
 													<input type="text" name="CategoryName" class="form-control" id="email2" placeholder="Nhập tên danh mục">
-													<small id="emailHelp2" class="form-text text-muted">Lưu ý: ...</small>
 												</div>
 
-												<div class="form-group">
-													<label for="comment">Mô tả danh mục sản phẩm</label>
-													<textarea class="form-control" name="description" id="comment" rows="5" placeholder="Mô tả danh mục">
-
-													</textarea>
-												</div>
-
-												<div class="form-group">
-													<label for="exampleFormControlSelect1">Hiển thị danh mục sản phẩm</label>
-													<select class="form-control" name="status" id="exampleFormControlSelect1">
-														<option value="1">Hiển thị</option>
-														<option value="0">Ẩn</option>
-													</select>
-												</div>
 												
+												
+											</div>
+											<div class="col-6 col-lg-6">
+												<div class="form-group">
+                                                    <label class="form-label d-block">Hiển thị</label>
+                                                    <div class="selectgroup selectgroup-secondary selectgroup-pills">
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="Status" value="1" class="selectgroup-input" checked="">
+                                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-eye"></i></span>
+                                                        </label>
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="Status" value="0" class="selectgroup-input">
+                                                            <span class="selectgroup-button selectgroup-button-icon"><i class="fa fa-eye-slash"></i></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
 											</div>
 										</div>
 									</div>
