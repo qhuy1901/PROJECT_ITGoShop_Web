@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đơn hàng #{{$order_info->OrderId}}</title>
+    <title>In đơn hàng #{{$order_info->OrderId}}</title>
     <link rel="icon" type="image/png" href="{{URL::to('public/admin/images/pdf-icon.jpg')}}"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,7 +65,7 @@
                         <th>Sản phẩm</th>
                         <th>Đơn giá</th>
                         <th>Số lượng</th>
-                        <th>Tạm tính</th>
+                        <th style="text-align:right">Thành tiền</th>
                     </tr>
                     <?php $sum = 0?>
                    @foreach($order_detail as $item) 
@@ -73,7 +73,7 @@
                         <td>{{$item->ProductName}}</td>
                         <td>{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</td>
                         <td>x{{$item->OrderQuantity}}</td>
-                        <td>{{number_format($item->UnitPrice * $item->OrderQuantity, 0, " ", ".").' ₫'}}</td>
+                        <td style="text-align:right">{{number_format($item->UnitPrice * $item->OrderQuantity, 0, " ", ".").' ₫'}}</td>
                     </tr>
                     <?php $sum += $item->UnitPrice * $item->OrderQuantity?>
                     @endforeach

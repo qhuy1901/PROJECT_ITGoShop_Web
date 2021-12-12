@@ -76,6 +76,21 @@
             <div class="col-md-9">
             	<h3 style="margin: 20px 0px;">Chi tiết đơn hàng #{{$order_info->OrderId}} - <b class="OrderStatus">{{$order_info->OrderStatus}}</b> <p style="float:right;">Ngày đặt hàng: {{date("h:i d/m/Y", strtotime($order_info->OrderDate))}} </p></h3>
 				<input type="text" class="OrderId" value="{{$order_info->OrderId}}" hidden>
+				@if($order_info->PaymentMethod == 'Chuyển khoản online' && $order_info->PaymentStatus == 'Chờ thanh toán' && $order_info->OrderStatus != 'Đã hủy' && $order_info->OrderStatus != 'Giao hàng thành công')
+				<div id="payment-message" style="margin:10px">
+					<div style="background-color: #fbfbfb; border-radius: 8px; padding:20px;margin-bottom:20px">
+						<button class="close-button" style="float:right;font-size:28px;background-color: #fbfbfb;border: none;height: 10px;margin-right: 20px;">&times;</button> 
+						<p>Với các đơn hàng thanh toán online, để được giao hàng theo thời gian dự kiến. <br> Quý khách vui lòng chuyển khoản với nội dung ghi rõ <b>Tên & Số Điện Thoại người</b> nhận hàng. Ví dụ: <b>A THANH 0988888888</b></p>
+						<div style="border: 2px solid #fbfbfb; padding: 10px; border-radius:10px">
+									<p style="line-height: 2;">
+									<b>Vietcombank - Ngân Hàng Ngoại Thương Việt Nam</b> <br>
+									Chủ tài khoản: LE LAM LINH <br>
+									Số tài khoản: <b>0011004366653</b> <br>
+									</p>
+						</div>
+					</div>
+				</div>
+				@endif
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="card panel-default">
@@ -547,6 +562,13 @@ body{
 		});
 	});
 	
+</script>
+<script>
+	$(document).ready(function(){
+		$('.close-button').click(function(){
+			$('#payment-message').slideUp();
+		});
+	});
 </script>
 	<!-- Map Section -->
 @endsection
