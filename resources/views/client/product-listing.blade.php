@@ -102,7 +102,18 @@
                                         </ul>
                                     </div>
                                 </aside>
-                                
+                                <aside class="ps-widget__content">
+                                  <div class="ps-widget__header">
+                                  <h2 for="amount" style="font-weight: bold; padding-bottom: 20px;">Khoảng Giá</h2>
+                                  </div>
+                                  <form>  
+                                    <input type="text" id="amount" readonly style="border:0; color:#77ACF1; font-weight:bold; left:0;">
+                                                          
+                                    <div id="slider-range"></div>
+                                    
+                                  </form>
+                                  
+                                </aside>
                                 <!--<aside class="ps-widget--sidebar ps-widget--category">
                                   <div class="ps-widget__header">
                                     <h2 style="font-weight: bold;">CPU</h2>
