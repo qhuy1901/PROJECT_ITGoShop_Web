@@ -312,9 +312,8 @@ class ProductController extends Controller
 
     public function delete_comment(Request $request)
     {
-        DB::table('comment')
-        ->where('CommentId', $request->comment_id)
-        ->orWhere('ParentComment', $request->comment_id)->delete();
+        DB::table('comment')->Where('ParentComment', $request->comment_id)->delete();
+        DB::table('comment')->where('CommentId', $request->comment_id)->delete();
     }
 
 

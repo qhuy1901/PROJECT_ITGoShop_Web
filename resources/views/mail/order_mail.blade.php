@@ -17,12 +17,12 @@
         <hr>
         <p class="card-text"><b>Mô tả đơn hàng:</b> {{$OrderInfo->Description}}</p>
         <p class="card-text"><b>Địa chỉ giao hàng:</b></p>
-        <p>{{$ShippingAddress->ReceiverName}}<p>
+        <p>Tên người nhận: {{$ShippingAddress->ReceiverName}}<p>
 				<p>Địa chỉ: {{$ShippingAddress->Address. ", " .$ShippingAddress->xaphuongthitran. ", " .$ShippingAddress->quanhuyen. ", " .$ShippingAddress->tinhthanhpho}}<p>
 				<p>Điện thoại: {{$ShippingAddress->Phone}}</p>
-        <p class="card-text"><b>Phương thức thanh toán:</b> Thanh toán tiền mặt khi nhận hàng</p>
-        <p class="card-text"><b>Thời gian giao hàng dự kiến: </b>dự kiến giao hàng vào ngày 20/11/2021</p>
-        <p class="card-text"><b>Phí vận chuyển: </b> Miễn phí</p>
+        <p class="card-text"><b>Phương thức thanh toán:</b> {{$OrderInfo->ShipMethod}}</p>
+        <p class="card-text"><b>Thời gian giao hàng dự kiến: </b>dự kiến giao hàng vào ngày {{date("d-m-Y", strtotime($OrderInfo->EstimatedDeliveryTime))}}</p>
+        <p class="card-text"><b>Phí vận chuyển: </b> {{number_format($OrderInfo->ShipFee, 0, " ", ".").' ₫'}}</p>
         <p class="card-text"><b>TỔNG TRỊ GIÁ ĐƠN HÀNG: </b><b style="color:red; font-size: 20px">{{number_format($OrderInfo->Total, 0, " ", ".").' ₫'}}</b></p>
         <p class="card-text">Trân trọng,</p>
         <p class="card-text">Đội ngũ ITGoShop.</p>

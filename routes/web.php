@@ -192,6 +192,8 @@ Route::get('/view-comment','App\Http\Controllers\CommentController@view_comment'
 Route::get('/delete-comment','App\Http\Controllers\ProductController@delete_comment');
 Route::post('/load-all-comment','App\Http\Controllers\CommentController@load_all_comment');
 Route::get('/load-all-comment','App\Http\Controllers\CommentController@load_all_comment');
+Route::get('/unactive-comment','App\Http\Controllers\CommentController@unactive_comment');
+Route::get('/active-comment','App\Http\Controllers\CommentController@active_comment');
 
 // WishList
 Route::get('/add-product-to-wishlist','App\Http\Controllers\WishListController@add_product_to_wishlist');

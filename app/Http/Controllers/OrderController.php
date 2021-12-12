@@ -185,13 +185,13 @@ class OrderController extends Controller
         // echo $OrderId;
     }
 
-    public function send_order_mail($OrderId,$CustomerId)
+    public function send_order_mail($OrderId, $CustomerId)
     {
-        $info = DB::table('user')->where('UserId','=',$CustomerId)->get();
+        $info = DB::table('user')->where('UserId','=', $CustomerId)->first();
         $to_name = $info->FirstName;
-        $to_mail = $info->Email; // Gửi đến email nào? 
+        $to_mail = 'itgoshop863@gmail.com'; // Gửi đến email nào? 
         $OrderInfo = DB::table('order')
-        ->select('FirstName','LastName', 'OrderId', 'OrderDate', 'Description', 'ShippingAddressId', 'Total')
+        ->select('FirstName','LastName', 'OrderId', 'OrderDate', 'Description', 'ShippingAddressId', 'Total', 'ShipFee', 'EstimatedDeliveryTime', 'ShipMethod')
         ->join('user', 'user.UserId', '=', 'order.UserId')
         ->where('OrderId', '=', $OrderId)->first();
 
@@ -225,7 +225,25 @@ class OrderController extends Controller
 
     public function print_order($order_id)
     {
-        return View('report.print-invoice');
+        $order_info = DB::table('order')
+        ->join('user','user.UserId','=','order.UserId')
+        ->where('OrderId', '=', $order_id)->first();
+        $order_detail = DB::table('orderdetail')
+        ->select('product.ProductId', 'ProductName', 'ProductImage', 'OrderQuantity', 'UnitPrice')
+        ->join('product', 'product.ProductId', '=', 'orderdetail.ProductId')
+        ->where('OrderId', '=', $order_id)->get();
+
+        $default_shipping_address = DB::table('shippingaddress')
+        ->select('ShippingAddressId', 'ReceiverName', 'ShippingAddressType', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
+        ->join('devvn_quanhuyen', 'devvn_quanhuyen.maqh', '=', 'shippingaddress.maqh')
+        ->join('devvn_tinhthanhpho', 'devvn_tinhthanhpho.matp', '=', 'shippingaddress.matp')
+        ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
+        ->where('ShippingAddressId', '=', $order_info->ShippingAddressId)->first();
+
+        return View('report.print-invoice2')
+        ->with('order_detail',  $order_detail)
+        ->with('order_info',  $order_info)
+        ->with('default_shipping_address',  $default_shipping_address);;
         // $pdf = PDF::loadView('report.invoice-pdf');
         // return $pdf->stream('i.pdf');
 

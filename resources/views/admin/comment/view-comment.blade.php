@@ -32,10 +32,6 @@
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 										<h4 class="card-title">Bình luận của sản phẩm</h4>
-										<!-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-											<i class="fa fa-plus"></i>
-												
-										</button> -->
 									</div>
 								</div>
 								<div class="card-body">
@@ -59,9 +55,7 @@
 											</table>
 									</div>
 								</div>
-							</div>
-											
-											
+							</div>	
 										
 							</div>
 						</div>
@@ -70,43 +64,10 @@
 			</div>
 	<script>
 		$(document).ready(function(){
-			
-			// $('file').change(function()
-			// {	alert("Hi");
-			// 	var error = '';
-			// 	var file = $('file')[0].files;
-
-			// 	if(files.length > 5)
-			// 	{
-			// 		error += '<p>Bạn chỉ được chọn tối đa 5 ảnh</p>';
-
-			// 	}else if(file.length == ''){
-			// 		error += '<p>Bạn không được bỏ trống ảnh</p>';
-
-			// 	}else if(file.size > 20000000)
-			// 	{
-			// 		error += '<p>File ảnh không được lớn hơn 2MB</p>';
-			// 	}
-			// 	if(error == '')
-			// 	{
-
-			// 	}else
-			// 	{
-			// 		$('#file').val('');
-			// 		$('#error-gallery-message').html('<span class="text-danger>'+error+'</span>');
-			// 		return false;
-			// 	}
-			// });
-		});
-
-	</script>
-<a href="{{url('/load-all-comment')}}">HiHI</a>
-	<script>
-		$(document).ready(function(){
 			var _token = $('input[name="_token"]').val();
 
 			load_reply();
-			setInterval(load_reply, 1000);
+			setInterval(load_reply, 5000);
 
 			function load_reply()
 			{
@@ -128,12 +89,12 @@
 	
 	<script>
 		$(document).ready(function(){
-			$('button[data-original-title="Hiển thị bình luận"]').click(function(){
+			$('body').on('click', 'button[data-original-title="Hiển thị bình luận"]', function(){
 				var CommentId = $(this).parents('tr').find('.CommentId').val();
 				var activeButton = $(this);
 				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn bình luận"]');
 				$.ajax({
-					url: '{{URL::to('/unactive-product-gallary')}}',
+					url: '{{URL::to('/unactive-comment')}}',
 					method:"GET",
 					data:{CommentId: CommentId},
 					success:function(data)
@@ -148,12 +109,12 @@
 				});
 			});
 
-			$('button[data-original-title="Ẩn bình luận"]').click(function(){
+			$('body').on('click', 'button[data-original-title="Ẩn bình luận"]', function(){
 				var CommentId = $(this).parents('tr').find('.CommentId').val();
 				var unactiveButton = $(this);
 				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị bình luận"]');
 				$.ajax({
-					url: '{{URL::to('/active-product-gallary')}}',
+					url: '{{URL::to('/active-comment')}}',
 					method:"GET",
 					data:{CommentId: CommentId},
 					success:function(data)
@@ -168,7 +129,7 @@
 				});
 			});
 
-			$('button[data-original-title="Xóa bình luận"]').click(function(){
+			$('body').on('click', 'button[data-original-title="Xóa bình luận"]', function(){
 				var comment_id = $(this).parents('tr').find('.CommentId').val();
 				var thisImage = $(this).parents('tr');
 				swal({
@@ -193,13 +154,24 @@
 							},
 							error:function(data)
 							{
-								alert('Lỗi');
+								alert('Lỗi xóa bình luận');
 							}	
 						});
 						
 					} 
 				});
-				
+			});
+			$('body').on('change', '.reply-check-box', function(){
+				//var thisRow = $(this).parents('tr');
+				alert('check!');
+				if(this.checked)
+				{
+					alert('check!');
+				}
+				else
+				{
+					alert('uncheck!');
+				}
 			});
 		});
 	</script>
