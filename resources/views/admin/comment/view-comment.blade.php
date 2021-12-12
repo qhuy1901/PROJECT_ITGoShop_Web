@@ -171,10 +171,10 @@
 						url: '{{URL::to('/reply-comment')}}',
 						method:"GET",
 						data:{CommentId: CommentId, Reply: 1},
-						success:function(data)
-						{
-							alert('Thành công');
-						},
+						// success:function(data)
+						// {
+						// 	alert('Thành công');
+						// },
 						error:function(data)
 						{
 							alert('Lỗi');
@@ -187,10 +187,10 @@
 						url: '{{URL::to('/reply-comment')}}',
 						method:"GET",
 						data:{CommentId: CommentId, Reply: 0},
-						success:function(data)
-						{
-							alert('Thành công');
-						},
+						// success:function(data)
+						// {
+						// 	alert('Thành công');
+						// },
 						error:function(data)
 						{
 							alert('Lỗi');

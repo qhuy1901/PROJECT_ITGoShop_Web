@@ -211,6 +211,7 @@ class ProductController extends Controller
         ->join('user','user.UserId','=','comment.UserId')
         ->where('ProductId', $request->ProductId)
         ->where('ParentComment', null)
+        ->where('CommentStatus', 1)
         ->orderby('CommentId', 'DESC')->get();
         $output = '';
         foreach($comment as $key => $item)
@@ -295,6 +296,10 @@ class ProductController extends Controller
             if($CustomerId)
             {
                 $data['UserId'] = $CustomerId;
+                if($request->ParentComment != 0)
+                {
+                    DB::table('comment')->where('CommentId', $request->ParentComment)->update(['Reply'=>0]); 
+                }
             }
             else{
                 $data['UserId'] = $AdminId;

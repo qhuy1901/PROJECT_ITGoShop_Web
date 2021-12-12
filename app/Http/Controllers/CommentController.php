@@ -82,30 +82,6 @@ class CommentController extends Controller
                     </td>
                 </tr>';
         }
-        $output .= '';
-        // $output .= "<script> $(document).ready(function(){ $('#multi-filter-select').DataTable( {
-        //     'pageLength': 10,
-        //     initComplete: function () {
-        //         this.api().columns().every( function () {
-        //             var column = this;
-        //             var select = $('<select class='form-control'><option value=''></option></select>')
-        //             .appendTo( $(column.footer()).empty() )
-        //             .on( 'change', function () {
-        //                 var val = $.fn.dataTable.util.escapeRegex(
-        //                     $(this).val()
-        //                     );
-
-        //                 column
-        //                 .search( val ? '^'+val+'$' : '', true, false )
-        //                 .draw();
-        //             } );
-
-        //             column.data().unique().sort().each( function ( d, j ) {
-        //                 select.append( '<option value=\"''+d+'\">'+d+'</option>' )
-        //             } );
-        //         } );
-        //     }
-        // });});</script>";
         echo $output;
     }
     public function active_comment(Request $request)
