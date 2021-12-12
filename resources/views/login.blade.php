@@ -13,15 +13,17 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form  action="{{URL::to('/customer-register')}}" method="POST">
+		{{csrf_field()}}
 			<div class="logo">
 				<a href="index.html"><img src="{{('public/client/Images/logo.png')}}" alt="logo" ></a>
 			</div>
 			<h1>Tạo tài khoản</h1>
-			<input type="number" placeholder="Số điện thoại" />
-			<input type="text" placeholder="Username" />
-			<input type="password" placeholder="Mật khẩu" />
-			<button>Đăng ký</button>
+			<input type="text" placeholder="Họ" name="LastName" />
+			<input type="text" placeholder="Tên" name="FirstName" />
+			<input type="text" placeholder="Username" name="Email"/>
+			<input type="password" placeholder="Mật khẩu" name="Password"/>
+			<button type="submit" formaction="{{URL::to('/customer-register')}}" >Đăng ký</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">

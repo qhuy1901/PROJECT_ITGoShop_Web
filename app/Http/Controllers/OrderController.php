@@ -251,9 +251,9 @@ class OrderController extends Controller
 
     public function print_order($order_id)
     {
-        //return View('pdf.invoice-pdf');
-        $pdf = PDF::loadView('pdf.invoice-pdf');
-        return $pdf->stream('i.pdf');
+        return View('report.print-invoice');
+        // $pdf = PDF::loadView('report.invoice-pdf');
+        // return $pdf->stream('i.pdf');
 
         // $pdf = \App::make('dompdf.wrapper');
         // $pdf->loadHTML($this->print_order_convert($order_id));

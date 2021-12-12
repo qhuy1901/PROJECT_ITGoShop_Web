@@ -21,6 +21,7 @@ use App\Http\Controllers\Cart;
 // Home
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/home', 'App\Http\Controllers\HomeController@index');
+Route::post('/customer-register', 'App\Http\Controllers\HomeController@customer_register');
 
 Route::post('/search_result', 'App\Http\Controllers\HomeController@search_result');
 Route::post('/', 'App\Http\Controllers\HomeController@search_result');
@@ -239,3 +240,4 @@ Route::post('/load-product-chart','App\Http\Controllers\ReportController@load_pr
 Route::get('/print-customer-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\ReportController@print_customer_report');
 Route::get('/print-customer-report','App\Http\Controllers\ReportController@print_default_customer_report');
 Route::post('/load-customer-chart','App\Http\Controllers\ReportController@load_customer_chart');
+

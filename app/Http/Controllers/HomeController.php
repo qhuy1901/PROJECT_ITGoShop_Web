@@ -173,4 +173,20 @@ class HomeController extends Controller
         ->with('search_blog', $search_blog);
     }
     
+    public function customer_register(Request $request)
+    {
+        $data = array();
+        $data['Email'] = $request->Email;
+        $data['Password'] = $request->Password;
+        $data['FirstName'] = $request->FirstName;
+        $data['LastName'] = $request->LastName;
+        $data['Admin'] = 0;
+        $UserId = DB::table('user')->insertGetId($data);
+
+        Session::put('CustomerFirstName', $request->FirstName);
+        Session::put('CustomerLastName', $request->LastName);
+        Session::put('CustomerImage', $request->UserImage);
+        Session::put('CustomerId', $UserId);
+        return Redirect::to('home');
+    }
 }
