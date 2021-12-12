@@ -13,13 +13,13 @@
 								<form>
 									@csrf
 								<h2 class="text-white pb-2 fw-bold">PHÂN TÍCH BÁN HÀNG</h2>
-								<a class="text-white fw-bold" style="margin-right: 8px;">Khung thời gian</a> 
+								<a class="text-white fw-bold" style="margin-right: 8px;">Khung thời gian: </a> 
 								<div class="ml-md-auto py-2 py-md-3">
-									<a class="btn btn-white btn-border mr-2" style="padding: 0.5rem"> 
+									<a class="btn btn-white btn-border mr-2" style="padding: 0.4rem"> 
 										<span class="btn-label"><i class="fas fa-calendar-alt"></i></span>
 										Từ ngày: <input type="date" class="form-control" id="tu-ngay" min="2020-01-01" style="display:inline-block; width: 65%;" required>
 									</a>
-									<a class="btn btn-white btn-border mr-2" style="padding:  0.5rem"> 
+									<a class="btn btn-white btn-border mr-2" style="padding:  0.4rem"> 
 										<span class="btn-label" >
 											<i class="fas fa-calendar-alt"></i>
 										</span>
