@@ -45,9 +45,9 @@ class CommentController extends Controller
             $output .= '<td>'.$item->LastName. ' ' .$item->FirstName.'</td>';
 			$output .= '<td>'.$item->ProductName.'</td><td style="text-align:center;">';
             if($item->Reply == 1)
-                $output .= '<input class="form-check-input" type="checkbox" class="reply-check-box" value="" checked>';
+                $output .= '<input class="form-check-input reply-check-box" type="checkbox" value="" checked>';
 			else
-                $output .= '<input class="form-check-input" type="checkbox" class="reply-check-box" value=""></td>';
+                $output .= '<input class="form-check-input reply-check-box" type="checkbox" value=""></td>';
 
             $output .= '<td>
                             <div class="form-button-action">
@@ -116,5 +116,10 @@ class CommentController extends Controller
     public function unactive_comment(Request $request)
     {
         DB::table('comment')->where('CommentId', $request->CommentId)->update(['CommentStatus'=>0]); 
+    }
+
+    public function reply_comment(Request $request)
+    {
+        DB::table('comment')->where('CommentId', $request->CommentId)->update(['Reply'=>$request->Reply]); 
     }
 }

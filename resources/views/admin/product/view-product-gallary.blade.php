@@ -1,4 +1,5 @@
 @extends('admin_layout')
+@section('title', 'Quản lý thư viện hình ảnh - ITGoShop')
 @section('admin_content')
 <div class="main-panel">
 			<div class="content">

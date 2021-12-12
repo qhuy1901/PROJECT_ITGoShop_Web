@@ -387,10 +387,10 @@
 					success:function(data){
 						$('#so-luong-sp-gio-hang').html(data);
 					},
-					error:function(data)
-					{
-						alert("Lỗi load sl");
-					}
+					// error:function(data)
+					// {
+					// 	alert("Lỗi load sl");
+					// }
 				});
 		}
 		function load_cart()
@@ -522,10 +522,10 @@
 			{
 				$(".select-xaphuongthitran").html(data);
 			},
-			error:function(data)
-			{
-				alert('Lỗi');
-			}	
+			// error:function(data)
+			// {
+			// 	alert('Lỗi');
+			// }	
 		});	
 	}
 
@@ -541,10 +541,10 @@
 					$(".select-quanhuyen").html(data);
 					load_xaphuong_dropdownbox();
 				},
-				error:function(data)
-				{
-					alert('Lỗi');
-				}	
+				// error:function(data)
+				// {
+				// 	alert('Lỗi');
+				// }	
 			});
 		});
 

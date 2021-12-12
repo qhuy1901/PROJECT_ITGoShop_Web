@@ -1,4 +1,5 @@
 @extends('client_layout')
+@section('title', 'ITGoShop - Hệ thống Máy tính và Phụ kiện')
 @section('client_content')
 <main class="ps-main">
       <section class="blog-single section " style="display: flex; flex-wrap: nowrap;">

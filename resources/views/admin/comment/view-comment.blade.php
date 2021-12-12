@@ -1,4 +1,5 @@
 @extends('admin_layout')
+@section('title', 'Xem và trả lời bình luận - ITGoShop')
 @section('admin_content')
 <div class="main-panel">
 			<div class="content">
@@ -162,15 +163,39 @@
 				});
 			});
 			$('body').on('change', '.reply-check-box', function(){
-				//var thisRow = $(this).parents('tr');
-				alert('check!');
+				var thisRow = $(this).parents('tr');
+				var CommentId = thisRow.find('.CommentId').val();
 				if(this.checked)
 				{
-					alert('check!');
+					$.ajax({
+						url: '{{URL::to('/reply-comment')}}',
+						method:"GET",
+						data:{CommentId: CommentId, Reply: 1},
+						success:function(data)
+						{
+							alert('Thành công');
+						},
+						error:function(data)
+						{
+							alert('Lỗi');
+						}	
+					});
 				}
 				else
 				{
-					alert('uncheck!');
+					$.ajax({
+						url: '{{URL::to('/reply-comment')}}',
+						method:"GET",
+						data:{CommentId: CommentId, Reply: 0},
+						success:function(data)
+						{
+							alert('Thành công');
+						},
+						error:function(data)
+						{
+							alert('Lỗi');
+						}	
+					});
 				}
 			});
 		});

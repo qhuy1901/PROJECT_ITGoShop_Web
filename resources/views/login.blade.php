@@ -2,7 +2,7 @@
 <html lang="vi" >
 <head>
   <meta charset="UTF-8">
-  <title>ITGo Shop</title>
+  <title>Đăng nhập hệ thống Admin - ITGoShop</title>
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="{{('public/client/Images/favi.png')}}">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="{{('public/client/css/login-style.css')}}">

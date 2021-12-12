@@ -1,4 +1,5 @@
 @extends('client_layout')
+@section('title', 'Kết quả tìm kiếm - ITGoShop')
 @section('client_content')
 	
 	<!-- Breadcrumbs -->

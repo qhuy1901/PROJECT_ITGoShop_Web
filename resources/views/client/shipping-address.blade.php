@@ -1,4 +1,5 @@
 @extends('client_layout')
+@section('title', 'Sổ địa chỉ - ITGoShop')
 @section('client_content')
 
 <div class="breadcrumbs">

@@ -48,11 +48,10 @@ class OrderController extends Controller
         $data['PaymentStatus'] = $request->PaymentStatus;
         $data['DateUpdate'] = date("Y-m-d H:i:s"); 
         DB::table('order')->where('OrderId', $request->OrderId)->update($data);
-        if($os == "Giao hàng thành công")
-        {
-            $this->send_complete_mail($OrderId);
-        }
-        
+        // if($os == "Giao hàng thành công")
+        // {
+        //     $this->send_complete_mail($OrderId);
+        // }
     }
 
     public function send_complete_mail($OrderId)
