@@ -327,62 +327,7 @@
 	<!-- Sweet Alert -->
 	<!-- <a href="{{URL::to('/load-cart-quantity')}}">Quang</a> -->
 
-	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-	<!-- Jquery -->
-    <script src="{{asset('public/client/js/jquery.min.js')}}"></script>
-    <script src="{{asset('public/client/js/jquery-migrate-3.0.0.js')}}"></script>
-	<script src="{{asset('public/client/js/jquery-ui.min.js')}}"></script>
-	<!-- Popper JS -->
-	<script src="{{asset('public/client/js/popper.min.js')}}"></script>
-	<!-- Bootstrap JS -->
-	<script src="{{asset('public/client/js/bootstrap.min.js')}}"></script>
-	<!-- Color JS -->
-	<script src="{{asset('public/client/js/colors.js')}}"></script>
-	<!-- Slicknav JS -->
-	<script src="{{asset('public/client/js/slicknav.min.js')}}"></script>
-	<!-- Owl Carousel JS -->
-	<script src="{{asset('public/client/js/owl-carousel.js')}}"></script>
-	<!-- Magnific Popup JS -->
-	<script src="{{asset('public/client/js/magnific-popup.js')}}"></script>
-	<!-- Waypoints JS -->
-	<script src="{{asset('public/client/js/waypoints.min.js')}}"></script>
-	<!-- Countdown JS -->
-	<script src="{{asset('public/client/js/finalcountdown.min.js')}}"></script>
-	<!-- Nice Select JS -->
-	<!-- <script src="{{asset('public/client/js/nicesellect.js')}}"></script> -->
-	<!-- Flex Slider JS -->
-	<script src="{{asset('public/client/js/flex-slider.js')}}"></script>
-	<!-- ScrollUp JS -->
-	<script src="{{asset('public/client/js/scrollup.js')}}"></script>
-	<!-- Onepage Nav JS -->
-	<script src="{{asset('public/client/js/onepage-nav.min.js')}}"></script>
-	<!-- Easing JS -->
-	<script src="{{asset('public/client/js/easing.js')}}"></script>
-	<!-- Active JS -->
-	<script src="{{asset('public/client/js/active.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/jquery/dist/jquery.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/jquery-bar-rating/dist/jquery.barrating.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/gmap3.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/imagesloaded.pkgd.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/isotope.pkgd.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/jquery.matchHeight-min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/slick/slick/slick.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/elevatezoom/jquery.elevatezoom.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('public/client/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
-    <!-- Custom scripts-->
-    <script type="text/javascript" src="{{asset('public/client/js/main.js')}}"></script>
+	
 
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -427,21 +372,7 @@
 		})
 
 	</script>
-	<script type="text/javascript">
-		$('.brand-filter').click(function(){
-			var brand = [], tempArray = [];
-			$.each($("[data-filters='brand']:checked"),function() {
-				tempArray.push($(this).val());
-				
-			});
-			tempArray.reverse();
-			if(tempArray.length !== 0){
-				brand+='?brand='+tempArray.toString();
-			}
-			window.location.href = brand
-		})
-
-	</script>
+	
 	<script type="text/javascript">
 		$('.subbrand-filter').click(function(){
 			var subbrand = [], tempArray = [];
@@ -654,6 +585,61 @@
 }
 
 	</style>
-	
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+	<!-- Jquery -->
+    <script src="{{asset('public/client/js/jquery.min.js')}}"></script>
+    <script src="{{asset('public/client/js/jquery-migrate-3.0.0.js')}}"></script>
+	<script src="{{asset('public/client/js/jquery-ui.min.js')}}"></script>
+	<!-- Popper JS -->
+	<script src="{{asset('public/client/js/popper.min.js')}}"></script>
+	<!-- Bootstrap JS -->
+	<script src="{{asset('public/client/js/bootstrap.min.js')}}"></script>
+	<!-- Color JS -->
+	<script src="{{asset('public/client/js/colors.js')}}"></script>
+	<!-- Slicknav JS -->
+	<script src="{{asset('public/client/js/slicknav.min.js')}}"></script>
+	<!-- Owl Carousel JS -->
+	<script src="{{asset('public/client/js/owl-carousel.js')}}"></script>
+	<!-- Magnific Popup JS -->
+	<script src="{{asset('public/client/js/magnific-popup.js')}}"></script>
+	<!-- Waypoints JS -->
+	<script src="{{asset('public/client/js/waypoints.min.js')}}"></script>
+	<!-- Countdown JS -->
+	<script src="{{asset('public/client/js/finalcountdown.min.js')}}"></script>
+	<!-- Nice Select JS -->
+	<!-- <script src="{{asset('public/client/js/nicesellect.js')}}"></script> -->
+	<!-- Flex Slider JS -->
+	<script src="{{asset('public/client/js/flex-slider.js')}}"></script>
+	<!-- ScrollUp JS -->
+	<script src="{{asset('public/client/js/scrollup.js')}}"></script>
+	<!-- Onepage Nav JS -->
+	<script src="{{asset('public/client/js/onepage-nav.min.js')}}"></script>
+	<!-- Easing JS -->
+	<script src="{{asset('public/client/js/easing.js')}}"></script>
+	<!-- Active JS -->
+	<script src="{{asset('public/client/js/active.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/jquery/dist/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/jquery-bar-rating/dist/jquery.barrating.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/owl-carousel/owl.carousel.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/gmap3.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/imagesloaded.pkgd.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/isotope.pkgd.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/jquery.matchHeight-min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/slick/slick/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/elevatezoom/jquery.elevatezoom.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/client/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script><script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('public/client/plugins/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
+    <!-- Custom scripts-->
+    <script type="text/javascript" src="{{asset('public/client/js/main.js')}}"></script>
 </body>
 </html>
