@@ -37,14 +37,20 @@ class BrandController extends Controller
         return view('admin.add_subbrand')
         ->with('brand_list', $brand_list);
     }
+
     public function view_brand()
     {
-        // // Lấy hết dữ liệu trong bảng brand
-        $all_brand = DB::table('brand')->get();
-        $manager_brand = view('admin.view_brand')->with('all_brand', $all_brand);
-        // // biến chứa dữ liệu  $all_brand đc gán cho all_brand'
-        return view('admin_layout')->with('admin.view_brand', $manager_brand);
+        $all_brand = DB::table('brand')
+        ->select('BrandId', 'CategoryName', 'BrandName', 'brand.Status', 'BrandLogo','brand.Description')
+        ->join('category','brand.CategoryId','=','category.CategoryId')->get();
+
+        $all_category = DB::table('category')->get();
+
+        return view('admin.brand.view_brand')
+        ->with('all_category', $all_category)
+        ->with('all_brand', $all_brand);
     }
+
     public function view_subbrand()
     {
         // // Lấy hết dữ liệu trong bảng subbrand
@@ -53,19 +59,26 @@ class BrandController extends Controller
         $manager_subbrand = view('admin.view_subbrand')->with('all_subbrand', $all_subbrand);
         return view('admin_layout')->with('admin.view_subbrand', $manager_subbrand);
     }
+
     public function save_brand(Request $request)
     {
         $data = array();
         $data['BrandName'] = $request->BrandName;
-        $data['description'] = $request->description;
-        $data['status'] = $request->status;
-
+        $data['Description'] = $request->Description;
+        $data['Status'] = $request->Status;
+        $data['CategoryId'] = $request->CategoryId;
+        $get_image = $request->file('BrandImage');
+        if($get_image == true)
+        {
+            $image_name = date("Y_m_d_His").'_'.$get_image->getClientOriginalName(); //$get_image_name.rand(0, 99).'.'.$get_image->getClientOriginalExtension(); 
+            $get_image->move('public/images_upload/brand', $image_name);
+            $data['BrandLogo'] = $image_name;
+            DB::table('brand')->insert($data);
+            return Redirect::to('view-brand');
+        }
+        $data['BrandLogo'] = '';
         DB::table('brand')->insert($data);
-        Session::put('message', 'Thêm thương hiệu sản phẩm thành công');
-        return Redirect::to('add-brand');
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
+        return Redirect::to('view-brand');
     }
 
     public function save_subbrand(Request $request)
@@ -78,26 +91,23 @@ class BrandController extends Controller
         DB::table('brand')->insert($data);
         Session::put('message', 'Thêm thương hiệu nhánh thành công');
         return Redirect::to('add-subbrand');
-        // echo '<pre>';
-        // print_r($data);
-        // echo '</pre>';
     }
 
-    public function active_brand($BrandId)
+    public function active_brand(Request $request)
     {
-        // Câu truy vấn SQL  WHERE 
-        DB::table('brand')->where('id', $BrandId)->update(['status'=>1]); // [ ] là cái cột, cái mảng
-        Session::put('message','Hiển thị thương hiệu sản phẩm thành công');
-        return Redirect::to('view-brand');
-
+        DB::table('brand')->where('BrandId', $request->BrandId)->update(['Status'=>1]); 
     }
 
-    public function unactive_brand($BrandId)
+    public function unactive_brand(Request $request)
     {
-        DB::table('brand')->where('BrandId', $BrandId)->update(['status'=>0]); 
-        Session::put('message','Ẩn danh mục sản phẩm thành công');
-        return Redirect::to('view-brand');
+        DB::table('brand')->where('BrandId', $request->BrandId)->update(['Status'=>0]);
     }
+    public function delete_brand(Request $request)
+    {
+        DB::table('brand')->where('BrandId', $request->BrandId)->delete();
+    }
+
+    //++++++++++++++++++++++++++++++++++++++++++++++
 
     public function active_subbrand($SubBrandId)
     {
@@ -136,13 +146,7 @@ class BrandController extends Controller
         return Redirect::to('view-brand');
     }
 
-    public function delete_brand($BrandId)
-    {
-        DB::table('brand')->where('id', $BrandId)->delete();
-        Session::put('message', 'Xóa danh mục sản phẩm thành công');
-        return Redirect::to('view-brand');
-    }
-
+   
     public function delete_subbrand($SubBrandId)
     {
         DB::table('subbrand')->where('id', $SubBrandId)->delete();

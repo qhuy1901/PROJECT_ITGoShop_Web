@@ -57,7 +57,6 @@
 												<div class="form-group">
 													<label for="exampleFormControlSelect1">Danh mục sản phẩm</label>
 													<select class="form-control" name="Category" id="exampleFormControlSelect1">
-
 														@foreach($product_category_list as $key => $Category)
 															@if($Category->CategoryId == $update_value->CategoryId)
 																<option selected value="{{$Category->CategoryId}}">{{$Category->CategoryName}}</option>

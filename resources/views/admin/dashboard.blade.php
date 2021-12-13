@@ -600,13 +600,13 @@
 					{
 						pie_chart.setData(data);
 					},
-					error:function(data)
-					{
-						swal({
-						text: "Không tìm thấy dữ liệu",
-						icon: "error",
-						});
-					}
+					// error:function(data)
+					// {
+					// 	swal({
+					// 	text: "Không tìm thấy dữ liệu",
+					// 	icon: "error",
+					// 	});
+					// }
 				});
 		}
 

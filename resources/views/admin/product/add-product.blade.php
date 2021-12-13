@@ -141,9 +141,6 @@
 													<input type="number" min="0" name="Quantity" class="form-control" id="email2" placeholder="Nhập số lượng sản phẩm" required>
 												</div>
 											</div>
-											
-
-
                                             <div class="col-6 col-lg-6">	
                                                 <div class="form-group">
                                                         <label for="exampleFormControlFile1">Thêm ảnh sản phẩm</label>
