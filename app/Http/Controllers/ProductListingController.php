@@ -19,9 +19,9 @@ class ProductListingController extends Controller
         $min_price_range = $min_price - 400000  ;
         $max_price_range = $max_price + 40000000  ;
 
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->where('status', 1)->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->where('status', 1)->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->where('status', 1)->get();
         
         $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandName',$BrandName)->first();
         
@@ -108,9 +108,9 @@ class ProductListingController extends Controller
         $min_price_range = $min_price + 400000  ;
         $max_price_range = $max_price + 40000000  ;
 
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->where('status', 1)->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->where('status', 1)->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->where('status', 1)->get();
         
         $des_brand = DB::table('brand')->select('brand.*')->where('brand.BrandId',$BrandId)->first();
         $subbrand = DB::table('subbrand')->select('subbrand.*')->where('subbrand.BrandId',$des_brand->BrandId)->get();
@@ -195,9 +195,9 @@ class ProductListingController extends Controller
         $brandinfo = DB::table('subbrand')
         ->where('subbrand.SubBrandId',$SubBrandId)->first();
 
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->where('status', 1)->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->where('status', 1)->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->where('status', 1)->get();
         
         $des_brand = DB::table('brand')
         ->select('brand.*','subbrand.*')
@@ -286,9 +286,9 @@ class ProductListingController extends Controller
         $min_price_range = $min_price - 400000  ;
         $max_price_range = $max_price + 40000000  ;
         
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->where('status', 1)->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->where('status', 1)->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->where('status', 1)->get();
         
         $des_cate = DB::table('Category')->where('Category.CategoryId',$CategoryId)->first();
         $brand = DB::table('brand')->select('brand.*')->where('brand.CategoryId',$CategoryId)->get();

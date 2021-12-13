@@ -15,9 +15,9 @@ class ProfileController extends Controller
     public function profile($UserId)
     {
         // Cái này để load layout thôi
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->where('status', 1)->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->where('status', 1)->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->where('status', 1)->get();
         
         $default_shipping_address = DB::table('shippingaddress')
         ->select('ShippingAddressId', 'ReceiverName', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
