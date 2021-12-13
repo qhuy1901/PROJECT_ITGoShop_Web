@@ -21,9 +21,9 @@ class BannerSliderController extends Controller
 
     public function add_banner_slider()
     {
-        $campaign_list = DB::table('campaign')->get();
+        $blog_list = DB::table('blog')->get();
         return View('admin.banner-slider.add-banner-slider')
-        ->with('campaign_list', $campaign_list);
+        ->with('blog_list', $blog_list);
     }
 
     public function save_banner_slider(Request $request)
@@ -32,7 +32,7 @@ class BannerSliderController extends Controller
         $slider = new BannerSlider();
         $slider-> SliderName = $data['Name'];
         $slider->SliderStatus= $data['Status'];
-        $slider->CampaignId = $data['CampaignId'];
+        $slider->BlogId = $data['BlogId'];
         $slider->CreatedAt = date("Y-m-d H:i:s");
         $slider->UpdatedAt = date("Y-m-d H:i:s");
 

@@ -86,18 +86,8 @@
 													</select>
 												</div>
 											</div>
+											
 											<div class="col-6 col-lg-6">
-												<div class="form-group">
-													<label for="exampleFormControlSelect1">Chương trình khuyến mãi</label>
-													<select class="form-control" name="SliderId" id="exampleFormControlSelect1">
-														@foreach($banner_list as $key => $banner)
-														<option value="{{$banner->SliderId}}">{{$banner->SliderName}} </option>
-														@endforeach
-														<option value=""> </option>
-													</select>
-												</div>
-											</div>
-											<div class="col-6 col-lg-3">
 												<div class="form-group">
                                                     <label class="mb-3"><b>Giá sản phẩm</b></label>
                                                     <div class="input-group mb-3">
@@ -111,7 +101,7 @@
                                                     </div>
                                                 </div>	
 											</div>
-											<div class="col-6 col-lg-3">
+											<div class="col-6 col-lg-6">
 												<div class="form-group">
                                                     <label class="mb-3"><b>Giá vốn</b></label>
                                                     <div class="input-group mb-3">

@@ -490,7 +490,7 @@
 								<p>Widgets</p>
 								<span class="badge badge-success">4</span>
 							</a>
-						</li> -->
+						</li> 
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#submenu">
 								<i class="fas fa-bars"></i>
@@ -541,7 +541,7 @@
 									</li>
 								</ul>
 							</div>
-						</li>
+						</li>-->
 						
 					</ul>
 				</div>

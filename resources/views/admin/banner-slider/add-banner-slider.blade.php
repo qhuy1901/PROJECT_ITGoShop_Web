@@ -53,10 +53,10 @@
 											</div>
 											<div class="col-6 col-lg-6">
 												<div class="form-group">
-													<label for="exampleFormControlSelect1">Chiến dịch khuyến mãi</label>
+													<label for="exampleFormControlSelect1">ID Bài Viết</label>
 													<select class="form-control" name="CampaignId" id="exampleFormControlSelect1">
-														@foreach($campaign_list as $key => $campaign)
-														<option value="{{$campaign->CampaignId}}">{{$campaign->CampaignName}} </option>
+														@foreach($blog_list as $key => $blog)
+														<option value="{{$blog->BlogId}}">{{$blog->Title}} </option>
 														@endforeach
 														<option value=""> </option>
 													</select>
