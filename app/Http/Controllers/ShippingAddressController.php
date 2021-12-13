@@ -14,9 +14,9 @@ class ShippingAddressController extends Controller
     public function index()
     {
         $CustomerId = Session::get('CustomerId');
-        $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
-        $sub_brand_list = DB::table('brand')->where('SubBrand', '!=' , 0)->orderby('BrandId', 'desc')->get();
-        $main_brand_list = DB::table('brand')->where('SubBrand', 0)->orderby('BrandId', 'desc')->get();
+        $product_category_list = DB::table('category')->orderby('CategoryId', 'desc')->where('status', 1)->get();
+        $sub_brand_list = DB::table('subbrand')->orderby('SubBrandId', 'desc')->where('status', 1)->get();
+        $main_brand_list = DB::table('brand')->orderby('BrandId', 'desc')->where('status', 1)->get();
         $all_tinhthanhpho = DB::table('devvn_tinhthanhpho')->get();
         $shipping_address_list = DB::table('shippingaddress')
         ->select('ShippingAddressId', 'ReceiverName', 'ShippingAddressType', 'Phone', 'Address', 'devvn_quanhuyen.name as quanhuyen', 'devvn_tinhthanhpho.name as tinhthanhpho','devvn_xaphuongthitran.name as xaphuongthitran')
