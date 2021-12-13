@@ -23,9 +23,6 @@ class HomeController extends Controller
         ->where('SliderStatus', '=', 1)
         ->orderby('CreatedAt', 'desc')
         ->limit(8)->get();
-
-
-
         $latestnew = DB::table('blog')
         ->select('bannerslider.*','blog.*' )
         ->join('bannerslider', 'blog.BlogId', '=', 'bannerslider.BlogId')
