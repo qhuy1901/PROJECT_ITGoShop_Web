@@ -24,20 +24,7 @@ class BrandController extends Controller
             return Redirect::to('admin')->send(); // Nếu chưa đăng nhập thì quay lại trang login
         }
     }
-
-    public function add_brand()
-    {
-        $this->auth_login();
-        return view('admin.add_brand');
-    }
-    public function add_subbrand()
-    {
-        $this->auth_login();
-        $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
-        return view('admin.add_subbrand')
-        ->with('brand_list', $brand_list);
-    }
-
+    
     public function view_brand()
     {
         $all_brand = DB::table('brand')
@@ -46,18 +33,20 @@ class BrandController extends Controller
 
         $all_category = DB::table('category')->get();
 
-        return view('admin.brand.view_brand')
+        return view('admin.brand.view-brand')
         ->with('all_category', $all_category)
         ->with('all_brand', $all_brand);
     }
 
-    public function view_subbrand()
+    public function update_brand($BrandId)
     {
-        // // Lấy hết dữ liệu trong bảng subbrand
-        $all_subbrand = DB::table('subbrand')
-        ->join('brand','brand.BrandId','=','subbrand.BrandId')->get();
-        $manager_subbrand = view('admin.view_subbrand')->with('all_subbrand', $all_subbrand);
-        return view('admin_layout')->with('admin.view_subbrand', $manager_subbrand);
+        $brand_info = DB::table('brand')->where('BrandId',$BrandId)->first();
+
+        $all_category = DB::table('category')->get();
+
+        return view('admin.brand.update-brand')
+        ->with('brand_info', $brand_info)
+        ->with('all_category', $all_category);
     }
 
     public function save_brand(Request $request)
@@ -81,16 +70,22 @@ class BrandController extends Controller
         return Redirect::to('view-brand');
     }
 
-    public function save_subbrand(Request $request)
+    public function save_update_brand(Request $request, $BrandId)
     {
         $data = array();
-        $data['SubBrandId'] = $request->SubBrandId;
-        $data['SubBrandName'] = $request->SubBrandName;
-        $data['BrandId'] = $request->BrandId;
-
-        DB::table('brand')->insert($data);
-        Session::put('message', 'Thêm thương hiệu nhánh thành công');
-        return Redirect::to('add-subbrand');
+        $data['BrandName'] = $request->BrandName;
+        $data['Description'] = $request->Description;
+        $data['Status'] = $request->Status;
+        $data['CategoryId'] = $request->CategoryId;
+        $get_image = $request->file('BrandImage');
+        if($get_image == true)
+        {
+            $image_name = date("Y_m_d_His").'_'.$get_image->getClientOriginalName(); 
+            $get_image->move('public/images_upload/brand', $image_name);
+            $data['BrandLogo'] = $image_name;
+        }
+        DB::table('brand')->where('BrandId', $BrandId)->update($data);
+        return Redirect::to('view-brand');
     }
 
     public function active_brand(Request $request)
@@ -125,32 +120,39 @@ class BrandController extends Controller
         return Redirect::to('view-subbrand');
     }
 
-
-    public function get_brand_info($BrandId)
-    {
-        // // Lấy hết dữ liệu trong bảng brand
-        $update_brand = DB::table('brand')->where('id',$BrandId)->get();  // first: lấy dòng đầu tiên
-        $manager_brand = view('admin.update_brand')->with('update_brand', $update_brand);
-        // // biến chứa dữ liệu  $all_brand đc gán cho all_brand'
-        return view('admin_layout')->with('admin.update_brand', $manager_brand);
-    }
-
-    public function update_brand(Request $request, $BrandId)
-    {
-        $data = array();
-        $data['BrandName'] = $request->BrandName;
-        $data['description'] = $request->description;
-
-        DB::table('brand')->where('id', $BrandId)->update($data);
-        Session::put('message', 'Cập nhật danh mục sản phẩm thành công');
-        return Redirect::to('view-brand');
-    }
-
-   
     public function delete_subbrand($SubBrandId)
     {
         DB::table('subbrand')->where('id', $SubBrandId)->delete();
         Session::put('message', 'Xóa danh mục sản phẩm thành công');
         return Redirect::to('view-subbrand');
+    }
+
+    public function save_subbrand(Request $request)
+    {
+        $data = array();
+        $data['SubBrandId'] = $request->SubBrandId;
+        $data['SubBrandName'] = $request->SubBrandName;
+        $data['BrandId'] = $request->BrandId;
+
+        DB::table('brand')->insert($data);
+        Session::put('message', 'Thêm thương hiệu nhánh thành công');
+        return Redirect::to('add-subbrand');
+    }
+
+    public function add_subbrand()
+    {
+        $this->auth_login();
+        $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        return view('admin.add_subbrand')
+        ->with('brand_list', $brand_list);
+    }
+
+    public function view_subbrand()
+    {
+        // // Lấy hết dữ liệu trong bảng subbrand
+        $all_subbrand = DB::table('subbrand')
+        ->join('brand','brand.BrandId','=','subbrand.BrandId')->get();
+        $manager_subbrand = view('admin.view_subbrand')->with('all_subbrand', $all_subbrand);
+        return view('admin_layout')->with('admin.view_subbrand', $manager_subbrand);
     }
 }

@@ -159,7 +159,7 @@
 																@endif
                                                             </div>
 															<div class="form-button-action">
-																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+																<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Cập nhật thương hiệu">
 																	<a href="{{URL::to('/update-brand/'.$brand->BrandId)}}" class="active" ui-toggle-class="">
 																		<i class="fa fa-edit text-active"></i>
 																	</a>

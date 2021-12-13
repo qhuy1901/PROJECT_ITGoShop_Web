@@ -74,7 +74,8 @@ Route::get('/active-subbrand/{SubBrandId}','App\Http\Controllers\BrandController
 
 Route::post('/save-brand','App\Http\Controllers\BrandController@save_brand');
 Route::post('/save-subbrand','App\Http\Controllers\BrandController@save_subbrand');
-Route::post('/update-brand/{id}','App\Http\Controllers\BrandController@update_brand');
+Route::get('/update-brand/{BrandId}','App\Http\Controllers\BrandController@update_brand');
+Route::post('/save-update-brand/{BrandId}','App\Http\Controllers\BrandController@save_update_brand');
 
 // Sản phẩm (Product)
 Route::get('/add-product','App\Http\Controllers\ProductController@add_product');
