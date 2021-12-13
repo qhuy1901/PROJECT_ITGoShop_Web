@@ -51,7 +51,7 @@
 								<tr>
 									<td class="image" data-title="No" style="width: 60px; height: 60px;"><img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->options->image)}}" alt="#"></td>
 									<td class="product-des" data-title="Description">
-										<p class="product-name"><a href="{{URL::to('/product-detail/'.$item->id)}}">{{$item->name}}</a></p>
+										<p class="product-name"><a target="_blank" rel="noopener noreferrer" href="{{URL::to('/product-detail/'.$item->id)}}" style="text-decoration:none;color:black;">{{$item->name}}</a></p>
 									</td>
 									<td class="price" data-title="Price" data-value="{{$item->price}}" ><span>{{number_format($item->price, 0, " ", ".").' ₫'}}</span></td>
 									<td class="qty" data-title="Qty"><!-- Input Order -->
@@ -308,7 +308,7 @@
 			$(".delete-button").click( function(){
 				$(this).parent().parent().remove();
 				var ItemId = $(this).attr('id');
-				var numberProduct = $(this).parents('tr').find('.input-number').val();
+				// var numberProduct = $(this).parents('tr').find('.input-number').val();
 				$.ajax({
 					url: '{{URL::to('/remove-item')}}',
 					methed:"GET",
@@ -316,7 +316,7 @@
 					success:function(data)
 					{
 						load_cart();
-						$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - numberProduct);
+						//$('#so-luong-sp-gio-hang').text(Number($('#so-luong-sp-gio-hang').text()) - numberProduct);
 						swal({
 								title: "Thông báo",
 								text: "Đã xóa sản phẩm khỏi giỏ hàng!",

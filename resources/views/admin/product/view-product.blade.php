@@ -109,23 +109,10 @@
 														<th>Hành động</th>
 													</tr>
 												</thead>
-												<!-- <tfoot>
-													<tr>
-														<th>Name</th>
-														<th>Position</th>
-														<th>Office</th>
-														<th>Office</th>
-														<th>Age</th>
-														<th>Start date</th>
-														<th>Salary</th> 
-														<th>Salary</th>
-														<th>Salary</th>
-													</tr>
-												</tfoot> -->
 												<tbody>
 													@foreach($all_product as $key => $product)
 													<tr>
-														<td><a href="{{URL::to('/update-product/'.$product->ProductId)}}" class="active" ui-toggle-class="" style="color:black">{{$product->ProductName}}</a></td>
+														<td><a target="_blank" rel="noopener noreferrer" href="{{URL::to('/product-detail/'.$product->ProductId)}}" style="text-decoration:none;color:black;" class="active" ui-toggle-class="">{{$product->ProductName}}</a></td>
 														<td>{{$product->CategoryName}} 
 														<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
 														</td>

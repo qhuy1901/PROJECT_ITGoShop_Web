@@ -32,7 +32,7 @@
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title">Thư viện ảnh của sản phẩm <a href="#">#{{$ProductId}}</a></h4>
+										<h4 class="card-title">Thư viện ảnh của sản phẩm <a target="_blank" rel="noopener noreferrer" href="{{URL::to('/product-detail/'.$ProductId)}}" style="text-decoration:none;color:black;">#{{$ProductId}}</a></h4>
 										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
 											<i class="fa fa-plus"></i>
 												Thêm ảnh vào thư viện
@@ -77,16 +77,6 @@
 									
 									<div class="table-responsive">
 										<div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-											
-											<?php
-												$message = Session::get('message');
-												if($message)
-												{
-													echo '<label>'.$message.'</label>';
-													Session::put('message', null);
-												}
-											?>
-											
 											<table id="multi-filter-select" class="display table table-striped table-hover" >
 												<thead>
 													<tr>

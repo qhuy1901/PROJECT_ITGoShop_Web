@@ -244,3 +244,8 @@ Route::get('/print-customer-report/{tu_ngay}/{den_ngay}','App\Http\Controllers\R
 Route::get('/print-customer-report','App\Http\Controllers\ReportController@print_default_customer_report');
 Route::post('/load-customer-chart','App\Http\Controllers\ReportController@load_customer_chart');
 
+//Rating
+Route::get('/view-rating','App\Http\Controllers\RatingController@view_rating');
+Route::get('/unactive-rating','App\Http\Controllers\RatingController@unactive_rating');
+Route::get('/active-rating','App\Http\Controllers\RatingController@active_rating');
+Route::get('/delete-rating','App\Http\Controllers\RatingController@delete_rating');

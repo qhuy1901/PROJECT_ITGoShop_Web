@@ -97,8 +97,6 @@
 	<link rel="stylesheet" href="{{asset('./public/client/css/jquery.fancybox.min.css')}}">
 	<!-- Themify Icons -->
 	<link rel="stylesheet" href="{{asset('./public/client/css/themify-icons.css')}}">
-	<!-- Nice Select CSS -->
-	<!-- <link rel="stylesheet" href="{{asset('./public/client/css/niceselect.css')}}"> -->
 	<!-- Animate CSS -->
 	<link rel="stylesheet" href="{{asset('./public/client/css/animate.css')}}">
 	<!-- Flex Slider CSS -->
@@ -192,7 +190,7 @@
 			</form> 
 			@csrf           
 			<div class="ps-cart"><a class="ps-cart__toggle" href="{{URL::to('/show-cart')}}" title="Giỏ hàng">
-				<span><i id="so-luong-sp-gio-hang"></i></span>
+				<span><i id="so-luong-sp-gio-hang">0</i></span>
 				<i  class="fa fa-shopping-cart" aria-hidden="true"></i></a>
 			  	<div class="ps-cart__listing">
 					  <div id="load_card"></div>
@@ -319,15 +317,7 @@
 		</div>
 	</footer>
 	<!-- /End Footer Area -->
- 
-	<!-- <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
-	<!-- Sweet Alert -->
-	<!-- <a href="{{URL::to('/load-cart-quantity')}}">Quang</a> -->
-
-	
-
-	
+	<!-- <a href="{{URL::to('/remove-item')}}">Quang</a> -->
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('#sort').on('change',function(){
@@ -376,6 +366,24 @@
 			load_cart();
 			load_cart_quantity();
 			setInterval(load_cart_quantity, 2000);
+			$('body').on("click", ".delete-button-in-nav", function(){
+				$(this).parent().remove();
+				var ItemId = $(this).parent().find('.item-id-for-cart').val();
+				$.ajax({
+					url: '{{URL::to('/remove-item')}}',
+					methed:"GET",
+					data:{id: ItemId},
+					success:function(data)
+					{
+						load_cart();
+						load_cart_quantity();
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}
+				});
+			});
 		});
 		function load_cart_quantity()
 		{

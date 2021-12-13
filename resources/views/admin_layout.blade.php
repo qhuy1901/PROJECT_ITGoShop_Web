@@ -457,28 +457,12 @@
 								<p>Bình luận</p>
 							</a>							
 						</li>
-						<!--<li class="nav-item">
-							<a data-toggle="collapse" href="#maps">
-								<i class="fas fa-pen-square"></i>
-								<p>Quản lý Campaign</p>
-								<span class="caret"></span>
+						<li class="nav-item">
+							<a href="{{URL::to('/view-rating')}}">
+								<i class="fas fa-star"></i>
+								<p>Đánh giá</p>
 							</a>
-							<div class="collapse" id="maps">
-								<ul class="nav nav-collapse">
-									<li>
-										<a href="{{URL::to('/add_campaign')}}">
-											<span class="sub-item">Thêm campaign</span>
-										</a>
-									</li>
-									<li>
-										<a href="{{URL::to('/all_campaign')}}">
-											<span class="sub-item">Tất cả campaign</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>-->
-						
+						</li>
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#vanchuyen">
 								<i class="fas fa-shipping-fast"></i>

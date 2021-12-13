@@ -78,7 +78,7 @@
 												<td style=" height:80px">
 													<img style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$item->options->image)}}" alt="">
 												</td>
-												<td>{{$item->name}}</td>
+												<td><a target="_blank" rel="noopener noreferrer" href="{{URL::to('/product-detail/'.$item->id)}}" style="text-decoration:none;color:black;">{{$item->name}}</a></td>
 												<td>{{number_format($item->price, 0, " ", ".").' ₫'}}</td>
 												<td style="text-align:center">x{{$item->qty}}</td>
 												<td><?php $subtotal = $item->price * $item->qty;  echo number_format($subtotal, 0, " ", ".").' ₫'; ?></td>

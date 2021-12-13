@@ -110,7 +110,9 @@ class CartController extends Controller
             foreach($content as $item)
             {
                 $image = $item->options->image; 
-                $output .='<div class="ps-cart-item"><a class="ps-cart-item__close" href="#"></a>
+                $output .='<div class="ps-cart-item">
+                <input type="hidden" class="item-id-for-cart" value="'.$item->rowId.'"/>
+                <a class="ps-cart-item__close delete-button-in-nav" href="javascript:void(0)"></a>
                 <div class="ps-cart-item__thumbnail">
                     <a href="'.url("/product-detail/".$item->id).'"></a><img src="'.url("public/images_upload/product/$image").'" alt="">
                 </div>
