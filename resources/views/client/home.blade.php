@@ -163,36 +163,7 @@
 	<section class="small-banner section">
 		<div class="container">
 			<div class="row">
-			<!--@foreach($new_product as $key => $product)
-				<div class="col-lg-4 col-md-6">
-					<div class="single-banner" style="width: 350px; height: 185.25px; ">
-						<img src="{{URL::to('public/images_upload/banner-slider/'.$product->SliderImage)}}"  alt="#" style="border-radius: 10px;margin: auto; width: 350px; height: 185.25px;">
-						<div class="content">
-							<p>{{$product->CategoryName}}</p>
-							<h3>{{$product->ProductName}}</h3>
-							<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">Xem Chi Tiết</a>
-						</div>
-					</div>
-				</div>
-			@endforeach
-				<div class="col-lg-4 col-md-6">
-					<div class="single-banner">
-						<img src="./public/client/Images/pannel/2.png" alt="#" style="border-radius: 10px;">
-						<div class="content">
-							<p>Logitech Collectons</p>
-							<h3>Tai nghe Gaming <br> Logitech G335</h3>
-							<a href="{{URL::to('/product-detail2/')}}">Xem Chi Tiết</a>
-						</div>
-					</div>
-				</div>
-				@foreach($list_campaign as $key => $campaign)
-				<div class="col-lg-4">
-					<div class="single-banner tab-height" style="width: 350px; height: 185.25px;">
-						<a href="{{URL::to('/campaign/'.$campaign->CampaignId)}}" style="border-radius: 10px;margin: auto; width: 350px; height: 185.25px;"><img href="{{URL::to('/campaign/'.$campaign->CampaignId)}}" src="{{URL::to('public/images_upload/campaign/'.$campaign->CampaignImage)}}" alt="#" style="border-radius: 10px;"></a>
-						
-					</div>
-				</div>
-				@endforeach-->
+			
 				<div class="product-area most-popular section">
 					<div class="container">
 						<div class="row">

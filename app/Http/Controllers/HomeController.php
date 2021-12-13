@@ -23,10 +23,6 @@ class HomeController extends Controller
         ->where('SliderStatus', '=', 1)
         ->orderby('CreatedAt', 'desc')
         ->limit(8)->get();
-
-        $list_campaign = DB::table('campaign')->limit(1)->get();
-
-
         $latestnew = DB::table('blog')
         ->select('bannerslider.*','blog.*' )
         ->join('bannerslider', 'blog.BlogId', '=', 'bannerslider.BlogId')
@@ -101,7 +97,6 @@ class HomeController extends Controller
         ->with('latestnew', $latestnew)
         ->with('top_view', $top_view)
         ->with('new_product', $new_product)
-        ->with('list_campaign', $list_campaign)
         ->with('giam_gia_soc', $giam_gia_soc)
         ->with('PC_product', $PC_product)
         ->with('LT_product', $LT_product)
