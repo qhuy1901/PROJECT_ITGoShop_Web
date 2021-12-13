@@ -31,8 +31,6 @@
 					</div>
 				</div>
 				@endforeach
-				
-
 				<div style="margin: 20px 0px;">
 					<h3><a href="{{URL::to('/all_blog')}}" style="text-decoration:none;  "><b>Tất cả tin tức <i class="fa fa-angle-right" style="color:#A2D2FF;" aria-hidden="true"></i></b></a></h3>
 				</div>
@@ -243,8 +241,7 @@
 														<div class="button-head">
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Yêu thích</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
+																<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
@@ -290,7 +287,6 @@
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
 																<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
@@ -336,7 +332,6 @@
 															<div class="product-action">
 																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
 																<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
-																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 																<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
 															</div>
 															<div class="product-action-2">

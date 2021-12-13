@@ -26,7 +26,7 @@ class HomeController extends Controller
         $latestnew = DB::table('blog')
         ->select('bannerslider.*','blog.*' )
         ->join('bannerslider', 'blog.BlogId', '=', 'bannerslider.BlogId')
-        ->orderby('DateCreate', 'asc')->limit(3)->get();
+        ->orderby('DateCreate', 'desc')->limit(3)->get();
         
         $dau_thangtruoc = Carbon::now('Asia/Ho_Chi_Minh')->subMonth()->startOfMonth()->toDateString();
         $now = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
