@@ -239,7 +239,7 @@ class OrderController extends Controller
         ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
         ->where('ShippingAddressId', '=', $order_info->ShippingAddressId)->first();
 
-        return View('report.print-invoice2')
+        return View('report.print-invoice')
         ->with('order_detail',  $order_detail)
         ->with('order_info',  $order_info)
         ->with('default_shipping_address',  $default_shipping_address);;

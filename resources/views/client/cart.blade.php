@@ -19,10 +19,10 @@
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
-	<div class="shopping-cart section">
+	<div class="shopping-cart section ">
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-lg-9">
+				<div class="col-12 col-lg-9 pb-100">
 					<!-- Shopping Summery -->
 					<?php
 						$content = Cart::content();
@@ -112,80 +112,13 @@
                     </div>
                 </div>
 			</div>
-			<div class="row">
-                <div class="col-12">
-                    <!-- Total Amount -->
-                    <div class="total-amount">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-5 col-12">
-                                <div class="left">
-                                    <div class="coupon">
-                                        <form action="#" target="_blank">
-                                            <input name="Coupon" placeholder="Enter Your Coupon">
-                                            <button class="btn">Apply</button>
-                                        </form>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox"> Shipping (+10$)</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-7 col-12">
-                                <div class="right" style="height:200px">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/ End Total Amount -->
-                </div>
-            </div>
+			
 		</div>
 	</div>
 	<!--/ End Shopping Cart -->
 		
 	<!-- Start Shop Services Area -->
-	<section class="shop-services section home">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Miễn phí vận chuyển</h4>
-						<p>Đơn đặt hàng trên 1.000.000VND</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-reload"></i>
-						<h4>Miễn phí đổi trả</h4>
-						<p>Trong vòng 30 ngày</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-lock"></i>
-						<h4>Bảo mật tuyệt đối</h4>
-						<p>100% thanh toán an toàn</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-tag"></i>
-						<h4>Giá tốt nhất</h4>
-						<p>Quà tặng và ưu đãi hấp dẫn</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-			</div>
-		</div>
-	</section>
+	
 	<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">

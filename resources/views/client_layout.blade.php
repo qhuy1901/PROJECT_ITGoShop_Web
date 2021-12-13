@@ -225,7 +225,7 @@
 <!--/ End Header -->
 
 @yield('client_content')
-	
+
 	<!-- Start Footer Area -->
 	<footer class="footer">
 		<!-- Footer Top -->

@@ -163,36 +163,7 @@
 	<section class="small-banner section">
 		<div class="container">
 			<div class="row">
-			<!--@foreach($new_product as $key => $product)
-				<div class="col-lg-4 col-md-6">
-					<div class="single-banner" style="width: 350px; height: 185.25px; ">
-						<img src="{{URL::to('public/images_upload/banner-slider/'.$product->SliderImage)}}"  alt="#" style="border-radius: 10px;margin: auto; width: 350px; height: 185.25px;">
-						<div class="content">
-							<p>{{$product->CategoryName}}</p>
-							<h3>{{$product->ProductName}}</h3>
-							<a href="{{URL::to('/product-detail/'.$product->ProductId)}}">Xem Chi Tiết</a>
-						</div>
-					</div>
-				</div>
-			@endforeach
-				<div class="col-lg-4 col-md-6">
-					<div class="single-banner">
-						<img src="./public/client/Images/pannel/2.png" alt="#" style="border-radius: 10px;">
-						<div class="content">
-							<p>Logitech Collectons</p>
-							<h3>Tai nghe Gaming <br> Logitech G335</h3>
-							<a href="{{URL::to('/product-detail2/')}}">Xem Chi Tiết</a>
-						</div>
-					</div>
-				</div>
-				@foreach($list_campaign as $key => $campaign)
-				<div class="col-lg-4">
-					<div class="single-banner tab-height" style="width: 350px; height: 185.25px;">
-						<a href="{{URL::to('/campaign/'.$campaign->CampaignId)}}" style="border-radius: 10px;margin: auto; width: 350px; height: 185.25px;"><img href="{{URL::to('/campaign/'.$campaign->CampaignId)}}" src="{{URL::to('public/images_upload/campaign/'.$campaign->CampaignImage)}}" alt="#" style="border-radius: 10px;"></a>
-						
-					</div>
-				</div>
-				@endforeach-->
+			
 				<div class="product-area most-popular section">
 					<div class="container">
 						<div class="row">
@@ -664,19 +635,11 @@
 	<!-- End Shop Home List  -->
 	
 	<!-- Start Shop Services Area -->
-	<section class="shop-services section home">
+	<section class="shop-services section home pb-80">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Miễn phí vận chuyển</h4>
-						<p>Đơn đặt hàng trên 1.000.000VND</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
+				
+				<div class="col-lg-4 col-md-6 col-12">
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-reload"></i>
@@ -685,7 +648,7 @@
 					</div>
 					<!-- End Single Service -->
 				</div>
-				<div class="col-lg-3 col-md-6 col-12">
+				<div class="col-lg-4 col-md-6 col-12">
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-lock"></i>
@@ -694,7 +657,7 @@
 					</div>
 					<!-- End Single Service -->
 				</div>
-				<div class="col-lg-3 col-md-6 col-12">
+				<div class="col-lg-4 col-md-6 col-12">
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-tag"></i>
@@ -706,7 +669,6 @@
 			</div>
 		</div>
 	</section>
-	<!-- End Shop Services Area -->
 	
 	<!-- Start Shop Blog  -->
 	<section class="shop-blog section">
