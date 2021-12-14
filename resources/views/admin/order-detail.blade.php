@@ -84,7 +84,7 @@
                               @foreach($order_detail as $key => $item)
                               <tr>
                                     <td>
-                                    <div class="info" > <img style="margin-right:20px;" src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item"><a href="{{URL::to('/product-detail/'.$item->ProductId)}}"></a> {{$item->ProductName}}  </div>
+                                    <div class="info" > <img style="margin-right:20px;" src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" width="40" height="40" class="img-xs" alt="Item"><a></a> {{$item->ProductName}}  </div>
 
                                     </td>
                                     <td> {{number_format($item->UnitPrice, 0, " ", ".").' ₫'}} </td>

@@ -39,7 +39,7 @@
                 <div class="receipt bg-white p-5 rounded">
                     <div class="row" style="background-color: #A2D2FF; padding-top: 15px; padding-bottom: 15px;">
                         <div class="col-md-5 ">
-                            <img src="/public/client/Images/logo2.png" alt="" style="display: block; margin-left: auto; margin-right: auto;  padding-top: 20px; float: center;">
+                            <img src="{{URL::to('public/client/Images/logo2.png')}}" alt="" style="display: block; margin-left: auto; margin-right: auto;  padding-top: 20px; float: center;">
                             <p style="color:#333;font-weight: bold; text-align: center;">Hệ thống máy tính và phụ kiện</p>
                         </div>
                         <div class="col-md-6">
@@ -75,7 +75,7 @@
                     @foreach($order_detail as $item)
                     <div class="d-flex justify-content-between align-items-center product-details">
                         <div class="d-flex flex-row product-name-image"><img class="rounded"
-                                src="https://i.imgur.com/GsFeDLn.jpg" width="80">
+                                src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" width="80">
                             <div class="d-flex flex-column justify-content-between ml-2">
                                 <div>
                                     <span class="d-block font-weight-bold p-name">{{$item->ProductName}}</span>
