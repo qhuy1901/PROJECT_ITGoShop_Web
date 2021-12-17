@@ -14,8 +14,7 @@
 						<li><a href="{{URL::to('/')}}">Trang chủ<i class="ti-arrow-right"></i></a></li>
 						<li class="active"><a href="{{URL::to('/')}}">Tài khoản<i class="ti-arrow-right"></i></a></li>
                         <li class="active"><a href="{{URL::to('/my-orders')}}">Đơn hàng của tôi<i class="ti-arrow-right"></i></a></li>
-                        <li class="active"><a href="{{URL::to('/my-orders')}}">Chi tiết đơn hàng<i class="ti-arrow-right"></i></a></li>
-						<li class="active"><a href="{{URL::to('/my-orders')}}">Theo dõi đơn hàng</a></li>
+                        <li class="active"><a href="{{URL::to('/my-orders')}}">Chi tiết đơn hàng</a></li>
 					</ul>
 				</div>
 			</div>
@@ -30,7 +29,7 @@
 				$avt = "default-user-icon.png";
 			$firstName = Session::get('CustomerFirstName');
 			$lastName = Session::get('CustomerLastName');
-            $fullname = $lastName.' '.$firstName ;
+            $fullname = $lastName.' '.$firstName;
 	?>
 
 	<!-- Start Contact -->

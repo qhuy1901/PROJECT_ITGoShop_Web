@@ -139,7 +139,6 @@
 					</div>
 					<div class="col-12">
 									<div class="comments">
-									
 										<h3 class="comment-title" >
 											<a style="font-weight: bold; text-transform:none">Đánh giá - Nhận xét từ khách hàng</a>
 										</h3>
@@ -309,10 +308,7 @@
 												<p style="text-align:center; margin-top:20px">Chưa có đánh giá nào cho sản phẩm này</p>
 											</div>
 										</div>
-											
 										@endif
-
-
 										<h3 class="comment-title" >
 											<a style="font-weight: bold;">Bình luận</a>
 										</h3>

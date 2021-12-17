@@ -10,6 +10,28 @@ use Illuminate\Support\Facades\Redirect;
 
 class RatingController extends Controller
 {
+    public function add_rating(Request $request)
+    {
+        $data = array();
+        $data['Rating'] = $request->Rating;
+        $data['Title'] = $request->Title;
+        $data['Content'] = $request->Content;
+        $data['ProductId'] = $request->ProductId;
+        $data['UserId'] = Session::get('CustomerId');
+        DB::table('productrating')->insert($data);
+    }
+
+    public function is_rating_exit(Request $request)
+    {
+        $productId = $request->ProductId;
+        $userId = Session::get('CustomerId');
+        $info = DB::table('productrating')->where('UserId', $userId)->where('ProductId', $productId)->First();
+        if($info)
+            echo 1;
+        else
+            echo 0;
+    }
+    
     public function view_rating()
     {
         $all_rating = DB::table('productrating')
@@ -27,7 +49,7 @@ class RatingController extends Controller
         ->where('UserId', $request->UserId)
         ->where('ProductId', $request->ProductId)
         ->update(['ProductRatingStatus'=>1]); 
-    }
+    } 
 
     public function unactive_rating(Request $request)
     {

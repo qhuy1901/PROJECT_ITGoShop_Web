@@ -25,12 +25,14 @@
             $CustomerId = Session::get('CustomerId');
             $avt = Session::get('CustomerImage');
 			if($avt == '')
+			{
 				$avt = "default-user-icon.png";
-				$firstName = Session::get('CustomerFirstName');
-				$lastName = Session::get('CustomerLastName');
-				$fullname = $lastName.' '.$firstName ;
+			}
+			$firstName = Session::get('CustomerFirstName');
+			$lastName = Session::get('CustomerLastName');
+			$fullname = $lastName.' '.$firstName ;
 	?>	
-
+ 
 	<!-- Start Contact -->
 	<div class="row gutters-sm pt-45 pl-60 pr-60 pb-80">
             <div class="col-md-3 mb-4">

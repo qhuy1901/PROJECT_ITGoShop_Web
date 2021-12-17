@@ -164,7 +164,7 @@
 					<!-- Form cập nhật địa chỉ -->
 					<div class="panel panel-default" id="form-sua-dia-chi">
 					<div class="panel-heading" style="background-color: #77ACF1;"><h4 style="color: white;"><b>Cập nhật địa chỉ giao hàng</b></h4></div>
-						<form class="sua-dia-chi" action="#" method="post">
+						<form class="sua-dia-chi" action="{{URL::to('/update-shipping-address')}}" method="post">
 							{{ csrf_field() }} 
 							<div class="panel-body"> 
 								<div class="row"> 
@@ -226,7 +226,7 @@
 									</div>
 									<div class='btn-group mr-2' role='group' aria-label='Second group'> 
 										<button type='submit' class="button-cap-nhat-dia-chi" style='padding: 15px; background-color: #333333; color: white;font-size: 14px;'>Cập nhật</button>
-										<input type="text" id="input-shipping-address-id" value="" hidden>
+										<input type="text" id="input-shipping-address-id" name="ShippingAddressId" value="" hidden>
 									</div>
 								</div>
 							</div>

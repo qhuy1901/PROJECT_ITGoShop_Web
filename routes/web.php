@@ -163,9 +163,10 @@ Route::get('/load-xaphuongthitran-dropdownbox','App\Http\Controllers\ShippingAdd
 Route::post('/add-shipping-address','App\Http\Controllers\ShippingAddressController@add_shipping_address');
 Route::get('/delete-shipping-address','App\Http\Controllers\ShippingAddressController@delete_shipping_address');
 Route::get('/change-default-shipping-address/{ShippingAddressId}','App\Http\Controllers\ShippingAddressController@change_default_shipping_address');
-Route::get('/update-shipping-address','App\Http\Controllers\ShippingAddressController@update_shipping_address');
+Route::post('/update-shipping-address','App\Http\Controllers\ShippingAddressController@update_shipping_address');
 Route::get('/send-order-mail', 'App\Http\Controllers\OrderController@send_order_mail');
 Route::get('/send-complete-mail', 'App\Http\Controllers\OrderController@send_complete_mail');
+
 //Product Listing
 Route::get('/product-listing/{BrandId}', 'App\Http\Controllers\ProductListingController@product_listing');
 Route::get('/product-listing2/{CategoryId}', 'App\Http\Controllers\ProductListingController@product_listing2');

@@ -87,7 +87,7 @@
                 $(document).ready(function(){
                     $('body').on('blur', '.edit-extra-shipfee', function(){
                         var maqh = $(this).data('maqh');
-                        var ExtraShippingFee = $(this).text().replace('₫', '');
+                        var ExtraShippingFee = ($(this).text().replace('₫', '')).replace('.', '');
                         $(this).text(numberWithCommas(ExtraShippingFee) + " ₫");
                         $.ajax({
                             url: "{{URL::to('/update-extra-shipfee')}}",

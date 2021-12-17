@@ -76,7 +76,7 @@ class ReportController extends Controller
             ->select(['product.ProductId'])
             ->join('orderdetail','orderdetail.ProductId','=','product.ProductId')
             ->join('order','order.OrderId','=','orderdetail.OrderId')
-            ->whereDate('OrderDate','>=', $tu_ngay)
+            ->whereDate('OrderDate','>=', $sub14days)
             ->whereDate('OrderDate','<=', $now))->get();
 
         return View('report.print-product-report')

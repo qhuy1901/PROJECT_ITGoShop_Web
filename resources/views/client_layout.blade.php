@@ -124,7 +124,7 @@
 				<ul class="main-menu menu">
 				@foreach($product_category_list as $key => $category)
 					@if($category->CategoryId == "LT000")
-				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Laptop</a>
+				  	<li class="menu-item menu-item-has-children has-mega-menu"><a style="text-decoration:none" href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Laptop</a>
 						<div class="mega-menu">
 					  		<div class="mega-wrap">
 								@foreach($main_brand_list as $key => $main_brand)
@@ -149,7 +149,7 @@
 				@endforeach
 				@foreach($product_category_list as $key => $category)
 					@if ($category->CategoryId == "PC000")
-				  	<li class="menu-item menu-item-has-children has-mega-menu"><a href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">PC</a>
+				  	<li class="menu-item menu-item-has-children has-mega-menu"><a style="text-decoration:none" href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">PC</a>
 						<div class="mega-menu">
 							<div class="mega-wrap">
 										@foreach($main_brand_list as $key => $main_brand)
@@ -174,10 +174,10 @@
 				@endforeach
 				@foreach($product_category_list as $key => $category)
 					@if ($category->CategoryId == "PK000")
-						<li class="menu-item"><a href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Phụ Kiện</a></li>
+						<li class="menu-item"><a style="text-decoration:none" href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Phụ Kiện</a></li>
 					@endif
 				@endforeach
-					<li class="menu-item"><a href="{{URL::to('/all_blog')}}">Tin Tức</a></li>
+					<li class="menu-item"><a style="text-decoration:none" href="{{URL::to('/all_blog')}}">Tin Tức</a></li>
 				</ul>
 				
 		  </div>

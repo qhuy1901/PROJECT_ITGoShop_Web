@@ -59,6 +59,7 @@ class ShipMethodController extends Controller
         return View('admin.ship.view-extra-shipfee')
         ->with('extra_shipfee', $extra_shipfee);
     }
+    
     public function update_extra_shipfee(Request $request)
     {
         $extra_shippingfee = $request->ExtraShippingFee;

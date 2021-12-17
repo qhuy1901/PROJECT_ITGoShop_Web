@@ -109,8 +109,11 @@ class ShippingAddressController extends Controller
         $data = array();
         $data['ReceiverName'] = $request->ReceiverName;
         $data['Phone'] = $request->Phone;
-        $data['Address'] = $request->Address;
-        $data['ShippingAddressType'] = $request->AddressType;
+        $data['Address'] = $request->diachi;
+        $data['ShippingAddressType'] = $request->addressType;
+        $data['maqh'] = $request->quanhuyen;
+        $data['matp'] = $request->tinhthanhpho;
+        $data['xaid'] = $request->xaphuongthitran;
         DB::table('shippingaddress')->where('ShippingAddressId', '=', $request->ShippingAddressId)->update($data);
         return Redirect::to('/show-shipping-address');
     }

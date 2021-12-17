@@ -287,10 +287,6 @@
 			</div>
 		</section>
 			<!-- FRAMEWORK -->
-			<style>
-/* The Modal (background) */
-
-</style>
 			<script>
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
