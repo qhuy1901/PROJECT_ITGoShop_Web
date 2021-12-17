@@ -78,7 +78,7 @@
 					</div>
 				</div>
 			</div>
-            <a href="{{URL::to('/update-extra-shipfee')}}">Hello</a>
+            <!--<a href="{{URL::to('/update-extra-shipfee')}}">Hello</a>-->
             <script>
                 function numberWithCommas(x) // Hàm để format tiền
                 {

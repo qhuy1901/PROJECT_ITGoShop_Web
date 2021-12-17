@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Hoá Đơn #</title>
+    <title>In đơn hàng #{{$order_info->OrderId}}</title>
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">	<!-- StyleSheet -->
@@ -39,7 +39,7 @@
                 <div class="receipt bg-white p-5 rounded">
                     <div class="row" style="background-color: #A2D2FF; padding-top: 15px; padding-bottom: 15px;">
                         <div class="col-md-5 ">
-                            <img src="/public/client/Images/logo2.png" alt="" style="display: block; margin-left: auto; margin-right: auto;  padding-top: 20px; float: center;">
+                            <img src="{{URL::to('public/client/Images/logo2.png')}}" alt="" style="display: block; margin-left: auto; margin-right: auto;  padding-top: 20px; float: center;">
                             <p style="color:#333;font-weight: bold; text-align: center;">Hệ thống máy tính và phụ kiện</p>
                         </div>
                         <div class="col-md-6">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <h4 class="mt-4 mb-3" style="text-align: center;"> <b>HOÁ ĐƠN</h4>
-                        <h6 class="name">Chào Quang Huy,</h6>
+                        <h6 class="name">Chào {{$order_info->LastName}} {{$order_info->FirstName}},</h6>
                         <span class="fs-14 text-black-50">đây là chi tiết hoá đơn của bạn!</span>
                    
                     <hr>
@@ -62,54 +62,45 @@
                         </div>
                         <div>
                             <span class="d-block fs-14">ID Đơn Hàng</span>
-                            <span class="font-weight-bold">OD44434324</span>
+                            <span class="font-weight-bold">{{$order_info->OrderId}}</span>
                         </div>
                         <div><span class="d-block fs-14">Hình Thức Thanh Toán</span>
-                            <span class="font-weight-bold">Thanh toán online</span>
+                            <span class="font-weight-bold">{{$order_info->PaymentMethod}}</span>
                         </div>
                         <div><span class="d-block fs-14">Đơn Vị Giao Hàng</span><span
-                                class="font-weight-bold text-success">Giao Hàng Nhanh</span></div>
+                                class="font-weight-bold text-success">{{$order_info->ShipMethod}}</span></div>
                     </div>
                     <hr>
+                    <?php $sum = 0?>
+                    @foreach($order_detail as $item)
                     <div class="d-flex justify-content-between align-items-center product-details">
                         <div class="d-flex flex-row product-name-image"><img class="rounded"
-                                src="https://i.imgur.com/GsFeDLn.jpg" width="80">
+                                src="{{URL::to('public/images_upload/product/'.$item->ProductImage)}}" width="80">
                             <div class="d-flex flex-column justify-content-between ml-2">
                                 <div>
-                                    <span class="d-block font-weight-bold p-name">Dell Inspiron All in One 24" 5400</span>
+                                    <span class="d-block font-weight-bold p-name">{{$item->ProductName}}</span>
                                 </div>
-                                <span class="fs-12">Số lượng: x1</span>
+                                <span class="fs-12">Số lượng: x{{$item->OrderQuantity}}</span>
                             </div>
                         </div>
                         <div class="product-price">
-                            <h5>19.890.000 ₫</h5>
+                            <h5>{{number_format($item->UnitPrice, 0, " ", ".").' ₫'}}</h5>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center product-details">
-                        <div class="d-flex flex-row product-name-image"><img class="rounded"
-                                src="https://i.imgur.com/GsFeDLn.jpg" width="80">
-                            <div class="d-flex flex-column justify-content-between ml-2">
-                                <div>
-                                    <span class="d-block font-weight-bold p-name">Dell Inspiron All in One 24" 5400</span>
-                                </div>
-                                <span class="fs-12">Số lượng: x1</span>
-                            </div>
-                        </div>
-                        <div class="product-price">
-                            <h5>19.890.000 ₫</h5>
-                        </div>
-                    </div>
+                    <?php $sum += $item->UnitPrice * $item->OrderQuantity?>
+                    @endforeach
+                    
                     <div class="mt-5 amount row">
                         <div class="col-md-6"></div>
                         <div class="col-md-6">
                             <div class="billing">
                                 <div class="d-flex justify-content-between">
                                     <span>Tạm Tính</span>
-                                    <span class="font-weight-bold">₫</span>
+                                    <span class="font-weight-bold">{{number_format($sum, 0, " ", ".").' ₫'}}</span>
                                 </div>
                                 <div class="d-flex justify-content-between mt-2">
                                     <span>Phí Vận Chuyển</span>
-                                    <span class="font-weight-bold">đ</span>
+                                    <span class="font-weight-bold">{{number_format($order_info->ShipFee, 0, " ", ".").' ₫'}}</span>
                                 </div>
                                 <div class="d-flex justify-content-between mt-2"><span
                                         class="text-success">Giảm Giá</span><span
@@ -117,7 +108,7 @@
                                 <hr>
                                 <div class="d-flex justify-content-between mt-1"><span
                                         class="font-weight-bold">Tổng Cộng</span><span
-                                        class="font-weight-bold text-success">đ</span></div>
+                                        class="font-weight-bold text-success">{{number_format($order_info->Total, 0, " ", ".").' ₫'}}</span></div>
                             </div>
                         </div>
                     </div>
@@ -125,9 +116,9 @@
                         <div class="col-md-6">
                             <div class="billing" style="background-color: #A2D2FF;;padding: 15px;">
                                 <span >
-                                    Người nhận hàng: Tạ Quang Huy
-                                    <br>Số điện thoại: 0365990290
-                                    <br>Địa chỉ: 220/17 khu phố 9 phường Tam Hiệp, TP.Biên Hòa, tỉnh Đồng Nai</br>
+                                    Người nhận hàng: {{$order_info->LastName}} {{$order_info->FirstName}}
+                                    <br>Số điện thoại: {{$order_info->Mobile}}
+                                    <br>Địa chỉ: {{$default_shipping_address->Address. ", " .$default_shipping_address->xaphuongthitran. ", " .$default_shipping_address->quanhuyen. ", " .$default_shipping_address->tinhthanhpho}}</br>
                                 </span>
                             </div>
                         </div>
