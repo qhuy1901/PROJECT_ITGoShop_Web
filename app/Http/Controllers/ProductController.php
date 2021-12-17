@@ -334,7 +334,8 @@ class ProductController extends Controller
 
     public function export_product()
     {
-        return Excel::download(new ProductExport , 'product.xlsx');
+        $sheet = new ProductExport;
+        return Excel::download($sheet , 'product.xlsx');
     }
 
     public function import_product(Request $request)

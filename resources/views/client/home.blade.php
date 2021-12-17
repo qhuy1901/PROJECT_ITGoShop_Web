@@ -27,7 +27,7 @@
 				@foreach($latestnew as $key => $new)
 				<div class="card" style="margin-bottom:10px; border-radius:  10px 10px 0px 0px;background-color:#ccf2f4; border-left: 6px solid #A2D2FF; border-bottom: 6px solid #A2D2FF;">
 					<div class="card-body">
-						<a style="color:#333; font-size:17px;" href="{{URL::to('/blog-detail/'.$new->BlogId)}}"><b>{{$new->Title}}</b></a>
+						<a style="color:#333; font-size:17px;text-decoration:none;" href="{{URL::to('/blog-detail/'.$new->BlogId)}}"><b>{{$new->Title}}</b></a>
 					</div>
 				</div>
 				@endforeach
