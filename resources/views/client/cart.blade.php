@@ -19,7 +19,7 @@
 	<!-- End Breadcrumbs -->
 			
 	<!-- Shopping Cart -->
-	<div class="shopping-cart section ">
+	<div class="shopping-cart section pb-80 ">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-lg-9 pb-100">
@@ -118,7 +118,40 @@
 	<!--/ End Shopping Cart -->
 		
 	<!-- Start Shop Services Area -->
-	
+	<section class="shop-services section home pt-100 pb-100">
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-reload"></i>
+						<h4>Miễn phí đổi trả</h4>
+						<p>Trong vòng 30 ngày</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-lock"></i>
+						<h4>Bảo mật tuyệt đối</h4>
+						<p>100% thanh toán an toàn</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-tag"></i>
+						<h4>Giá tốt nhất</h4>
+						<p>Quà tặng và ưu đãi hấp dẫn</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+			</div>
+		</div>
+	</section>
 	<!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">

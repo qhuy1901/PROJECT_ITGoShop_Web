@@ -32,7 +32,7 @@
                         <div class="card-header">
                             <div class="card-title">Thêm thương hiệu nhánh</div>
                         </div>
-                        <form role="form" action="/BrandManagement/SaveSubBrand" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{URL::to('/save-subbrand')}}" method="post" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-12">

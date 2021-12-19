@@ -61,6 +61,8 @@ Route::post('/update-product-category/{CategoryId}','App\Http\Controllers\Produc
 
 // Thương hiệu sản phẩm (Brand)
 Route::get('/view-brand','App\Http\Controllers\BrandController@view_brand');
+Route::get('/add-brand','App\Http\Controllers\BrandController@add_brand');
+
 Route::get('/add-subbrand','App\Http\Controllers\BrandController@add_subbrand');
 Route::get('/view-subbrand','App\Http\Controllers\BrandController@view_subbrand');
 Route::get('/update-brand/{BrandId}','App\Http\Controllers\BrandController@get_brand_info');

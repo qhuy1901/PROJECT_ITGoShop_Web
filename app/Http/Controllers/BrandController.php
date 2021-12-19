@@ -48,6 +48,15 @@ class BrandController extends Controller
         ->with('brand_info', $brand_info)
         ->with('all_category', $all_category);
     }
+    public function add_brand()
+    {
+        $this->auth_login();
+        $brand_list = DB::table('brand')->orderby('BrandId', 'desc')->get();
+        $all_category = DB::table('category')->get();
+        return view('admin.brand.add_brand')
+        ->with('all_category', $all_category)
+        ->with('brand_list', $brand_list);
+    }
 
     public function save_brand(Request $request)
     {
