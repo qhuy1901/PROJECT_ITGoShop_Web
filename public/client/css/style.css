@@ -4103,7 +4103,7 @@ textarea.form-control {
   background-color: #fff;
   -webkit-transition: all 0.4s ease;
   -moz-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  transition: all 0.8s ease;
   -webkit-transform: translateY(-30px);
   -moz-transform: translateY(-30px);
   -ms-transform: translateY(-30px);
