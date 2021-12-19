@@ -177,7 +177,11 @@
 						<li class="menu-item"><a style="text-decoration:none" href="{{URL::to('/product-listing2/'.$category->CategoryId)}}">Phụ Kiện</a></li>
 					@endif
 				@endforeach
-					<li class="menu-item"><a style="text-decoration:none" href="{{URL::to('/all_blog')}}">Tin Tức</a></li>
+				@foreach($product_category_list as $key => $category)
+					@if ($category->CategoryId == "BL000")
+						<li class="menu-item"><a style="text-decoration:none" href="{{URL::to('/all_blog')}}">Tin Tức</a></li>
+					@endif
+				@endforeach
 				</ul>
 				
 		  </div>
