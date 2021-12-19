@@ -80,11 +80,15 @@
 															<h1 style="color:red; background-color:#FAFAFA;padding: 25px;font-weight: bold; ">
 																<!-- Gía sản phẩm -->			 
 																{{number_format($product_detail->Price).' '.' ₫'}}
+																@if($product_detail->Discount >0)
+																
 																					<sub style="color:black; font-size:15px "> 
 																						<!--  Phần giảm giá --> 
 																						<del>{{number_format($product_detail->Price + $product_detail->Price * $product_detail->Discount / 100 ).' '.' ₫'}}</del> 
 																						<span class="o-giam-gia">-{{$product_detail->Discount}}% </span> 
-																					</sub>										
+																					</sub>
+																@endif
+
 															</h1>
 														</div>
 														@if($product_detail->Quantity > 0)
@@ -349,14 +353,14 @@
 												</a>
 												<div class="button-head">
 													<div class="product-action">
-														<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product->View}}</span></a>
+														<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Lượt xem: {{$product_detail->View}}</span></a>
 														<a title="Wishlist" href="javascript:void(0)"><i class=" ti-heart "></i><span>Yêu thích</span></a>
-														<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
+														<input type="text" class="ProductId" value="{{$product_detail->ProductId}}" hidden>
 													</div>
 													<div class="product-action-2">
 														<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
-														<input type="text" value="{{$product->ProductId}}" hidden>
-														<input type="hidden" class="Quantity" value="{{$product->Quantity}}">
+														<input type="text" value="{{$product_detail->ProductId}}" hidden>
+														<input type="hidden" class="Quantity" value="{{$product_detail->Quantity}}">
 													</div>
 												</div>
 											</div>
