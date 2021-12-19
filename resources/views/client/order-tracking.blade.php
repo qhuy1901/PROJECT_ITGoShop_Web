@@ -243,10 +243,10 @@ body{
                 success:function(data){
                     $('#show-order-tracking').html(data);
                 },
-                error:function(data)
-                {
-                    alert("Lỗi");
-                }
+                // error:function(data)
+                // {
+                //     alert("Lỗi");
+                // }
             });
         }
         function load_order_status()
@@ -260,10 +260,10 @@ body{
                 success:function(data){
                     $('#OrderStatus').html(data);
                 },
-                error:function(data)
-                {
-                    alert("Lỗi status");
-                }
+                // error:function(data)
+                // {
+                //     alert("Lỗi status");
+                // }
             });
         }
     });

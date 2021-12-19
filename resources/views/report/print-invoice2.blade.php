@@ -24,22 +24,22 @@
             <div class="col-sm-1">
                  <img src="{{URL::to('public/client/Images/logo3.png')}}" alt="">
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-11">
                 <b>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ ITGOSHOP</b>
                 <p>Tầng 5, Số 117-119-121 Nguyễn Du, Phường Bến Thành, Quận 1, Thành Phố Hồ Chí Minh</p>
             </div>
-            <div class="col-sm-4" style="text-align: right;">
+            <!-- <div class="col-sm-4" style="text-align: right;">
                 <p style="color:#F70C72;font-weight: bold;">"Tất cả vì khách hàng"</p>
-            </div>
+            </div> -->
         </div>
         <hr style="margin:20px 0px 40px 0px">
         <div class="row" style="margin-bottom:40px;">
             <div class="col-md-12" style="text-align: center;">
                 <b style="font-size: 26px;">HÓA ĐƠN BÁN HÀNG</b>
-                <br><i>(Số hóa đơn: #{{$order_info->OrderId}})</i>
+                <br><p style="color:#F70C72;">(Số hóa đơn: #{{$order_info->OrderId}})</p>
             </div>
             <div class="col-md-12" style="text-align: right;">
-                <p>Ngày hóa đơn: 30/11/2021</p>
+                <i>Ngày hóa đơn: 30/11/2021</i>
                 <!-- <p>Người bán hàng: Lê Thị Hồng Cúc</p> -->
             </div>
         </div>
@@ -102,7 +102,7 @@
             <div class="col-md-4" style="text-align: center;">
                 <p style="margin:20px 0px 100px 0px">
                     <b>Khách hàng</b><br>
-                    <i>(Kí, đóng dấu và ghi rõ họ tên)</i>
+                    <i>(Kí và ghi rõ họ tên)</i>
                 </p>
                 
                 <p>{{$order_info->LastName}} {{$order_info->FirstName}}</p>

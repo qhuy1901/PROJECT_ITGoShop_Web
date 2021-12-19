@@ -130,7 +130,7 @@
                                             <div class="col-6 col-lg-6">	
                                                 <div class="form-group">
                                                         <label for="exampleFormControlFile1">Hình ảnh sản phẩm</label>
-                                                        <input type="file" name="product_image" class="form-control-file" id="exampleFormControlFile1">
+                                                        <input type="file" name="ProductImage" class="form-control-file" id="exampleFormControlFile1" accept="image/*">
 														<img src="{{URL::to('public/images_upload/product/'.$update_value->ProductImage)}}" style="margin: auto; max-width: 160px; max-height: 160px; width: auto; height: auto;">
                                                 </div>
 											</div>

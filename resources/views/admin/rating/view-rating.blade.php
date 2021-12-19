@@ -55,12 +55,11 @@
 												<tbody>
                                                     @foreach($all_rating as $item)
 													<tr>
-														<input type="text" class="UserId" value="{{$item->UserId}}" hidden>
-														<input type="text" class="ProductId" value="{{$item->ProductId}}" hidden>
 														<td>{{date("d-m-Y", strtotime($item->CreatedAt))}}</td>
 														<td><a target="_blank" rel="noopener noreferrer" href="{{URL::to('/product-detail/'.$item->ProductId)}}" style="text-decoration:none;color:black;">{{$item->ProductName}}</a></td>
                                                         <td>{{$item->LastName}} {{$item->FirstName}}</td>
                                                         <td>
+														<input type="text" class="UserId" value="{{$item->UserId}}" hidden><input type="text" class="ProductId" value="{{$item->ProductId}}" hidden>
 														<div class="star-wrapper" style="display: inline-block;font-size:6px">
 															@if($item->Rating == 5)
 															<a href="javascript:void(0)" class="fa fa-star s1" style="color:gold"></a>

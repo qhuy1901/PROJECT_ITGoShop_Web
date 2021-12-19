@@ -489,32 +489,44 @@
 	<script>
 		$('.add-to-cart-a-tag').click( function()
 			{
-				var productId = $(this).parent().find('input').val();
-				var numberOfProduct = Number($('#so-luong-sp-gio-hang').text()) + 1;
-				$.ajax({
-					url: '{{URL::to('/add-to-cart')}}',
-					methed:"GET",
-					data:{ProductId:productId, Quantity: 1},
-					success:function(data)
-					{
-						load_cart();
-						$('#so-luong-sp-gio-hang').text(numberOfProduct);
-						swal({
-								title: "Thông báo",
-								text: "Đã thêm sản phẩm vào giỏ hàng!",
-								icon: "success",
-								buttons: ["Tiếp tục mua hàng", "Xem giỏ hàng"],
-							}).then(function(isConfirm) {
-								if (isConfirm) {
-										window.location = "{{url('/show-cart')}}";
-								}
-							})
-					},
-					error:function(data)
-					{
-						alert('Error');
-					}
-				});
+				var productId = $(this).parent().find('input[type=text]').val();
+				//var numberOfProduct = Number($('#so-luong-sp-gio-hang').text()) + 1;
+				var Quantity = $(this).parent().find('.Quantity').val();
+				if(Quantity >= 1)
+				{
+					$.ajax({
+						url: '{{URL::to('/add-to-cart')}}',
+						methed:"GET",
+						data:{ProductId:productId, Quantity: 1},
+						success:function(data)
+						{
+							load_cart();
+							//$('#so-luong-sp-gio-hang').text(numberOfProduct);
+							swal({
+									title: "Thông báo",
+									text: "Đã thêm sản phẩm vào giỏ hàng!",
+									icon: "success",
+									buttons: ["Tiếp tục mua hàng", "Xem giỏ hàng"],
+								}).then(function(isConfirm) {
+									if (isConfirm) {
+											window.location = "{{url('/show-cart')}}";
+									}
+								})
+						},
+						error:function(data)
+						{
+							alert('Error');
+						}
+					});
+				}
+				else
+				{
+					swal({
+					title: "Không thể thêm sản phẩm",
+					text: "Sản phẩm đã hết hàng",
+					icon: "warning",
+					});
+				}	
 			});
 	</script>
 	<script type="text/javascript">

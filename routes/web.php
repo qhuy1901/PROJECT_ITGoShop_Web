@@ -223,11 +223,6 @@ Route::get('/delete-shipmethod','App\Http\Controllers\ShipMethodController@delet
 Route::get('/view-extra-shipfee','App\Http\Controllers\ShipMethodController@view_extra_shipfee');
 Route::get('/update-extra-shipfee','App\Http\Controllers\ShipMethodController@update_extra_shipfee');
 
-// Rating
-Route::get('/is-rating-exit','App\Http\Controllers\RatingController@is_rating_exit');
-Route::get('/add-rating','App\Http\Controllers\RatingController@add_rating');
-Route::get('/load-rating','App\Http\Controllers\RatingController@load_rating');
-
 //OrderTracking
 Route::get('/show-order-tracking/{OrderId}','App\Http\Controllers\OrderTrackingController@show_order_tracking');
 Route::post('/load-order-tracking','App\Http\Controllers\OrderTrackingController@load_order_tracking');
@@ -246,6 +241,9 @@ Route::get('/print-customer-report','App\Http\Controllers\ReportController@print
 Route::post('/load-customer-chart','App\Http\Controllers\ReportController@load_customer_chart');
 
 //Rating
+Route::get('/is-rating-exit','App\Http\Controllers\RatingController@is_rating_exit');
+Route::get('/add-rating','App\Http\Controllers\RatingController@add_rating');
+Route::get('/load-rating','App\Http\Controllers\RatingController@load_rating');
 Route::get('/view-rating','App\Http\Controllers\RatingController@view_rating');
 Route::get('/unactive-rating','App\Http\Controllers\RatingController@unactive_rating');
 Route::get('/active-rating','App\Http\Controllers\RatingController@active_rating');

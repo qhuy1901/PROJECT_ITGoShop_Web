@@ -87,14 +87,6 @@
 
 									<div class="table-responsive">
 										<div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-											<?php
-												$message = Session::get('message');
-												if($message)
-												{
-													echo '<label>'.$message.'</label>';
-													Session::put('message', null);
-												}
-											?>
 											<table id="multi-filter-select" class="display table table-striped table-hover" >
 												<thead>
 													<tr>
@@ -109,6 +101,17 @@
 														<th>Hành động</th>
 													</tr>
 												</thead>
+												<tfoot>
+                                                    <tr>
+													<th>Tên sản phẩm</th>
+														<th>Danh mục</th>
+														<th>Thương hiệu</th>
+														<th>Số lượng</th>
+														<th>Ảnh sản phẩm</th>
+														<th>Giá</th>
+														<th>Hành động</th>
+													</tr>
+												</tfoot>
 												<tbody>
 													@foreach($all_product as $key => $product)
 													<tr>
@@ -117,7 +120,11 @@
 														<input type="text" class="ProductId" value="{{$product->ProductId}}" hidden>
 														</td>
 														<td>{{$product->BrandName}}</td>
-														<td>{{$product->Quantity}}</td>
+														<td>@if($product->Quantity > 0) 
+																{{$product->Quantity}} 
+															@else
+																<p style="color:red">Hết hàng</p>
+															@endif</td>
 														<td><img src="public/images_upload/product/{{$product->ProductImage}}" style="margin: auto; max-width: 60px; max-height: 60px; width: auto; height: auto; "></td>
 														<!-- <td>{{$product->Discount}}%</td> -->
 														<td>{{number_format($product->Price, 0, " ", ".").' ₫'}}</td>

@@ -188,7 +188,7 @@ class ProductController extends Controller
 
         // Framework
         $rating_list = DB::table('productrating')
-        ->join('user','user.UserId','=','productrating.UserId')
+        ->join('user','user.UserId','=','productrating.UserId')->where('ProductRatingStatus', 1)
         ->where('ProductId', $ProductId)->Paginate(10);
         $avg_rating = DB::table('productrating')->where('ProductId', $ProductId)->avg('Rating');
         // Framework

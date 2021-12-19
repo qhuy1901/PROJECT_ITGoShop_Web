@@ -33,8 +33,7 @@ class OrderController extends Controller
         $this->auth_login();
         $all_order = DB::table('order')
         ->join('user','user.UserId','=','order.UserId')
-        ->select('order.*', 'user.*')
-        ->orderby('order.OrderId', 'desc')->get();
+        ->select('order.*', 'user.*')->get();
         $manager_order = view('admin.all_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.all_order', $manager_order);
     }
@@ -187,8 +186,8 @@ class OrderController extends Controller
     public function send_order_mail($OrderId, $CustomerId)
     {
         $info = DB::table('user')->where('UserId','=', $CustomerId)->first();
-        $to_name = $info->FirstName;
-        $to_mail = 'itgoshop863@gmail.com'; // Gửi đến email nào? 
+        $to_name = "ITGoShop";
+        $to_mail = $info->Email; // Gửi đến email nào? 
         $OrderInfo = DB::table('order')
         ->select('FirstName','LastName', 'OrderId', 'OrderDate', 'Description', 'ShippingAddressId', 'Total', 'ShipFee', 'EstimatedDeliveryTime', 'ShipMethod')
         ->join('user', 'user.UserId', '=', 'order.UserId')
@@ -239,7 +238,7 @@ class OrderController extends Controller
         ->join('devvn_xaphuongthitran', 'devvn_xaphuongthitran.xaid', '=', 'shippingaddress.xaid')
         ->where('ShippingAddressId', '=', $order_info->ShippingAddressId)->first();
 
-        return View('report.print-invoice')
+        return View('report.print-invoice2')
         ->with('order_detail',  $order_detail)
         ->with('order_info',  $order_info)
         ->with('default_shipping_address',  $default_shipping_address);;

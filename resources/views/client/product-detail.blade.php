@@ -64,22 +64,14 @@
 													
 													<div class="blog-meta" style="padding-top:30px">
 														<span class="author">
-															<!--if(product->Rating == 0)
-																<a><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>Chưa có đánh giá</a>	
-															else
-																<a>
-																i = 0;
-																for(i; i < product->Rating; $i++)
-																	<i class="fa fa-star-o"></i>
-																endfor
-																product->Rating</a>	
-															endif-->
-															<a><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>Chưa có đánh giá</a>	
+															<a><i class="fa fa-eye" aria-hidden="true"></i>{{$product_detail->View}} lượt xem</a>
 															<a><i class="fa fa-shopping-cart"></i>Đã bán {{$product_detail->Sold}}</a>
-															@if($product_detail->Quantity < 10)
-																<a><i class="fa fa-archive"></i>Chỉ còn lại {{$product_detail->Quantity}} sản phẩm</a>
-															@else
+															@if($product_detail->Quantity >= 10)
 																<a><i class="fa fa-archive"></i>Còn {{$product_detail->Quantity}} sản phẩm</a>
+															@elseif($product_detail->Quantity <= 0)
+																<a style="color:red;"><i class="fa fa-archive" style="color:red;"></i>Đã hết hàng</a>
+															@else
+																<a><i class="fa fa-archive"></i>Chỉ còn lại {{$product_detail->Quantity}} sản phẩm</a>
 															@endif
 														</span>
 													</div>
@@ -95,6 +87,7 @@
 																					</sub>										
 															</h1>
 														</div>
+														@if($product_detail->Quantity > 0)
 														<div class="single-widget get-button">
 																	<div class="content">
 																			<p>Số lượng: <input name="quantity" type="number" min="1" value="1" size="4" style="width:50px"></p> 
@@ -107,6 +100,7 @@
 																			<input name="ProductId" type="hidden" class="input_product_id" value="{{$product_detail->ProductId}}">
 																	</div>
 														</div>
+														@endif
 													</div>
 												</form>
 									</div>
@@ -346,6 +340,12 @@
 												<a href="{{URL::to('/product-detail/'.$product_detail->ProductId)}}">
 													<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt="#">
 													<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product_detail->ProductImage)}}" alt="">
+													<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product_detail->StartsAt))))/ 86400 ?>
+															@if($product_detail->Quantity < 1)
+																<span class="out-of-stock" style="background-color:#FF8C00;">Hết hàng</span>
+															@elseif($so_ngay_da_moban <= 10)
+																<span class="new" style="right: 180px;" >New</span>
+															@endif
 												</a>
 												<div class="button-head">
 													<div class="product-action">
@@ -355,13 +355,21 @@
 													<div class="product-action-2">
 														<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
 														<input type="text" value="{{$product_detail->ProductId}}" hidden>
+														<input type="hidden" class="Quantity" value="{{$product_detail->Quantity}}">
 													</div>
 												</div>
 											</div>
 											<div class="product-content">
-																	<h3><a href="{{URL::to('/product-detail/'.$product_detail->ProductId)}}">{{$product_detail->ProductName}}</a></h3>
 																	<div class="product-price">
-																		<span>{{number_format($product_detail->Price * ((100- $product_detail->Discount)/100)).' '.'₫'}}</span>
+																	<h3><a style="text-decoration:none;color:black;" href="{{URL::to('/product-detail/'.$product_detail->ProductId)}}">{{$product_detail->ProductName}}</a></h3>
+														<div class="product-price">
+															<span style="color:black; font-size:17px"><b>{{number_format($product_detail->Price).' '.'₫'}}</b></span>
+															@if($product_detail->Discount != 0)
+															<br>
+															<span class="old">{{number_format($product_detail->Price + ($product_detail->Price * ($product_detail->Discount)/100)).' '.'₫'}}</span>
+															<span class="o-giam-gia" style="font-size:10px">-{{$product_detail->Discount}}% </span> 
+															@endif
+														</div>
 																	</div>
 											</div>
 										</div>
@@ -419,10 +427,10 @@ ul.pagination{
 					success:function(data){
 						$('#show_comment').html(data);
 					},
-					error:function(data)
-					{
-						alert("Lỗi");
-					}
+					// error:function(data)
+					// {
+					// 	alert("Lỗi");
+					// }
 				});
 			}
 			$('.send-comment-button').click(function(){
@@ -443,10 +451,10 @@ ul.pagination{
 								load_comment();
 								$('.textarea-commnent-content').val('');
 							},
-							error:function(data)
-							{
-								alert("Lỗi");
-							}
+							// error:function(data)
+							// {
+							// 	alert("Lỗi");
+							// }
 						});
 					}
 					else
