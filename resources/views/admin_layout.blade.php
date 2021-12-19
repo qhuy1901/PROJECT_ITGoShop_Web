@@ -359,17 +359,23 @@
 								<ul class="nav nav-collapse">
 									<li>
 										<a href="{{URL::to('/view-brand')}}">
-											<span class="sub-item">Xem thương hiệu</span>
+											<span class="sub-item">Tất cả thương hiệu</span>
+										</a>
+									</li>
+									
+									<li>
+										<a href="{{URL::to('/view-subbrand')}}">
+											<span class="sub-item">Tất cả thương hiệu nhánh</span>
+										</a>
+									</li>
+									<li>
+										<a href="{{URL::to('/add-brand')}}">
+											<span class="sub-item">Thêm thương hiệu </span>
 										</a>
 									</li>
 									<li>
 										<a href="{{URL::to('/add-subbrand')}}">
 											<span class="sub-item">Thêm thương hiệu nhánh</span>
-										</a>
-									</li>
-									<li>
-										<a href="{{URL::to('/view-subbrand')}}">
-											<span class="sub-item">Tất cả thương hiệu nhánh</span>
 										</a>
 									</li>
 								</ul>
