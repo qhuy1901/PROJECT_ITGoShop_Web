@@ -35,23 +35,23 @@
 											<thead>
 												<tr style=" font-size: 12px; font-weight: 500; text-align: center;">
 													<th>ID</th>
+													<th>Ngày đặt hàng</th>
 													<th>Khách hàng</th>
 													<th>Tổng đơn hàng</th>
 													<th>Trạng thái đơn hàng</th>
 													<th>Trạng thái thanh toán</th>
-													
 													<th> Thao tác </th>
 												</tr>
 											</thead>
-											
 											<tbody>
 												@foreach($all_order as $key => $order)
 												<tr>
 													<td>
-														<a href="{{URL::to('/order-detail/'.$order->OrderId)}}">
+														<a href="{{URL::to('/order-detail/'.$order->OrderId)}}" style="text-decoration:none;">
 															<span class="OrderId">{{$order->OrderId}}</span>
 														</a>
 													</td>
+													<td>{{date('d/m/Y', strtotime($order->OrderDate))}}</td>
 													<td>{{$order->LastName}} {{$order->FirstName}}</td>
 													<td>{{number_format($order->Total, 0, " ", ".").' ₫'}}</td> 
 													
@@ -61,11 +61,13 @@
 													<td>
 														@if($order->OrderStatus != 'Đã hủy')
 															<div class="form-button-action" >
+																@if($order->OrderStatus != 'Giao hàng thành công')
 																<button type="button" data-target="#addRowModal" data-toggle="modal" title="" class="btn btn-link btn-primary btn-lg btn-update-order" data-original-title="Cập nhật trạng thái đơn hàng" >
 																	<a class="active" ui-toggle-class="" > 
 																		<i class="fa fa-edit text-active"></i>
 																	</a>
 																</button>
+																@endif
 																<button type="button" onclick="window.open('{{URL::to('/print-order/'.$order->OrderId)}}');"  data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="In đơn hàng" >
 																	<!-- <a class="active" href="{{URL::to('/print-order/'.$order->OrderId)}}" ui-toggle-class="" >  -->
 																		<i class="fa fa-print text-active"></i>
@@ -106,6 +108,7 @@
 																										<option value="Đã giao cho đơn vị vận chuyển">Đã giao cho đơn vị vận chuyển</option>
 																										<option value="Đang giao hàng">Đang giao hàng</option>
 																										<option value="Giao hàng thành công">Giao hàng thành công</option>
+																										<option value="Đã hủy">Đã hủy</option>
 																									</select>
 																							</div>
 																							<div class="col-md-12 pr-0">
@@ -200,6 +203,7 @@
     <script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({
+				// "order": [[ 2, "desc" ]],
 			});
 
 			$('#multi-filter-select').DataTable( {

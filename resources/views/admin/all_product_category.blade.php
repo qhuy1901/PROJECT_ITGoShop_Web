@@ -171,10 +171,6 @@
 					</div>
 				</div>
 			</div>
-			
-    <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
-	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
-	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script>
 	<!-- jQuery UI -->
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
 	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>

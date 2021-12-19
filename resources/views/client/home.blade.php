@@ -76,11 +76,12 @@
                                 <div class="product-action-2">
                                     <a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
 									<input type="text" value="{{$product->ProductId}}" hidden>
+									<input type="hidden" class="Quantity" value="{{$product->Quantity}}">
                                 </div>
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
+                            <h3><a style="text-decoration:none; color:black;" href="{{URL::to('/product-detail/'.$product->ProductId)}}"><b style="font-size:17px">{{$product->ProductName}}</b></a></h3>
                             <?php $avg_rating = $product->number_rating?> 
 							@if($avg_rating >= 1)
 								<div class="star-wrapper" style="display: inline-block;">
@@ -233,7 +234,9 @@
 															<img class="default-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-															@if($so_ngay_da_moban <= 7)
+															@if($product->Quantity < 1)
+																<span class="out-of-stock" style="background-color:#FF8C00;">Hết hàng</span>
+															@elseif($so_ngay_da_moban <= 10)
 																<span class="new" style="right: 180px;" >New</span>
 															@endif
 														</a>
@@ -246,11 +249,12 @@
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
 																<input type="text" value="{{$product->ProductId}}" hidden>
+																<input type="hidden" class="Quantity" value="{{$product->Quantity}}">
 															</div>
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+														<h3><a style="text-decoration:none;color:black;" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
 															<span style="color:black; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
 															@if($product->Discount != 0)
@@ -279,8 +283,10 @@
 															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-															@if($so_ngay_da_moban <= 7)
-																<span class="new" style="right: 180px;">New</span>
+															@if($product->Quantity < 1)
+																<span class="out-of-stock" style="background-color:#FF8C00;">Hết hàng</span>
+															@elseif($so_ngay_da_moban <= 10)
+																<span class="new" style="right: 180px;" >New</span>
 															@endif
 														</a>
 														<div class="button-head">
@@ -291,11 +297,12 @@
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
 																<input type="text" value="{{$product->ProductId}}" hidden>
+																<input type="hidden" class="Quantity" value="{{$product->Quantity}}">
 															</div>
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+														<h3><a style="text-decoration:none;color:black;" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
 															<span style="color:black; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
 															@if($product->Discount != 0)
@@ -324,8 +331,10 @@
 															<img class="default-img" style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; "  src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<img class="hover-img" src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 															<?php $so_ngay_da_moban = (strtotime(date("d-m-Y")) - strtotime(date("d-m-Y", strtotime($product->StartsAt))))/ 86400 ?>
-															@if($so_ngay_da_moban <= 7)
-																<span class="new">New</span>
+															@if($product->Quantity < 1)
+																<span class="out-of-stock" style="background-color:#FF8C00;">Hết hàng</span>
+															@elseif($so_ngay_da_moban <= 10)
+																<span class="new" style="right: 180px;" >New</span>
 															@endif
 														</a>
 														<div class="button-head">
@@ -337,11 +346,12 @@
 															<div class="product-action-2">
 																<a title="Add to cart" class="add-to-cart-a-tag" href="javascript:void(0)">Thêm vào giỏ hàng</a>
 																<input type="text" value="{{$product->ProductId}}" hidden>
+																<input type="hidden" class="Quantity" value="{{$product->Quantity}}">
 															</div>
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
+														<h3><a style="text-decoration:none;color:black;" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h3>
 														<div class="product-price">
 															<span style="color:black; font-size:17px"><b>{{number_format($product->Price).' '.'₫'}}</b></span>
 															@if($product->Discount != 0)
@@ -579,11 +589,12 @@
 									<img style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 									<a href="javascript:void(0)" class="buy add-to-cart-a-tag"><i class="fa fa-shopping-bag"></i></a>
 									<input type="text" value="{{$product->ProductId}}" hidden>
+									<input type="hidden" class="Quantity" value="{{$product->Quantity}}">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
-									<h5 class="title"><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
+									<h5 class="title"><a style="text-decoration:none;color:black;" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
 									<p class="price with-discount">{{number_format($product->Price).' '.'₫'}}</p>
 									<h5 class="title" ><a>Đã bán: {{$product->number_solded}} sản phẩm </a> </h5>
 								</div>
@@ -611,11 +622,12 @@
 									<img style="margin: auto; max-width: 250px; max-height: 200px; width: auto; height: auto; " src="{{URL::to('public/images_upload/product/'.$product->ProductImage)}}" alt="#">
 									<a href="javascript:void(0)" class="buy add-to-cart-a-tag"><i class="fa fa-shopping-bag"></i></a>
 									<input type="text" value="{{$product->ProductId}}" hidden>
+									<input type="hidden" class="Quantity" value="{{$product->Quantity}}">
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-12 no-padding">
 								<div class="content">
-									<h5 class="title"><a style="text-decoration:none" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
+									<h5 class="title"><a style="text-decoration:none;color:black;" href="{{URL::to('/product-detail/'.$product->ProductId)}}">{{$product->ProductName}}</a></h5>
 									<p class="price with-discount">{{number_format($product->Price * ((100- $product->Discount)/100)).' '.'₫'}}</p>
 									<h5 class="title" ><a>Lượt xem: {{$product->View}} <i class=" ti-eye"></i></a> </h5>
 								</div>

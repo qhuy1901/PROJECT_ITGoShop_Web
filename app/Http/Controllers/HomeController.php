@@ -56,8 +56,9 @@ class HomeController extends Controller
 
         $all_product = DB::table('product')->where('status', 1)->get();
         $giam_gia_soc = DB::table('product')
-        ->select(DB::raw('avg(Rating) as number_rating, ProductName, ProductImage, product.ProductId, product.StartsAt, product.Quantity, product.Cost, product.Price, product.Discount, View'))
+        ->select(DB::raw('avg(Rating) as number_rating, ProductName, ProductImage, product.ProductId, product.StartsAt, product.Quantity, product.Cost, product.Price, product.Discount, View, Sold'))
         ->join('productrating','productrating.ProductId','=','product.ProductId')
+        ->where('Quantity', '>', 0)
         ->where('status', 1)->where('Discount', '<>', '0')->orderby('Discount', 'desc')
         ->groupBy('ProductName') 
         ->groupBy('ProductImage')
@@ -68,7 +69,8 @@ class HomeController extends Controller
         ->groupBy('product.Price')
         ->groupBy('product.Discount')
         ->groupBy('product.View')
-        ->limit(6)
+        ->groupBy('product.Sold')
+        ->limit(7)
         ->get();
 
         $PC_product = DB::table('product')
