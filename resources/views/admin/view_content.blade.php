@@ -100,11 +100,7 @@
 																				<i class="fa fa-edit text-active"></i>
 																			</a>
 																		</button>
-																		<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-																			<a onclick="return confirm('Bạn cho chắc muốn xóa bài viết này không?')" href="{{URL::to('/delete-post/'.$blog->BlogId)}}" class="active" ui-toggle-class="">
-																				<i class="fa fa-times text-danger text"></i>
-																			</a>
-																		</button>
+																		
 																	</div>
 																</td>
 													</tr>
@@ -137,10 +133,10 @@
 
     <script >
 		$(document).ready(function(){
-			$('button[data-original-title="Hiển thị  bài viết"]').click(function(){
+			$('button[data-original-title="Hiển thị bài viết"]').click(function(){
 				var BlogId = $(this).parents('tr').find('.BlogId').val();
 				var activeButton = $(this);
-				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn  bài viết"]');
+				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn bài viết"]');
 				$.ajax({
 					url: '{{URL::to('/unactive-post')}}',
 					method:"GET",
@@ -157,10 +153,10 @@
 				});
 			});
 
-			$('button[data-original-title="Ẩn  bài viết"]').click(function(){
+			$('button[data-original-title="Ẩn bài viết"]').click(function(){
 				var BlogId = $(this).parents('tr').find('.BlogId').val();
 				var unactiveButton = $(this);
-				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị  bài viết"]');
+				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị bài viết"]');
 				$.ajax({
 					url: '{{URL::to('/active-post')}}',
 					method:"GET",
@@ -177,7 +173,7 @@
 				});
 			});
 			
-			$('button[data-original-title="Xóa"]').click(function(){
+			$('button[data-original-title="Xóa bài viết"]').click(function(){
 				var BlogId = $(this).parents('tr').find('.BlogId').val();
 				var thisImage = $(this).parents('tr');
 				swal({

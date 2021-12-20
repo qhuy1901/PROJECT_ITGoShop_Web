@@ -51,7 +51,10 @@ class BlogController extends Controller
     {
         DB::table('blog')->where('BlogId', $request->BlogId)->update(['Status'=>0]); 
     }
-
+    public function delete_post(Request $request)
+    {
+        DB::table('blog')->where('BlogId', $request->BlogId)->delete();
+    }
     
     public function save_post(Request $request)
     {
@@ -120,15 +123,7 @@ class BlogController extends Controller
         return Redirect::to('view-content');
     }
 
-    public function delete_post($BlogId)
-    {
-        DB::table('blog')->where('BlogId', $BlogId)->delete();
-        Session::put('message', 'Xóa bài viết thành công');
-        return Redirect::to('view-content');
-    }
-    // Kết thúc trang admin 
-
-    // Trang client
+    
     public function blog_detail($BlogId)
     {
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
