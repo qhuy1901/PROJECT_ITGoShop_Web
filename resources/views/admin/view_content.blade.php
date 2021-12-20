@@ -61,6 +61,7 @@
 												</thead>
 												<tbody>
 													@foreach($all_content as $key => $blog)
+													@csrf
 													<tr>
 																<td>{{$blog->Author}}</td>
 																<td>{{$blog->DatePost}}</td>
@@ -71,26 +72,26 @@
 																<td>
 																	
 																	<div class="form-button-action">
-																	@if($blog->Status == 1)
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết">
-																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
-																	</button>	
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết" hidden>
-																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
-																	</button>	
-																@else	
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết" hidden>
-																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
-																	</button>	
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết">
-																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
-																	</button>
-																@endif
-																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa  bài viết">
-																		<a href="javascript:void(0)" class="active" ui-toggle-class="">
-																			<i class="fa fa-times text-danger text"></i>
-																		</a>
-																	</button>
+																		@if($blog->Status == 1)
+																		<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết">
+																			<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
+																		</button>	
+																		<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết" hidden>
+																			<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
+																		</button>	
+																		@else	
+																		<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết" hidden>
+																			<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
+																		</button>	
+																		<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết">
+																			<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
+																		</button>
+																		@endif
+																		<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa  bài viết">
+																			<a href="javascript:void(0)" class="active" ui-toggle-class="">
+																				<i class="fa fa-times text-danger text"></i>
+																			</a>
+																		</button>
 																	</div>
 																</td>
 																<td>
@@ -115,23 +116,7 @@
 					</div>
 				</div>
 			</div>
-<!-- <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
-	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
-	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script> -->
-	<!-- jQuery UI -->
-	<script src="{{asset('public/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
-	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
-	
-	<!-- jQuery Scrollbar -->
-	<script src="{{asset('public/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
-	<!-- Datatables -->
-	<script src="{{asset('public/admin/js/plugin/datatables/datatables.min.js')}}"></script>
-	<!-- Atlantis JS -->
-	<script src="{{asset('public/admin/js/atlantis.min.js')}}"></script>
-	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script src="{{asset('public/admin/js/setting-demo2.js')}}"></script>
-
-    <script >
+	<script>
 		$(document).ready(function(){
 			$('button[data-original-title="Hiển thị bài viết"]').click(function(){
 				var BlogId = $(this).parents('tr').find('.BlogId').val();
@@ -208,6 +193,23 @@
 			});
 		});
 	</script>
+<!-- <script src="{{asset('public/admin/js/core/jquery.3.2.1.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/core/popper.min.js')}}"></script>
+	<script src="{{asset('public/admin//js/core/bootstrap.min.js')}}"></script> -->
+	<!-- jQuery UI -->
+	<script src="{{asset('public/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
+	<script src="{{asset('public/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
+	
+	<!-- jQuery Scrollbar -->
+	<script src="{{asset('public/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
+	<!-- Datatables -->
+	<script src="{{asset('public/admin/js/plugin/datatables/datatables.min.js')}}"></script>
+	<!-- Atlantis JS -->
+	<script src="{{asset('public/admin/js/atlantis.min.js')}}"></script>
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="{{asset('public/admin/js/setting-demo2.js')}}"></script>
+
+    
 	 <script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({
