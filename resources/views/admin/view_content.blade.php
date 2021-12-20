@@ -33,10 +33,7 @@
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 										<h4 class="card-title">Danh sách danh mục sản phẩm</h4>
-										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-											<i class="fa fa-plus"></i>
-												Thêm sản phẩm
-										</button>
+										
 									</div>
 								</div>
 								<div class="card-body">
@@ -72,18 +69,28 @@
 																<td><img src="public/images_upload/blog/{{$blog->Image}}" height="80" width="80"></td>
 																
 																<td>
+																	
 																	<div class="form-button-action">
-																		@if($blog->Status == 1)
-																		<!-- Chú ý: https://fontawesome.com/v5.15/icons/eye?style=solid icon này lấy ở đây -->
-																			<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết">
-																				<a href="{{URL::to('/unactive-post/'.$blog->BlogId)}}"><span class="fa-thumb-styling fa fa-eye" style="font-size:18px" data-original-title="Cập nhật bài viết"></span></a>
-																			</button>		
-																		@else	
-																			<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết">
-																				<a href="{{URL::to('/active-post/'.$blog->BlogId)}}"><span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span></a>
-																			</button>
-																		@endif
-																		
+																	@if($blog->Status == 1)
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết">
+																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
+																	</button>	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết" hidden>
+																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
+																	</button>	
+																@else	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Hiển thị bài viết" hidden>
+																		<span class="fa-thumb-styling fa fa-eye" style="font-size:18px"></span>
+																	</button>	
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Ẩn bài viết">
+																		<span class="fa-thumb-styling fa fa-eye-slash" style="color:red; font-size:18px"></span>
+																	</button>
+																@endif
+																	<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Xóa  bài viết">
+																		<a href="javascript:void(0)" class="active" ui-toggle-class="">
+																			<i class="fa fa-times text-danger text"></i>
+																		</a>
+																	</button>
 																	</div>
 																</td>
 																<td>
@@ -129,6 +136,83 @@
 	<script src="{{asset('public/admin/js/setting-demo2.js')}}"></script>
 
     <script >
+		$(document).ready(function(){
+			$('button[data-original-title="Hiển thị  bài viết"]').click(function(){
+				var BlogId = $(this).parents('tr').find('.BlogId').val();
+				var activeButton = $(this);
+				var unactiveButton = $(this).parent().find('button[data-original-title="Ẩn  bài viết"]');
+				$.ajax({
+					url: '{{URL::to('/unactive-post')}}',
+					method:"GET",
+					data:{BlogId: BlogId},
+					success:function(data)
+					{
+						activeButton.attr('hidden',true);
+						unactiveButton.removeAttr('hidden');
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}	
+				});
+			});
+
+			$('button[data-original-title="Ẩn  bài viết"]').click(function(){
+				var BlogId = $(this).parents('tr').find('.BlogId').val();
+				var unactiveButton = $(this);
+				var activeButton = $(this).parent().find('button[data-original-title="Hiển thị  bài viết"]');
+				$.ajax({
+					url: '{{URL::to('/active-post')}}',
+					method:"GET",
+					data:{BlogId: BlogId},
+					success:function(data)
+					{
+						unactiveButton.attr('hidden',true);
+						activeButton.removeAttr('hidden');
+					},
+					error:function(data)
+					{
+						alert('Lỗi');
+					}	
+				});
+			});
+			
+			$('button[data-original-title="Xóa"]').click(function(){
+				var BlogId = $(this).parents('tr').find('.BlogId').val();
+				var thisImage = $(this).parents('tr');
+				swal({
+					title: "Xác nhận",
+					text: "Bạn có chắc muốn xóa bài viết này không?",
+					icon: "warning",
+					buttons: true,
+					dangerMode: true,
+					})
+					.then((willDelete) => {
+					if (willDelete) {
+						$.ajax({
+							url: '{{URL::to('/delete-post')}}',
+							method:"GET",
+							data:{ProductId: BlogId},
+							success:function(data)
+							{
+								thisImage.remove();
+								swal("Xóa bài viết thành công!", {
+								icon: "success",
+								});
+							},
+							error:function(data)
+							{
+								alert('Lỗi');
+							}	
+						});
+						
+					} 
+				});
+				
+			});
+		});
+	</script>
+	 <script >
 		$(document).ready(function() {
 			$('#basic-datatables').DataTable({
 			});

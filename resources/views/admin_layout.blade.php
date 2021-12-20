@@ -412,7 +412,7 @@
 						<li class="nav-item">
 							<a data-toggle="collapse" href="#charts">
 								<i class="fas fa-file-alt"></i>
-								<p>Quản lý Blog</p>
+								<p>Quản lý Tin tức</p>
 								<span class="caret"></span>
 							</a>
 							<div class="collapse" id="charts">
