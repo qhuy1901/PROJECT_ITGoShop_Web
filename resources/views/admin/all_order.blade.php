@@ -184,10 +184,10 @@
 							url: '{{URL::to('/add-order-tracking')}}',
 							method:"GET",
 							data:{OrderId: OrderId, OrderStatus: OrderStatus},
-							error:function(data)
-							{
-								alert("Lỗi cập nhật hóa đơn");
-							}	
+							// error:function(data)
+							// {
+							// 	alert("Lỗi cập nhật hóa đơn");
+							// }	
 						});
 					},
 					error:function(data)

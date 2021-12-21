@@ -33,7 +33,6 @@ class ProductCategoryController extends Controller
         $data['status'] = $request->status;
 
         DB::table('Category')->insert($data);
-        Session::put('message', 'Thêm danh mục sản phẩm thành công');
         return Redirect::to('add-product-category');
         // echo '<pre>';
         // print_r($data);

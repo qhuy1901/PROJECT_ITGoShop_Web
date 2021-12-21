@@ -28,14 +28,6 @@
 								<div class="card-header">
 									<div class="card-title">Chỉnh sửa thông tin phẩm</div>
 								</div>
-								<?php
-									$message = Session::get('message');
-									if($message)
-									{
-										echo '<label>'.$message.'</label>';
-										Session::put('message', null);
-									}
-								?>
 								<form role="form" action="{{URL::to('/update-product/'.$update_value->ProductId)}}" method="post" enctype="multipart/form-data"> 
 									{{ csrf_field() }}								
 									<div class="card-body">

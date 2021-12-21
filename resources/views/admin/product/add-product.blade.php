@@ -32,14 +32,6 @@
 								<div class="card-header">
 									<div class="card-title">Thêm sản phẩm</div>
 								</div>
-								<?php
-									$message = Session::get('message');
-									if($message)
-									{
-										echo '<label>'.$message.'</label>';
-										Session::put('message', null);
-									}
-								?>
 								<form role="form" action="{{URL::to('/save-product')}}" method="post" enctype="multipart/form-data"> <!-- enctype="multipart/form-data" có cái này mới thêm ảnh đc-->
 									{{ csrf_field() }}
 									<div class="card-body">

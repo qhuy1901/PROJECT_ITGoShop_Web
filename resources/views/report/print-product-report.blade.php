@@ -197,7 +197,7 @@
                 ],
             });
             load_pie_chart();
-            setTimeout(function() { window.print();}, 500);
+            setTimeout(function() { window.print();}, 700);
             function load_pie_chart()
             {
                 var tu_ngay = $('#tu-ngay').val();

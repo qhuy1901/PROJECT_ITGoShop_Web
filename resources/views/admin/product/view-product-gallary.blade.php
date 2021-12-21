@@ -16,7 +16,7 @@
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<a href="#">Thư viện ảnh</a>
+								<a href="{{URL::to('/view-product')}}">Tất cả sản phẩm</a>
 							</li>
 							<li class="separator">
 								<i class="flaticon-right-arrow"></i>

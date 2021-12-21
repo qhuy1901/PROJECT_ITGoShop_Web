@@ -81,13 +81,11 @@ class ProductController extends Controller
             $get_image->move('public/images_upload/product', $image_name);
             $data['ProductImage'] = $image_name;
             DB::table('product')->insert($data);
-            Session::put('message', 'Thêm sản phẩm thành công');
             return Redirect::to('add-product');
         }
         
         $data['ProductImage'] = '';
         DB::table('product')->insert($data);
-        Session::put('message', 'Thêm sản phẩm thành công');
         return Redirect::to('add-product');
     }
 
@@ -147,7 +145,6 @@ class ProductController extends Controller
         }
 
         DB::table('product')->where('ProductId', $ProductId)->update($data);
-        Session::put('message', 'Cập nhật sản phẩm thành công');
         return Redirect::to('view-product');
     }
     // Kết thúc trang admin 
