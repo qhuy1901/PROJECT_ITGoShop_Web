@@ -1,7 +1,8 @@
 # ITGoShop_W
-Tên đề tài:Xây dựng Website bán hàng công nghệ - ITGoShop.
+Tên đề tài: Xây dựng Website bán hàng công nghệ - ITGoShop.
 
 Tóm tắt nội dung đề tài:
+- Thời gian thực hiện: 8/9/2021 - 21/12/2021
 - Framework: Laravel
 - Hệ quản trị CSDL: MySQL
 - Các kỹ thuật trong đồ án: PHP,Boostrap,Ajax, Javascript, Jquery, CSS, HTML5, CKEditor, Morris.js Charts, PHPspreadsheet, Maatwebsite, DomPDF.
