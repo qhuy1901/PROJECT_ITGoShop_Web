@@ -123,10 +123,10 @@ Route::get('/wishlist','App\Http\Controllers\WishListController@wishlist');
 Route::get('/add-content','App\Http\Controllers\BlogController@add_content');
 Route::get('/view-content','App\Http\Controllers\BlogController@view_content');
 Route::get('/update-post/{BlogId}','App\Http\Controllers\BlogController@get_post_info');
-Route::get('/delete-post/{BlogId}','App\Http\Controllers\BlogController@delete_post');
+Route::get('/delete-post','App\Http\Controllers\BlogController@delete_post');
 
-Route::get('/unactive-post/{BlogId}','App\Http\Controllers\BlogController@unactive_post');
-Route::get('/active-post/{BlogId}','App\Http\Controllers\BlogController@active_post');
+Route::get('/unactive-post','App\Http\Controllers\BlogController@unactive_post');
+Route::get('/active-post','App\Http\Controllers\BlogController@active_post');
 
 Route::post('/save-post','App\Http\Controllers\BlogController@save_post');
 Route::post('/update-post/{BlogId}','App\Http\Controllers\BlogController@update_post');

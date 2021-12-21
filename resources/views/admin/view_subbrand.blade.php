@@ -33,10 +33,7 @@
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 										<h4 class="card-title">Danh sách thương hiệu nhánh</h4>
-										<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
-											<i class="fa fa-plus"></i>
-											 Thêm thương hiệu
-										</button>
+										
 									</div>
 								</div>
 

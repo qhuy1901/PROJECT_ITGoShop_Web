@@ -37,25 +37,25 @@ class BlogController extends Controller
         $this->auth_login();
         $all_content = DB::table('blog')
         ->select('blog.*')
-        ->orderby('blog.BlogId', 'desc')->get();
+        ->orderby('blog.DateCreate', 'desc')->get();
         $manager_blog = view('admin.view_content')->with('all_content', $all_content);
         return view('admin_layout')->with('admin.view_content', $manager_blog);
     }
-    public function active_post($BlogId)
+    
+    public function active_post(Request $request)
     {
-        // Câu truy vấn SQL  WHERE 
-        DB::table('blog')->where('BlogId', $BlogId)->update(['Status'=>1]); // [ ] là cái cột, cái mảng
-        Session::put('message','Hiển thị bài viết thành công');
-        return Redirect::to('view_content');
-
+        DB::table('blog')->where('BlogId', $request->BlogId)->update(['Status'=>1]); 
     }
 
-    public function unactive_post($BlogId)
+    public function unactive_post(Request $request)
     {
-        DB::table('blog')->where('BlogId', $BlogId)->update(['Status'=>0]); 
-        Session::put('message','Ẩn bài viết thành công');
-        return Redirect::to('view_content');
+        DB::table('blog')->where('BlogId', $request->BlogId)->update(['Status'=>0]); 
     }
+    public function delete_post(Request $request)
+    {
+        DB::table('blog')->where('BlogId', $request->BlogId)->delete();
+    }
+    
     public function save_post(Request $request)
     {
         $data = array();
@@ -123,15 +123,7 @@ class BlogController extends Controller
         return Redirect::to('view-content');
     }
 
-    public function delete_post($BlogId)
-    {
-        DB::table('blog')->where('BlogId', $BlogId)->delete();
-        Session::put('message', 'Xóa bài viết thành công');
-        return Redirect::to('view-content');
-    }
-    // Kết thúc trang admin 
-
-    // Trang client
+    
     public function blog_detail($BlogId)
     {
         $product_category_list = DB::table('Category')->orderby('CategoryId', 'desc')->get();
@@ -163,7 +155,7 @@ class BlogController extends Controller
         $all_content = DB::table('blog')
         ->select('blog.*')
         ->where('Status',1)
-        ->orderby('blog.DatePost', 'desc')->paginate(9);
+        ->orderby('blog.DateCreate', 'desc')->paginate(9);
 
         return view('client.all_blog')
         ->with('sub_brand_list',  $sub_brand_list )
